@@ -1,72 +1,59 @@
-/* FMVA Sprint — Brand System "Racetrack" (v1.42+)
-   Formal tokens + aliases to existing variable names.
-   Rule: yellow = act, green = passed, red = wrong. Nothing else uses them.
-   Contrast: ink text on yellow fills only — never yellow text on cream. */
-@font-face {
-  font-family: "Archivo Black"; font-style: normal; font-weight: 400;
-  font-display: swap; src: url("../assets/fonts/archivo-black.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Inter"; font-style: normal; font-weight: 400;
-  font-display: swap; src: url("../assets/fonts/inter-400.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Inter"; font-style: normal; font-weight: 600;
-  font-display: swap; src: url("../assets/fonts/inter-600.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Inter"; font-style: normal; font-weight: 700;
-  font-display: swap; src: url("../assets/fonts/inter-700.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Space Mono"; font-style: normal; font-weight: 400;
-  font-display: swap; src: url("../assets/fonts/space-mono.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Space Mono"; font-style: normal; font-weight: 700;
-  font-display: swap; src: url("../assets/fonts/space-mono-bold.woff2") format("woff2");
-}
+/* ============================================================
+   FMVA SPRINT - Brand tokens + type (v1, 2026-11-01)
+   Drop-in: keep the site's existing variable names as aliases
+   so nothing already built needs to change.
+   Font payload: ~92 KB woff2 across 6 files (latin subsets).
+   Performance impact not yet measured on the live site.
+   ============================================================ */
+
+@font-face { font-family: 'Archivo Black'; font-weight: 400; font-display: swap;
+  src: url('../assets/fonts/archivo-black.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-weight: 400; font-display: swap;
+  src: url('../assets/fonts/inter-400.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-weight: 600; font-display: swap;
+  src: url('../assets/fonts/inter-600.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-weight: 700; font-display: swap;
+  src: url('../assets/fonts/inter-700.woff2') format('woff2'); }
+@font-face { font-family: 'Space Mono'; font-weight: 400; font-display: swap;
+  src: url('../assets/fonts/space-mono.woff2') format('woff2'); }
+@font-face { font-family: 'Space Mono'; font-weight: 700; font-display: swap;
+  src: url('../assets/fonts/space-mono-bold.woff2') format('woff2'); }
+
 :root {
-  /* ---- formal brand tokens ---- */
-  --track-cream: #FFF6E9;
-  --sprint-ink: #1A1A1A;
-  --sprint-yellow: #FFC900;
-  --gate-pink: #FF90E8;
-  --finish-green: #8AC926;
-  --split-blue: #5BC0EB;
-  --hell-orange: #FF6B35;
-  --false-red: #FF5D5D;
-  --lavender: #C4A1FF;
-  /* ---- aliases to the site's existing variable names (no rename needed) ---- */
-  --bg: var(--track-cream);
-  --ink: var(--sprint-ink);
-  --yellow: var(--sprint-yellow);
-  --pink: var(--gate-pink);
-  --green: var(--finish-green);
-  --blue: var(--split-blue);
-  --purple: var(--lavender);
-  --orange: var(--hell-orange);
-  --red: var(--false-red);
-  --font-display: "Archivo Black", "Arial Black", sans-serif;
-  --font-body: "Inter", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
-  --font-mono: "Space Mono", Consolas, "Courier New", monospace;
+  /* Brand tokens (canonical names) */
+  --track-cream: #FFF6E9;  /* page ground */
+  --sprint-ink:  #1A1A1A;  /* text, outlines, hard shadows */
+  --sprint-yellow:#FFC900; /* brand + CTA + highlight ONLY */
+  --gate-pink:   #FF90E8;  /* hero / feature moments, sparingly */
+  --finish-green:#8AC926;  /* pass + success states ONLY */
+  --split-blue:  #5BC0EB;  /* info surfaces, lesson headers */
+  --hell-orange: #FF6B35;  /* Hell Mode ONLY */
+  --false-red:   #FF5D5D;  /* errors ONLY */
+  --lavender:    #C4A1FF;  /* audio + secondary surfaces */
+  --shadow:    5px 5px 0 var(--sprint-ink);
+  --shadow-sm: 3px 3px 0 var(--sprint-ink);
+  --radius: 14px;
+
+  /* Aliases for the current stylesheet - no renames needed */
+  --bg: var(--track-cream);  --ink: var(--sprint-ink);
+  --yellow: var(--sprint-yellow); --pink: var(--gate-pink);
+  --green: var(--finish-green);  --blue: var(--split-blue);
+  --purple: var(--lavender);     --orange: var(--hell-orange);
+  --red: var(--false-red);       --card: #FFFFFF;
+
+  /* Type stacks */
+  --font-display: 'Archivo Black', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, 'Courier New', monospace;
 }
-/* ---- typography ---- */
+
 body { font-family: var(--font-body); }
-.hero h1, .lesson-head h2, .brandhero h1, .logo {
-  font-family: var(--font-display); font-weight: 400;
-}
-/* numbers, formulas, chips */
-.fitem .fn, .num, code, kbd {
-  font-family: var(--font-mono);
-}
-/* ---- category labels are Split Blue; Finish Green means PASSED only ---- */
-.tag.t-fondasi { background: var(--split-blue); }
-/* ---- the stamp: brand expression for passed work (not a score) ---- */
+h1, h2, .display { font-family: var(--font-display); letter-spacing: .01em; }
+code, .formula-chip, .stat-number { font-family: var(--font-mono); }
+
+/* The TUNTAS / CLEARED stamp on a passed mission or gate card */
 .sp-stamp {
-  position: absolute; top: 10px; right: 10px; width: 104px; max-width: 30%;
-  transform: rotate(-4deg); pointer-events: none; user-select: none;
-  filter: drop-shadow(2px 2px 0 rgba(26,26,26,.9));
+  display: inline-block;
+  transform: rotate(-4deg);
+  filter: drop-shadow(3px 3px 0 var(--sprint-ink));
 }
-.card { position: relative; }
-@media (max-width: 480px) { .sp-stamp { width: 84px; } }

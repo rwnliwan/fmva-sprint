@@ -270,3 +270,13 @@ details.ans summary { font-weight: 900; cursor: pointer; }
 @media (min-width: 1100px) {
   .sec p, .sec li { max-width: 78ch; }
 }
+
+/* ---------- brand kit overrides (Racetrack v1.42) ---------- */
+/* category labels are Split Blue; Finish Green means PASSED only */
+.tag.t-fondasi { background: var(--split-blue); }
+/* stamp overlay on passed lesson cards */
+.card .sp-stamp {
+  position: absolute; top: 10px; right: 10px; width: 104px; max-width: 30%;
+  pointer-events: none; user-select: none;
+}
+@media (max-width: 480px) { .card .sp-stamp { width: 84px; } }
