@@ -24,7 +24,7 @@ scope_now: ["🗺️ <b>Cakupan saat ini:</b> 3 Fondasi (A/B/C) + Hari 01–14 +
   "🗺️ <b>Current scope:</b> 3 Foundation lessons (A/B/C) + Days 01–14 + 4 Excel levels + 5 Real Cases available. Days 15–30 &amp; advanced features in progress."],
 tools_card_h: ["Glossary & Fungsi Excel", "Glossary & Excel Functions"],
 tools_card_p: ["Kamus istilah + referensi fungsi. Buka dari menu bawah.", "Term glossary + function reference. Open from the bottom menu."],
-footer: ["FMVA Sprint · dibuat untuk Septian · v1.42", "FMVA Sprint · built for Septian · v1.42"],
+footer: ["FMVA Sprint · dibuat untuk Septian · v1.43", "FMVA Sprint · built for Septian · v1.43"],
 /* lesson cards */
 card_repeat: ["Ulangi", "Review"],
 card_continue: ["Lanjutkan", "Continue"],

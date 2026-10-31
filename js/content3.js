@@ -371,6 +371,149 @@ blind: {h: "Uji Kilat — angka beda", body: `
 <details class="ans"><summary>Jawaban</summary>
 <p>=IFERROR(A1/B1, 0). IFERROR hanya di titik pembagian — kalau dibungkus sekolom, error lain (mis. #VALUE! dari teks nyasar) ikut hilang diam-diam.</p>
 </details>`}
+},
+{
+id: "excel-l5", track: "Excel", title: "Excel Valuation Tools: XNPV/XIRR & Scenario Switches",
+sub: "Excel L5 · ±4 jam · Valuasi tanggal-nyata & skenario",
+est: "4 jam",
+prerequisites: ["abs_ref", "if_logic"],
+driveFolder: "https://drive.google.com/drive/folders/1ZemMXTh95PAjLRZc_kSY2MDJOuywblrt",
+audio: "assets/audio/excel-l5.mp3",
+sections: [
+{h: "Kenapa NPV/IRR menyerah saat tanggalnya berantakan", body: `
+<p><b>NPV</b> dan <b>IRR</b> punya asumsi diam-diam: arus kas datang <b>rapi tiap periode</b> — t=1, t=2, t=3. Dunia nyata tidak sopan seperti itu: investasi masuk 1 Januari, top-up darurat 17 Maret, divestasi sebagian 2 Oktober. Kalau kamu memaksa arus kas berantakan ke dalam NPV, kamu <b>berbohong soal waktu</b> — dan waktu adalah setengah dari valuasi.</p>
+<div class="formula">NPV = &Sigma; CF<sub>t</sub> / (1+r)<sup>t</sup> &nbsp;&nbsp;→&nbsp;&nbsp; t harus 1, 2, 3…</div>
+<p>Huruf <b>X</b> di XNPV/XIRR = <i>extended</i>: ide yang sama, tapi memakai <b>tanggal nyata</b> tiap arus kas. Selisih 47 hari vs 365 hari dihitung presisi — bukan dibulatkan jadi "tahun 1".</p>
+<div class="example korporat"><div class="lbl">🏢 Contoh</div>
+<p>Kasus PT Cahaya Timur (simulator): capex keluar tidak selalu 31 Desember. Dengan XNPV, tanggal aktual capex masuk ke diskonto — valuasimu mengikuti kas, bukan kalender.</p></div>
+<div class="callout"><b>Kenapa ini level 5, bukan level 1?</b> Karena XNPV/XIRR hanya bermakna kalau kamu sudah paham NPV/IRR biasa (Hari 09–10) dan referensi $ (L1). Tanpa fondasi itu, XNPV cuma jadi rumus ajaib yang tidak bisa kamu audit.</div>
+<p><b>Catatan Google Sheets:</b> XNPV dan XIRR <b>ada di Sheets</b> dengan sintaks sama persis seperti Excel. Semua rumus di lesson ini jalan di Sheets — alur resmi course ini.</p>`},
+{h: "XNPV: diskonto dengan tanggal nyata", body: `
+<div class="formula">=XNPV(rate, values, dates)</div>
+<p>Tiga argumen, urutan <b>tetap</b>: tingkat diskonto dulu, lalu arus kas, lalu tanggal. Contoh investasi (Rp juta):</p>
+<table class="brutal">
+<tr><th>Tanggal (A)</th><th>Arus kas (B)</th><th>Keterangan</th></tr>
+<tr><td>1 Jan 2025</td><td>-500</td><td>Investasi awal</td></tr>
+<tr><td>1 Jul 2025</td><td>200</td><td>Distribusi pertama</td></tr>
+<tr><td>1 Mar 2026</td><td>350</td><td>Distribusi kedua</td></tr>
+</table>
+<div class="formula">=XNPV(12%, B2:B4, A2:A4) &nbsp;→&nbsp; ≈ -4,1 (proyek marginal!)</div>
+<p><b>Verifikasi manual</b> (wajib bisa — ini cara auditnya):</p>
+<div class="formula">=-500 + 200/(1,12)<sup>((A3-A2)/365)</sup> + 350/(1,12)<sup>((A4-A2)/365)</sup></div>
+<p>Tanggal pertama = t<sub>0</sub>. Setiap arus kas didiskon proporsional dengan <b>jarak hari sebenarnya</b> dibagi 365.</p>
+<div class="example jebakan"><div class="lbl">🚫 Jebakan #1: tanggal sebagai teks</div>
+<p>Tanggal diketik "1/7/2025" tapi tersimpan sebagai <b>teks</b> → XNPV melempar #VALUE!. Di Sheets: blok kolom tanggal → Format → Number → Date. Aturan: kalau tanggalnya rata kiri, curigai — tanggal asli rata kanan.</p></div>
+<div class="callout"><b>Kenapa verifikasi manual penting?</b> Karena XNPV adalah kotak hitam satu sel. Analis senior tidak percaya kotak hitam — mereka mencocokkan dengan hitungan manual minimal untuk satu baris. Kalau cocok, rumusnya dipercaya; kalau tidak, ada yang salah di tanggalnya.</div>`},
+{h: "XIRR: IRR untuk dunia nyata (+ jebakan multiple IRR)", body: `
+<div class="formula">=XIRR(values, dates, [guess])</div>
+<p>XIRR mencari tingkat diskonto yang membuat XNPV = 0. Dua syarat mati: <b>minimal satu arus kas positif dan satu negatif</b> — kalau tidak, jawabannya #NUM! (tidak ada tingkat yang bisa menyeimbangkan).</p>
+<div class="example warung"><div class="lbl">🏪 Contoh</div>
+<p>Investasi -Rp1.000jt (1 Jan 2023), kembali Rp1.100jt (1 Jan 2024): =XIRR(B2:B3, A2:A3) → <b>10%</b>. Tepat 365 hari → sama dengan IRR biasa. Bedanya terlihat saat tanggalnya tidak bulat.</p></div>
+<div class="example jebakan"><div class="lbl">🚫 Jebakan #2: multiple IRR</div>
+<p>Arus kas: <b>-100, +250, -150</b>. Tanda berubah <b>dua kali</b> (− → + → −). Secara matematis bisa ada <b>dua IRR</b> yang sama-sama membuat NPV = 0! XIRR hanya mengembalikan satu (tergantung tebakan awal) — dan kamu tidak tahu yang mana.</p>
+<p>Aturan praktis: <b>hitung berapa kali tanda berubah</b>. Sekali = satu IRR, aman. Dua kali atau lebih = laporkan sebagai "IRR tidak tunggal", jangan sajikan satu angka seolah pasti. Ini yang membedakan analis 70% vs 90%.</p></div>
+<div class="callout"><b>Kenapa [guess] jarang dipakai?</b> Default 10% cukup untuk 99% kasus. Guess baru dibutuhkan saat XIRR #NUM! padahal data benar — biasanya karena IRR-nya jauh dari 10% (mis. -40% atau +200%). Coba =XIRR(values, dates, 0.5) atau -0.2 sebagai pancingan.</div>`},
+{h: "CHOOSE: satu sel mengendalikan tiga skenario", body: `
+<div class="formula">=CHOOSE(index, value1, value2, value3)</div>
+<p><b>CHOOSE</b> memilih nilai ke-<i>index</i> dari daftar. Pola skenario standar: satu sel kontrol (mis. B1) berisi 1/2/3, seluruh model membaca skenario dari sel itu.</p>
+<div class="formula">=CHOOSE($B$1, 5%, 10%, 15%) &nbsp;→&nbsp; growth bear/base/bull</div>
+<p>Pasangan dengan <b>Data → Data validation → Dropdown</b> berisi Bear/Base/Bull di sel tetangga, lalu B1 =MATCH(pilihan, {"Bear","Base","Bull"}, 0). Ganti dropdown → seluruh model ikut berubah. <b>Satu sumber kebenaran.</b></p>
+<div class="example jebakan"><div class="lbl">🚫 Jebakan #3: index mulai dari 0</div>
+<p>Programmer terbiasa index dari 0 — CHOOSE <b>mulai dari 1</b>. =CHOOSE(0, "a", "b") → #VALUE!. Dan =CHOOSE(4, "a","b","c") → #VALUE! juga (di luar daftar). Selalu validasi dropdown ke 1..n.</p></div>
+<div class="callout"><b>Kenapa CHOOSE, bukan IF bertingkat?</b> =IF(B1=1, 5%, IF(B1=2, 10%, 15%)) bekerja, tapi tidak terbaca saat skenario jadi 5. CHOOSE = daftar bersih; tambah skenario tinggal tambah satu nilai. Untuk model yang diwariskan ke orang lain, keterbacaan = kebenaran.</div>`},
+{h: "Tabel sensitivitas 2-variabel — versi Google Sheets", body: `
+<p>Excel punya <b>Data Table</b> (What-If Analysis) sekali klik. <b>Google Sheets tidak punya</b> — dan itu bukan kerugian. Tabel sensitivitas manual justru <b>lebih bisa diaudit</b>: setiap sel terlihat rumusnya, tidak ada sihir.</p>
+<p>Pola: WACC menyamping (baris 1), growth menurun (kolom B), rumus di tiap sel dengan <b>$ campuran</b>:</p>
+<table class="brutable">
+<tr><th></th><th>C (10%)</th><th>D (12%)</th><th>E (14%)</th></tr>
+<tr><td><b>B3: g=2%</b></td><td>1275</td><td>1020</td><td>850</td></tr>
+<tr><td><b>B4: g=3%</b></td><td>1471</td><td>1144</td><td>936</td></tr>
+<tr><td><b>B5: g=4%</b></td><td>1733</td><td>1300</td><td>1040</td></tr>
+</table>
+<div class="formula">C3: =100*(1+$B3)/(C$1-$B3) &nbsp;→&nbsp; copy ke seluruh grid</div>
+<p><b>$B3</b> = kolom B terkunci (growth ikut baris), <b>C$1</b> = baris 1 terkunci (WACC ikut kolom). Ini L1 §$ yang akhirnya dipakai untuk sesuatu yang nyata. Nilai sudut: WACC 10% + g 2% → 100×1,02/0,08 = <b>1275</b>.</p>
+<div class="callout"><b>Kenapa manual lebih baik dari Data Table?</b> Data Table Excel menyembunyikan logika di balik fitur — auditor tidak bisa trace rumusnya. Grid manual: klik sel mana pun, rumusnya jelas. Di interview, "saya bangun sensitivitas manual agar auditable" adalah jawaban senior.</div>
+<p><b>Catatan:</b> rumus Gordon di atas (100×(1+g)/(WACC−g)) adalah versi sederhana untuk latihan. Di model penuh, tiap sel grid memanggil ulang rantai DCF lengkap — polanya sama, hanya rumusnya lebih panjang.</p>`},
+{h: "Tugas praktik", body: `
+<p>Bangun <b>lembar valuasi tanggal-nyata</b> di Google Sheets (mulai dari sheet kosong — tanpa file latihan, ini uji kemandirian):</p>
+<ol>
+<li><b>Tabel XNPV:</b> investasi -Rp500jt (1 Jan 2025), +Rp200jt (1 Jul 2025), +Rp350jt (1 Mar 2026). Hitung =XNPV(12%, …) lalu <b>verifikasi manual</b> dengan rumus pangkat per baris. Keduanya harus ≈ -4,1.</li>
+<li><b>XIRR</b> untuk tabel yang sama. Lalu uji jebakan: ganti baris terakhir jadi -150 (tanda berubah 2×) — catat apa yang terjadi dan tulis kesimpulanmu satu kalimat.</li>
+<li><b>Scenario switch:</b> sel B1 dropdown Bear/Base/Bull → growth =CHOOSE(…). Hubungkan ke satu baris proyeksi pendapatan.</li>
+<li><b>Grid sensitivitas 3×3</b> Gordon seperti di atas. Pastikan copy-paste grid tidak merusak satu sel pun (cek sudut-sudutnya).</li>
+</ol>
+<div class="callout"><b>Kenapa tanpa file latihan?</b> Karena analis tidak pernah diberi template rapi oleh klien. Bagian tersulit bukan rumusnya — tapi menyusun tabelnya dari nol dengan benar. Kalau ini bisa, kamu siap untuk workbook Hari 09–10 tanpa mencontek struktur.</div>`},
+{h: "🔥 Bekal Hell Mode", body: `
+<p>Istilah yang dipakai soal Hell Mode:</p>
+<ul>
+<li><b>t<sub>0</sub></b> = tanggal arus kas pertama di XNPV/XIRR — titik nol diskonto.</li>
+<li><b>Multiple IRR</b> = lebih dari satu tingkat yang membuat NPV=0; terjadi saat tanda arus kas berubah >1×.</li>
+<li><b>Day-count</b> = konvensi hitung hari. XNPV/XIRR memakai aktual/365.</li>
+<li><b>Index basis-1</b> = CHOOSE mulai dari 1, bukan 0.</li>
+<li><b>Grid manual</b> = tabel sensitivitas dengan rumus per sel (cara Sheets) — lawan dari Data Table Excel.</li>
+</ul>`}
+],
+quiz: [
+{q: "Arus kas: investasi 5 Jan, top-up 20 Mar, hasil 11 Nov (tahun sama). Fungsi valuasi yang tepat?", opts: ["=NPV(10%, …) biasa", "=IRR(…) biasa", "=XNPV(10%, values, dates)", "=SUM(…)/(1+10%)"], answer: 2, k: "xnpv", diff: "Easy",
+ hints: ["NPV mengasumsikan periode sama besar.", "Huruf X = tanggal nyata."],
+ explain: "=XNPV(10%, values, dates). NPV/IRR memaksa tanggal berantakan jadi periode rapi — hasilnya bohong presisi. (Excel L5 §1)"},
+{q: "Urutan argumen XNPV yang benar?", opts: ["=XNPV(rate, values, dates)", "=XNPV(values, dates, rate)", "=XNPV(dates, rate, values)", "=XNPV(rate, dates, values)"], answer: 0, k: "xnpv", diff: "Easy",
+ hints: ["Diskonto dulu, baru datanya.", "Sama seperti NPV: rate di depan."],
+ explain: "=XNPV(rate, values, dates). Urutan salah = hasil ngaco tanpa error — hafalkan: rate, values, dates. (Excel L5 §2)"},
+{q: "Satu arus kas Rp110jt tepat 365 hari dari sekarang, rate 10%. Berapa XNPV-nya?", opts: ["Rp110jt", "Rp100jt", "Rp90,91jt", "Rp121jt"], answer: 1, k: "xnpv", diff: "Medium",
+ hints: ["110/(1+10%)^1 = …", "365 hari = tepat 1 tahun, jadi ini sama dengan NPV biasa."],
+ explain: "110/1,1 = 100. Rp110jt = lupa mendiskon; Rp90,91jt = memakai 100 sebagai pembilang; Rp121jt = malah dikalikan. (Excel L5 §2)"},
+{q: "=XIRR(values, dates) melempar #NUM! padahal ada untung dan rugi. Kemungkinan TERKECIL?", opts: ["Semua arus kas bertanda sama", "Tanggal tersimpan sebagai teks", "Range values dan dates beda panjang", "Tebakan awal 10% kurang tepat"], answer: 3, k: "xirr", diff: "Medium",
+ hints: ["#NUM! = tidak konvergen atau syarat dilanggar.", "Guess hanya titik awal iterasi — jarang jadi penyebab."],
+ explain: "Guess salah hampir tidak pernah jadi penyebab #NUM!; default 10% cukup untuk 99% kasus. Tiga lainnya adalah penyebab klasik. (Excel L5 §3)"},
+{q: "Kolom tanggal terlihat '1/7/2025' tapi XNPV #VALUE!. Diagnosis?", opts: ["Rate terlalu besar", "Values harus diurutkan dulu", "Tanggal tersimpan sebagai teks, bukan date", "Kurang argumen guess"], answer: 2, k: "xnpv", diff: "Medium",
+ hints: ["#VALUE! = tipe data salah.", "Tanggal teks rata kiri; tanggal asli rata kanan."],
+ explain: "Tanggal teks → Format → Number → Date. XNPV butuh date serial, bukan string yang mirip tanggal. (Excel L5 §2)"},
+{q: "Arus kas: -100, +250, -150. Apa bahayanya memakai XIRR tunggal?", opts: ["Tanda berubah 2× → bisa ada 2 IRR berbeda", "XIRR pasti menghasilkan 0", "Tidak bisa dihitung sama sekali", "Hasilnya selalu negatif"], answer: 0, k: "xirr_trap", diff: "Hard",
+ hints: ["Hitung berapa kali tanda berubah: − → + → −.", "Satu persamaan NPV=0 bisa punya >1 solusi."],
+ explain: "Dua kali ganti tanda = hingga dua IRR valid. XIRR mengembalikan satu (tergantung tebakan) — sajikan satu angka tanpa catatan = menyesatkan. (Excel L5 §3)"},
+{q: "=CHOOSE(B1, \"bear\", \"base\", \"bull\"), B1 berisi 2. Hasil?", opts: ["\"bear\"", "\"bull\"", "#VALUE!", "\"base\""], answer: 3, k: "choose", diff: "Medium",
+ hints: ["CHOOSE mulai dari 1, bukan 0.", "Index 2 = nilai kedua."],
+ explain: "\"base\" — nilai kedua. Jebakan programmer: mengira index dari 0 lalu menjawab \"bull\". (Excel L5 §4)"},
+{q: "Google Sheets tidak punya Data Table native. Cara membangun tabel sensitivitas 2-variabel?", opts: ["Install add-on khusus", "Grid manual: tiap sel rumus dengan referensi campuran $", "Tidak bisa — pindah ke Excel", "Pakai Goal Seek berulang-ulang"], answer: 1, k: "sensitivity", diff: "Medium",
+ hints: ["L1 mengajarkan $ untuk ini.", "Tiap sel = rumus penuh yang memegang input baris & kolom."],
+ explain: "Grid manual dengan $B3/C$1 — tiap sel transparan dan bisa diaudit, justru lebih baik dari Data Table. (Excel L5 §5)"},
+{q: "Grid sensitivitas: WACC di C1:E1, growth di B3:B5. Rumus di C3 (Gordon, FCF=100) yang benar untuk di-copy ke seluruh grid?", opts: ["=100*(1+B3)/(C1-B3)", "=100*(1+B$3)/(C1-$B3)", "=100*(1+$B3)/(C$1-$B3)", "=100*(1+$B$3)/($C$1-$B$3)"], answer: 2, k: "sensitivity", diff: "Hard",
+ hints: ["Growth harus ikut baris (kunci kolom B), WACC ikut kolom (kunci baris 1).", "Tanpa $ = bocor saat di-copy; $ penuh = tidak jalan."],
+ explain: "=100*(1+$B3)/(C$1-$B3). $B3: kolom dikunci baris bebas; C$1: baris dikunci kolom bebas. Opsi pertama bocor, ketiga terkunci total. (Excel L5 §5 + L1 §$) "}
+],
+hellPass: 80,
+hell: [
+{q: "=XNPV(XIRR(B2:B5, A2:A5), B2:B5, A2:A5). Hasilnya (aproksimasi)?", opts: ["0", "#NUM!", "Sama dengan =NPV(…)", "#DIV/0!"], answer: 0, diff: "Hard",
+ explain: "0 — itu DEFINISI IRR: tingkat yang membuat NPV = 0. Rumus ini adalah test konsistensi: kalau tidak ≈0, ada yang salah di datanya."},
+{q: "XNPV memakai day-count aktual/365. Arus kas Rp365jt tepat 366 hari lagi (tahun kabisat), rate 10%. Nilai kini?", opts: ["Rp331,82jt (365/365)", "Rp365jt — kabisat diabaikan", "Rp331,73jt — sedikit lebih kecil karena 366/365", "#NUM!"], answer: 2, diff: "Hard",
+ explain: "365/(1,1)^(366/365) ≈ 331,73 — sedikit lebih kecil dari 365/1,1 = 331,82. XNPV presisi tanggal nyata, termasuk kabisat. Bedanya kecil, tapi di sinilah bedanya dengan NPV."},
+{q: "B1 dropdown berisi teks \"base\". Rumus growth skenario yang benar?", opts: ["=CHOOSE(B1, 5%, 10%, 15%)", "=CHOOSE(MATCH(B1, {\"bear\",\"base\",\"bull\"}, 0), 5%, 10%, 15%)", "=IF(B1=\"base\", 10%)", "=VLOOKUP(B1, …)"], answer: 1, diff: "Hard",
+ explain: "CHOOSE butuh ANGKA, bukan teks — MATCH mengubah \"base\" → 2. Opsi pertama #VALUE! (teks sebagai index). Pola dropdown-teks + MATCH + CHOOSE = standar skenario profesional."},
+{q: "Dua proyek: IRR(A) > IRR(B) tapi NPV(A) < NPV(B) pada WACC 12%. Keputusan?", opts: ["Pilih A — IRR lebih tinggi selalu menang", "Pilih yang payback lebih cepat", "Tolak keduanya", "Pilih B — NPV mengukur nilai absolut"], answer: 3, diff: "Hard",
+ explain: "NPV menang untuk mutually exclusive: IRR mengasumsikan reinvestasi sebesar IRR itu sendiri (tidak realistis jika IRR 40%), NPV memakai WACC. Di Sheets: hitung dua-duanya, putuskan dengan NPV."},
+{q: "Grid sensitivitas manual 5×5 = 25 sel, tiap sel =XNPV(…) atas 20 arus kas. File terasa lambat. Diagnosis tercepat?", opts: ["XNPV memang lambat — tidak ada solusi", "Ganti tiap sel dengan nilai hardcode", "Hitung XNPV sekali per kolom skenario, grid hanya me-reference hasilnya", "Hapus gridnya"], answer: 2, diff: "Hard",
+ explain: "25 × XNPV(20 arus kas) = 500 kalkulasi iteratif. Struktur ulang: satu baris 'mesin' menghitung XNPV per skenario, grid hanya menampilkan. Prinsip L4: calculation sekali, output hanya reference."}
+],
+tasks: [
+{t: "Tugas A — Lembar XNPV/XIRR dari nol (±2 jam)", d: "Di Google Sheets kosong: bangun tabel -500/+200/+350 (tanggal 1 Jan 2025, 1 Jul 2025, 1 Mar 2026). Hitung =XNPV(12%,…) lalu verifikasi manual per baris dengan pangkat (tanggal-tanggal)/365. Keduanya ≈ -4,1. Lalu =XIRR(…) untuk tabel yang sama.", url: "https://drive.google.com/drive/folders/1ZemMXTh95PAjLRZc_kSY2MDJOuywblrt"},
+{t: "Tugas B — Scenario switch (±1 jam)", d: "Sel B1 dropdown Bear/Base/Bull → growth =CHOOSE(MATCH(…), 5%, 10%, 15%). Hubungkan ke satu baris proyeksi pendapatan 3 tahun. Ganti dropdown, pastikan seluruh baris ikut berubah.", url: ""},
+{t: "Tugas C — Grid sensitivitas 3×3 (±1 jam)", d: "Bangun grid Gordon seperti di lesson (WACC 10/12/14% × g 2/3/4%, FCF=100). Cek keempat sudutnya manual: 1275 / 850 / 1733 / 1040. Satu sel salah = pola $-mu bocor.", url: ""},
+{t: "Tugas D — Kuis di atas", d: "Target ≥8/9 benar (standar 90%). Salah? Baca hint, coba lagi.", url: ""}
+],
+blind: {h: "Uji Kilat — angka beda", body: `
+<p><b>1.</b> Arus kas: -200 (1 Feb 2025), +260 (1 Agu 2025). Tulis rumus XNPV (rate 10%) dan XIRR-nya. Tanpa menghitung — cukup rumusnya benar.</p>
+<details class="ans"><summary>Jawaban</summary>
+<p>=XNPV(10%, B2:B3, A2:A3) dan =XIRR(B2:B3, A2:A3). Urutan: rate, values, dates untuk XNPV; values, dates untuk XIRR.</p>
+</details>
+<p><b>2.</b> =CHOOSE(3, 10, 20, 30) menghasilkan? Dan apa yang terjadi pada =CHOOSE(0, 10, 20, 30)?</p>
+<details class="ans"><summary>Answer</summary>
+<p>30 (nilai ketiga). =CHOOSE(0, …) → #VALUE! — index mulai dari 1.</p>
+</details>
+<p><b>3.</b> Grid: rate di D1:F1, nilai di C4:C6. Tulis rumus di D4 untuk "nilai × (1+rate)" yang aman di-copy ke seluruh grid.</p>
+<details class="ans"><summary>Jawaban</summary>
+<p>=$C4*(1+D$1). $C4: kolom C dikunci, baris bebas (nilai ikut baris). D$1: baris 1 dikunci, kolom bebas (rate ikut kolom). Pola sama seperti grid Gordon di lesson.</p>
+</details>`}
 }
 ];
 
@@ -723,6 +866,144 @@ blind: {h: "Speed Drill — different numbers", body: `
 <p><b>2.</b> =A1/B1 with B1 sometimes 0. Write the safe version and explain why you don't wrap the whole column.</p>
 <details class="ans"><summary>Answer</summary>
 <p>=IFERROR(A1/B1, 0). IFERROR only at the division point — wrap a whole column and other errors (e.g. #VALUE! from stray text) disappear silently too.</p>
+</details>`}
+};
+EN["excel-l5"] = {
+title: "Excel Valuation Tools: XNPV/XIRR & Scenario Switches",
+sub: "Excel L5 · ±4 hrs · Real-date valuation & scenarios",
+sections: [
+{h: "Why NPV/IRR give up on messy dates", body: `
+<p><b>NPV</b> and <b>IRR</b> carry a silent assumption: cash flows arrive <b>neatly each period</b> — t=1, t=2, t=3. Real life isn't that polite: investment on Jan 1, emergency top-up on Mar 17, partial exit on Oct 2. Forcing messy cash flows into NPV means <b>lying about timing</b> — and timing is half of valuation.</p>
+<div class="formula">NPV = &Sigma; CF<sub>t</sub> / (1+r)<sup>t</sup> &nbsp;&nbsp;→&nbsp;&nbsp; t must be 1, 2, 3…</div>
+<p>The <b>X</b> in XNPV/XIRR = <i>extended</i>: the same idea, but using each cash flow's <b>real date</b>. A 47-day vs 365-day gap is counted precisely — not rounded to "year 1".</p>
+<div class="example korporat"><div class="lbl">🏢 Example</div>
+<p>The PT Cahaya Timur case (simulator): capex doesn't always land on Dec 31. With XNPV, the actual capex date enters the discounting — your valuation follows the cash, not the calendar.</p></div>
+<div class="callout"><b>Why is this level 5, not level 1?</b> Because XNPV/XIRR only make sense once you understand plain NPV/IRR (Days 09–10) and $ references (L1). Without that foundation, XNPV is just a magic formula you can't audit.</div>
+<p><b>Google Sheets note:</b> XNPV and XIRR <b>exist in Sheets</b> with exactly the same syntax as Excel. Every formula in this lesson runs in Sheets — this course's official workflow.</p>`},
+{h: "XNPV: discounting with real dates", body: `
+<div class="formula">=XNPV(rate, values, dates)</div>
+<p>Three arguments, <b>fixed</b> order: discount rate first, then cash flows, then dates. Investment example (Rp million):</p>
+<table class="brutal">
+<tr><th>Date (A)</th><th>Cash flow (B)</th><th>Note</th></tr>
+<tr><td>Jan 1, 2025</td><td>-500</td><td>Initial investment</td></tr>
+<tr><td>Jul 1, 2025</td><td>200</td><td>First distribution</td></tr>
+<tr><td>Mar 1, 2026</td><td>350</td><td>Second distribution</td></tr>
+</table>
+<div class="formula">=XNPV(12%, B2:B4, A2:A4) &nbsp;→&nbsp; ≈ -4.1 (marginal project!)</div>
+<p><b>Manual verification</b> (mandatory skill — this is how you audit it):</p>
+<div class="formula">=-500 + 200/(1.12)<sup>((A3-A2)/365)</sup> + 350/(1.12)<sup>((A4-A2)/365)</sup></div>
+<p>The first date = t<sub>0</sub>. Each cash flow is discounted proportionally to its <b>actual day distance</b> divided by 365.</p>
+<div class="example jebakan"><div class="lbl">🚫 Trap #1: dates stored as text</div>
+<p>A date typed "1/7/2025" but stored as <b>text</b> → XNPV throws #VALUE!. In Sheets: select the date column → Format → Number → Date. Rule: if your dates align left, be suspicious — real dates align right.</p></div>
+<div class="callout"><b>Why does manual verification matter?</b> Because XNPV is a one-cell black box. Senior analysts don't trust black boxes — they reconcile with a manual calc for at least one row. If it matches, the formula is trusted; if not, something's wrong with the dates.</div>`},
+{h: "XIRR: IRR for the real world (+ the multiple-IRR trap)", body: `
+<div class="formula">=XIRR(values, dates, [guess])</div>
+<p>XIRR finds the discount rate that makes XNPV = 0. Two hard requirements: <b>at least one positive and one negative cash flow</b> — otherwise you get #NUM! (no rate can balance it).</p>
+<div class="example warung"><div class="lbl">🏪 Example</div>
+<p>Invest -Rp1,000m (Jan 1, 2023), receive Rp1,100m (Jan 1, 2024): =XIRR(B2:B3, A2:A3) → <b>10%</b>. Exactly 365 days → same as plain IRR. The difference shows when dates aren't round.</p></div>
+<div class="example jebakan"><div class="lbl">🚫 Trap #2: multiple IRRs</div>
+<p>Cash flows: <b>-100, +250, -150</b>. The sign changes <b>twice</b> (− → + → −). Mathematically there can be <b>two IRRs</b> that both make NPV = 0! XIRR returns only one (depending on the starting guess) — and you don't know which.</p>
+<p>Rule of thumb: <b>count the sign changes</b>. Once = one IRR, safe. Twice or more = report "non-unique IRR", don't present one number as certain. This is what separates 70% analysts from 90% ones.</p></div>
+<div class="callout"><b>Why is [guess] rarely used?</b> The 10% default covers 99% of cases. You only need guess when XIRR returns #NUM! despite correct data — usually because the IRR is far from 10% (e.g. -40% or +200%). Try =XIRR(values, dates, 0.5) or -0.2 as bait.</div>`},
+{h: "CHOOSE: one cell controls three scenarios", body: `
+<div class="formula">=CHOOSE(index, value1, value2, value3)</div>
+<p><b>CHOOSE</b> picks the <i>index</i>-th value from a list. The standard scenario pattern: one control cell (e.g. B1) holding 1/2/3, the whole model reading its scenario from that cell.</p>
+<div class="formula">=CHOOSE($B$1, 5%, 10%, 15%) &nbsp;→&nbsp; bear/base/bull growth</div>
+<p>Pair with <b>Data → Data validation → Dropdown</b> holding Bear/Base/Bull in a neighboring cell, then B1 =MATCH(choice, {"Bear","Base","Bull"}, 0). Change the dropdown → the whole model follows. <b>One source of truth.</b></p>
+<div class="example jebakan"><div class="lbl">🚫 Trap #3: index starts at 0</div>
+<p>Programmers expect 0-based index — CHOOSE <b>starts at 1</b>. =CHOOSE(0, "a", "b") → #VALUE!. And =CHOOSE(4, "a","b","c") → #VALUE! too (out of list). Always validate the dropdown to 1..n.</p></div>
+<div class="callout"><b>Why CHOOSE instead of nested IF?</b> =IF(B1=1, 5%, IF(B1=2, 10%, 15%)) works, but becomes unreadable at 5 scenarios. CHOOSE = a clean list; adding a scenario means appending one value. For models inherited by others, readability = correctness.</div>`},
+{h: "2-variable sensitivity tables — the Google Sheets way", body: `
+<p>Excel has <b>Data Table</b> (What-If Analysis) in one click. <b>Google Sheets doesn't</b> — and that's no loss. A manual sensitivity table is <b>more auditable</b>: every cell shows its formula, no magic.</p>
+<p>The pattern: WACC across (row 1), growth down (column B), one formula per cell with <b>mixed $</b>:</p>
+<table class="brutable">
+<tr><th></th><th>C (10%)</th><th>D (12%)</th><th>E (14%)</th></tr>
+<tr><td><b>B3: g=2%</b></td><td>1275</td><td>1020</td><td>850</td></tr>
+<tr><td><b>B4: g=3%</b></td><td>1471</td><td>1144</td><td>936</td></tr>
+<tr><td><b>B5: g=4%</b></td><td>1733</td><td>1300</td><td>1040</td></tr>
+</table>
+<div class="formula">C3: =100*(1+$B3)/(C$1-$B3) &nbsp;→&nbsp; copy across the grid</div>
+<p><b>$B3</b> = column B locked (growth follows rows), <b>C$1</b> = row 1 locked (WACC follows columns). This is L1 §$ finally used for something real. Corner check: WACC 10% + g 2% → 100×1.02/0.08 = <b>1275</b>.</p>
+<div class="callout"><b>Why is manual better than Data Table?</b> Excel's Data Table hides logic behind a feature — auditors can't trace its formulas. Manual grid: click any cell, the formula is clear. In interviews, "I build sensitivity manually so it's auditable" is a senior answer.</div>
+<p><b>Note:</b> the Gordon formula above (100×(1+g)/(WACC−g)) is the simplified training version. In a full model, each grid cell re-runs the complete DCF chain — same pattern, longer formula.</p>`},
+{h: "Practice task", body: `
+<p>Build a <b>real-date valuation sheet</b> in Google Sheets (start from a blank sheet — no practice file, this tests independence):</p>
+<ol>
+<li><b>XNPV table:</b> invest -Rp500m (Jan 1, 2025), +Rp200m (Jul 1, 2025), +Rp350m (Mar 1, 2026). Compute =XNPV(12%,…) then <b>verify manually</b> with per-row power formulas. Both should ≈ -4.1.</li>
+<li><b>XIRR</b> for the same table. Then test the trap: change the last row to -150 (sign changes 2×) — note what happens and write your conclusion in one sentence.</li>
+<li><b>Scenario switch:</b> cell B1 dropdown Bear/Base/Bull → growth =CHOOSE(…). Link it to one 3-year revenue projection row.</li>
+<li><b>3×3 sensitivity grid</b> Gordon as above. Verify all four corners manually: 1275 / 850 / 1733 / 1040. One wrong cell = your $ pattern leaks.</li>
+</ol>
+<div class="callout"><b>Why no practice file?</b> Because analysts are never handed a tidy template by clients. The hardest part isn't the formula — it's laying out the table correctly from scratch. If you can do this, you're ready for Days 09–10 workbooks without copying structure.</div>`},
+{h: "🔥 Hell Mode briefing", body: `
+<p>Terms used in the Hell Mode questions:</p>
+<ul>
+<li><b>t<sub>0</sub></b> = the first cash-flow date in XNPV/XIRR — the discounting origin.</li>
+<li><b>Multiple IRR</b> = more than one rate making NPV=0; happens when cash-flow signs change >1×.</li>
+<li><b>Day-count</b> = day-counting convention. XNPV/XIRR use actual/365.</li>
+<li><b>1-based index</b> = CHOOSE starts at 1, not 0.</li>
+<li><b>Manual grid</b> = a per-cell-formula sensitivity table (the Sheets way) — the opposite of Excel's Data Table.</li>
+</ul>`}
+],
+quiz: [
+{q: `Cash flows: invest Jan 5, top-up Mar 20, proceeds Nov 11 (same year). The right valuation function?`, opts: ["Plain =NPV(10%, …)", "Plain =IRR(…)", "=XNPV(10%, values, dates)", "=SUM(…)/(1+10%)"], answer: 2, k: "xnpv",
+ hints: ["NPV assumes equal-sized periods.", "The X = real dates."],
+ explain: `=XNPV(10%, values, dates). NPV/IRR force messy dates into tidy periods — precisely wrong. (Excel L5 §1)`},
+{q: `The correct XNPV argument order?`, opts: ["=XNPV(rate, values, dates)", "=XNPV(values, dates, rate)", "=XNPV(dates, rate, values)", "=XNPV(rate, dates, values)"], answer: 0, k: "xnpv",
+ hints: ["Discount first, then the data.", "Same as NPV: rate up front."],
+ explain: `=XNPV(rate, values, dates). Wrong order = wrong result with no error — memorize: rate, values, dates. (Excel L5 §2)`},
+{q: `One cash flow of Rp110m exactly 365 days from now, rate 10%. Its XNPV?`, opts: ["Rp110m", "Rp100m", "Rp90.91m", "Rp121m"], answer: 1, k: "xnpv",
+ hints: ["110/(1+10%)^1 = …", "365 days = exactly 1 year, so this equals plain NPV."],
+ explain: `110/1.1 = 100. Rp110m = forgot to discount; Rp90.91m = used 100 as numerator; Rp121m = multiplied instead. (Excel L5 §2)`},
+{q: `=XIRR(values, dates) throws #NUM! despite real gains and losses. LEAST likely cause?`, opts: ["All cash flows share one sign", "Dates stored as text", "Values and dates ranges differ in length", "The 10% starting guess is slightly off"], answer: 3, k: "xirr",
+ hints: ["#NUM! = no convergence or violated requirement.", "Guess is only an iteration start — rarely the cause."],
+ explain: `A wrong guess is almost never the #NUM! cause; the 10% default covers 99% of cases. The other three are classic causes. (Excel L5 §3)`},
+{q: `The date column shows '1/7/2025' but XNPV gives #VALUE!. Diagnosis?`, opts: ["Rate too large", "Values must be sorted first", "Dates stored as text, not dates", "Missing guess argument"], answer: 2, k: "xnpv",
+ hints: ["#VALUE! = wrong data type.", "Text dates align left; real dates align right."],
+ explain: `Text dates → Format → Number → Date. XNPV needs date serials, not date-looking strings. (Excel L5 §2)`},
+{q: `Cash flows: -100, +250, -150. The danger of using a single XIRR?`, opts: ["Sign changes 2× → two different IRRs may exist", "XIRR always returns 0", "It can't be computed at all", "The result is always negative"], answer: 0, k: "xirr_trap",
+ hints: ["Count the sign changes: − → + → −.", "One NPV=0 equation can have >1 solution."],
+ explain: `Two sign changes = up to two valid IRRs. XIRR returns one (guess-dependent) — presenting one number without a note misleads. (Excel L5 §3)`},
+{q: `=CHOOSE(B1, "bear", "base", "bull"), B1 holds 2. Result?`, opts: [`"bear"`, `"bull"`, "#VALUE!", `"base"`], answer: 3, k: "choose",
+ hints: ["CHOOSE starts at 1, not 0.", "Index 2 = the second value."],
+ explain: `"base" — the second value. The programmer's trap: assuming 0-based index and answering "bull". (Excel L5 §4)`},
+{q: `Google Sheets has no native Data Table. How to build a 2-variable sensitivity table?`, opts: ["Install a special add-on", "Manual grid: one formula per cell with mixed $ references", "Impossible — switch to Excel", "Run Goal Seek repeatedly"], answer: 1, k: "sensitivity",
+ hints: ["L1 taught $ for exactly this.", "Each cell = a full formula holding its row & column inputs."],
+ explain: `Manual grid with $B3/C$1 — every cell transparent and auditable, actually better than Data Table. (Excel L5 §5)`},
+{q: `Sensitivity grid: WACC in C1:E1, growth in B3:B5. The correct C3 formula (Gordon, FCF=100) to copy across the grid?`, opts: ["=100*(1+B3)/(C1-B3)", "=100*(1+B$3)/(C1-$B3)", "=100*(1+$B3)/(C$1-$B3)", "=100*(1+$B$3)/($C$1-$B$3)"], answer: 2, k: "sensitivity",
+ hints: ["Growth must follow rows (lock column B), WACC follows columns (lock row 1).", "No $ = leaks when copied; full $ = frozen."],
+ explain: `=100*(1+$B3)/(C$1-$B3). $B3: column locked, row free; C$1: row locked, column free. First option leaks, third is fully frozen. (Excel L5 §5 + L1 §$)`}
+],
+hell: [
+{q: `=XNPV(XIRR(B2:B5, A2:A5), B2:B5, A2:A5). The result (approximately)?`, opts: ["0", "#NUM!", "Same as =NPV(…)", "#DIV/0!"], answer: 0,
+ explain: `0 — that IS the definition of IRR: the rate making NPV = 0. This formula is a consistency test: if not ≈0, something's wrong with the data.`},
+{q: `XNPV uses actual/365 day-count. A Rp365m cash flow exactly 366 days out (leap year), rate 10%. Present value?`, opts: ["Rp331.82m (365/365)", "Rp365m — leap years ignored", "Rp331.73m — slightly smaller due to 366/365", "#NUM!"], answer: 2,
+ explain: `365/(1.1)^(366/365) ≈ 331.73 — slightly less than 365/1.1 = 331.82. XNPV counts real dates, leap days included. Small difference — that's exactly the NPV vs XNPV gap.`},
+{q: `B1 is a dropdown holding the text "base". The correct scenario growth formula?`, opts: [`=CHOOSE(B1, 5%, 10%, 15%)`, `=CHOOSE(MATCH(B1, {"bear","base","bull"}, 0), 5%, 10%, 15%)`, `=IF(B1="base", 10%)`, "=VLOOKUP(B1, …)"], answer: 1,
+ explain: `CHOOSE needs a NUMBER, not text — MATCH turns "base" → 2. The first option gives #VALUE! (text as index). Text-dropdown + MATCH + CHOOSE = the professional scenario pattern.`},
+{q: `Two projects: IRR(A) > IRR(B) but NPV(A) < NPV(B) at 12% WACC. Decision?`, opts: ["Pick A — higher IRR always wins", "Pick the faster payback", "Reject both", "Pick B — NPV measures absolute value"], answer: 3,
+ explain: `NPV wins for mutually exclusive projects: IRR assumes reinvestment at the IRR itself (unrealistic at 40%), NPV uses WACC. In Sheets: compute both, decide with NPV.`},
+{q: `A manual 5×5 sensitivity grid = 25 cells, each =XNPV(…) over 20 cash flows. The file feels slow. Fastest diagnosis?`, opts: ["XNPV is just slow — no fix", "Replace each cell with hardcodes", "Compute XNPV once per scenario column; the grid only references the results", "Delete the grid"], answer: 2,
+ explain: `25 × XNPV(20 flows) = 500 iterative calcs. Restructure: one 'engine' row computes XNPV per scenario, the grid merely displays. L4 principle: calculate once, output only references.`}
+],
+tasks: [
+{t: "Task A — XNPV/XIRR sheet from scratch (±2 hrs)", d: "In a blank Google Sheet: build the -500/+200/+350 table (dates Jan 1 2025, Jul 1 2025, Mar 1 2026). Compute =XNPV(12%,…) then verify manually per row with (date-date)/365 powers. Both ≈ -4.1. Then =XIRR(…) for the same table.", url: "https://drive.google.com/drive/folders/1ZemMXTh95PAjLRZc_kSY2MDJOuywblrt"},
+{t: "Task B — Scenario switch (±1 hr)", d: "Cell B1 dropdown Bear/Base/Bull → growth =CHOOSE(MATCH(…), 5%, 10%, 15%). Link it to one 3-year revenue projection row. Flip the dropdown; the whole row must follow.", url: ""},
+{t: "Task C — 3×3 sensitivity grid (±1 hr)", d: "Build the Gordon grid from the lesson (WACC 10/12/14% × g 2/3/4%, FCF=100). Manually check all four corners: 1275 / 850 / 1733 / 1040. One wrong cell = your $ pattern leaks.", url: ""},
+{t: "Task D — The quiz above", d: "Target ≥8/9 correct (the 90% standard). Missed some? Read the hints, try again.", url: ""}
+],
+blind: {h: "Speed Drill — different numbers", body: `
+<p><b>1.</b> Cash flows: -200 (Feb 1, 2025), +260 (Aug 1, 2025). Write the XNPV formula (10% rate) and the XIRR formula. No computing — just correct formulas.</p>
+<details class="ans"><summary>Answer</summary>
+<p>=XNPV(10%, B2:B3, A2:A3) and =XIRR(B2:B3, A2:A3). Order: rate, values, dates for XNPV; values, dates for XIRR.</p>
+</details>
+<p><b>2.</b> =CHOOSE(3, 10, 20, 30) gives? And what happens with =CHOOSE(0, 10, 20, 30)?</p>
+<details class="ans"><summary>Answer</summary>
+<p>30 (the third value). =CHOOSE(0, …) → #VALUE! — index starts at 1.</p>
+</details>
+<p><b>3.</b> Grid: rates in D1:F1, values in C4:C6. Write the D4 formula for "value × (1+rate)" that's safe to copy across the grid.</p>
+<details class="ans"><summary>Answer</summary>
+<p>=$C4*(1+D$1). $C4: column C locked, row free (value follows rows). D$1: row 1 locked, column free (rate follows columns). Same pattern as the lesson's Gordon grid.</p>
 </details>`}
 };
 LESSONS_EXCEL.forEach(function(l){ if (EN[l.id]) l.en = EN[l.id]; });
