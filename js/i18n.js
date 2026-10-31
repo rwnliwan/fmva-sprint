@@ -1,0 +1,262 @@
+/* FMVA Sprint — i18n layer (English mode) */
+function lang(){ try { return localStorage.getItem("fmva_lang") || "id"; } catch(e){ return "id"; } }
+function setLang(v){ try { localStorage.setItem("fmva_lang", v); } catch(e){} route(); }
+/* UI dictionary: key -> [Indonesian, English] */
+const UI = {
+nav_home: ["Home", "Home"],
+nav_belajar: ["Belajar", "Learn"],
+nav_glossary: ["Kamus", "Glossary"],
+nav_funcs: ["Fungsi", "Functions"],
+nav_progress: ["Progress", "Progress"],
+page_title: ["FMVA Sprint — Dari Nol Sampai Siap Ujian FMVA", "FMVA Sprint — From Zero to FMVA-Exam Ready"],
+/* home */
+hero_sub: ["Dari nol sampai siap ujian FMVA. Teks + quiz + hint + latihan Excel + 5 guided real cases — tanpa video.",
+  "From zero to FMVA-exam ready. Text + quizzes + hints + Excel drills + 5 guided real cases — no videos."],
+badge_streak: ["hari", "days"],
+badge_streak_s: ["hari", "day"],
+badge_lessons: ["lesson", "lessons"],
+badge_target: ["Target: lulus FMVA ≥70%", "Target: pass FMVA ≥70%"],
+kick_fondasi: ["Track Fondasi — mulai di sini", "Foundation Track — start here"],
+kick_hari: ["Program 30 Hari", "30-Day Program"],
+kick_excel: ["Track Excel — Basic → Advance", "Excel Track — Basic → Advance"],
+kick_real: ["Real Cases — 5 Guided Flagship", "Real Cases — 5 Guided Flagship"],
+scope_now: ["🗺️ <b>Cakupan saat ini:</b> 3 Fondasi (A/B/C) + Hari 01–14 + 4 level Excel + 5 Real Cases tersedia. Hari 15–30 &amp; fitur lanjutan dalam pengerjaan.",
+  "🗺️ <b>Current scope:</b> 3 Foundation lessons (A/B/C) + Days 01–14 + 4 Excel levels + 5 Real Cases available. Days 15–30 &amp; advanced features in progress."],
+tools_card_h: ["Glossary & Fungsi Excel", "Glossary & Excel Functions"],
+tools_card_p: ["Kamus istilah + referensi fungsi. Buka dari menu bawah.", "Term glossary + function reference. Open from the bottom menu."],
+footer: ["FMVA Sprint · dibuat untuk Septian · v1.36", "FMVA Sprint · built for Septian · v1.36"],
+/* lesson cards */
+card_repeat: ["Ulangi", "Review"],
+card_continue: ["Lanjutkan", "Continue"],
+card_start: ["Mulai", "Start"],
+/* belajar page */
+belajar_kick: ["📚 Belajar — daftar pelajaran", "📚 Learn — lesson list"],
+belajar_next: ["<b>Lanjut di sini →</b>", "<b>Continue here →</b>"],
+belajar_done: ["<b>🎉 Semua lesson selesai!</b> Saatnya mode ujian.", "<b>🎉 All lessons complete!</b> Time for exam mode."],
+/* badges */
+st_read_open: ["Dibuka ✅", "Opened ✅"],
+st_read_not: ["Belum", "Not yet"],
+st_quiz: ["Quiz", "Quiz"],
+st_quiz_pass: ["Lulus ✅", "Passed ✅"],
+st_not: ["Belum —", "Not yet —"],
+st_sheet: ["Sheet", "Sheet"],
+st_done: ["Lengkap 🎉", "Complete 🎉"],
+st_progress: ["Berjalan…", "In progress…"],
+/* checker badge */
+checker_never: ["🔍 Checker: belum pernah dijalankan", "🔍 Checker: never run"],
+checker_note: ["Catatan jujur: checker menilai <b>keberadaan rumus &amp; angka kunci</b>, bukan kebenaran tiap rumus. Skor 100 ≠ model sempurna.",
+  "Honest note: the checker scores <b>formula presence &amp; key numbers</b>, not the correctness of every formula. 100 ≠ a perfect model."],
+/* lesson page */
+best_quiz: ["Skor terbaik quiz", "Best quiz score"],
+prereq: ["Prasyarat", "Prerequisites"],
+audio_row: ["🎧 Ringkasan suara", "🎧 Audio summary"],
+audio_note: ["(narasi Bahasa Indonesia)", "(narration in Indonesian)"],
+file_latihan: ["📁 File latihan", "📁 Practice files"],
+file_latihan_p: ["Kerjakan di Excel, lalu cocokkan dengan file jawaban.", "Work in Excel, then compare with the answer file."],
+open_folder: ["Buka folder", "Open folder"],
+in_drive: ["di Drive →", "in Drive →"],
+tasks_h: ["✅ Tugas praktik", "✅ Practice tasks"],
+open_drive_folder: ["📁 Buka folder Drive →", "📁 Open Drive folder →"],
+quiz_kick: ["Quiz —", "Quiz —"],
+quiz_n: ["soal", "questions"],
+hint1: ["💡 Hint 1", "💡 Hint 1"],
+hint2: ["💡💡 Hint 2", "💡💡 Hint 2"],
+hell_kick: ["🔥 Hell Mode — opsional", "🔥 Hell Mode — optional"],
+lesson_status: ["📊 Status lesson", "📊 Lesson status"],
+sheet_check: ["📊 Spreadsheet self-check (manual) — Saya sudah kerjakan &amp; cek workbook di Drive",
+  "📊 Spreadsheet self-check (manual) — I've worked through &amp; checked the workbook in Drive"],
+no_sheet: ["Lesson teori — tidak ada workbook spreadsheet.", "Theory lesson — no spreadsheet workbook."],
+back_home: ["← Beranda", "← Home"],
+/* quiz feedback */
+fb_correct: ["✅ Benar! ", "✅ Correct! "],
+fb_wrong: ["❌ Belum tepat. ", "❌ Not quite. "],
+score_h: ["🎯 Skor:", "🎯 Score:"],
+quiz_pass: ["Lolos! Lanjut ke lesson berikutnya. 🚀", "Passed! On to the next lesson. 🚀"],
+quiz_fail: ["Belum 80%. Baca hint, ulangi quiz — kamu bisa.", "Not 80% yet. Read the hints, retry the quiz — you've got this."],
+streak_lbl: ["🔥 Streak:", "🔥 Streak:"],
+quiz_retry: ["🔁 Ulangi quiz", "🔁 Retry quiz"],
+/* hell */
+hell_locked: ["🔒 <b>Terkunci.</b>", "🔒 <b>Locked.</b>"],
+hell_unlock: ["Lulus quiz utama dengan skor ≥80% untuk membuka Hell Mode:", "Pass the main quiz with ≥80% to unlock Hell Mode:"],
+hell_hard: ["soal sulit, <b>tanpa hint</b>, ambang lulus", "hard questions, <b>no hints</b>, pass mark"],
+hell_retry_anytime: ["Boleh diulang kapan saja.", "Retryable any time."],
+hell_intro: ["soal sulit. Tanpa hint. Lulus ≥", "hard questions. No hints. Pass ≥"],
+hell_retry: ["Boleh diulang sampai lulus.", "Retry until you pass."],
+hell_best: ["Skor terbaikmu:", "Your best:"],
+hell_start: ["🔥 Mulai Hell Mode", "🔥 Start Hell Mode"],
+hell_correct: ["✅ Tepat. ", "✅ Correct. "],
+hell_pass_h: ["👑 HELL MODE LULUS!", "👑 HELL MODE CLEARED!"],
+hell_fail_h: ["💀 Belum lulus", "💀 Not passed"],
+hell_score: ["Skor:", "Score:"],
+hell_passmark: ["Ambang lulus:", "Pass mark:"],
+hell_pass_p: ["Kerja bagus. Kamu siap naik level. 🔥", "Well done. You're ready to level up. 🔥"],
+hell_retry_btn: ["🔁 Coba lagi", "🔁 Try again"],
+/* simulator transaksi */
+sim_h: ["🔮 Simulator Transaksi", "🔮 Transaction Simulator"],
+sim_p: ["Saldo awal <b>Warung Septian</b> (Rp ribu, dari kasus Hari 01). Pilih sebuah transaksi, <b>prediksi dulu</b> dampaknya ke <b>laba</b>, <b>kas</b>, dan <b>total aset</b> — baru klik Reveal. Saldo <b>berantai</b>: tiap reveal meng-update saldo berjalan di tabel.",
+  "Opening balances of <b>Warung Septian</b> (IDR thousand, from the Day 01 case). Pick a transaction, <b>predict first</b> its impact on <b>profit</b>, <b>cash</b>, and <b>total assets</b> — then click Reveal. Balances are <b>chained</b>: each reveal updates the running balances in the table."],
+sim_score: ["🎯 Skor sesi:", "🎯 Session score:"],
+sim_of: ["dari", "of"],
+sim_correct: ["prediksi benar", "predictions correct"],
+sim_guesses: ["tebakan benar", "guesses correct"],
+sim_reset: ["🔄 Reset simulator", "🔄 Reset simulator"],
+sim_reveal: ["👁️ Reveal", "👁️ Reveal"],
+sim_guess_yours: ["tebakanmu", "your guess"],
+sim_answer: ["jawaban:", "answer:"],
+sim_journal: ["Jurnal:", "Journal:"],
+sim_acc: ["Akun (Rp ribu)", "Account (IDR thousand)"],
+sim_bal: ["Saldo", "Balance"],
+sim_delta: ["Δ terakhir", "Last Δ"],
+sim_total_a: ["Total aset", "Total assets"],
+sim_total_le: ["Total L + E", "Total L + E"],
+sim_checkbal: ["Cek balance:", "Balance check:"],
+sim_acc_kas: ["Kas", "Cash"],
+sim_acc_pers: ["Persediaan", "Inventory"],
+sim_acc_peral: ["Peralatan neto", "Equipment, net"],
+sim_acc_piut: ["Piutang", "Receivables"],
+sim_acc_utang: ["Utang dagang", "Payables"],
+sim_acc_modal: ["Modal", "Capital"],
+sim_acc_lr: ["Laba ditahan", "Retained earnings"],
+sim_dim_laba: ["Laba", "Profit"],
+sim_dim_kas: ["Kas", "Cash"],
+sim_dim_aset: ["Total aset", "Total assets"],
+sim_opt_naik: ["Naik ↑", "Up ↑"],
+sim_opt_turun: ["Turun ↓", "Down ↓"],
+sim_opt_tetap: ["Tetap →", "Flat →"],
+/* simulator debit/kredit */
+dk_h: ["🔮 Simulator Debit/Kredit", "🔮 Debit/Credit Simulator"],
+dk_p: ["6 transaksi warung. Untuk tiap transaksi, <b>tebak sisi Debit/Kredit</b> dari 2 akun yang terlibat — baru klik Reveal. Aturannya cuma satu: <b>kiri bertambah = debit, kanan bertambah = kredit</b> (dari A = L + E).",
+  "6 shop transactions. For each one, <b>guess the Debit/Credit side</b> of the 2 accounts involved — then click Reveal. One rule only: <b>left side up = debit, right side up = credit</b> (from A = L + E)."],
+dk_debit: ["Debit", "Debit"],
+dk_credit: ["Kredit", "Credit"],
+/* checker + mission notes (diagnosis stays Indonesian) */
+checker_en_note: ["", "ℹ️ Checker messages stay in Indonesian — workbook labels are in Indonesian."],
+mission_en_note: ["", "ℹ️ Mission feedback stays in Indonesian — workbook labels are in Indonesian."],
+/* glossary */
+glossary_sub: ["Istilah Indonesia (English) ·", "English (Indonesian) terms ·"],
+glossary_n: ["istilah", "terms"],
+glossary_ph: ["Cari istilah… mis. depresiasi, WACC", "Search terms… e.g. depreciation, WACC"],
+glossary_none: ["Tidak ketemu. Coba kata lain.", "No match. Try another word."],
+/* funcs */
+funcs_sub: ["Referensi cepat ·", "Quick reference ·"],
+funcs_n: ["fungsi wajib modeling", "must-know modeling functions"],
+funcs_ph: ["Cari fungsi… mis. NPV, XLOOKUP", "Search functions… e.g. NPV, XLOOKUP"],
+funcs_none: ["Tidak ketemu.", "No match."],
+/* cheatsheet */
+cheat_h: ["📋 Cheatsheet", "📋 Cheatsheet"],
+cheat_sub: ["Download & simpan di HP", "Download & keep on your phone"],
+cheat_linkage_h: ["Keterkaitan 3 Laporan", "3-Statement Linkages"],
+cheat_linkage_p: ["Diagram 3 jembatan wajib hafal (Hari 01).", "The 3 must-know bridges diagram (Day 01)."],
+cheat_dl: ["Download PNG", "Download PNG"],
+cheat_dcf_h: ["Rumus DCF 1 halaman", "1-page DCF formula"],
+cheat_dcf_p: ["FCFF, WACC, terminal value.", "FCFF, WACC, terminal value."],
+cheat_jur_h: ["Journal entries", "Journal entries"],
+cheat_jur_p: ["20 jurnal paling sering keluar.", "20 most common journal entries."],
+cheat_sc_h: ["Shortcut Excel modeling", "Excel modeling shortcuts"],
+cheat_sc_p: ["25 shortcut hemat waktu.", "25 time-saving shortcuts."],
+cheat_soon: ["Segera", "Soon"],
+/* mistake review */
+mr_h: ["🔁 Review Kesalahan", "🔁 Mistake Review"],
+mr_none: ["Belum ada kesalahan tercatat.", "No mistakes recorded yet."],
+mr_recovered: ["Sudah pulih:", "Recovered:"],
+mr_concepts: ["konsep. 🎉", "concepts. 🎉"],
+mr_none_p: ["Jawab quiz — soal yang salah akan muncul di sini untuk di-review dengan soal varian.",
+  "Answer quizzes — questions you miss will appear here for review with variant questions."],
+mr_intro: ["Soal yang pernah salah — perbaiki lewat <b>dual-loop</b>: diagnosis 1 kalimat + mini-lesson prasyarat, lalu soal <b>varian angka beda</b>.",
+  "Questions you missed — fix them via <b>dual-loop</b>: one-line diagnosis + prerequisite mini-lesson, then a <b>different-numbers variant</b>."],
+mr_wrong_n: ["salah", "wrong"],
+mr_diag: ["Diagnosis:", "Diagnosis:"],
+mr_minilesson: ["Mini-lesson prasyarat:", "Prerequisite mini-lesson:"],
+mr_variant: ["🔁 Varian", "🔁 Variant"],
+mr_note_shuffled: ["opsi diacak", "options shuffled"],
+mr_correct: ["Tepat! Konsep", "Correct! Concept"],
+mr_marked: ["ditandai <b>pulih</b>. 🎉", "marked <b>recovered</b>. 🎉"],
+mr_notyet: ["❌ Belum tepat. ", "❌ Not quite. "],
+mr_dual: ["<b>Dual-loop solve:</b>", "<b>Dual-loop solve:</b>"],
+mr_new_variant: ["🔁 Coba varian baru", "🔁 Try a new variant"],
+mr_reload: ["↻ Muat ulang daftar review", "↻ Reload review list"],
+mr_fallback_step: ["kerjakan ulang dari definisinya — urutan opsi sudah diacak.", "rework it from the definition — the option order has been shuffled."],
+mr_no_concept: ["belum terdaftar di concept graph.", "is not registered in the concept graph."],
+mr_prereq: ["Prasyarat", "Prerequisite"],
+/* progress */
+prog_h: ["🏆 Progressmu", "🏆 Your Progress"],
+prog_sub: ["Tersimpan di browser ini", "Stored in this browser"],
+prog_streak: ["🔥 Streak:", "🔥 Streak:"],
+prog_days: ["hari", "days"],
+prog_days_s: ["hari", "day"],
+prog_complete: ["lesson lengkap", "lessons complete"],
+prog_perlesson: ["📊 Status per lesson", "📊 Per-lesson status"],
+prog_th_lesson: ["Lesson", "Lesson"],
+prog_th_sheet: ["📊 Sheet (self-check)", "📊 Sheet (self-check)"],
+prog_th_status: ["Status", "Status"],
+prog_hell: ["Hell:", "Hell:"],
+prog_backup_h: ["💾 Backup progress", "💾 Back up progress"],
+prog_backup_p: ["Progress tersimpan <b>hanya di browser ini</b>. Hapus data situs atau ganti perangkat = hilang. Backup berkala, ya.",
+  "Progress is stored <b>only in this browser</b>. Clearing site data or switching devices = lost. Back up regularly."],
+prog_backup_btn: ["⬇️ Backup progress", "⬇️ Back up progress"],
+prog_restore_btn: ["⬆️ Restore dari file", "⬆️ Restore from file"],
+prog_reset_h: ["🗑️ Reset progress", "🗑️ Reset progress"],
+prog_reset_btn: ["Reset progress", "Reset progress"],
+prog_need_file: ["Pilih dulu file backup (.json).", "Select a backup file (.json) first."],
+prog_restored: ["✅ Progress berhasil di-restore. Memuat ulang…", "✅ Progress restored. Reloading…"],
+prog_badfile: ["❌ File tidak valid — bukan backup progress FMVA Sprint. Tidak ada yang diubah.",
+  "❌ Invalid file — not an FMVA Sprint progress backup. Nothing was changed."],
+prog_readfail: ["❌ Gagal membaca file dari perangkat.", "❌ Couldn't read the file from your device."],
+reset_warn: ["⚠️ Ini akan menghapus SEMUA ini dari browser:", "⚠️ This will delete ALL of the following from the browser:"],
+reset_li1: ["Progress baca &amp; skor quiz semua lesson", "Reading progress &amp; quiz scores for all lessons"],
+reset_li2: ["Streak harian", "Daily streak"],
+reset_li3: ["Riwayat mistake review (termasuk status \"pulih\")", "Mistake review history (including \"recovered\" status)"],
+reset_li4: ["Hasil checker workbook", "Workbook checker results"],
+reset_li5: ["Centang spreadsheet self-check", "Spreadsheet self-check ticks"],
+reset_no_undo: ["Tidak bisa dibatalkan.", "This cannot be undone."],
+reset_backup_first: ["⬇️ Backup dulu", "⬇️ Back up first"],
+reset_cancel: ["Batal", "Cancel"],
+reset_yes: ["Ya, hapus semua", "Yes, delete everything"],
+/* checker section chrome (diagnosis itself stays Indonesian) */
+checker_h: ["📤 Cek Workbook", "📤 Check Workbook"],
+checker_upload_p: ["Upload file <b>xlsx hasil kerjaanmu</b> (berbasis template {tpl}). Checker membaca file-mu <b>100% di browser ini</b> — file tidak dikirim ke mana-mana — lalu menilai rumus, angka, dan balance.",
+  "Upload <b>your finished xlsx file</b> (based on the {tpl} template). The checker reads your file <b>100% in this browser</b> — nothing is sent anywhere — then scores formulas, numbers, and balance."],
+checker_warn: ["⚠️ Checker menilai <b>keberadaan rumus &amp; angka kunci</b>; ia <b>belum bisa</b> menilai logika rumus yang salah tapi kebetulan benar angkanya. Skor 100 ≠ model sempurna — tapi rumus yang di-hardcode (=angka) akan ditandai. Pastikan file <b>disimpan dari Excel / Google Sheets / LibreOffice</b> (bukan hasil generate tools lain) agar hasil rumus terbaca.",
+  "⚠️ The checker scores <b>formula presence &amp; key numbers</b>; it <b>cannot yet</b> judge formula logic that happens to give the right number. 100 ≠ a perfect model — but hardcoded (=typed-number) formulas get flagged. Make sure the file was <b>saved from Excel / Google Sheets / LibreOffice</b> (not generated by other tools) so formula results are readable."],
+checker_btn: ["🔍 Cek workbookku", "🔍 Check my workbook"],
+checker_lib_loading: ["⏳ Memuat library pembaca Excel…", "⏳ Loading the Excel reader library…"],
+checker_lib_fail: ["❌ Gagal memuat library dari CDN. Cek koneksi internetmu lalu klik lagi.", "❌ Failed to load the library from the CDN. Check your connection and click again."],
+/* mission section chrome (feedback itself stays Indonesian) */
+mission_default_title: ["🛠️ Misi Perbaikan — Warung Septian (rusak)", "🛠️ Fix-It Mission — Warung Septian (broken)"],
+mission_default_desc: ["File ini <b>sengaja dirusak di 3 titik</b>: 1 total diketik manual (bukan rumus), 1 link ke asumsi yang salah, dan neraca yang tidak balance. Misimu: <b>temukan → jelaskan kenapa salah → perbaiki dengan rumus → upload hasilnya</b>.",
+  "This file was <b>deliberately broken in 3 places</b>: 1 total typed manually (not a formula), 1 link to the wrong assumption, and an unbalanced balance sheet. Your mission: <b>find → explain why it's wrong → fix with formulas → upload the result</b>."],
+mission_dl: ["⬇️ Unduh file misi", "⬇️ Download the mission file"],
+mission_warn: ["⚠️ Penilaiannya menilai <b>perbaikan aktual</b>: sel yang tadinya rusak harus berisi <b>rumus yang benar</b> (angka ketik yang benar pun tetap gagal) dan neraca harus balance.",
+  "⚠️ Scoring checks <b>actual fixes</b>: previously-broken cells must contain <b>correct formulas</b> (correct typed numbers still fail) and the balance sheet must balance."],
+mission_btn: ["🔍 Nilai perbaikanku", "🔍 Score my fix"],
+mission_nofile: ["Pilih dulu file xlsx hasil perbaikanmu.", "Select your fixed xlsx file first."],
+mission_readfail: ["❌ Gagal membaca file: ", "❌ Failed to read the file: "],
+/* misc */
+sim_ribu: ["Rp ribu", "IDR thousand"],
+mr_fallback_diag: ["baca ulang penjelasannya, jangan hafal posisi jawaban.", "reread the explanation; don't memorize the answer position."]
+};
+function T(k){ const e = UI[k]; if (!e) return k; return lang() === "en" ? e[1] : e[0]; }
+function Tp(kp, ks, n){ return T(n === 1 ? ks : kp); }  /* plural-aware: singular when n==1 (fixes "1 days") */
+const TRACK_EN = {"Fondasi": "Foundation", "30 Hari": "30 Days", "Excel": "Excel", "Real Cases": "Real Cases"};
+function trackLbl(t){ return lang() === "en" ? (TRACK_EN[t] || t) : t; }
+/* Localized lesson view: shallow merge of the .en overlay (whole-field replacement) */
+function L(l){ return (l && lang() === "en" && l.en) ? Object.assign({}, l, l.en) : l; }
+function cName(c){ return (lang() === "en" && c.name_en) ? c.name_en : c.name; }
+/* Fallback for concept keys with no CONCEPTS entry: render readable text instead of raw snake_case */
+function prettyKey(k){ return String(k == null ? "" : k).replace(/_/g, " "); }
+function cDef(c){ return (lang() === "en" && c.def_en) ? c.def_en : c.def; }
+function cDiag(c){ return (lang() === "en" && c.diag_en) ? c.diag_en : c.diag; }
+function variantEntry(key){ return (lang() === "en" && typeof VARIANT_FNS_EN !== "undefined" && VARIANT_FNS_EN[key]) ? VARIANT_FNS_EN[key] : VARIANT_FNS[key]; }
+/* header/nav paint */
+function paintLang(){
+  const b = document.getElementById("langbtn");
+  if (b) b.textContent = lang() === "en" ? "ID" : "EN";
+  document.documentElement.lang = lang();
+  document.title = T("page_title");
+  const nav = {home: "nav_home", belajar: "nav_belajar", glossary: "nav_glossary", funcs: "nav_funcs", progress: "nav_progress"};
+  const icons = {home: "🏠", belajar: "📚", glossary: "📖", funcs: "🧮", progress: "🏆"};
+  Object.keys(nav).forEach(k => {
+    const el = document.querySelector('.bottomnav button[data-nav="' + k + '"]');
+    if (el) el.innerHTML = '<span class="ico">' + icons[k] + "</span>" + T(nav[k]);
+  });
+}

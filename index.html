@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FMVA Sprint — Dari Nol Sampai Siap Ujian FMVA</title>
+<meta name="description" content="Kursus financial modeling: teks + quiz + hint + latihan Excel + real cases. Dari nol sampai siap ujian FMVA.">
+<meta name="theme-color" content="#1a1a1a">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FMVA Sprint">
+<meta property="og:title" content="FMVA Sprint — Dari Nol Sampai Siap Ujian FMVA">
+<meta property="og:description" content="Kursus financial modeling 30 hari: teks + quiz + latihan Excel + 5 real cases emiten. Tanpa video.">
+<meta property="og:url" content="https://fmva-sprint.pages.dev/">
+<meta property="og:image" content="https://fmva-sprint.pages.dev/assets/icon-512.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FMVA Sprint — Dari Nol Sampai Siap Ujian FMVA">
+<meta name="twitter:description" content="Kursus financial modeling 30 hari: teks + quiz + latihan Excel + 5 real cases emiten.">
+<meta name="twitter:image" content="https://fmva-sprint.pages.dev/assets/icon-512.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="logo" onclick="location.hash='#/home'"><svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="14" fill="#1a1a1a"/><rect x="11" y="37" width="10" height="15" fill="#FFC900"/><rect x="26" y="29" width="10" height="23" fill="#FFC900"/><rect x="41" y="21" width="10" height="31" fill="#FFC900"/><rect x="11" y="55" width="42" height="3" fill="#FFF6E9"/></svg><span>FMVA Sprint</span></div>
+  <div style="display:flex;gap:8px;align-items:center;margin-left:auto">
+    <button id="langbtn" class="langbtn" onclick="setLang(window.lang()==='en'?'id':'en')" title="ID/EN">EN</button>
+    <div class="streak" id="streakbadge">🔥 0</div>
+  </div>
+</header>
+<main class="wrap" id="view"></main>
+<nav class="bottomnav">
+  <button data-nav="home" onclick="location.hash='#/home'"><span class="ico">🏠</span>Home</button>
+  <button data-nav="belajar" onclick="location.hash='#/belajar'"><span class="ico">📚</span>Belajar</button>
+  <button data-nav="glossary" onclick="location.hash='#/glossary'"><span class="ico">📖</span>Kamus</button>
+  <button data-nav="funcs" onclick="location.hash='#/funcs'"><span class="ico">🧮</span>Fungsi</button>
+  <button data-nav="progress" onclick="location.hash='#/progress'"><span class="ico">🏆</span>Progress</button>
+</nav>
+<script src="js/concept-graph.js"></script>
+<script src="js/content1.js"></script>
+<script src="js/content2.js"></script>
+<script src="js/content3.js"></script>
+<script src="js/content4.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/app.js"></script>
+<script>
+  // streak badge
+  try {
+    const p = JSON.parse(localStorage.getItem("fmva_progress") || "{}");
+    document.getElementById("streakbadge").textContent = "🔥 " + (p.streak || 0);
+  } catch {}
+</script>
+</body>
+</html>
