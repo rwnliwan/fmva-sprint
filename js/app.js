@@ -124,7 +124,7 @@ function renderHome() {
   show(`
   <div class="hero">
     <div class="brandhero">
-      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="14" fill="#1a1a1a"/><rect x="14" y="12" width="7" height="40" fill="#FFC900"/><rect x="14" y="12" width="20" height="7" fill="#FFC900"/><rect x="14" y="29" width="16" height="7" fill="#FFC900"/><polygon points="50,12 38,30 44,30 38,52 54,28 47,28" fill="#FFC900"/></svg>
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="fbgR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC900"/><stop offset="1" stop-color="#FF9E00"/></linearGradient></defs><rect x="2" y="2" width="60" height="60" rx="14" fill="url(#fbgR)"/><rect x="14" y="12" width="7" height="40" rx="3.5" fill="#1a1a1a"/><rect x="14" y="12" width="20" height="7" rx="3.5" fill="#1a1a1a"/><rect x="14" y="29" width="16" height="7" rx="3.5" fill="#1a1a1a"/><polygon points="50,12 38,30 44,30 38,52 54,28 47,28" fill="#1a1a1a"/></svg>
       <h1>FMVA <span class="hl">Sprint</span></h1>
     </div>
     <p>${T("hero_sub")}</p>
