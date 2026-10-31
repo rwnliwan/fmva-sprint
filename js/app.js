@@ -124,7 +124,7 @@ function renderHome() {
   show(`
   <div class="hero">
     <div class="brandhero">
-      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="14" fill="#1a1a1a"/><rect x="11" y="37" width="10" height="15" fill="#FFC900"/><rect x="26" y="29" width="10" height="23" fill="#FFC900"/><rect x="41" y="21" width="10" height="31" fill="#FFC900"/><rect x="11" y="55" width="42" height="3" fill="#FFF6E9"/></svg>
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="25" fill="#FFC900" stroke="#1a1a1a" stroke-width="7"/><text x="32" y="33" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="21" fill="#1a1a1a" text-anchor="middle" dominant-baseline="central">FS</text></svg>
       <h1>FMVA <span class="hl">Sprint</span></h1>
     </div>
     <p>${T("hero_sub")}</p>
