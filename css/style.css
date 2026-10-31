@@ -265,3 +265,8 @@ details.ans summary { font-weight: 900; cursor: pointer; }
   .bottomnav button .ico { font-size: 1.05rem; }
   body { padding-bottom: 70px; }
 }
+
+/* ---------- desktop lebar: batasi panjang baris teks lesson ---------- */
+@media (min-width: 1100px) {
+  .sec p, .sec li { max-width: 78ch; }
+}

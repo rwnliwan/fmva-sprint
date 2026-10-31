@@ -2647,7 +2647,7 @@ prerequisites: ["cfo","beban_non_kas","model_3_statement","akrual"],
 driveFolder: "https://drive.google.com/drive/folders/1NNTaCDj4Rqp4JHKSeNMCZJZgByaR5J9f",
 audio: "assets/audio/hari-20.mp3",
 checker: "hari-20",
-mission: {file: "https://docs.google.com/spreadsheets/d/1Bmor8rFGbXX4jNdT3M8SlRFnV6FWzoFp/edit?usp=drivesdk&ouid=113281255475671136228&rtpof=true&sd=true", key: "detektif",
+mission: {file: "https://docs.google.com/spreadsheets/d/1Bmor8rFGbXX4jNdT3M8SlRFnV6FWzoFp/edit", key: "detektif",
   title: "\uD83D\uDD75\uFE0F Misi Detektif Akuntansi \u2014 PT Maju Jaya (rusak)",
   desc: "Kamu menerima model PT Maju Jaya buatan 'analis junior'. File ini <b>sengaja dirusak di 4 titik</b>: lease dicatat sebagai sewa biasa (liabilitas Rp4.791rb hilang), DTL tidak dicatat, stock comp tidak di-add-back (CFO Rp2.600rb vs Rp5.500rb), dan NOL tidak dimanfaatkan (pajak kepanjangan Rp440rb). Bonus: neracanya pun TIDAK BALANCE (selisih \u22121.700) \u2014 petunjuk pertamamu. Misimu: <b>temukan \u2192 jelaskan kenapa salah \u2192 perbaiki dengan rumus \u2192 upload hasilnya</b>."},
 sections: [
@@ -6789,7 +6789,7 @@ blind: {h: "Blind Drill \u2014 the neighbor warung in Solo", body: `
 EN["hari-20"] = {
 title: "Hard Accounting: Leases, Deferred Tax & the Accounting Detective",
 sub: "Day 20 \u00b7 \u00b18 hrs \u00b7 PSAK 73, DTL/DTA, stock comp, NOL + repair mission",
-mission: {file: "https://docs.google.com/spreadsheets/d/1Bmor8rFGbXX4jNdT3M8SlRFnV6FWzoFp/edit?usp=drivesdk&ouid=113281255475671136228&rtpof=true&sd=true", key: "detektif",
+mission: {file: "https://docs.google.com/spreadsheets/d/1Bmor8rFGbXX4jNdT3M8SlRFnV6FWzoFp/edit", key: "detektif",
   title: "\uD83D\uDD75\uFE0F Accounting Detective Mission \u2014 PT Maju Jaya (broken)",
   desc: "You've received a PT Maju Jaya model built by a 'junior analyst'. This file was <b>deliberately broken in 4 places</b>: the lease booked as plain rent (Rp4,791k of liability missing), DTL not recorded, stock comp not added back (CFO Rp2,600k vs Rp5,500k), and the NOL left unused (Rp440k of overpaid tax). Bonus: the balance sheet doesn't even BALANCE (gap of \u22121,700) \u2014 your first clue. Your mission: <b>find \u2192 explain why it's wrong \u2192 fix with formulas \u2192 upload the result</b>."},
 sections: [
