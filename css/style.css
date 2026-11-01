@@ -160,17 +160,19 @@ table.brutal { width: 100%; border-collapse: collapse; margin: 12px 0; font-size
   background-attachment: local, local, scroll, scroll;
 }
 .tblwrap table.brutal { margin: 0; border: 0; min-width: 540px; }
-/* hint "geser" — hanya di layar kecil */
-.tblwrap::after {
+/* hint "geser" — hanya di layar kecil, badge absolut pojok kanan atas */
+.tblwrap { position: relative; }
+.tblwrap::before {
   content: ""; display: none;
 }
 @media (max-width: 639px) {
-  .tblwrap { position: relative; }
-  .tblwrap::after {
-    content: "geser \2192"; display: block; position: sticky; left: 100%;
-    float: right; margin: -28px 8px 0 0; font-size: .72rem; font-weight: 700;
+  .tblwrap::before {
+    content: "geser \2192"; display: block; position: absolute;
+    top: 6px; right: 6px; z-index: 5;
+    font-size: .72rem; font-weight: 700;
     color: var(--ink); background: var(--yellow); border: 2px solid var(--ink);
     border-radius: 20px; padding: 2px 10px; pointer-events: none; white-space: nowrap;
+    box-shadow: 2px 2px 0 var(--ink);
   }
 }
 .audio-row audio { flex: 1; min-width: 0; }

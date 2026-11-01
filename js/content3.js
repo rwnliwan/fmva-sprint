@@ -377,7 +377,6 @@ id: "excel-l5", track: "Excel", title: "Excel Valuation Tools: XNPV/XIRR & Scena
 sub: "Excel L5 · ±4 jam · Valuasi tanggal-nyata & skenario",
 est: "4 jam",
 prerequisites: ["abs_ref", "if_logic"],
-driveFolder: "https://drive.google.com/drive/folders/1ZemMXTh95PAjLRZc_kSY2MDJOuywblrt",
 audio: "assets/audio/excel-l5.mp3",
 sections: [
 {h: "Kenapa NPV/IRR menyerah saat tanggalnya berantakan", body: `

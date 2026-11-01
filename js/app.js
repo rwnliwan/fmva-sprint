@@ -195,7 +195,7 @@ function renderLesson(id) {
     const dayLbl = (l.sub || "").split(" ·")[0] || l.id;
     html += `<div class="sec"><h3>${T("file_latihan")}</h3>
       <p>${T("file_latihan_p")}</p>
-      <div class="btnrow"><a class="btn blue" href="${l.driveFolder}" target="_blank" rel="noopener">${T("open_folder")} ${dayLbl} ${T("in_drive")}</a></div></div>`;
+      <div class="btnrow"><a class="btn blue" href="https://drive.google.com/drive/folders/${l.driveFolder}" target="_blank" rel="noopener">${T("open_folder")} ${dayLbl} ${T("in_drive")}</a></div></div>`;
   }
   if (l.tasks) {
     html += `<div class="sec"><h3>${T("tasks_h")}</h3><ul class="checklist">` +
