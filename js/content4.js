@@ -402,7 +402,403 @@ blind: {h: "Uji Kilat — angka beda", body: `
 <details class="ans"><summary>Jawaban</summary><p>20 → 30. Capex harvest: −10 capex = +10 FCF.</p></details>
 <p><b>2.</b> FCF Rp10T, market cap Rp40T. FCF yield = ?</p>
 <details class="ans"><summary>Jawaban</summary><p>25%. Sangat tinggi — tanyakan kenapa pasar ragu.</p></details>`}
-}
+},
+{
+id: "real-06", track: "Real Cases", title: "BBCA: Harga Mahal yang Masuk Akal?",
+sub: "Real Case 6 · ±5 jam · Residual income bank",
+est: "5 jam",
+prerequisites: ["dcf", "model_3_statement"],
+driveFolder: "1tqJmo75dI7OjtuKFfUb310jXO1W1CaQ8",
+audio: "assets/audio/real-06.mp3",
+checker: "real-06",
+sections: [
+{h: "Kenapa bank tidak bisa di-DCF biasa?", body: `
+<p><b>Bank Central Asia (BBCA.JK)</b> adalah bank termahal di Indonesia: <b>P/BV ~3,9x</b> (MNC Sekuritas, Okt 2025). DCF biasa mendiskon <b>FCFF</b> — kas untuk semua pemodal <i>setelah</i> membayar utang. Masalahnya: utang bank — DPK <b>Rp1.134tn</b> (BRIDS, FY24) — bukan beban pendanaan, melainkan <b>bahan baku</b>. Bank "meminjam" giro dan tabungan untuk "meminjamkan" kredit <b>Rp911,1tn</b> (LK audited BCA, 31 Des 2024). Menghitung "net debt" BBCA lalu mengurangkannya dari EV menghasilkan angka ngawur.</p>
+<div class="formula">V0 = B0 + &Sigma; RI<sub>t</sub> / (1+Ke)<sup>t</sup> &nbsp;&nbsp;&middot;&nbsp;&nbsp; RI<sub>t</sub> = NI<sub>t</sub> &minus; Ke &times; B<sub>t&minus;1</sub></div>
+<p>Untuk bank, yang didiskon bukan FCFF melainkan <b>dividen</b> (DDM) atau <b>kelebihan laba di atas biaya modal</b> — residual income. Keduanya berjangkar pada <b>ekuitas (book)</b>, bukan enterprise value.</p>
+<div class="example jebakan"><div class="lbl">🚫 Jebakan EV/EBITDA bank</div>
+<p>Analis pemula menaruh BBCA di screener EV/EBITDA bersama UNVR dan ASII. Hasilnya: BBCA terlihat "murah" atau "error" — karena EV bank tidak bermakna. Multiple yang benar untuk bank adalah <b>P/BV</b> dan <b>P/E</b>, dan keduanya harus dibaca bersama <b>ROE</b>.</p></div>
+<div class="callout"><b>Kenapa residual income, bukan sekadar P/BV mentah?</b> Karena P/BV 3,9x tanpa konteks = "mahal". Residual income memecahnya menjadi: berapa bagian yang dijelaskan book value hari ini, dan berapa bagian yang menuntut ROE di atas biaya modal <i>selamanya</i>. Di situlah debat valuasi yang sebenarnya terjadi.</p>`},
+{h: "Kenapa residual income cocok untuk BBCA?", body: `
+<p>Residual income berdiri di atas <b>identitas clean surplus</b>: ekuitas tahun depan = ekuitas tahun ini + laba &minus; dividen. Nilai wajar = <b>book value hari ini</b> + PV dari "kelebihan" laba (ROE &minus; Ke) di masa depan.</p>
+<div class="formula">RI<sub>t</sub> = (ROE &minus; Ke) &times; B<sub>t&minus;1</sub></div>
+<p>Angka jangkarnya (FY24, terverifikasi): laba bersih <b>Rp54,8tn</b> (+12,7% YoY; FY23 Rp48,6tn — Maybank Sekuritas 26 Jan 2025 &amp; BRIDS 24 Jan 2025). Book value per saham <b>Rp2.131</b> dengan <b>123,28 miliar</b> saham (MNC, Okt 2025) &rarr; ekuitas awal model <b>B0 = Rp262,71tn</b>.</p>
+<div class="example korporat"><div class="lbl">🏢 Cek konsistensi pertama</div>
+<p>ROE FY24 implisit = 54,8 / 262,71 = <b>20,86%</b> — konsisten dengan klaim "ROE &gt;20%" (Maybank, Jan 2025). Kalau hasil hitunganmu jauh dari klaim broker, jangan lanjutkan modelnya: ada yang salah di input atau pemahamanmu. Analis yang baik memverifikasi <i>sebelum</i> memproyeksikan.</p></div>
+<div class="callout"><b>⚠️ Caveat ekuitas:</b> Rp262,71tn adalah <b>derivasi</b> (Rp2.131 &times; 123,28 miliar saham, dari MNC) — <b>bukan angka LK audited langsung</b>. Untuk presisi penuh, ambil total ekuitas dari LK BCA di bca.co.id. Model ini memakai derivasi agar bisa jalan; labeli apa adanya.</p>
+<p>Dengan asumsi kerja ROE 20%, payout 60%, Ke 11,5%: <b>RI 2025 = 52,54 &minus; 30,21 = Rp22,33tn</b> — laba Rp52,54tn dikurangi "sewa" modal Rp30,21tn. Hanya kelebihan inilah yang menciptakan nilai di atas book.</p>`},
+{h: "Kenapa justified P/BV = (ROE&minus;g)/(Ke&minus;g)?", body: `
+<p>Kalau ROE, payout, dan Ke konstan selamanya, deret residual income menyusut menjadi satu rumus elegan — <b>justified P/BV</b>:</p>
+<div class="formula">P/BV = 1 + (ROE &minus; Ke)/(Ke &minus; g) = (ROE &minus; g)/(Ke &minus; g)</div>
+<p>Tiga tuas, tidak lebih: <b>ROE</b> (seberapa profitable), <b>g</b> (seberapa lama tumbuh), <b>Ke</b> (seberapa berisiko). Growth datang dari dalam: <b>g = ROE &times; retensi = 20% &times; 40% = 8%</b> (payout 60% = asumsi, konsisten dengan historis BBCA).</p>
+<div class="example korporat"><div class="lbl">🏢 Hitungannya</div>
+<p>(0,20 &minus; 0,08) / (0,115 &minus; 0,08) = <b>3,43x</b>. Cross-check via DDM: dividen 2025 = 52,54 &times; 60% = Rp31,53tn; nilai = 31,53 / (0,115 &minus; 0,08) = <b>Rp900,72tn</b> &mdash; persis = B0 &times; 3,43. Dua metode, satu kerangka: <b>identitas clean surplus terbukti</b>. Kalau DDM dan RI-mu beda jauh, ada rumus yang salah &mdash; bukan "dua pendapat".</p></div>
+<div class="callout"><b>Kenapa Ke 11,5%?</b> Asumsi kerja (kisaran riset 11&ndash;12%). Ke bukan angka langit: ia harga yang diminta investor untuk risiko ekuitas bank Indonesia. Di tugas sensitivitas kamu akan merasakan betapa brutalnya 1% perubahan Ke terhadap justified P/BV.</p>`},
+{h: "Kenapa pasar berani bayar 3,9x? (debat franchise vs fade)", body: `
+<p>Sekarang benturkan tiga angka: model <b>2-tahap</b> (ROE memudar ke 16% setelah 2029) memberi <b>1,98x &rarr; Rp4.215/saham</b>. Rumus <b>1-tahap</b> (ROE 20% abadi) memberi <b>3,43x</b>. Pasar (MNC, Okt 2025) membayar <b>3,9x &rarr; Rp8.311/saham</b>. Ketiganya "benar" di bawah asumsinya masing-masing.</p>
+<div class="example korporat"><div class="lbl">🏢 Membaca pikiran pasar</div>
+<p>3,9x dengan Ke 11,5% dan payout 60% mengimplikasikan <b>ROE ~20,8% selamanya</b> (ada di Hell Mode &mdash; hitung sendiri). Pasar tidak sedang "salah hitung": ia bertaruh bahwa franchise <b>CASA 82,4%</b> (Maybank, Jan 2025) &mdash; dana giro/tabungan termurah di Indonesia &mdash; membuat ROE 20%+ <b>tidak memudar</b>. Pertanyaannya bukan "berapa nilai wajar", melainkan: <b>apakah premi ini layak dibayar untuk franchise itu &mdash; dan kapan tidak lagi layak?</b></p></div>
+<div class="callout"><b>Data yang menguji taruhan pasar:</b> guidance FY25 (via BRIDS, Jan 2025) &mdash; kredit <b>6&ndash;8%</b> (FY24: +14%), <b>NIM 5,7&ndash;5,8%</b> (FY24: 5,8%), CoC <b>0,3%</b> stabil, CIR <b>33&ndash;34%</b> (FY24: 31,5%). Plus sinyal 9M25: NIM 5,8% flat YoY tapi <b>turun 10bps QoQ</b> (MNC, Okt 2025). Kredit tumbuh kencang tapi margin tertekan dan biaya naik &mdash; <b>apakah volume mengkompensasi kompresi margin?</b> Itulah inti debat analis BBCA.</p>`},
+{h: "Jebakan: dua NIM yang sama-sama &ldquo;benar&rdquo;", body: `
+<p>Riset menemukan <b>NIM FY24 5,8%</b> (Maybank, konsolidasi; 5,9% di 4Q24) dan <b>NIM FY24 6,4%</b> (BRIDS; FY23: 6,3%). Keduanya dari broker bereputasi. Keduanya "benar" &mdash; karena <b>definisi penyebutnya beda</b> (rata-rata aset produktif versi masing-masing).</p>
+<div class="example jebakan"><div class="lbl">🚫 Jebakan definisi</div>
+<p>Uji dengan NII FY24 Rp82,3tn (BRIDS): aset produktif implisit versi 5,8% = 82,3/0,058 = <b>Rp1.419tn</b>; versi 6,4% = 82,3/0,064 = <b>Rp1.286tn</b>. Selisihnya <b>Rp133tn</b> &mdash; lebih besar dari total kredit banyak bank menengah! Analis yang membandingkan NIM 6,4% (BRIDS) dengan guidance 5,7&ndash;5,8% lalu berteriak "NIM anjlok 60bps!" sedang membandingkan <b>apel dengan jeruk</b>. Bandingkan yang se-skala: 5,8% &rarr; 5,7&ndash;5,8% = stabil, bukan anjlok.</p></div>
+<div class="callout"><b>Sensitivitas yang jujur:</b> dari ROE model 20%, jika NIM turun permanen <b>30bps</b> (&rarr; ~5,5%): &Delta;NII = &minus;Rp4,26tn &rarr; &Delta;laba setelah pajak (22%) = &minus;Rp3,32tn &rarr; <b>ROE stres 18,74%</b> &rarr; justified P/BV <b>2,81x</b> (dari 3,43x). Premi pasar 3,9x <b>tidak tahan</b> kompresi NIM permanen &mdash; kecuali kamu percaya CASA 82,4% menjaganya tidak terjadi.</p>`},
+{h: "Tugas praktik", body: `
+<p>Bangun model residual income BBCA di workbook latihan: (A) rekonsiliasi dua definisi NIM dan pilih yang konsisten dengan skala guidance; (B) proyeksikan NI, ekuitas, dan RI 2025&ndash;2029 lalu hitung PV RI, terminal value, equity value &rarr; nilai/saham &rarr; P/BV 2-tahap; (C) hitung justified P/BV 1-tahap + cross-check DDM (harus &asymp; B0 &times; 3,43); (D) jalankan sensitivitas NIM &minus;30bps. Semua sel jawaban harus rumus yang me-link ke asumsi.</p>
+<div class="callout"><b>Kenapa tugas ini penting?</b> Ini valuasi bank pertamamu &mdash; dan pelajaran terbesarnya bukan rumusnya, melainkan <b>disiplin definisinya</b>. Satu angka NIM yang salah skala bisa menggeser kesimpulanmu sebesar Rp133tn aset implisit.</p>`},
+{h: "🔥 Bekal Hell Mode", body: `
+<ul>
+<li><b>Residual income</b> = NI &minus; Ke &times; book: kelebihan laba di atas "sewa" modal.</li>
+<li><b>Clean surplus</b> = B<sub>t</sub> = B<sub>t&minus;1</sub> + NI &minus; Div. DDM dan RI harus cocok.</li>
+<li><b>Justified P/BV</b> = (ROE&minus;g)/(Ke&minus;g). Tiga tuas: ROE, g, Ke.</li>
+<li><b>g bank</b> = ROE &times; (1 &minus; payout). Dividen besar = tumbuh lambat.</li>
+<li><b>Jebakan NIM</b> = definisi antar-broker beda; samakan skala sebelum membandingkan.</li>
+<li><b>Premi 3,9x</b> = pasar bertaruh ROE 20%+ tidak memudar. Itu taruhan, bukan fakta.</li>
+</ul>`}
+],
+quiz: [
+{q: "Kenapa DCF/FCFF standar tidak dipakai untuk menilai BBCA?", opts: ["Karena BBCA tidak punya utang sama sekali","Karena utang bank (DPK) adalah bahan baku, bukan pendanaan — FCFF tidak bermakna","Karena bank dilarang memakai DCF oleh regulator","Karena FCFF bank selalu negatif"], answer: 1, k: "bank_valuation", diff: "Easy",
+ hints: ["Pikirkan dari mana bank dapat 'barang dagangannya'.", "DPK Rp1.134tn itu apa bagi bank: beban atau bahan baku?"],
+ explain: "DPK (Rp1.134tn, BRIDS FY24) adalah bahan baku yang 'dipinjam' untuk disalurkan jadi kredit (Rp911,1tn audited). FCFF setelah membayar utang tidak bermakna untuk bank — yang didiskon adalah dividen / kelebihan laba atas modal. (Real-06 § Kenapa bank tidak bisa di-DCF biasa?)"},
+{q: "B0 Rp262,71tn, ROE 20%, Ke 11,5%. Residual income 2025 = ?", opts: ["Rp52,54tn","Rp30,21tn","Rp22,33tn","Rp52,43tn"], answer: 2, k: "residual_income", diff: "Medium",
+ hints: ["RI = NI − Ke × B. Hitung NI dulu.", "NI = 0,20 × 262,71 = 52,54. Capital charge = 0,115 × 262,71 = ?"],
+ explain: "NI = 0,20 × 262,71 = Rp52,54tn; capital charge = 0,115 × 262,71 = Rp30,21tn; RI = 52,54 − 30,21 = Rp22,33tn. Rp52,54tn = lupa kurangi sewa modal; Rp30,21tn = itu sewanya, bukan kelebihannya. (Real-06 § Kenapa residual income cocok untuk BBCA?)"},
+{q: "ROE 20%, payout 60% (g = 8%), Ke 11,5%. Justified P/BV 1-tahap = ?", opts: ["1,74x","3,43x","5,71x","1,98x"], answer: 1, k: "justified_pbv", diff: "Medium",
+ hints: ["Rumus: (ROE − g)/(Ke − g).", "Pembilang 0,20−0,08 = 0,12; penyebut 0,115−0,08 = 0,035."],
+ explain: "(0,20−0,08)/(0,115−0,08) = 0,12/0,035 = 3,43x. 1,74x = ROE/Ke (lupa growth); 5,71x = lupa kurangi g di pembilang; 1,98x = hasil model 2-tahap dengan fade — bukan rumus 1-tahap. (Real-06 § Kenapa justified P/BV?)"},
+{q: "Analis membandingkan NIM BRIDS 6,4% (FY24) dengan guidance 5,7–5,8% lalu menyimpulkan 'NIM anjlok'. Kesalahan utamanya?", opts: ["Angka 6,4% pasti salah ketik","Membandingkan dua definisi/skala berbeda — yang se-skala (5,8%) menunjukkan NIM stabil","Guidance tidak boleh dipakai untuk proyeksi","NIM tidak memengaruhi valuasi bank"], answer: 1, k: "nim_trap", diff: "Medium",
+ hints: ["6,4% dan 5,8% memakai penyebut berbeda.", "Guidance 5,7–5,8% se-skala dengan angka 5,8%, bukan 6,4%."],
+ explain: "Definisi antar-broker beda (implisit aset produktif selisih Rp133tn). Perbandingan yang benar: 5,8% → guidance 5,7–5,8% = stabil. Membandingkan 6,4% dengan 5,7–5,8% = apel vs jeruk. (Real-06 § Jebakan: dua NIM yang sama-sama 'benar')"},
+{q: "P/BV pasar 3,9x vs justified 1-tahap 3,43x. Interpretasi yang jujur?", opts: ["Pasar pasti salah hitung — arbitrase","Model 3,43x pasti benar — jual","Pasar mengasumsikan kombinasi ROE lebih tinggi / Ke lebih rendah / g lebih tinggi selamanya","P/BV di atas 3x selalu bubble"], answer: 2, k: "market_premium", diff: "Hard",
+ hints: ["Rumus punya tiga tuas: ROE, g, Ke.", "3,9x mengimplikasikan ROE ~20,8% selamanya — itu taruhan, bukan fakta."],
+ explain: "Selisih 3,9x vs 3,43x = perbedaan asumsi, bukan kesalahan hitung. Pasar bertaruh franchise CASA 82,4% membuat ROE 20%+ tidak memudar. Tugas analis: menilai apakah taruhan itu masuk akal — bukan mengklaim pasar bodoh. (Real-06 § Kenapa pasar berani bayar 3,9x?)"},
+{q: "Dari ROE model 20%: NIM turun permanen 30bps → justified P/BV menjadi?", opts: ["Tetap 3,43x","3,90x","2,81x","1,98x"], answer: 2, k: "sensitivity", diff: "Hard",
+ hints: ["ΔNII = −0,003 × Rp1.419tn = −Rp4,26tn.", "Δlaba setelah pajak 22% = −Rp3,32tn → ROE 18,74% → hitung ulang (ROE−g)/(Ke−g)."],
+ explain: "ROE stres = 20% − 3,32/262,71 = 18,74%; g = 7,49%; (0,1874−0,0749)/(0,115−0,0749) = 2,81x. Premi 3,9x tidak tahan kompresi NIM permanen. 1,98x = hasil model fade 2-tahap — konteks berbeda. (Real-06 § Jebakan NIM)"},
+{q: "DDM 1-tahap = Rp900,72tn ≈ B0 × 3,43. Ini membuktikan?", opts: ["DDM selalu lebih akurat dari RI","Identitas clean surplus: dua metode, satu kerangka — kalau beda jauh, ada rumus yang salah","BBCA sebaiknya dinilai dengan DDM saja","P/BV 3,43x adalah harga pasar"], answer: 1, k: "ddm", diff: "Medium",
+ hints: ["DDM dan RI diturunkan dari identitas yang sama.", "Kecocokan = validasi silang, bukan kebetulan."],
+ explain: "DDM dan residual income adalah dua wajah identitas clean surplus (B_t = B_{t−1} + NI − Div). Kecocokan 900,72tn ≈ 262,71 × 3,43 memvalidasi mekanik model — selisih besar = bug rumus. (Real-06 § Kenapa justified P/BV?)"}
+],
+hellPass: 80,
+hell: [
+{q: "P/BV pasar 3,9x, Ke 11,5%, payout 60% (retensi 40%). ROE abadi yang diimplikasikan pasar = ?", opts: ["20,0%","22,5%","20,8%","18,7%"], answer: 2, diff: "Hard",
+ explain: "3,9 = (R − 0,4R)/(0,115 − 0,4R) → 0,6R = 3,9×(0,115 − 0,4R) → 2,16R = 0,4485 → R = 20,76% ≈ 20,8%. Pasar bertaruh ROE nyaris 21% selamanya — jauh di atas bank normal. Percaya atau tidak, itu keputusan analis."},
+{q: "Model 2-tahap memakai ROE terminal 16%, di bawah ROE kini 20%. Alasan konseptualnya?", opts: ["Agar nilai model di bawah harga pasar","Mean reversion: kompetisi mengikis kelebihan ROE; 16% pun masih premium","Karena 16% angka yang bulat","ROE terminal wajib sama dengan g terminal"], answer: 1, diff: "Medium",
+ explain: "Kelebihan ROE adalah sewa ekonomi — kompetisi (bank digital, fintech) mengikisnya seiring waktu. 16% masih jauh di atas cost of equity 11,5%: model tidak bilang BBCA jadi bank medioker, hanya tidak abadi luar biasa."},
+{q: "Ke naik 11,5% → 13% (mis. premi risiko Indonesia naik). Justified P/BV 1-tahap menjadi?", opts: ["3,43x","2,81x","2,40x","1,98x"], answer: 2, diff: "Hard",
+ explain: "(0,20−0,08)/(0,13−0,08) = 0,12/0,05 = 2,40x. Satu setengah persen di Ke menghapus ~30% justified multiple — inilah kenapa asumsi Ke wajib diuji, bukan diterima mentah."},
+{q: "Provisi BBCA naik 49% YoY di FY24, tapi CoC tetap 0,3% dan coverage NPL 209%. Tafsir analis yang tepat?", opts: ["Sinyal awal deteriorasi — jual","Normalisasi provisi pasca-Covid dengan buffer tebal; tetap pantau LAR 5,0%","Provisi tidak memengaruhi laba bank","CoC 0,3% berarti tidak ada kredit macet"], answer: 1, diff: "Medium",
+ explain: "CoC 0,3% dari NPL 1,7% dengan coverage 209% = bank menaikkan cadangan dari posisi kuat (normalisasi pasca-Covid), bukan menambal lubang. Tapi LAR 5,0% (restru Covid) tetap wajib dipantau — di situlah risiko bersembunyi."},
+{q: "Dalam kondisi apa DDM dan residual income bisa memberi nilai yang BERBEDA?", opts: ["Tidak pernah — rumusnya identik","Ketika clean surplus jebol: buyback di atas/bawah book, OCI besar, atau dividen dari cadangan","Ketika payout di atas 100%","Ketika Ke lebih besar dari ROE"], answer: 1, diff: "Hard",
+ explain: "Kesetaraan DDM = RI bertumpu pada B_t = B_{t−1} + NI − Div. Buyback di atas book, revaluasi via OCI, atau setoran modal memutus rantai itu — analis bank wajib rekonsiliasi ekuitas, bukan mengasumsikan rumusnya selalu cocok."}
+],
+tasks: [
+{t: "Tugas A — Model residual income BBCA (±3 jam)", d: "Download workbook RC6. Kerjakan blok A (rekonsiliasi NIM), B (RI 2-tahap → nilai/saham → P/BV), C (justified 1-tahap + cross-check DDM), D (sensitivitas NIM −30bps). Semua rumus me-link ke asumsi.", url: ""},
+{t: "Tugas B — Uji taruhan pasar (±1 jam)", d: "Di file jawabanmu: ubah ROE terminal 16%→20% (franchise abadi), catat P/BV 2-tahap baru. Lalu ubah Ke 11,5%→13%, catat lagi. Tulis 2 kalimat: asumsi mana yang paling menentukan apakah 3,9x layak?"},
+{t: "Tugas C — Kuis di atas", d: "Target ≥5/7 benar."}
+],
+blind: {h: "Uji Kilat — angka beda", body: `
+<p><b>1.</b> NI Rp60tn, book Rp300tn, Ke 12%. Residual income = ?</p>
+<details class="ans"><summary>Jawaban</summary><p>60 &minus; 0,12&times;300 = Rp24tn.</p></details>
+<p><b>2.</b> ROE 18%, payout 50%, Ke 12%. Justified P/BV = ?</p>
+<details class="ans"><summary>Jawaban</summary><p>g = 9%; (0,18&minus;0,09)/(0,12&minus;0,09) = 3,0x.</p></details>`}
+},
+{id: "real-07", track: "Real Cases", title: "ADRO/Alamtri: Perusahaan yang Bukan Lagi Dirinya",
+sub: "Real Case 7 · ±5 jam · SOTP-NAV tambang",
+est: "5 jam",
+prerequisites: ["dcf", "model_3_statement"],
+driveFolder: "19_WRNJ84ntoN3NVr6sNumNUMA8CTv5Zc",
+audio: "assets/audio/real-07.mp3",
+checker: "real-07",
+sections: [
+{h: "Kenapa FY24 vs FY23 tidak comparable?", body: `
+<p>Lihat headline-nya: revenue <b>$6.518jt (FY23) → $2.080jt (FY24)</b>, turun <b>68,1%</b>. Laba $1.641jt → $1.380jt. Analis junior menyimpulkan 'kinerja anjlok'. Analis associate bertanya dulu: <b>apakah ini perusahaan yang sama?</b></p>
+<div class="callout"><b>📋 Status data:</b> angka headline dari TipRanks/BRIDS (diakses 1 Nov 2026). Pada <b>5 Desember 2024</b>, aset thermal coal di-spin-off ke <b>PT Adaro Andalan Indonesia (AADI)</b> yang tercatat terpisah di IDX — dan perusahaan berganti nama menjadi <b>PT Alamtri Resources Indonesia Tbk</b> (2024). Per Juni 2024, AAI mencakup <b>53% aset, 89% revenue, 105% laba bersih</b> grup (IEEFA + alamtri.com). FY24 vs FY23 bukan kinerja — ini <b>diskontinuitas akuntansi</b>.</div>
+<div class="example jebakan"><div class="lbl">🚫 Jebakan headline</div>
+<p>Membandingkan $6.518jt vs $2.080jt sebagai 'pertumbuhan −68%' = membandingkan perusahaan <b>dengan</b> thermal coal vs <b>tanpa</b> thermal coal. Yang benar: pakai angka <b>FY23 RESTATED</b> (discontinued operations, SFAS 105 / PSAK) dari LK audited — di mana AAI sudah dikeluarkan dari kedua tahun. Rekonstruksi ilustratif dari porsi AAI: revenue continuing ≈ 11% × $6.518jt = <b>$717jt</b>; laba continuing ≈ (1 − 1,05) × $1.641jt = <b>−$82jt</b>. Ya — versi ilustratifnya, bisnis yang tersisa <b>merugi</b> di FY23. Itulah kenapa analis profesional tidak pernah memakai angka headline mentah.</p></div>
+<div class="callout"><b>Kenapa ini pelajaran associate?</b> Di semua case sebelumnya, datanya 'bersih'. Di dunia nyata, <b>perimeter perusahaan berubah</b> (spin-off, akuisisi, dekonsolidasi) dan agregator tidak selalu merestate. Skill-nya: buka catatan LK → cari 'discontinued operations' → pakai angka restated. (Real-07 § Kenapa spin-off bisa jadi jebakan nilai?)</p>`},
+{h: "Kenapa valuasinya SOTP, bukan satu multiple?", body: `
+<div class="formula">Equity = NAV tambang + Nilai SIS + NPV smelter + 15% AADI + Net cash − Holding discount</div>
+<p>Alamtri pasca-spin adalah konglomerat <b>4 kaki</b>: (1) <b>Adaro Minerals (ADMR)</b> — batubara metalurgi; (2) <b>Saptaindra Sejati (SIS)</b> — jasa kontraktor tambang; (3) <b>energi & smelter aluminium KAI</b> fase 1 500rb ton/tahun (commissioning 2026); (4) <b>15% saham AADI</b> (tidak dikonsolidasi). Satu multiple P/E atau EV/EBITDA untuk keempatnya = menilai 4 bisnis beda risiko dengan satu harga — tidak bermakna.</p>
+<div class="example korporat"><div class="lbl">🏢 Hasil SOTP (angka kerja, $ juta)</div>
+<p>NAV ADMR <b>$1.976jt</b> + SIS <b>$750jt</b> (ilustratif) + smelter <b>$236jt</b> (ilustratif) + 15% AADI <b>$375jt</b> (ilustratif) = EV SOTP <b>$3.337jt</b>. Tambah net cash <b>$1.557jt</b> (akhir 1H24) → equity <b>$4.894jt</b>. Dengan holding discount ilustratif 20% → <b>$3.915jt</b>. Yang dinilai di sini <b>mekaniknya</b>: tiap kaki punya metode yang tepat untuk karakternya.</p></div>
+<div class="callout"><b>Kenapa kaki-kakinya beda metode?</b> Tambang punya umur cadangan → <b>NAV depletion</b>. SIS jasa → <b>multiple</b>. Smelter belum berproduksi → <b>DCF bertahap / real option</b>. 15% AADI → <b>nilai pasar</b> (bukan konsolidasi). SOTP = memilih senjata yang tepat per target, lalu menjumlahkan. (Real-02 memakai logika yang sama untuk Astra.)</p>`},
+{h: "Kenapa NAV tambang dihitung dengan depletion?", body: `
+<div class="formula">Mine life = Reserves ÷ Deplesi tahunan &nbsp;→&nbsp; NAV = FCF × (1 − (1+WACC)^−life) / WACC</div>
+<p>Tambang bukan mesin abadi — ia <b>menyusut</b>. ADMR: reserves <b>177Mt</b> (31 Des 2024) ÷ penjualan <b>5,62Mt/tahun</b> = <b>31,5 tahun</b> mine life. Setelah itu, nol. DCF standar dengan terminal value 'tumbuh selamanya' <b>salah secara konsep</b> untuk tambang: tidak ada 'selamanya'.</p>
+<div class="example korporat"><div class="lbl">🏢 Depletion ADMR (angka kerja)</div>
+<p>Revenue $1.154jt ÷ 5,62Mt = <b>$205/ton</b>. Margin EBITDA ternormalisasi ilustratif 35% → EBITDA $404jt → FCF tahunan <b>$208jt</b> (setelah pajak 25%, D&A & sustaining capex ilustratif). Faktor anuitas 10% selama 31,5 tahun = <b>9,503</b>. NAV = 208 × 9,503 = <b>$1.976jt</b> — kontributor terbesar SOTP (59% EV).</p></div>
+<div class="example jebakan"><div class="lbl">🚫 Reserves ≠ resources</div>
+<p>Resources metalurgi <b>983Mt</b> — lima setengah kali reserves. Pemula memakai 983Mt → mine life 175 tahun → NAV fantastis. Salah: <b>resources belum terbukti ekonomis</b> (belum studi kelayakan, belum izin, belum infrastruktur). NAV hanya memakai <b>reserves</b> (177Mt): yang bankable. Sensitivitasnya nyata — jika hanya 120Mt yang recoverable, mine life 21,4 tahun dan NAV jatuh ke <b>$1.808jt</b> (−$168jt). (Lihat Hell Mode.)</p></div>`},
+{h: "Kenapa smelter dinilai sebagai real option?", body: `
+<p>Smelter aluminium KAI: capex <b>$300–325jt</b> (guidance ADMR 2025, sudah termasuk smelter), revenue <b>nol sampai commissioning 2026</b>. DCF standar melihat ini sebagai: keluar $300jt sekarang, dapat ketidakpastian nanti — dan menghukumnya habis-habisan.</p>
+<div class="callout"><b>Kenapa framing-nya opsi, bukan DCF biasa?</b> Smelter adalah <b>hak (bukan kewajiban) atas arus kas masa depan</b>: jika harga aluminium jatuh permanen, ekspansi fase 2 bisa dibatalkan — rugi terbatas pada capex fase 1. DCF standar mengasumsikan komitmen buta; <b>real option</b> menghargai fleksibilitas manajemen. NPV ilustratif: FCF stabil $60jt/thn dari 2027, WACC 12%, g 2% → PV $536jt − capex $300jt = <b>$236jt</b> ≥ 0. Kecil dibanding NAV tambang — tapi <b>opsinya</b> (fase 2, hilirisasi) yang berharga.</div>
+<div class="example korporat"><div class="lbl">🏢 Trade-off sesungguhnya: capex vs dividen</div>
+<p>Alamtri duduk di <b>net cash $1.557jt</b>. Setiap dolar ke smelter = dolar yang <b>tidak</b> kembali ke pemegang saham sebagai dividen. Pertanyaan associate bukan 'berapa NPV smelter', tapi: <b>apakah $300jt+ ini menciptakan nilai lebih besar daripada dikembalikan ke pemegang saham?</b> Dengan NPV ilustratif $236jt > 0, jawabannya 'ya, di atas kertas' — tapi eksekusi (commissioning 2026, harga aluminium) adalah risikonya. Di sinilah thesis defense dimenangkan atau kalah.</p></div>`},
+{h: "Kenapa spin-off bisa jadi jebakan nilai?", body: `
+<p>Pertanyaan paling associate dari case ini: <b>apakah spin-off menciptakan nilai, atau hanya memindahkannya?</b> Uji yang benar: bandingkan nilai <b>pre-spin</b> (grup utuh) vs <b>post-spin</b> (SOTP Alamtri + 85% AADI yang dibagikan ke pemegang saham ADRO). Spin-off tidak mencetak nilai dari udara — ia hanya memisahkan.</p>
+<div class="example jebakan"><div class="lbl">🚫 Dua jebakan spin-off</div>
+<p><b>1. Ilusi 'menciptakan nilai'.</b> Jika jumlah post-spin > pre-spin, tanyakan: dari mana selisihnya? Kandidat jujur: holding discount yang hilang (pasar menghargai fokus), atau multiple re-rating tiap bagian. Kandidat tidak jujur: kamu membandingkan angka yang tidak sebanding (headline vs restated — kembali ke §1).<br/><b>2. Sudut ESG.</b> IEEFA/BankTrack menilai spin-off ini sebagai <b>manuver pembiayaan</b>: bank dengan kebijakan coal-exit bisa kembali membiayai entitas 'bersih'. Ini bahan thesis defense — pasar ESG-sensitive bisa memberi diskon justru karena strukturnya.</p></div>
+<div class="callout"><b>Kenapa 15% AADI tidak dikonsolidasi?</b> Di bawah 20% (PSAK 15 / IAS 28) = tidak ada pengendalian/signifikansi untuk konsolidasi penuh — dicatat sebagai investasi (nilai pasar/wajar), bukan digabung line-by-line. Praktisnya: revenue AADI <b>tidak</b> menambah revenue Alamtri; yang masuk SOTP hanya <b>15% × nilai pasar AADI</b> ($375jt ilustratif). Salah kaprah umum: menjumlahkan revenue AADI ke revenue grup.</p>`},
+{h: "🔥 Bekal Hell Mode", body: `
+<ul>
+<li><b>Discontinued operations</b> (SFAS 105/PSAK): aset yang dilepas dikeluarkan dari angka restated — headline vs restated bisa beda 68%.</li>
+<li><b>SOTP</b> = sum-of-the-parts: tiap kaki konglomerat dinilai dengan metode yang cocok karakternya.</li>
+<li><b>NAV tambang</b> = depletion DCF: mine life = reserves ÷ deplesi tahunan; <b>tidak ada terminal value 'selamanya'</b>.</li>
+<li><b>Reserves ≠ resources</b>: hanya reserves (terbukti ekonomis) yang masuk NAV.</li>
+<li><b>Real option</b>: proyek pra-revenue (smelter) dinilai sebagai hak atas arus kas masa depan, bukan DCF buta.</li>
+<li><b>Holding discount</b>: pasar menghargai konglomerat di bawah jumlah bagiannya — jelaskan gap-nya.</li>
+<li><b>Net cash</b> ditambahkan ke EV SOTP untuk dapat equity (seperti net debt dikurangkan di Real-02).</li>
+</ul>`}
+],
+quiz: [
+{q: "Revenue FY23 $6.518jt vs FY24 $2.080jt. Analis junior: 'kinerja anjlok 68%'. Kesalahannya?", opts: ["Salah hitung — penurunannya 32%","Membandingkan perusahaan yang beda perimeter (spin-off AAI)","Lupa mengonversi kurs dolar","FY24 belum diaudit sehingga tak valid"], answer: 1, k: "discontinued_ops", diff: "Medium",
+ hints: ["Apa yang keluar dari grup pada Des 2024?", "AAI = 89% revenue grup. Bandingkan apel vs apel."],
+ explain: "5 Des 2024 aset thermal coal (AAI: 89% revenue, 105% laba) di-spin-off ke AADI. $6.518jt vs $2.080jt = perusahaan DENGAN vs TANPA thermal coal — bukan kinerja. Pakai FY23 restated. (Real-07 § Kenapa FY24 vs FY23 tidak comparable?)"},
+{q: "Angka mana yang benar untuk analisis YoY pasca-spin-off?", opts: ["FY23 headline $6.518jt","FY23 restated (discontinued ops dikeluarkan)","Rata-rata FY23–FY24 headline","FY24 diproyeksikan setahun penuh"], answer: 1, k: "discontinued_ops", diff: "Easy",
+ hints: ["SFAS 105 / PSAK discontinued operations.", "Headline mencampur dua perimeter berbeda."],
+ explain: "Hanya FY23 restated (AAI sudah dikeluarkan dari kedua tahun) yang apple-to-apple. Headline $6.518jt mencampur perimeter lama. (Real-07 § Kenapa FY24 vs FY23 tidak comparable?)"},
+{q: "Mine life tambang ADMR?", opts: ["983 ÷ 6,63 = 148 tahun","177 ÷ 5,62 = 31,5 tahun","177 ÷ 6,63 = 26,7 tahun","983 ÷ 5,62 = 175 tahun"], answer: 1, k: "mine_life", diff: "Easy",
+ hints: ["Reserves atau resources? Penjualan atau produksi?", "NAV pakai yang bankable dibagi deplesi aktual."],
+ explain: "Reserves 177Mt ÷ penjualan 5,62Mt = 31,5 tahun. Resources (983Mt) belum bankable; produksi (6,63Mt) bukan deplesi terjual. (Real-07 § Kenapa NAV tambang dihitung dengan depletion?)"},
+{q: "Kenapa NAV memakai reserves 177Mt, bukan resources 983Mt?", opts: ["Karena 177 angka yang lebih kecil","Reserves = terbukti ekonomis & bankable; resources belum","Agar mine life tidak terlalu panjang","Aturan PSAK melarang memakai resources"], answer: 1, k: "reserves", diff: "Medium",
+ hints: ["Apa beda 'terbukti bisa ditambang untung' vs 'ada di tanah'?", "Bank meminjamkan atas dasar yang mana?"],
+ explain: "Reserves sudah lolos studi kelayakan ekonomis — resources baru potensi geologis. NAV = nilai yang bisa dimonetisasi. (Real-07 § Kenapa NAV tambang dihitung dengan depletion?)"},
+{q: "Equity value SOTP Alamtri (angka kerja) = ?", opts: ["$3.337jt (EV SOTP — lupa tambah net cash)","$3.915jt (sudah dipotong holding discount)","$4.894jt (EV SOTP + net cash $1.557jt)","$6.518jt (revenue FY23 headline)"], answer: 2, k: "sotp", diff: "Medium",
+ hints: ["EV = untuk semua pemodal. Equity = milik pemegang saham.", "Net cash $1.557jt milik siapa?"],
+ explain: "EV SOTP $3.337jt (1976+750+236+375) + net cash $1.557jt = equity $4.894jt. $3.915jt = setelah holding discount 20%. (Real-07 § Kenapa valuasinya SOTP?)"},
+{q: "Smelter KAI dinilai sebagai real option karena?", opts: ["Opsi selalu lebih akurat dari DCF","Capex besar sekarang, revenue nol s/d 2026 — DCF buta menghukum fleksibilitas","Smelter tidak butuh capex","Aluminium bukan komoditas siklikal"], answer: 1, k: "real_option", diff: "Medium",
+ hints: ["Bayar $300jt hari ini, dapat ketidakpastian 2026.", "Fase 2 bisa dibatalkan — rugi terbatas. Itu bentuk apa?"],
+ explain: "Smelter = hak atas arus kas masa depan dengan rugi terbatas (bisa stop di fase 1). DCF standar mengasumsikan komitmen buta; real option menghargai fleksibilitas. (Real-07 § Kenapa smelter dinilai sebagai real option?)"},
+{q: "Alamtri pegang 15% AADI — kenapa tidak dikonsolidasi penuh?", opts: ["Karena AADI perusahaan terpisah di IDX","Di bawah 20% (PSAK 15/IAS 28) — dicatat sebagai investasi","Karena spin-off belum selesai","Karena AADI merugi"], answer: 1, k: "consolidation", diff: "Hard",
+ hints: ["Ambang batas signifikansi pengendalian?", "Konsolidasi penuh butuh pengendalian, bukan sekadar punya saham."],
+ explain: "Di bawah 20% = tidak ada pengendalian/signifikansi untuk konsolidasi line-by-line (PSAK 15/IAS 28). Masuk SOTP sebagai 15% × nilai pasar, bukan penjumlahan revenue. (Real-07 § Kenapa spin-off bisa jadi jebakan nilai?)"},
+{q: "Net cash $1.557jt dalam SOTP diperlakukan bagaimana?", opts: ["Dikurangkan seperti utang","Diabaikan — kas bukan aset operasi","Ditambahkan ke EV SOTP → equity","Dibagi ke tiap kaki SOTP"], answer: 2, k: "net_cash", diff: "Medium",
+ hints: ["EV = milik semua pemodal. Kas milik siapa?", "Kebalikan dari net debt di Real-02."],
+ explain: "Kas bersih milik pemegang saham → EV SOTP + net cash = equity $4.894jt. Cerminan dari 'EV − net debt' di Real-02. (Real-07 § Kenapa valuasinya SOTP?)"}
+],
+hellPass: 80,
+hell: [
+{q: "ADMR: penjualan +26%, ASP −16%. Perubahan revenue implisit?", opts: ["+10% (26−16)","−16% (harga yang menentukan)","1,26 × 0,84 − 1 = +5,8% ≈ +6% reported","+30% (ikut produksi)"], answer: 2, diff: "Medium",
+ explain: "Efek volume × efek harga: 1,26 × 0,84 = 1,0584 → +5,8%, cocok dengan reported +6%. Produksi +30% ≠ penjualan +26% — yang jadi revenue adalah yang TERJUAL. (Real-07 § data ADMR)"},
+{q: "Hanya 120Mt reserves yang recoverable (bukan 177Mt). NAV ADMR baru?", opts: ["Tetap $1.976jt — reserves tak sensitif","$1.808jt (life 21,4 thn, anuitas 8,69)","120/177 × $1.976jt = $1.339jt","Naik — tambang lebih fokus"], answer: 1, diff: "Hard",
+ explain: "Life = 120/5,62 = 21,4 thn; anuitas 10% = 8,69; NAV = 207,9 × 8,69 = $1.808jt (−$168jt). Bukan proporsional linear karena anuitas melengkung — itulah kenapa sensitivitas dihitung, bukan ditebak."},
+{q: "Equity SOTP $4.894jt, terapkan holding discount 20%. Hasil?", opts: ["$4.894jt (discount tidak dihitung)","$5.873jt (malah ditambah)","$3.915jt","$3.337jt"], answer: 2, diff: "Medium",
+ explain: "4.894 × (1 − 0,20) = $3.915jt. Discount = pasar membayar di bawah jumlah bagian-bagiannya — sebuah pertanyaan (kenapa?), bukan vonis beli. (Real-07 § Kenapa valuasinya SOTP?)"},
+{q: "FY23 continuing (restated, ilustratif) = laba −$82jt. Kesimpulan analis yang jujur?", opts: ["Bisnisnya hancur — hindari","Bisnis tersisa belum tentu profitable; valuasi bertumpu pada aset & opsi masa depan","Angka ilustratif = tak ada artinya","Spin-off gagal total"], answer: 1, diff: "Hard",
+ explain: "AAI menyumbang 105% laba grup — artinya continuing ops (ilustratif) merugi $82jt. Valuasi Alamtri bertumpu pada NAV cadangan + opsi smelter/energi, BUKAN earnings power historis. Itu mengubah seluruh thesis."},
+{q: "Apakah spin-off ADRO→AADI 'menciptakan nilai'? Uji yang benar?", opts: ["Lihat harga saham naik/turun pasca-spin","Bandingkan nilai pre-spin vs (SOTP Alamtri + 85% AADI yang dibagikan)","Tanya manajemen — mereka pasti tahu","Spin-off selalu menciptakan nilai"], answer: 1, diff: "Hard",
+ explain: "Spin-off memisahkan, bukan mencetak nilai. Uji: nilai grup utuh pre-spin vs jumlah bagian post-spin yang diterima pemegang saham. Selisihnya harus dijelaskan (hilangnya holding discount? re-rating?) — bukan diasumsikan. (Real-07 § Kenapa spin-off bisa jadi jebakan nilai?)"}
+],
+tasks: [
+{t: "Tugas A — SOTP Alamtri (±4 jam)", d: "Download workbook RC7. Langkah 1: temukan keanehan headline FY23 vs FY24, restate FY23 (ilustratif). Langkah 2: bangun 4 kaki SOTP (NAV depletion ADMR, multiple SIS, real-option smelter, 15% AADI) → EV → + net cash → equity → holding discount. Semua rumus link ke input.", url: "PENDING-DRIVE"},
+{t: "Tugas B — Stress test (±1 jam)", d: "ASP turun permanen 20%: hitung ulang FCF & NAV ADMR. Lalu: reserves hanya 120Mt — NAV baru? Kaki mana yang paling 'berbahaya' bagi valuasi, dan kenapa?"},
+{t: "Tugas C — Kuis di atas", d: "Target ≥6/8 benar."}
+],
+blind: {h: "Uji Kilat — angka beda", body: `
+<p><b>1.</b> Reserves 120Mt, penjualan 6Mt/tahun. Mine life?</p>
+<details class="ans"><summary>Jawaban</summary><p>120 ÷ 6 = <b>20 tahun</b>.</p></details>
+<p><b>2.</b> FCF $150jt/tahun, WACC 10%, life 20 tahun. NAV?</p>
+<details class="ans"><summary>Jawaban</summary><p>Anuitas = (1 − 1,1^−20)/0,1 = 8,5136. NAV = 150 × 8,5136 = <b>$1.277jt</b>.</p></details>
+<p><b>3.</b> EV SOTP $3.000jt, net cash $1.500jt, holding discount 15%. Equity final?</p>
+<details class="ans"><summary>Jawaban</summary><p>Equity = (3.000 + 1.500) × (1 − 0,15) = <b>$3.825jt</b>.</p></details>`}
+},
+{
+id: "real-08", track: "Real Cases", title: "GOTO: Rugi Rp90 Triliun, Lalu Apa?",
+sub: "Real Case 8 · ±6 jam · SOTP + normalisasi one-off",
+est: "6 jam",
+prerequisites: ["sotp", "model_3_statement"],
+driveFolder: "1OrN9fj9jdgSuuC2JertPlAWps4zTRbHX",
+audio: "assets/audio/real-08.mp3",
+checker: "real-08",
+sections: [
+{h: "Kenapa rugi Rp90,5 triliun bukan berarti bisnisnya hancur?", body: `
+<p><b>GoTo (GOTO.JK)</b> membukukan rugi <b>−Rp90,5 triliun di FY2023</b> (AlphaSpread, income from continuing operations, diakses Nov 2026) — angka yang kalau dibaca mentah terdengar seperti perusahaan menguapkan kas Rp90,5T dalam setahun. Ia tidak.</p>
+<p>Dari Rp90,5T itu, sekitar <b>Rp78,8 triliun adalah pembalikan goodwill non-kas</b> akibat <i>loss of control</i> atas Tokopedia dalam transaksi TikTok (rilis hasil GoTo, 19 Mar 2024). Goodwill Rp93,1T sendiri dicatat tahun 2021 saat merger Gojek–Tokopedia (LK audited 2022, catatan 33a): harga yang dibayar untuk <i>ekspektasi</i> — bukan kas yang keluar tahun 2023.</p>
+<div class="example korporat"><div class="lbl">🏢 Analogi</div>
+<p>Kamu beli lukisan Rp93 juta karena yakin bakal naik. Tiga tahun kemudian penilai bilang cuma laku Rp14 juta. Kamu "rugi" Rp79 juta <b>di kertas</b> — tapi dompetmu tidak berkurang Rp79 juta tahun ini. Itulah goodwill impairment: pengakuan bahwa ekspektasi masa lalu terlalu optimis, bukan pendarahan kas hari ini.</p></div>
+<div class="callout"><b>Kenapa ini penting?</b> Arus kas operasi GoTo FY2023 hanya <b>−Rp4,3tn</b> (AlphaSpread) — bukan −Rp90,5tn. Dan <b>adjusted EBITDA FY2024 justru positif Rp386 miliar</b>, melampaui guidance impas (rilis GoTo, 12 Mar 2025). Akuntansi mencatat masa lalu; kas menceritakan masa kini. Analis yang tidak memisahkan keduanya sedang menilai bayangan, bukan bendanya.</p>`},
+{h: "Kenapa normalisasi one-off adalah THE exercise?", body: `
+<div class="formula">Rugi continuing = Rugi headline − One-off = −90,5 − (−78,8) = −Rp11,7T</div>
+<p>Normalisasi = membersihkan angka headline dari pos sekali jalan sebelum dipakai menilai. Setelah dibersihkan, ceritanya berubah total:</p>
+<p><b>−Rp11,7T</b> (FY23 continuing) → <b>−Rp4,5T</b> (FY24, ≈$286jt per analisis independen venturesg, Okt 2026) → <b>−Rp1,5T</b> (FY25, rilis GoTo 11 Mar 2026) → <b>laba bersih +Rp864 miliar</b> (9M26, Quartr 30 Okt 2026). Dari "hancur" menjadi "menuju impas" — hanya karena kita berhenti menilai pos non-kas satu kali seolah ia rugi operasional.</p>
+<div class="example jebakan"><div class="lbl">🚫 Jebakan P/E</div>
+<p>EPS FY23 negatif → P/E <b>tidak bermakna</b> (negatif/tak terdefinisi). Perusahaan rugi dinilai dengan <b>EV/Revenue atau SOTP</b>, bukan P/E. Bahkan setelah GOTO mencetak laba (LTM EPS +Rp0,63 per StockAnalysis, Okt 2026), P/E dari dua kuartal laba pertama dalam sejarah = rapuh. Multiple butuh laba yang <i>berulang</i>, bukan yang baru lahir kemarin.</p></div>
+<div class="callout"><b>⚠️ Jembatan yang disederhanakan:</b> −Rp11,7T adalah jembatan ilustratif (satu one-off besar dikurangkan). Rekonsiliasi penuh — termasuk one-off FY22 (impairment goodwill Rp11T, kr-asia Mar 2023) dan efek pajak — ada di LK audited. Yang dinilai di sini adalah <b>mekanik normalisasimu</b>, bukan presisi angkanya.</p>`},
+{h: "Kenapa pertumbuhan +7,5% menipu? (dekonsolidasi & pro-forma)", body: `
+<p>Headline: revenue <b>Rp14,8T → Rp15,89T (+7,4%)</b>. Kelihatannya stagnan. Tapi FY2023 masih <b>mengkonsolidasi Tokopedia</b>; Tokopedia keluar dari konsolidasi pada <b>31 Jan 2024</b> setelah TikTok mengambil 75,01%. Membandingkan GAAP FY23 vs FY24 = membandingkan apel dengan kebun apel.</p>
+<p>GoTo sendiri menerbitkan angka <b>pro-forma</b> (tanpa Tokopedia): <b>Rp7,652T (FY23) → Rp14,753T (FY24) = +92,8%</b> (rilis GoTo, 12 Mar 2025). Bisnis yang berlanjut tumbuh hampir dua kali lipat — headline +7,4% menyembunyikannya.</p>
+<div class="example korporat"><div class="lbl">🏢 Satu deal, tiga aliran nilai</div>
+<p>Transaksi TikTok (Des 2023, nilai diumumkan <b>$1,5 miliar untuk 75,01%</b> — i3investor/TheEdge, Jul 2024) memberi GoTo tiga kaki nilai: <b>(1)</b> saham 24,99% di Tokopedia, <b>(2)</b> fee jasa e-commerce (FY24: Rp622m → FY25: Rp820m, +32%), <b>(3)</b> royalti ~0,4% dari GMV (≈$58jt/tahun, nyaris tanpa biaya). Analis SOTP harus menilai ketiganya — bukan cuma sahamnya.</p></div>
+<div class="callout"><b>Kenapa pro-forma wajib?</b> Setiap kali struktur perusahaan berubah (akuisisi, divestasi, dekonsolidasi), angka GAAP antar-tahun tidak <i>apple-to-apple</i>. Pro-forma = "bagaimana angkanya <i>jika</i> strukturnya sudah seperti hari ini sejak awal". Tanpa ini, kamu menilai perubahan akuntansi sebagai kinerja bisnis.</p>`},
+{h: "Kenapa SOTP tiga kaki — dan kenapa pasar mendiskonnya?", body: `
+<p>GOTO bukan satu bisnis: <b>on-demand</b> (Gojek), <b>fintech</b> (GoPay), dan <b>24,99% Tokopedia</b>. Satu multiple untuk semuanya = menilai 3 rumah dengan 1 harga per meter. SOTP menilai tiap kaki:</p>
+<p>① <b>On-demand:</b> revenue FY24 Rp5,34T (rilis FY25) × <b>2,5× EV/Revenue</b> (ilustratif) = <b>Rp13,35T</b>.<br>
+② <b>Fintech:</b> EBITDA FY26E $94–100jt → titik tengah $97jt ≈ Rp1,75T × <b>8× EV/EBITDA</b> (ilustratif) = <b>Rp13,98T</b>.<br>
+③ <b>Tokopedia 24,99%:</b> $1,5B ÷ 75,01% × 24,99% = $0,50B ≈ <b>Rp9,0T</b> (kurs Rp18.014, BI 16 Okt 2026) — <i>anchor</i> dari harga transaksi riil.<br>
+④ <b>Kas bersih</b> $858jt ≈ <b>Rp15,46T</b> (venturesg, Okt 2026).<br>
+<b>Total SOTP ≈ Rp51,79T → Rp45/saham</b> (1,15 triliun saham, pasca-pembatalan treasury 14 Okt 2026). Harga pasar: kapitalisasi Rp25,6T → <b>Rp22/saham</b> (StockAnalysis, 30 Okt 2026). <b>Diskon ≈ 50,6%.</b></p>
+<div class="example jebakan"><div class="lbl">🚫 Diskon = pertanyaan, bukan jawaban</div>
+<p>Kandidat penjelasan pasar: beban korporat tunai Rp772m/tahun (FY24), <i>loan book</i> konsumer $611jt (+58% YoY, <i>unsecured</i> — 2Q26), saham dual-class (insider pegang ~58% suara), politik merger Grab, dan royalti yang bergantung pada TikTok. Mungkin pasar terlalu pesimis — mungkin pasar tahu sesuatu yang modelmu abaikan. Tugas analis: <b>menjelaskan gap</b>, bukan mengasumsikan pasar bodoh.</p></div>
+<div class="callout"><b>⚠️ Kaki fintech = opsi, bukan kepastian:</b> ia memakai EBITDA <i>forward</i> FY26E untuk bisnis yang baru pertama kali laba di 2026 — membayar hari ini untuk laba masa depan dengan multiple ganda (risiko proyeksi × risiko multiple). Di Tugas B kamu akan mengujinya: turunkan multiple 8×→5×, berapa nilai/saham yang tersisa?</p>`},
+{h: "Kenapa agregator bisa menyesatkanmu?", body: `
+<p>Kasus GOTO adalah museum jebakan data. Tiga contoh nyata dari riset case ini:</p>
+<p><b>1. D&A yang tidak konsisten.</b> AlphaSpread menampilkan D&A FY24 <b>Rp744 miliar</b> di satu tabel dan <b>Rp2,7 triliun</b> di tabel lain. Keduanya tidak bisa benar bersamaan. Status: <b>flag — wajib rekonsiliasi ke LK audited</b> sebelum dipakai. Di workbook case ini D&A <i>sengaja tidak dipakai</i>.</p>
+<p><b>2. "Rugi FY24" punya tiga versi.</b> Rp3,08T (<i>loss for the period</i>, rilis GoTo Mar 2025) vs Rp5,46T (<i>net loss</i>, rilis GoTo Mar 2026) vs ~Rp4,5T ($286jt, venturesg). Bukan karena ada yang bohong — <b>definisinya beda</b>. Analis yang mengutip tanpa menyebut definisi sedang membandingkan tiga hal berbeda.</p>
+<p><b>3. Nilai deal vs kas dibayar.</b> "TikTok membayar $1,5B" (angka transaksi yang diumumkan) vs analisis independen: $840jt kas awal + komitmen pendanaan $1B+. <i>Anchor</i> valuasi memakai angka transaksi — tapi analis mencatat nuansanya.</p>
+<div class="callout"><b>Kenapa ini pelajaran associate?</b> Junior mengutip angka; associate <b>menyebut tahun + periode + sumber + definisi</b> untuk setiap angka — dan menandai yang belum terverifikasi sebagai ilustratif. Satu sumber = satu versi kebenaran; LK audited = jangkarnya.</p>`},
+{h: "Tugas praktik", body: `
+<p>Bangun normalisasi + pro-forma + SOTP GOTO di workbook latihan: (A) normalisasi rugi FY23 dari headline −Rp90,5T dengan one-off Rp78,8T; (B) hitung pertumbuhan headline vs pro-forma FY23→FY24; (C) bangun SOTP 3 kaki + kas bersih → nilai/saham → upside vs harga pasar. Semua sel jawaban harus rumus yang me-link ke input — ubah multiple on-demand 2,5×→1,5× dan lihat seluruh SOTP ikut bergerak.</p>
+<div class="callout"><b>Kenapa tugas ini penting?</b> Ini latihan paling "kotor" di seluruh Real Cases: one-off raksasa, dekonsolidasi, deal tiga lapis, dan data agregator yang bertentangan. Kalau kamu bisa merapikan GOTO, laporan keuangan "normal" akan terasa mudah.</p>
+<ul>
+<li><b>Normalisasi</b> = membersihkan one-off sebelum menilai; rugi continuing ≠ rugi headline.</li>
+<li><b>Pro-forma</b> = apple-to-apple setelah perubahan struktur (dekonsolidasi).</li>
+<li><b>SOTP</b> = tiap segmen dinilai dengan multiple-nya sendiri, lalu dijumlahkan.</li>
+<li><b>Anchor transaksi</b> = harga deal riil ($1,5B/75,01%) sebagai jangkar nilai wajar.</li>
+<li><b>Diskon vs SOTP</b> = 1 − harga pasar / nilai SOTP — sebuah pertanyaan, bukan vonis beli.</li>
+</ul>`}
+],
+quiz: [
+{q: "One-off Rp78,8T di FY2023 GOTO adalah?", opts: ["Kerugian kas dari operasional Gojek","Pembalikan goodwill non-kas akibat loss of control Tokopedia","Pembayaran utang bank yang jatuh tempo","Biaya marketing Tokopedia yang membengkak"], answer: 1, k: "one_off", diff: "Easy",
+ hints: ["Non-kas, satu kali, terkait transaksi TikTok.", "Goodwill dicatat 2021 saat merger; 2023 diakui 'terlalu optimis'."],
+ explain: "Rp78,8T = pembalikan goodwill non-kas akibat loss of control Tokopedia (rilis GoTo, 19 Mar 2024). Bukan kas keluar 2023 — pengakuan bahwa ekspektasi merger 2021 terlalu optimis. (Real-08 § Kenapa rugi Rp90,5 triliun…?)"},
+{q: "Rugi headline FY23 −Rp90,5T, one-off −Rp78,8T. Rugi continuing ternormalisasi?", opts: ["−Rp169,3T","−Rp11,7T","−Rp90,5T (tidak berubah)","−Rp78,8T"], answer: 1, k: "normalization", diff: "Medium",
+ hints: ["Rugi continuing = headline − one-off.", "−90,5 − (−78,8) = ? Perhatikan tanda."],
+ explain: "−90,5 − (−78,8) = −Rp11,7T. Tanda adalah segalanya: mengurangkan rugi one-off (bukan menambah) yang membersihkan angka. Salah tanda → −Rp169,3T, dua kali lipat lebih menyeramkan dari aslinya. (Real-08 § Kenapa normalisasi…?)"},
+{q: "Headline revenue +7,4% tapi pro-forma +92,8%. Penyebab bedanya?", opts: ["Kurs rupiah menguat tajam di 2024","FY23 masih mengkonsolidasi Tokopedia; dekonsolidasi 31 Jan 2024","GoTo mengubah tahun fiskal","Efek buyback saham 2024"], answer: 1, k: "pro_forma", diff: "Medium",
+ hints: ["Apple-to-apple: struktur harus sama.", "Kapan Tokopedia keluar dari laporan konsolidasi?"],
+ explain: "FY23 (GAAP) masih mencakup Tokopedia terkonsolidasi; sejak 31 Jan 2024 Tokopedia dekonsolidasi. Pro-forma Rp7,652T→Rp14,753T (+92,8%) membandingkan bisnis berlanjut saja. (Real-08 § Kenapa +7,5% menipu?)"},
+{q: "TikTok membayar $1,5B untuk 75,01% Tokopedia. Nilai implisit 100% Tokopedia?", opts: ["$1,125B","$1,5B","$2,0B","$2,5B"], answer: 2, k: "sotp", diff: "Medium",
+ hints: ["Nilai 100% = harga deal ÷ porsi yang dibeli.", "1,5 ÷ 0,7501 = ?"],
+ explain: "$1,5B ÷ 75,01% = $1,9997B ≈ $2,0B. Inilah anchor transaksi: harga yang benar-benar dibayar pihak ketiga, bukan tebakan analis. (Real-08 § Kenapa SOTP tiga kaki…?)"},
+{q: "Nilai 24,99% Tokopedia milik GoTo dalam rupiah (kurs Rp18.014)?", opts: ["Rp4,5T","Rp6,0T","Rp9,0T","Rp13,5T"], answer: 2, k: "sotp", diff: "Hard",
+ hints: ["0,2499 × $1,9997B = $0,4997B.", "$0,4997B × 18.014 = ? Jaga tangga satuan: miliar USD → triliun Rp."],
+ explain: "0,2499 × $1,9997B = $0,4997B; × Rp18.014 = Rp9,0T. Tangga satuan: $499,7 juta × 18.014 = Rp9.002 miliar = Rp9,0 triliun. (Real-08 § Kenapa SOTP tiga kaki…?)"},
+{q: "SOTP total Rp51,79T dengan 1,15 triliun saham. Nilai/saham?", opts: ["Rp22","Rp31","Rp45","Rp51"], answer: 2, k: "sotp", diff: "Hard",
+ hints: ["Triliun ÷ triliun = satuan Rp langsung.", "51,79 ÷ 1,15 = ?"],
+ explain: "51,79 ÷ 1,15 = Rp45,03 ≈ Rp45/saham. Karena pembilang dan penyebut sama-sama triliun, hasilnya langsung rupiah per saham — tanpa ×1.000. (Real-08 § Kenapa SOTP tiga kaki…?)"},
+{q: "Kenapa P/E trailing tidak dipakai menilai GOTO FY23–FY24?", opts: ["Karena GOTO tidak punya saham beredar","EPS negatif → P/E tak bermakna; pakai EV/Revenue atau SOTP","Karena P/E dilarang untuk emiten teknologi","Karena laba GOTO selalu nol"], answer: 1, k: "multiples", diff: "Medium",
+ hints: ["P/E = harga ÷ laba. Laba negatif → ?", "Perusahaan rugi dinilai dari apa?"],
+ explain: "EPS negatif membuat P/E negatif/tak terdefinisi — multiple-nya tidak bermakna. Perusahaan rugi dinilai via EV/Revenue atau SOTP per segmen. (Real-08 § Kenapa normalisasi…?)"}
+],
+hellPass: 80,
+hell: [
+{q: "Adjusted EBITDA FY24 +Rp386m tapi rugi bersih −Rp4,5T. Kok bisa?", opts: ["Laporan keuangannya dipalsukan","Adjusted EBITDA mengeluarkan pos non-kas & one-off (SBC, depresiasi); rugi bersih akuntansi ≠ kas operasi","Rp386m itu sebenarnya Rp386T","Rugi bersih sudah termasuk laba 2025"], answer: 1, diff: "Medium",
+ explain: "Adjusted EBITDA = laba sebelum bunga, pajak, depresiasi, amortisasi, SBC, dan one-off. Ia mengukur daya kas operasi inti; rugi bersih akuntansi memuat semua beban non-kas. Keduanya benar — menjawab pertanyaan berbeda."},
+{q: "Kaki fintech memakai EBITDA FY26E (forward). Bahaya terbesarnya?", opts: ["Tidak ada — guidance selalu tepat","Risiko ganda: membayar hari ini untuk laba masa depan yang bisa meleset, dengan multiple yang juga tebakan","Kurs rupiah pasti menguat","EBITDA forward dilarang standar akuntansi"], answer: 1, diff: "Hard",
+ explain: "Forward multiple = bertaruh dua kali: (1) EBITDA 2026 benar-benar $94–100jt (bisnis baru pertama laba 2026), (2) multiple 8× pantas. Meleset di salah satu → kaki fintech SOTP runtuh. Itulah kenapa ia dilabeli 'opsi', bukan 'nilai pasti'."},
+{q: "SOTP Rp45 vs pasar Rp22. Kesimpulan analis yang jujur?", opts: ["Beli agresif — upside 102% pasti","Jual — pasar selalu benar","Jelaskan dulu kenapa ada diskon 51% (beban korporat, loan book, governance); diskon = pertanyaan","Naikkan multiple sampai upside terlihat wajar"], answer: 2, diff: "Hard",
+ explain: "Diskon 51% adalah pertanyaan, bukan vonis beli. Kandidat: beban korporat Rp772m/thn, loan book $611jt unsecured, dual-class 58% suara, politik merger. Analis jujur tidak memijat multiple agar cerita terlihat bagus."},
+{q: "Royalti 0,4% GMV ≈ $58jt/tahun 'nyaris tanpa biaya'. Kenapa analis tetap hati-hati?", opts: ["Karena royalti selalu nol","Alirannya bergantung pada TikTok (pihak ketiga): GMV bisa turun, syarat deal bisa berubah","Karena royalti tidak tercatat di laporan","Karena $58jt terlalu kecil untuk dihitung"], answer: 1, diff: "Medium",
+ explain: "Tiga kaki deal TikTok semuanya bergantung pada pihak yang tidak dikendalikan GoTo. Royalti 'murni' hari ini bisa menyusut jika GMV TikTok Shop turun atau syarat dinegosiasi ulang. Nilai tanpa kendali = nilai dengan diskon risiko."},
+{q: "D&A agregator: Rp744m di satu tabel, Rp2,7T di tabel lain (FY24). Tindakan analis?", opts: ["Pakai rata-ratanya Rp1,7T","Pilih yang lebih kecil agar valuasi bagus","Jangan pakai keduanya; rekonsiliasi ke LK audited — flag sebagai data bermasalah","Abaikan D&A selamanya di semua valuasi"], answer: 2, diff: "Hard",
+ explain: "Dua angka yang tidak bisa benar bersamaan = sinyal berhenti, bukan sinyal memilih. Analis melacak ke sumber primer (LK audited) dan menandai angka agregator sebagai belum terverifikasi. Di case ini D&A sengaja tidak dipakai sama sekali."}
+],
+tasks: [
+{t: "Tugas A — Normalisasi + pro-forma + SOTP (±4 jam)", d: "Download workbook RC8. (A) Normalisasi rugi FY23 dari headline dengan one-off; (B) hitung pertumbuhan headline vs pro-forma; (C) bangun SOTP 3 kaki + kas bersih → nilai/saham → upside vs harga pasar. Semua rumus link ke input.", url: "PENDING-DRIVE"},
+{t: "Tugas B — Uji sensitivitas multiple (±1 jam)", d: "Di file jawabanmu: turunkan multiple on-demand 2,5×→1,5× dan multiple fintech 8×→5×. Catat nilai/saham baru. Kaki mana yang paling 'berbahaya' bagi thesis?", url: ""},
+{t: "Tugas C — Kuis di atas", d: "Target ≥5/7 benar."}
+],
+blind: {h: "Uji Kilat — angka beda", body: `
+<p><b>1.</b> Rugi headline −Rp50T termasuk one-off −Rp42T (non-kas). Rugi continuing ternormalisasi = ?</p>
+<details class="ans"><summary>Jawaban</summary><p>−50 − (−42) = −Rp8T.</p></details>
+<p><b>2.</b> Investor membayar $2B untuk 80% sebuah startup. Nilai implisit 100%? Nilai 20% yang tersisa?</p>
+<details class="ans"><summary>Jawaban</summary><p>100% = 2 ÷ 0,80 = $2,5B. Sisa 20% = 0,20 × 2,5 = $0,5B.</p></details>`}
+},
+{
+id: "real-09", track: "Real Cases", title: "WSKT: Membedah Perusahaan yang Ekuitasnya Negatif",
+sub: "Real Case 9 · ±6 jam · Waterfall likuidasi",
+est: "6 jam",
+prerequisites: ["dcf", "fcf", "debt_schedule"],
+driveFolder: "1A8U9qMg7d5s1dxJca9ZzHjalV8hRu6YT",
+audio: "assets/audio/real-09.mp3",
+checker: "real-09",
+sections: [
+{h: "Kenapa Waskita Karya?", body: `
+<p><b>Waskita Karya (WSKT.JK)</b> — BUMN konstruksi yang ekuitasnya <b>negatif Rp3,34tn</b> (30 Sep 2026). Ini case paling ekstrem di course: semua multiple ekuitas (P/E, P/BV) <b>tak terdefinisi</b>, saham <b>disuspensi sejak Mei 2023</b> (Rp202), dan peringkat PEFINDO <b>idSD</b> (Selective Default). Di sini kamu tidak menilai saham — kamu menilai <b>recovery untuk kreditor</b>.</p>
+<div class="example korporat"><div class="lbl">🏢 Data kunci</div>
+<p>FY25 (LK via petromindo.com, Apr 2026): revenue <b>Rp8,85tn</b> (−17% YoY) · rugi <b>−Rp4,48tn</b> · laba kotor Rp1,58tn (margin 18%). FY24: revenue Rp10,71tn · rugi −Rp3,91tn. FY24 audited (pers Okt 2025, mengutip LK BEI): aset Rp77,15tn · liabilitas Rp69,27tn · ekuitas Rp7,88tn. 9M26 interim <b>unaudited</b> (jawawa.id): ekuitas induk <b>−Rp3,34tn</b> · defisit Rp20,8tn · beban keuangan Rp2,79tn · liabilitas jk pendek &gt; aset lancar Rp12,48tn · kas Rp1,50tn.</p></div>
+<div class="callout"><b>📋 Status data:</b> angka LK di atas terverifikasi dari sumber yang dicantumkan. <b>Asumsi likuidasi di workbook (book piutang/tol/aset tetap, recovery rate tiap kelas, biaya likuidasi 5%, klaim obligasi/vendor, haircut 30%) = ILUSTRATIF</b> — yang dinilai adalah <b>mekanik waterfall</b>-mu, bukan ketepatan asumsinya. Angka dapat berubah; verifikasi ke LK terbaru sebelum dipakai di dunia nyata.</div>
+<div class="callout"><b>⚠️ Catatan forensik:</b> sejumlah media sekunder memberitakan angka 9M26 yang <b>tidak konsisten antar-sumber</b> (mis. ekuitas Rp1,03tn vs defisit Rp22,52tn yang tidak merekonsiliasi dengan aset Rp73,07tn − liabilitas Rp72,03tn). Pelajaran analis: angka agregator/media <b>wajib</b> dicek ulang ke LK resmi sebelum masuk model. Case ini memakai angka riset terverifikasi di atas.</p>`},
+{h: "Kenapa multiple ekuitas tak bermakna?", body: `
+<div class="formula">P/BV = harga ÷ book value per saham → penyebut NEGATIF</div>
+<p>Ekuitas −Rp3,34tn berarti <b>book value per saham negatif</b>. P/BV = harga ÷ (negatif) = angka negatif yang tidak bisa diinterpretasikan. P/E juga hancur: rugi −Rp4,48tn → E negatif → P/E negatif. Multiple ekuitas <b>tak terdefinisi secara ekonomi</b> — bukan "murah", bukan "mahal", melainkan <b>bukan alat ukur yang berlaku</b>.</p>
+<div class="example jebakan"><div class="lbl">🚫 Jebakan "murah"</div>
+<p>"Sahamnya cuma Rp202 — murah!" <b>SALAH.</b> Rp202 adalah harga <b>beku sejak suspensi Mei 2023</b> — 3,5 tahun tanpa price discovery. Harga itu tidak mencerminkan rugi −Rp4,48tn (FY25), ekuitas negatif, atau MRA. Saham suspensi ≠ saham murah; ia = <b>saham tanpa pasar</b>. Analis yang memakai Rp202 sebagai "harga" sedang memakai fosil sebagai data.</p></div>
+<div class="callout"><b>Kenapa analis berpikir sebagai kreditor?</b> Karena dalam distress, <b>urutan klaim</b> menentukan segalanya: kreditor dibayar dulu, pemegang saham dapat sisa — kalau ada. Menilai WSKT dari sudut pandang pemegang saham = menilai kursi paling belakang di kapal yang karam.</p>`},
+{h: "Kenapa waterfall, bukan DCF?", body: `
+<div class="formula">Recovery kelas = MIN(sisa dana, klaim kelas) → lanjut ke kelas berikutnya</div>
+<p>DCF butuh asumsi <b>going concern</b> (perusahaan hidup selamanya). Dengan defisit Rp20,8tn, gap likuiditas Rp12,48tn, dan rating idSD, asumsi itu <b>rusak</b>. <b>Waterfall likuidasi</b> menggantikannya: jual semua aset dengan haircut realistis → kurangi biaya likuidasi → bagikan ke kreditor <b>sesuai senioritas</b> → sisa (kalau ada) untuk ekuitas.</p>
+<div class="callout"><b>Kenapa urutan senioritas?</b> ① <b>Biaya likuidasi</b> (kurator, legal) — tanpa ini tidak ada yang bisa dijual. ② <b>Kreditor dijamin / bank</b> (MRA Tranche A Rp2,154tn + Tranche B Rp21,736tn = Rp23,89tn). ③ <b>Konkuren</b> (obligasi non-penjaminan — sudah direstrukturisasi — &amp; vendor). ④ <b>Ekuitas</b> — paling belakang, paling menderita. Senioritas bukan opini; ia <b>hukum</b>.</p></div>
+<div class="example korporat"><div class="lbl">🏢 Hasil waterfall (Rp triliun, asumsi ilustratif di workbook)</div>
+<p>Proceeds likuidasi = kas 1,50 + piutang 2,76 + tol 5,40 + aset tetap 4,00 = <b>Rp13,66tn</b>. Biaya likuidasi 5% = 0,68 → <b>net proceeds Rp12,98tn</b>. Klaim bank (Tranche A+B) = <b>Rp23,89tn</b> — hampir <b>dua kali lipat</b> dana yang tersedia. Kreditor bank menerima MIN(12,98; 23,89) = <b>Rp12,98tn</b> → recovery rate <b>54,3%</b>. Sisa untuk obligasi/vendor: <b>Rp0</b>. Sisa untuk ekuitas: <b>Rp0</b>. Bahkan kreditor senior tidak lunas — apalagi pemegang saham.</p></div>
+<div class="callout"><b>Kenapa "nol" ini penting?</b> Karena ia menjawab pertanyaan tersulit case ini — <i>apakah ada nilai ekuitas tersisa?</i> — tanpa perlu berdebat soal masa depan. Waterfall tidak meramal; ia <b>menghitung siapa dapat apa jika semuanya dijual hari ini</b>: bukti aritmetika, bukan opini.</p></div>`},
+{h: "Kenapa restrukturisasi bisa bikin ekuitas 'positif' tapi pemegang lama tetap nol?", body: `
+<p>Skenario (ilustratif): <b>haircut 30%</b> atas Tranche B Rp21,736tn → liabilitas turun <b>Rp6,52tn</b>, sisa B = Rp15,22tn. Ekuitas mekanis = −3,34 + 6,52 = <b>+Rp3,18tn</b>. Di atas kertas, perusahaan kembali berekutias positif! Tapi — <b>siapa pemilik ekuitas baru itu?</b></p>
+<div class="callout"><b>Kenapa pemegang lama tetap nol?</b> Karena haircut &amp; konversi utang-jadi-saham diberikan <b>kepada kreditor</b> sebagai kompensasi. Ekuitas buku +Rp3,18tn itu <b>milik kreditor hasil konversi</b> — pemegang saham lama terdilusi mendekati nol (nilai wajar klaim mereka = Rp0 dari waterfall). <b>Ekuitas buku ≠ nilai untuk pemegang lama.</b> Konteks kebijakan: Danantara pegang 74,6%, merger ke Hutama Karya <b>ditunda</b> (butuh bersih-bersih dulu), PMN Rp3tn <b>dibatalkan</b> (PP 20/2025) — negara tidak menyuntik, kreditor yang menanggung.</p></div>
+<div class="example jebakan"><div class="lbl">🚫 Jebakan "turnaround"</div>
+<p>"Delapan inisiatif pemulihan, 63 proyek Rp31,7tn — pasti bangkit!" Mungkin. Tapi analis kredit bertanya duluan: <i>dengan beban keuangan Rp2,79tn per 9 bulan vs laba kotor FY25 Rp1,58tn setahun penuh — <b>bunga 9 bulan LEBIH BESAR dari laba kotor setahun</b> — dari mana kas untuk membayarnya?</i> Proyek baru tidak membayar bunga lama.</p></div>`},
+{h: "Tugas praktik", body: `
+<p>Bangun waterfall likuidasi WSKT di workbook latihan: susun data LK yang disajikan <b>apa adanya (acak-acakan)</b> menjadi proceeds per kelas aset (kas, piutang, tol, aset tetap) → kurangi biaya likuidasi → distribusikan sesuai senioritas → recovery rate bank → sisa untuk obligasi/vendor → sisa untuk ekuitas. Lalu kerjakan <b>skenario restrukturisasi</b>: haircut 30% Tranche B → ekuitas mekanis baru → nilai ekuitas lama. Semua sel jawaban harus rumus yang me-link ke data/asumsi.</p>
+<div class="callout"><b>Kenapa tugas ini penting?</b> Ini satu-satunya case di course yang <b>melarangmu berpikir sebagai pemegang saham</b>. Kuasai waterfall sekali — dan kamu tidak akan pernah lagi tertipu saham "murah" yang ekuitasnya negatif.</p>`},
+{h: "🔥 Bekal Hell Mode", body: `
+<ul>
+<li><b>Waterfall</b> = distribusi hasil likuidasi sesuai senioritas klaim.</li>
+<li><b>Senioritas</b> = biaya likuidasi → kreditor dijamin → konkuren → ekuitas.</li>
+<li><b>Recovery rate</b> = dana diterima ÷ klaim.</li>
+<li><b>Ekuitas negatif</b> = multiple ekuitas tak terdefinisi; berpikir sebagai kreditor.</li>
+<li><b>Haircut</b> = pengurangan pokok utang; menaikkan ekuitas buku tapi milik kreditor.</li>
+<li><b>Harga suspensi</b> = fosil, bukan sinyal valuasi.</li>
+</ul>`}
+],
+quiz: [
+{q: "Ekuitas WSKT per 30 Sep 2026 = −Rp3,34tn. Kenapa P/E dan P/BV tidak bermakna?", opts: ["Karena datanya belum diaudit","Ekuitas negatif — penyebut tak bermakna","Karena sahamnya sedang disuspensi","Karena ruginya terlalu besar"], answer: 1, k: "distressed", diff: "Easy",
+ hints: ["P/BV = harga ÷ book value per saham.", "Book value negatif → hasil bagi tak bisa diinterpretasikan."],
+ explain: "Book value negatif membuat P/BV (dan P/E atas rugi) tak terdefinisi secara ekonomi — bukan 'murah', melainkan alat ukur yang tidak berlaku. (Real-09 § Kenapa multiple ekuitas tak bermakna?)"},
+{q: "Dalam analisis distressed seperti WSKT, analis berpikir sebagai?", opts: ["Pemegang saham mayoritas","Kreditor — siapa dibayar duluan","Manajemen — strategi turnaround","Regulator — soal kepatuhan"], answer: 1, k: "distressed", diff: "Easy",
+ hints: ["Siapa yang dibayar pertama saat aset dijual?", "Pemegang saham dapat sisa — kalau ada."],
+ explain: "Dalam distress, urutan klaim menentukan segalanya. Analis menilai recovery kreditor dulu; ekuitas = sisa. (Real-09 § Kenapa multiple ekuitas tak bermakna?)"},
+{q: "Net proceeds Rp12,98tn, klaim bank (Tranche A+B) Rp23,89tn. Recovery rate kreditor bank?", opts: ["100% — bank selalu lunas duluan","54,3%","12,98%","0% — ekuitas didahulukan"], answer: 1, k: "waterfall", diff: "Medium",
+ hints: ["Recovery rate = dana diterima ÷ klaim.", "MIN(12,98; 23,89) ÷ 23,89 = ?"],
+ explain: "Bank menerima MIN(12,98; 23,89) = Rp12,98tn → 12,98 ÷ 23,89 = 54,3%. Senioritas menjamin urutan, bukan kelunasan. (Real-09 § Kenapa waterfall, bukan DCF?)"},
+{q: "Urutan pembayaran waterfall yang benar?", opts: ["Ekuitas → bank → vendor → biaya","Biaya likuidasi → kreditor dijamin → konkuren → ekuitas","Vendor → ekuitas → bank","Semua kreditor dibagi rata"], answer: 1, k: "seniority", diff: "Medium",
+ hints: ["Siapa yang harus dibayar agar penjualan aset bisa jalan?", "Ekuitas di urutan keberapa? Paling depan atau paling belakang?"],
+ explain: "Biaya likuidasi dulu (tanpa kurator tak ada penjualan), lalu kreditor dijamin, konkuren, terakhir ekuitas. Senioritas = hukum, bukan opini. (Real-09 § Kenapa waterfall, bukan DCF?)"},
+{q: "Beban keuangan 9M26 Rp2,79tn vs laba kotor FY25 Rp1,58tn. Artinya?", opts: ["Bunga 9 bulan > laba kotor setahun — pendarahan struktural","Perusahaan hampir mencapai impas","Laba kotor menutupi beban bunga","Beban keuangan turun drastis"], answer: 0, k: "distressed", diff: "Medium",
+ hints: ["Bandingkan 2,79 (9 bulan) vs 1,58 (12 bulan).", "Bisakah laba kotor membayar bunganya?"],
+ explain: "Bunga 9 bulan (Rp2,79tn) melampaui laba kotor setahun penuh (Rp1,58tn) — operasi tidak bisa menutup biaya utang. Inilah 'pendarahan'. (Real-09 § Kenapa restrukturisasi bisa bikin ekuitas 'positif'?) "},
+{q: "Haircut 30% atas Tranche B Rp21,736tn. Ekuitas mekanis pasca-haircut?", opts: ["Tetap −Rp3,34tn","−Rp9,86tn","−Rp3,34tn + Rp6,52tn = +Rp3,18tn","Rp0 persis"], answer: 2, k: "haircut", diff: "Hard",
+ hints: ["Haircut 30% × 21,736 = ?", "Liabilitas turun → ekuitas (aset − liabilitas) naik sebesar itu."],
+ explain: "Haircut = 21,736 × 30% = Rp6,52tn. Liabilitas turun Rp6,52tn → ekuitas mekanis = −3,34 + 6,52 = +Rp3,18tn. Tapi nilai ini milik kreditor hasil konversi. (Real-09 § Kenapa restrukturisasi bisa bikin ekuitas 'positif'?) "},
+{q: "Saham suspensi di Rp202 sejak Mei 2023. Kenapa Rp202 BUKAN sinyal 'murah'?", opts: ["Karena Rp202 sebenarnya terlalu mahal","Harga beku 3,5 tahun — tak ada price discovery","Karena Danantara pegang 74,6%","Karena minimal pembelian 1 lot"], answer: 1, k: "distressed", diff: "Medium",
+ hints: ["Kapan terakhir harga itu terbentuk? Mei 2023.", "Apa yang terjadi sejak itu? Rugi −4,48tn, ekuitas negatif, MRA."],
+ explain: "Rp202 adalah fosil — harga terakhir sebelum suspensi, tidak mencerminkan 3,5 tahun kabar buruk. Saham suspensi = saham tanpa pasar, bukan saham murah. (Real-09 § Kenapa multiple ekuitas tak bermakna?)"}
+],
+hellPass: 80,
+hell: [
+{q: "Biaya likuidasi naik 5% → 10%. Recovery rate bank menjadi?", opts: ["Tetap 54,3%","51,4%","48,9%","45,0%"], answer: 1, diff: "Medium",
+ explain: "Net proceeds = 13,66 × 90% = Rp12,29tn → 12,29 ÷ 23,89 = 51,4%. Biaya likuidasi memakan recovery kreditor duluan — ekuitas tetap nol."},
+{q: "Recovery piutang jatuh 40% → 20%. Recovery rate bank menjadi?", opts: ["Tetap 54,3%","51,4%","48,9%","0%"], answer: 2, diff: "Medium",
+ explain: "Piutang recovery = 6,90 × 20% = Rp1,38tn → proceeds Rp12,28tn → net Rp11,67tn → 11,67 ÷ 23,89 = 48,9%. Sensitivitas asumsi recovery langsung memukul kreditor."},
+{q: "Kreditor mengonversi Rp5tn utang menjadi saham baru. Nasib pemegang saham lama?", opts: ["Tetap menjadi mayoritas","Terdilusi mendekati nol — nilai wajar klaim lama = Rp0","Malah untung karena utang turun","Tidak terpengaruh sama sekali"], answer: 1, diff: "Hard",
+ explain: "Waterfall membuktikan klaim ekuitas lama = Rp0. Konversi memberi kreditor hampir 100% ekuitas baru; pemegang lama terdilusi mendekati nol. Ekuitas 'positif' ≠ milik mereka."},
+{q: "Pasca-haircut ekuitas buku +Rp3,18tn, tapi 'nilai ekuitas lama = Rp0'. Kontradiksi?", opts: ["Ya — salah satunya salah hitung","Tidak: ekuitas buku ≠ nilai untuk pemegang lama","Tidak: haircut tak memengaruhi ekuitas","Ya — waterfall-nya yang salah"], answer: 1, diff: "Hard",
+ explain: "Ekuitas buku naik mekanis karena liabilitas turun — tapi klaim atas ekuitas baru dipegang kreditor hasil konversi. Akuntansi mencatat +3,18; ekonomi memberi pemegang lama Rp0."},
+{q: "Kenapa DCF going-concern tidak valid untuk WSKT?", opts: ["Karena WACC tidak bisa dihitung","Asumsi kelangsungan usaha rusak; ekuitas = opsi out-of-the-money atas aset","Karena revenue turun 17%","Karena datanya tidak tersedia"], answer: 1, diff: "Medium",
+ explain: "DCF butuh going concern. Dengan defisit Rp20,8tn dan rating idSD, ekuitas secara ekonomi = opsi atas aset setelah kreditor dibayar — dan opsi ini jauh out-of-the-money. Waterfall, bukan DCF."}
+],
+tasks: [
+{t: "Tugas A — Waterfall likuidasi WSKT (±4 jam)", d: "Download workbook RC9. Susun data LK yang disajikan apa adanya menjadi waterfall: proceeds per kelas aset → biaya likuidasi → distribusi senioritas → recovery rate bank → sisa obligasi/vendor → sisa ekuitas. Lanjut ke skenario restrukturisasi (haircut 30% Tranche B). Semua rumus link ke data/asumsi.", url: "PENDING-DRIVE"},
+{t: "Tugas B — Stress test asumsi (±1 jam)", d: "Di file jawabanmu: ubah recovery tol 45%→30%, catat recovery rate bank yang baru. Ubah biaya likuidasi 5%→10%, catat lagi. Tulis 2 kalimat: asumsi mana yang paling berbahaya bagi kreditor? Bagi ekuitas?", url: ""},
+{t: "Tugas C — Kuis di atas", d: "Target ≥6/7 benar.", url: ""}
+],
+blind: {h: "Uji Kilat — angka beda", body: `
+<p><b>1.</b> Proceeds Rp10tn, biaya likuidasi 5%, klaim bank Rp20tn. Recovery rate bank = ?</p>
+<details class="ans"><summary>Jawaban</summary><p>Net = 9,5. Rate = 9,5 ÷ 20 = 47,5%.</p></details>
+<p><b>2.</b> Tranche B Rp21,736tn di-haircut 50%. Sisa Tranche B = ?</p>
+<details class="ans"><summary>Jawaban</summary><p>21,736 × 50% = Rp10,868tn.</p></details>`}
+},
 ];
 
 /* ---------- English mode overlays (EN) ---------- */
@@ -777,6 +1173,367 @@ blind: {h: "Speed Drill — different numbers", body: `
 <details class="ans"><summary>Answer</summary><p>20 → 30. Capex harvest: −10 capex = +10 FCF.</p></details>
 <p><b>2.</b> FCF Rp10T, market cap Rp40T. FCF yield = ?</p>
 <details class="ans"><summary>Answer</summary><p>25%. Very high — ask why the market doubts it.</p></details>`}
+};
+EN["real-06"] = {
+title: "BBCA: An Expensive Price That Makes Sense?",
+sub: "Real Case 6 · ±5 hrs · Bank residual income",
+sections: [
+{h: "Why can't banks be valued with a regular DCF?", body: `
+<p><b>Bank Central Asia (BBCA.JK)</b> is Indonesia's most expensive bank: <b>P/BV ~3.9x</b> (MNC Sekuritas, Oct 2025). A regular DCF discounts <b>FCFF</b> — cash to all investors <i>after</i> paying debt. The problem: a bank's debt — third-party funds of <b>Rp1,134tn</b> (BRIDS, FY24) — is not financing burden, it's <b>raw material</b>. A bank "borrows" current/savings accounts to "lend" <b>Rp911.1tn</b> of loans (BCA audited financials, 31 Dec 2024). Computing BBCA's "net debt" and subtracting it from EV produces nonsense.</p>
+<div class="formula">V0 = B0 + &Sigma; RI<sub>t</sub> / (1+Ke)<sup>t</sup> &nbsp;&nbsp;&middot;&nbsp;&nbsp; RI<sub>t</sub> = NI<sub>t</sub> &minus; Ke &times; B<sub>t&minus;1</sub></div>
+<p>For banks, what gets discounted is not FCFF but <b>dividends</b> (DDM) or <b>earnings in excess of the cost of capital</b> — residual income. Both anchor on <b>equity (book)</b>, not enterprise value.</p>
+<div class="example jebakan"><div class="lbl">🚫 The bank EV/EBITDA trap</div>
+<p>A junior analyst drops BBCA into an EV/EBITDA screener with UNVR and ASII. Result: BBCA looks "cheap" or "error" — because bank EV is meaningless. The right multiples for banks are <b>P/BV</b> and <b>P/E</b>, and both must be read together with <b>ROE</b>.</p></div>
+<div class="callout"><b>Why residual income, not just raw P/BV?</b> Because 3.9x P/BV without context = "expensive". Residual income splits it into: how much today's book value explains, and how much demands ROE above the cost of capital <i>forever</i>. That's where the real valuation debate happens.</p></div>`},
+{h: "Why does residual income fit BBCA?", body: `
+<p>Residual income rests on the <b>clean-surplus identity</b>: next year's equity = this year's equity + earnings &minus; dividends. Fair value = <b>today's book value</b> + the PV of earnings "excess" (ROE &minus; Ke) in the future.</p>
+<div class="formula">RI<sub>t</sub> = (ROE &minus; Ke) &times; B<sub>t&minus;1</sub></div>
+<p>The anchor numbers (FY24, verified): net income <b>Rp54.8tn</b> (+12.7% YoY; FY23 Rp48.6tn — Maybank Sekuritas 26 Jan 2025 &amp; BRIDS 24 Jan 2025). Book value per share <b>Rp2,131</b> on <b>123.28 billion</b> shares (MNC, Oct 2025) &rarr; the model's starting equity <b>B0 = Rp262.71tn</b>.</p>
+<div class="example korporat"><div class="lbl">🏢 First consistency check</div>
+<p>Implied FY24 ROE = 54.8 / 262.71 = <b>20.86%</b> — consistent with the claimed "ROE &gt;20%" (Maybank, Jan 2025). If your computed number lands far from the broker's claim, stop modelling: something is wrong with your input or your understanding. Good analysts verify <i>before</i> they project.</p></div>
+<div class="callout"><b>⚠️ Equity caveat:</b> Rp262.71tn is a <b>derivation</b> (Rp2,131 &times; 123.28 billion shares, from MNC) — <b>not a direct audited financial-statement figure</b>. For full precision, take total equity from BCA's financial statements at bca.co.id. This model uses the derivation so it can run; label it as what it is.</p></div>
+<p>With working assumptions of 20% ROE, 60% payout, 11.5% Ke: <b>2025 RI = 52.54 &minus; 30.21 = Rp22.33tn</b> — Rp52.54tn of earnings minus Rp30.21tn of capital "rent". Only that excess creates value above book.</p>`},
+{h: "Why does justified P/BV = (ROE&minus;g)/(Ke&minus;g)?", body: `
+<p>If ROE, payout, and Ke stay constant forever, the residual-income series collapses into one elegant formula — <b>justified P/BV</b>:</p>
+<div class="formula">P/BV = 1 + (ROE &minus; Ke)/(Ke &minus; g) = (ROE &minus; g)/(Ke &minus; g)</div>
+<p>Three levers, no more: <b>ROE</b> (how profitable), <b>g</b> (how long it grows), <b>Ke</b> (how risky). Growth comes from within: <b>g = ROE &times; retention = 20% &times; 40% = 8%</b> (60% payout = assumption, consistent with BBCA history).</p>
+<div class="example korporat"><div class="lbl">🏢 The math</div>
+<p>(0.20 &minus; 0.08) / (0.115 &minus; 0.08) = <b>3.43x</b>. DDM cross-check: 2025 dividend = 52.54 &times; 60% = Rp31.53tn; value = 31.53 / (0.115 &minus; 0.08) = <b>Rp900.72tn</b> &mdash; exactly = B0 &times; 3.43. Two methods, one framework: <b>the clean-surplus identity holds</b>. If your DDM and RI disagree wildly, a formula is wrong &mdash; it's not "two opinions".</p></div>
+<div class="callout"><b>Why 11.5% Ke?</b> A working assumption (research range 11&ndash;12%). Ke is not a sky-number: it's the price investors demand for Indonesian bank equity risk. In the sensitivity task you'll feel how brutal a 1% Ke change is on justified P/BV.</p></div>`},
+{h: "Why does the market dare pay 3.9x? (franchise vs fade debate)", body: `
+<p>Now clash three numbers: the <b>2-stage</b> model (ROE fading to 16% after 2029) gives <b>1.98x &rarr; Rp4,215/share</b>. The <b>1-stage</b> formula (20% ROE forever) gives <b>3.43x</b>. The market (MNC, Oct 2025) pays <b>3.9x &rarr; Rp8,311/share</b>. All three are "right" under their own assumptions.</p>
+<div class="example korporat"><div class="lbl">🏢 Reading the market's mind</div>
+<p>3.9x at 11.5% Ke and 60% payout implies <b>~20.8% ROE forever</b> (it's in Hell Mode &mdash; compute it yourself). The market isn't "miscalculating": it's betting that the <b>82.4% CASA</b> franchise (Maybank, Jan 2025) &mdash; Indonesia's cheapest current/savings funding &mdash; keeps 20%+ ROE from <b>fading</b>. The question isn't "what's fair value" but: <b>is this premium worth paying for that franchise &mdash; and when does it stop being worth it?</b></p></div>
+<div class="callout"><b>Data testing the market's bet:</b> FY25 guidance (via BRIDS, Jan 2025) &mdash; loan growth <b>6&ndash;8%</b> (FY24: +14%), <b>NIM 5.7&ndash;5.8%</b> (FY24: 5.8%), CoC <b>0.3%</b> stable, CIR <b>33&ndash;34%</b> (FY24: 31.5%). Plus the 9M25 signal: NIM 5.8% flat YoY but <b>down 10bps QoQ</b> (MNC, Oct 2025). Loans growing fast but margins squeezed and costs rising &mdash; <b>does volume compensate for margin compression?</b> That's the core of the BBCA analyst debate.</p></div>`},
+{h: "Trap: two NIMs that are both &ldquo;correct&rdquo;", body: `
+<p>Research found <b>FY24 NIM 5.8%</b> (Maybank, consolidated; 5.9% in 4Q24) and <b>FY24 NIM 6.4%</b> (BRIDS; FY23: 6.3%). Both from reputable brokers. Both "correct" &mdash; because <b>their denominator definitions differ</b> (each broker's version of average earning assets).</p>
+<div class="example jebakan"><div class="lbl">🚫 The definition trap</div>
+<p>Test with FY24 NII of Rp82.3tn (BRIDS): implied earning assets at 5.8% = 82.3/0.058 = <b>Rp1,419tn</b>; at 6.4% = 82.3/0.064 = <b>Rp1,286tn</b>. The gap is <b>Rp133tn</b> &mdash; bigger than many mid-size banks' entire loan books! An analyst comparing BRIDS's 6.4% NIM against 5.7&ndash;5.8% guidance and screaming "NIM collapsing 60bps!" is comparing <b>apples to oranges</b>. Compare like with like: 5.8% &rarr; 5.7&ndash;5.8% guidance = stable, not collapsing.</p></div>
+<div class="callout"><b>An honest sensitivity:</b> from the model's 20% ROE, if NIM falls a permanent <b>30bps</b> (&rarr; ~5.5%): &Delta;NII = &minus;Rp4.26tn &rarr; &Delta;after-tax earnings (22%) = &minus;Rp3.32tn &rarr; <b>stressed ROE 18.74%</b> &rarr; justified P/BV <b>2.81x</b> (from 3.43x). The market's 3.9x premium <b>cannot survive</b> permanent NIM compression &mdash; unless you believe 82.4% CASA keeps it from happening.</p></div>`},
+{h: "Practice task", body: `
+<p>Build the BBCA residual-income model in the practice workbook: (A) reconcile the two NIM definitions and pick the one consistent with the guidance scale; (B) project NI, equity, and RI for 2025&ndash;2029, then PV of RI, terminal value, equity value &rarr; per-share value &rarr; 2-stage P/BV; (C) compute 1-stage justified P/BV + the DDM cross-check (must &asymp; B0 &times; 3.43); (D) run the &minus;30bps NIM sensitivity. Every answer cell must be formulas linking to assumptions.</p>
+<div class="callout"><b>Why does this task matter?</b> This is your first bank valuation &mdash; and its biggest lesson isn't the formula, it's <b>definition discipline</b>. One wrongly-scaled NIM number can shift your conclusion by Rp133tn of implied assets.</p></div>`},
+{h: "🔥 Hell Mode briefing", body: `
+<ul>
+<li><b>Residual income</b> = NI &minus; Ke &times; book: earnings above the capital "rent".</li>
+<li><b>Clean surplus</b> = B<sub>t</sub> = B<sub>t&minus;1</sub> + NI &minus; Div. DDM and RI must agree.</li>
+<li><b>Justified P/BV</b> = (ROE&minus;g)/(Ke&minus;g). Three levers: ROE, g, Ke.</li>
+<li><b>Bank g</b> = ROE &times; (1 &minus; payout). Big dividends = slow growth.</li>
+<li><b>The NIM trap</b> = broker definitions differ; align scales before comparing.</li>
+<li><b>The 3.9x premium</b> = the market betting 20%+ ROE never fades. That's a bet, not a fact.</li>
+</ul>`}
+],
+quiz: [
+{q: `Why isn't a standard DCF/FCFF used to value BBCA?`, opts: ["Because BBCA has no debt at all","Because bank debt (deposits) is raw material, not financing — FCFF is meaningless","Because regulators forbid banks from using DCF","Because bank FCFF is always negative"], answer: 1, k: "bank_valuation",
+ hints: ["Think about where a bank gets its 'merchandise'.", "Rp1,134tn of deposits: burden or raw material for a bank?"],
+ explain: `Deposits (Rp1,134tn, BRIDS FY24) are raw material "borrowed" to be lent out as loans (Rp911.1tn audited). Post-debt FCFF is meaningless for a bank — what gets discounted is dividends / earnings above the cost of capital.`},
+{q: `B0 Rp262.71tn, ROE 20%, Ke 11.5%. 2025 residual income = ?`, opts: ["Rp52.54tn","Rp30.21tn","Rp22.33tn","Rp52.43tn"], answer: 2, k: "residual_income",
+ hints: ["RI = NI − Ke × B. Compute NI first.", "NI = 0.20 × 262.71 = 52.54. Capital charge = 0.115 × 262.71 = ?"],
+ explain: `NI = 0.20 × 262.71 = Rp52.54tn; capital charge = 0.115 × 262.71 = Rp30.21tn; RI = 52.54 − 30.21 = Rp22.33tn. Rp52.54tn forgets the capital rent; Rp30.21tn IS the rent, not the excess.`},
+{q: `ROE 20%, 60% payout (g = 8%), Ke 11.5%. 1-stage justified P/BV = ?`, opts: ["1.74x","3.43x","5.71x","1.98x"], answer: 1, k: "justified_pbv",
+ hints: ["Formula: (ROE − g)/(Ke − g).", "Numerator 0.20−0.08 = 0.12; denominator 0.115−0.08 = 0.035."],
+ explain: `(0.20−0.08)/(0.115−0.08) = 0.12/0.035 = 3.43x. 1.74x = ROE/Ke (forgot growth); 5.71x = forgot to subtract g in the numerator; 1.98x = the faded 2-stage model result — not the 1-stage formula.`},
+{q: `An analyst compares BRIDS's 6.4% FY24 NIM with 5.7–5.8% guidance and concludes "NIM is collapsing". The main error?`, opts: ["The 6.4% figure must be a typo","Comparing two different definitions/scales — the like-for-like (5.8%) shows NIM is stable","Guidance must never be used in projections","NIM doesn't affect bank valuation"], answer: 1, k: "nim_trap",
+ hints: ["6.4% and 5.8% use different denominators.", "The 5.7–5.8% guidance is on the same scale as 5.8%, not 6.4%."],
+ explain: `Broker definitions differ (implied earning assets differ by Rp133tn). The correct comparison: 5.8% → 5.7–5.8% guidance = stable. Comparing 6.4% with 5.7–5.8% = apples vs oranges.`},
+{q: `Market P/BV 3.9x vs 1-stage justified 3.43x. The honest interpretation?`, opts: ["The market must be miscalculating — arbitrage","The 3.43x model must be right — sell","The market assumes some combination of higher ROE / lower Ke / higher g, forever","P/BV above 3x is always a bubble"], answer: 2, k: "market_premium",
+ hints: ["The formula has three levers: ROE, g, Ke.", "3.9x implies ~20.8% ROE forever — that's a bet, not a fact."],
+ explain: `The 3.9x vs 3.43x gap = different assumptions, not arithmetic errors. The market bets the 82.4% CASA franchise keeps 20%+ ROE from fading. The analyst's job: judge whether that bet is reasonable — not declare the market stupid.`},
+{q: `From the model's 20% ROE: NIM falls a permanent 30bps → justified P/BV becomes?`, opts: ["Stays 3.43x","3.90x","2.81x","1.98x"], answer: 2, k: "sensitivity",
+ hints: ["ΔNII = −0.003 × Rp1,419tn = −Rp4.26tn.", "Δafter-tax earnings at 22% = −Rp3.32tn → ROE 18.74% → recompute (ROE−g)/(Ke−g)."],
+ explain: `Stressed ROE = 20% − 3.32/262.71 = 18.74%; g = 7.49%; (0.1874−0.0749)/(0.115−0.0749) = 2.81x. The 3.9x premium can't survive permanent NIM compression. 1.98x = the faded 2-stage model — a different context.`},
+{q: `1-stage DDM = Rp900.72tn ≈ B0 × 3.43. This proves?`, opts: ["DDM is always more accurate than RI","The clean-surplus identity: two methods, one framework — a big gap means a broken formula","BBCA should only be valued with DDM","3.43x P/BV is the market price"], answer: 1, k: "ddm",
+ hints: ["DDM and RI are derived from the same identity.", "Agreement = cross-validation, not coincidence."],
+ explain: `DDM and residual income are two faces of clean surplus (B_t = B_{t−1} + NI − Div). The 900.72tn ≈ 262.71 × 3.43 match validates the model's mechanics — a big gap = a formula bug.`}
+],
+hell: [
+{q: `Market P/BV 3.9x, Ke 11.5%, 60% payout (40% retention). The market-implied perpetual ROE = ?`, opts: ["20.0%","22.5%","20.8%","18.7%"], answer: 2,
+ explain: `3.9 = (R − 0.4R)/(0.115 − 0.4R) → 0.6R = 3.9×(0.115 − 0.4R) → 2.16R = 0.4485 → R = 20.76% ≈ 20.8%. The market bets on nearly 21% ROE forever — far above a normal bank. Believe it or not, that's the analyst's call.`},
+{q: `The 2-stage model uses 16% terminal ROE, below today's 20%. The conceptual reason?`, opts: ["To force the model below the market price","Mean reversion: competition erodes excess ROE; 16% is still a premium","Because 16% is a round number","Terminal ROE must equal terminal g"], answer: 1,
+ explain: `Excess ROE is economic rent — competition (digital banks, fintech) erodes it over time. 16% is still far above the 11.5% cost of equity: the model doesn't say BBCA becomes mediocre, just not extraordinarily so forever.`},
+{q: `Ke rises 11.5% → 13% (e.g. higher Indonesia risk premium). 1-stage justified P/BV becomes?`, opts: ["3.43x","2.81x","2.40x","1.98x"], answer: 2,
+ explain: `(0.20−0.08)/(0.13−0.08) = 0.12/0.05 = 2.40x. One and a half percent on Ke wipes ~30% off the justified multiple — that's why the Ke assumption must be stress-tested, never taken raw.`},
+{q: `BBCA provisions rose 49% YoY in FY24, yet CoC stayed 0.3% with 209% NPL coverage. The right analyst read?`, opts: ["Early deterioration signal — sell","Post-Covid provision normalization from strength; still watch LAR at 5.0%","Provisions don't affect bank earnings","0.3% CoC means zero bad loans"], answer: 1,
+ explain: `0.3% CoC on 1.7% NPL with 209% coverage = the bank building reserves from strength (post-Covid normalization), not plugging holes. But 5.0% LAR (Covid restructurings) still needs watching — that's where risk hides.`},
+{q: `When could DDM and residual income give DIFFERENT values?`, opts: ["Never — the formulas are identical","When clean surplus breaks: above/below-book buybacks, large OCI, or reserve-funded dividends","When payout exceeds 100%","When Ke exceeds ROE"], answer: 1,
+ explain: `DDM = RI equivalence rests on B_t = B_{t−1} + NI − Div. Above-book buybacks, OCI revaluations, or capital injections break that chain — bank analysts must reconcile equity, not assume the formulas always agree.`}
+],
+tasks: [
+{t: "Task A — BBCA residual-income model (±3 hrs)", d: "Download the RC6 workbook. Do block A (NIM reconciliation), B (2-stage RI → per-share value → P/BV), C (1-stage justified + DDM cross-check), D (−30bps NIM sensitivity). All formulas link to assumptions.", url: ""},
+{t: "Task B — Test the market's bet (±1 hr)", d: "In your answer file: change terminal ROE 16%→20% (eternal franchise), note the new 2-stage P/BV. Then change Ke 11.5%→13%, note again. Write 2 sentences: which assumption decides whether 3.9x is justified?"},
+{t: "Task C — The quiz above", d: "Target ≥5/7 correct.", url: ""}
+],
+blind: {h: "Speed Drill — different numbers", body: `
+<p><b>1.</b> NI Rp60tn, book Rp300tn, Ke 12%. Residual income = ?</p>
+<details class="ans"><summary>Answer</summary><p>60 &minus; 0.12&times;300 = Rp24tn.</p></details>
+<p><b>2.</b> ROE 18%, 50% payout, Ke 12%. Justified P/BV = ?</p>
+<details class="ans"><summary>Answer</summary><p>g = 9%; (0.18&minus;0.09)/(0.12&minus;0.09) = 3.0x.</p></details>`}
+};
+EN["real-07"] = {
+title: "ADRO/Alamtri: The Company That Is No Longer Itself",
+sub: "Real Case 7 · ±5 hrs · Mining SOTP-NAV",
+sections: [
+{h: "Why FY24 vs FY23 can't be compared?", body: `
+<p>Look at the headlines: revenue <b>$6,518m (FY23) → $2,080m (FY24)</b>, down <b>68.1%</b>. Net income $1,641m → $1,380m. A junior analyst concludes 'performance collapsed'. An associate asks first: <b>is this even the same company?</b></p>
+<div class="callout"><b>📋 Data status:</b> headline figures from TipRanks/BRIDS (accessed 1 Nov 2026). On <b>5 December 2024</b>, the thermal coal assets were spun off into <b>PT Adaro Andalan Indonesia (AADI)</b>, separately listed on the IDX — and the company was renamed <b>PT Alamtri Resources Indonesia Tbk</b> (2024). As of June 2024, AAI covered <b>53% of assets, 89% of revenue, 105% of net income</b> of the group (IEEFA + alamtri.com). FY24 vs FY23 is not performance — it is an <b>accounting discontinuity</b>.</div>
+<div class="example jebakan"><div class="lbl">🚫 The headline trap</div>
+<p>Comparing $6,518m vs $2,080m as '−68% growth' = comparing a company <b>with</b> thermal coal vs <b>without</b> it. The correct input: <b>restated FY23</b> (discontinued operations, SFAS 105 / local PSAK) from the audited statements — where AAI is removed from both years. Illustrative reconstruction from AAI's share: continuing revenue ≈ 11% × $6,518m = <b>$717m</b>; continuing income ≈ (1 − 1.05) × $1,641m = <b>−$82m</b>. Yes — illustratively, the remaining business <b>lost money</b> in FY23. That is why professionals never use raw headline numbers.</p></div>
+<div class="callout"><b>Why is this an associate-level lesson?</b> In every earlier case, the data was 'clean'. In the real world, <b>the company perimeter changes</b> (spin-offs, acquisitions, deconsolidations) and aggregators don't always restate. The skill: open the notes to the accounts → find 'discontinued operations' → use the restated figures. (Real-07 § Why a spin-off can be a value trap)</p>`},
+{h: "Why SOTP instead of one multiple?", body: `
+<div class="formula">Equity = Mine NAV + SIS value + Smelter NPV + 15% of AADI + Net cash − Holding discount</div>
+<p>Post-spin Alamtri is a <b>4-leg</b> conglomerate: (1) <b>Adaro Minerals (ADMR)</b> — metallurgical coal; (2) <b>Saptaindra Sejati (SIS)</b> — mining contracting services; (3) <b>energy & the KAI aluminium smelter</b> phase 1, 500ktpa (commissioning 2026); (4) a <b>15% stake in AADI</b> (not consolidated). One P/E or EV/EBITDA multiple for all four = pricing 4 different-risk businesses at one price — meaningless.</p>
+<div class="example korporat"><div class="lbl">🏢 SOTP result (working figures, $m)</div>
+<p>ADMR NAV <b>$1,976m</b> + SIS <b>$750m</b> (illustrative) + smelter <b>$236m</b> (illustrative) + 15% AADI <b>$375m</b> (illustrative) = SOTP EV <b>$3,337m</b>. Add net cash <b>$1,557m</b> (end-1H24) → equity <b>$4,894m</b>. With an illustrative 20% holding discount → <b>$3,915m</b>. What is graded here is the <b>mechanic</b>: each leg gets the method that fits its character.</p></div>
+<div class="callout"><b>Why does each leg get a different method?</b> A mine has a reserve life → <b>depletion NAV</b>. SIS is a service business → <b>multiple</b>. The smelter isn't producing yet → <b>staged DCF / real option</b>. The 15% AADI stake → <b>market value</b> (not consolidation). SOTP = picking the right weapon per target, then adding up. (Real-02 uses the same logic for Astra.)</p>`},
+{h: "Why is a mine's NAV built on depletion?", body: `
+<div class="formula">Mine life = Reserves ÷ Annual depletion &nbsp;→&nbsp; NAV = FCF × (1 − (1+WACC)^−life) / WACC</div>
+<p>A mine is not a perpetual machine — it <b>depletes</b>. ADMR: reserves <b>177Mt</b> (31 Dec 2024) ÷ sales <b>5.62Mt/year</b> = <b>31.5 years</b> of mine life. After that, zero. A standard DCF with a 'grow forever' terminal value is <b>conceptually wrong</b> for a mine: there is no 'forever'.</p>
+<div class="example korporat"><div class="lbl">🏢 ADMR depletion (working figures)</div>
+<p>Revenue $1,154m ÷ 5.62Mt = <b>$205/ton</b>. Illustrative normalized EBITDA margin 35% → EBITDA $404m → annual FCF <b>$208m</b> (after 25% tax, illustrative D&A & sustaining capex). Annuity factor at 10% over 31.5 years = <b>9.503</b>. NAV = 208 × 9.503 = <b>$1,976m</b> — the largest SOTP contributor (59% of EV).</p></div>
+<div class="example jebakan"><div class="lbl">🚫 Reserves ≠ resources</div>
+<p>Metallurgical <b>resources are 983Mt</b> — five and a half times reserves. Beginners use 983Mt → 175-year mine life → fantasy NAV. Wrong: <b>resources are not yet proven economic</b> (no feasibility study, no permits, no infrastructure). NAV only uses <b>reserves</b> (177Mt): what's bankable. The sensitivity is real — if only 120Mt is recoverable, mine life is 21.4 years and NAV falls to <b>$1,808m</b> (−$168m). (See Hell Mode.)</p></div>`},
+{h: "Why value the smelter as a real option?", body: `
+<p>The KAI aluminium smelter: capex <b>$300–325m</b> (ADMR 2025 guidance, smelter included), revenue <b>zero until 2026 commissioning</b>. A standard DCF sees this as: $300m out today, uncertainty later — and punishes it mercilessly.</p>
+<div class="callout"><b>Why frame it as an option, not a plain DCF?</b> The smelter is a <b>right (not an obligation) to future cash flows</b>: if aluminium prices collapse permanently, phase 2 expansion can be cancelled — the loss is capped at phase 1 capex. A standard DCF assumes blind commitment; a <b>real option</b> prices management's flexibility. Illustrative NPV: steady FCF $60m/yr from 2027, WACC 12%, g 2% → PV $536m − $300m capex = <b>$236m</b> ≥ 0. Small next to the mine NAV — but the <b>optionality</b> (phase 2, downstream) is where the value hides.</div>
+<div class="example korporat"><div class="lbl">🏢 The real trade-off: capex vs dividends</div>
+<p>Alamtri sits on <b>net cash of $1,557m</b>. Every dollar into the smelter = a dollar <b>not</b> returned to shareholders as dividends. The associate question isn't 'what's the smelter's NPV' but: <b>does $300m+ here create more value than returning it to shareholders?</b> With an illustrative NPV of $236m > 0, the answer is 'yes, on paper' — but execution (2026 commissioning, aluminium prices) is the risk. Thesis defenses are won or lost here.</p></div>`},
+{h: "Why can a spin-off be a value trap?", body: `
+<p>The most associate-level question in this case: <b>did the spin-off create value, or just move it around?</b> The correct test: compare <b>pre-spin</b> value (the whole group) vs <b>post-spin</b> value (Alamtri SOTP + the 85% of AADI distributed to ADRO shareholders). A spin-off doesn't print value from thin air — it only separates.</p>
+<div class="example jebakan"><div class="lbl">🚫 Two spin-off traps</div>
+<p><b>1. The 'value creation' illusion.</b> If post-spin > pre-spin, ask: where did the difference come from? Honest candidates: the vanished holding discount (the market rewards focus), or a re-rating of each part. Dishonest ones: you're comparing incomparable numbers (headline vs restated — back to §1).<br/><b>2. The ESG angle.</b> IEEFA/BankTrack read this spin-off as a <b>financing maneuver</b>: banks with coal-exit policies can lend again to the 'clean' entity. That's thesis-defense material — an ESG-sensitive market may discount the stock precisely because of the structure.</p></div>
+<div class="callout"><b>Why isn't the 15% AADI stake consolidated?</b> Below 20% (PSAK 15 / IAS 28) = no control/significance for full consolidation — it's carried as an investment (market/fair value), not merged line-by-line. Practically: AADI's revenue does <b>not</b> add to Alamtri's revenue; the SOTP only takes <b>15% × AADI's market value</b> ($375m illustrative). Common error: adding AADI's revenue into group revenue.</p>`},
+{h: "🔥 Hell Mode briefing", body: `
+<ul>
+<li><b>Discontinued operations</b> (SFAS 105 / PSAK): divested assets are removed from restated figures — headline vs restated can differ by 68%.</li>
+<li><b>SOTP</b> = sum-of-the-parts: each conglomerate leg valued with the method that fits its character.</li>
+<li><b>Mine NAV</b> = depletion DCF: mine life = reserves ÷ annual depletion; <b>no 'forever' terminal value</b>.</li>
+<li><b>Reserves ≠ resources</b>: only reserves (proven economic) enter the NAV.</li>
+<li><b>Real option</b>: a pre-revenue project (smelter) is valued as a right to future cash flows, not a blind DCF.</li>
+<li><b>Holding discount</b>: the market prices a conglomerate below the sum of its parts — explain the gap.</li>
+<li><b>Net cash</b> is added to SOTP EV to get equity (the mirror of subtracting net debt in Real-02).</li>
+</ul>`}
+],
+quiz: [
+{q: `Revenue FY23 $6,518m vs FY24 $2,080m. Junior analyst: 'performance collapsed 68%'. The error?`, opts: ["Wrong math — the drop is 32%","Comparing different perimeters (the AAI spin-off)","Forgot to convert the dollar rate","FY24 is unaudited so it's invalid"], answer: 1, k: "discontinued_ops",
+ hints: ["What left the group in Dec 2024?", "AAI = 89% of group revenue. Compare apples to apples."],
+ explain: `On 5 Dec 2024 the thermal coal assets (AAI: 89% of revenue, 105% of income) were spun off into AADI. $6,518m vs $2,080m = the company WITH vs WITHOUT thermal coal — not performance. Use restated FY23.`},
+{q: `Which figures are correct for YoY analysis after the spin-off?`, opts: ["FY23 headline $6,518m","Restated FY23 (discontinued ops removed)","The FY23–FY24 headline average","FY24 projected to a full year"], answer: 1, k: "discontinued_ops",
+ hints: ["SFAS 105 / PSAK discontinued operations.", "Headlines mix two different perimeters."],
+ explain: `Only restated FY23 (AAI removed from both years) is apples-to-apples. The $6,518m headline mixes the old perimeter.`},
+{q: `ADMR's mine life?`, opts: ["983 ÷ 6.63 = 148 years","177 ÷ 5.62 = 31.5 years","177 ÷ 6.63 = 26.7 years","983 ÷ 5.62 = 175 years"], answer: 1, k: "mine_life",
+ hints: ["Reserves or resources? Sales or production?", "NAV uses what's bankable divided by actual depletion."],
+ explain: `Reserves 177Mt ÷ sales 5.62Mt = 31.5 years. Resources (983Mt) aren't bankable; production (6.63Mt) isn't depletion sold.`},
+{q: `Why does the NAV use 177Mt reserves instead of 983Mt resources?`, opts: ["Because 177 is the smaller number","Reserves = proven economic & bankable; resources aren't","To keep mine life from getting too long","Accounting rules forbid using resources"], answer: 1, k: "reserves",
+ hints: ["What's the difference between 'proven mineable at a profit' and 'in the ground'?", "Which one would a bank lend against?"],
+ explain: `Reserves have passed economic feasibility — resources are only geological potential. NAV = value that can be monetized.`},
+{q: `Alamtri's SOTP equity value (working figures) = ?`, opts: ["$3,337m (SOTP EV — forgot net cash)","$3,915m (already holding-discounted)","$4,894m (SOTP EV + $1,557m net cash)","$6,518m (FY23 headline revenue)"], answer: 2, k: "sotp",
+ hints: ["EV = for all capital providers. Equity = for shareholders.", "Who owns the $1,557m net cash?"],
+ explain: `SOTP EV $3,337m (1976+750+236+375) + net cash $1,557m = equity $4,894m. $3,915m = after the 20% holding discount.`},
+{q: `The KAI smelter is valued as a real option because?`, opts: ["Options are always more accurate than DCF","Big capex now, zero revenue until 2026 — a blind DCF punishes flexibility","Smelters need no capex","Aluminium isn't cyclical"], answer: 1, k: "real_option",
+ hints: ["Pay $300m today, get 2026 uncertainty.", "Phase 2 can be cancelled — the loss is capped. What shape is that?"],
+ explain: `The smelter = a right to future cash flows with capped downside (can stop at phase 1). A standard DCF assumes blind commitment; a real option prices flexibility.`},
+{q: `Alamtri holds 15% of AADI — why isn't it fully consolidated?`, opts: ["Because AADI is separately listed on the IDX","Below 20% (PSAK 15/IAS 28) — carried as an investment","Because the spin-off isn't complete","Because AADI is loss-making"], answer: 1, k: "consolidation",
+ hints: ["What's the threshold for significant control?", "Full consolidation needs control, not just shareholding."],
+ explain: `Below 20% = no control/significance for line-by-line consolidation (PSAK 15/IAS 28). It enters the SOTP as 15% × market value, not as added revenue.`},
+{q: `How is the $1,557m net cash treated in the SOTP?`, opts: ["Subtracted like debt","Ignored — cash isn't an operating asset","Added to SOTP EV → equity","Split across each SOTP leg"], answer: 2, k: "net_cash",
+ hints: ["EV = for all capital providers. Who owns cash?", "The mirror image of net debt in Real-02."],
+ explain: `Net cash belongs to shareholders → SOTP EV + net cash = equity of $4,894m. The mirror of 'EV − net debt' in Real-02.`}
+],
+hell: [
+{q: `ADMR: sales +26%, ASP −16%. Implied revenue change?`, opts: ["+10% (26−16)","−16% (price decides)","1.26 × 0.84 − 1 = +5.8% ≈ +6% reported","+30% (follow production)"], answer: 2,
+ explain: `Volume effect × price effect: 1.26 × 0.84 = 1.0584 → +5.8%, matching the reported +6%. Production +30% ≠ sales +26% — revenue comes from what's SOLD.`},
+{q: `Only 120Mt of reserves are recoverable (not 177Mt). New ADMR NAV?`, opts: ["Stays $1,976m — reserves aren't sensitive","$1,808m (21.4-yr life, 8.69 annuity)","120/177 × $1,976m = $1,339m","Rises — a more focused mine"], answer: 1,
+ explain: `Life = 120/5.62 = 21.4 yrs; 10% annuity = 8.69; NAV = 207.9 × 8.69 = $1,808m (−$168m). Not linear because the annuity curves — that's why sensitivity is computed, not guessed.`},
+{q: `SOTP equity $4,894m, apply a 20% holding discount. Result?`, opts: ["$4,894m (discount not applied)","$5,873m (added instead)","$3,915m","$3,337m"], answer: 2,
+ explain: `4,894 × (1 − 0.20) = $3,915m. The discount = the market paying below the sum of the parts — a question (why?), not a buy verdict.`},
+{q: `Restated FY23 continuing (illustrative) = −$82m income. The honest analyst's take?`, opts: ["The business is destroyed — avoid","The remaining business may not be profitable; value rests on assets & future options","Illustrative = meaningless","The spin-off failed completely"], answer: 1,
+ explain: `AAI contributed 105% of group income — so continuing ops (illustrative) lost $82m. Alamtri's value rests on reserve NAV + smelter/energy options, NOT historical earnings power. That changes the entire thesis.`},
+{q: `Did the ADRO→AADI spin-off 'create value'? The correct test?`, opts: ["Check if the share price rose/fell after","Compare pre-spin value vs (Alamtri SOTP + the 85% of AADI distributed)","Ask management — they'd know","Spin-offs always create value"], answer: 1,
+ explain: `A spin-off separates; it doesn't print value. Test: whole-group value pre-spin vs the sum of post-spin pieces shareholders received. The difference must be explained (vanished holding discount? re-rating?) — never assumed.`}
+]
+};
+EN["real-08"] = {
+title: "GOTO: A Rp90 Trillion Loss, Then What?",
+sub: "Real Case 8 · ±6 hrs · SOTP + one-off normalization",
+sections: [
+{h: "Why doesn't a Rp90.5 trillion loss mean the business is destroyed?", body: `
+<p><b>GoTo (GOTO.JK)</b> booked a <b>−Rp90.5 trillion loss in FY2023</b> (AlphaSpread, income from continuing operations, accessed Nov 2026) — a number that read raw sounds like the company vaporized Rp90.5T of cash in a year. It didn't.</p>
+<p>Of that Rp90.5T, roughly <b>Rp78.8 trillion was a non-cash goodwill reversal</b> from losing control of Tokopedia in the TikTok transaction (GoTo results release, 19 Mar 2024). The Rp93.1T of goodwill itself was booked back in 2021 at the Gojek–Tokopedia merger (audited FY2022 statements, note 33a): the price paid for <i>expectations</i> — not cash leaving the door in 2023.</p>
+<div class="example korporat"><div class="lbl">🏢 Analogy</div>
+<p>You buy a painting for Rp93 million convinced it will appreciate. Three years later an appraiser says it's worth Rp14 million. You're "down" Rp79 million <b>on paper</b> — but your wallet didn't lose Rp79 million this year. That's goodwill impairment: admitting past expectations were too optimistic, not bleeding cash today.</p></div>
+<div class="callout"><b>Why does this matter?</b> GoTo's FY2023 operating cash flow was only <b>−Rp4.3T</b> (AlphaSpread) — not −Rp90.5T. And <b>FY2024 adjusted EBITDA was actually positive at Rp386 billion</b>, beating breakeven guidance (GoTo release, 12 Mar 2025). Accounting records the past; cash tells the present. An analyst who doesn't separate the two is valuing the shadow, not the object.</p></div>`},
+{h: "Why is normalizing one-offs THE exercise?", body: `
+<div class="formula">Continuing loss = Headline loss − One-off = −90.5 − (−78.8) = −Rp11.7T</div>
+<p>Normalization = cleaning headline numbers of one-time items before using them. Once cleaned, the story flips completely:</p>
+<p><b>−Rp11.7T</b> (FY23 continuing) → <b>−Rp4.5T</b> (FY24, ≈$286M per independent analysis by venturesg, Oct 2026) → <b>−Rp1.5T</b> (FY25, GoTo release 11 Mar 2026) → <b>net profit +Rp864 billion</b> (9M26, Quartr 30 Oct 2026). From "destroyed" to "approaching breakeven" — just by refusing to treat a one-time non-cash item as operating loss.</p>
+<div class="example jebakan"><div class="lbl">🚫 The P/E trap</div>
+<p>Negative FY23 EPS → P/E is <b>meaningless</b> (negative/undefined). Loss-making companies are valued with <b>EV/Revenue or SOTP</b>, not P/E. Even after GOTO turned profitable (LTM EPS +Rp0.63 per StockAnalysis, Oct 2026), a P/E built on the first two profitable quarters in history is fragile. Multiples need <i>recurring</i> earnings, not earnings born yesterday.</p></div>
+<div class="callout"><b>⚠️ A simplified bridge:</b> −Rp11.7T is an illustrative bridge (one large one-off removed). The full reconciliation — including the FY22 one-off (Rp11T goodwill impairment, kr-asia Mar 2023) and tax effects — lives in the audited financial statements. What's scored here is your <b>normalization mechanics</b>, not the precision of the number.</p></div>`},
+{h: "Why is +7.5% growth deceiving? (deconsolidation & pro-forma)", body: `
+<p>The headline: revenue <b>Rp14.8T → Rp15.89T (+7.4%)</b>. Looks stagnant. But FY2023 still <b>consolidated Tokopedia</b>; Tokopedia left the consolidation on <b>31 January 2024</b> after TikTok took 75.01%. Comparing GAAP FY23 vs FY24 = comparing apples with an apple orchard.</p>
+<p>GoTo itself published <b>pro-forma</b> numbers (excluding Tokopedia): <b>Rp7.652T (FY23) → Rp14.753T (FY24) = +92.8%</b> (GoTo release, 12 Mar 2025). The continuing business nearly doubled — the +7.4% headline hid it.</p>
+<div class="example korporat"><div class="lbl">🏢 One deal, three value streams</div>
+<p>The TikTok transaction (Dec 2023, announced value <b>$1.5 billion for 75.01%</b> — i3investor/TheEdge, Jul 2024) gave GoTo three legs of value: <b>(1)</b> a 24.99% stake in Tokopedia, <b>(2)</b> e-commerce service fees (FY24: Rp622B → FY25: Rp820B, +32%), <b>(3)</b> a ~0.4% GMV royalty (≈$58M/year, nearly costless). A SOTP analyst must value all three — not just the shares.</p></div>
+<div class="callout"><b>Why is pro-forma mandatory?</b> Whenever a company's structure changes (acquisitions, divestitures, deconsolidation), GAAP numbers across years aren't apple-to-apple. Pro-forma = "what the numbers would look like <i>if</i> today's structure had existed all along." Without it, you're valuing an accounting change as business performance.</p></div>`},
+{h: "Why a three-legged SOTP — and why does the market discount it?", body: `
+<p>GOTO isn't one business: <b>on-demand</b> (Gojek), <b>fintech</b> (GoPay), and <b>24.99% of Tokopedia</b>. One multiple for all = pricing 3 houses with 1 price per square meter. SOTP values each leg:</p>
+<p>① <b>On-demand:</b> FY24 revenue Rp5.34T (FY25 release) × <b>2.5× EV/Revenue</b> (illustrative) = <b>Rp13.35T</b>.<br>
+② <b>Fintech:</b> FY26E EBITDA $94–100M → midpoint $97M ≈ Rp1.75T × <b>8× EV/EBITDA</b> (illustrative) = <b>Rp13.98T</b>.<br>
+③ <b>Tokopedia 24.99%:</b> $1.5B ÷ 75.01% × 24.99% = $0.50B ≈ <b>Rp9.0T</b> (Rp18,014 FX, BI 16 Oct 2026) — an <i>anchor</i> from a real transaction price.<br>
+④ <b>Net cash</b> $858M ≈ <b>Rp15.46T</b> (venturesg, Oct 2026).<br>
+<b>Total SOTP ≈ Rp51.79T → Rp45/share</b> (1.15 trillion shares, post treasury cancellation 14 Oct 2026). Market price: Rp25.6T market cap → <b>Rp22/share</b> (StockAnalysis, 30 Oct 2026). <b>Discount ≈ 50.6%.</b></p>
+<div class="example jebakan"><div class="lbl">🚫 A discount is a question, not an answer</div>
+<p>Candidate explanations from the market: Rp772B/year cash corporate costs (FY24), a $611M consumer <i>loan book</i> (+58% YoY, <i>unsecured</i> — 2Q26), dual-class shares (insiders hold ~58% of votes), Grab-merger politics, and a royalty depending on TikTok. Maybe the market is too pessimistic — maybe it knows something your model ignores. The analyst's job: <b>explain the gap</b>, not assume the market is dumb.</p></div>
+<div class="callout"><b>⚠️ The fintech leg = an option, not a certainty:</b> it uses <i>forward</i> FY26E EBITDA for a business that first turned profitable in 2026 — paying today for future earnings with a double risk (projection risk × multiple risk). In Task B you'll stress-test it: cut the multiple 8×→5× and see what per-share value survives.</p></div>`},
+{h: "Why can aggregators mislead you?", body: `
+<p>The GOTO case is a museum of data traps. Three real ones from this case's research:</p>
+<p><b>1. Inconsistent D&A.</b> AlphaSpread shows FY24 D&A of <b>Rp744 billion</b> in one table and <b>Rp2.7 trillion</b> in another. Both can't be right. Status: <b>flagged — must reconcile to the audited statements</b> before use. This case's workbook <i>deliberately doesn't use</i> D&A.</p>
+<p><b>2. "FY24 loss" has three versions.</b> Rp3.08T (<i>loss for the period</i>, GoTo release Mar 2025) vs Rp5.46T (<i>net loss</i>, GoTo release Mar 2026) vs ~Rp4.5T ($286M, venturesg). Nobody lied — the <b>definitions differ</b>. An analyst who quotes without naming the definition is comparing three different things.</p>
+<p><b>3. Deal value vs cash paid.</b> "TikTok paid $1.5B" (announced transaction value) vs independent analysis: $840M initial cash + $1B+ funding commitments. The valuation <i>anchor</i> uses the transaction figure — but the analyst notes the nuance.</p>
+<div class="callout"><b>Why is this an associate-level lesson?</b> Juniors quote numbers; associates cite <b>year + period + source + definition</b> for every figure — and label unverified ones illustrative. One source = one version of truth; the audited statements = the anchor.</p></div>`},
+{h: "Practice task", body: `
+<p>Build GOTO's normalization + pro-forma + SOTP in the practice workbook: (A) normalize the FY23 loss from the −Rp90.5T headline with the Rp78.8T one-off; (B) compute headline vs pro-forma growth FY23→FY24; (C) build the 3-legged SOTP + net cash → per-share value → upside vs market price. Every answer cell must be formulas linking to inputs — change the on-demand multiple 2.5×→1.5× and watch the whole SOTP follow.</p>
+<div class="callout"><b>Why does this task matter?</b> This is the "dirtiest" exercise in all of Real Cases: a giant one-off, a deconsolidation, a three-layered deal, and conflicting aggregator data. If you can tidy up GOTO, "normal" financial statements will feel easy.</p>
+<ul>
+<li><b>Normalization</b> = cleaning one-offs before valuing; continuing loss ≠ headline loss.</li>
+<li><b>Pro-forma</b> = apple-to-apple after structural change (deconsolidation).</li>
+<li><b>SOTP</b> = each segment valued with its own multiple, then added up.</li>
+<li><b>Transaction anchor</b> = a real deal price ($1.5B/75.01%) as a fair-value anchor.</li>
+<li><b>Discount vs SOTP</b> = 1 − market price / SOTP value — a question, not a buy verdict.</li>
+</ul>`}
+],
+quiz: [
+{q: `The Rp78.8T FY2023 GOTO one-off was?`, opts: ["Cash losses from Gojek operations","A non-cash goodwill reversal from losing control of Tokopedia","Repayment of maturing bank debt","Bloated Tokopedia marketing spend"], answer: 1, k: "one_off",
+ hints: ["Non-cash, one-time, tied to the TikTok transaction.","Goodwill was booked in 2021 at the merger; in 2023 it was admitted 'too optimistic'."],
+ explain: `Rp78.8T = a non-cash goodwill reversal from losing control of Tokopedia (GoTo release, 19 Mar 2024). Not 2023 cash outflow — an admission that 2021 merger expectations were too optimistic.`},
+{q: `FY23 headline loss −Rp90.5T, one-off −Rp78.8T. Normalized continuing loss?`, opts: ["−Rp169.3T","−Rp11.7T","−Rp90.5T (unchanged)","−Rp78.8T"], answer: 1, k: "normalization",
+ hints: ["Continuing loss = headline − one-off.","−90.5 − (−78.8) = ? Mind the sign."],
+ explain: `−90.5 − (−78.8) = −Rp11.7T. The sign is everything: subtracting a loss one-off (not adding) is what cleans the number. Wrong sign → −Rp169.3T, twice as scary as reality.`},
+{q: `Headline revenue +7.4% but pro-forma +92.8%. What caused the gap?`, opts: ["The rupiah strengthened sharply in 2024","FY23 still consolidated Tokopedia; deconsolidated 31 Jan 2024","GoTo changed its fiscal year","The 2024 share buyback effect"], answer: 1, k: "pro_forma",
+ hints: ["Apple-to-apple: the structure must match.","When did Tokopedia leave the consolidated statements?"],
+ explain: `GAAP FY23 still included consolidated Tokopedia; since 31 Jan 2024 Tokopedia is deconsolidated. Pro-forma Rp7.652T→Rp14.753T (+92.8%) compares the continuing business only.`},
+{q: `TikTok paid $1.5B for 75.01% of Tokopedia. Implied 100% value of Tokopedia?`, opts: ["$1.125B","$1.5B","$2.0B","$2.5B"], answer: 2, k: "sotp",
+ hints: ["100% value = deal price ÷ stake bought.","1.5 ÷ 0.7501 = ?"],
+ explain: `$1.5B ÷ 75.01% = $1.9997B ≈ $2.0B. That's the transaction anchor: a price a real third party actually paid, not an analyst's guess.`},
+{q: `GoTo's 24.99% Tokopedia stake in rupiah (Rp18,014 FX)?`, opts: ["Rp4.5T","Rp6.0T","Rp9.0T","Rp13.5T"], answer: 2, k: "sotp",
+ hints: ["0.2499 × $1.9997B = $0.4997B.","$0.4997B × 18,014 = ? Watch the unit ladder: USD billions → Rp trillions."],
+ explain: `0.2499 × $1.9997B = $0.4997B; × Rp18,014 = Rp9.0T. Unit ladder: $499.7 million × 18,014 = Rp9,002 billion = Rp9.0 trillion.`},
+{q: `SOTP total Rp51.79T on 1.15 trillion shares. Per-share value?`, opts: ["Rp22","Rp31","Rp45","Rp51"], answer: 2, k: "sotp",
+ hints: ["Trillion ÷ trillion = straight Rp.","51.79 ÷ 1.15 = ?"],
+ explain: `51.79 ÷ 1.15 = Rp45.03 ≈ Rp45/share. Numerator and denominator are both in trillions, so the result is rupiah per share directly — no ×1,000.`},
+{q: `Why isn't trailing P/E used to value GOTO in FY23–FY24?`, opts: ["Because GOTO has no shares outstanding","Negative EPS → meaningless P/E; use EV/Revenue or SOTP","Because P/E is banned for tech issuers","Because GOTO's profit is always zero"], answer: 1, k: "multiples",
+ hints: ["P/E = price ÷ earnings. Negative earnings → ?","What values a loss-making company?"],
+ explain: `Negative EPS makes P/E negative/undefined — the multiple is meaningless. Loss-makers are valued via EV/Revenue or segment SOTP.`}
+],
+hell: [
+{q: `FY24 adjusted EBITDA +Rp386B but net loss −Rp4.5T. How?`, opts: ["The financials were fabricated","Adjusted EBITDA strips out non-cash & one-offs (SBC, depreciation); accounting net loss ≠ operating cash","Rp386B is actually Rp386T","Net loss already includes 2025 profit"], answer: 1,
+ explain: `Adjusted EBITDA = earnings before interest, tax, depreciation, amortization, SBC, and one-offs. It measures core operating cash power; accounting net loss carries all non-cash charges. Both are true — they answer different questions.`},
+{q: `The fintech leg uses forward FY26E EBITDA. The biggest danger?`, opts: ["None — guidance is always right","Double risk: paying today for future earnings that may miss, with a multiple that's also a guess","The rupiah will surely strengthen","Forward EBITDA is banned by accounting standards"], answer: 1,
+ explain: `A forward multiple = betting twice: (1) 2026 EBITDA truly hits $94–100M (a business profitable for the first time in 2026), (2) 8× is the right multiple. Miss either → the fintech SOTP leg collapses. That's why it's labeled an 'option', not a 'certain value'.`},
+{q: `SOTP Rp45 vs market Rp22. The honest analyst's conclusion?`, opts: ["Buy aggressively — 102% upside guaranteed","Sell — the market is always right","First explain the 51% discount (corporate costs, loan book, governance); a discount is a question","Raise multiples until upside looks reasonable"], answer: 2,
+ explain: `A 51% discount is a question, not a buy verdict. Candidates: Rp772B/yr corporate costs, the $611M unsecured loan book, 58% dual-class votes, merger politics. An honest analyst doesn't massage multiples to make the story pretty.`},
+{q: `The 0.4% GMV royalty ≈ $58M/year is 'nearly costless'. Why stay cautious?`, opts: ["Because royalties are always zero","The flow depends on TikTok (a third party): GMV can fall, deal terms can change","Because royalties aren't in the statements","Because $58M is too small to count"], answer: 1,
+ explain: `All three TikTok-deal legs depend on a party GoTo doesn't control. Today's 'pure' royalty can shrink if TikTok Shop GMV falls or terms get renegotiated. Value without control = value with a risk discount.`},
+{q: `Aggregator D&A: Rp744B in one table, Rp2.7T in another (FY24). The analyst's move?`, opts: ["Use the average, Rp1.7T","Pick the smaller one for a nicer valuation","Use neither; reconcile to the audited statements — flag as troubled data","Ignore D&A forever in all valuations"], answer: 2,
+ explain: `Two numbers that can't both be true = a stop signal, not a selection signal. The analyst traces to the primary source (audited statements) and flags the aggregator figures as unverified. This case deliberately doesn't use D&A at all.`}
+],
+tasks: [
+{t: "Task A — Normalization + pro-forma + SOTP (±4 hrs)", d: "Download the RC8 workbook. (A) Normalize the FY23 loss from the headline with the one-off; (B) compute headline vs pro-forma growth; (C) build the 3-legged SOTP + net cash → per-share value → upside vs market price. All formulas link to inputs.", url: "PENDING-DRIVE"},
+{t: "Task B — Multiple sensitivity test (±1 hr)", d: "In your answer file: cut the on-demand multiple 2.5×→1.5× and the fintech multiple 8×→5×. Note the new per-share value. Which leg is most 'dangerous' to the thesis?", url: ""},
+{t: "Task C — The quiz above", d: "Target ≥5/7 correct.", url: ""}
+],
+blind: {h: "Speed Drill — different numbers", body: `
+<p><b>1.</b> Headline loss −Rp50T includes a −Rp42T (non-cash) one-off. Normalized continuing loss = ?</p>
+<details class="ans"><summary>Answer</summary><p>−50 − (−42) = −Rp8T.</p></details>
+<p><b>2.</b> An investor pays $2B for 80% of a startup. Implied 100% value? The remaining 20%?</p>
+<details class="ans"><summary>Answer</summary><p>100% = 2 ÷ 0.80 = $2.5B. Remaining 20% = 0.20 × 2.5 = $0.5B.</p></details>`}
+};
+EN["real-09"] = {
+title: "WSKT: Dissecting a Company with Negative Equity",
+sub: "Real Case 9 · ±6 hrs · Liquidation waterfall",
+sections: [
+{h: "Why Waskita Karya?", body: `
+<p><b>Waskita Karya (WSKT.JK)</b> — a state-owned contractor with equity of <b>negative Rp3.34tn</b> (30 Sep 2026). This is the course's most extreme case: every equity multiple (P/E, P/BV) is <b>undefined</b>, the shares have been <b>suspended since May 2023</b> (Rp202), and PEFINDO rates it <b>idSD</b> (Selective Default). Here you don't value the shares — you value <b>creditor recovery</b>.</p>
+<div class="example korporat"><div class="lbl">🏢 Key data</div>
+<p>FY25 (financials via petromindo.com, Apr 2026): revenue <b>Rp8.85tn</b> (−17% YoY) · net loss <b>−Rp4.48tn</b> · gross profit Rp1.58tn (18% margin). FY24: revenue Rp10.71tn · loss −Rp3.91tn. FY24 audited (press Oct 2025, citing IDX filings): assets Rp77.15tn · liabilities Rp69.27tn · equity Rp7.88tn. 9M26 interim <b>unaudited</b> (jawawa.id): parent equity <b>−Rp3.34tn</b> · deficit Rp20.8tn · finance costs Rp2.79tn · short-term liabilities &gt; current assets by Rp12.48tn · cash Rp1.50tn.</p></div>
+<div class="callout"><b>📋 Data status:</b> the figures above are verified from the cited sources. <b>The liquidation assumptions in the workbook (book values of receivables/toll/fixed assets, per-class recovery rates, 5% liquidation costs, bond/vendor claims, 30% haircut) are ILLUSTRATIVE</b> — what's scored is your <b>waterfall mechanics</b>, not the precision of the assumptions. Figures may change; verify against the latest filings before real-world use.</div>
+<div class="callout"><b>⚠️ Forensic note:</b> several secondary media outlets report 9M26 figures that are <b>inconsistent across sources</b> (e.g. equity Rp1.03tn vs a Rp22.52tn deficit that doesn't reconcile with assets Rp73.07tn − liabilities Rp72.03tn). The analyst's lesson: aggregator/media numbers <b>must</b> be re-checked against the official filings before entering a model. This case uses the verified research figures above.</p></div>`},
+{h: "Why are equity multiples meaningless?", body: `
+<div class="formula">P/BV = price ÷ book value per share → NEGATIVE denominator</div>
+<p>Equity of −Rp3.34tn means <b>negative book value per share</b>. P/BV = price ÷ (negative) = a number that can't be interpreted. P/E breaks too: a −Rp4.48tn loss → negative E → negative P/E. Equity multiples are <b>economically undefined</b> — not "cheap", not "expensive", but <b>not a valid measuring tool</b>.</p>
+<div class="example jebakan"><div class="lbl">🚫 The "cheap" trap</div>
+<p>"The shares are only Rp202 — cheap!" <b>WRONG.</b> Rp202 is a price <b>frozen since the May 2023 suspension</b> — 3.5 years with no price discovery. That price reflects neither the −Rp4.48tn loss (FY25), the negative equity, nor the MRA. A suspended share ≠ a cheap share; it's a <b>share with no market</b>. An analyst using Rp202 as "the price" is using a fossil as data.</p></div>
+<div class="callout"><b>Why does the analyst think like a creditor?</b> Because in distress, the <b>claim priority</b> decides everything: creditors get paid first, shareholders get the leftovers — if any. Valuing WSKT from a shareholder's seat = valuing the back row of a sinking ship.</p></div>`},
+{h: "Why a waterfall, not a DCF?", body: `
+<div class="formula">Class recovery = MIN(remaining funds, class claim) → move to next class</div>
+<p>A DCF needs a <b>going-concern</b> assumption (the company lives forever). With a Rp20.8tn deficit, a Rp12.48tn liquidity gap, and an idSD rating, that assumption is <b>broken</b>. A <b>liquidation waterfall</b> replaces it: sell every asset at realistic haircuts → subtract liquidation costs → distribute to creditors <b>by seniority</b> → leftovers (if any) to equity.</p>
+<div class="callout"><b>Why the seniority order?</b> ① <b>Liquidation costs</b> (curator, legal) — without them nothing can be sold. ② <b>Secured creditors / banks</b> (MRA Tranche A Rp2.154tn + Tranche B Rp21.736tn = Rp23.89tn). ③ <b>Unsecured</b> (non-guaranteed bonds — already restructured — &amp; vendors). ④ <b>Equity</b> — last in line, suffering most. Seniority isn't an opinion; it's <b>law</b>.</p></div>
+<div class="example korporat"><div class="lbl">🏢 The waterfall result (Rp trillion, illustrative assumptions in the workbook)</div>
+<p>Liquidation proceeds = cash 1.50 + receivables 2.76 + toll 5.40 + fixed assets 4.00 = <b>Rp13.66tn</b>. Liquidation costs 5% = 0.68 → <b>net proceeds Rp12.98tn</b>. Bank claims (Tranches A+B) = <b>Rp23.89tn</b> — nearly <b>double</b> the available funds. Bank creditors receive MIN(12.98; 23.89) = <b>Rp12.98tn</b> → recovery rate <b>54.3%</b>. Left for bonds/vendors: <b>Rp0</b>. Left for equity: <b>Rp0</b>. Even senior creditors aren't made whole — let alone shareholders.</p></div>
+<div class="callout"><b>Why does this "zero" matter?</b> Because it answers the case's hardest question — <i>is there any equity value left?</i> — without arguing about the future. A waterfall doesn't forecast; it <b>computes who gets what if everything is sold today</b>: arithmetic proof, not opinion.</p></div>`},
+{h: "Why can restructuring make equity 'positive' while old holders still get zero?", body: `
+<p>Scenario (illustrative): a <b>30% haircut</b> on Tranche B Rp21.736tn → liabilities down <b>Rp6.52tn</b>, remaining B = Rp15.22tn. Mechanical equity = −3.34 + 6.52 = <b>+Rp3.18tn</b>. On paper, the company is back to positive equity! But — <b>who owns that new equity?</b></p>
+<div class="callout"><b>Why do old holders still get zero?</b> Because the haircut &amp; debt-to-equity conversion are granted <b>to creditors</b> as compensation. That +Rp3.18tn of book equity <b>belongs to the converted creditors</b> — old shareholders are diluted to near zero (their claim's fair value = Rp0 per the waterfall). <b>Book equity ≠ value for old holders.</b> Policy context: Danantara holds 74.6%, the Hutama Karya merger is <b>delayed</b> (cleanup first), the Rp3tn PMN was <b>cancelled</b> (Gov. Reg. 20/2025) — the state isn't injecting; creditors bear it.</p></div>
+<div class="example jebakan"><div class="lbl">🚫 The "turnaround" trap</div>
+<p>"Eight recovery initiatives, 63 projects worth Rp31.7tn — it must rebound!" Maybe. But the credit analyst asks first: <i>with finance costs of Rp2.79tn per 9 months vs FY25 gross profit of Rp1.58tn for the full year — <b>9 months of interest EXCEEDS a full year of gross profit</b> — where does the cash to pay it come from?</i> New projects don't pay old interest.</p></div>`},
+{h: "Practice task", body: `
+<p>Build WSKT's liquidation waterfall in the practice workbook: organize the as-is (messy) financial data into proceeds per asset class (cash, receivables, toll, fixed assets) → subtract liquidation costs → distribute by seniority → bank recovery rate → leftover for bonds/vendors → leftover for equity. Then do the <b>restructuring scenario</b>: 30% haircut on Tranche B → new mechanical equity → old equity value. Every answer cell must be formulas linking to data/assumptions.</p>
+<div class="callout"><b>Why does this task matter?</b> This is the only case in the course that <b>forbids you from thinking like a shareholder</b>. Master the waterfall once — and you'll never again be fooled by a "cheap" stock with negative equity.</p></div>`},
+{h: "🔥 Hell Mode briefing", body: `
+<ul>
+<li><b>Waterfall</b> = distributing liquidation proceeds by claim seniority.</li>
+<li><b>Seniority</b> = liquidation costs → secured creditors → unsecured → equity.</li>
+<li><b>Recovery rate</b> = funds received ÷ claim.</li>
+<li><b>Negative equity</b> = equity multiples undefined; think like a creditor.</li>
+<li><b>Haircut</b> = principal reduction; lifts book equity but it belongs to creditors.</li>
+<li><b>Suspension price</b> = a fossil, not a valuation signal.</li>
+</ul>`}
+],
+quiz: [
+{q: `WSKT's equity at 30 Sep 2026 = −Rp3.34tn. Why are P/E and P/BV meaningless?`, opts: ["Because the data is unaudited","Negative equity — the denominator is meaningless","Because the shares are suspended","Because the loss is too large"], answer: 1, k: "distressed",
+ hints: ["P/BV = price ÷ book value per share.","Negative book value → the quotient can't be interpreted."],
+ explain: `Negative book value makes P/BV (and P/E on a loss) economically undefined — not 'cheap', but a tool that doesn't apply.`},
+{q: `In a distressed analysis like WSKT, the analyst thinks like a?`, opts: ["The majority shareholder","A creditor — who gets paid first","Management — the turnaround strategy","The regulator — compliance matters"], answer: 1, k: "distressed",
+ hints: ["Who gets paid first when assets are sold?","Shareholders get leftovers — if any."],
+ explain: `In distress, claim priority decides everything. The analyst values creditor recovery first; equity = the remainder.`},
+{q: `Net proceeds Rp12.98tn, bank claims (Tranches A+B) Rp23.89tn. The bank creditors' recovery rate?`, opts: ["100% — banks always get paid in full","54.3%","12.98%","0% — equity comes first"], answer: 1, k: "waterfall",
+ hints: ["Recovery rate = funds received ÷ claim.","MIN(12.98; 23.89) ÷ 23.89 = ?"],
+ explain: `Banks receive MIN(12.98; 23.89) = Rp12.98tn → 12.98 ÷ 23.89 = 54.3%. Seniority guarantees order, not full payment.`},
+{q: `The correct waterfall payment order?`, opts: ["Equity → banks → vendors → costs","Liquidation costs → secured creditors → unsecured → equity","Vendors → equity → banks","All creditors split equally"], answer: 1, k: "seniority",
+ hints: ["Who must be paid for the asset sale to happen at all?","Where does equity stand? First or last?"],
+ explain: `Liquidation costs first (no curator, no sale), then secured creditors, unsecured, equity last. Seniority = law, not opinion.`},
+{q: `9M26 finance costs Rp2.79tn vs FY25 gross profit Rp1.58tn. That means?`, opts: ["9 months of interest > a full year of gross profit — structural bleeding","The company is nearly breaking even","Gross profit covers the interest bill","Finance costs fell dramatically"], answer: 0, k: "distressed",
+ hints: ["Compare 2.79 (9 months) vs 1.58 (12 months).","Can gross profit pay the interest?"],
+ explain: `Nine months of interest (Rp2.79tn) exceeds a full year of gross profit (Rp1.58tn) — operations can't cover the debt cost. That's the 'bleeding'.`},
+{q: `A 30% haircut on Tranche B Rp21.736tn. Mechanical post-haircut equity?`, opts: ["Stays −Rp3.34tn","−Rp9.86tn","−Rp3.34tn + Rp6.52tn = +Rp3.18tn","Exactly Rp0"], answer: 2, k: "haircut",
+ hints: ["30% haircut × 21.736 = ?","Liabilities fall → equity (assets − liabilities) rises by that much."],
+ explain: `Haircut = 21.736 × 30% = Rp6.52tn. Liabilities fall Rp6.52tn → mechanical equity = −3.34 + 6.52 = +Rp3.18tn. But that value belongs to the converted creditors.`},
+{q: `Shares suspended at Rp202 since May 2023. Why is Rp202 NOT a 'cheap' signal?`, opts: ["Because Rp202 is actually too expensive","The price is frozen 3.5 years — no price discovery","Because Danantara holds 74.6%","Because the minimum buy is 1 lot"], answer: 1, k: "distressed",
+ hints: ["When was that price last formed? May 2023.","What happened since? A −Rp4.48tn loss, negative equity, the MRA."],
+ explain: `Rp202 is a fossil — the last price before suspension, reflecting none of 3.5 years of bad news. A suspended share = a share with no market, not a cheap share.`}
+],
+hell: [
+{q: `Liquidation costs rise 5% → 10%. The bank recovery rate becomes?`, opts: ["Stays 54.3%","51.4%","48.9%","45.0%"], answer: 1,
+ explain: `Net proceeds = 13.66 × 90% = Rp12.29tn → 12.29 ÷ 23.89 = 51.4%. Liquidation costs eat creditor recovery first — equity stays zero.`},
+{q: `Receivables recovery falls 40% → 20%. The bank recovery rate becomes?`, opts: ["Stays 54.3%","51.4%","48.9%","0%"], answer: 2,
+ explain: `Receivables recovery = 6.90 × 20% = Rp1.38tn → proceeds Rp12.28tn → net Rp11.67tn → 11.67 ÷ 23.89 = 48.9%. Recovery assumptions hit creditors directly.`},
+{q: `Creditors convert Rp5tn of debt into new shares. What happens to old shareholders?`, opts: ["They stay the majority","Diluted to near zero — their claim's fair value = Rp0","They actually profit as debt falls","They're unaffected"], answer: 1,
+ explain: `The waterfall proved the old equity claim = Rp0. Conversion gives creditors nearly 100% of the new equity; old holders are diluted to near zero. 'Positive' equity ≠ theirs.`},
+{q: `Post-haircut book equity is +Rp3.18tn, but 'old equity value = Rp0'. A contradiction?`, opts: ["Yes — one of them is miscalculated","No: book equity ≠ value for old holders","No: haircuts don't affect equity","Yes — the waterfall is wrong"], answer: 1,
+ explain: `Book equity rises mechanically as liabilities fall — but the claim on that new equity sits with the converted creditors. Accounting records +3.18; economics gives old holders Rp0.`},
+{q: `Why is a going-concern DCF invalid for WSKT?`, opts: ["Because WACC can't be computed","The going-concern assumption is broken; equity = an out-of-the-money option on assets","Because revenue fell 17%","Because no data is available"], answer: 1,
+ explain: `A DCF needs going concern. With a Rp20.8tn deficit and an idSD rating, equity is economically an option on assets after creditors are paid — and that option is deep out-of-the-money. Waterfall, not DCF.`}
+],
+tasks: [
+{t: "Task A — WSKT liquidation waterfall (±4 hrs)", d: "Download the RC9 workbook. Organize the as-is financial data into a waterfall: proceeds per asset class → liquidation costs → seniority distribution → bank recovery rate → leftover for bonds/vendors → leftover for equity. Then the restructuring scenario (30% haircut on Tranche B). All formulas link to data/assumptions.", url: "PENDING-DRIVE"},
+{t: "Task B — Assumption stress test (±1 hr)", d: "In your answer file: change toll recovery 45%→30%, note the new bank recovery rate. Change liquidation costs 5%→10%, note again. Write 2 sentences: which assumption is most dangerous for creditors? For equity?", url: ""},
+{t: "Task C — The quiz above", d: "Target ≥6/7 correct.", url: ""}
+],
+blind: {h: "Speed Drill — different numbers", body: `
+<p><b>1.</b> Proceeds Rp10tn, 5% liquidation costs, bank claims Rp20tn. Bank recovery rate = ?</p>
+<details class="ans"><summary>Answer</summary><p>Net = 9.5. Rate = 9.5 ÷ 20 = 47.5%.</p></details>
+<p><b>2.</b> Tranche B Rp21.736tn takes a 50% haircut. Remaining Tranche B = ?</p>
+<details class="ans"><summary>Answer</summary><p>21.736 × 50% = Rp10.868tn.</p></details>`}
 };
 LESSONS_REAL.forEach(function(l){ if (EN[l.id]) l.en = EN[l.id]; });
 })();
