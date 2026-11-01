@@ -147,8 +147,32 @@ body {
 .example.jebakan { background: #FFF1F1; }
 .example.jebakan .lbl { color: var(--red); }
 table.brutal { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .9rem; }
-.tblwrap { overflow-x: auto; margin: 12px 0; border: 2.5px solid var(--ink); border-radius: 10px; background: #fff; }
+.tblwrap { overflow-x: auto; margin: 12px 0; border: 2.5px solid var(--ink); border-radius: 10px; background: #fff;
+  /* scroll-shadow: bayangan di tepi kanan saat tabel bisa digeser */
+  background-image:
+    linear-gradient(to right, #fff 30%, rgba(255,255,255,0)),
+    linear-gradient(to left, #fff 30%, rgba(255,255,255,0)),
+    radial-gradient(farthest-side at 0% 50%, rgba(0,0,0,.18), rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,.18), rgba(0,0,0,0));
+  background-repeat: no-repeat;
+  background-size: 32px 100%, 32px 100%, 12px 100%, 12px 100%;
+  background-position: 0 0, 100% 0, 0 0, 100% 0;
+  background-attachment: local, local, scroll, scroll;
+}
 .tblwrap table.brutal { margin: 0; border: 0; min-width: 540px; }
+/* hint "geser" — hanya di layar kecil */
+.tblwrap::after {
+  content: ""; display: none;
+}
+@media (max-width: 639px) {
+  .tblwrap { position: relative; }
+  .tblwrap::after {
+    content: "geser \2192"; display: block; position: sticky; left: 100%;
+    float: right; margin: -28px 8px 0 0; font-size: .72rem; font-weight: 700;
+    color: var(--ink); background: var(--yellow); border: 2px solid var(--ink);
+    border-radius: 20px; padding: 2px 10px; pointer-events: none; white-space: nowrap;
+  }
+}
 .audio-row audio { flex: 1; min-width: 0; }
 table.brutal th, table.brutal td { border: 2.5px solid var(--ink); padding: 8px 10px; text-align: left; }
 table.brutal th { background: var(--yellow); font-weight: 900; }

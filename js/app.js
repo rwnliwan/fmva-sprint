@@ -1378,7 +1378,9 @@ const WB_CFG = {
       ["Sensitivitas (WACC 12%, g 4%)",38392.86,1],
       ["Sensitivitas (WACC 14%, g 2%)",24561.40,1],
       ["Sensitivitas (WACC 14%, g 3%)",26953.75,1],
-      ["Sensitivitas (WACC 14%, g 4%)",29824.56,1]],
+      ["Sensitivitas (WACC 14%, g 4%)",29824.56,1],
+      ["EV base","██████████████",0],
+      ["EV exit","████████████████",0]],
     balance: false
   },
   "hari-26": {
@@ -1634,9 +1636,18 @@ function wbCheckFile(data){
     });
   });
   const val = lab => { const b = cellAt(rowOf[lab][0], 1); return b ? Number(b.v) : NaN; };
+  const valS = lab => { const b = cellAt(rowOf[lab][0], 1); return (b && typeof b.v === "string") ? b.v : ""; };
   const close = (a, e, tol) => isFinite(a) && Math.abs(a - e) <= tol;
   let nValOK = 0;
   cfg.expect.forEach(([lab, exp, tol]) => {
+    if (typeof exp === "string") {
+      const v = valS(lab);
+      if (v === exp) nValOK++;
+      else fails.push({icon:"❌",
+        t:`<b>${esc(lab)}</b> = "${esc(v)}" (${v.length} blok), harusnya "${esc(exp)}" (${exp.length} blok).`,
+        why:"Kenapa? Bar REPT harus =REPT(\"█\",ROUND(nilai/2500,0)) yang me-link ke sel EV — jumlah blok = nilai ÷ 2.500 dibulatkan."});
+      return;
+    }
     const v = val(lab);
     const fmtN = x => isFinite(x) ? x.toLocaleString("id-ID", {maximumFractionDigits: 2}) : "(kosong)";
     if (close(v, exp, tol)) nValOK++;
