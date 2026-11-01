@@ -198,8 +198,6 @@ excel: {name:"Fungsi Excel untuk valuasi", def:"XNPV/XIRR untuk tanggal tak bera
   tv_perp: {name:"TV perpetuitas", def:"TV = FCFF×(1+g)/(WACC−g).", ref:"Hari 10 § DCF", diag:"Gordon growth model."},
   tv_sens: {name:"Sensitivitas TV", def:"TV sensitif ke WACC dan g — uji rentang.", ref:"Hari 15 § Sensitivitas", diag:"TV paling sensitif di DCF."},
   wc_dua_arah: {name:"WC dua arah", def:"Working capital bisa sumber atau pengguna kas.", ref:"Hari 03 § WC", diag:"ΔWC negatif = sumber kas."},
-  f31: {name:"Fondasi 31", def:"Referensi konsep — lihat materi terkait.", ref:"Fondasi", diag:"Cek kembali label konsep pada soal."},
-  re12: {name:"Referensi 12", def:"Referensi konsep — lihat materi terkait.", ref:"Hari 12", diag:"Cek kembali label konsep pada soal."},
 };
 const CONCEPT_REL = [
   ["debit_kredit","prerequisite","persamaan_akuntansi"],

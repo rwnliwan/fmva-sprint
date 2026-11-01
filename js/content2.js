@@ -1603,7 +1603,7 @@ quiz: [
 {q: "CFO Rp21,50T, capex Rp5,60T. FCFF 2026?", opts: ["Rp21,50T","Rp15,21T","Rp9,80T","Rp15,90T"], answer: 3, k: "fcff12", diff: "Easy",
  hints: ["FCFF = CFO \u2212 capex.","21,50 \u2212 5,60 = ?"],
  explain: "21,50 \u2212 5,60 = Rp15,90T = jangkar kanonis RC3."},
-{q: "RE awal Rp49,22T, NI Rp15,21T, dividen Rp4,00T. RE akhir 2026?", opts: ["Rp64,43T","Rp60,43T","Rp68,43T","Rp45,22T"], answer: 1, k: "re12", diff: "Easy",
+{q: "RE awal Rp49,22T, NI Rp15,21T, dividen Rp4,00T. RE akhir 2026?", opts: ["Rp64,43T","Rp60,43T","Rp68,43T","Rp45,22T"], answer: 1, k: "laba_ditahan", diff: "Easy",
  hints: ["RE akhir = RE awal + NI \u2212 dividen.","49,22 + 15,21 \u2212 4,00 = ?"],
  explain: "49,22 + 15,21 \u2212 4,00 = Rp60,43T."},
 {q: "Total aset Rp150,80T, liabilitas Rp81,59T. Ekuitas?", opts: ["Rp232,39T","Rp150,80T","Rp69,21T","Rp81,59T"], answer: 2, k: "ek12", diff: "Easy",
@@ -1726,7 +1726,7 @@ Jalur 2 (Hari 12&ndash;13): <i>build</i> dari blank &rarr; FCFF 15,90T &rarr; DC
 <div class="callout"><b>Kenapa vonis terakhir = batasan?</b> Karena thesis yang jujur soal kelemahannya = satu-satunya thesis yang bisa dipercaya. DCF adalah mesin pembenar sempurna &mdash; yang membedakan analis dan pembohong = keterbukaan asumsi. Capstone I tuntas. Selamat!</div>`}
 ],
 quiz: [
-{q: "FCFF 2030 Rp11,30T, g 1,75%. FCFF 2031?", opts: ["Rp11,30T","Rp11,50T","Rp13,05T","Rp11,10T"], answer: 1, k: "f31", diff: "Easy",
+{q: "FCFF 2030 Rp11,30T, g 1,75%. FCFF 2031?", opts: ["Rp11,30T","Rp11,50T","Rp13,05T","Rp11,10T"], answer: 1, k: "fcff", diff: "Easy",
  hints: ["FCFF 2031 = FCFF 2030 \u00d7 (1+g).","11,30 \u00d7 1,0175 = ?"],
  explain: "11,30 \u00d7 1,0175 = Rp11,50T (11,49775)."},
 {q: "TV = 11,49775 \u00f7 (0,12 \u2212 0,0175). Hasil?", opts: ["Rp95,81T","Rp65,54T","Rp130,02T","Rp112,17T"], answer: 3, k: "tv13", diff: "Easy",
