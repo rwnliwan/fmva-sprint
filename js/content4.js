@@ -194,7 +194,7 @@ sections: [
 {h: "Kenapa 'OK' palsu paling berbahaya?", body: `
 <p><b>Error #5:</b> sel "Selisih A − (L+E)" diketik <b>0</b> — terlihat "balance ✅". Padahal itu bukan hasil perhitungan, melainkan <b>ketikan yang mematikan alarm</b>. Neraca yang tidak balance adalah sinyal ada link putus; mengetik 0 = mencabut kabel alarm kebakaran lalu tidur nyenyak.</p>
 <div class="callout"><b>Kenapa ini skill termahal?</b> Model yang salah tapi terlihat benar lebih berbahaya dari model yang jelas rusak. Auditor forensik tidak mencari "angka yang salah" — ia mencari <b>angka yang terlalu rapi untuk jadi kebetulan</b>.</p>
-<div class="callout"><b>⚠️ Toleransi rounding itu eksplisit:</b> input case ini dibulatkan (Rp120,24T, Rp47,09T, dst.) — jadi selisih balance check yang <b>kecil (±0,01)</b> adalah <b>noise pembulatan, bukan error</b>. Checker misi memakai toleransi ±0,5 untuk sel ini. Bedakan: residual kecil dari input rounded = wajar; selisih BESAR atau ketikan "0" = alarm beneran. Analis yang baik menyatakan toleransinya, bukan berpura-pura presisi sempurna.</div></div>`},
+<div class="example"><div class="lbl">⚠️ Toleransi</div><p><b>Toleransi rounding itu eksplisit:</b> input case ini dibulatkan (Rp120,24T, Rp47,09T, dst.) — jadi selisih balance check yang <b>kecil (±0,01)</b> adalah <b>noise pembulatan, bukan error</b>. Checker misi memakai toleransi ±0,5 untuk sel ini. Bedakan: residual kecil dari input rounded = wajar; selisih BESAR atau ketikan "0" = alarm beneran. Analis yang baik menyatakan toleransinya, bukan berpura-pura presisi sempurna.</div></div>`},
 {h: "Tugas praktik", body: `
 <p>Unduh file misi (model junior yang rusak). Audit 5 titik, perbaiki semuanya dengan <b>rumus</b> (angka ketik yang benar pun tetap gagal — misi menuntut perbaikan aktual), pastikan balance check adalah rumus asli, lalu upload ke Misi Forensik di bawah.</p>
 <div class="callout"><b>Kenapa tugas ini penting?</b> Di dunia kerja, kamu lebih sering <b>mewarisi</b> model daripada membangun dari nol. Kemampuan membaca model orang, menemukan bug, dan memperbaikinya = skill analis senior.</p></div>`},
@@ -978,7 +978,7 @@ sections: [
 {h: "Why is a fake 'OK' the most dangerous?", body: `
 <p><b>Error #5:</b> the "A − (L+E) gap" cell typed <b>0</b> — looks "balanced ✅". But that's not a computed result, it's <b>typing that kills the alarm</b>. An unbalanced balance sheet signals a broken link; typing 0 = unplugging the fire alarm and sleeping soundly.</p>
 <div class="callout"><b>Why is this the priciest skill?</b> A wrong model that looks right is more dangerous than an obviously broken one. Forensic auditors don't hunt "wrong numbers" — they hunt <b>numbers too tidy to be coincidence</b>.</p>
-<div class="callout"><b>⚠️ Rounding tolerance is explicit:</b> this case's inputs are rounded (Rp120.24T, Rp47.09T, etc.) — so a <b>tiny (±0.01)</b> balance-check residual is <b>rounding noise, not an error</b>. The mission checker uses a ±0.5 tolerance for this cell. Distinguish: small residual from rounded inputs = fine; a LARGE gap or a typed "0" = a real alarm. A good analyst states their tolerance instead of pretending perfect precision.</div></div>`},
+<div class="example"><div class="lbl">⚠️ Tolerance</div><p><b>Rounding tolerance is explicit:</b> this case's inputs are rounded (Rp120.24T, Rp47.09T, etc.) — so a <b>tiny (±0.01)</b> balance-check residual is <b>rounding noise, not an error</b>. The mission checker uses a ±0.5 tolerance for this cell. Distinguish: small residual from rounded inputs = fine; a LARGE gap or a typed "0" = a real alarm. A good analyst states their tolerance instead of pretending perfect precision.</div></div>`},
 {h: "Practice task", body: `
 <p>Download the mission file (the junior's broken model). Audit 5 points, fix them all with <b>formulas</b> (correct typed numbers still fail — the mission demands actual fixes), make sure the balance check is a real formula, then upload to the Forensic Mission below.</p>
 <div class="callout"><b>Why does this task matter?</b> In real work, you more often <b>inherit</b> models than build from zero. Reading someone's model, finding bugs, and fixing them = senior analyst skill.</p></div>`},
@@ -1355,7 +1355,14 @@ tasks: [
 {t: "Task A — Alamtri SOTP (±4 hrs)", d: "Download the RC7 workbook. Step 1: spot the FY23 vs FY24 headline oddity, restate FY23 (illustrative). Step 2: build the 4-leg SOTP (ADMR depletion NAV, SIS multiple, smelter real-option, 15% AADI) → EV → + net cash → equity → holding discount. All formulas link to inputs."},
 {t: "Task B — Stress test (±1 hr)", d: "ASP falls permanently 20%: recalc ADMR FCF & NAV. Then: reserves only 120Mt — new NAV? Which leg is most 'dangerous' to valuation, and why?"},
 {t: "Task C — Quiz above", d: "Target ≥6/8 correct."}
-]
+],
+blind: {h: "Speed Drill — different numbers", body: `
+<p><b>1.</b> Reserves 120Mt, sales 6Mt/year. Mine life?</p>
+<details class="ans"><summary>Answer</summary><p>120 ÷ 6 = <b>20 years</b>.</p></details>
+<p><b>2.</b> FCF $150m/year, WACC 10%, life 20 years. NAV?</p>
+<details class="ans"><summary>Answer</summary><p>Annuity = (1 − 1.1^−20)/0.1 = 8.5136. NAV = 150 × 8.5136 = <b>$1,277m</b>.</p></details>
+<p><b>3.</b> SOTP EV $3,000m, net cash $1,500m, holding discount 15%. Final equity?</p>
+<details class="ans"><summary>Answer</summary><p>Equity = (3,000 + 1,500) × (1 − 0.15) = <b>$3,825m</b>.</p></details>`}
 };
 EN["real-08"] = {
 title: "GOTO: A Rp90 Trillion Loss, Then What?",

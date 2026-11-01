@@ -3764,12 +3764,12 @@ audio: "assets/audio/hari-28.mp3",
 sections: [
 {h: "Briefing final: simulasi tekanan sesungguhnya", body: `
 <p>Ini mock exam TERAKHIR sebelum Gerbang Akhir (Hari 30). Aturan sama \u2014 <b>50 soal, 3 jam, target \u226570%</b> \u2014 tapi levelnya <b>naik</b>: proporsi soal Hard lebih banyak, jebakan lebih halus, dan beberapa soal menguji <b>interaksi antar topik</b> (mis. sinergi M&A yang mengubah utilisasi NOL; tax shield yang mengubah CFO).</p>
-<table class="brutal">
+<div class="tblwrap"><table class="brutal">
 <tr><th>Mock 3 vs Mock 1\u20132</th><th>Detail</th></tr>
 <tr><td>Lebih banyak Hard</td><td>16 soal Hard (vs 10) \u2014 mensimulasikan tekanan ujian sesungguhnya</td></tr>
 <tr><td>Soal antar-topik</td><td>Jawaban butuh 2 topik sekaligus (akuntansi \u00d7 pajak; M&A \u00d7 NOL; LBO \u00d7 dividen)</td></tr>
 <tr><td>Jebakan halus</td><td>Distractor = angka "hampir benar" dari kesalahan umum \u2014 bukan jawaban ngawur</td></tr>
-</table>
+</table></div>
 <p>Anggap ini <b>gladi bersih Gerbang Akhir</b>: kondisi, timer, dan standar penilaian yang sama. Kalau kamu lolos di sini dengan nyaman, Hari 30 tinggal formalitas.</p>
 <div class="callout"><b>Kenapa mock terakhir dibuat lebih sulit dari ambang lulus?</b> Karena ujian asli tidak peduli kamu "hampir lolos". Latihan di atas ambang = margin of safety untuk hari-H: grogi, soal sial, dan 3 jam kelelahan. Target latihan: 80%+; target ujian: 70%+.</div>`},
 {h: "Strategi hari-H: taktik 180 menit", body: `
@@ -3788,14 +3788,14 @@ sections: [
 <p style="font-size:.85rem;margin-top:8px"><b>Aturan kondisi ujian (jujur):</b> tanpa mengintip catatan, tanpa jeda, 3 jam penuh. Ini gladi bersih \u2014 perlakukan seperti aslinya.</p></div>`},
 {h: "Bedah final + checklist siap Gerbang", body: `
 <p>Setelah dinilai, kerjakan bedah terakhir dengan klasifikasi jebakan (hitungan / konsep / baca soal). Lalu cek checklist kesiapan Gerbang Akhir:</p>
-<table class="brutal">
+<div class="tblwrap"><table class="brutal">
 <tr><th>Checklist</th><th>Standar</th><th>Status</th></tr>
 <tr><td>Skor Mock 3</td><td>\u226570% (target latihan 80%+)</td><td>__ /50</td></tr>
 <tr><td>Semua topik \u226570%</td><td>Tidak ada topik di bawah ambang</td><td>Ya / Tidak \u2014 sebutkan:</td></tr>
 <tr><td>Jebakan berulang</td><td>Tidak ada jenis jebakan yang muncul di 2+ mock</td><td>Ya / Tidak \u2014 sebutkan:</td></tr>
 <tr><td>Manajemen waktu</td><td>Selesai tanpa terburu-buru di 20 menit terakhir</td><td>Ya / Tidak</td></tr>
 <tr><td>2 capstone</td><td>Capstone I (Hari 12\u201313) + Capstone II (Hari 26) disetujui</td><td>Ya / Belum</td></tr>
-</table>
+</table></div>
 <p>Checklist belum penuh \u2192 <b>Hari 29</b> adalah repair terakhir + cheat sheet pribadi. Checklist penuh \u2192 Hari 29 tinggal pemantapan, Hari 30 Gerbang Akhir.</p>
 <div class="callout"><b>Kenapa checklist, bukan "feeling sudah siap"?</b> Karena feeling di malam sebelum ujian selalu berbohong \u2014 kadang terlalu pede, kadang panik. Checklist = bukti tertulis. Gerbang Akhir tidak menilai perasaanmu; ia menilai 50 soal berikutnya.</div>`}
 ],
@@ -7908,12 +7908,12 @@ sub: "Day 28 \u00b7 \u00b18 hrs \u00b7 Mock Exam 3 (final): 50 questions / 3 hou
 sections: [
 {h: "Final briefing: simulating real exam pressure", body: `
 <p>This is the LAST mock before the Final Gate (Day 30). Same rules \u2014 <b>50 questions, 3 hours, \u226570% target</b> \u2014 but the level <b>rises</b>: more Hard questions, subtler traps, and several <b>cross-topic</b> questions (e.g. M&A synergies changing NOL utilization; tax shields changing CFO).</p>
-<table class="brutal">
+<div class="tblwrap"><table class="brutal">
 <tr><th>Mock 3 vs Mocks 1\u20132</th><th>Detail</th></tr>
 <tr><td>More Hard</td><td>16 Hard questions (vs 10) \u2014 simulating real exam pressure</td></tr>
 <tr><td>Cross-topic questions</td><td>Answers needing 2 topics at once (accounting \u00d7 tax; M&A \u00d7 NOLs; LBO \u00d7 dividends)</td></tr>
 <tr><td>Subtler traps</td><td>Distractors = "almost right" numbers from common mistakes \u2014 not nonsense answers</td></tr>
-</table>
+</table></div>
 <p>Treat this as the <b>dress rehearsal for the Final Gate</b>: same conditions, same timer, same grading standard. If you pass here comfortably, Day 30 is a formality.</p>
 <div class="callout"><b>Why make the last mock harder than the pass mark?</b> Because the real exam doesn't care that you "almost passed". Training above the bar = margin of safety for exam day: nerves, unlucky questions, and 3 hours of fatigue. Training target: 80%+; exam target: 70%+.</div>`},
 {h: "Exam-day strategy: the 180-minute tactics", body: `
@@ -7932,14 +7932,14 @@ sections: [
 <p style="font-size:.85rem;margin-top:8px"><b>Honest exam rules:</b> no peeking at notes, no breaks, the full 3 hours. This is the dress rehearsal \u2014 treat it like the real thing.</p></div>`},
 {h: "Final debrief + Final Gate readiness checklist", body: `
 <p>After grading, do the last debrief with trap classification (calculation / concept / misread). Then check the Final Gate readiness list:</p>
-<table class="brutal">
+<div class="tblwrap"><table class="brutal">
 <tr><th>Checklist</th><th>Standard</th><th>Status</th></tr>
 <tr><td>Mock 3 score</td><td>\u226570% (training target 80%+)</td><td>__ /50</td></tr>
 <tr><td>Every topic \u226570%</td><td>No topic below the bar</td><td>Yes / No \u2014 name them:</td></tr>
 <tr><td>Recurring traps</td><td>No trap type appearing in 2+ mocks</td><td>Yes / No \u2014 name them:</td></tr>
 <tr><td>Time management</td><td>Finished without rushing the last 20 minutes</td><td>Yes / No</td></tr>
 <tr><td>2 capstones</td><td>Capstone I (Days 12\u201313) + Capstone II (Day 26) approved</td><td>Yes / Not yet</td></tr>
-</table>
+</table></div>
 <p>Checklist incomplete \u2192 <b>Day 29</b> is the last repair + personal cheat sheet. Checklist complete \u2192 Day 29 is consolidation, Day 30 the Final Gate.</p>
 <div class="callout"><b>Why a checklist instead of "feeling ready"?</b> Because pre-exam feelings always lie \u2014 sometimes overconfident, sometimes panicking. A checklist = written evidence. The Final Gate doesn't grade your feelings; it grades the next 50 questions.</div>`}
 ],

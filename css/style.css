@@ -161,6 +161,8 @@ table.brutal { width: 100%; border-collapse: collapse; margin: 12px 0; font-size
 }
 .tblwrap table.brutal { margin: 0; border: 0; min-width: 540px; }
 /* hint "geser" — hanya di layar kecil, badge absolut pojok kanan atas */
+/* prevent long code strings from overflowing on mobile */
+code { word-break: break-word; overflow-wrap: anywhere; }
 .tblwrap { position: relative; }
 .tblwrap::before {
   content: ""; display: none;

@@ -195,7 +195,7 @@ function renderLesson(id) {
     const dayLbl = (l.sub || "").split(" ·")[0] || l.id;
     html += `<div class="sec"><h3>${T("file_latihan")}</h3>
       <p>${T("file_latihan_p")}</p>
-      <div class="btnrow"><a class="btn blue" href="https://drive.google.com/drive/folders/${l.driveFolder}" target="_blank" rel="noopener">${T("open_folder")} ${dayLbl} ${T("in_drive")}</a></div></div>`;
+      <div class="btnrow"><a class="btn blue" href="${l.driveFolder.startsWith('http') ? l.driveFolder : 'https://drive.google.com/drive/folders/' + l.driveFolder}" target="_blank" rel="noopener">${T("open_folder")} ${dayLbl} ${T("in_drive")}</a></div></div>`;
   }
   if (l.tasks) {
     html += `<div class="sec"><h3>${T("tasks_h")}</h3><ul class="checklist">` +
@@ -1635,8 +1635,8 @@ function wbCheckFile(data){
         why:"Kenapa? Sel jawaban ini harus diisi dengan rumus yang me-link ke sel input. Kalau kamu SUDAH mengisi rumus tapi tetap terbaca kosong, buka file di Excel/Google Sheets/LibreOffice lalu simpan ulang (agar hasil rumus tersimpan), kemudian upload lagi."}); }
     });
   });
-  const val = lab => { const b = cellAt(rowOf[lab][0], 1); return b ? Number(b.v) : NaN; };
-  const valS = lab => { const b = cellAt(rowOf[lab][0], 1); return (b && typeof b.v === "string") ? b.v : ""; };
+  const val = lab => { const rows = rowOf[lab]; const b = cellAt(rows[rows.length-1], 1); return b ? Number(b.v) : NaN; };
+  const valS = lab => { const rows = rowOf[lab]; const b = cellAt(rows[rows.length-1], 1); return (b && typeof b.v === "string") ? b.v : ""; };
   const close = (a, e, tol) => isFinite(a) && Math.abs(a - e) <= tol;
   let nValOK = 0;
   cfg.expect.forEach(([lab, exp, tol]) => {

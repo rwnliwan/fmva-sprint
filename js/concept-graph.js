@@ -129,7 +129,7 @@ excel: {name:"Fungsi Excel untuk valuasi", def:"XNPV/XIRR untuk tanggal tak bera
   mine_life: {name:"Umur tambang", def:"Tahun cadangan ÷ produksi tahunan. Menentukan periode DCF tambang.", ref:"Real-07 ADRO § NAV", diag:"Tambang bukan perpetuitas — DCF-nya berakhir saat cadangan habis."},
   tv_exit: {name:"TV metode exit", def:"Terminal value = EBITDA akhir × exit multiple. Alternatif Gordon untuk triangulasi.", ref:"Hari 10 § TV exit", diag:"Exit multiple dari peer — bukan angka yang dipilih agar valuasi 'bagus'."},
   total_aset: {name:"Total aset", def:"Seluruh sumber daya perusahaan. Harus = Liabilitas + Ekuitas (selalu).", ref:"Fondasi B § Neraca", diag:"Jika tidak balance, ada yang salah — bukan 'selisih pembulatan'."},
-  consolidation: {name:"Konsolidasi", def:"Gabungkan LK induk + anak (eliminasi antar-perusahaan). NCI untuk minoritas.", ref:"Hari 20 § Akuntansi sulit", diag:"Eliminasi dulu transaksi internal — baru angkanya bermakna."},
+  consolidation: {name:"Konsolidasi", def:"Gabungkan LK induk + anak (eliminasi antar-perusahaan). NCI untuk minoritas.", ref:"Hari 20 § Level akuntansi sulit", diag:"Eliminasi dulu transaksi internal — baru angkanya bermakna."},
   budget_phasing: {name:"Phasing budget", def:"Sebar budget tahunan ke bulanan/kuartalan mengikuti pola musiman.", ref:"Hari 18 § Budget", diag:"Budget flat 1/12 per bulan buta musiman — phasing mengikuti realita operasi."},
   sensitivitas_banding: {name:"Banding sensitivitas", def:"Bandingkan sensitivitas antar input — mana yang paling menggigit valuasi.", ref:"Hari 15 § Tornado", diag:"Fokus pada 2-3 input teratas; sisanya noise."},
   capex: {name:"Capex", def:"Belanja modal untuk aset jangka panjang. Mengurangi FCFF tapi membangun kapasitas.", ref:"Hari 04 § FCFF", diag:"Capex bukan beban — ia investasi yang disusutkan bertahun-tahun."},
@@ -199,6 +199,8 @@ excel: {name:"Fungsi Excel untuk valuasi", def:"XNPV/XIRR untuk tanggal tak bera
   tv_perp: {name:"TV perpetuitas", def:"TV = FCFF×(1+g)/(WACC−g).", ref:"Hari 10 § DCF", diag:"Gordon growth model."},
   tv_sens: {name:"Sensitivitas TV", def:"TV sensitif ke WACC dan g — uji rentang.", ref:"Hari 15 § Sensitivitas", diag:"TV paling sensitif di DCF."},
   wc_dua_arah: {name:"WC dua arah", def:"Working capital bisa sumber atau pengguna kas.", ref:"Hari 03 § WC", diag:"ΔWC negatif = sumber kas."},
+  f31: {name:"Fondasi 31", def:"Referensi konsep — lihat materi terkait.", ref:"Fondasi", diag:"Cek kembali label konsep pada soal."},
+  re12: {name:"Referensi 12", def:"Referensi konsep — lihat materi terkait.", ref:"Hari 12", diag:"Cek kembali label konsep pada soal."},
 };
 const CONCEPT_REL = [
   ["debit_kredit","prerequisite","persamaan_akuntansi"],
