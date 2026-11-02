@@ -41,3 +41,10 @@ Progress tersimpan di `localStorage` (`fmva_progress`). Workbook latihan & jawab
 ## Standar
 
 Dibangun dengan review independen berlapis (skor akhir 9,2/10): setiap angka perusahaan terverifikasi tahun + periode + sumber, setiap kunci quiz di-recompute, setiap workbook lolos recalc LibreOffice + Google Sheets.
+
+## Author
+
+**Septian Panjaya** — pivoting into finance risk analytics (credit risk, fraud/AML).
+
+- LinkedIn: https://www.linkedin.com/in/septian-panjaya
+- Proyek lain: [EXIT RADAR](https://github.com/rwnliwan/radar-tokenized-stocks) · [Fraud Triage Laya](https://github.com/rwnliwan/fraud-triage)
