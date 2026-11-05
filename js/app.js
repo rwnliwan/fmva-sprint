@@ -1786,19 +1786,21 @@ function runMission(key){
     const rd = new FileReader();
     rd.onload = e => {
       try { wbMissionCheck(new Uint8Array(e.target.result), key || "hari-01"); }
-      catch(err){ out.innerHTML = `<div class="callout">❌ Gagal membaca file: ${esc(String((err && err.message) || err))}</div>`; }
+      catch(err){ out.innerHTML = `<div class="callout">${T("mission_readfail")}${esc(String((err && err.message) || err))}</div>`; }
     };
     rd.onerror = () => { out.innerHTML = `<div class="callout">${T("prog_readfail")}</div>`; };
     rd.readAsArrayBuffer(inp.files[0]);
   }, "misiout");
 }
+/* angka hasil grader: format ribuan mengikuti bahasa aktif (id-ID vs en-US) */
+function numL(n){ return Number(n).toLocaleString(lang() === "en" ? "en-US" : "id-ID"); }
 function wbMissionCheck(data, key){
   key = key || "hari-01";
   const LIST = key === "detektif" ? MISI_FIX_DETEKTIF : key === "indf" ? MISI_FIX_INDF : MISI_FIX;
   const out = document.getElementById("misiout");
   const wb = XLSX.read(data, {type:"array"});
   if (wb.SheetNames.indexOf("LATIHAN") < 0) {
-    out.innerHTML = `<div class="callout">❌ <b>Template tidak dikenali.</b> Upload file hasil perbaikan berbasis file misi (punya sheet "LATIHAN").</div>`;
+    out.innerHTML = `<div class="callout">${T("msi_tpl")}</div>`;
     return;
   }
   const ws = wb.Sheets["LATIHAN"];
@@ -1812,7 +1814,7 @@ function wbMissionCheck(data, key){
   }
   const missing = LIST.map(m => m.label).filter(l => !rowOf[l]);
   if (missing.length) {
-    out.innerHTML = `<div class="callout">❌ Label tidak ditemukan: ${esc(missing.join(", "))}. Pastikan file-mu berbasis file misi yang strukturnya tidak diubah.</div>`;
+    out.innerHTML = `<div class="callout">${T("msi_nolabel_a")}${esc(missing.join(", "))}${T("msi_nolabel_b")}</div>`;
     return;
   }
   let nOK = 0;
@@ -1824,16 +1826,16 @@ function wbMissionCheck(data, key){
     const hasV = !!(b && b.v !== undefined && b.v !== null && b.v !== "");
     const v = hasV ? Number(b.v) : NaN;
     if (!hasRealF && hasV && (m.expect === null || Math.abs(v - m.expect) <= m.tol)) {
-      return `<div class="callout">⚠️ <b>${esc(m.label)}</b> (${addr}): angka <b>benar tapi masih KETIKAN</b> — misi ini menuntut <b>rumus</b>.<br><span style="font-size:.9rem">Perbaikan: ${m.fix}</span></div>`;
+      return `<div class="callout">⚠️ <b>${esc(m.label)}</b> (${addr}): ${T("msi_typed")}<br><span style="font-size:.9rem">${T("msi_fix_lbl")}${m.fix}</span></div>`;
     }
     if (!hasRealF) {
-      return `<div class="callout">❌ <b>${esc(m.label)}</b> (${addr}): <b>belum diperbaiki</b> — masih bukan rumus yang benar.<br><span style="font-size:.9rem">${m.cons}<br>Perbaikan: ${m.fix}</span></div>`;
+      return `<div class="callout">❌ <b>${esc(m.label)}</b> (${addr}): ${T("msi_notfixed")}<br><span style="font-size:.9rem">${m.cons}<br>${T("msi_fix_lbl")}${m.fix}</span></div>`;
     }
     if (m.expect !== null && !(isFinite(v) && Math.abs(v - m.expect) <= m.tol)) {
-      return `<div class="callout">❌ <b>${esc(m.label)}</b> (${addr}): sudah rumus, tapi hasilnya <b>${isFinite(v) ? v.toLocaleString("id-ID") : "(kosong)"}</b> — harusnya ${m.expect.toLocaleString("id-ID")}. Cek lagi link-nya.<br><span style="font-size:.9rem">${m.cons}</span></div>`;
+      return `<div class="callout">❌ <b>${esc(m.label)}</b> (${addr}): ${T("msi_wrongval_a")}<b>${isFinite(v) ? numL(v) : T("msi_empty")}</b>${T("msi_wrongval_b")}${numL(m.expect)}${T("msi_wrongval_c")}<br><span style="font-size:.9rem">${m.cons}</span></div>`;
     }
     nOK++;
-    return `<div class="callout">✅ <b>${esc(m.label)}</b> (${addr}): <b>diperbaiki dengan benar</b> — rumus ✓${m.expect !== null ? `, nilai ✓ (${m.expect.toLocaleString("id-ID")})` : ""}.</div>`;
+    return `<div class="callout">✅ <b>${esc(m.label)}</b> (${addr}): ${T("msi_fixed")}${m.expect !== null ? `${T("msi_fixed_val")}${numL(m.expect)})` : ""}.</div>`;
   });
   const val = lab => { const rr = rowOf[lab]; if (!rr) return NaN; const b = cellAt(rr[0], 1); return b ? Number(b.v) : NaN; };
   const A = val("TOTAL ASET"), L = val("TOTAL LIABILITAS"), E = val("TOTAL EKUITAS");
@@ -1845,11 +1847,11 @@ function wbMissionCheck(data, key){
     const prevBest = (prevM.best !== undefined) ? prevM.best : (prevM.score || 0);
     bestM = Math.max(prevBest, nOK);
   } catch(e) { /* abaikan */ }
-  let html = `<div class="callout"><b>🛠️ Hasil misi:</b> <b>${nOK}/${LIST.length}</b> kerusakan diperbaiki dengan benar · neraca ${balOK ? "balance ✅" : "belum balance ❌"}`
-    + `<br>🏆 Skor terbaik: <b>${bestM}/${LIST.length}</b> · percobaan terakhir: <b>${nOK}/${LIST.length}</b>`
-    + (nOK === LIST.length && balOK ? `<br>🎉 <b>Misi selesai!</b> Kamu menemukan, menjelaskan, dan memperbaiki semuanya — itu skill audit.` : "") + `</div>`;
+  let html = `<div class="callout"><b>${T("msi_result")}</b> <b>${nOK}/${LIST.length}</b> ${T("msi_fixed_n")} · ${T("msi_bs")} ${balOK ? T("msi_bal_ok") : T("msi_bal_no")}`
+    + `<br>${T("msi_best")} <b>${bestM}/${LIST.length}</b> ${T("msi_last")} <b>${nOK}/${LIST.length}</b>`
+    + (nOK === LIST.length && balOK ? `<br>${T("msi_done")}` : "") + `</div>`;
   html += cards.join("");
-  if (!balOK) html += `<div class="callout">❌ Neraca belum balance: Aset ${isFinite(A) ? A.toLocaleString("id-ID") : "?"} vs L+E ${(isFinite(L) && isFinite(E)) ? (L+E).toLocaleString("id-ID") : "?"}.<br><span style="font-size:.9rem">Kenapa? Aset harus = Liabilitas + Ekuitas.${key === "hari-01" ? " Perbaikan \"Laba ditahan\" yang benar akan menyeimbangkan ini." : ""}</span></div>`;
+  if (!balOK) html += `<div class="callout">${T("msi_bal_fail")}${isFinite(A) ? numL(A) : "?"} vs L+E ${(isFinite(L) && isFinite(E)) ? numL(L+E) : "?"}${T("msi_bal_why")}${key === "hari-01" ? T("msi_bal_tip") : ""}</span></div>`;
   out.innerHTML = html;
   try {
     const p = getP();
