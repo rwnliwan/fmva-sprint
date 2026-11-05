@@ -193,13 +193,17 @@ function renderLesson(id) {
   });
   if (l.driveFolder) {
     const dayLbl = (l.sub || "").split(" ·")[0] || l.id;
-    html += `<div class="sec"><h3>${T("file_latihan")}</h3>
-      <p>${T("file_latihan_p")}</p>
-      <div class="btnrow"><a class="btn blue" href="${l.driveFolder.startsWith('http') ? l.driveFolder : 'https://drive.google.com/drive/folders/' + l.driveFolder}" target="_blank" rel="noopener">${T("open_folder")} ${dayLbl} ${T("in_drive")}</a></div></div>`;
+    const wbUnlocked = best != null && best >= 80; // SPR-3: workbook terkunci sampai quiz lulus
+    html += `<div class="sec" id="wbfilewrap"><h3>${T("file_latihan")}</h3>
+      ${wbUnlocked
+        ? `<p>${T("file_latihan_p")}</p>
+      <div class="btnrow"><a class="btn blue" href="${l.driveFolder.startsWith('http') ? l.driveFolder : 'https://drive.google.com/drive/folders/' + l.driveFolder}" target="_blank" rel="noopener">${T("open_folder")} ${dayLbl} ${T("in_drive")}</a></div>`
+        : `<div class="callout warn">${T("wb_locked")}</div>`}</div>`;
   }
   if (l.tasks) {
-    html += `<div class="sec"><h3>${T("tasks_h")}</h3><ul class="checklist">` +
-      l.tasks.map(t => `<li><b>${esc(t.t)}</b><br><span style="font-weight:400">${esc(t.d)}</span>${t.url ? `<br><a class="btn small blue" style="margin-top:8px" href="${t.url}" target="_blank" rel="noopener">${T("open_drive_folder")}</a>` : ""}</li>`).join("") +
+    const wbUnlocked = best != null && best >= 80; // SPR-3: link Drive di tasks ikut terkunci
+    html += `<div class="sec" id="wbtaskwrap"><h3>${T("tasks_h")}</h3><ul class="checklist">` +
+      l.tasks.map(t => `<li><b>${esc(t.t)}</b><br><span style="font-weight:400">${esc(t.d)}</span>${t.url ? (wbUnlocked ? `<br><a class="btn small blue" style="margin-top:8px" href="${t.url}" target="_blank" rel="noopener">${T("open_drive_folder")}</a>` : `<br><span style="font-size:.85rem;color:var(--warn, #b45309)">🔒 ${T("wb_locked")}</span>`) : ""}</li>`).join("") +
       `</ul></div>`;
   }
   // latihan buta: kasus fresh, angka beda (setelah tugas)
@@ -211,7 +215,8 @@ function renderLesson(id) {
   // misi perbaikan "fix the broken model" / forensik (setelah checker)
   if (l.mission) {
     const m = (typeof l.mission === "string") ? {file: l.mission} : l.mission;
-    html += `<div id="misiwrap">${missionSectionHTML(m.file, m)}</div>`;
+    const missionLocked = !(best != null && best >= 80); // SPR-3 residual: file misi ikut terkunci sampai quiz lulus
+    html += `<div id="misiwrap">${missionSectionHTML(m.file, m, missionLocked)}</div>`;
   }
   // quiz
   html += `<div class="kicker"><span>${T("quiz_kick")} ${l.quiz.length} ${T("quiz_n")}</span></div><div id="quizbox">`;
@@ -289,6 +294,25 @@ function answerQ(btn, l) {
     // buka Hell Mode langsung bila lolos (tanpa reload)
     const hw = $("#hellwrap");
     if (hw && l.hell && l.hell.length) hw.innerHTML = hellHTML(l, p.quiz[st.id], p.hellQuiz && p.hellQuiz[st.id]);
+    // SPR-3: buka kunci workbook langsung bila quiz lolos (tanpa reload)
+    if (pct >= 80) {
+      const wfw = $("#wbfilewrap"), wtw = $("#wbtaskwrap"), msw = $("#misiwrap");
+      const nl = L(ALL_LESSONS.find(x => x.id === st.id));
+      if (wfw && nl.driveFolder) {
+        const dayLbl = (nl.sub || "").split(" ·")[0] || nl.id;
+        wfw.innerHTML = `<h3>${T("file_latihan")}</h3><p>${T("file_latihan_p")}</p>
+          <div class="btnrow"><a class="btn blue" href="${nl.driveFolder.startsWith('http') ? nl.driveFolder : 'https://drive.google.com/drive/folders/' + nl.driveFolder}" target="_blank" rel="noopener">${T("open_folder")} ${dayLbl} ${T("in_drive")}</a></div>`;
+      }
+      if (wtw && nl.tasks) {
+        wtw.innerHTML = `<h3>${T("tasks_h")}</h3><ul class="checklist">` +
+          nl.tasks.map(t => `<li><b>${esc(t.t)}</b><br><span style="font-weight:400">${esc(t.d)}</span>${t.url ? `<br><a class="btn small blue" style="margin-top:8px" href="${t.url}" target="_blank" rel="noopener">${T("open_drive_folder")}</a>` : ""}</li>`).join("") +
+          `</ul>`;
+      }
+      if (msw && nl.mission) {
+        const m = (typeof nl.mission === "string") ? {file: nl.mission} : nl.mission;
+        msw.innerHTML = missionSectionHTML(m.file, m, false);
+      }
+    }
     const sc = $("#quizscore");
     sc.style.display = "block";
     sc.innerHTML = `<h3>${T("score_h")} ${st.correct}/${st.total} (${pct}%)</h3>
@@ -1732,7 +1756,7 @@ const MISI_FIX_DETEKTIF = [
    fix: "=Laba fiskal \u00d7 22% \u2212 Manfaat NOL = 5.958,45 \u00d7 22% \u2212 440. Link 'Manfaat NOL' dari seksi 4 (jangan ketik 440).",
    cons: "Konsekuensi: pajak kepanjangan Rp440rb \u2014 DTA dari rugi tahun lalu terbuang sia-sia; kas keluar lebih besar dari kewajiban sebenarnya."}
 ];
-function missionSectionHTML(fileUrl, opt){
+function missionSectionHTML(fileUrl, opt, locked){
   opt = opt || {};
   const key = opt.key || "hari-01";
   const title = opt.title || T("mission_default_title");
@@ -1748,7 +1772,7 @@ function missionSectionHTML(fileUrl, opt){
   ${T("mission_en_note") ? `<div class="callout">${T("mission_en_note")}</div>` : ""}
   <p>${desc}</p>
   ${prevTxt}
-  <div class="btnrow"><a class="btn blue" href="${fileUrl}" target="_blank" rel="noopener">${T("mission_dl")}</a></div>
+  ${locked ? `<div class="callout warn">🔒 ${T("wb_locked")}</div>` : `<div class="btnrow"><a class="btn blue" href="${fileUrl}" target="_blank" rel="noopener">${T("mission_dl")}</a></div>`}
   <div class="callout">${T("mission_warn")}</div>
   <div class="btnrow"><input type="file" id="misifile" accept=".xlsx,.xlsm" style="max-width:100%">
   <button class="btn blue" onclick="runMission('${key}')">${T("mission_btn")}</button></div>

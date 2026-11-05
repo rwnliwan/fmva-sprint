@@ -756,6 +756,22 @@ sections: [
 </table>
 <p>Di file latihan Hari 06, keempatnya adalah <b>sel jawaban yang dinilai checker</b>. Lolos keempatnya = modelmu setara standar kerja analis: bukan karena angkanya "kelihatan benar", tapi karena <b>setiap koneksi terbukti benar</b>.</p>
 <div class="callout"><b>Kenapa ritual, bukan sekadar cek?</b> Karena ritual dilakukan <b>tanpa berpikir dua kali</b> — seperti pilot dengan checklist sebelum lepas landas. Analis yang "yakin modelnya benar" tapi melewatkan ritual adalah analis yang menunggu dipermalukan angka. Empat cek, setiap model, setiap tahun. Tanpa kecuali.</div>`},
+{h: "Audit konsistensi: 5 cek di luar golden checks", body: `
+<p>Empat golden checks membuktikan <b>mekanik linkage</b>-mu benar. Tapi ada kelas kesalahan yang <b>lolos semua golden checks</b> &mdash; dan justru itu yang paling berbahaya:</p>
+<div class="example jebakan"><div class="lbl">🚫 Temuan audit (ilustrasi): growth beda di dua tempat</div>
+<p>Misal model Warung: IS memakai growth revenue <b>10%</b>, tapi schedule WC (Hari 03) dibangun dengan asumsi growth <b>12%</b>. Hasil: &Delta;WC salah &rarr; CFO salah &rarr; FCFF salah. <b>Keempat golden checks tetap lolos</b> &mdash; karena tiap laporan konsisten <i>dengan dirinya sendiri</i>, tapi dua laporan tidak konsisten <i>satu sama lain</i>.</p></div>
+<p>Audit konsistensi = memeriksa bahwa <b>asumsi yang sama dipakai di semua tempat</b>. Lima ceknya:</p>
+<table class="brutal">
+<tr><th>#</th><th>Cek konsistensi</th><th>Cara audit</th><th>Warung 2026</th></tr>
+<tr><td>1</td><td>Satu angka, satu sumber</td><td>Angka yang muncul 2&times; harus link ke 1 sel &mdash; bukan diketik 2&times;</td><td>NI 1.700 di IS &amp; CFS = sel yang sama</td></tr>
+<tr><td>2</td><td>Growth IS = growth driver WC</td><td>Bandingkan asumsi growth di kedua sheet</td><td>harus sama persis</td></tr>
+<tr><td>3</td><td>Capex CFI = capex roll-forward PPE</td><td>Dua angka capex harus identik</td><td>2.000 = 2.000 &#10003;</td></tr>
+<tr><td>4</td><td>Susut IS = &Delta; akum. susut</td><td>Beban susut = kenaikan akumulasi penyusutan</td><td>400 = 400 &#10003;</td></tr>
+<tr><td>5</td><td>Angka narasi = angka model</td><td>Setiap angka di thesis/laporan = sel model, bukan ketikan</td><td>"CFO 1.850" = sel CFO</td></tr>
+</table>
+<div class="callout"><b>Kenapa golden checks tidak cukup?</b> Karena golden checks memverifikasi <b>koneksi</b> (apakah A mengalir ke B), bukan <b>asumsi</b> (apakah input A benar). Model bisa 100% terhubung tapi salah asumsi &mdash; seperti pipa yang tersambung sempurna tapi airnya kotor. Audit konsistensi memeriksa airnya.</div>
+<p><b>Prosedur audit (5 menit per model):</b> (1) kumpulkan semua asumsi di satu sheet "Asumsi"; (2) untuk tiap angka yang muncul &ge;2&times;, trace ke sel sumbernya &mdash; harus 1 sel; (3) bandingkan growth/asumsi antar sheet; (4) cocokkan angka narasi dengan model. Temuan = perbaiki di <b>SUMBER</b>, bukan di hasil.</p>
+<div class="callout"><b>Kenapa perbaiki di sumber?</b> Karena mengoreksi angka hasil dengan ketikan (hardcode) = memutus linkage. Temuan "capex beda" diperbaiki dengan me-link ulang ke sel capex &mdash; bukan mengetik angka yang benar. Audit yang berakhir dengan hardcode = audit yang gagal.</div>`},
 {h: "Jebakan umum 3-statement", body: `
 <ul>
 <li><b>"Kebetulan cocok" ≠ benar.</b> RE akhir bisa 200 lewat jalur yang salah (dividen sebagai beban). Cek jalurnya, bukan cuma angkanya.</li>
@@ -1064,7 +1080,25 @@ sections: [
 <div class="formula">FCFF = CFO − Capex = 2.450 − 2.500 = <b>−Rp50rb</b></div>
 <p>FCFF 2027 negatif — dan itu <b>bukan vonis</b>. Artinya: tahun ini warung menginvestasikan Rp50rb <i>lebih</i> dari kas operasinya. Wajar di fase ekspansi; yang penting: <b>disengaja dan terlacak</b>, bukan bocor.</p>
 <p>Besok (Hari 09): FCFF inilah yang didiskonto. Hari ini: pastikan kamu bisa menjelaskan <i>kenapa</i> −50 — "capex 2.500 melebihi CFO 2.450 karena ekspansi peralatan" — bukan sekadar membaca angkanya.</p>
-<div class="callout"><b>Kenapa FCFF negatif tidak otomatis buruk?</b> Karena FCFF mengukur <i>kas bebas setelah investasi</i>. Amazon bertahun-tahun FCFF tipis/negatif saat membangun gudang — pasar tidak menghukum, karena investasinya terlacak ke aset produktif. Yang dihukum = FCFF negatif tanpa jejak (kas hilang tak jelas).</div>`}
+<div class="callout"><b>Kenapa FCFF negatif tidak otomatis buruk?</b> Karena FCFF mengukur <i>kas bebas setelah investasi</i>. Amazon bertahun-tahun FCFF tipis/negatif saat membangun gudang — pasar tidak menghukum, karena investasinya terlacak ke aset produktif. Yang dihukum = FCFF negatif tanpa jejak (kas hilang tak jelas).</div>`},
+{h: "Jembatan ke korporat: debt schedule, anti-circularity, dan kapan plug sah", body: `
+<p>Model H08 sengaja tanpa utang berbunga. Tapi Hari 12 menunggumu dengan utang bank Rp70T &mdash; dan tiga peralatan inilah yang memisahkan model warung dari model korporat.</p>
+<p><b>1. Debt schedule.</b> Utang bukan angka mati &mdash; ia punya jadwal (ilustrasi, Rp ribu, dinyatakan):</p>
+<table class="brutal">
+<tr><th>Debt schedule 2027</th><th>Rp ribu</th></tr>
+<tr><td>Saldo awal</td><td>2.000</td></tr>
+<tr><td>Bunga (10% &times; saldo <b>awal</b>)</td><td>200</td></tr>
+<tr><td>Cicilan pokok</td><td>(500)</td></tr>
+<tr><td><b>Saldo akhir</b></td><td><b>1.700</b></td></tr>
+</table>
+<p>Rumusnya: saldo akhir = saldo awal &minus; cicilan pokok. Bunga 200 masuk IS sebagai beban (lalu ke NI &rarr; RE &rarr; kas) &mdash; ia tidak menambah saldo utang karena dibayar.</p>
+<div class="callout"><b>Kenapa bunga dari saldo AWAL, bukan akhir?</b> Karena bunga berjalan atas saldo yang dipinjam <i>selama</i> tahun itu. Pakai saldo akhir = <b>circular reference</b>: bunga &rarr; NI &rarr; kas &rarr; saldo akhir &rarr; bunga &rarr; &hellip; Model profesional memutus lingkaran dengan saldo awal tahun (bukan dengan iterasi Excel). Jebakan klasik analis junior &mdash; ingat Fondasi C.</div>
+<p><b>2. Kapan plug sah.</b> Hari 06 mengajarkan: jangan paksa neraca balance dengan mengetik angka plug. Pengecualiannya satu &mdash; dan mekanis:</p>
+<ul>
+<li><b>Plug SAH:</b> revolver (fasilitas kredit siaga dari bank)/utang sebagai penyeimbang <i>pendanaan</i>. Model memproyeksikan defisit kas RpX &rarr; revolver naik RpX <i>lewat debt schedule</i> (bukan ketikan). Kas yang menyeimbangkan di sini adalah hasil, bukan input.</li>
+<li><b>Plug HARAM:</b> mengetik angka utang atau kas agar neraca balance tanpa schedule &mdash; itu memalsukan balance. Inilah yang kamu audit di real-03: model yang "balance" karena plug, bukan karena mekanik.</li>
+</ul>
+<div class="callout"><b>Catatan jujur untuk Hari 12:</b> di capstone, bunga Rp2,00T dipakai sebagai input flat &mdash; itu <b>penyederhanaan pengajaran</b>. Dengan peralatan hari ini kamu tahu cara membuatnya proper: debt schedule 70T &rarr; bunga dari saldo awal &rarr; cicilan &rarr; saldo akhir. Penyederhanaan yang dinyatakan &gt; presisi yang dipalsukan.</div>`}
 ],
 quiz: [
 {q: "Revenue 2026 Rp16.800rb, growth 10%. Revenue 2027?", opts: ["Rp18.480rb","Rp16.800rb","Rp20.160rb","Rp17.640rb"], answer: 0, k: "forecast_driver", diff: "Easy",
@@ -1411,6 +1445,7 @@ sections: [
 <tr><td><b>Lapangan (min–max)</b></td><td><b>62,18</b></td><td><b>102,73</b></td></tr>
 </table>
 <p>Cara baca profesional: <b>bukan</b> rata-rata keempatnya, melainkan <i>di mana mereka berkumpul</i>. Di sini 78,18–89,38 (dua comps) berdekatan = <b>zona keyakinan</b>; DCF di bawahnya (konservatif), precedent di atasnya (harga kendali). Lapangan 62,18–102,73 = rentang negosiasi.</p>
+<p><b>Tutup ke per saham:</b> tiap batang di atas masih level ekuitas agregat (Rp triliun). Bagi dengan saham beredar INDF (8,78 miliar, diluted) \u2192 <b>rentang target price</b>: DCF Rp7.082&ndash;9.581, comps EV/EBITDA Rp8.904, comps P/E Rp10.180, precedent Rp11.701. Inilah angka yang dibandingkan dengan harga pasar &mdash; bukan 62,18T-nya. (Mekanik lengkapnya di Hari 13.)</p>
 <div class="callout"><b>Kenapa namanya football field?</b> Karena batangnya seperti garis-garis lapangan: tiap metode menempati "yard"-nya sendiri. Investor tidak bertanya "berapa angkanya" — mereka bertanya "di yard mana keyakinanmu berada, dan kenapa".</div>`},
 {h: "DCF vs comps: dua lensa, satu perusahaan", body: `
 <p>Hari 09–10 memberi lensa <b>intrinsik</b> (DCF: kas yang dihasilkan). Hari ini memberi lensa <b>relatif</b> (comps: harga yang dibayar pasar untuk tetangga). Keduanya menilai INDF:</p>
@@ -1582,6 +1617,22 @@ sections: [
 </table>
 <p>Check 2 bersifat <b>struktural</b> di model build: kas akhir arus kas <i>langsung</i> mengalir jadi kas neraca &mdash; tidak ada dua angka terpisah yang perlu dicocokkan (beda dengan misi repair).</p>
 <div class="callout"><b>Kenapa 4 checks ini non-negotiable?</b> Karena model yang tidak tie-out = menara di atas pasir. Besok di DCF: tiap Rp1T net debt yang salah = Rp1T ekuitas yang salah = thesis yang salah. Golden checks = fondasi menara.</div>`},
+{h: "Audit konsistensi capstone: asumsi vs asumsi", body: `
+<p>Di Hari 06 kamu belajar 5 cek konsistensi di skala Warung. Di capstone, taruhannya naik: <b>satu asumsi yang tidak konsisten = Rp triliunan salah</b> &mdash; dan golden checks tetap lolos.</p>
+<div class="example jebakan"><div class="lbl">🚫 Temuan audit (ilustrasi): capex dua versi</div>
+<p>Misal model INDF: CFI mencatat capex <b>Rp5,60T</b>, tapi roll-forward PPE memakai capex <b>Rp6,00T</b> (copy dari draft lama). PPE akhir salah Rp0,40T &rarr; total aset salah &rarr; tapi Check 1 (A = L+E) <b>tetap lolos</b>? Ya &mdash; bila kas di BS ikut disesuaikan manual agar balance. <b>Balance yang "dipaksa" = model yang berbohong dengan rapi.</b> Itulah kenapa audit konsistensi ada: menangkap yang tidak ditangkap golden checks.</p></div>
+<table class="brutal">
+<tr><th>#</th><th>Cek konsistensi (INDF)</th><th>Angka yang harus cocok</th></tr>
+<tr><td>1</td><td>Revenue IS vs driver WC</td><td>Growth revenue = growth piutang/persediaan</td></tr>
+<tr><td>2</td><td>Capex CFI vs roll-forward PPE</td><td>5,60T = 5,60T (satu sel sumber)</td></tr>
+<tr><td>3</td><td>Susut IS vs &Delta; akum. susut</td><td>6,50T = kenaikan akumulasi</td></tr>
+<tr><td>4</td><td>Beban bunga vs utang bank</td><td>2,00T &divide; 70,00T &asymp; 2,9% &mdash; wajar? tandai bila tidak</td></tr>
+<tr><td>5</td><td>Dividen vs RE roll-forward vs CFF</td><td>4,00T dikurangkan di RE <i>dan</i> muncul di CFF</td></tr>
+<tr><td>6</td><td>FCFF narasi vs model</td><td>"FCFF 15,90T" = sel FCFF, bukan ketikan</td></tr>
+</table>
+<div class="callout"><b>Kenapa cek #4 (beban bunga &divide; utang) ada di audit konsistensi?</b> Karena ini <b>reasonableness check</b>: 2,00 &divide; 70,00 = 2,86% &mdash; murah untuk utang bank korporat Indonesia. Belum tentu salah (bisa jadi utang lama berbunga rendah), tapi analis profesional <b>menandai</b> angka yang tidak wajar dan mencari penjelasannya &mdash; bukan melewatkannya. Konsistensi bukan cuma "cocok", tapi juga "masuk akal".</div>
+<p><b>Aturan capstone:</b> sebelum submit, jalankan 6 cek ini + 4 golden checks = <b>10 cek total</b>. Temuan diperbaiki di sel sumber. Model yang lolos 10/10 = model yang berani diuji.</p>
+<div class="callout"><b>Kenapa 10 cek, bukan 4?</b> Karena 4 golden checks membuktikan modelmu <b>terhubung</b>; 6 cek konsistensi membuktikan modelmu <b>jujur</b>. Klien membayar untuk keduanya &mdash; dan hanya memaafkan kegagalan salah satunya bila yang satunya sempurna. Standar profesional = keduanya lolos.</div>`},
 {h: "Jebakan capstone & jembatan ke Hari 13", body: `
 <ul>
 <li><b>Satuan.</b> Satu sel ketik 15.900 (ribu) di lautan triliun = FCFF 1.000&times; lipat. Audit satuan tiap input.</li>
@@ -1671,10 +1722,20 @@ sections: [
 <tr><td><b>Enterprise Value</b></td><td><b>113,25</b></td></tr>
 <tr><td>Net debt (67,00 &minus; 26,90, dari Hari 12)</td><td>(40,10)</td></tr>
 <tr><td><b>Ekuitas</b></td><td><b>73,15</b></td></tr>
-<tr><td>Saham beredar</td><td>8,78 miliar</td></tr>
-<tr><td><b>Nilai per saham (ilustrasi)</b></td><td><b>Rp8.332</b></td></tr>
+<tr><td>Saham beredar (diluted terkini &mdash; lih. Hari 20)</td><td>8,78 miliar</td></tr>
+<tr><td><b>Target price (base)</b></td><td><b>Rp8.332</b></td></tr>
 </table>
 <div class="callout"><b>Kenapa EV dulu, bukan langsung ekuitas?</b> Karena FCFF milik <i>semua</i> investor (kreditor + pemegang saham). Ekuitas = sisa setelah kreditor dibayar (net debt). Membalik urutannya = mengklaim kas kreditor sebagai milikmu.</div>`},
+{h: "Target price: nama untuk angka per sahammu", body: `
+<p>Angka <b>Rp8.332</b> yang baru kamu turunkan punya nama di industri: <b>target price</b>. Inilah output valuasi yang dipublikasikan analis &mdash; angka per saham yang masuk ke thesis dan rekomendasi.</p>
+<table class="brutal">
+<tr><th>Istilah</th><th>Artinya</th><th>Sifat</th></tr>
+<tr><td><b>Harga pasar</b></td><td>Harga kuotasi saham <i>sekarang</i> di bursa</td><td>Fakta yang teramati</td></tr>
+<tr><td><b>Fair value</b> (nilai wajar)</td><td>Estimasi modelmu atas nilai intrinsik &mdash; inilah yang dijawab DCF dan comps</td><td>Rentang dari skenario</td></tr>
+<tr><td><b>Target price</b></td><td>Fair value yang diterjemahkan jadi angka per saham <i>actionable</i> dalam horizon yang dinyatakan</td><td>Bear/base/bull: Rp7.270 / 8.332 / 9.620</td></tr>
+</table>
+<p><b>Kapan analis memakai istilah ini?</b> Saat menulis thesis (beli/tahan/jual = target price vs harga pasar), saat pitch 10 menit (Hari 27), dan di research note. Target price yang profesional selalu membawa empat pendamping: <b>as-of date, horizon, basis saham (diluted), dan rentang skenario</b> &mdash; tanpa itu angkanya tidak bisa dibaca, dicek, atau dibandingkan nanti.</p>
+<div class="callout"><b>Kenapa bukan satu angka?</b> Karena satu angka tanpa rentang = presisi palsu (ingat real-01: tiga skenario memetakan ruang kemungkinan, bukan satu tebakan). Di course ini, "target price" = <b>rentang per saham</b> dari skenariomu sendiri: Rp7.270&ndash;9.620 dengan base Rp8.332. Keputusan investasi lahir dari membandingkan harga pasar dengan rentang itu.</div>`},
 {h: "Validasi: dua jalur independen, satu angka", body: `
 <p>Dengar baik-baik &mdash; ini momen terpenting capstone:</p>
 <div class="formula">Model independen ini tiba di <b>Rp73,15T</b> &mdash; konsisten dengan hasil <i>repair</i> RC3 (73,15T)</div>
@@ -1696,6 +1757,7 @@ Jalur 2 (Hari 12&ndash;13): <i>build</i> dari blank &rarr; FCFF 15,90T &rarr; DC
 <p>Thesis investasi = argumen 1 halaman kenapa saham ini layak dibeli/dijual. Template-nya:</p>
 <table class="brutal">
 <tr><th>Blok</th><th>Isi (INDF, contoh)</th></tr>
+<tr><td><b>Basis</b></td><td>As-of: Des 2025 &middot; Horizon: 12 bulan &middot; Satuan: Rp &middot; Saham: 8,78 miliar (diluted)</td></tr>
 <tr><td><b>Tesis (1 kalimat)</b></td><td>INDF undervalued: pasar mengharga normalisasi berlebihan.</td></tr>
 <tr><td><b>Bull / Base / Bear</b></td><td>84,45T / 73,15T / 63,84T (Rp9.620 / 8.332 / 7.270 per saham)</td></tr>
 <tr><td><b>Katalis</b></td><td>Disiplin capex berlanjut; kenaikan dividen; spin-off segmen.</td></tr>
@@ -1994,6 +2056,7 @@ sections: [
 <li><b>Tornado:</b> WACC &gt; FCFFn &gt; g &gt; FCFF berjalan \u2014 urutan riset.</li>
 </ul>
 <p>Bingkai keputusannya: <b>harga vs rentang</b>, bukan harga vs titik. Pembeli di 30.000 masih di dalam rentang (dekat Bear) \u2014 butuh keyakinan dunia tidak seburuk Bear. Penjual yang minta 50.000 butuh dunia Bull menjadi kenyataan.</p>
+<div class="callout"><b>Jembatan ke per saham (ingat Hari 13):</b> PT Maju Jaya tanpa utang berbunga, jadi EV = ekuitas di sini \u2014 perbandingan di atas apel lawan apel. Untuk perusahaan Tbk, satu langkah lagi: bagi tiap ujung rentang dengan saham beredar (diluted) \u2192 <b>rentang target price per saham</b>. Harga pasar lalu dibandingkan dengan rentang itu, bukan dengan EV.</div>
 <div class="callout"><b>Kenapa rentang lebih jujur dari titik?</b> Karena setiap input adalah asumsi. Titik berpura-pura pasti; rentang memberi harga pada ketidakpastian. Valuasi profesional = rentang + narasi kapan tiap ujungnya benar.</div>`},
 {h: "Aturan main sel biru: tiga percobaan wajib", body: `
 <p>Sel input live (WACC, g, FCFF normal, FCFF berjalan) <b>sengaja bisa diubah</b> \u2014 dan model ikut bergerak karena semua sel jawaban me-link ke sana. Tiga percobaan wajib di file jawabanmu:</p>

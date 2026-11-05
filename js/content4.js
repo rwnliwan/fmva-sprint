@@ -1,4 +1,4 @@
-/* FMVA Sprint — 5 Guided Real Cases (flagship) */
+/* FMVA Sprint — 9 Guided Real Cases (5 flagship + 4 associate) */
 const LESSONS_REAL = [
 {
 id: "real-01", track: "Real Cases", title: "UNVR: The Boycott Turnaround",
@@ -166,7 +166,7 @@ blind: {h: "Uji Kilat — angka beda", body: `
 ,
 {
 id: "real-03", track: "Real Cases", title: "INDF: Noodle Empire, Leveraged",
-sub: "Real Case 3 · ±6 jam · Debt schedule + MISI FORENSIK",
+sub: "Real Case 3 · ±6 jam · Debt schedule + MISI FORENSIK (case forensik, bukan valuasi)",
 est: "6 jam",
 prerequisites: ["debt_schedule", "nci", "fcf"],
 driveFolder: "https://drive.google.com/drive/folders/15etlyOcKIB4Uz9b_I401Iz2ASubqGa2A",
@@ -177,7 +177,8 @@ mission: {file: "https://drive.google.com/file/d/1bG1-4aLXW3G1RlhKblFigPq51LgXeQ
 sections: [
 {h: "Kenapa Indofood?", body: `
 <p><b>Indofood (INDF.JK)</b> — mi instan yang mendunia lewat akuisisi <b>Pinehill</b>, didanai <b>utang</b>. Hasilnya: revenue tumbuh (Rp110,83T → Rp123,49T, 2022–2025) TAPI total utang Rp74,96T dan struktur ekuitas yang menjebak: NCI Rp47,09T dari total ekuitas Rp120,24T.</p>
-<div class="callout"><b>Kenapa leverage + NCI = ladang error?</b> Karena keduanya "tidak terlihat" di permukaan: utang bersembunyi di balik jadwal, NCI bersembunyi di balik angka ekuitas total. Analis junior (dan model AI) paling sering terpeleset di dua tempat ini. Makanya case ini punya <b>twist forensik</b>: kamu tidak membangun model — kamu <b>mengaudit</b> model orang.</p></div>`},
+<div class="callout"><b>Kenapa leverage + NCI = ladang error?</b> Karena keduanya "tidak terlihat" di permukaan: utang bersembunyi di balik jadwal, NCI bersembunyi di balik angka ekuitas total. Analis junior (dan model AI) paling sering terpeleset di dua tempat ini. Makanya case ini punya <b>twist forensik</b>: kamu tidak membangun model — kamu <b>mengaudit</b> model orang.</p></div>
+<div class="callout"><b>Catatan eksplisit:</b> ini <b>case forensik, bukan valuasi</b> &mdash; outputnya adalah temuan audit (5 error), bukan target price. Satu-satunya dari 9 real cases yang memang dirancang tanpa output valuasi.</div>`},
 {h: "Kenapa NCI harus dikurangkan?", body: `
 <div class="formula">Ekuitas induk = Total ekuitas − NCI</div>
 <p><b>NCI (non-controlling interest)</b> = bagian ekuitas anak usaha yang dimiliki pihak lain. Indofood tidak memiliki 100% semua anak usahanya — Rp47,09T dari Rp120,24T ekuitas adalah milik minoritas. Valuasi saham INDF hanya boleh memakai <b>Rp73,15T</b>.</p>
@@ -412,6 +413,10 @@ driveFolder: "1tqJmo75dI7OjtuKFfUb310jXO1W1CaQ8",
 audio: "assets/audio/real-06.mp3",
 checker: "real-06",
 sections: [
+{h: "⚠️ Peringatan kontaminasi", body: `
+<div class="callout" style="border-left:6px solid #B3261E"><b>JANGAN buka case ini sebelum lulus Ujian Blind BBCA</b> di FSA Lab (<a href="https://fsa-lab.pages.dev/ujian/">fsa-lab.pages.dev/ujian/</a>).
+Case ini memakai emiten dan periode yang SAMA dengan ujian blind. Membukanya dulu = ujianmu bukan blind lagi — vonis otomatis jadi <b>"coached capstone"</b>, bukan bukti penguasaan.
+Sudah lulus ujian? Lanjutkan — ini artefak kedua dari "one issuer, three artifacts": ujian FSA → valuasi FMVA → research note.</div>`},
 {h: "Kenapa bank tidak bisa di-DCF biasa?", body: `
 <p><b>Bank Central Asia (BBCA.JK)</b> adalah bank termahal di Indonesia: <b>P/BV ~3,9x</b> (MNC Sekuritas, Okt 2025). DCF biasa mendiskon <b>FCFF</b> — kas untuk semua pemodal <i>setelah</i> membayar utang. Masalahnya: utang bank — DPK <b>Rp1.134tn</b> (BRIDS, FY24) — bukan beban pendanaan, melainkan <b>bahan baku</b>. Bank "meminjam" giro dan tabungan untuk "meminjamkan" kredit <b>Rp911,1tn</b> (LK audited BCA, 31 Des 2024). Menghitung "net debt" BBCA lalu mengurangkannya dari EV menghasilkan angka ngawur.</p>
 <div class="formula">V0 = B0 + &Sigma; RI<sub>t</sub> / (1+Ke)<sup>t</sup> &nbsp;&nbsp;&middot;&nbsp;&nbsp; RI<sub>t</sub> = NI<sub>t</sub> &minus; Ke &times; B<sub>t&minus;1</sub></div>
@@ -494,7 +499,7 @@ hell: [
  explain: "Kesetaraan DDM = RI bertumpu pada B_t = B_{t−1} + NI − Div. Buyback di atas book, revaluasi via OCI, atau setoran modal memutus rantai itu — analis bank wajib rekonsiliasi ekuitas, bukan mengasumsikan rumusnya selalu cocok."}
 ],
 tasks: [
-{t: "Tugas A — Model residual income BBCA (±3 jam)", d: "Download workbook RC6. Kerjakan blok A (rekonsiliasi NIM), B (RI 2-tahap → nilai/saham → P/BV), C (justified 1-tahap + cross-check DDM), D (sensitivitas NIM −30bps). Semua rumus me-link ke asumsi.", url: ""},
+{t: "Tugas A — Model residual income BBCA (±3 jam)", d: "Download workbook RC6. Kerjakan blok A (rekonsiliasi NIM), B (RI 2-tahap → nilai/saham → P/BV), C (justified 1-tahap + cross-check DDM), D (sensitivitas NIM −30bps). Semua rumus me-link ke asumsi.", url: "https://drive.google.com/drive/folders/1tqJmo75dI7OjtuKFfUb310jXO1W1CaQ8"},
 {t: "Tugas B — Uji taruhan pasar (±1 jam)", d: "Di file jawabanmu: ubah ROE terminal 16%→20% (franchise abadi), catat P/BV 2-tahap baru. Lalu ubah Ke 11,5%→13%, catat lagi. Tulis 2 kalimat: asumsi mana yang paling menentukan apakah 3,9x layak?"},
 {t: "Tugas C — Kuis di atas", d: "Target ≥5/7 benar."}
 ],
@@ -522,7 +527,8 @@ sections: [
 <div class="formula">Equity = NAV tambang + Nilai SIS + NPV smelter + 15% AADI + Net cash − Holding discount</div>
 <p>Alamtri pasca-spin adalah konglomerat <b>4 kaki</b>: (1) <b>Adaro Minerals (ADMR)</b> — batubara metalurgi; (2) <b>Saptaindra Sejati (SIS)</b> — jasa kontraktor tambang; (3) <b>energi & smelter aluminium KAI</b> fase 1 500rb ton/tahun (commissioning 2026); (4) <b>15% saham AADI</b> (tidak dikonsolidasi). Satu multiple P/E atau EV/EBITDA untuk keempatnya = menilai 4 bisnis beda risiko dengan satu harga — tidak bermakna.</p>
 <div class="example korporat"><div class="lbl">🏢 Hasil SOTP (angka kerja, $ juta)</div>
-<p>NAV ADMR <b>$1.976jt</b> + SIS <b>$750jt</b> (ilustratif) + smelter <b>$236jt</b> (ilustratif) + 15% AADI <b>$375jt</b> (ilustratif) = EV SOTP <b>$3.337jt</b>. Tambah net cash <b>$1.557jt</b> (akhir 1H24) → equity <b>$4.894jt</b>. Dengan holding discount ilustratif 20% → <b>$3.915jt</b>. Yang dinilai di sini <b>mekaniknya</b>: tiap kaki punya metode yang tepat untuk karakternya.</p></div>
+<p>NAV ADMR <b>$1.976jt</b> + SIS <b>$750jt</b> (ilustratif) + smelter <b>$236jt</b> (ilustratif) + 15% AADI <b>$375jt</b> (ilustratif) = EV SOTP <b>$3.337jt</b>. Tambah net cash <b>$1.557jt</b> (akhir 1H24) → equity <b>$4.894jt</b>. Dengan holding discount ilustratif 20% → <b>$3.915jt</b>. Yang dinilai di sini <b>mekaniknya</b>: tiap kaki punya metode yang tepat untuk karakternya.</p>
+<p><b>Turun ke per saham:</b> $3.915jt ÷ 30,9 miliar saham (ADRO, saham beredar akhir 2023 — periode terdekat dengan data case 1H24) = <b>$0,1267/saham</b> ≈ <b>Rp2.078/saham</b> (kurs Rp16.400/USD, dinyatakan sebagai asumsi). Inilah <b>target price</b> versi SOTP — bandingkan dengan harga pasar untuk keputusan (ingat Hari 13: target price selalu ditemani rentang skenario, bukan satu titik).</p></div>
 <div class="callout"><b>Kenapa kaki-kakinya beda metode?</b> Tambang punya umur cadangan → <b>NAV depletion</b>. SIS jasa → <b>multiple</b>. Smelter belum berproduksi → <b>DCF bertahap / real option</b>. 15% AADI → <b>nilai pasar</b> (bukan konsolidasi). SOTP = memilih senjata yang tepat per target, lalu menjumlahkan. (Real-02 memakai logika yang sama untuk Astra.)</p></div>`},
 {h: "Kenapa NAV tambang dihitung dengan depletion?", body: `
 <div class="formula">Mine life = Reserves ÷ Deplesi tahunan &nbsp;→&nbsp; NAV = FCF × (1 − (1+WACC)^−life) / WACC</div>
@@ -530,7 +536,8 @@ sections: [
 <div class="example korporat"><div class="lbl">🏢 Depletion ADMR (angka kerja)</div>
 <p>Revenue $1.154jt ÷ 5,62Mt = <b>$205/ton</b>. Margin EBITDA ternormalisasi ilustratif 35% → EBITDA $404jt → FCF tahunan <b>$208jt</b> (setelah pajak 25%, D&A & sustaining capex ilustratif). Faktor anuitas 10% selama 31,5 tahun = <b>9,503</b>. NAV = 208 × 9,503 = <b>$1.976jt</b> — kontributor terbesar SOTP (59% EV).</p></div>
 <div class="example jebakan"><div class="lbl">🚫 Reserves ≠ resources</div>
-<p>Resources metalurgi <b>983Mt</b> — lima setengah kali reserves. Pemula memakai 983Mt → mine life 175 tahun → NAV fantastis. Salah: <b>resources belum terbukti ekonomis</b> (belum studi kelayakan, belum izin, belum infrastruktur). NAV hanya memakai <b>reserves</b> (177Mt): yang bankable. Sensitivitasnya nyata — jika hanya 120Mt yang recoverable, mine life 21,4 tahun dan NAV jatuh ke <b>$1.808jt</b> (−$168jt). (Lihat Hell Mode.)</p></div>`},
+<p>Resources metalurgi <b>983Mt</b> — lima setengah kali reserves. Pemula memakai 983Mt → mine life 175 tahun → NAV fantastis. Salah: <b>resources belum terbukti ekonomis</b> (belum studi kelayakan, belum izin, belum infrastruktur). NAV hanya memakai <b>reserves</b> (177Mt): yang bankable. Sensitivitasnya nyata — jika hanya 120Mt yang recoverable, mine life 21,4 tahun dan NAV jatuh ke <b>$1.808jt</b> (−$168jt). (Lihat Hell Mode.)</p></div>
+<p><b>Data operasi ADRO/ADMR (dipakai di Hell Mode):</b> volume penjualan <b>+26%</b>, ASP <b>−16%</b>, produksi <b>+30%</b>. Ingat: yang menjadi revenue adalah yang <b>terjual</b> (+26%), bukan yang diproduksi (+30%) &mdash; dan efek gabungan volume &times; harga = 1,26 &times; 0,84 &minus; 1 = +5,8% &asymp; +6% reported.</p>`},
 {h: "Kenapa smelter dinilai sebagai real option?", body: `
 <p>Smelter aluminium KAI: capex <b>$300–325jt</b> (guidance ADMR 2025, sudah termasuk smelter), revenue <b>nol sampai commissioning 2026</b>. DCF standar melihat ini sebagai: keluar $300jt sekarang, dapat ketidakpastian nanti — dan menghukumnya habis-habisan.</p>
 <div class="callout"><b>Kenapa framing-nya opsi, bukan DCF biasa?</b> Smelter adalah <b>hak (bukan kewajiban) atas arus kas masa depan</b>: jika harga aluminium jatuh permanen, ekspansi fase 2 bisa dibatalkan — rugi terbatas pada capex fase 1. DCF standar mengasumsikan komitmen buta; <b>real option</b> menghargai fleksibilitas manajemen. NPV ilustratif: FCF stabil $60jt/thn dari 2027, WACC 12%, g 2% → PV $536jt − capex $300jt = <b>$236jt</b> ≥ 0. Kecil dibanding NAV tambang — tapi <b>opsinya</b> (fase 2, hilirisasi) yang berharga.</div>
@@ -581,7 +588,7 @@ quiz: [
 hellPass: 80,
 hell: [
 {q: "ADMR: penjualan +26%, ASP −16%. Perubahan revenue implisit?", opts: ["+10% (26−16)","−16% (harga yang menentukan)","1,26 × 0,84 − 1 = +5,8% ≈ +6% reported","+30% (ikut produksi)"], answer: 2, diff: "Medium",
- explain: "Efek volume × efek harga: 1,26 × 0,84 = 1,0584 → +5,8%, cocok dengan reported +6%. Produksi +30% ≠ penjualan +26% — yang jadi revenue adalah yang TERJUAL. (Real-07 § data ADMR)"},
+ explain: "Efek volume × efek harga: 1,26 × 0,84 = 1,0584 → +5,8%, cocok dengan reported +6%. Produksi +30% ≠ penjualan +26% — yang jadi revenue adalah yang TERJUAL. (Real-07 § Kenapa NAV tambang dihitung dengan depletion?)"},
 {q: "Hanya 120Mt reserves yang recoverable (bukan 177Mt). NAV ADMR baru?", opts: ["Tetap $1.976jt — reserves tak sensitif","$1.808jt (life 21,4 thn, anuitas 8,69)","120/177 × $1.976jt = $1.339jt","Naik — tambang lebih fokus"], answer: 1, diff: "Hard",
  explain: "Life = 120/5,62 = 21,4 thn; anuitas 10% = 8,69; NAV = 207,9 × 8,69 = $1.808jt (−$168jt). Bukan proporsional linear karena anuitas melengkung — itulah kenapa sensitivitas dihitung, bukan ditebak."},
 {q: "Equity SOTP $4.894jt, terapkan holding discount 20%. Hasil?", opts: ["$4.894jt (discount tidak dihitung)","$5.873jt (malah ditambah)","$3.915jt","$3.337jt"], answer: 2, diff: "Medium",
@@ -592,7 +599,7 @@ hell: [
  explain: "Spin-off memisahkan, bukan mencetak nilai. Uji: nilai grup utuh pre-spin vs jumlah bagian post-spin yang diterima pemegang saham. Selisihnya harus dijelaskan (hilangnya holding discount? re-rating?) — bukan diasumsikan. (Real-07 § Kenapa spin-off bisa jadi jebakan nilai?)"}
 ],
 tasks: [
-{t: "Tugas A — SOTP Alamtri (±4 jam)", d: "Download workbook RC7. Langkah 1: temukan keanehan headline FY23 vs FY24, restate FY23 (ilustratif). Langkah 2: bangun 4 kaki SOTP (NAV depletion ADMR, multiple SIS, real-option smelter, 15% AADI) → EV → + net cash → equity → holding discount. Semua rumus link ke input.", url: "PENDING-DRIVE"},
+{t: "Tugas A — SOTP Alamtri (±4 jam)", d: "Download workbook RC7. Langkah 1: temukan keanehan headline FY23 vs FY24, restate FY23 (ilustratif). Langkah 2: bangun 4 kaki SOTP (NAV depletion ADMR, multiple SIS, real-option smelter, 15% AADI) → EV → + net cash → equity → holding discount. Semua rumus link ke input.", url: "https://drive.google.com/drive/folders/19_WRNJ84ntoN3NVr6sNumNUMA8CTv5Zc"},
 {t: "Tugas B — Stress test (±1 jam)", d: "ASP turun permanen 20%: hitung ulang FCF & NAV ADMR. Lalu: reserves hanya 120Mt — NAV baru? Kaki mana yang paling 'berbahaya' bagi valuasi, dan kenapa?"},
 {t: "Tugas C — Kuis di atas", d: "Target ≥6/8 benar."}
 ],
@@ -696,7 +703,7 @@ hell: [
  explain: "Dua angka yang tidak bisa benar bersamaan = sinyal berhenti, bukan sinyal memilih. Analis melacak ke sumber primer (LK audited) dan menandai angka agregator sebagai belum terverifikasi. Di case ini D&A sengaja tidak dipakai sama sekali."}
 ],
 tasks: [
-{t: "Tugas A — Normalisasi + pro-forma + SOTP (±4 jam)", d: "Download workbook RC8. (A) Normalisasi rugi FY23 dari headline dengan one-off; (B) hitung pertumbuhan headline vs pro-forma; (C) bangun SOTP 3 kaki + kas bersih → nilai/saham → upside vs harga pasar. Semua rumus link ke input.", url: "PENDING-DRIVE"},
+{t: "Tugas A — Normalisasi + pro-forma + SOTP (±4 jam)", d: "Download workbook RC8. (A) Normalisasi rugi FY23 dari headline dengan one-off; (B) hitung pertumbuhan headline vs pro-forma; (C) bangun SOTP 3 kaki + kas bersih → nilai/saham → upside vs harga pasar. Semua rumus link ke input.", url: "https://drive.google.com/drive/folders/1OrN9fj9jdgSuuC2JertPlAWps4zTRbHX"},
 {t: "Tugas B — Uji sensitivitas multiple (±1 jam)", d: "Di file jawabanmu: turunkan multiple on-demand 2,5×→1,5× dan multiple fintech 8×→5×. Catat nilai/saham baru. Kaki mana yang paling 'berbahaya' bagi thesis?", url: ""},
 {t: "Tugas C — Kuis di atas", d: "Target ≥5/7 benar."}
 ],
@@ -733,10 +740,20 @@ sections: [
 <div class="callout"><b>Kenapa urutan senioritas?</b> ① <b>Biaya likuidasi</b> (kurator, legal) — tanpa ini tidak ada yang bisa dijual. ② <b>Kreditor dijamin / bank</b> (MRA Tranche A Rp2,154tn + Tranche B Rp21,736tn = Rp23,89tn). ③ <b>Konkuren</b> (obligasi non-penjaminan — sudah direstrukturisasi — &amp; vendor). ④ <b>Ekuitas</b> — paling belakang, paling menderita. Senioritas bukan opini; ia <b>hukum</b>.</p></div>
 <div class="example korporat"><div class="lbl">🏢 Hasil waterfall (Rp triliun, asumsi ilustratif di workbook)</div>
 <p>Proceeds likuidasi = kas 1,50 + piutang 2,76 + tol 5,40 + aset tetap 4,00 = <b>Rp13,66tn</b>. Biaya likuidasi 5% = 0,68 → <b>net proceeds Rp12,98tn</b>. Klaim bank (Tranche A+B) = <b>Rp23,89tn</b> — hampir <b>dua kali lipat</b> dana yang tersedia. Kreditor bank menerima MIN(12,98; 23,89) = <b>Rp12,98tn</b> → recovery rate <b>54,3%</b>. Sisa untuk obligasi/vendor: <b>Rp0</b>. Sisa untuk ekuitas: <b>Rp0</b>. Bahkan kreditor senior tidak lunas — apalagi pemegang saham.</p></div>
-<div class="callout"><b>Kenapa "nol" ini penting?</b> Karena ia menjawab pertanyaan tersulit case ini — <i>apakah ada nilai ekuitas tersisa?</i> — tanpa perlu berdebat soal masa depan. Waterfall tidak meramal; ia <b>menghitung siapa dapat apa jika semuanya dijual hari ini</b>: bukti aritmetika, bukan opini.</p></div>`},
-{h: "Kenapa restrukturisasi bisa bikin ekuitas 'positif' tapi pemegang lama tetap nol?", body: `
-<p>Skenario (ilustratif): <b>haircut 30%</b> atas Tranche B Rp21,736tn → liabilitas turun <b>Rp6,52tn</b>, sisa B = Rp15,22tn. Ekuitas mekanis = −3,34 + 6,52 = <b>+Rp3,18tn</b>. Di atas kertas, perusahaan kembali berekutias positif! Tapi — <b>siapa pemilik ekuitas baru itu?</b></p>
-<div class="callout"><b>Kenapa pemegang lama tetap nol?</b> Karena haircut &amp; konversi utang-jadi-saham diberikan <b>kepada kreditor</b> sebagai kompensasi. Ekuitas buku +Rp3,18tn itu <b>milik kreditor hasil konversi</b> — pemegang saham lama terdilusi mendekati nol (nilai wajar klaim mereka = Rp0 dari waterfall). <b>Ekuitas buku ≠ nilai untuk pemegang lama.</b> Konteks kebijakan: Danantara pegang 74,6%, merger ke Hutama Karya <b>ditunda</b> (butuh bersih-bersih dulu), PMN Rp3tn <b>dibatalkan</b> (PP 20/2025) — negara tidak menyuntik, kreditor yang menanggung.</p></div>
+<div class="callout"><b>Kenapa "nol" ini penting?</b> Karena ia menjawab pertanyaan tersulit case ini — <i>apakah ada nilai ekuitas tersisa?</i> — tanpa perlu berdebat soal masa depan. Waterfall tidak meramal; ia <b>menghitung siapa dapat apa jika semuanya dijual hari ini</b>: bukti aritmetika, bukan opini.</p></div>
+<div class="callout"><b>⚠️ Distress ≠ otomatis likuidasi.</b> Waterfall di atas = <b>satu skenario</b> (likuidasi hari ini), bukan vonis final. Valuasi distress yang benar memakai <b>pembobotan probabilitas</b>:
+<div class="formula">Nilai = p(restrukturisasi) × V<sub>restruktur</sub> + p(likuidasi) × V<sub>likuidasi</sub></div>
+<p style="margin-top:8px">Tiga komponen yang berbeda: (1) <b>going-concern/restructuring value</b> — nilai jika restrukturisasi berhasil (butuh model operasi pasca-restrukturisasi, bukan DCF status quo); (2) <b>distress-sale value</b> — nilai jual aset di bawah tekanan (di antara keduanya); (3) <b>liquidation recovery</b> — waterfall di atas. Analis yang langsung melompat ke "distress = likuidasi" melewatkan skenario tengah yang justru paling mungkin dinegosiasikan.</p></div>`},
+{h: "Kenapa restrukturisasi bisa bikin ekuitas 'positif'? Tiga skenario yang berbeda", body: `
+<p>Haircut 30% atas Tranche B Rp21,736tn → liabilitas turun <b>Rp6,52tn</b>. Ekuitas mekanis = −3,34 + 6,52 = <b>+Rp3,18tn</b>. Tapi <b>siapa pemilik ekuitas itu</b> tergantung skenario — dan ketiganya beda total:</p>
+<div class="example korporat"><div class="lbl">🏢 Skenario A — Pure forgiveness (haircut tanpa konversi)</div>
+<p>Kreditor memangkas pokok Rp6,52tn <b>tanpa menerima saham</b>. Tidak ada saham baru diterbitkan → <b>pemegang saham lama tetap pemilik 100%</b> perusahaan yang kini berekutias buku +Rp3,18tn. Kedengarannya bagus? Justru itu masalahnya: <b>kreditor tidak akan memberi hadiah cuma-cuma</b>. Pure forgiveness praktis tidak terjadi tanpa kompensasi — kreditor hampir selalu minta imbalan (konversi, warrant, syarat ketat); pengecualian ada, misalnya penghapusan antar-pihak berelasi atau restrukturisasi yang diawasi pengadilan.</p></div>
+<div class="example korporat"><div class="lbl">🏢 Skenario B — Debt-for-equity swap (DENGAN terms eksplisit)</div>
+<p>Kreditor mengonversi Rp6,52tn utang menjadi <b>N saham baru</b> pada valuasi <b>RpV per saham</b>. Kepemilikan kreditor = N ÷ (N + saham lama). <b>Tanpa N dan V, tidak ada yang bisa disimpulkan soal kepemilikan.</b> Contoh ilustratif: bila valuasi Rp1.000/saham → 6,52 miliar saham baru vs ~29 miliar saham lama → kreditor pegang ~18%. Bila valuasi Rp100/saham → 65,2 miliar saham baru → kreditor pegang ~69%, pemegang lama terdilusi berat. <b>Angka kepemilikan = fungsi terms, bukan fungsi haircut.</b></p></div>
+<div class="example korporat"><div class="lbl">🏢 Skenario C — Likuidasi (waterfall)</div>
+<p>Sudah dihitung di section sebelumnya: net proceeds Rp12,98tn vs klaim bank Rp23,89tn → ekuitas = <b>Rp0</b>. Ini skenario jika perusahaan dijual hari ini.</p></div>
+<div class="callout"><b>Kenapa tiga skenario?</b> Karena "haircut 30%" saja <b>tidak menjawab</b> siapa pemilik ekuitas baru. Haircut = peristiwa akuntansi (liabilitas turun). Kepemilikan = peristiwa hukum (saham diterbitkan kepada siapa, berapa, pada valuasi berapa). Mencampur keduanya = kesalahan konseptual paling umum dalam analisis distressed.</p></div>
+<div class="callout"><b>Konteks kebijakan:</b> Danantara pegang 74,6%, merger ke Hutama Karya <b>ditunda</b> (butuh bersih-bersih dulu), PMN Rp3tn <b>dibatalkan</b> (PP 20/2025) — negara tidak menyuntik, kreditor yang menanggung.</p></div>
 <div class="example jebakan"><div class="lbl">🚫 Jebakan "turnaround"</div>
 <p>"Delapan inisiatif pemulihan, 63 proyek Rp31,7tn — pasti bangkit!" Mungkin. Tapi analis kredit bertanya duluan: <i>dengan beban keuangan Rp2,79tn per 9 bulan vs laba kotor FY25 Rp1,58tn setahun penuh — <b>bunga 9 bulan LEBIH BESAR dari laba kotor setahun</b> — dari mana kas untuk membayarnya?</i> Proyek baru tidak membayar bunga lama.</p></div>`},
 {h: "Tugas praktik", body: `
@@ -748,7 +765,7 @@ sections: [
 <li><b>Senioritas</b> = biaya likuidasi → kreditor dijamin → konkuren → ekuitas.</li>
 <li><b>Recovery rate</b> = dana diterima ÷ klaim.</li>
 <li><b>Ekuitas negatif</b> = multiple ekuitas tak terdefinisi; berpikir sebagai kreditor.</li>
-<li><b>Haircut</b> = pengurangan pokok utang; menaikkan ekuitas buku tapi milik kreditor.</li>
+<li><b>Haircut</b> = pengurangan pokok utang; menaikkan ekuitas buku mekanis. SIAPA pemilik ekuitas baru tergantung skenario (forgiveness / swap dengan terms / likuidasi) — bukan otomatis kreditor.</li>
 <li><b>Harga suspensi</b> = fosil, bukan sinyal valuasi.</li>
 </ul>`}
 ],
@@ -770,7 +787,7 @@ quiz: [
  explain: "Bunga 9 bulan (Rp2,79tn) melampaui laba kotor setahun penuh (Rp1,58tn) — operasi tidak bisa menutup biaya utang. Inilah 'pendarahan'. (Real-09 § Kenapa restrukturisasi bisa bikin ekuitas 'positif'?) "},
 {q: "Haircut 30% atas Tranche B Rp21,736tn. Ekuitas mekanis pasca-haircut?", opts: ["Tetap −Rp3,34tn","−Rp9,86tn","−Rp3,34tn + Rp6,52tn = +Rp3,18tn","Rp0 persis"], answer: 2, k: "haircut", diff: "Hard",
  hints: ["Haircut 30% × 21,736 = ?", "Liabilitas turun → ekuitas (aset − liabilitas) naik sebesar itu."],
- explain: "Haircut = 21,736 × 30% = Rp6,52tn. Liabilitas turun Rp6,52tn → ekuitas mekanis = −3,34 + 6,52 = +Rp3,18tn. Tapi nilai ini milik kreditor hasil konversi. (Real-09 § Kenapa restrukturisasi bisa bikin ekuitas 'positif'?) "},
+ explain: "Haircut = 21,736 × 30% = Rp6,52tn. Liabilitas turun Rp6,52tn → ekuitas mekanis = −3,34 + 6,52 = +Rp3,18tn. Tapi SIAPA pemiliknya tergantung skenario: pure forgiveness → milik pemegang lama; debt-for-equity swap → tergantung terms (jumlah saham & valuasi); likuidasi → Rp0. (Real-09 § Tiga skenario yang berbeda)"},
 {q: "Saham suspensi di Rp202 sejak Mei 2023. Kenapa Rp202 BUKAN sinyal 'murah'?", opts: ["Karena Rp202 sebenarnya terlalu mahal","Harga beku 3,5 tahun — tak ada price discovery","Karena Danantara pegang 74,6%","Karena minimal pembelian 1 lot"], answer: 1, k: "distressed", diff: "Medium",
  hints: ["Kapan terakhir harga itu terbentuk? Mei 2023.", "Apa yang terjadi sejak itu? Rugi −4,48tn, ekuitas negatif, MRA."],
  explain: "Rp202 adalah fosil — harga terakhir sebelum suspensi, tidak mencerminkan 3,5 tahun kabar buruk. Saham suspensi = saham tanpa pasar, bukan saham murah. (Real-09 § Kenapa multiple ekuitas tak bermakna?)"}
@@ -782,14 +799,14 @@ hell: [
 {q: "Recovery piutang jatuh 40% → 20%. Recovery rate bank menjadi?", opts: ["Tetap 54,3%","51,4%","48,9%","0%"], answer: 2, diff: "Medium",
  explain: "Piutang recovery = 6,90 × 20% = Rp1,38tn → proceeds Rp12,28tn → net Rp11,67tn → 11,67 ÷ 23,89 = 48,9%. Sensitivitas asumsi recovery langsung memukul kreditor."},
 {q: "Kreditor mengonversi Rp5tn utang menjadi saham baru. Nasib pemegang saham lama?", opts: ["Tetap menjadi mayoritas","Terdilusi mendekati nol — nilai wajar klaim lama = Rp0","Malah untung karena utang turun","Tidak terpengaruh sama sekali"], answer: 1, diff: "Hard",
- explain: "Waterfall membuktikan klaim ekuitas lama = Rp0. Konversi memberi kreditor hampir 100% ekuitas baru; pemegang lama terdilusi mendekati nol. Ekuitas 'positif' ≠ milik mereka."},
+ explain: "Konversi Rp5tn menjadi saham baru = debt-for-equity swap. Nasib pemegang lama tergantung TERMS: berapa saham baru diterbitkan & pada valuasi berapa. Waterfall membuktikan klaim ekuitas lama = Rp0, sehingga dalam praktik kreditor akan menuntut mayoritas saham baru — tapi 'terdilusi' bukan otomatis; ia hasil negosiasi terms. (Real-09 § Tiga skenario yang berbeda)"},
 {q: "Pasca-haircut ekuitas buku +Rp3,18tn, tapi 'nilai ekuitas lama = Rp0'. Kontradiksi?", opts: ["Ya — salah satunya salah hitung","Tidak: ekuitas buku ≠ nilai untuk pemegang lama","Tidak: haircut tak memengaruhi ekuitas","Ya — waterfall-nya yang salah"], answer: 1, diff: "Hard",
- explain: "Ekuitas buku naik mekanis karena liabilitas turun — tapi klaim atas ekuitas baru dipegang kreditor hasil konversi. Akuntansi mencatat +3,18; ekonomi memberi pemegang lama Rp0."},
+ explain: "Tidak kontradiksi — tapi jawabannya tergantung skenario. Pure forgiveness: +Rp3,18tn milik pemegang lama (tidak ada saham baru). Debt-for-equity swap: milik whoever memegang saham baru sesuai terms. Yang pasti: ekuitas buku naik mekanis karena liabilitas turun; kepemilikan ditentukan oleh DOKUMEN konversi, bukan oleh aritmetika haircut. (Real-09 § Tiga skenario yang berbeda)"},
 {q: "Kenapa DCF going-concern tidak valid untuk WSKT?", opts: ["Karena WACC tidak bisa dihitung","Asumsi kelangsungan usaha rusak; ekuitas = opsi out-of-the-money atas aset","Karena revenue turun 17%","Karena datanya tidak tersedia"], answer: 1, diff: "Medium",
- explain: "DCF butuh going concern. Dengan defisit Rp20,8tn dan rating idSD, ekuitas secara ekonomi = opsi atas aset setelah kreditor dibayar — dan opsi ini jauh out-of-the-money. Waterfall, bukan DCF."}
+ explain: "DCF butuh going concern. Dengan defisit Rp20,8tn dan rating idSD, ekuitas secara ekonomi = opsi atas aset setelah kreditor dibayar — dan opsi ini jauh out-of-the-money. Tapi ingat: distress ≠ otomatis likuidasi. Valuasi yang benar = probabilitas-terboboti (restrukturisasi vs likuidasi); waterfall = komponen likuidasinya. (Real-09 § Kenapa waterfall, bukan DCF?)"}
 ],
 tasks: [
-{t: "Tugas A — Waterfall likuidasi WSKT (±4 jam)", d: "Download workbook RC9. Susun data LK yang disajikan apa adanya menjadi waterfall: proceeds per kelas aset → biaya likuidasi → distribusi senioritas → recovery rate bank → sisa obligasi/vendor → sisa ekuitas. Lanjut ke skenario restrukturisasi (haircut 30% Tranche B). Semua rumus link ke data/asumsi.", url: "PENDING-DRIVE"},
+{t: "Tugas A — Waterfall likuidasi WSKT (±4 jam)", d: "Download workbook RC9. Susun data LK yang disajikan apa adanya menjadi waterfall: proceeds per kelas aset → biaya likuidasi → distribusi senioritas → recovery rate bank → sisa obligasi/vendor → sisa ekuitas. Lanjut ke skenario restrukturisasi: bedakan (a) pure forgiveness 30% Tranche B, (b) debt-for-equity swap DENGAN terms eksplisit (jumlah saham & valuasi), (c) likuidasi. Semua rumus link ke data/asumsi.", url: "https://drive.google.com/drive/folders/1A8U9qMg7d5s1dxJca9ZzHjalV8hRu6YT"},
 {t: "Tugas B — Stress test asumsi (±1 jam)", d: "Di file jawabanmu: ubah recovery tol 45%→30%, catat recovery rate bank yang baru. Ubah biaya likuidasi 5%→10%, catat lagi. Tulis 2 kalimat: asumsi mana yang paling berbahaya bagi kreditor? Bagi ekuitas?", url: ""},
 {t: "Tugas C — Kuis di atas", d: "Target ≥6/7 benar.", url: ""}
 ],
@@ -1259,7 +1276,7 @@ hell: [
  explain: `DDM = RI equivalence rests on B_t = B_{t−1} + NI − Div. Above-book buybacks, OCI revaluations, or capital injections break that chain — bank analysts must reconcile equity, not assume the formulas always agree.`}
 ],
 tasks: [
-{t: "Task A — BBCA residual-income model (±3 hrs)", d: "Download the RC6 workbook. Do block A (NIM reconciliation), B (2-stage RI → per-share value → P/BV), C (1-stage justified + DDM cross-check), D (−30bps NIM sensitivity). All formulas link to assumptions.", url: ""},
+{t: "Task A — BBCA residual-income model (±3 hrs)", d: "Download the RC6 workbook. Do block A (NIM reconciliation), B (2-stage RI → per-share value → P/BV), C (1-stage justified + DDM cross-check), D (−30bps NIM sensitivity). All formulas link to assumptions.", url: "https://drive.google.com/drive/folders/1tqJmo75dI7OjtuKFfUb310jXO1W1CaQ8"},
 {t: "Task B — Test the market's bet (±1 hr)", d: "In your answer file: change terminal ROE 16%→20% (eternal franchise), note the new 2-stage P/BV. Then change Ke 11.5%→13%, note again. Write 2 sentences: which assumption decides whether 3.9x is justified?"},
 {t: "Task C — The quiz above", d: "Target ≥5/7 correct.", url: ""}
 ],
@@ -1352,7 +1369,7 @@ hell: [
  explain: `A spin-off separates; it doesn't print value. Test: whole-group value pre-spin vs the sum of post-spin pieces shareholders received. The difference must be explained (vanished holding discount? re-rating?) — never assumed.`}
 ],
 tasks: [
-{t: "Task A — Alamtri SOTP (±4 hrs)", d: "Download the RC7 workbook. Step 1: spot the FY23 vs FY24 headline oddity, restate FY23 (illustrative). Step 2: build the 4-leg SOTP (ADMR depletion NAV, SIS multiple, smelter real-option, 15% AADI) → EV → + net cash → equity → holding discount. All formulas link to inputs."},
+{t: "Task A — Alamtri SOTP (±4 hrs)", d: "Download the RC7 workbook. Step 1: spot the FY23 vs FY24 headline oddity, restate FY23 (illustrative). Step 2: build the 4-leg SOTP (ADMR depletion NAV, SIS multiple, smelter real-option, 15% AADI) → EV → + net cash → equity → holding discount. All formulas link to inputs.", url: "https://drive.google.com/drive/folders/19_WRNJ84ntoN3NVr6sNumNUMA8CTv5Zc"},
 {t: "Task B — Stress test (±1 hr)", d: "ASP falls permanently 20%: recalc ADMR FCF & NAV. Then: reserves only 120Mt — new NAV? Which leg is most 'dangerous' to valuation, and why?"},
 {t: "Task C — Quiz above", d: "Target ≥6/8 correct."}
 ],
@@ -1450,7 +1467,7 @@ hell: [
  explain: `Two numbers that can't both be true = a stop signal, not a selection signal. The analyst traces to the primary source (audited statements) and flags the aggregator figures as unverified. This case deliberately doesn't use D&A at all.`}
 ],
 tasks: [
-{t: "Task A — Normalization + pro-forma + SOTP (±4 hrs)", d: "Download the RC8 workbook. (A) Normalize the FY23 loss from the headline with the one-off; (B) compute headline vs pro-forma growth; (C) build the 3-legged SOTP + net cash → per-share value → upside vs market price. All formulas link to inputs.", url: "PENDING-DRIVE"},
+{t: "Task A — Normalization + pro-forma + SOTP (±4 hrs)", d: "Download the RC8 workbook. (A) Normalize the FY23 loss from the headline with the one-off; (B) compute headline vs pro-forma growth; (C) build the 3-legged SOTP + net cash → per-share value → upside vs market price. All formulas link to inputs.", url: "https://drive.google.com/drive/folders/1OrN9fj9jdgSuuC2JertPlAWps4zTRbHX"},
 {t: "Task B — Multiple sensitivity test (±1 hr)", d: "In your answer file: cut the on-demand multiple 2.5×→1.5× and the fintech multiple 8×→5×. Note the new per-share value. Which leg is most 'dangerous' to the thesis?", url: ""},
 {t: "Task C — The quiz above", d: "Target ≥5/7 correct.", url: ""}
 ],
@@ -1482,10 +1499,20 @@ sections: [
 <div class="callout"><b>Why the seniority order?</b> ① <b>Liquidation costs</b> (curator, legal) — without them nothing can be sold. ② <b>Secured creditors / banks</b> (MRA Tranche A Rp2.154tn + Tranche B Rp21.736tn = Rp23.89tn). ③ <b>Unsecured</b> (non-guaranteed bonds — already restructured — &amp; vendors). ④ <b>Equity</b> — last in line, suffering most. Seniority isn't an opinion; it's <b>law</b>.</p></div>
 <div class="example korporat"><div class="lbl">🏢 The waterfall result (Rp trillion, illustrative assumptions in the workbook)</div>
 <p>Liquidation proceeds = cash 1.50 + receivables 2.76 + toll 5.40 + fixed assets 4.00 = <b>Rp13.66tn</b>. Liquidation costs 5% = 0.68 → <b>net proceeds Rp12.98tn</b>. Bank claims (Tranches A+B) = <b>Rp23.89tn</b> — nearly <b>double</b> the available funds. Bank creditors receive MIN(12.98; 23.89) = <b>Rp12.98tn</b> → recovery rate <b>54.3%</b>. Left for bonds/vendors: <b>Rp0</b>. Left for equity: <b>Rp0</b>. Even senior creditors aren't made whole — let alone shareholders.</p></div>
-<div class="callout"><b>Why does this "zero" matter?</b> Because it answers the case's hardest question — <i>is there any equity value left?</i> — without arguing about the future. A waterfall doesn't forecast; it <b>computes who gets what if everything is sold today</b>: arithmetic proof, not opinion.</p></div>`},
-{h: "Why can restructuring make equity 'positive' while old holders still get zero?", body: `
-<p>Scenario (illustrative): a <b>30% haircut</b> on Tranche B Rp21.736tn → liabilities down <b>Rp6.52tn</b>, remaining B = Rp15.22tn. Mechanical equity = −3.34 + 6.52 = <b>+Rp3.18tn</b>. On paper, the company is back to positive equity! But — <b>who owns that new equity?</b></p>
-<div class="callout"><b>Why do old holders still get zero?</b> Because the haircut &amp; debt-to-equity conversion are granted <b>to creditors</b> as compensation. That +Rp3.18tn of book equity <b>belongs to the converted creditors</b> — old shareholders are diluted to near zero (their claim's fair value = Rp0 per the waterfall). <b>Book equity ≠ value for old holders.</b> Policy context: Danantara holds 74.6%, the Hutama Karya merger is <b>delayed</b> (cleanup first), the Rp3tn PMN was <b>cancelled</b> (Gov. Reg. 20/2025) — the state isn't injecting; creditors bear it.</p></div>
+<div class="callout"><b>Why does this "zero" matter?</b> Because it answers the case's hardest question — <i>is there any equity value left?</i> — without arguing about the future. A waterfall doesn't forecast; it <b>computes who gets what if everything is sold today</b>: arithmetic proof, not opinion.</p></div>
+<div class="callout"><b>⚠️ Distress ≠ automatic liquidation.</b> The waterfall above = <b>one scenario</b> (liquidation today), not a final verdict. Proper distressed valuation uses <b>probability weighting</b>:
+<div class="formula">Value = p(restructuring) × V<sub>restructured</sub> + p(liquidation) × V<sub>liquidation</sub></div>
+<p style="margin-top:8px">Three distinct components: (1) <b>going-concern/restructuring value</b> — value if restructuring succeeds (needs a post-restructuring operating model, not a status-quo DCF); (2) <b>distress-sale value</b> — asset sale under pressure (in between); (3) <b>liquidation recovery</b> — the waterfall above. Analysts who jump straight to "distress = liquidation" skip the middle scenario that is most likely to be negotiated.</p></div>`},
+{h: "Why can restructuring make equity 'positive'? Three different scenarios", body: `
+<p>A 30% haircut on Tranche B Rp21.736tn → liabilities down <b>Rp6.52tn</b>. Mechanical equity = −3.34 + 6.52 = <b>+Rp3.18tn</b>. But <b>who owns that equity</b> depends on the scenario — and all three differ completely:</p>
+<div class="example korporat"><div class="lbl">🏢 Scenario A — Pure forgiveness (haircut, no conversion)</div>
+<p>Creditors cut Rp6.52tn of principal <b>without receiving shares</b>. No new shares are issued → <b>old shareholders still own 100%</b> of a company now showing +Rp3.18tn of book equity. Sounds good? That's the problem: <b>creditors don't give free gifts</b>. Pure forgiveness practically never happens without compensation — creditors always demand something in return (conversion, warrants, tight covenants).</p></div>
+<div class="example korporat"><div class="lbl">🏢 Scenario B — Debt-for-equity swap (WITH explicit terms)</div>
+<p>Creditors convert Rp6.52tn of debt into <b>N new shares</b> at a valuation of <b>RpV per share</b>. Creditor ownership = N ÷ (N + old shares). <b>Without N and V, nothing can be concluded about ownership.</b> Illustrative: at Rp1,000/share → 6.52 billion new shares vs ~29 billion old shares → creditors hold ~18%. At Rp100/share → 65.2 billion new shares → creditors hold ~69%, old holders heavily diluted. <b>Ownership = a function of terms, not of the haircut.</b></p></div>
+<div class="example korporat"><div class="lbl">🏢 Scenario C — Liquidation (waterfall)</div>
+<p>Already computed above: net proceeds Rp12.98tn vs bank claims Rp23.89tn → equity = <b>Rp0</b>. This is the scenario if the company is sold today.</p></div>
+<div class="callout"><b>Why three scenarios?</b> Because "a 30% haircut" alone <b>does not answer</b> who owns the new equity. A haircut = an accounting event (liabilities fall). Ownership = a legal event (shares issued to whom, how many, at what valuation). Mixing the two = the most common conceptual error in distressed analysis.</p></div>
+<div class="callout"><b>Policy context:</b> Danantara holds 74.6%, the Hutama Karya merger is <b>delayed</b> (cleanup first), the Rp3tn PMN was <b>cancelled</b> (Gov. Reg. 20/2025) — the state isn't injecting; creditors bear it.</p></div>
 <div class="example jebakan"><div class="lbl">🚫 The "turnaround" trap</div>
 <p>"Eight recovery initiatives, 63 projects worth Rp31.7tn — it must rebound!" Maybe. But the credit analyst asks first: <i>with finance costs of Rp2.79tn per 9 months vs FY25 gross profit of Rp1.58tn for the full year — <b>9 months of interest EXCEEDS a full year of gross profit</b> — where does the cash to pay it come from?</i> New projects don't pay old interest.</p></div>`},
 {h: "Practice task", body: `
@@ -1497,7 +1524,7 @@ sections: [
 <li><b>Seniority</b> = liquidation costs → secured creditors → unsecured → equity.</li>
 <li><b>Recovery rate</b> = funds received ÷ claim.</li>
 <li><b>Negative equity</b> = equity multiples undefined; think like a creditor.</li>
-<li><b>Haircut</b> = principal reduction; lifts book equity but it belongs to creditors.</li>
+<li><b>Haircut</b> = principal reduction; lifts book equity mechanically. WHO owns the new equity depends on the scenario (forgiveness / swap with terms / liquidation) — not automatically the creditors.</li>
 <li><b>Suspension price</b> = a fossil, not a valuation signal.</li>
 </ul>`}
 ],
@@ -1519,7 +1546,7 @@ quiz: [
  explain: `Nine months of interest (Rp2.79tn) exceeds a full year of gross profit (Rp1.58tn) — operations can't cover the debt cost. That's the 'bleeding'.`},
 {q: `A 30% haircut on Tranche B Rp21.736tn. Mechanical post-haircut equity?`, opts: ["Stays −Rp3.34tn","−Rp9.86tn","−Rp3.34tn + Rp6.52tn = +Rp3.18tn","Exactly Rp0"], answer: 2, k: "haircut",
  hints: ["30% haircut × 21.736 = ?","Liabilities fall → equity (assets − liabilities) rises by that much."],
- explain: `Haircut = 21.736 × 30% = Rp6.52tn. Liabilities fall Rp6.52tn → mechanical equity = −3.34 + 6.52 = +Rp3.18tn. But that value belongs to the converted creditors.`},
+ explain: `Haircut = 21.736 × 30% = Rp6.52tn. Liabilities fall Rp6.52tn → mechanical equity = −3.34 + 6.52 = +Rp3.18tn. But WHO owns it depends on the scenario: pure forgiveness → old holders; debt-for-equity swap → depends on terms (share count & valuation); liquidation → Rp0. (Real-09 § Three different scenarios)`},
 {q: `Shares suspended at Rp202 since May 2023. Why is Rp202 NOT a 'cheap' signal?`, opts: ["Because Rp202 is actually too expensive","The price is frozen 3.5 years — no price discovery","Because Danantara holds 74.6%","Because the minimum buy is 1 lot"], answer: 1, k: "distressed",
  hints: ["When was that price last formed? May 2023.","What happened since? A −Rp4.48tn loss, negative equity, the MRA."],
  explain: `Rp202 is a fossil — the last price before suspension, reflecting none of 3.5 years of bad news. A suspended share = a share with no market, not a cheap share.`}
@@ -1530,14 +1557,14 @@ hell: [
 {q: `Receivables recovery falls 40% → 20%. The bank recovery rate becomes?`, opts: ["Stays 54.3%","51.4%","48.9%","0%"], answer: 2,
  explain: `Receivables recovery = 6.90 × 20% = Rp1.38tn → proceeds Rp12.28tn → net Rp11.67tn → 11.67 ÷ 23.89 = 48.9%. Recovery assumptions hit creditors directly.`},
 {q: `Creditors convert Rp5tn of debt into new shares. What happens to old shareholders?`, opts: ["They stay the majority","Diluted to near zero — their claim's fair value = Rp0","They actually profit as debt falls","They're unaffected"], answer: 1,
- explain: `The waterfall proved the old equity claim = Rp0. Conversion gives creditors nearly 100% of the new equity; old holders are diluted to near zero. 'Positive' equity ≠ theirs.`},
+ explain: `Converting Rp5tn of debt into new shares = a debt-for-equity swap. Old holders' fate depends on TERMS: how many new shares are issued & at what valuation. The waterfall proved the old equity claim = Rp0, so in practice creditors will demand majority of the new shares — but 'dilution' is not automatic; it's a negotiated outcome. (Real-09 § Three different scenarios)`},
 {q: `Post-haircut book equity is +Rp3.18tn, but 'old equity value = Rp0'. A contradiction?`, opts: ["Yes — one of them is miscalculated","No: book equity ≠ value for old holders","No: haircuts don't affect equity","Yes — the waterfall is wrong"], answer: 1,
- explain: `Book equity rises mechanically as liabilities fall — but the claim on that new equity sits with the converted creditors. Accounting records +3.18; economics gives old holders Rp0.`},
+ explain: `No contradiction — but the answer depends on the scenario. Pure forgiveness: +Rp3.18tn belongs to old holders (no new shares). Debt-for-equity swap: belongs to whoever holds the new shares per the terms. What's certain: book equity rises mechanically as liabilities fall; ownership is set by the CONVERSION documents, not by haircut arithmetic. (Real-09 § Three different scenarios)`},
 {q: `Why is a going-concern DCF invalid for WSKT?`, opts: ["Because WACC can't be computed","The going-concern assumption is broken; equity = an out-of-the-money option on assets","Because revenue fell 17%","Because no data is available"], answer: 1,
- explain: `A DCF needs going concern. With a Rp20.8tn deficit and an idSD rating, equity is economically an option on assets after creditors are paid — and that option is deep out-of-the-money. Waterfall, not DCF.`}
+ explain: `A DCF needs going concern. With a Rp20.8tn deficit and an idSD rating, equity is economically an option on assets after creditors are paid — and that option is deep out-of-the-money. But remember: distress ≠ automatic liquidation. Proper valuation = probability-weighted (restructuring vs liquidation); the waterfall = its liquidation component. (Real-09 § Why a waterfall, not a DCF?)`}
 ],
 tasks: [
-{t: "Task A — WSKT liquidation waterfall (±4 hrs)", d: "Download the RC9 workbook. Organize the as-is financial data into a waterfall: proceeds per asset class → liquidation costs → seniority distribution → bank recovery rate → leftover for bonds/vendors → leftover for equity. Then the restructuring scenario (30% haircut on Tranche B). All formulas link to data/assumptions.", url: "PENDING-DRIVE"},
+{t: "Task A — WSKT liquidation waterfall (±4 hrs)", d: "Download the RC9 workbook. Organize the as-is financial data into a waterfall: proceeds per asset class → liquidation costs → seniority distribution → bank recovery rate → leftover for bonds/vendors → leftover for equity. Then the restructuring scenarios: distinguish (a) pure 30% forgiveness on Tranche B, (b) debt-for-equity swap WITH explicit terms (share count & valuation), (c) liquidation. All formulas link to data/assumptions.", url: "https://drive.google.com/drive/folders/1A8U9qMg7d5s1dxJca9ZzHjalV8hRu6YT"},
 {t: "Task B — Assumption stress test (±1 hr)", d: "In your answer file: change toll recovery 45%→30%, note the new bank recovery rate. Change liquidation costs 5%→10%, note again. Write 2 sentences: which assumption is most dangerous for creditors? For equity?", url: ""},
 {t: "Task C — The quiz above", d: "Target ≥6/7 correct.", url: ""}
 ],
