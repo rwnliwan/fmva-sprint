@@ -1822,7 +1822,7 @@ function missionSectionHTML(fileUrl, opt, locked){
     const pm = (getP().mission || {})[key];
     const pb = pm && (pm.best !== undefined ? pm.best : pm.score);
     const pl = pm && pm.latest;
-    if (pb !== undefined) prevTxt = `<div class="callout">🏆 Skor terbaikmu: <b>${pb}</b>${pl !== undefined ? ` · percobaan terakhir: <b>${pl}</b>` : ""}.</div>`;
+    if (pb !== undefined) prevTxt = `<div class="callout">🏆 ${T("hell_best")} <b>${pb}</b>${pl !== undefined ? ` ${T("msi_last")} <b>${pl}</b>` : ""}.</div>`;
   } catch(e) { /* abaikan */ }
   return `<div class="sec"><h3>${title}</h3>
   ${T("mission_en_note") ? `<div class="callout">${T("mission_en_note")}</div>` : ""}
