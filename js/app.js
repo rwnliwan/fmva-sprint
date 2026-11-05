@@ -1722,6 +1722,18 @@ const MISI_FIX = [
    fix: "Laba ditahan = Laba BERSIH periode ini (dividen 0) — bukan laba kotor.",
    cons: "Konsekuensi: me-link ke laba kotor (7.500) membuat ekuitas bengkak vs aset — neraca tidak balance. Jembatan 1 (IS → neraca) putus."}
 ];
+/* EN variant (v1.55): labels/expect/tol identical — only fix/cons translated */
+const MISI_FIX_EN = [
+  {label: "Laba kotor", expect: null,
+   fix: "Replace the typed number with a formula linking to the input cells, e.g. =Penjualan+HPP.",
+   cons: "Consequence: a manually typed total does NOT move when sales/COGS change — the model is 'dead' in this cell. One assumption change, and the number is stale."},
+  {label: "Arus kas operasi", expect: 0, tol: 1,
+   fix: "The correct formula: Net income + Depreciation + (- Increase in inventory) + Increase in payables. Watch the SIGN of each component.",
+   cons: "Consequence: the wrong sign turns operating cash flow into Rp3,000 — when cash is actually TRAPPED at Rp1,500 in inventory. Cash cannot come out of stock that holds cash."},
+  {label: "Laba ditahan", expect: 1100, tol: 1,
+   fix: "Retained earnings = this period's NET income (dividends 0) — not gross profit.",
+   cons: "Consequence: linking to gross profit (7,500) inflates equity vs assets — the balance sheet doesn't balance. Bridge 1 (IS → balance sheet) breaks."}
+];
 const MISI_FIX_INDF = [
   {label: "Ekuitas induk (setelah NCI)", expect: 73.15, tol: 0.05,
    fix: "Kurangi NCI: =Total_ekuitas − NCI = 120,24 − 47,09.",
@@ -1738,6 +1750,24 @@ const MISI_FIX_INDF = [
   {label: "Selisih A − (L+E)", expect: 0, tol: 0.5,
    fix: "Ganti ketikan 0 dengan rumus balance check: =TOTAL_ASET − (TOTAL_LIABILITAS + TOTAL_EKUITAS).",
    cons: "Konsekuensi: 'OK' ketikan adalah alarm yang dicabut kabelnya — ia mematikan peringatan justru saat paling dibutuhkan."}
+];
+/* EN variant (v1.55): labels/expect/tol identical — only fix/cons translated */
+const MISI_FIX_INDF_EN = [
+  {label: "Ekuitas induk (setelah NCI)", expect: 73.15, tol: 0.05,
+   fix: "Subtract NCI: =Total_ekuitas − NCI = 120.24 − 47.09.",
+   cons: "Consequence: NCI belongs to the subsidiaries' minority shareholders — claiming it as the parent's inflates valuation by Rp47.09T (≈ Rp5,364/share)."},
+  {label: "Beban bunga 2026 (link)", expect: 4.50, tol: 0.02,
+   fix: "Link to the debt schedule: =Utang_awal × tarif = 74.96 × 6%.",
+   cons: "Consequence: manually typed interest doesn't move when debt assumptions change — and it leaves no audit trail."},
+  {label: "FCFF 2026 (tanda ΔWC)", expect: 15.90, tol: 0.05,
+   fix: "Positive ΔWC = cash TRAPPED → subtract it: =NOPAT + D&A − capex − ΔWC.",
+   cons: "Consequence: the flipped sign makes FCF look like Rp20.10T when Rp2.1T of cash is trapped in working capital — a 26% overstatement."},
+  {label: "FCFF final (tanpa double capex)", expect: 15.90, tol: 0.05,
+   fix: "Capex is subtracted only ONCE. Final FCFF = FCFF (without subtracting capex again).",
+   cons: "Consequence: double-counting cuts FCF by Rp10T — valuation collapses because of a mechanical bug, not the business."},
+  {label: "Selisih A − (L+E)", expect: 0, tol: 0.5,
+   fix: "Replace the typed 0 with a balance-check formula: =TOTAL_ASET − (TOTAL_LIABILITAS + TOTAL_EKUITAS).",
+   cons: "Consequence: a typed 'OK' is an alarm with its wires cut — it silences the warning exactly when it is needed most."}
 ];
 const MISI_FIX_DETEKTIF = [
   {label: "Liabilitas lease (PV pembayaran)", expect: 4791.25, tol: 1,
@@ -1756,6 +1786,32 @@ const MISI_FIX_DETEKTIF = [
    fix: "=Laba fiskal \u00d7 22% \u2212 Manfaat NOL = 5.958,45 \u00d7 22% \u2212 440. Link 'Manfaat NOL' dari seksi 4 (jangan ketik 440).",
    cons: "Konsekuensi: pajak kepanjangan Rp440rb \u2014 DTA dari rugi tahun lalu terbuang sia-sia; kas keluar lebih besar dari kewajiban sebenarnya."}
 ];
+/* EN variant (v1.55): labels/expect/tol identical — only fix/cons translated */
+const MISI_FIX_DETEKTIF_EN = [
+  {label: "Liabilitas lease (PV pembayaran)", expect: 4791.25, tol: 1,
+   fix: "Compute the PV of 5 payments: =1200*(1-1/(1+8%)^5)/8% or =PV(8%,5,-1200). Also link 'Aset ROU awal' to this cell, and zero out the 'Beban sewa operasi' row (wrong treatment).",
+   cons: "Consequence: Rp4,791k of liabilities vanish from the balance sheet — hidden debt makes leverage look healthier than it is; ROU assets vanish by Rp4,791k too."},
+  {label: "Beban bunga lease Y1", expect: 383.30, tol: 0.05,
+   fix: "=Liabilitas lease × 8% = 4,791.25 × 8%. The correct lease expense = ROU depreciation + interest, not rent of 1,200.",
+   cons: "Consequence: the expense structure is wrong — Rp383k of interest goes unrecognized, so year-1 profit looks Rp141.55k larger than it should."},
+  {label: "DTL", expect: 88, tol: 0.05,
+   fix: "=(D&A pajak − D&A buku) × tarif = (1,200 − 800) × 22%.",
+   cons: "Consequence: a certain future tax bill of Rp88k is not recognized — liabilities understated, equity overstated."},
+  {label: "CFO (operasi)", expect: 5500, tol: 1,
+   fix: "Add back stock comp of Rp500k (non-cash): link the '(+) Stock comp (non-kas)' cell to the stock comp expense. Zero out the 'Pembayaran sewa operasi' row (lease cash is already in CFF via the interest portion).",
+   cons: "Consequence: CFO is reported at Rp2,600k vs Rp5,500k as it should be — operating cash flow looks like it is dying when it is healthy; credit/investment decisions can go the wrong way."},
+  {label: "Pajak kini (setelah NOL)", expect: 870.86, tol: 0.5,
+   fix: "=Laba fiskal × 22% − Manfaat NOL = 5,958.45 × 22% − 440. Link 'Manfaat NOL' from section 4 (don't type 440).",
+   cons: "Consequence: Rp440k of excess tax — the DTA from last year's loss is wasted; cash out exceeds the actual obligation."}
+];
+function misiFixList(key){
+  if (typeof lang === "function" && lang() === "en") {
+    if (key === "detektif" && typeof MISI_FIX_DETEKTIF_EN !== "undefined") return MISI_FIX_DETEKTIF_EN;
+    if (key === "indf" && typeof MISI_FIX_INDF_EN !== "undefined") return MISI_FIX_INDF_EN;
+    if (typeof MISI_FIX_EN !== "undefined") return MISI_FIX_EN;
+  }
+  return key === "detektif" ? MISI_FIX_DETEKTIF : key === "indf" ? MISI_FIX_INDF : MISI_FIX;
+}
 function missionSectionHTML(fileUrl, opt, locked){
   opt = opt || {};
   const key = opt.key || "hari-01";
@@ -1796,7 +1852,7 @@ function runMission(key){
 function numL(n){ return Number(n).toLocaleString(lang() === "en" ? "en-US" : "id-ID"); }
 function wbMissionCheck(data, key){
   key = key || "hari-01";
-  const LIST = key === "detektif" ? MISI_FIX_DETEKTIF : key === "indf" ? MISI_FIX_INDF : MISI_FIX;
+  const LIST = misiFixList(key);
   const out = document.getElementById("misiout");
   const wb = XLSX.read(data, {type:"array"});
   if (wb.SheetNames.indexOf("LATIHAN") < 0) {

@@ -24,7 +24,7 @@ scope_now: ["🗺️ <b>Cakupan saat ini:</b> 3 Fondasi (A/B/C) + Hari 01–30 +
   "🗺️ <b>Current scope:</b> 3 Foundation lessons (A/B/C) + Days 01–30 + 5 Excel levels + 9 Real Cases available."],
 tools_card_h: ["Glossary & Fungsi Excel", "Glossary & Excel Functions"],
 tools_card_p: ["Kamus istilah + referensi fungsi. Buka dari menu bawah.", "Term glossary + function reference. Open from the bottom menu."],
-footer: ["FMVA Sprint · oleh <a href=\"https://www.linkedin.com/in/septian-panjaya\" target=\"_blank\" rel=\"noopener\">Septian Panjaya</a> · v1.54", "FMVA Sprint · by <a href=\"https://www.linkedin.com/in/septian-panjaya\" target=\"_blank\" rel=\"noopener\">Septian Panjaya</a> · v1.54"],
+footer: ["FMVA Sprint · oleh <a href=\"https://www.linkedin.com/in/septian-panjaya\" target=\"_blank\" rel=\"noopener\">Septian Panjaya</a> · v1.55", "FMVA Sprint · by <a href=\"https://www.linkedin.com/in/septian-panjaya\" target=\"_blank\" rel=\"noopener\">Septian Panjaya</a> · v1.55"],
 /* lesson cards */
 card_repeat: ["Ulangi", "Review"],
 card_continue: ["Lanjutkan", "Continue"],
@@ -132,7 +132,7 @@ dk_debit: ["Debit", "Debit"],
 dk_credit: ["Kredit", "Credit"],
 /* checker + mission notes (diagnosis stays Indonesian) */
 checker_en_note: ["", "ℹ️ Checker messages stay in Indonesian — workbook labels are in Indonesian."],
-mission_en_note: ["", "ℹ️ Mission result headings are translated; item details stay in Indonesian — workbook labels are in Indonesian."],
+mission_en_note: ["", "ℹ️ Mission feedback is fully translated in English mode. Workbook row labels stay in Indonesian — they must match the file exactly."],
 /* glossary */
 glossary_sub: ["Istilah Indonesia (English) ·", "English (Indonesian) terms ·"],
 glossary_n: ["istilah", "terms"],
