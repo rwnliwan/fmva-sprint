@@ -141,6 +141,20 @@ sections: [
 <li><b>Dividen bukan beban.</b> Dividen mengurangi laba ditahan langsung, tidak lewat laba rugi.
 <br><i>Kenapa?</i> Lihat bagian Laba ditahan di atas: dividen = pembagian hasil ke pemilik, bukan biaya menghasilkan pendapatan.</li>
 </ul>`},
+{h: "FIFO vs LIFO: persediaan sama, laba beda", body: `
+<p>Persediaan yang sama bisa menghasilkan laba yang <b>beda</b> — tergantung <i>urutan</i> mana yang dianggap terjual dulu:</p>
+<p><b>Contoh kerja (ilustrasi dinyatakan):</b> beli 100 unit @ Rp10rb, lalu 100 unit @ Rp12rb. Jual 100 unit @ Rp20rb (revenue Rp2.000rb).</p>
+<table class="brutal">
+<tr><th>(Rp ribu)</th><th>FIFO</th><th>LIFO</th></tr>
+<tr><td>COGS (100 unit terjual)</td><td>100 × 10 = <b>1.000</b> (yang lama dulu)</td><td>100 × 12 = <b>1.200</b> (yang baru dulu)</td></tr>
+<tr><td>Laba kotor</td><td>2.000 − 1.000 = <b>1.000</b></td><td>2.000 − 1.200 = <b>800</b></td></tr>
+<tr><td>Pajak 22%</td><td><b>220</b></td><td><b>176</b></td></tr>
+<tr><td>Laba bersih</td><td><b>780</b></td><td><b>624</b></td></tr>
+<tr><td>Persediaan akhir (100 unit sisa)</td><td><b>1.200</b> (harga baru)</td><td><b>1.000</b> (harga lama)</td></tr>
+</table>
+<p>Saat harga <b>naik</b> (inflasi): LIFO → laba lebih kecil, pajak lebih kecil (hemat Rp44rb di sini), persediaan akhir dinilai harga lama. FIFO → laba lebih besar, pajak lebih besar, persediaan akhir mendekati harga pasar.</p>
+<p><b>Aturan yang wajib diingat:</b> <b>IFRS/PSAK 14 MELARANG LIFO</b> — di Indonesia hanya FIFO atau rata-rata tertimbang. LIFO hanya hidup di US GAAP. Jadi di laporan emiten Indonesia kamu akan ketemu FIFO/rata-rata — tapi kamu <i>wajib</i> paham LIFO karena soal exam dan peer AS memakainya.</p>
+<div class="callout"><b>Kenapa pilihan ini penting buat analis?</b> Karena dua perusahaan dengan transaksi <i>identik</i> bisa melaporkan laba beda 25% (780 vs 624) hanya karena metode persediaan. Membandingkan margin antar perusahaan tanpa mengecek metodenya = membandingkan apel dengan jeruk. Cek catatan kebijakan akuntansi dulu — selalu.</div>`},
 {h: "🔥 Bekal Hell Mode", body: `
 <p>Istilah yang dipakai soal Hell Mode:</p>
 <ul>
@@ -164,7 +178,10 @@ quiz: [
  explain: "8 + 5 − 2 = Rp11jt."},
 {q: "Terima pinjaman bank Rp20jt tunai. Sisi mana dari A = L + E yang berubah?", opts: ["Aset +20, Ekuitas +20","Aset +20, Liabilitas +20","Liabilitas +20, Ekuitas −20","Tidak ada yang berubah"], answer: 1, k: "persamaan_akuntansi",
  hints: ["Kas masuk = aset naik. Pinjaman = ?", "Utang itu liabilitas atau ekuitas?"],
- explain: "Kas (aset) +20, utang bank (liabilitas) +20. Ekuitas tidak tersentuh — pinjaman bukan modal pemilik."}
+ explain: "Kas (aset) +20, utang bank (liabilitas) +20. Ekuitas tidak tersentuh — pinjaman bukan modal pemilik."},
+{q: "Harga naik. LIFO vs FIFO: laba bersih & pajak?", opts: ["Laba & pajak lebih BESAR","Laba & pajak lebih KECIL","Laba sama, pajak beda","Tidak ada bedanya"], answer: 1, k: "fifo_lifo", diff: "Medium",
+ hints: ["LIFO menjual yang BARU (mahal) dulu → COGS lebih besar.","COGS 1.200 vs 1.000 → laba 624 vs 780."],
+ explain: "LIFO: COGS 1.200 → laba 624, pajak 176. FIFO: laba 780, pajak 220. Saat harga naik, LIFO menekan laba & pajak."}
 ],
 audio: "assets/audio/fondasi-b.mp3",
 hellPass: 80,
@@ -422,6 +439,20 @@ sections: [
 <li><b>Dividends are not expenses.</b> Dividends reduce retained earnings directly, bypassing the income statement.
 <br><i>Why?</i> See Retained earnings above: dividends = sharing results with owners, not a cost of earning revenue.</li>
 </ul>`},
+{h: "FIFO vs LIFO: same inventory, different profit", body: `
+<p>The same inventory can produce a <b>different</b> profit — depending on <i>which</i> units are deemed sold first:</p>
+<p><b>Worked example (stated illustration):</b> buy 100 units @ Rp10k, then 100 units @ Rp12k. Sell 100 units @ Rp20k (revenue Rp2,000k).</p>
+<table class="brutal">
+<tr><th>(Rp thousand)</th><th>FIFO</th><th>LIFO</th></tr>
+<tr><td>COGS (100 units sold)</td><td>100 × 10 = <b>1,000</b> (oldest first)</td><td>100 × 12 = <b>1,200</b> (newest first)</td></tr>
+<tr><td>Gross profit</td><td>2,000 − 1,000 = <b>1,000</b></td><td>2,000 − 1,200 = <b>800</b></td></tr>
+<tr><td>Tax 22%</td><td><b>220</b></td><td><b>176</b></td></tr>
+<tr><td>Net income</td><td><b>780</b></td><td><b>624</b></td></tr>
+<tr><td>Ending inventory (100 units left)</td><td><b>1,200</b> (recent prices)</td><td><b>1,000</b> (old prices)</td></tr>
+</table>
+<p>When prices <b>rise</b> (inflation): LIFO → smaller profit, smaller tax (saves Rp44k here), ending inventory at old prices. FIFO → bigger profit, bigger tax, ending inventory near market prices.</p>
+<p><b>The rule to remember:</b> <b>IFRS/PSAK 14 PROHIBITS LIFO</b> — in Indonesia only FIFO or weighted average are allowed. LIFO lives only under US GAAP. So Indonesian issuers' reports will show FIFO/average — but you <i>must</i> understand LIFO because exam questions and US peers use it.</p>
+<div class="callout"><b>Why does this choice matter to an analyst?</b> Because two companies with <i>identical</i> transactions can report profits 25% apart (780 vs 624) purely from the inventory method. Comparing margins across companies without checking the method = comparing apples with oranges. Read the accounting policy note first — always.</div>`},
 {h: "🔥 Hell Mode briefing", body: `
 <p>Terms used in the Hell Mode questions:</p>
 <ul>
@@ -445,7 +476,10 @@ quiz: [
  explain: `8 + 5 − 2 = Rp11m.`},
 {q: `Receive a Rp20m bank loan in cash. Which sides of A = L + E change?`, opts: ["Assets +20, Equity +20","Assets +20, Liabilities +20","Liabilities +20, Equity −20","Nothing changes at all"], answer: 1, k: "persamaan_akuntansi",
  hints: ["Cash in = assets up. A loan = ?","Is debt a liability or equity?"],
- explain: `Cash (asset) +20, bank loan (liability) +20. Equity untouched — a loan is not owner's capital.`}
+ explain: `Cash (asset) +20, bank loan (liability) +20. Equity untouched — a loan is not owner's capital.`},
+{q: "Prices rising. LIFO vs FIFO: net income & tax?", opts: ["Bigger profit & tax","Smaller profit & tax","Same profit, different tax","No difference"], answer: 1, k: "fifo_lifo", diff: "Medium",
+ hints: ["LIFO sells the NEW (expensive) units first → bigger COGS.","COGS 1,200 vs 1,000 → profit 624 vs 780."],
+ explain: "LIFO: COGS 1,200 → profit 624, tax 176. FIFO: profit 780, tax 220. When prices rise, LIFO suppresses profit & tax."}
 ],
 hell: [
 {q: `A Rp50m credit sale recorded: Debit Receivables, Credit Revenue. Next month the customer pays in full. The journal?`, opts: ["Debit Revenue, Credit Cash","Debit Cash, Credit Receivables","Debit Cash, Credit Revenue","No journal entry"], answer: 1,

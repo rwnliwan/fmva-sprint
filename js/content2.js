@@ -1196,6 +1196,25 @@ sections: [
 <tr><td><b>WACC</b></td><td><b>13,1%</b></td></tr>
 </table>
 <div class="callout"><b>Kenapa WACC = CoE di sini?</b> Karena 100% modal = ekuitas. Ini menyederhanakan tanpa mengorbankan pelajaran: mekanik WACC tetap sama — yang berubah hanya bobotnya. Di capstone nanti (emiten beneran), D/V tidak nol dan rumusnya bekerja penuh.</div>`},
+{h: "WACC dari data pasar: unlever & relever beta (Hamada)", body: `
+<p>Beta 1,1 di atas <b>dinyatakan</b> — untuk latihan mekanik. Valuasi beneran tidak boleh menebak beta: ia <b>diestimasi dari pasar</b> lewat dua langkah Hamada — lepas leverage peer, lalu pasang leverage targetmu:</p>
+<div class="formula">β<sub>unlevered</sub> = β<sub>levered peer</sub> ÷ (1 + (1 − t) × D/E<sub>peer</sub>)</div>
+<div class="formula">β<sub>relevered</sub> = β<sub>unlevered</sub> × (1 + (1 − t) × D/E<sub>target</sub>)</div>
+<p><b>Contoh kerja (ilustrasi dinyatakan):</b> perusahaan sejenis tercatat punya beta levered <b>1,25</b>, D/E <b>0,6</b>, pajak 22%:</p>
+<table class="brutal">
+<tr><th>Langkah</th><th>Hitungan</th><th>Hasil</th></tr>
+<tr><td>Unlever beta peer</td><td>1,25 ÷ (1 + 0,78 × 0,6)</td><td><b>0,8515</b></td></tr>
+<tr><td>Relever ke D/E target 0,4</td><td>0,8515 × (1 + 0,78 × 0,4)</td><td><b>1,1172</b></td></tr>
+<tr><td>CoE (Rf 6,5%, MRP 6%)</td><td>6,5% + 1,1172 × 6%</td><td><b>13,20%</b></td></tr>
+<tr><td>WACC (bobot pasar E 70% / D 30%, CoD after-tax 7,8%)</td><td>0,7 × 13,20% + 0,3 × 7,8%</td><td><b>11,58%</b></td></tr>
+</table>
+<p>Tiga aturan yang tidak boleh dilanggar:</p>
+<ul>
+<li><b>Bobot = nilai pasar, bukan nilai buku.</b> Ekuitas dihitung dari kapitalisasi pasar; utang dari nilai pasar obligasi (atau nilai buku bila utangnya tidak diperdagangkan). Bobot buku = struktur modal masa lalu, bukan yang ditargetkan.</li>
+<li><b>Pajak = tarif marginal, bukan tarif efektif.</b> WACC mendiskonto arus kas <i>masa depan</i> — yang relevan adalah tarif atas rupiah laba berikutnya (22% di Indonesia), bukan tarif efektif historis yang tercampur insentif dan beda permanen.</li>
+<li><b>Unlever tiap peer, ambil median, baru relever.</b> Satu peer bisa punya beta aneh (utang ekstrem, bisnis campuran). Median beberapa peer yang sudah di-unlever = beta aset yang bersih — baru dipasang leverage <i>targetmu</i>.</li>
+</ul>
+<div class="callout"><b>Kenapa harus unlever dulu?</b> Karena beta peer mengandung <i>dua</i> risiko: risiko bisnisnya + risiko leverage-nya. Memakai beta levered peer mentah-mentah = mengimpor struktur modal orang lain ke valuasimu. Unlever membuang leverage peer; relever memasang leverage targetmu. Beta yang benar = risiko bisnis peer + leverage kamu.</div>`},
 {h: "Pajak 22%: kapan ia menggigit", body: `
 <p>Tarif PPh badan Indonesia = <b>22%</b> (dinyatakan sebagai asumsi). Di model ini ia <b>tidak menggigit</b> — karena tidak ada bunga utang:</p>
 <table class="brutal">
@@ -1210,6 +1229,16 @@ sections: [
 <p>FCFF 2027 yang negatif didiskonto tetap negatif — wajar: kas keluar tahun depan nilainya <i>sedikit lebih ringan</i> dari kas keluar hari ini (karena didiskonto).</p>
 <p>Besok (Hari 10): angka kecil ini dijumlahkan dengan <b>terminal value</b> — yang nilainya ratusan kali lipat. Jangan kaget: di DCF, 1–2 tahun forecast hampir selalu kalah bobot dari terminal value.</p>
 <div class="callout"><b>Kenapa PV negatif tidak dibuang?</b> Karena membuangnya = berbohong. Tahun investasi <i>benar-benar</i> menghabiskan kas — menghilangkannya dari valuasi sama dengan mengklaim ekspansi itu gratis.</div>`},
+{h: "FCFE: kas untuk pemegang saham (bukan semua investor)", body: `
+<p>FCFF adalah kas untuk <b>semua</b> pemodal (utang + ekuitas). <b>FCFE</b> (free cash flow to equity) adalah kas untuk <b>pemegang saham saja</b> — setelah membayar kreditur:</p>
+<div class="formula">FCFE = FCFF − Bunga × (1 − pajak) + Net Borrowing</div>
+<p>Bunga dikali (1 − pajak) karena bunga sudah mengurangi pajak; <i>net borrowing</i> = utang baru − pelunasan utang (positif bila perusahaan menambah utang).</p>
+<p><b>Contoh kerja (ilustrasi dinyatakan):</b> FCFF Rp500rb, bunga Rp100rb, pajak 22%, net borrowing Rp80rb:</p>
+<div class="formula">FCFE = 500 − 100 × 0,78 + 80 = 500 − 78 + 80 = <b>Rp502rb</b></div>
+<p>Valuasinya pun beda diskon: FCFE didiskonto dengan <b>cost of equity</b> (13,1%), bukan WACC — karena kas ini milik pemegang saham saja. Dengan g 3%:</p>
+<div class="formula">Nilai ekuitas = 502 × 1,03 ÷ (0,131 − 0,03) = 517,06 ÷ 0,101 = <b>Rp5.119,41rb</b></div>
+<p><b>Kapan pakai yang mana?</b> FCFF bila struktur modal berubah-ubah (beban bunga tidak stabil) — FCFE bila menilai ekuitas langsung, atau pada bank (arus kas ke ekuitasnya yang relevan). Keduanya harus memberi nilai ekuitas yang <i>sama</i> bila asumsinya konsisten — itu cek silang yang kuat.</p>
+<div class="callout"><b>Kenapa Mock 2 menanyakan FCFE?</b> Karena FCFE tercantum di kurikulum CFI — dan sekarang kamu bisa menjawabnya: FCFE = FCFF − bunga after-tax + net borrowing, didiskonto CoE. Jangan tertukar: mendiskonto FCFE dengan WACC = memakai biaya modal yang salah untuk kas yang salah.</div>`},
 {h: "Jebakan DCF pemula", body: `
 <ul>
 <li><b>WACC ilustrasi ≠ WACC pasar.</b> 13,1% di sini untuk belajar mekanik. Valuasi beneran butuh beta & MRP dari data.</li>
@@ -1235,7 +1264,13 @@ quiz: [
  explain: "−50 ÷ 1,131 = −Rp44,21rb. Tanda negatif ikut — kas keluar yang didiskonto."},
 {q: "Beta naik 1,1 → 1,3 (Rf & MRP tetap). Cost of equity baru?", opts: ["13,1%","14,3%","15,5%","12,5%"], answer: 1, k: "capm_sens", diff: "Medium",
  hints: ["CoE = 6,5% + β × 6%.","6,5% + 1,3 × 6% = ?"],
- explain: "6,5% + 7,8% = 14,3%. Beta +0,2 → CoE +1,2 poin."}
+ explain: "6,5% + 7,8% = 14,3%. Beta +0,2 → CoE +1,2 poin."},
+{q: "Peer: beta levered 1,25, D/E 0,6, pajak 22%. Beta unlevered?", opts: ["1,25","0,85","1,47","0,47"], answer: 1, k: "hamada", diff: "Medium",
+ hints: ["βu = βl ÷ (1 + (1−t) × D/E).","1,25 ÷ (1 + 0,78 × 0,6) = ?"],
+ explain: "1,25 ÷ 1,468 = 0,8515 ≈ 0,85. Unlever membuang leverage peer — beta asetnya lebih kecil dari beta levered-nya."},
+{q: "FCFF Rp500rb, bunga Rp100rb, pajak 22%, net borrowing Rp80rb. FCFE?", opts: ["Rp500rb","Rp502rb","Rp422rb","Rp580rb"], answer: 1, k: "fcfe", diff: "Medium",
+ hints: ["FCFE = FCFF − bunga×(1−pajak) + net borrowing.","500 − 78 + 80 = ?"],
+ explain: "500 − 100×0,78 + 80 = 502. Bunga after-tax 78, bukan 100 — pajak sudah menanggung 22-nya."}
 ],
 hell: [
 {q: "A: beta 0,8; B: beta 1,5 (Rf & MRP sama). Mana CoE lebih tinggi, kenapa?", opts: ["B — beta lebih tinggi = risiko sistematis lebih besar","A — beta rendah = mahal","Sama persis","Tidak bisa dibandingkan"], answer: 0, diff: "Medium",
@@ -1252,7 +1287,7 @@ hell: [
 tasks: [
 {t: "Task A — WACC & FCFF Warung Septian (±2 jam)", d: "Download file latihan Hari 09 dari Drive. Hitung CoE via CAPM, WACC, FCFF 2027, dan PV-nya. Semua sel jawaban rumus — ingat: ini ASUMSI pengajaran, bukan data pasar.", url: "https://drive.google.com/drive/folders/18aYqHpgZj-w-ZOw8WvadxDt-HoS_-Ix3"},
 {t: "Task B — Sensitivitas beta (±30 mnt)", d: "Di kertas: hitung CoE untuk beta 0,9 / 1,1 / 1,3 (Rf 6,5%, MRP 6%). Rasakan: beta ±0,2 = CoE ±1,2 poin."},
-{t: "Task C — Quiz di atas", d: "Target ≥4/5 benar. Salah? Baca hint, ulangi."}
+{t: "Task C — Quiz di atas", d: "Target ≥5/7 benar. Salah? Baca hint, ulangi."}
 ],
 blind: {h: "Latihan Buta — CAPM Kios Rina", body: `
 <p>"Kios Rina": Rf 7%, beta 1,2, MRP 5% (asumsi dinyatakan). FCFF tahun depan Rp1.000rb. <b>Hitung CoE dan PV-nya TANPA mengintip contoh</b>.</p>
@@ -1306,6 +1341,19 @@ sections: [
 </table>
 <p>DCF lengkap pertama Warung Septian: <b>EV ≈ Rp19,9 juta</b> (perpetuity) atau <b>Rp18,5 juta</b> (exit). Rentang, bukan titik.</p>
 <div class="callout"><b>Kenapa PV FCFF 2027 (−44) nyaris tak berarti?</b> Karena 19.968 vs −44 = TV 450× lipat bobotnya. Inilah realitas DCF: <b>80–90% nilai = terminal value</b>. Forecast 2 tahun hanyalah "uang muka" — menara sesungguhnya adalah TV. Makanya asumsi TV (g, multiple) harus paling jujur.</div>`},
+{h: "Mid-year adjustment: kas mengalir sepanjang tahun", body: `
+<p>Sejauh ini kita mendiskonto seolah <b>seluruh</b> kas tahun itu tiba 31 Desember. Kenyataannya kas mengalir <b>sepanjang tahun</b> — penjualan Januari sudah jadi kas Februari, bukan Desember. Konvensi <b>mid-year</b> menggeser titik diskonto ke tengah tahun (t − 0,5):</p>
+<div class="formula">Faktor mid-year = (1 + WACC)<sup>0,5</sup> = 1,131<sup>0,5</sup> = <b>1,06348</b></div>
+<p>Terapkan ke DCF Warung (perpetuity):</p>
+<table class="brutal">
+<tr><th>(Rp ribu)</th><th>Akhir tahun</th><th>Mid-year</th></tr>
+<tr><td>PV TV</td><td>22.584 ÷ 1,131 = 19.968</td><td>22.584 ÷ 1,06348 = <b>21.236</b></td></tr>
+<tr><td>PV FCFF 2027</td><td>−50 ÷ 1,131 = −44,21</td><td>−50 ÷ 1,06348 = <b>−47,02</b></td></tr>
+<tr><td><b>EV</b></td><td><b>19.924</b></td><td><b>21.189</b></td></tr>
+</table>
+<p>EV naik <b>+6,3%</b> (21.189 vs 19.924) — mendiskonto setengah tahun lebih pendek. Itu bukan "bonus": kas yang diterima lebih awal memang lebih berharga.</p>
+<p><b>Kapan dipakai, kapan tidak:</b> pakai mid-year bila arus kas tersebar merata sepanjang tahun (revenue, opex). <b>Jangan</b> pakai untuk item yang memang jatuh di satu tanggal: dividen sekali setahun, pelunasan bullet, penjualan aset di tanggal yang diketahui — item itu didiskonto pada tanggal sebenarnya.</p>
+<div class="callout"><b>Kenapa tanpa mid-year = undervalue sistematis?</b> Karena setiap tahun kasmu "dipaksa" menunggu sampai 31 Desember — padahal separuhnya sudah di tangan di Juni. DCF tanpa mid-year selalu menilai sedikit terlalu rendah (± setengah tahun diskonto, di sini ≈ +6%). Analis yang tidak tahu ini akan selalu kalah tender dari analis yang tahu.</div>`},
 {h: "Tabel sensitivitas 2D: WACC × g", body: `
 <p>Satu angka EV = satu kombinasi asumsi. Tabel ini menunjukkan <b>sembilan</b> (Rp ribu):</p>
 <table class="brutal">
@@ -1361,7 +1409,10 @@ quiz: [
  explain: "−44,21 + 19.968 = Rp19.924rb."},
 {q: "WACC naik 13,1% → 15,1% (g tetap 3%). Dampak ke TV perpetuity?", opts: ["Naik","Turun — penyebut (WACC−g) membesar","Tetap","Jadi negatif"], answer: 1, k: "tv_sens", diff: "Medium",
  hints: ["TV = 2.281 ÷ (WACC − g). Penyebut 0,101 → 0,121.","Penyebut lebih besar → hasil lebih kecil."],
- explain: "2.281 ÷ 0,121 = Rp18.851rb < 22.584. WACC naik = diskonto lebih galak = TV turun."}
+ explain: "2.281 ÷ 0,121 = Rp18.851rb < 22.584. WACC naik = diskonto lebih galak = TV turun."},
+{q: "WACC 13,1%, TV Rp22.584rb (akhir 2027). PV mid-year?", opts: ["Rp19.968rb","Rp21.236rb","Rp22.584rb","Rp24.020rb"], answer: 1, k: "midyear", diff: "Medium",
+ hints: ["Faktor mid-year = 1,131^0,5 = 1,06348.","22.584 ÷ 1,06348 = ?"],
+ explain: "22.584 ÷ 1,06348 = Rp21.236rb — lebih besar dari 19.968 karena kas dianggap tiba di tengah tahun, bukan akhir tahun."}
 ],
 hell: [
 {q: "g ≥ WACC. Apa yang terjadi pada rumus Gordon?", opts: ["TV tak terdefinisi — syarat mutlak g < WACC","TV jadi lebih akurat","Tidak masalah","Gunakan exit multiple saja (tanpa syarat)"], answer: 0, diff: "Medium",
@@ -1378,7 +1429,7 @@ hell: [
 tasks: [
 {t: "Task A — DCF lengkap Warung Septian (±3 jam)", d: "Download file latihan Hari 10 dari Drive. Bangun TV dua metode + EV + tabel sensitivitas 3×3 (semua rumus). Target: EV perpetuity 19.924, EV exit 18.523.", url: "https://drive.google.com/drive/folders/1aj_b-xSjHkUerOVqEIUhS81zrCjiZhSz"},
 {t: "Task B — Tabel sensitivitas manual (±45 mnt)", d: "Di kertas: hitung EV untuk WACC 15,1% × g 2% (jawaban: 15.085). Rasakan betapa kecil perubahan asumsi, betapa besar perubahan EV."},
-{t: "Task C — Quiz di atas", d: "Target ≥4/5 benar. Salah? Baca hint, ulangi."}
+{t: "Task C — Quiz di atas", d: "Target ≥5/6 benar. Salah? Baca hint, ulangi."}
 ],
 blind: {h: "Latihan Buta — TV Kios Rina", body: `
 <p>"Kios Rina": FCFF tahun depan Rp3.000rb; WACC 12%; g 2% (asumsi dinyatakan). EBITDA Rp4.000rb; exit multiple 7×. <b>Hitung TV dua metode TANPA mengintip contoh</b>.</p>
@@ -2756,6 +2807,24 @@ sections: [
 </table>
 <div class="callout"><b>Kenapa dua-duanya benar?</b> Karena kas dan kepemilikan adalah <b>dua dompet berbeda</b>. Dompet kas: tidak berkurang (add-back). Dompet kepemilikan: potonganmu atas perusahaan menyusut (1.000/11.000 \u2248 9,1% milik pemegang baru). Analis yang cuma lihat CFO bilang "kas sehat"; yang cuma lihat EPS bilang "terdilusi" \u2014 keduanya benar, keduanya tidak lengkap. Baca dua-duanya.</div>
 <div class="callout"><b>Kenapa ini jebakan valuasi?</b> Perusahaan teknologi membayar insinyur mahal pakai saham: labanya terlihat "bersih" (kas tidak keluar) tapi EPS-nya tergerus tiap tahun. Model DCF yang memakai share count basi = overvalue. Selalu pakai <b>diluted shares terkini</b>.</div>`},
+{h: "Treasury stock method: dari mana 1.000 lembar itu datang?", body: `
+<p>Di seksi stock comp, "10.000 + 1.000 = 11.000 lembar dilusian" muncul sebagai <b>asumsi</b>. Sekarang mekaniknya — <b>treasury stock method (TSM)</b>: opsi yang <i>in-the-money</i> dianggap dieksekusi, hasilnya dipakai membeli kembali saham pada harga pasar rata-rata, dan hanya <b>sisa bersihnya</b> yang menambah saham:</p>
+<p><b>Contoh kerja — persis angka lesson ini:</b> 2.000 opsi, harga exercise Rp250/lembar, harga pasar rata-rata Rp500/lembar.</p>
+<table class="brutal">
+<tr><th>Langkah TSM</th><th>Hitungan</th><th>Hasil</th></tr>
+<tr><td>Proceeds (hasil exercise)</td><td>2.000 × 250</td><td>Rp500rb</td></tr>
+<tr><td>Buyback (saham dibeli kembali)</td><td>500rb ÷ 500</td><td><b>1.000 lembar</b></td></tr>
+<tr><td>Saham tambahan bersih</td><td>2.000 − 1.000</td><td><b>1.000 lembar</b></td></tr>
+<tr><td>Saham dilusian</td><td>10.000 + 1.000</td><td><b>11.000</b> ✓</td></tr>
+</table>
+<p>Dan EPS dilusian = 4.959,59 ÷ 11.000 = <b>Rp0,451rb</b> — persis angka kuis Hell hari ini. Angka 1.000 itu bukan tebakan: ia <i>turunan</i> dari data opsi.</p>
+<p>Tiga aturan TSM:</p>
+<ul>
+<li><b>Hanya opsi in-the-money yang dihitung</b> (strike &lt; harga pasar). Opsi out-of-the-money (strike &gt; harga pasar) <i>tidak</i> dieksekusi — dikeluarkan dari hitungan. Kalau semua opsi out-of-the-money, tambahan bersih = 0.</li>
+<li><b>Pakai harga pasar RATA-RATA</b> selama periode, bukan harga akhir tahun. Harga akhir tahun bisa melonjak sehari sebelum tutup buku — rata-rata menghilangkan noise itu.</li>
+<li><b>RSU (restricted stock unit) menambah 1-untuk-1</b> — tanpa proceeds, tanpa buyback. Satu RSU yang vest = satu lembar baru penuh.</li>
+</ul>
+<div class="callout"><b>Kenapa TSM, bukan "tambah semua opsi"?</b> Karena menambah 2.000 mentah-mentah mengabaikan bahwa perusahaan <i>menerima kas</i> dari exercise — kas itu membeli kembali separuh sahamnya. TSM mengukur <i>dilusi ekonomi yang sebenarnya</i>: bukan berapa opsi yang ada, tapi berapa lembar <i>neto</i> yang bertambah setelah buyback. Analis yang memakai share count basi atau opsi bruto = overvalue.</div>`},
 {h: "Kenapa NOL = aset pajak (voucher Rp440rb)", body: `
 <p>Tahun lalu PT Maju Jaya rugi fiskal Rp2.000rb. Fiskus mengizinkan rugi itu <b>dikompensasikan</b> ke laba tahun ini. Rugi tahun lalu = voucher potongan pajak:</p>
 <div class="formula">DTA = 2.000 \u00d7 22% = Rp440rb \u2192 dipakai penuh tahun ini</div>
@@ -2842,7 +2911,10 @@ quiz: [
  explain: "Tidak ada kas keluar \u2192 Rp500rb di-add-back. CFO naik 500, tapi saham terdilusi."},
 {q: "NOL Rp2.000rb, tarif 22%, dipakai penuh tahun ini. Penghematan pajak kini?", opts: ["Rp440rb","Rp2.000rb","Rp88rb","Rp1.310,86rb"], answer: 0, k: "nol_benefit", diff: "Easy",
  hints: ["Manfaat = NOL \u00d7 tarif.","2.000 \u00d7 22% = ?"],
- explain: "2.000 \u00d7 22% = Rp440rb \u2014 pajak kini turun dari 1.310,86 menjadi 870,86."}
+ explain: "2.000 \u00d7 22% = Rp440rb \u2014 pajak kini turun dari 1.310,86 menjadi 870,86."},
+{q: "2.000 opsi, strike Rp250, harga pasar rata-rata Rp500. Saham tambahan bersih (TSM)?", opts: ["2.000 lembar","1.000 lembar","500 lembar","0 lembar"], answer: 1, k: "tsm", diff: "Medium",
+ hints: ["Proceeds = 2.000 × 250 = 500rb; buyback = 500rb ÷ 500.","2.000 − 1.000 = ?"],
+ explain: "Proceeds Rp500rb membeli kembali 1.000 lembar → tambahan bersih 2.000 − 1.000 = 1.000. Inilah asal 11.000 lembar dilusian di lesson ini."}
 ],
 hell: [
 {q: "Liabilitas lease awal Rp4.791,25rb, pembayaran Rp1.200rb, bunga 8%. Liabilitas akhir tahun-1?", opts: ["Rp4.791,25rb","Rp3.974,55rb","Rp3.591,25rb","Rp4.408,55rb"], answer: 1, diff: "Medium",
@@ -2857,7 +2929,7 @@ hell: [
 tasks: [
 {t: "Task A \u2014 Workbook 4 penyesuaian (\u00b14 jam)", d: "Download file latihan Hari 20 dari Drive. Bangun: PV lease + schedule, DTL, stock comp + saham dilusian, NOL + DTA, lalu IS/BS/CFS ringkas. Semua sel jawaban rumus \u2014 target 100 + BALANCE.", url: "https://drive.google.com/drive/folders/1NNTaCDj4Rqp4JHKSeNMCZJZgByaR5J9f"},
 {t: "Task B \u2014 \uD83D\uDD75\uFE0F Misi Detektif Akuntansi (\u00b12 jam)", d: "Download file misi (model junior PT Maju Jaya, rusak di 4 titik). Temukan \u2192 jelaskan kenapa salah \u2192 perbaiki dengan RUMUS \u2192 upload ke Misi Detektif Akuntansi. Target 5/5 + neraca balance.", url: "https://drive.google.com/drive/folders/1NNTaCDj4Rqp4JHKSeNMCZJZgByaR5J9f"},
-{t: "Task C \u2014 Quiz di atas", d: "Target \u22654/5 benar. Salah? Baca hint, ulangi."}
+{t: "Task C \u2014 Quiz di atas", d: "Target \u22655/6 benar. Salah? Baca hint, ulangi."}
 ],
 blind: {h: "Latihan Buta \u2014 PT Sinar Abadi (angka beda)", body: `
 <p>"PT Sinar Abadi" (Rp ribu, fiktif, dinyatakan): sewa mesin <b>4 tahun, Rp800rb/thn, discount rate 10%</b>; D&A buku 500 vs pajak 700; beban stock comp 300; NOL tahun lalu 1.000; tarif pajak 22%. <b>Hitung TANPA mengintip contoh</b>:</p>
@@ -3650,6 +3722,19 @@ sections: [
 <p> Kenapa tidak rata-rata seperti NII?</p>
 <p>Karena provisi mencadangkan <b>risiko yang melekat pada stok</b>, bukan arus. Kredit macet (NPL) adalah kondisi portofolio pada tanggal neraca — pinjamannya ada di pembukuan akhir tahun, risikonya dicadangkan akhir tahun. Logikanya neraca (stok), bukan laba rugi (arus).</p>
 <div class="callout"><b>Kenapa asimetri ini disengaja?</b> Karena model yang baik meniru akuntansi yang baik: pendapatan mengikuti arus (accrual sepanjang tahun), cadangan mengikuti stok (posisi akhir). Menyamakan basis keduanya = mencampur dua logika pengukuran — model tetap balance, tetapi salah secara ekonomi.</div>`},
+{h: "Kualitas aset bank: NPL, coverage & Cost of Credit", body: `
+<p>Hierarki analis bank menempatkan <b>kualitas aset kedua</b> setelah modal — tapi sampai sini kita belum pernah mengukurnya. Tiga metriknya:</p>
+<table class="brutal">
+<tr><th>Metrik</th><th>Rumus</th><th>Membaca</th></tr>
+<tr><td><b>NPL ratio</b></td><td>Kredit bermasalah ÷ Total kredit</td><td>Seberapa besar portofolio yang macet</td></tr>
+<tr><td><b>Coverage ratio</b></td><td>CKPN ÷ Kredit bermasalah (NPL)</td><td>Seberapa besar cadangan menutup kredit macet</td></tr>
+<tr><td><b>Cost of Credit (CoC)</b></td><td>Beban CKPN ÷ Rata-rata kredit</td><td>Biaya risiko tahun berjalan</td></tr>
+</table>
+<p><b>Yang bisa dihitung dari model ini — CoC:</b> beban CKPN Tahun-1 Rp161,28rb ÷ rata-rata kredit (8.000 + 8.960) ÷ 2 = 8.480 → <b>1,90%</b>. Tahun-3: 202,31 ÷ 10.637 = <b>1,90%</b> juga. Flat — karena provisi model ini flat 1,8% dari kredit <i>akhir</i>, dan 1,90% vs 1,8% itu selisih basis (akhir vs rata-rata) yang sudah kamu kenal dari NII.</p>
+<p><b>Yang TIDAK bisa dihitung dari model ini — NPL & coverage:</b> model ini tidak punya <i>stok</i> kredit bermasalah maupun <i>stok</i> CKPN (provisi di sini hanya <i>arus</i> beban). Bila diasumsikan NPL Tahun-3 = 2,8% × 11.239 = <b>Rp314,69 miliar (ilustrasi dinyatakan)</b>, coverage tetap tak bisa dihitung tanpa stok CKPN. Itu batasan model latihan — di model kerja, CKPN adalah akun neraca (roll-forward: awal + beban − hapus buku + recovery = akhir).</p>
+<p><b>Jangkar nyata — BBRI FY2024 [B]:</b> NPL gross <b>2,78%</b>; coverage diungkap <b>215,01%</b> vs terhitung <b>213,07%</b> (CKPN pinjaman Rp76.902.889 jt ÷ NPL Rp36.093.243 jt — selisihnya = CKPN aset produktif non-kredit, bukan kesalahan hitung); CoC <b>3,2%</b> [B]. Bandingkan dengan model latihan (CoC 1,90%): bank nyata dengan portofolio UMKM menanggung biaya risiko lebih tinggi — dan coverage >200% artinya cadangannya dua kali lipat kredit macetnya.</p>
+<p><b>ECL & staging (IFRS 9 / PSAK 71):</b> akuntansi modern tidak menunggu kredit macet baru mencadangkan. Tiga stage: <b>Stage 1</b> — kredit sehat, cadangan = expected credit loss 12 bulan; <b>Stage 2</b> — risiko kredit naik signifikan (SICR), cadangan = ECL seumur hidup; <b>Stage 3</b> — kredit macet (credit-impaired), ECL seumur hidup + bunga dihitung dari nilai neto. Provisi flat 1,8% di model ini <b>bukan</b> staging — ia jalan pintas forecast. Di bank nyata, migrasi Stage 1 → 2 adalah alarm dini yang dibaca analis sebelum NPL-nya bergerak.</p>
+<div class="callout"><b>Kenapa CoC 1,90% model ini "terlalu rapi"?</b> Karena ia turunan langsung dari asumsi flat 1,8% — bukan dari analisis portofolio. Bank nyata: CoC bergerak dengan siklus (naik saat ekonomi memburuk, turun saat pulih). Kalau CoC modelmu flat selamanya, kamu mengasumsikan siklus kredit tidak ada. Uji sensitivitasnya seperti menguji WACC: CoC 1,9% → 3,6% (skenario NPL memburuk 2×) memotong NI, ekuitas, dan CAR berantai — persis yang ditanyakan kuis hari ini.</div>`},
 {h: "Kenapa equity walk adalah jantung model bank?", body: `
 <p><b>E<sub>t</sub> = E<sub>t-1</sub> + NI − Dividen.</b> Tahun-1: 1.500 + 132,16 − 39,65 = <b>1.592,51</b>. Tahun-3: <b>1.812,18</b>. Sederhana — dan inilah seluruh drama perbankan: setiap rupiah dividen yang dibayar hari ini adalah satu rupiah modal yang <b>tidak</b> tersedia untuk menopang pertumbuhan kredit besok.</p>
 <p>Perhatikan CAR ikut turun tiap tahun (19,56% → 18,68% → 17,89%) <i>meski</i> laba positif — karena kredit tumbuh 12%, lebih cepat dari pertumbuhan ekuitas. Bank yang tumbuh cepat <b>memakan modalnya sendiri</b>; dividen mempercepatnya.</p>
@@ -3690,7 +3775,10 @@ quiz: [
  explain: "Buffer 5,89pp = ruang manuver (tumbuh, dividen, shock). Tetapi tren menurun karena kredit (+12%) tumbuh lebih cepat dari modal — proyeksikan kapan buffer habis. CAR adalah metrik tren, bukan foto."},
 {q: "Harga wajar 253,71 = BV 181,22 × P/BV 1,4. Kapan multiple 1,4× ini runtuh?", opts: ["Tidak pernah — multiple tetap", "Bila ROE persisten jatuh di bawah cost of equity → pasar tak mau bayar premi → P/BV < 1", "Bila sahamnya stock split", "Bila dividen naik"], answer: 1, k: "ev", diff: "Hard",
  hints: ["1,4× = premi 40% di atas nilai buku. Premi untuk apa?", "Premi dibayar untuk ROE > biaya modal."],
- explain: "P/BV > 1 adalah premi atas kemampuan bank menghasilkan ROE di atas cost of equity. Bila ROE jatuh di bawahnya secara persisten, premi menguap — bahkan menjadi diskon (P/BV < 1): pasar menilai Rp1 modal bank kurang berharga dari Rp1. Multiple = cerminan ROE, bukan angka sakti."}
+ explain: "P/BV > 1 adalah premi atas kemampuan bank menghasilkan ROE di atas cost of equity. Bila ROE jatuh di bawahnya secara persisten, premi menguap — bahkan menjadi diskon (P/BV < 1): pasar menilai Rp1 modal bank kurang berharga dari Rp1. Multiple = cerminan ROE, bukan angka sakti."},
+{q: "Beban CKPN T1 Rp161,28rb; kredit awal 8.000, akhir 8.960. Cost of Credit?", opts: ["1,80%","1,90%","2,02%","3,60%"], answer: 1, k: "coc", diff: "Medium",
+ hints: ["CoC = beban CKPN ÷ rata-rata kredit.","161,28 ÷ 8.480 = ?"],
+ explain: "161,28 ÷ ((8.000+8.960)÷2) = 161,28 ÷ 8.480 = 1,90%. Bukan 1,80% — itu provisi atas kredit AKHIR, CoC memakai RATA-RATA."}
 ],
 hellPass: 80,
 hell: [
@@ -3705,7 +3793,7 @@ hell: [
 ],
 tasks: [
 {t: "Task A — Bangun bank mini-model dari template", d: "Download template Hari 26 dari Drive. Isi 42 sel BIRU dengan rumus: proyeksi kredit & aset lain → laba rugi T1–T3 → equity walk → CAR → valuasi P/BV. Upload untuk dinilai — target checker ≥80.", url: "https://drive.google.com/drive/folders/1EqnCvs5fr4X7d7o2vU8PvuR2aFDwDR8y"},
-{t: "Task B — Quiz 5 soal di atas", d: "Target ≥4 benar (80%). Salah? Kembali ke seksi 'Kenapa?'-nya, ulangi."},
+{t: "Task B — Quiz 6 soal di atas", d: "Target ≥5 benar (80%). Salah? Kembali ke seksi 'Kenapa?'-nya, ulangi."},
 {t: "Task C — Uji trade-off dividen", d: "Naikkan payout input ke 60%: amati Ekuitas T3, CAR T3, dan harga wajar ikut bergerak. Kembalikan ke 30%. Catat: berapa pp CAR yang 'dibayar' untuk dividen ekstra itu?"},
 ]
 },
@@ -5460,6 +5548,25 @@ sections: [
 <tr><td><b>WACC</b></td><td><b>13.1%</b></td></tr>
 </table>
 <div class="callout"><b>Why does WACC = CoE here?</b> Because 100% of capital = equity. This simplifies without losing the lesson: the WACC mechanics stay identical — only the weights change. In the capstone (a real issuer), D/V won't be zero and the formula works in full.</div>`},
+{h: "WACC from market data: unlever & relever beta (Hamada)", body: `
+<p>Beta 1.1 above was <b>stated</b> — for mechanics practice. A real valuation never guesses beta: it is <b>estimated from the market</b> in two Hamada steps — strip the peer's leverage off, then attach your target leverage:</p>
+<div class="formula">β<sub>unlevered</sub> = β<sub>levered peer</sub> ÷ (1 + (1 − t) × D/E<sub>peer</sub>)</div>
+<div class="formula">β<sub>relevered</sub> = β<sub>unlevered</sub> × (1 + (1 − t) × D/E<sub>target</sub>)</div>
+<p><b>Worked example (stated illustration):</b> a listed peer has levered beta <b>1.25</b>, D/E <b>0.6</b>, tax 22%:</p>
+<table class="brutal">
+<tr><th>Step</th><th>Math</th><th>Result</th></tr>
+<tr><td>Unlever peer beta</td><td>1.25 ÷ (1 + 0.78 × 0.6)</td><td><b>0.8515</b></td></tr>
+<tr><td>Relever to target D/E 0.4</td><td>0.8515 × (1 + 0.78 × 0.4)</td><td><b>1.1172</b></td></tr>
+<tr><td>CoE (Rf 6.5%, MRP 6%)</td><td>6.5% + 1.1172 × 6%</td><td><b>13.20%</b></td></tr>
+<tr><td>WACC (market weights E 70% / D 30%, after-tax CoD 7.8%)</td><td>0.7 × 13.20% + 0.3 × 7.8%</td><td><b>11.58%</b></td></tr>
+</table>
+<p>Three rules never to break:</p>
+<ul>
+<li><b>Weights = market values, not book values.</b> Equity from market capitalization; debt from the market value of bonds (or book value when the debt isn't traded). Book weights = the capital structure of the past, not the target.</li>
+<li><b>Tax = the marginal rate, not the effective rate.</b> WACC discounts <i>future</i> cash flows — what matters is the rate on the next rupiah of profit (22% in Indonesia), not the historical effective rate mixed with incentives and permanent differences.</li>
+<li><b>Unlever every peer, take the median, then relever.</b> One peer can have a weird beta (extreme debt, mixed business). The median of several unlevered peers = a clean asset beta — then attach <i>your</i> target leverage.</li>
+</ul>
+<div class="callout"><b>Why unlever first?</b> Because a peer's beta carries <i>two</i> risks: its business risk + its leverage risk. Using a peer's levered beta raw = importing someone else's capital structure into your valuation. Unlevering removes the peer's leverage; relevering attaches your target's. The right beta = peer business risk + your leverage.</div>`},
 {h: "22% tax: when it bites", body: `
 <p>Indonesia's corporate tax rate = <b>22%</b> (stated as an assumption). In this model it <b>doesn't bite</b> — because there's no interest expense:</p>
 <table class="brutal">
@@ -5474,6 +5581,16 @@ sections: [
 <p>Discounted negative 2027 FCFF stays negative — fair: a cash outflow next year is <i>slightly lighter</i> than one today (it's discounted).</p>
 <p>Tomorrow (Day 10): this small number joins the <b>terminal value</b> — hundreds of times larger. Don't be shocked: in DCF, 1–2 forecast years almost always lose weight to terminal value.</p>
 <div class="callout"><b>Why not drop the negative PV?</b> Because dropping it = lying. The investment year <i>genuinely</i> consumed cash — erasing it from valuation is claiming expansion was free.</div>`},
+{h: "FCFE: cash for shareholders (not all investors)", body: `
+<p>FCFF is cash for <b>all</b> capital providers (debt + equity). <b>FCFE</b> (free cash flow to equity) is cash for <b>shareholders only</b> — after paying lenders:</p>
+<div class="formula">FCFE = FCFF − Interest × (1 − tax) + Net Borrowing</div>
+<p>Interest is multiplied by (1 − tax) because interest already reduces tax; <i>net borrowing</i> = new debt − debt repaid (positive when the firm adds debt).</p>
+<p><b>Worked example (stated illustration):</b> FCFF Rp500k, interest Rp100k, tax 22%, net borrowing Rp80k:</p>
+<div class="formula">FCFE = 500 − 100 × 0.78 + 80 = 500 − 78 + 80 = <b>Rp502k</b></div>
+<p>Its valuation discounts differently too: FCFE is discounted at the <b>cost of equity</b> (13.1%), not WACC — because this cash belongs to shareholders only. With g at 3%:</p>
+<div class="formula">Equity value = 502 × 1.03 ÷ (0.131 − 0.03) = 517.06 ÷ 0.101 = <b>Rp5,119.41k</b></div>
+<p><b>When to use which?</b> FCFF when the capital structure keeps changing (unstable interest burden) — FCFE when valuing equity directly, or for banks (whose equity cash flow is what matters). Both must give the <i>same</i> equity value when assumptions are consistent — a strong cross-check.</p>
+<div class="callout"><b>Why does Mock 2 ask about FCFE?</b> Because FCFE is on the CFI curriculum — and now you can answer it: FCFE = FCFF − after-tax interest + net borrowing, discounted at CoE. Don't mix them up: discounting FCFE at WACC = the wrong cost of capital for the wrong cash flow.</div>`},
 {h: "Beginner DCF traps", body: `
 <ul>
 <li><b>Illustrative WACC ≠ market WACC.</b> The 13.1% here teaches mechanics. Real valuations need beta & MRP from data.</li>
@@ -5499,7 +5616,13 @@ quiz: [
  explain: "−50 ÷ 1.131 = −Rp44.21k. The negative sign follows — a discounted cash outflow."},
 {q: "Beta rises 1.1 → 1.3 (Rf & MRP fixed). New cost of equity?", opts: ["13.1%","14.3%","15.5%","12.5%"], answer: 1,
  hints: ["CoE = 6.5% + β × 6%.","6.5% + 1.3 × 6% = ?"],
- explain: "6.5% + 7.8% = 14.3%. Beta +0.2 → CoE +1.2 points."}
+ explain: "6.5% + 7.8% = 14.3%. Beta +0.2 → CoE +1.2 points."},
+{q: "Peer: levered beta 1.25, D/E 0.6, tax 22%. Unlevered beta?", opts: ["1.25","0.85","1.47","0.47"], answer: 1, k: "hamada", diff: "Medium",
+ hints: ["βu = βl ÷ (1 + (1−t) × D/E).","1.25 ÷ (1 + 0.78 × 0.6) = ?"],
+ explain: "1.25 ÷ 1.468 = 0.8515 ≈ 0.85. Unlevering strips the peer's leverage — the asset beta is smaller than the levered beta."},
+{q: "FCFF Rp500k, interest Rp100k, tax 22%, net borrowing Rp80k. FCFE?", opts: ["Rp500k","Rp502k","Rp422k","Rp580k"], answer: 1, k: "fcfe", diff: "Medium",
+ hints: ["FCFE = FCFF − interest×(1−tax) + net borrowing.","500 − 78 + 80 = ?"],
+ explain: "500 − 100×0.78 + 80 = 502. After-tax interest is 78, not 100 — tax already bears 22 of it."}
 ],
 hell: [
 {q: "A: beta 0.8; B: beta 1.5 (same Rf & MRP). Which CoE is higher, and why?", opts: ["B — higher beta = bigger systematic risk","A — low beta = expensive","Exactly equal","Can't be compared"], answer: 0, diff: "Medium",
@@ -5516,7 +5639,7 @@ hell: [
 tasks: [
 {t: "Task A — Warung Septian WACC & FCFF (±2 hrs)", d: "Download the Day 09 practice file from Drive. Compute CAPM CoE, WACC, 2027 FCFF and its PV. Every answer cell a formula — remember: these are TEACHING assumptions, not market data.", url: "https://drive.google.com/drive/folders/18aYqHpgZj-w-ZOw8WvadxDt-HoS_-Ix3"},
 {t: "Task B — Beta sensitivity (±30 min)", d: "On paper: compute CoE for beta 0.9 / 1.1 / 1.3 (Rf 6.5%, MRP 6%). Feel it: beta ±0.2 = CoE ±1.2 points."},
-{t: "Task C — Quiz above", d: "Target ≥4/5 correct. Missed? Read the hints, retake."}
+{t: "Task C — Quiz above", d: "Target ≥5/7 correct. Missed? Read the hints, retake."}
 ],
 blind: {h: "Blind Drill — Kios Rina CAPM", body: `
 <p>"Kios Rina": Rf 7%, beta 1.2, MRP 5% (stated assumptions). Next-year FCFF Rp1,000k. <b>Compute CoE and its PV WITHOUT peeking</b>.</p>
@@ -5565,6 +5688,19 @@ sections: [
 </table>
 <p>Warung Septian's first complete DCF: <b>EV ≈ Rp19.9 million</b> (perpetuity) or <b>Rp18.5 million</b> (exit). A range, not a point.</p>
 <div class="callout"><b>Why is PV of 2027 FCFF (−44) nearly meaningless?</b> Because 19,968 vs −44 = TV outweighs it 450×. That's DCF reality: <b>80–90% of value = terminal value</b>. The 2-year forecast is just the "down payment" — the tower is the TV. So TV assumptions (g, multiple) must be the most honest.</div>`},
+{h: "Mid-year adjustment: cash flows all year long", body: `
+<p>So far we discounted as if <b>all</b> of the year's cash arrived on December 31. In reality cash flows <b>through the year</b> — January sales become February cash, not December cash. The <b>mid-year</b> convention shifts the discount point to mid-year (t − 0.5):</p>
+<div class="formula">Mid-year factor = (1 + WACC)<sup>0.5</sup> = 1.131<sup>0.5</sup> = <b>1.06348</b></div>
+<p>Applied to the Warung DCF (perpetuity):</p>
+<table class="brutal">
+<tr><th>(Rp thousand)</th><th>Year-end</th><th>Mid-year</th></tr>
+<tr><td>PV of TV</td><td>22,584 ÷ 1.131 = 19,968</td><td>22,584 ÷ 1.06348 = <b>21,236</b></td></tr>
+<tr><td>PV of 2027 FCFF</td><td>−50 ÷ 1.131 = −44.21</td><td>−50 ÷ 1.06348 = <b>−47.02</b></td></tr>
+<tr><td><b>EV</b></td><td><b>19,924</b></td><td><b>21,189</b></td></tr>
+</table>
+<p>EV rises <b>+6.3%</b> (21,189 vs 19,924) — discounting half a year less. That's not a "bonus": earlier cash genuinely is worth more.</p>
+<p><b>When to use it, when not:</b> use mid-year when cash flows spread evenly through the year (revenue, opex). <b>Don't</b> use it for items that genuinely land on one date: a once-a-year dividend, a bullet repayment, an asset sale on a known date — those are discounted on their actual date.</p>
+<div class="callout"><b>Why does no mid-year = systematic undervaluation?</b> Because every year's cash is "forced" to wait until December 31 — while half of it was already in hand by June. A DCF without mid-year always values slightly too low (≈ half a year of discounting, here ≈ +6%). An analyst who doesn't know this will always lose the bid to one who does.</div>`},
 {h: "2D sensitivity table: WACC × g", body: `
 <p>One EV number = one assumption combo. This table shows <b>nine</b> (Rp thousand):</p>
 <table class="brutal">
@@ -5620,7 +5756,10 @@ quiz: [
  explain: "−44.21 + 19,968 = Rp19,924k."},
 {q: "WACC rises 13.1% → 15.1% (g fixed at 3%). Perpetuity TV impact?", opts: ["Rises","Falls — the (WACC−g) denominator grows","Flat","Turns negative"], answer: 1,
  hints: ["TV = 2,281 ÷ (WACC − g). Denominator 0.101 → 0.121.","Bigger denominator → smaller result."],
- explain: "2,281 ÷ 0.121 = Rp18,851k < 22,584. Higher WACC = harsher discount = lower TV."}
+ explain: "2,281 ÷ 0.121 = Rp18,851k < 22,584. Higher WACC = harsher discount = lower TV."},
+{q: "WACC 13.1%, TV Rp22,584k (end of 2027). Mid-year PV?", opts: ["Rp19,968k","Rp21,236k","Rp22,584k","Rp24,020k"], answer: 1, k: "midyear", diff: "Medium",
+ hints: ["Mid-year factor = 1.131^0.5 = 1.06348.","22,584 ÷ 1.06348 = ?"],
+ explain: "22,584 ÷ 1.06348 = Rp21,236k — bigger than 19,968 because cash is treated as arriving mid-year, not year-end."}
 ],
 hell: [
 {q: "g ≥ WACC. What happens to the Gordon formula?", opts: ["TV undefined — the g < WACC rule is absolute","TV becomes more accurate","No problem","Just use exit multiple (no conditions)"], answer: 0, diff: "Medium",
@@ -5637,7 +5776,7 @@ hell: [
 tasks: [
 {t: "Task A — Warung Septian full DCF (±3 hrs)", d: "Download the Day 10 practice file from Drive. Build both TV methods + EV + the 3×3 sensitivity table (all formulas). Target: perpetuity EV 19,924, exit EV 18,523.", url: "https://drive.google.com/drive/folders/1aj_b-xSjHkUerOVqEIUhS81zrCjiZhSz"},
 {t: "Task B — Manual sensitivity cell (±45 min)", d: "On paper: compute EV for WACC 15.1% × g 2% (answer: 15,085). Feel how small the assumption change is, how big the EV change is."},
-{t: "Task C — Quiz above", d: "Target ≥4/5 correct. Missed? Read the hints, retake."}
+{t: "Task C — Quiz above", d: "Target ≥5/6 correct. Missed? Read the hints, retake."}
 ],
 blind: {h: "Blind Drill — Kios Rina TV", body: `
 <p>"Kios Rina": next-year FCFF Rp3,000k; WACC 12%; g 2% (stated assumptions). EBITDA Rp4,000k; 7× exit multiple. <b>Compute both TV methods WITHOUT peeking</b>.</p>
@@ -6931,6 +7070,24 @@ sections: [
 </table>
 <div class="callout"><b>Why are both true?</b> Because cash and ownership are <b>two different wallets</b>. Cash wallet: untouched (add-back). Ownership wallet: your slice shrinks (1,000/11,000 \u2248 9.1% now belongs to new holders). The analyst who only reads CFO says "cash is healthy"; the one who only reads EPS says "diluted" \u2014 both right, both incomplete. Read both.</div>
 <div class="callout"><b>Why is this a valuation trap?</b> Tech firms pay expensive engineers in stock: profit looks "clean" (no cash leaves) but EPS erodes yearly. A DCF using a stale share count = overvaluation. Always use <b>current diluted shares</b>.</div>`},
+{h: "Treasury stock method: where did those 1,000 shares come from?", body: `
+<p>In the stock-comp section, "10,000 + 1,000 = 11,000 diluted shares" appeared as an <b>assumption</b>. Now the mechanics — the <b>treasury stock method (TSM)</b>: in-the-money options are treated as exercised, the proceeds buy back shares at the average market price, and only the <b>net remainder</b> adds shares:</p>
+<p><b>Worked example — exactly this lesson's numbers:</b> 2,000 options, exercise price Rp250/share, average market price Rp500/share.</p>
+<table class="brutal">
+<tr><th>TSM step</th><th>Math</th><th>Result</th></tr>
+<tr><td>Proceeds (from exercise)</td><td>2,000 × 250</td><td>Rp500k</td></tr>
+<tr><td>Buyback (shares repurchased)</td><td>500k ÷ 500</td><td><b>1,000 shares</b></td></tr>
+<tr><td>Net additional shares</td><td>2,000 − 1,000</td><td><b>1,000 shares</b></td></tr>
+<tr><td>Diluted shares</td><td>10,000 + 1,000</td><td><b>11,000</b> ✓</td></tr>
+</table>
+<p>And diluted EPS = 4,959.59 ÷ 11,000 = <b>Rp0.451k</b> — exactly today's Hell quiz number. The 1,000 is not a guess: it is <i>derived</i> from the option data.</p>
+<p>Three TSM rules:</p>
+<ul>
+<li><b>Only in-the-money options count</b> (strike < market price). Out-of-the-money options (strike > market price) are <i>not</i> exercised — excluded from the count. If all options are out-of-the-money, the net addition = 0.</li>
+<li><b>Use the AVERAGE market price</b> over the period, not the year-end price. The year-end price can spike the day before closing — the average removes that noise.</li>
+<li><b>RSUs (restricted stock units) add 1-for-1</b> — no proceeds, no buyback. One vesting RSU = one full new share.</li>
+</ul>
+<div class="callout"><b>Why TSM, not "add all the options"?</b> Because adding 2,000 raw ignores that the company <i>receives cash</i> from exercise — cash that buys back half the shares. TSM measures the <i>true economic dilution</i>: not how many options exist, but how many shares <i>net</i> appear after the buyback. An analyst using a stale share count or gross options = overvaluation.</div>`},
 {h: "Why NOL = a tax asset (Rp440k voucher)", body: `
 <p>Last year PT Maju Jaya had a Rp2,000k fiscal loss. The tax office lets that loss <b>offset</b> this year's profit. Last year's loss = a tax discount voucher:</p>
 <div class="formula">DTA = 2,000 \u00d7 22% = Rp440k \u2192 fully used this year</div>
@@ -7017,7 +7174,10 @@ quiz: [
  explain: "No cash leaves \u2192 Rp500k added back. CFO up 500, but shares diluted."},
 {q: "NOL Rp2,000k, 22% rate, fully used this year. Current-tax saving?", opts: ["Rp440k","Rp2,000k","Rp88k","Rp1,310.86k"], answer: 0,
  hints: ["Benefit = NOL \u00d7 rate.","2,000 \u00d7 22% = ?"],
- explain: "2,000 \u00d7 22% = Rp440k \u2014 current tax falls from 1,310.86 to 870.86."}
+ explain: "2,000 \u00d7 22% = Rp440k \u2014 current tax falls from 1,310.86 to 870.86."},
+{q: "2,000 options, strike Rp250, average market price Rp500. Net additional shares (TSM)?", opts: ["2,000 shares","1,000 shares","500 shares","0 shares"], answer: 1, k: "tsm", diff: "Medium",
+ hints: ["Proceeds = 2,000 × 250 = 500k; buyback = 500k ÷ 500.","2,000 − 1,000 = ?"],
+ explain: "Rp500k proceeds buy back 1,000 shares → net addition 2,000 − 1,000 = 1,000. That's the origin of this lesson's 11,000 diluted shares."}
 ],
 hell: [
 {q: "Opening lease liability Rp4,791.25k, payment Rp1,200k, 8% interest. Ending Y1 liability?", opts: ["Rp4,791.25k","Rp3,974.55k","Rp3,591.25k","Rp4,408.55k"], answer: 1, diff: "Medium",
@@ -7032,7 +7192,7 @@ hell: [
 tasks: [
 {t: "Task A \u2014 4-adjustment workbook (\u00b14 hrs)", d: "Download the Day 20 practice file from Drive. Build: lease PV + schedule, DTL, stock comp + diluted shares, NOL + DTA, then summary IS/BS/CFS. Every answer cell a formula \u2014 target 100 + BALANCE.", url: "https://drive.google.com/drive/folders/1NNTaCDj4Rqp4JHKSeNMCZJZgByaR5J9f"},
 {t: "Task B \u2014 \uD83D\uDD75\uFE0F Accounting Detective Mission (\u00b12 hrs)", d: "Download the mission file (the junior's PT Maju Jaya model, broken in 4 places). Find \u2192 explain why it's wrong \u2192 fix with FORMULAS \u2192 upload to the Accounting Detective Mission. Target 5/5 + balanced sheet.", url: "https://drive.google.com/drive/folders/1NNTaCDj4Rqp4JHKSeNMCZJZgByaR5J9f"},
-{t: "Task C \u2014 Quiz above", d: "Target \u22654/5 correct. Missed? Read the hints, retake."}
+{t: "Task C \u2014 Quiz above", d: "Target \u22655/6 correct. Missed? Read the hints, retake."}
 ],
 blind: {h: "Blind Drill \u2014 PT Sinar Abadi (different numbers)", body: `
 <p>"PT Sinar Abadi" (Rp thousand, fictional, stated): machine lease <b>4 years, Rp800k/year, 10% discount rate</b>; book D&A 500 vs tax 700; stock comp expense 300; last year's NOL 1,000; tax rate 22%. <b>Compute WITHOUT peeking</b>:</p>
@@ -7800,6 +7960,19 @@ sections: [
 <p> Why not average like NII?</p>
 <p>Because provisions reserve against <b>risk embedded in the stock</b>, not the flow. Non-performing loans are a portfolio condition at the balance-sheet date — the loans sit on the books at year-end, so the risk is reserved at year-end. Its logic is balance-sheet (stock), not income-statement (flow).</p>
 <div class="callout"><b>Why is this asymmetry deliberate?</b> Because a good model mimics good accounting: income follows the flow (accrual through the year), reserves follow the stock (year-end position). Equalizing the two bases mixes two measurement logics — the model still balances, but it's economically wrong.</div>`},
+{h: "Bank asset quality: NPL, coverage & Cost of Credit", body: `
+<p>The bank analyst's hierarchy puts <b>asset quality second</b> after capital — but until now we never measured it. Its three metrics:</p>
+<table class="brutal">
+<tr><th>Metric</th><th>Formula</th><th>What it reads</th></tr>
+<tr><td><b>NPL ratio</b></td><td>Non-performing loans ÷ Total loans</td><td>How much of the book has gone bad</td></tr>
+<tr><td><b>Coverage ratio</b></td><td>Loan-loss reserves (CKPN) ÷ Non-performing loans</td><td>How much reserves cover bad loans</td></tr>
+<tr><td><b>Cost of Credit (CoC)</b></td><td>Provision expense ÷ Average loans</td><td>The running cost of risk</td></tr>
+</table>
+<p><b>What this model CAN compute — CoC:</b> Year-1 provision expense Rp161.28k ÷ average loans (8,000 + 8,960) ÷ 2 = 8,480 → <b>1.90%</b>. Year 3: 202.31 ÷ 10,637 = <b>1.90%</b> as well. Flat — because this model's provision is a flat 1.8% of <i>ending</i> loans, and the 1.90% vs 1.8% gap is the ending-vs-average basis gap you already know from NII.</p>
+<p><b>What this model CANNOT compute — NPL & coverage:</b> it has no <i>stock</i> of non-performing loans and no <i>stock</i> of reserves (provisions here are only an expense <i>flow</i>). If we assume Year-3 NPL = 2.8% × 11,239 = <b>Rp314.69 billion (stated illustration)</b>, coverage still can't be computed without a reserve stock. That's a training-model limitation — in a working model, reserves are a balance-sheet account (roll-forward: opening + expense − write-offs + recoveries = closing).</p>
+<p><b>Real anchor — BBRI FY2024 [B]:</b> gross NPL <b>2.78%</b>; coverage disclosed <b>215.01%</b> vs computed <b>213.07%</b> (loan reserves Rp76,902,889m ÷ NPL Rp36,093,243m — the gap is reserves on non-loan earning assets, not a calculation error); CoC <b>3.2%</b> [B]. Compare with the training model (CoC 1.90%): a real bank with an MSME book bears a higher risk cost — and coverage above 200% means its reserves are twice its bad loans.</p>
+<p><b>ECL & staging (IFRS 9 / PSAK 71):</b> modern accounting doesn't wait for loans to go bad before reserving. Three stages: <b>Stage 1</b> — healthy loans, reserves = 12-month expected credit loss; <b>Stage 2</b> — significant increase in credit risk (SICR), reserves = lifetime ECL; <b>Stage 3</b> — credit-impaired, lifetime ECL + interest on the net value. The flat 1.8% provision in this model is <b>not</b> staging — it's a forecasting shortcut. In a real bank, Stage 1 → 2 migration is the early warning analysts read before NPL itself moves.</p>
+<div class="callout"><b>Why is this model's 1.90% CoC "too tidy"?</b> Because it follows directly from the flat 1.8% assumption — not from portfolio analysis. A real bank's CoC moves with the cycle (up when the economy worsens, down when it recovers). If your model's CoC is flat forever, you're assuming the credit cycle doesn't exist. Stress-test it like WACC: CoC 1.9% → 3.6% (the NPL-doubles scenario) cuts NI, equity, and CAR in a chain — exactly what today's quiz asks.</div>`},
 {h: "Why is the equity walk the heart of a bank model?", body: `
 <p><b>E<sub>t</sub> = E<sub>t-1</sub> + NI − Dividends.</b> Year 1: 1,500 + 132.16 − 39.65 = <b>1,592.51</b>. Year 3: <b>1,812.18</b>. Simple — and it's the entire drama of banking: every rupiah of dividends paid today is one rupiah of capital <b>not</b> available to support loan growth tomorrow.</p>
 <p>Note CAR falls each year (19.56% → 18.68% → 17.89%) <i>despite</i> positive profit — because loans grow 12%, faster than equity. A fast-growing bank <b>eats its own capital</b>; dividends accelerate it.</p>
@@ -7840,7 +8013,10 @@ quiz: [
  explain: "A 5.89pp buffer = room to maneuver (grow, dividends, shocks). But the trend falls because loans (+12%) outgrow capital — project when the buffer runs out. CAR is a trend metric, not a snapshot."},
 {q: "Fair value 253.71 = BV 181.22 × P/BV 1.4. When does this 1.4× multiple collapse?", opts: ["Never — multiples are permanent", "If persistent ROE falls below cost of equity → the market won't pay a premium → P/BV < 1", "If the stock splits", "If dividends rise"], answer: 1,
  hints: ["1.4× = a 40% premium over book. A premium for what?", "Premiums are paid for ROE > cost of capital."],
- explain: "P/BV > 1 is a premium on the bank's ability to earn ROE above its cost of equity. If ROE falls persistently below it, the premium evaporates — even becoming a discount (P/BV < 1): the market prices Rp1 of bank capital below Rp1. A multiple mirrors ROE; it isn't magic."}
+ explain: "P/BV > 1 is a premium on the bank's ability to earn ROE above its cost of equity. If ROE falls persistently below it, the premium evaporates — even becoming a discount (P/BV < 1): the market prices Rp1 of bank capital below Rp1. A multiple mirrors ROE; it isn't magic."},
+{q: "Year-1 provision expense Rp161.28k; loans opening 8,000, closing 8,960. Cost of Credit?", opts: ["1.80%","1.90%","2.02%","3.60%"], answer: 1, k: "coc", diff: "Medium",
+ hints: ["CoC = provision expense ÷ average loans.","161.28 ÷ 8,480 = ?"],
+ explain: "161.28 ÷ ((8,000+8,960)÷2) = 161.28 ÷ 8,480 = 1.90%. Not 1.80% — that is the provision on ENDING loans; CoC uses the AVERAGE."}
 ],
 hell: [
 {q: "Loans grow 12%/yr but deposits only 5%/yr (all else equal). What breaks first?", opts: ["Nothing — the model still balances", "A funding gap: liabilities outgrow deposits → reliance on non-deposit funding (pricier/more volatile); the model 'balances' but the funding structure deteriorates", "NIM automatically rises", "CAR automatically rises"], answer: 1,
@@ -7854,7 +8030,7 @@ hell: [
 ],
 tasks: [
 {t: "Task A — Build the mini bank model from the template", d: "Download the Day 26 template from Drive. Fill 42 BLUE cells with formulas: loan & other-asset projection → Y1–Y3 income → equity walk → CAR → P/BV valuation. Upload for grading — target checker ≥80.", url: "https://drive.google.com/drive/folders/1EqnCvs5fr4X7d7o2vU8PvuR2aFDwDR8y"},
-{t: "Task B — 5-question quiz above", d: "Target ≥4 correct (80%). Missed? Back to its 'Why?' section, retake."},
+{t: "Task B — 6-question quiz above", d: "Target ≥5 correct (80%). Missed? Back to its 'Why?' section, retake."},
 {t: "Task C — Test the dividend trade-off", d: "Raise the payout input to 60%: watch Y3 equity, Y3 CAR, and fair value move. Revert to 30%. Note: how many pp of CAR does the extra dividend 'cost'?"},
 ]
 };

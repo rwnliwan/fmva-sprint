@@ -184,6 +184,30 @@ sections: [
 <p><b>NCI (non-controlling interest)</b> = bagian ekuitas anak usaha yang dimiliki pihak lain. Indofood tidak memiliki 100% semua anak usahanya — Rp47,09T dari Rp120,24T ekuitas adalah milik minoritas. Valuasi saham INDF hanya boleh memakai <b>Rp73,15T</b>.</p>
 <div class="example jebakan"><div class="lbl">🚫 Error #1 — NCI dilupakan</div>
 <p>Overstate Rp47,09T ≈ <b>Rp5.364/saham</b> — lebih besar dari sebagian harga sahamnya (Rp6.400). Satu baris yang lupa = valuasi hancur.</p></div>`},
+{h: "NCI walk: dari saldo awal ke saldo akhir", body: `
+<p>NCI bukan angka statis — ia punya <b>walk</b> (gerakan) seperti laba ditahan. Rumusnya:</p>
+<div class="formula">NCI<sub>akhir</sub> = NCI<sub>awal</sub> + Bagian laba anak usaha − Dividen ke minoritas</div>
+<p><b>Rekonstruksi ilustratif (dinyatakan, konsisten dengan angka case):</b> NCI awal Rp45,00T + bagian laba anak Rp4,00T (laba anak Rp10,00T × 40% minoritas) − dividen ke minoritas Rp1,91T = <b>Rp47,09T</b> — persis angka NCI case ini.</p>
+<p>Aturan baca: NCI naik bila anak usaha <b>laba</b> (minoritas ikut menikmati), turun bila anak <b>bagi dividen</b> (kas keluar ke minoritas) atau <b>rugi</b>. NCI yang melonjak tanpa laba anak = sinyal ada akuisisi anak baru atau perubahan kepemilikan — periksa catatan konsolidasi.</p>
+<div class="callout"><b>Kenapa walk ini wajib bisa?</b> Karena NCI di neraca adalah <i>stok</i> hasil akumulasi — tanpa walk kamu tidak bisa membedakan "NCI besar karena anaknya menguntungkan" vs "NCI besar karena induknya menjual saham anak". Dua cerita, satu angka. Walk membedakannya.</div>`},
+{h: "Partial vs full goodwill: NCI di harga beli", body: `
+<p>Saat induk membeli 80% anak usaha, goodwill-nya tergantung <b>cara mengukur NCI</b> — dan pilihannya mengubah neraca gabungan:</p>
+<p><b>Contoh kerja (ilustrasi dinyatakan):</b> induk membeli 80% seharga Rp100T; nilai wajar aset neto anak Rp110T.</p>
+<table class="brutal">
+<tr><th>Metode</th><th>NCI dicatat</th><th>Goodwill</th></tr>
+<tr><td><b>Partial</b> (proporsional)</td><td>20% × 110 = <b>22</b></td><td>100 − 80% × 110 = <b>12</b></td></tr>
+<tr><td><b>Full</b> (nilai wajar)</td><td>20% × (100 ÷ 80%) = <b>25</b></td><td>100 ÷ 80% − 110 = <b>15</b></td></tr>
+</table>
+<p>Full goodwill lebih besar (15 vs 12) karena ia mengakui goodwill atas <i>seluruh</i> anak usaha — termasuk bagian minoritas (25 vs 22). PSAK 22/IFRS 3 membolehkan keduanya (pilihan per transaksi); yang wajib = <b>konsisten</b> dan dinyatakan di catatan. Analis yang membandingkan dua akuisisi tanpa mengecek metode ini sedang membandingkan goodwill yang dihitung dengan penggaris berbeda.</p>
+<div class="callout"><b>Kenapa ini nyambung ke INDF?</b> NCI Rp47,09T di case ini adalah <i>hasil</i> dari pilihan-pilihan seperti ini di masa lalu (Pinehill dan akuisisi lain). Angka NCI yang kamu kurangkan di jembatan valuasi membawa sejarah metode akuisisi — bukan sekadar satu baris di neraca.</div>`},
+{h: "NCI di laba rugi & jembatan EV → ekuitas", body: `
+<p>NCI juga muncul di <b>laba rugi</b> — dan di situlah analis paling sering salah membacanya:</p>
+<div class="formula">Laba induk = Laba konsolidasi − Bagian laba minoritas</div>
+<p>Contoh: laba konsolidasi Rp10,00T, minoritas 40% → bagian minoritas Rp4,00T → <b>laba induk Rp6,00T</b>. EPS, P/E, dan ROE induk memakai angka <b>6,00</b> — bukan 10,00. Memakai laba konsolidasi untuk P/E induk = menilai laba yang sebagian bukan milikmu.</p>
+<p>Dan di jembatan valuasi, rumus lengkapnya:</p>
+<div class="formula">Ekuitas induk = EV − Net Debt − NCI</div>
+<p>EV adalah nilai <i>seluruh</i> perusahaan konsolidasi — termasuk bagian minoritas. Tiga pengurang itu berurutan: utang bersih dulu (hak kreditur), lalu NCI (hak minoritas), sisanya milik pemegang saham induk. Melewatkan NCI = mengklaim bagian minoritas sebagai milikmu — persis Error #1 case ini (Rp5.364/saham). Lihat juga catatan simplifikasi di real-02 (SOTP ASII).</p>
+<div class="callout"><b>Kenapa urutan pengurang penting?</b> Karena masing-masing adalah klaim yang <i>lebih senior</i> dari ekuitas induk: kreditur dibayar dulu, minoritas berikutnya, induk terakhir. Jembatan EV → ekuitas adalah antrean klaim — bukan sekadar pengurangan.</div>`},
 {h: "Kenapa bunga harus link ke debt schedule?", body: `
 <div class="formula">Beban bunga = Utang AWAL × tarif = 74,96 × 6% = Rp4,50T</div>
 <p>Bunga berjalan dari <b>saldo awal</b> utang (prinsip debt schedule Hari 03/Fondasi C): uang dipinjam dulu, bunga dihitung dari situ. Model junior mengetik <b>Rp3,00T</b> manual — angka yang tidak bisa dilacak asal-usulnya dan tidak ikut berubah kalau asumsi utang berubah.</p>
@@ -223,7 +247,13 @@ quiz: [
  explain: "Double-count: FCFF final Rp10,10T vs benar Rp15,90T — understate Rp10T penuh. Bug mekanik, bukan teori. (Real-03 § Kenapa double capex fatal?)"},
 {q: "Selisih neraca diketik 0 ('OK' palsu). Kenapa ini error paling berbahaya?", opts: ["Karena nol bukan angka cantik","Alarm mati: salah tapi tampak benar","Karena harusnya tertulis 0,01","Tidak berbahaya asalkan balance"], answer: 1, k: "forensic_audit", diff: "Hard",
  hints: ["Alarm kebakaran yang dicabut kabelnya.", "Model salah tapi terlihat benar vs model yang jelas rusak — mana lebih bahaya?"],
- explain: "'OK' ketikan menyembunyikan link putus. Auditor mencari angka yang terlalu rapi untuk jadi kebetulan. (Real-03 § Kenapa 'OK' palsu paling berbahaya?)"}
+ explain: "'OK' ketikan menyembunyikan link putus. Auditor mencari angka yang terlalu rapi untuk jadi kebetulan. (Real-03 § Kenapa 'OK' palsu paling berbahaya?)"},
+{q: "NCI awal Rp45,00T + bagian laba anak Rp4,00T − dividen ke minoritas Rp1,91T. NCI akhir?", opts: ["Rp47,09T","Rp50,91T","Rp42,91T","Rp45,00T"], answer: 0, k: "nci_walk", diff: "Easy",
+ hints: ["NCI akhir = awal + bagian laba − dividen.","45,00 + 4,00 − 1,91 = ?"],
+ explain: "45,00 + 4,00 − 1,91 = Rp47,09T — persis angka NCI case INDF."},
+{q: "Beli 80% seharga Rp100T, nilai wajar aset neto Rp110T. Goodwill metode partial?", opts: ["Rp15T","Rp12T","Rp10T","Rp22T"], answer: 1, k: "goodwill_nci", diff: "Medium",
+ hints: ["Partial: goodwill = harga − 80% × aset neto.","100 − 88 = ?"],
+ explain: "100 − 0,8 × 110 = 100 − 88 = Rp12T. Metode full memberi 15 (NCI diukur nilai wajar 25, bukan 22)."}
 ],
 hellPass: 80,
 hell: [
@@ -241,7 +271,7 @@ hell: [
 tasks: [
 {t: "Tugas A — Audit forensik (±4 jam)", d: "Download file misi INDF. Temukan 5 error, perbaiki dengan RUMUS (bukan ketikan), pastikan selisih neraca adalah rumus asli. Upload ke Misi Forensik.", url: "https://drive.google.com/drive/folders/15etlyOcKIB4Uz9b_I401Iz2ASubqGa2A"},
 {t: "Tugas B — Tulis laporan audit (±1 jam)", d: "Untuk tiap error: 1 kalimat APA yang salah + 1 kalimat KENAPA berbahaya + 1 kalimat cara perbaikannya. 5 error = 15 kalimat. Ini format laporan audit profesional."},
-{t: "Tugas C — Kuis di atas", d: "Target ≥4/5 benar."}
+{t: "Tugas C — Kuis di atas", d: "Target ≥5/7 benar."}
 ],
 blind: {h: "Uji Kilat — angka beda", body: `
 <p><b>1.</b> Total ekuitas Rp200T, NCI Rp60T, saham 10 miliar. Ekuitas induk/saham = ?</p>
@@ -984,6 +1014,30 @@ sections: [
 <p><b>NCI (non-controlling interest)</b> = the part of subsidiaries' equity owned by others. Indofood doesn't own 100% of all its subsidiaries — Rp47.09T of Rp120.24T equity belongs to minorities. INDF share valuation may only use <b>Rp73.15T</b>.</p>
 <div class="example jebakan"><div class="lbl">🚫 Error #1 — forgotten NCI</div>
 <p>Junior model: Parent equity = Rp120.24T (the total!). Overstated by Rp47.09T ≈ <b>Rp5,364/share</b> — nearly the share price itself (Rp6,400). One forgotten line = destroyed valuation.</p></div>`},
+{h: "The NCI walk: opening balance to closing balance", body: `
+<p>NCI is not a static number — it has a <b>walk</b> (movement), like retained earnings. The formula:</p>
+<div class="formula">NCI<sub>ending</sub> = NCI<sub>opening</sub> + Minority share of subsidiary profit − Dividends to minorities</div>
+<p><b>Illustrative reconstruction (stated, consistent with the case numbers):</b> opening NCI Rp45.00T + minority profit share Rp4.00T (subsidiary profit Rp10.00T × 40% minority) − dividends to minorities Rp1.91T = <b>Rp47.09T</b> — exactly the case's NCI figure.</p>
+<p>How to read it: NCI rises when the subsidiary is <b>profitable</b> (minorities share the profit), falls when the subsidiary <b>pays dividends</b> (cash leaves to minorities) or <b>loses money</b>. NCI jumping without subsidiary profit = a signal of a new subsidiary acquisition or an ownership change — check the consolidation notes.</p>
+<div class="callout"><b>Why must you be able to walk it?</b> Because balance-sheet NCI is an accumulated <i>stock</i> — without the walk you can't tell "big NCI because the subsidiary is profitable" from "big NCI because the parent sold down its stake". Two stories, one number. The walk separates them.</div>`},
+{h: "Partial vs full goodwill: NCI at the purchase price", body: `
+<p>When a parent buys 80% of a subsidiary, goodwill depends on <b>how NCI is measured</b> — and the choice changes the combined balance sheet:</p>
+<p><b>Worked example (stated illustration):</b> parent buys 80% for Rp100T; fair value of the subsidiary's net assets Rp110T.</p>
+<table class="brutal">
+<tr><th>Method</th><th>NCI recorded</th><th>Goodwill</th></tr>
+<tr><td><b>Partial</b> (proportionate)</td><td>20% × 110 = <b>22</b></td><td>100 − 80% × 110 = <b>12</b></td></tr>
+<tr><td><b>Full</b> (fair value)</td><td>20% × (100 ÷ 80%) = <b>25</b></td><td>100 ÷ 80% − 110 = <b>15</b></td></tr>
+</table>
+<p>Full goodwill is bigger (15 vs 12) because it recognizes goodwill on the <i>whole</i> subsidiary — including the minority's share (25 vs 22). PSAK 22/IFRS 3 allows both (a choice per transaction); what matters = <b>consistency</b> and disclosure in the notes. An analyst comparing two acquisitions without checking the method is comparing goodwill measured with different rulers.</p>
+<div class="callout"><b>Why does this connect to INDF?</b> The Rp47.09T NCI in this case is the <i>result</i> of choices like these in the past (Pinehill and other acquisitions). The NCI figure you subtract in the valuation bridge carries a history of acquisition methods — not just one balance-sheet line.</div>`},
+{h: "NCI in the income statement & the EV → equity bridge", body: `
+<p>NCI also appears in the <b>income statement</b> — and that's where analysts most often misread it:</p>
+<div class="formula">Parent profit = Consolidated profit − Minority share of profit</div>
+<p>Example: consolidated profit Rp10.00T, 40% minority → minority share Rp4.00T → <b>parent profit Rp6.00T</b>. The parent's EPS, P/E, and ROE use <b>6.00</b> — not 10.00. Using consolidated profit for the parent's P/E = valuing profit that partly isn't yours.</p>
+<p>And in the valuation bridge, the full formula is:</p>
+<div class="formula">Parent equity = EV − Net Debt − NCI</div>
+<p>EV is the value of the <i>whole</i> consolidated company — including the minority's share. The three deductions run in order: net debt first (lenders' claim), then NCI (minorities' claim), the rest belongs to parent shareholders. Skipping NCI = claiming the minority's share as your own — exactly Error #1 in this case (Rp5,364/share). See also the simplification note in real-02 (ASII SOTP).</p>
+<div class="callout"><b>Why does the deduction order matter?</b> Because each is a claim <i>senior</i> to parent equity: lenders are paid first, minorities next, the parent last. The EV → equity bridge is a queue of claims — not just a subtraction.</div>`},
 {h: "Why must interest link to the debt schedule?", body: `
 <div class="formula">Interest expense = BEGINNING debt × rate = 74.96 × 6% = Rp4.50T</div>
 <p>Interest accrues on the <b>beginning</b> debt balance (the debt-schedule principle from Day 03/Foundation C): money is borrowed first, interest computed on it. The junior model typed <b>Rp3.00T</b> manually — a number with no traceable origin that won't move if debt assumptions change.</p>
@@ -1023,7 +1077,13 @@ quiz: [
  explain: `Double-count: final FCFF Rp10.10T vs correct Rp15.90T — a full Rp10T understated. Mechanical bug, not theory.`},
 {q: `The balance-sheet gap cell typed 0 (fake 'OK'). Why is this the most dangerous error?`, opts: ["Because zero isn't a pretty number","Alarm killed: wrong but looking right","Because it should read 0.01","Harmless as long as it balances"], answer: 1, k: "forensic_audit",
  hints: ["A fire alarm with its wire cut.","A wrong model that looks right vs an obviously broken one — which is more dangerous?"],
- explain: `'Typed OK hides broken links. Auditors hunt numbers too tidy to be coincidence.`}
+ explain: `'Typed OK hides broken links. Auditors hunt numbers too tidy to be coincidence.`},
+{q: "Opening NCI Rp45.00T + minority profit share Rp4.00T − dividends to minorities Rp1.91T. Closing NCI?", opts: ["Rp47.09T","Rp50.91T","Rp42.91T","Rp45.00T"], answer: 0, k: "nci_walk", diff: "Easy",
+ hints: ["Closing NCI = opening + profit share − dividends.","45.00 + 4.00 − 1.91 = ?"],
+ explain: "45.00 + 4.00 − 1.91 = Rp47.09T — exactly the INDF case's NCI figure."},
+{q: "Buy 80% for Rp100T, fair value of net assets Rp110T. Partial-method goodwill?", opts: ["Rp15T","Rp12T","Rp10T","Rp22T"], answer: 1, k: "goodwill_nci", diff: "Medium",
+ hints: ["Partial: goodwill = price − 80% × net assets.","100 − 88 = ?"],
+ explain: "100 − 0.8 × 110 = 100 − 88 = Rp12T. The full method gives 15 (NCI at fair value 25, not 22)."}
 ],
 hell: [
 {q: `Valuation overstatement from forgotten NCI, in Rp/share?`, opts: ["Roughly Rp1,000 per share","Roughly Rp47,090 per share","Rp5,364 (47.09T ÷ 8.78 billion)","Roughly Rp73,150 per share"], answer: 2,
@@ -1040,7 +1100,7 @@ hell: [
 tasks: [
 {t: "Task A — Forensic audit (±4 hrs)", d: "Download the INDF mission file. Find 5 errors, fix with FORMULAS (not typing), make sure the balance-sheet gap is a real formula. Upload to the Forensic Mission.", url: "https://drive.google.com/drive/folders/15etlyOcKIB4Uz9b_I401Iz2ASubqGa2A"},
 {t: "Task B — Write the audit report (±1 hr)", d: "Per error: 1 sentence WHAT is wrong + 1 sentence WHY it's dangerous + 1 sentence HOW to fix it. 5 errors = 15 sentences. That's the professional audit-report format.", url: ""},
-{t: "Task C — The quiz above", d: "Target ≥4/5 correct.", url: ""}
+{t: "Task C — The quiz above", d: "Target ≥5/7 correct.", url: ""}
 ],
 blind: {h: "Speed Drill — different numbers", body: `
 <p><b>1.</b> Total equity Rp200T, NCI Rp60T, 10 billion shares. Parent equity/share = ?</p>
