@@ -153,7 +153,7 @@ sections: [
 <tr><td>Persediaan akhir (100 unit sisa)</td><td><b>1.200</b> (harga baru)</td><td><b>1.000</b> (harga lama)</td></tr>
 </table>
 <p>Saat harga <b>naik</b> (inflasi): LIFO → laba lebih kecil, pajak lebih kecil (hemat Rp44rb di sini), persediaan akhir dinilai harga lama. FIFO → laba lebih besar, pajak lebih besar, persediaan akhir mendekati harga pasar.</p>
-<p><b>Aturan yang wajib diingat:</b> <b>IFRS/PSAK 14 MELARANG LIFO</b> — di Indonesia hanya FIFO atau rata-rata tertimbang. LIFO hanya hidup di US GAAP. Jadi di laporan emiten Indonesia kamu akan ketemu FIFO/rata-rata — tapi kamu <i>wajib</i> paham LIFO karena soal exam dan peer AS memakainya.</p>
+<p><b>Aturan yang wajib diingat:</b> <b>PSAK 14 (IAS 2) MELARANG LIFO</b> — di Indonesia, untuk persediaan yang dapat dipertukarkan, hanya FIFO atau rata-rata tertimbang (specific identification tetap berlaku untuk persediaan yang tidak dapat dipertukarkan). LIFO hanya hidup di US GAAP. Jadi di laporan emiten Indonesia kamu akan ketemu FIFO/rata-rata — tapi kamu <i>wajib</i> paham LIFO karena soal exam dan peer AS memakainya.</p>
 <div class="callout"><b>Kenapa pilihan ini penting buat analis?</b> Karena dua perusahaan dengan transaksi <i>identik</i> bisa melaporkan laba beda 25% (780 vs 624) hanya karena metode persediaan. Membandingkan margin antar perusahaan tanpa mengecek metodenya = membandingkan apel dengan jeruk. Cek catatan kebijakan akuntansi dulu — selalu.</div>`},
 {h: "🔥 Bekal Hell Mode", body: `
 <p>Istilah yang dipakai soal Hell Mode:</p>
@@ -451,7 +451,7 @@ sections: [
 <tr><td>Ending inventory (100 units left)</td><td><b>1,200</b> (recent prices)</td><td><b>1,000</b> (old prices)</td></tr>
 </table>
 <p>When prices <b>rise</b> (inflation): LIFO → smaller profit, smaller tax (saves Rp44k here), ending inventory at old prices. FIFO → bigger profit, bigger tax, ending inventory near market prices.</p>
-<p><b>The rule to remember:</b> <b>IFRS/PSAK 14 PROHIBITS LIFO</b> — in Indonesia only FIFO or weighted average are allowed. LIFO lives only under US GAAP. So Indonesian issuers' reports will show FIFO/average — but you <i>must</i> understand LIFO because exam questions and US peers use it.</p>
+<p><b>The rule to remember:</b> <b>PSAK 14 (IAS 2) PROHIBITS LIFO</b> — in Indonesia, for interchangeable inventories, only FIFO or weighted average are allowed (specific identification still applies to non-interchangeable items). LIFO lives only under US GAAP. So Indonesian issuers' reports will show FIFO/average — but you <i>must</i> understand LIFO because exam questions and US peers use it.</p>
 <div class="callout"><b>Why does this choice matter to an analyst?</b> Because two companies with <i>identical</i> transactions can report profits 25% apart (780 vs 624) purely from the inventory method. Comparing margins across companies without checking the method = comparing apples with oranges. Read the accounting policy note first — always.</div>`},
 {h: "🔥 Hell Mode briefing", body: `
 <p>Terms used in the Hell Mode questions:</p>

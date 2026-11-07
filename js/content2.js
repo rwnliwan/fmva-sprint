@@ -1224,6 +1224,7 @@ sections: [
 {h: "Cost of equity = 13,1%", body: `
 <div class="formula">CoE = 6,5% + 1,1 × 6% = 6,5% + 6,6% = <b>13,1%</b></div>
 <p>Artinya: pemilik menuntut return <b>13,1% per tahun</b> untuk menanggung risiko warung ini. Setiap rupiah kas masa depan didiskonto sebesar itu.</p>
+<p><i>Catatan asumsi:</i> 13,1% ini memakai beta <b>1,1 yang dinyatakan</b> untuk skenario warung <b>100% ekuitas</b> (tanpa utang berbunga) — bukan beta dari data pasar. Di seksi Hamada di bawah, beta yang sama diestimasi dari peer dan CoE-nya menjadi <b>13,20%</b> — dua skenario, dua CoE, keduanya benar di asumsinya masing-masing.</p>
 <p>Uji sensitivitas cepat: beta 1,1 → 1,3 (bisnis ternyata lebih fluktuatif) ⇒ CoE = 6,5% + 7,8% = <b>14,3%</b>. Naik 1,2 poin — dan nanti kamu lihat betapa besar dampaknya ke valuasi (Hari 10).</p>
 <div class="callout"><b>Kenapa beta dikali MRP, bukan ditambah mentah?</b> Karena beta mengukur <i>seberapa banyak</i> risiko pasar yang menular ke perusahaan. Beta 1,1 = menanggung 110% premi pasar. Beta 0 = tidak menular sama sekali (CoE = Rf).</div>`},
 {h: "WACC = 13,1%: tanpa utang berbunga", body: `
@@ -1248,6 +1249,7 @@ sections: [
 <tr><td>CoE (Rf 6,5%, MRP 6%)</td><td>6,5% + 1,1172 × 6%</td><td><b>13,20%</b></td></tr>
 <tr><td>WACC (bobot pasar E 70% / D 30%, CoD after-tax 7,8%)</td><td>0,7 × 13,20% + 0,3 × 7,8%</td><td><b>11,58%</b></td></tr>
 </table>
+<p><i>Kenapa 13,20% ≠ 13,1%?</i> Karena beta-nya beda: di sini beta <b>relever 1,1172</b> dari peer (D/E target 0,4), sedangkan 13,1% di seksi sebelumnya memakai beta <b>1,1 yang dinyatakan</b> untuk warung 100% ekuitas. Dua skenario, dua CoE — keduanya benar di asumsinya masing-masing.</p>
 <p>Tiga aturan yang tidak boleh dilanggar:</p>
 <ul>
 <li><b>Bobot = nilai pasar, bukan nilai buku.</b> Ekuitas dihitung dari kapitalisasi pasar; utang dari nilai pasar obligasi (atau nilai buku bila utangnya tidak diperdagangkan). Bobot buku = struktur modal masa lalu, bukan yang ditargetkan.</li>
@@ -1278,7 +1280,7 @@ sections: [
 </table>
 <p>Harga <b>Rp950,26rb</b> — di bawah par (diskon Rp49,74), karena kupon 8% &lt; YTM 10%. Aturannya: kupon &lt; YTM → diskon; kupon &gt; YTM → premium; kupon = YTM → par. Kupon adalah sejarah (ditetapkan saat terbit); YTM adalah harga uang hari ini untuk risiko itu.</p>
 <p><i>Catatan pembulatan:</i> komponen tabel ditampilkan 2 desimal — jumlahnya 950,27; total eksak dari rumus adalah 950,26. Selisih 0,01 adalah pembulatan, bukan kesalahan — di model, biarkan rumus yang menjumlah, jangan mengetik totalnya.</p>
-<p><b>Durasi — seberapa sensitif harga terhadap YTM:</b> bobot PV tiap arus kas: tahun 1 = 72,73 ÷ 950,26 = 7,65%; tahun 2 = 6,96%; tahun 3 = 85,39%. <b>Durasi Macaulay</b> = 1×7,65% + 2×6,96% + 3×85,39% = <b>2,78 tahun</b>. <b>Durasi modifikasi</b> = 2,78 ÷ 1,10 = <b>2,52</b> → YTM naik 1pp ≈ harga turun 2,52%. Aturan: kupon lebih tinggi / tenor lebih pendek → durasi lebih kecil → harga lebih kebal.</p>
+<p><b>Durasi — seberapa sensitif harga terhadap YTM:</b> bobot PV tiap arus kas: tahun 1 = 72,73 ÷ 950,26 = 7,65%; tahun 2 = 6,96%; tahun 3 = 85,39%. <b>Durasi Macaulay</b> = 1×7,65% + 2×6,96% + 3×85,39% = <b>2,78 tahun</b> (nilai eksak 2,777). <b>Durasi modifikasi</b> = 2,777 ÷ 1,10 ≈ <b>2,52</b> → YTM naik 1pp ≈ harga turun 2,52%. Aturan: kupon lebih tinggi / tenor lebih pendek → durasi lebih kecil → harga lebih kebal.</p>
 <p><b>Kaitkan ke WACC:</b> biaya utang = YTM (10% di sini) → setelah pajak 10% × 0,78 = <b>7,8%</b> — angka yang sama dengan yang dipakai di WACC. Obligasi yang diperdagangkan di diskon berarti pasar menuntut lebih dari kuponnya — CoD-mu adalah YTM, bukan kupon.</p>
 <div class="callout"><b>Kenapa analis obligasi membaca harga, bukan kupon?</b> Karena kupon tidak pernah berubah setelah terbit, sementara harga bergerak setiap hari mengikuti suku bunga & risiko kredit. Dua obligasi kupon 8% yang sama bisa punya YTM 6% dan 12% — yang satu "murah", yang satu "mahal" — dan hanya harga yang membedakannya.</div>`},
 {h: "PV FCFF 2027 = −Rp44,21rb", body: `
@@ -1292,7 +1294,7 @@ sections: [
 <p>Bunga dikali (1 − pajak) karena bunga sudah mengurangi pajak; <i>net borrowing</i> = utang baru − pelunasan utang (positif bila perusahaan menambah utang).</p>
 <p><b>Contoh kerja (ilustrasi dinyatakan):</b> FCFF Rp500rb, bunga Rp100rb, pajak 22%, net borrowing Rp80rb:</p>
 <div class="formula">FCFE = 500 − 100 × 0,78 + 80 = 500 − 78 + 80 = <b>Rp502rb</b></div>
-<p>Valuasinya pun beda diskon: FCFE didiskonto dengan <b>cost of equity</b> (13,1%), bukan WACC — karena kas ini milik pemegang saham saja. Dengan g 3%:</p>
+<p>Valuasinya pun beda diskon: FCFE didiskonto dengan <b>cost of equity</b> (13,1% — skenario warung 100% ekuitas, beta 1,1 yang dinyatakan), bukan WACC — karena kas ini milik pemegang saham saja. Dengan g 3%:</p>
 <div class="formula">Nilai ekuitas = 502 × 1,03 ÷ (0,131 − 0,03) = 517,06 ÷ 0,101 = <b>Rp5.119,41rb</b></div>
 <p><b>Kapan pakai yang mana?</b> FCFF bila struktur modal berubah-ubah (beban bunga tidak stabil) — FCFE bila menilai ekuitas langsung, atau pada bank (arus kas ke ekuitasnya yang relevan). Keduanya harus memberi nilai ekuitas yang <i>sama</i> bila asumsinya konsisten — itu cek silang yang kuat.</p>
 <div class="callout"><b>Kenapa Mock 2 menanyakan FCFE?</b> Karena FCFE tercantum di kurikulum CFI — dan sekarang kamu bisa menjawabnya: FCFE = FCFF − bunga after-tax + net borrowing, didiskonto CoE. Jangan tertukar: mendiskonto FCFE dengan WACC = memakai biaya modal yang salah untuk kas yang salah.</div>`},
@@ -5727,6 +5729,7 @@ sections: [
 {h: "Cost of equity = 13.1%", body: `
 <div class="formula">CoE = 6.5% + 1.1 × 6% = 6.5% + 6.6% = <b>13.1%</b></div>
 <p>Meaning: owners demand a <b>13.1% annual</b> return for bearing this shop's risk. Every future rupiah of cash is discounted at that rate.</p>
+<p><i>Assumption note:</i> this 13.1% uses a <b>stated beta of 1.1</b> for the <b>100%-equity shop</b> scenario (no interest-bearing debt) — not a market-estimated beta. In the Hamada section below, the same beta estimated from peers gives a CoE of <b>13.20%</b> — two scenarios, two CoEs, each correct under its own assumptions.</p>
 <p>Quick sensitivity: beta 1.1 → 1.3 (business turns out more volatile) ⇒ CoE = 6.5% + 7.8% = <b>14.3%</b>. Up 1.2 points — and tomorrow you'll see how large that hits valuation (Day 10).</p>
 <div class="callout"><b>Why is beta multiplied by MRP, not just added?</b> Because beta measures <i>how much</i> market risk infects the company. Beta 1.1 = bearing 110% of the market premium. Beta 0 = no infection at all (CoE = Rf).</div>`},
 {h: "WACC = 13.1%: no interest-bearing debt", body: `
@@ -5751,6 +5754,7 @@ sections: [
 <tr><td>CoE (Rf 6.5%, MRP 6%)</td><td>6.5% + 1.1172 × 6%</td><td><b>13.20%</b></td></tr>
 <tr><td>WACC (market weights E 70% / D 30%, after-tax CoD 7.8%)</td><td>0.7 × 13.20% + 0.3 × 7.8%</td><td><b>11.58%</b></td></tr>
 </table>
+<p><i>Why is 13.20% ≠ 13.1%?</i> Because the beta differs: here the beta is a <b>relevered 1.1172</b> from peers (target D/E 0.4), while the earlier 13.1% used a <b>stated beta of 1.1</b> for the 100%-equity shop. Two scenarios, two CoEs — each correct under its own assumptions.</p>
 <p>Three rules never to break:</p>
 <ul>
 <li><b>Weights = market values, not book values.</b> Equity from market capitalization; debt from the market value of bonds (or book value when the debt isn't traded). Book weights = the capital structure of the past, not the target.</li>
@@ -5781,7 +5785,7 @@ sections: [
 </table>
 <p>Price <b>Rp950.26k</b> — below par (a Rp49.74 discount), because coupon 8% &lt; YTM 10%. The rule: coupon &lt; YTM → discount; coupon &gt; YTM → premium; coupon = YTM → par. The coupon is history (set at issuance); the YTM is today's price of money for that risk.</p>
 <p><i>Rounding note:</i> the table components are shown to 2 decimals — they sum to 950.27; the exact total from the formula is 950.26. The 0.01 gap is rounding, not an error — in the model, let the formula add them up, don't type the total.</p>
-<p><b>Duration — how sensitive the price is to the YTM:</b> PV weights of each cash flow: year 1 = 72.73 ÷ 950.26 = 7.65%; year 2 = 6.96%; year 3 = 85.39%. <b>Macaulay duration</b> = 1×7.65% + 2×6.96% + 3×85.39% = <b>2.78 years</b>. <b>Modified duration</b> = 2.78 ÷ 1.10 = <b>2.52</b> → YTM up 1pp ≈ price down 2.52%. The rule: higher coupon / shorter maturity → smaller duration → a tougher price.</p>
+<p><b>Duration — how sensitive the price is to the YTM:</b> PV weights of each cash flow: year 1 = 72.73 ÷ 950.26 = 7.65%; year 2 = 6.96%; year 3 = 85.39%. <b>Macaulay duration</b> = 1×7.65% + 2×6.96% + 3×85.39% = <b>2.78 years</b> (exact value 2.777). <b>Modified duration</b> = 2.777 ÷ 1.10 ≈ <b>2.52</b> → YTM up 1pp ≈ price down 2.52%. The rule: higher coupon / shorter maturity → smaller duration → a tougher price.</p>
 <p><b>Tie it to WACC:</b> the cost of debt = the YTM (10% here) → after tax 10% × 0.78 = <b>7.8%</b> — the same number used in WACC. A bond trading at a discount means the market demands more than its coupon — your CoD is the YTM, not the coupon.</p>
 <div class="callout"><b>Why do bond analysts read the price, not the coupon?</b> Because the coupon never changes after issuance, while the price moves every day with rates & credit risk. Two identical 8% bonds can carry YTMs of 6% and 12% — one "cheap", one "expensive" — and only the price tells them apart.</div>`},
 {h: "PV of 2027 FCFF = −Rp44.21k", body: `
@@ -5795,7 +5799,7 @@ sections: [
 <p>Interest is multiplied by (1 − tax) because interest already reduces tax; <i>net borrowing</i> = new debt − debt repaid (positive when the firm adds debt).</p>
 <p><b>Worked example (stated illustration):</b> FCFF Rp500k, interest Rp100k, tax 22%, net borrowing Rp80k:</p>
 <div class="formula">FCFE = 500 − 100 × 0.78 + 80 = 500 − 78 + 80 = <b>Rp502k</b></div>
-<p>Its valuation discounts differently too: FCFE is discounted at the <b>cost of equity</b> (13.1%), not WACC — because this cash belongs to shareholders only. With g at 3%:</p>
+<p>Its valuation discounts differently too: FCFE is discounted at the <b>cost of equity</b> (13.1% — the 100%-equity shop scenario, stated beta 1.1), not WACC — because this cash belongs to shareholders only. With g at 3%:</p>
 <div class="formula">Equity value = 502 × 1.03 ÷ (0.131 − 0.03) = 517.06 ÷ 0.101 = <b>Rp5,119.41k</b></div>
 <p><b>When to use which?</b> FCFF when the capital structure keeps changing (unstable interest burden) — FCFE when valuing equity directly, or for banks (whose equity cash flow is what matters). Both must give the <i>same</i> equity value when assumptions are consistent — a strong cross-check.</p>
 <div class="callout"><b>Why does Mock 2 ask about FCFE?</b> Because FCFE is on the CFI curriculum — and now you can answer it: FCFE = FCFF − after-tax interest + net borrowing, discounted at CoE. Don't mix them up: discounting FCFE at WACC = the wrong cost of capital for the wrong cash flow.</div>`},
