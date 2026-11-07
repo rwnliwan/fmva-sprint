@@ -4782,6 +4782,7 @@ id: "hari-31", track: "30 Hari", title: "Hari 31 (Bonus) — IPO: dari Bookbuild
 sub: "Hari 31 (Bonus) · ±6 jam · IPO emiten BEI + dokumen deal",
 est: "6 jam",
 prerequisites: ["capstone"],
+driveFolder: "https://drive.google.com/drive/folders/1DDg-WJd2i4YtAAv8eH2ZmyPxl70VnB4H",
 sections: [
 {h: "Proses IPO di BEI, langkah demi langkah", body: `
 <p>IPO bukan satu peristiwa — ini <b>rantai 6–9 bulan</b> dengan 4 aktor: emiten, underwriter (penjamin emisi), OJK, dan BEI. Alurnya:</p>
@@ -4816,7 +4817,7 @@ sections: [
 </table>
 <p><b>Kesalahan klasik:</b> menyebut secondary offering sebagai "perusahaan mendapat dana" — kasnya masuk ke pemegang saham yang menjual, bukan ke kas perusahaan. Di model pro forma, hanya saham <i>baru</i> yang menambah kas &amp; ekuitas.</p>`},
 {h: "Tugas: bangun model IPO mini", body: `
-<p><b>Tugas (di workbook sendiri, tanpa Drive):</b> ambil satu emiten yang IPO 2024–2025 di BEI (cari prospektus ringkasnya): (1) catat jumlah saham ditawarkan, harga IPO, dan biaya emisi; (2) hitung gross &amp; net proceeds; (3) bangun neraca pro forma pra vs pasca-IPO dan cek balance; (4) bandingkan harga IPO dengan DCF sederhanamu (FCFF 1 tahun + TV Gordon) — tulis vonis 1 kalimat: "IPO ini murah/mahal/wajar karena …". Kriteria lolos: neraca pro forma balance, dan vonismu menyebut angka DCF — bukan perasaan.</p>`}
+<p><b>Tugas (di workbook Drive):</b> ambil satu emiten yang IPO 2024–2025 di BEI (cari prospektus ringkasnya): (1) catat jumlah saham ditawarkan, harga IPO, dan biaya emisi; (2) hitung gross &amp; net proceeds; (3) bangun neraca pro forma pra vs pasca-IPO dan cek balance; (4) bandingkan harga IPO dengan DCF sederhanamu (FCFF 1 tahun + TV Gordon) — tulis vonis 1 kalimat: "IPO ini murah/mahal/wajar karena …". Kriteria lolos: neraca pro forma balance, dan vonismu menyebut angka DCF — bukan perasaan.</p>`}
 ],
 quiz: [
 {q: "IPO: 200 juta saham baru @ Rp1.000, biaya emisi 3%. Net proceeds?", opts: ["Rp194 miliar","Rp200 miliar","Rp206 miliar","Rp6 miliar"], answer: 0, k: "ipo", diff: "Easy",
@@ -9570,7 +9571,7 @@ sections: [
 </table>
 <p><b>Classic mistake:</b> calling a secondary offering "the company raising funds" — the cash goes to the selling shareholder, not to company cash. In the pro forma model, only <i>new</i> shares add cash &amp; equity.</p>`},
 {h: "Task: build a mini IPO model", body: `
-<p><b>Task (in your own workbook, no Drive):</b> pick one issuer that IPO'd on the IDX in 2024–2025 (find its summary prospectus): (1) note shares offered, IPO price, and issue costs; (2) compute gross &amp; net proceeds; (3) build a pre vs post-IPO pro forma balance sheet and check it balances; (4) compare the IPO price with your simple DCF (1-year FCFF + Gordon TV) — write a 1-sentence verdict: "This IPO is cheap/expensive/fair because …". Pass criterion: the pro forma balance sheet balances, and your verdict cites a DCF number — not a feeling.</p>`}
+<p><b>Task (in the Drive workbook):</b> pick one issuer that IPO'd on the IDX in 2024–2025 (find its summary prospectus): (1) note shares offered, IPO price, and issue costs; (2) compute gross &amp; net proceeds; (3) build a pre vs post-IPO pro forma balance sheet and check it balances; (4) compare the IPO price with your simple DCF (1-year FCFF + Gordon TV) — write a 1-sentence verdict: "This IPO is cheap/expensive/fair because …". Pass criterion: the pro forma balance sheet balances, and your verdict cites a DCF number — not a feeling.</p>`}
 ],
 quiz: [
 {q: "IPO: 200 million new shares @ Rp1,000, 3% issue costs. Net proceeds?", opts: ["Rp194 billion","Rp200 billion","Rp206 billion","Rp6 billion"], answer: 0, k: "ipo", diff: "Easy",

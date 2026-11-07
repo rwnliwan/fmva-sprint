@@ -902,6 +902,7 @@ id: "real-10", track: "Real Cases", title: "JSMR: Jalan Tol sebagai Project Fina
 sub: "Real Case 10 · ±6 jam · DSCR, cashflow waterfall & debt sculpting",
 est: "6 jam",
 prerequisites: ["capstone"],
+driveFolder: "1S1Ao3PDGa3H6rbXMwL8GWfSsD7qbDmQ_",
 sections: [
 {h: "Kenapa jalan tol bukan DCF biasa", body: `
 <p>Project finance membiayai <b>satu proyek</b> (bukan perusahaan): SPV (special purpose vehicle) meminjam dengan jaminan arus kas proyek itu sendiri — tanpa recourse ke induk (JSMR) bila proyek gagal. Tiga hal yang membuatnya berbeda dari DCF korporat H09–H13:</p>
@@ -938,7 +939,7 @@ sections: [
 </table>
 <p>Hitungan tarif −10%: EBITDA 224; EBIT 144; EBT 64; pajak 14,08; CFADS = 224 − 14,08 − 20 = 189,92; DSCR = 189,92 ÷ 150 = 1,27×. Volume −20%: EBITDA 188; EBIT 108; EBT 28; pajak 6,16; CFADS = 188 − 6,16 − 20 = 161,84; DSCR = 161,84 ÷ 150 = 1,08×. <b>Pelajaran:</b> volume adalah risiko terbesar tol (tarif diatur &amp; naik berkala; volume tergantung ekonomi &amp; jalan alternatif). Itulah kenapa lender meminta traffic study independen sebelum signing — dan kenapa skenario volume-mu harus lebih lebar dari skenario tarif.</p>`},
 {h: "Tugas: bangun model project finance mini", body: `
-<p><b>Tugas (di workbook sendiri, tanpa Drive):</b> bangun model 5 tahun ruas tol contoh di atas: (1) sheet asumsi (tarif, volume, opex, capex perawatan, bunga, tenor); (2) CFADS + debt service per tahun + DSCR; (3) waterfall tahunan (revenue → distribusi); (4) dua skenario (tarif −10%, volume −20%) dengan switch CHOOSE (Excel L5); (5) satu baris "bankable?" (IF DSCR &gt;= 1,25 "YA" "TIDAK"). Kriteria lolos: DSCR base 1,45×, waterfall menutup ke 78, dan switch skenario mengubah seluruh model tanpa edit manual.</p>`}
+<p><b>Tugas (di workbook Drive):</b> bangun model 5 tahun ruas tol contoh di atas: (1) sheet asumsi (tarif, volume, opex, capex perawatan, bunga, tenor); (2) CFADS + debt service per tahun + DSCR; (3) waterfall tahunan (revenue → distribusi); (4) dua skenario (tarif −10%, volume −20%) dengan switch CHOOSE (Excel L5); (5) satu baris "bankable?" (IF DSCR &gt;= 1,25 "YA" "TIDAK"). Kriteria lolos: DSCR base 1,45×, waterfall menutup ke 78, dan switch skenario mengubah seluruh model tanpa edit manual.</p>`}
 ],
 quiz: [
 {q: "Base case tol: CFADS Rp218 miliar, debt service Rp150 miliar. DSCR dan vonis?", opts: ["1,45× — bankable (> 1,25×)","1,08× — zona bahaya","1,27× — masih di atas ambang","0,84× — default teknis"], answer: 0, k: "dscr", diff: "Easy",
@@ -1837,7 +1838,7 @@ sections: [
 </table>
 <p>Tariff −10% maths: EBITDA 224; EBIT 144; EBT 64; tax 14.08; CFADS = 224 − 14.08 − 20 = 189.92; DSCR = 189.92 ÷ 150 = 1.27×. Volume −20%: EBITDA 188; EBIT 108; EBT 28; tax 6.16; CFADS = 188 − 6.16 − 20 = 161.84; DSCR = 161.84 ÷ 150 = 1.08×. <b>Lesson:</b> volume is a toll road's biggest risk (tariffs are regulated &amp; rise periodically; volume depends on the economy &amp; alternative roads). That is why lenders demand an independent traffic study before signing — and why your volume scenarios must be wider than your tariff scenarios.</p>`},
 {h: "Task: build a mini project-finance model", body: `
-<p><b>Task (in your own workbook, no Drive):</b> build a 5-year model of the toll road above: (1) an assumptions sheet (tariff, volume, opex, maintenance capex, interest, tenor); (2) CFADS + debt service per year + DSCR; (3) the annual waterfall (revenue → distributions); (4) two scenarios (tariff −10%, volume −20%) with a CHOOSE switch (Excel L5); (5) one "bankable?" row (IF DSCR &gt;= 1.25 "YES" "NO"). Pass criterion: base DSCR 1.45×, the waterfall closes at 78, and the scenario switch moves the whole model with no manual edits.</p>`}
+<p><b>Task (in the Drive workbook):</b> build a 5-year model of the toll road above: (1) an assumptions sheet (tariff, volume, opex, maintenance capex, interest, tenor); (2) CFADS + debt service per year + DSCR; (3) the annual waterfall (revenue → distributions); (4) two scenarios (tariff −10%, volume −20%) with a CHOOSE switch (Excel L5); (5) one "bankable?" row (IF DSCR &gt;= 1.25 "YES" "NO"). Pass criterion: base DSCR 1.45×, the waterfall closes at 78, and the scenario switch moves the whole model with no manual edits.</p>`}
 ],
 quiz: [
 {q: "Base-case toll road: CFADS Rp218 billion, debt service Rp150 billion. DSCR and verdict?", opts: ["1.45× — bankable (> 1.25×)","1.08× — danger zone","1.27× — still above the threshold","0.84× — technical default"], answer: 0, k: "dscr", diff: "Easy",

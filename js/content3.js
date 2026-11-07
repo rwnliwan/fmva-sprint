@@ -558,6 +558,7 @@ id: "excel-l6", track: "Excel", title: "Excel Data Prep & Automation: Power Quer
 sub: "Excel L6 · ±6 jam · Bersihkan data sekali, pakai selamanya",
 est: "6 jam",
 prerequisites: ["hardcode_rule"],
+driveFolder: "https://drive.google.com/drive/folders/1ZemMXTh95PAjLRZc_kSY2MDJOuywblrt",
 sections: [
 {h: "Power Query: bersihkan data sekali, pakai selamanya", body: `
 <p>Analis menghabiskan 80% waktunya membersihkan data — dan kebanyakan melakukannya manual, tiap bulan, dengan cara yang sama. <b>Power Query</b> (Data → Get Data) mengubah pembersihan itu jadi <i>resep yang bisa diulang</i>: tiap bulan, data baru masuk, klik Refresh, dan seluruh langkah berjalan lagi otomatis.</p>
@@ -596,7 +597,7 @@ sections: [
 </table>
 <p><b>Latihan:</b> kerjakan satu tugas H18 (rolling forecast) tanpa menyentuh mouse kecuali untuk klik Refresh Power Query. Lambat di hari pertama, 2× lebih cepat di hari kelima — dan lebih sedikit salah ketik karena tanganmu tidak berpindah-pindah.</p>`},
 {h: "Tugas: pipeline penjualan warung end-to-end", body: `
-<p><b>Tugas (di workbook sendiri, tanpa Drive):</b> (1) buat folder dengan 3 file CSV penjualan (Jan–Mar, format tanggal berbeda); (2) bangun 1 Power Query: ambil dari folder → samakan format tanggal → unpivot → load ke tabel; (3) buat PivotTable dari tabel itu: revenue per produk per bulan + drill-down ke satu anomali yang kamu sisipkan sengaja; (4) rekam macro yang memformat laporan (header tebal, angka Rp, print area) lalu edit hasil rekamannya agar berlaku ke semua sheet (loop For Each). Kriteria lolos: tambah file CSV April → Refresh → PivotTable &amp; laporan ikut berubah tanpa edit manual.</p>`}
+<p><b>Tugas (di workbook Drive):</b> (1) ekspor sheet RAW_Jan/Feb/Mar jadi 3 file CSV di satu folder (datanya sudah ada di workbook); (2) bangun 1 Power Query: ambil dari folder → samakan format tanggal → unpivot → load ke tabel; (3) buat PivotTable dari tabel itu: revenue per produk per bulan + drill-down ke satu anomali yang kamu sisipkan sengaja; (4) rekam macro yang memformat laporan (header tebal, angka Rp, print area) lalu edit hasil rekamannya agar berlaku ke semua sheet (loop For Each). Kriteria lolos: tambah file CSV April → Refresh → PivotTable &amp; laporan ikut berubah tanpa edit manual.</p>`}
 ],
 quiz: [
 {q: "Prinsip #1 Power Query: data baru bulan depan ditangani dengan cara…", opts: ["Taruh file di folder → Refresh query","Copy-paste manual lagi","Edit hasil load langsung","Buat query baru dari nol"], answer: 0, k: "power_query", diff: "Easy",
@@ -1187,7 +1188,7 @@ sections: [
 </table>
 <p><b>Exercise:</b> do one Day 18 task (rolling forecast) without touching the mouse except to click Refresh in Power Query. Slow on day one, 2× faster by day five — and fewer typos because your hands stop moving back and forth.</p>`},
 {h: "Task: end-to-end warung sales pipeline", body: `
-<p><b>Task (in your own workbook, no Drive):</b> (1) make a folder with 3 sales CSVs (Jan–Mar, different date formats); (2) build 1 Power Query: pull from the folder → unify date formats → unpivot → load to a table; (3) make a PivotTable from that table: revenue per product per month + drill down into one anomaly you planted on purpose; (4) record a macro that formats the report (bold headers, Rp numbers, print area), then edit the recording so it applies to all sheets (For Each loop). Pass criterion: add an April CSV → Refresh → the PivotTable &amp; report update with no manual edits.</p>`}
+<p><b>Task (in the Drive workbook):</b> (1) export sheets RAW_Jan/Feb/Mar as 3 CSVs in one folder (the data is already in the workbook); (2) build 1 Power Query: pull from the folder → unify date formats → unpivot → load to a table; (3) make a PivotTable from that table: revenue per product per month + drill down into one anomaly you planted on purpose; (4) record a macro that formats the report (bold headers, Rp numbers, print area), then edit the recording so it applies to all sheets (For Each loop). Pass criterion: add an April CSV → Refresh → the PivotTable &amp; report update with no manual edits.</p>`}
 ],
 quiz: [
 {q: "Power Query rule #1: next month's new data is handled by…", opts: ["Dropping the file in the folder → Refresh query","Copy-pasting manually again","Editing the loaded output directly","Building a new query from scratch"], answer: 0, k: "power_query", diff: "Easy",
