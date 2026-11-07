@@ -224,7 +224,37 @@ sections: [
 <li><b>Effective tax rate</b> = beban pajak ÷ EBT. Beda dengan tarif statutori bila ada penyesuaian fiskal.</li>
 <li><b>Common-size IS</b> = IS dinyatakan sebagai % dari revenue. Untuk membandingkan struktur biaya antar tahun/perusahaan.</li>
 </ul>`}
-],
+,
+{h: "Rasio: lima keluarga dalam satu halaman", body: `
+<p>Satu rasio tidak bercerita apa-apa. Lima keluarga rasio — dibaca bersama — bercerita tentang kesehatan perusahaan. Inilah taksonomi yang dipakai analis di mana-mana:</p>
+<table class="brutal">
+<tr><th>Keluarga</th><th>Rasio kunci</th><th>Rumus</th><th>Yang ditanyakan</th></tr>
+<tr><td><b>Profitabilitas</b></td><td>Gross margin, net margin, ROE, ROIC</td><td>ROE = NI ÷ Ekuitas; ROIC = NOPAT ÷ Modal</td><td>Apakah bisnisnya menguntungkan &amp; efisien memakai modal?</td></tr>
+<tr><td><b>Likuiditas</b></td><td>Current ratio, quick ratio, cash ratio</td><td>Current = Aset lancar ÷ Liabilitas lancar</td><td>Bisakah membayar tagihan 12 bulan ke depan?</td></tr>
+<tr><td><b>Leverage</b></td><td>Debt-to-equity, debt-to-assets, interest coverage</td><td>D/E = Total utang ÷ Ekuitas; Coverage = EBIT ÷ Bunga</td><td>Apakah utangnya sudah kelewatan?</td></tr>
+<tr><td><b>Efisiensi</b></td><td>Perputaran aset, DSO/DIO/DPO, CCC</td><td>Perputaran = Revenue ÷ Aset</td><td>Seberapa cepat aset berubah jadi kas?</td></tr>
+<tr><td><b>Pertumbuhan</b></td><td>g revenue, g laba, g EPS</td><td>(Tahun ini ÷ Tahun lalu) − 1</td><td>Apakah pertumbuhannya sehat atau dibeli dengan utang?</td></tr>
+</table>
+<p><b>Aturan baca:</b> (1) bandingkan dengan <b>peer se-industri</b>, bukan angka absolut — current ratio 0,67 bisa sehat untuk distributor dan gawat untuk manufaktur; (2) baca <b>tren 3–5 tahun</b>, bukan satu tahun; (3) satu rasio aneh = pertanyaan, bukan vonis — cek footnotes sebelum menyimpulkan.</p>
+<div class="example jebakan"><div class="lbl">🚫 Jebakan: rasio tanpa konteks</div>
+<p>ROE 40% terlihat hebat — sampai kamu lihat ekuitasnya tinggal Rp1 karena rugi bertahun-tahun. ROE tinggi dari ekuitas yang menyusut = ilusi. Selalu baca ROE bersama ROIC dan D/E.</p></div>`},
+{h: "Membaca LK: UNVR vs ASII — dua struktur yang berlawanan", body: `
+<p>Angka di bawah <b>ilustratif (dibulatkan untuk latihan)</b>, bukan kutipan LK resmi — yang dilatih di sini adalah cara membacanya:</p>
+<table class="brutal">
+<tr><th></th><th>UNVR (consumer, ilustratif)</th><th>ASII (konglomerat, ilustratif)</th></tr>
+<tr><td>Current ratio</td><td>8,0 ÷ 12,0 = <b>0,67×</b></td><td>180 ÷ 120 = <b>1,50×</b></td></tr>
+<tr><td>Quick ratio</td><td>(8,0 − 2,5) ÷ 12,0 = <b>0,46×</b></td><td>(180 − 60) ÷ 120 = <b>1,00×</b></td></tr>
+<tr><td>Debt-to-equity</td><td>10 ÷ 4 = <b>2,50×</b></td><td>150 ÷ 200 = <b>0,75×</b></td></tr>
+<tr><td>Interest coverage</td><td>6 ÷ 1 = <b>6,0×</b></td><td>40 ÷ 5 = <b>8,0×</b></td></tr>
+</table>
+<p><b>Bacaan analis:</b> UNVR current ratio &lt; 1 bukan otomatis gawat — perusahaan consumer dengan perputaran persediaan cepat dan pemasok yang memberi termin panjang <i>sengaja</i> beroperasi dengan modal kerja negatif: kas pelanggan masuk sebelum tagihan pemasok jatuh tempo. Yang wajib dicek: apakah coverage 6,0× cukup menahan guncangan, dan apakah D/E 2,50× diimbangi arus kas yang stabil. ASII sebaliknya: neraca tebal, likuiditas 1,50×, leverage rendah — bantalan besar, tapi perputaran asetnya lebih lambat. <b>Pelajaran:</b> rasio yang sama, vonis yang berbeda — tergantung model bisnisnya.</p>`},
+{h: "CVP: break-even & margin of safety", body: `
+<p>Sebelum memodelkan revenue, tanyakan: di titik mana perusahaan mulai untung? Analisis <b>cost-volume-profit (CVP)</b> menjawabnya dengan tiga angka:</p>
+<div class="formula">Kontribusi per unit = Harga − Biaya variabel · BEP (unit) = Biaya tetap ÷ Kontribusi per unit</div>
+<div class="example warung"><div class="lbl">🏪 Contoh warung</div>
+<p>Kopi: harga Rp20rb, biaya variabel Rp12rb → kontribusi Rp8rb per gelas. Biaya tetap (sewa + gaji) Rp800rb/bulan. BEP = 800 ÷ 8 = <b>100 gelas/bulan</b>. Jual 150 gelas → laba = (150 − 100) × 8 = Rp400rb. <b>Margin of safety</b> = (150 − 100) ÷ 150 = <b>33,3%</b> — penjualan boleh turun sepertiga sebelum rugi.</p></div>
+<p><b>Kenapa analis peduli:</b> BEP yang tinggi = <i>operating leverage</i> tinggi (H02 § opex): sedikit penurunan volume, laba jatuh dalam. Itulah alasan perusahaan berbiaya tetap besar (pabrik, tambang, maskapai) punya laba yang jauh lebih volatil daripada revenue-nya. Saat memodelkan skenario bear di H13/H15, cek dulu berapa jauh volume dari BEP.</p>
+<div class="callout"><b>Jembatan ke H18:</b> CVP adalah versi sederhana dari flex budget — begitu volume bergerak, biaya variabel ikut, biaya tetap tidak. Rumus yang sama, skala yang lebih besar.</div>`}],
 quiz: [
 {q: "Warung: 50 pelanggan/hari × Rp20rb × 26 hari buka. Proyeksi revenue sebulan?", opts: ["Rp20jt","Rp26jt","Rp13jt","Rp52jt"], answer: 1, k: "revenue_modeling", diff: "Easy",
  hints: ["Revenue = volume × harga × periode.", "50 × 20.000 × 26 = ?"],
@@ -249,7 +279,17 @@ quiz: [
  explain: "0,10 × 1,25 × 2,0 = 25%. Tiga tuas dikalikan — bukan dijumlah."},
 {q: "Kontrak 12 bln Rp12jt: barang Rp2jt diserahkan saat tanda tangan, servis Rp10jt selama 12 bln. Revenue bulan 1?", opts: ["Rp1jt","Rp2,83jt","Rp12jt","Rp2jt"], answer: 1, k: "rev_recog", diff: "Medium",
  hints: ["Barang 2jt diakui saat diserahkan (point-in-time); servis 10jt/12 per bulan (over-time).","2 + 10÷12 = ?"],
- explain: "2 + 0,83 = Rp2,83jt. Sisanya Rp9,17jt = liabilitas kontrak, bukan revenue — kas sudah diterima ≠ revenue sudah diakui."}
+ explain: "2 + 0,83 = Rp2,83jt. Sisanya Rp9,17jt = liabilitas kontrak, bukan revenue — kas sudah diterima ≠ revenue sudah diakui."},
+{q: "Aset lancar Rp8.000jt, liabilitas lancar Rp12.000jt. Current ratio?", opts: ["0,67×","1,50×","0,46×","2,50×"], answer: 0, k: "current_ratio", diff: "Easy",
+ hints: ["Current ratio = aset lancar ÷ liabilitas lancar.", "8.000 ÷ 12.000 = ?"],
+ explain: "8.000 ÷ 12.000 = 0,67×. Di bawah 1 — tanyakan dulu model bisnisnya sebelum panik (H02 § UNVR vs ASII)."},
+{q: "Utang Rp10T, ekuitas Rp4T, EBIT Rp6T, bunga Rp1T. D/E dan interest coverage?", opts: ["D/E 2,50×; coverage 6,0×","D/E 0,40×; coverage 6,0×","D/E 2,50×; coverage 1,0×","D/E 0,40×; coverage 0,17×"], answer: 0, k: "leverage_ratio", diff: "Medium",
+ hints: ["D/E = utang ÷ ekuitas; coverage = EBIT ÷ bunga.", "10 ÷ 4 = ?; 6 ÷ 1 = ?"],
+ explain: "D/E = 10 ÷ 4 = 2,50×; coverage = 6 ÷ 1 = 6,0×. Leverage tinggi tapi bunga masih tertutup 6 kali."},
+{q: "Harga Rp20rb, biaya variabel Rp12rb, biaya tetap Rp800rb/bulan. BEP dan margin of safety pada 150 unit?", opts: ["100 unit; 33,3%","160 unit; 20%","66 unit; 50%","100 unit; 50%"], answer: 0, k: "cvp", diff: "Medium",
+ hints: ["Kontribusi = 20 − 12 = 8; BEP = 800 ÷ 8.", "Margin of safety = (150 − BEP) ÷ 150."],
+ explain: "Kontribusi Rp8rb; BEP = 800 ÷ 8 = 100 unit. Margin of safety = (150 − 100) ÷ 150 = 33,3%."}
+
 ],
 hellPass: 80,
 hell: [
@@ -360,7 +400,14 @@ sections: [
 <li><b>Float</b> — kas yang "mengambang" karena perbedaan waktu bayar vs terima. CCC negatif = float positif.</li>
 <li><b>ΔWC</b> — perubahan working capital. Naik = kas keluar; turun = kas masuk.</li>
 </ul>`}
-],
+,
+{h: "EFN: berapa dana eksternal yang dibutuhkan?", body: `
+<p>Forecast tumbuh → aset harus tumbuh → siapa yang membiayainya? <b>EFN (external financing needed)</b> menjawab dengan satu rumus — dan rumus ini adalah jembatan dari neraca (H03) ke forecast (H08):</p>
+<div class="formula">EFN = (Aset ÷ Sales) × ΔSales − (Liabilitas spontan ÷ Sales) × ΔSales − Margin × Sales₁ × (1 − Payout)</div>
+<div class="example warung"><div class="lbl">🏪 Contoh — Warung Septian</div>
+<p>Sales Rp1.000jt, tumbuh 20% → ΔSales Rp200jt. Aset/Sales 0,6 → butuh aset +Rp120jt. Liabilitas spontan/Sales 0,3 → pemasok &amp; akrual menutup Rp60jt. Margin 10% → laba atas sales baru Rp1.200jt × 10% = Rp120jt; payout 40% → laba ditahan Rp72jt. EFN = 120 − 60 − 72 = <b>−Rp12jt</b>. Negatif = <b>surplus</b>: pertumbuhan ini membiayai dirinya sendiri, tidak perlu utang/ekuitas baru.</p></div>
+<p><b>Tiga tuas bila EFN positif:</b> (1) turunkan payout (tahan laba lebih banyak); (2) perbaiki efisiensi aset — putaran persediaan/piutang lebih cepat = Aset/Sales turun; (3) negosiasikan termin pemasok lebih panjang. Perusahaan yang tumbuh cepat tapi margin tipis dan payout besar adalah kandidat klasik krisis kas — persis yang diuji di H08 saat kamu mem-forecast neraca: kalau plug kasmu negatif, EFN-lah yang menjelaskan kenapa.</p>
+<div class="callout"><b>Cek silang:</b> EFN positif besar + D/E sudah 2,50× (H02) = lampu merah. EFN adalah angka pertama yang ditanyakan kreditur saat perusahaan minta tambahan fasilitas.</div>`}],
 quiz: [
 {q: "DSO 30 hari artinya?", opts: ["Perusahaan membayar supplier dalam 30 hari","Stok rata-rata habis terjual dalam 30 hari","Rata-rata 30 hari dari penjualan sampai kas diterima","Kas perusahaan bertahan 30 hari tanpa penjualan"], answer: 2, k: "dso_dio_dpo", diff: "Easy",
  hints: ["DSO = Days SALES Outstanding — soal penjualan.", "Piutang ÷ revenue × 365."],
@@ -379,7 +426,14 @@ quiz: [
  explain: "DPO +15 → CCC turun 15 hari. Supplier membiayai operasi lebih lama = kas lebih lega. (Hari 03 § DSO, DIO, DPO)"},
 {q: "NI Rp1.700rb, depresiasi Rp400rb, ΔWC +Rp250rb (naik). Perkiraan arus kas operasi?", opts: ["Rp1.850rb","Rp2.350rb","Rp1.450rb","Rp2.100rb"], answer: 0, k: "working_capital", diff: "Hard",
  hints: ["CFO = NI + beban non-kas − ΔWC.", "1.700 + 400 − 250 = ?"],
- explain: "1.700 + 400 − 250 = Rp1.850rb. Jebakan: lupa add-back (1.450) atau salah tanda ΔWC (2.350). (Hari 03 § Jembatan ke arus kas)"}
+ explain: "1.700 + 400 − 250 = Rp1.850rb. Jebakan: lupa add-back (1.450) atau salah tanda ΔWC (2.350). (Hari 03 § Jembatan ke arus kas)"},
+{q: "Sales Rp1.000jt tumbuh 20%; Aset/Sales 0,6; liabilitas spontan/Sales 0,3; margin 10%; payout 40%. EFN?", opts: ["Surplus Rp12jt (EFN −12)","Butuh Rp12jt","Butuh Rp48jt","Butuh Rp120jt"], answer: 0, k: "efn", diff: "Medium",
+ hints: ["EFN = 120 − 60 − 72.", "Negatif = surplus, bukan kebutuhan."],
+ explain: "ΔAset 120 − Δliabilitas spontan 60 − laba ditahan 72 = −12. Surplus Rp12jt: pertumbuhan membiayai dirinya sendiri."},
+{q: "EFN positif besar. Tuas pertama yang paling cepat menurunkannya tanpa mengubah operasi?", opts: ["Menurunkan payout ratio (menahan laba)","Menaikkan harga jual","Menambah utang bank","Menjual aset tetap"], answer: 0, k: "efn", diff: "Easy",
+ hints: ["Laba ditahan = sumber dana internal.", "Payout turun → (1 − payout) naik → pengurang EFN membesar."],
+ explain: "Menurunkan payout menambah laba ditahan, pengurang langsung EFN. Utang bank justru adalah EFN itu sendiri — bukan solusi, melainkan kebutuhan yang diukur."}
+
 ],
 hellPass: 80,
 hell: [
@@ -1307,7 +1361,33 @@ sections: [
 <li><b>Utang usaha ≠ utang WACC.</b> Non-bunga tidak masuk D/V.</li>
 </ul>
 <div class="callout"><b>Kenapa daftar ini sebelum menghitung TV?</b> Karena terminal value = 80–90% nilai DCF. Kesalahan konsep di WACC/FCFF yang terbawa ke TV = kesalahan yang <i>diperbesar</i> ratusan kali. Fondasi dulu, menara kemudian.</div>`}
-],
+,
+{h: "APV: nilai perusahaan saat utang berubah-ubah", body: `
+<p>DCF via WACC (H09) mengasumsikan struktur modal <b>tetap</b>. Di LBO (H17) itu salah: utang dilunasi tiap tahun, D/E jatuh, WACC yang benar berubah tiap tahun. <b>APV (Adjusted Present Value)</b> memisahkan dua hal:</p>
+<div class="formula">APV = Nilai perusahaan tanpa utang (VU) + PV tax shield</div>
+<div class="example korporat"><div class="lbl">🏢 Contoh — utang diamortisasi 4 tahun</div>
+<p>FCFF Rp100jt tumbuh 3%, Ku (cost of capital tanpa utang) 11% → VU = 100 × 1,03 ÷ (0,11 − 0,03) = <b>Rp1.287,50jt</b>. Utang Rp400jt bunga 8%, diamortisasi Rp100jt/tahun, pajak 22%. Tax shield per tahun = bunga × 22%: tahun 1: 32 × 22% = 7,04; tahun 2: 24 × 22% = 5,28; tahun 3: 3,52; tahun 4: 1,76. Didiskon di Kd 8%: 6,52 + 4,53 + 2,79 + 1,29 = <b>PV tax shield Rp15,13jt</b>. APV = 1.287,50 + 15,13 = <b>Rp1.302,63jt</b>.</p></div>
+<p><b>Kapan APV &gt; WACC:</b> (1) leverage berubah drastis (LBO, restrukturisasi, project finance); (2) ada tax shield non-utang yang besar (NOL, H20); (3) utang bersubsidi. <b>Kapan WACC cukup:</b> struktur modal stabil seperti INDF di H13. Cross-check LBO di H17: nilai via APV harus mendekati nilai via IRR/MoIC — kalau jauh, salah satu asumsi utangmu bocor.</p>
+<div class="callout"><b>Perangkap:</b> mendiskon tax shield di Ku (bukan Kd) saat utang sudah pasti — itu mengecilkan PV tax shield tanpa alasan. Utang yang sudah dijadwalkan = risiko utang (Kd).</div>`},
+{h: "Economic profit: cek silang DCF dalam 2 menit", body: `
+<p><b>Economic profit (EP)</b> = NOPAT − (WACC × Modal). Perusahaan menciptakan nilai hanya bila NOPAT melebihi biaya modalnya — dan nilai perusahaan = modal yang sudah ditanam + PV semua EP masa depan:</p>
+<div class="formula">Nilai = Modal₀ + EP₁ ÷ (WACC − g)</div>
+<div class="example korporat"><div class="lbl">🏢 Contoh — tutup dengan DCF</div>
+<p>NOPAT Rp150jt, modal Rp1.000jt, WACC 10% → EP = 150 − 100 = <b>Rp50jt</b>. EP tumbuh 3% → PV(EP) = 50 ÷ (0,10 − 0,03) = <b>Rp714,29jt</b> → Nilai = 1.000 + 714,29 = <b>Rp1.714,29jt</b>. Cek DCF: investasi neto = 3% × 1.000 = 30 → FCFF = 150 − 30 = 120 → EV = 120 ÷ (0,10 − 0,03) = <b>Rp1.714,29jt — sama persis</b>. Dua jalur, satu jawaban. Kalau hasilmu beda, ada yang tidak konsisten antara pertumbuhan modal dan FCFF-mu.</p></div>
+<p><b>Kenapa EP berguna:</b> EP tahunan menunjukkan <i>kapan</i> nilai diciptakan — DCF 10 tahun yang nilainya 80% dari terminal value (seperti UNVR di real-01) terlihat mencurigakan lewat lensa EP: EP tahun-tahun awal kecil, semua nilai bertumpu pada asumsi g. EP adalah alat audit tercepat untuk thesis H13.</p>`},
+{h: "Country risk premium: CAPM untuk emerging market", body: `
+<p>CAPM H09 memakai Rf dan ERP Amerika seolah semua negara sama risikonya. Untuk emiten Indonesia, tambah <b>country risk premium (CRP)</b>:</p>
+<div class="formula">Ke = Rf + β × ERP + CRP (atau λ × CRP bila eksposur parsial)</div>
+<div class="example korporat"><div class="lbl">🏢 Contoh — harga sebuah 2,5%</div>
+<p>Rf AS 4%, ERP 5%, β 1,2, CRP Indonesia 2,5% → Ke = 4 + 1,2 × 5 + 2,5 = <b>12,5%</b> (tanpa CRP: 10%). Dampak ke nilai: FCFF Rp100jt, g 3% → EV dengan CRP = 103 ÷ (0,125 − 0,03) = <b>Rp1.084,21jt</b>; tanpa CRP = 103 ÷ 0,07 = <b>Rp1.471,43jt</b>. CRP memangkas nilai <b>26%</b> — bukan detail kecil. λ (lambda) menyesuaikan: eksportir yang pendapatannya dolar mungkin λ = 0,7 → Ke = 4 + 6 + 1,75 = 11,75%.</p></div>
+<p><b>Dari mana CRP?</b> Praktik umum: selisih yield obligasi pemerintah USD vs UST (sovereign spread) ditambah penyesuaian ekuitas. Jangan pakai CRP untuk perusahaan yang pendapatannya sudah 100% domestik dengan λ = 1 lalu didiskon ganda lewat skenario bear yang sama — itu double-counting risiko yang sama dua kali. Satu risiko, satu tempat.</p>`},
+{h: "Struktur modal: trade-off, pecking order & titik impas EBIT–EPS", body: `
+<p>Berapa utang yang optimal? Dua teori bersaing — dan keduanya benar, di perusahaan yang berbeda:</p>
+<p><b>Trade-off theory:</b> utang menambah nilai lewat tax shield, tapi menambah biaya distress. Optimal di titik marginal tax shield = marginal biaya distress. Perusahaan stabil berarus kas kuat (TLKM, BBCA) bisa menahan utang lebih besar; perusahaan volatil (tambang, properti) tidak.</p>
+<p><b>Pecking order theory:</b> perusahaan lebih suka dana internal dulu, lalu utang, terakhir ekuitas baru (karena ekuitas baru memberi sinyal negatif ke pasar). Ini menjelaskan kenapa perusahaan profitable sering <i>under-levered</i> — bukan karena takut utang, tapi karena tidak butuh.</p>
+<div class="formula">Titik impas EBIT–EPS: EBIT* saat EPS rencana utang = EPS rencana ekuitas</div>
+<div class="example korporat"><div class="lbl">🏢 Contoh — EBIT* = Rp800jt</div>
+<p>Butuh dana Rp4.000jt. Rencana A (ekuitas): 1.000 saham. Rencana B (utang): bunga 8% × 4.000 = Rp320jt, 600 saham. Pajak 22%. Samakan EPS: EBIT × 0,78 ÷ 1.000 = (EBIT − 320) × 0,78 ÷ 600 → EBIT* = <b>Rp800jt</b>. Cek: EPS = 800 × 0,78 ÷ 1.000 = Rp0,624; rencana B: (800 − 320) × 0,78 ÷ 600 = Rp0,624 ✓. Di atas EBIT Rp800jt, utang menang (leverage mengangkat EPS); di bawahnya, utang justru menekan EPS. EBIT–EPS bukan pengganti NPV — ini alat cepat sebelum kamu membangun model lengkapnya.</p></div>`}],
 quiz: [
 {q: "CFO Rp2.450rb, capex Rp2.500rb. FCFF 2027?", opts: ["−Rp50rb","Rp4.950rb","Rp2.450rb","Rp50rb"], answer: 0, k: "fcff", diff: "Easy",
  hints: ["FCFF = CFO − capex.","2.450 − 2.500 = ?"],
@@ -1332,7 +1412,20 @@ quiz: [
  explain: "500 − 100×0,78 + 80 = 502. Bunga after-tax 78, bukan 100 — pajak sudah menanggung 22-nya."},
 {q: "Obligasi nominal Rp1.000rb, kupon 8%, YTM 10%, tenor 3 tahun. Harganya?", opts: ["Rp950,26rb","Rp1.000rb","Rp975,13rb","Rp811,42rb"], answer: 0, k: "ytm_price", diff: "Medium",
  hints: ["Harga = PV kupon + PV pokok pada YTM 10%.","80÷1,1 + 80÷1,21 + 1.080÷1,331 = ? (975,13 itu harga kupon 9%; 811,42 hanya PV pokoknya.)"],
- explain: "72,73 + 66,12 + 811,42 = Rp950,26rb (jumlah komponen terbulatkan 950,27 — selisih 0,01 dari pembulatan) — diskon, karena kupon 8% < YTM 10%."}
+ explain: "72,73 + 66,12 + 811,42 = Rp950,26rb (jumlah komponen terbulatkan 950,27 — selisih 0,01 dari pembulatan) — diskon, karena kupon 8% < YTM 10%."},
+{q: "VU Rp1.287,50jt; PV tax shield utang diamortisasi Rp15,13jt. APV?", opts: ["Rp1.302,63jt","Rp1.287,50jt","Rp1.272,37jt","Rp1.375,50jt"], answer: 0, k: "apv", diff: "Easy",
+ hints: ["APV = VU + PV tax shield.", "1.287,50 + 15,13 = ?"],
+ explain: "APV = 1.287,50 + 15,13 = Rp1.302,63jt. (Rp1.375,50 adalah APV bila utang Rp400jt permanen — bukan kasus amortisasi ini.)"},
+{q: "NOPAT Rp150jt, modal Rp1.000jt, WACC 10%, EP tumbuh 3%. Nilai perusahaan via economic profit?", opts: ["Rp1.714,29jt","Rp1.500,00jt","Rp1.287,50jt","Rp2.000,00jt"], answer: 0, k: "economic_profit", diff: "Medium",
+ hints: ["EP = 150 − 10% × 1.000 = 50.", "Nilai = 1.000 + 50 ÷ (0,10 − 0,03)."],
+ explain: "EP = Rp50jt; PV(EP) = 50 ÷ 0,07 = 714,29; nilai = 1.000 + 714,29 = Rp1.714,29jt — sama dengan DCF (FCFF 120 ÷ 0,07)."},
+{q: "Rf 4%, ERP 5%, beta 1,2, CRP Indonesia 2,5%. Cost of equity?", opts: ["12,5%","10,0%","11,75%","13,0%"], answer: 0, k: "country_risk", diff: "Easy",
+ hints: ["Ke = 4 + 1,2 × 5 + 2,5.", "Tanpa CRP jawabannya 10%."],
+ explain: "Ke = 4 + 6 + 2,5 = 12,5%. CRP 2,5% memangkas EV contoh di lesson sebesar 26%."},
+{q: "Rencana ekuitas 1.000 saham vs rencana utang (bunga Rp320jt) 600 saham, pajak 22%. EBIT impas?", opts: ["Rp800jt","Rp320jt","Rp624jt","Rp1.000jt"], answer: 0, k: "ebit_eps", diff: "Medium",
+ hints: ["Samakan EPS: EBIT × 0,78 ÷ 1.000 = (EBIT − 320) × 0,78 ÷ 600.", "Di atas EBIT ini, utang menang."],
+ explain: "EBIT* = Rp800jt (cek: EPS kedua rencana = Rp0,624). Di atas 800 utang mengangkat EPS; di bawahnya menekan EPS."}
+
 ],
 hell: [
 {q: "A: beta 0,8; B: beta 1,5 (Rf & MRP sama). Mana CoE lebih tinggi, kenapa?", opts: ["B — beta lebih tinggi = risiko sistematis lebih besar","A — beta rendah = mahal","Sama persis","Tidak bisa dibandingkan"], answer: 0, diff: "Medium",
@@ -1622,7 +1715,14 @@ sections: [
 <li><b>Rentang, bukan titik.</b> Output hari ini = lapangan 62,18–102,73T, bukan "INDF = 78,18T".</li>
 </ul>
 <div class="callout"><b>Kenapa tabel ini menutup hari?</b> Karena comps adalah mesin pembenar tercepat di valuasi: pilih peer yang "tepat", dapat angka yang diinginkan. Satu-satunya rem = <b>keterbukaan</b>: jangkar apa, ilustrasi apa, bertanggal kapan. Analis yang jujur soal ini lebih dipercaya dari analis yang "tepat" tapi buram.</div>`}
-],
+,
+{h: "Dari control premium ke DLOM: harga ketiadaan kontrol & likuiditas", body: `
+<p>H11 sudah mengajarkan control premium: pembeli kendali membayar lebih. Sisi sebaliknya sama pentingnya — <b>minority discount</b> dan <b>DLOM (discount for lack of marketability)</b>:</p>
+<div class="formula">Nilai minoritas = Nilai kendali × (1 − diskon minoritas) · Nilai tak-likuid = Nilai minoritas × (1 − DLOM)</div>
+<div class="example korporat"><div class="lbl">🏢 Contoh — dua diskon berlapis</div>
+<p>Nilai perusahaan dengan kendali Rp1.000jt. Saham minoritas 10% tanpa kendali: diskon minoritas 20% → 1.000 × 0,80 = <b>Rp800jt</b>. Sahamnya juga tidak diperdagangkan di bursa (perusahaan tertutup): DLOM 25% → 800 × 0,75 = <b>Rp600jt</b>. Diskon gabungan = 1 − 0,80 × 0,75 = <b>40%</b>. Urutan penting: diskon minoritas dulu, DLOM kemudian — membaliknya memberi angka yang sama di sini, tapi urutan ini yang dipakai penilai karena alasannya berbeda (kontrol vs likuiditas).</p></div>
+<p><b>Kapan ini muncul di ujian &amp; praktik:</b> valuasi perusahaan tertutup, sengketa pemegang saham minoritas, dan PPA (H16) saat menilai NCI — NCI hampir selalu minoritas dan sering tak-likuid. <b>Convertibles &amp; opsi saham</b> juga mengubah hitungan: obligasi konversi Rp1.000jt yang bisa ditukar 100 saham — bila harga saham Rp12, nilai konversi = 100 × 12 = Rp1.200jt &gt; nilai obligasi → pemegang akan konversi; DCF-mu harus memakai saham terdilusi (treasury stock method, H20), bukan saham beredar saja.</p>
+<div class="callout"><b>Perangkap:</b> menerapkan DLOM pada saham emiten BEI yang likuid. DLOM hanya untuk saham yang <i>tidak bisa dijual cepat</i> — saham publik likuid sudah mencerminkan marketability di harganya.</div>`}],
 quiz: [
 {q: "EV/EBITDA lima emiten: 7,76 / 7,86 / 8,18 / 8,57 / 9,99. Mediannya?", opts: ["8,18×","8,57×","8,38×","9,99×"], answer: 0, k: "med_ev", diff: "Easy",
  hints: ["Urutkan dari kecil ke besar, ambil nilai tengah.","Data ke-3 dari 5 = ?"],
@@ -1644,7 +1744,14 @@ quiz: [
  explain: "11,25 × 9,00 = Rp101,25T → ekuitas 81,25T. Mendarat di zona keyakinan 78,18–89,38 — cross-check ketiga yang sepakat."},
 {q: "P/E INDF 11,25×, pertumbuhan EPS 8%. PEG?", opts: ["1,41×","1,00×","11,25×","0,71×"], answer: 0, k: "peg", diff: "Easy",
  hints: ["PEG = P/E ÷ growth.","11,25 ÷ 8 = ?"],
- explain: "11,25 ÷ 8 = 1,41×. Di atas 1,0× (patokan Lynch) — pasar membayar premi 41% atas pertumbuhan INDF."}
+ explain: "11,25 ÷ 8 = 1,41×. Di atas 1,0× (patokan Lynch) — pasar membayar premi 41% atas pertumbuhan INDF."},
+{q: "Nilai kendali Rp1.000jt; diskon minoritas 20%; DLOM 25%. Nilai saham minoritas tak-likuid?", opts: ["Rp600jt","Rp800jt","Rp550jt","Rp750jt"], answer: 0, k: "dlom", diff: "Medium",
+ hints: ["1.000 × (1 − 20%) × (1 − 25%).", "Diskon gabungan = 1 − 0,80 × 0,75."],
+ explain: "1.000 × 0,80 = 800; 800 × 0,75 = Rp600jt. Diskon gabungan 40%."},
+{q: "Obligasi konversi Rp1.000jt → 100 saham; harga saham Rp12. Apa yang dilakukan pemegang?", opts: ["Konversi (nilai konversi Rp1.200jt > obligasi)","Tetap pegang obligasi","Jual obligasi di bawah par","Tidak bisa ditentukan"], answer: 0, k: "convertible", diff: "Easy",
+ hints: ["Nilai konversi = 100 × 12.", "Bandingkan dengan Rp1.000jt."],
+ explain: "Nilai konversi = 100 × Rp12 = Rp1.200jt > Rp1.000jt → konversi menguntungkan. DCF harus pakai saham terdilusi."}
+
 ],
 hell: [
 {q: "INDF ada di tabel comps-nya sendiri. Masalah metodologinya?", opts: ["Sirkular — target ikut menilai dirinya sendiri; analis pro mengeluarkannya","Tidak ada masalah sama sekali","Median jadi salah hitung","Harusnya pakai mean, bukan median"], answer: 0, diff: "Medium",
@@ -1938,7 +2045,19 @@ Jalur 2 (Hari 12&ndash;13): <i>build</i> dari blank &rarr; FCFF 15,90T &rarr; DC
 <li>Rp8.332 ilustrasi, <b>bukan rekomendasi investasi</b>.</li>
 </ul>
 <div class="callout"><b>Kenapa vonis terakhir = batasan?</b> Karena thesis yang jujur soal kelemahannya = satu-satunya thesis yang bisa dipercaya. DCF adalah mesin pembenar sempurna &mdash; yang membedakan analis dan pembohong = keterbukaan asumsi. Capstone I tuntas. Selamat!</div>`}
-],
+,
+{h: "Normalisasi siklikal & high-growth: jangan menilai puncak (atau lembah)", body: `
+<p>DCF H13 memakai FCFF tahun berjalan. Untuk perusahaan <b>siklikal</b> (tambang, properti, komoditas), tahun berjalan bisa jadi puncak atau lembah — menilai puncak berarti membayar harga puncak:</p>
+<div class="example korporat"><div class="lbl">🏢 Contoh — mid-cycle, bukan peak-cycle</div>
+<p>Emiten tambang: EBIT puncak Rp500jt, lembah Rp100jt, <b>mid-cycle Rp300jt</b>. FCFF mid-cycle Rp200jt, WACC 11%, g 3% → EV = 206 ÷ (0,11 − 0,03) = <b>Rp2.575jt</b>. Pakai FCFF puncak Rp350jt → EV = 360,50 ÷ 0,08 = <b>Rp4.506jt — 75% lebih mahal</b> untuk perusahaan yang sama. Aturan: normalisasi dulu (rata-rata siklus penuh, atau margin mid-cycle × revenue ternormalisasi), baru DCF. Skenario bull/base/bear H13 harus memakai <i>jalur siklus yang berbeda</i>, bukan sekadar ±10% dari tahun puncak.</p></div>
+<p><b>High-growth tanpa laba stabil</b> (seperti TSLA di real-04): pakai DCF dua tahap eksplisit — fase pertumbuhan tinggi dengan driver (volume × harga × margin), lalu fase matang dengan g normal. Reverse-DCF real-04 adalah alatnya: tanyakan <i>berapa g yang sudah dihargai pasar</i> (38,7% di TSLA), lalu nilai apakah g itu masuk akal — bukan menebak g lalu berharap pasar setuju.</p>
+<div class="example korporat"><div class="lbl">🏢 Contoh — DCF 2 tahap, hitung ulang</div>
+<p>FCFF Rp50jt tumbuh 25% selama 3 tahun: 62,50; 78,13; 97,66. WACC 12% → PV: 55,80 + 62,28 + 69,51 = 187,59. TV akhir tahun 3: 97,66 × 1,03 ÷ (0,12 − 0,03) = 1.117,65 → PV = 795,53. EV = <b>Rp983,12jt</b>. Cek: 62,50 ÷ 1,12 = 55,80; 78,13 ÷ 1,2544 = 62,28; 97,66 ÷ 1,4049 = 69,51 ✓. Bila pertumbuhan 25% itu ternyata hanya 15%, EV jatuh jauh — itulah kenapa thesis high-growth wajib menulis <i>apa yang harus terjadi</i> agar g bertahan.</p></div>`},
+{h: "ESG: kapan mengubah WACC atau arus kas — dan kapan hanya narasi", body: `
+<p>ESG mengubah valuasi <b>hanya lewat dua pintu</b>: arus kas (biaya karbon, denda, capex transisi) atau biaya modal (risiko yang dihargai pasar). Di luar dua pintu itu, ESG adalah narasi — tulis di thesis sebagai konteks, bukan sebagai penyesuai angka.</p>
+<div class="example korporat"><div class="lbl">🏢 Contoh — +50bps di WACC</div>
+<p>FCFF Rp100jt, g 3%. WACC 11% → EV = 103 ÷ 0,08 = Rp1.287,50jt. Risiko transisi iklim menaikkan Ke 50bps → WACC 11,5% → EV = 103 ÷ 0,085 = <b>Rp1.211,76jt (−5,9%)</b>. Aturan pakai: (1) sesuaikan <b>arus kas dulu</b> bila biayanya terukur (mis. capex retrofit RpX); (2) WACC hanya bila risikonya sistematis dan tidak tertangkap arus kas; (3) jangan lakukan keduanya untuk risiko yang sama — itu double-counting, kesalahan yang sama seperti CRP ganda di H09.</p></div>
+<p><b>Uji jujur thesis-mu:</b> hapus semua kata ESG dari thesis 1 halaman H13. Kalau angkanya tidak berubah, ESG-mu memang hanya narasi — dan itu tidak apa-apa, selama kamu tidak mengklaim sebaliknya. Yang dilarang: diskon ESG 10% tanpa sumber, tanpa pintu yang jelas.</p>`}],
 quiz: [
 {q: "FCFF 2030 Rp11,30T, g 1,75%. FCFF 2031?", opts: ["Rp11,30T","Rp11,50T","Rp13,05T","Rp11,10T"], answer: 1, k: "fcff", diff: "Easy",
  hints: ["FCFF 2031 = FCFF 2030 \u00d7 (1+g).","11,30 \u00d7 1,0175 = ?"],
@@ -1954,7 +2073,14 @@ quiz: [
  explain: "113,25 \u2212 40,10 = Rp73,15T = jangkar kanonis RC3."},
 {q: "Ekuitas Rp73,15T, saham 8,78 miliar. Nilai per saham?", opts: ["Rp7.270","Rp8.332","Rp9.620","Rp73.150"], answer: 1, k: "ps13", diff: "Medium",
  hints: ["ps = ekuitas \u00f7 saham.","73,15T \u00f7 8,78 miliar = ?"],
- explain: "73,15 \u00f7 8,78 \u00d7 1.000 = Rp8.332 (ilustrasi)."}
+ explain: "73,15 \u00f7 8,78 \u00d7 1.000 = Rp8.332 (ilustrasi)."},
+{q: "FCFF mid-cycle Rp200jt, WACC 11%, g 3%. EV ternormalisasi? (FCFF puncak Rp350jt memberi EV Rp4.506jt.)", opts: ["Rp2.575jt","Rp4.506jt","Rp2.000jt","Rp3.500jt"], answer: 0, k: "cyclical", diff: "Medium",
+ hints: ["EV = 200 × 1,03 ÷ (0,11 − 0,03).", "Menilai puncak = membayar 75% lebih mahal."],
+ explain: "EV = 206 ÷ 0,08 = Rp2.575jt. FCFF puncak memberi Rp4.506jt — 75% lebih mahal untuk perusahaan yang sama."},
+{q: "ESG menaikkan WACC dari 11% ke 11,5% (FCFF Rp100jt, g 3%). Efek ke EV?", opts: ["Turun 5,9% (Rp1.287,50jt → Rp1.211,76jt)","Naik 5,9%","Tidak berubah","Turun 50%"], answer: 0, k: "esg_wacc", diff: "Medium",
+ hints: ["EV lama = 103 ÷ 0,08; EV baru = 103 ÷ 0,085.", "1.211,76 ÷ 1.287,50 = 0,941."],
+ explain: "EV baru = 103 ÷ 0,085 = Rp1.211,76jt, turun 5,9%. ESG hanya lewat pintu WACC atau arus kas — jangan keduanya untuk risiko yang sama."}
+
 ],
 hell: [
 {q: "Dua jalur (repair RC3 & build capstone) tiba di Rp73,15T. Maknanya?", opts: ["Kebetulan semata","RC3 pasti salah hitung","Konvergensi dua jalur independen = validasi mekanik","Capstone pasti salah hitung"], answer: 2, diff: "Medium",
@@ -2229,7 +2355,25 @@ sections: [
 <li><b>WACC 12% tetap asumsi pengajaran</b> (Hari 09) \u2014 bukan biaya modal pasar.</li>
 </ol>
 <div class="callout"><b>Kenapa batas dinyatakan, bukan disembunyikan?</b> Karena pengguna model (termasuk kamu 3 bulan lagi) akan lupa konteksnya. Batas yang tertulis = pagar; batas yang tak tertulis = jurang yang baru terlihat setelah jatuh.</div>`}
-],
+,
+{h: "Monte Carlo: dari 3 skenario ke 1.000 kemungkinan", body: `
+<p>Skenario H15 (bear/base/bull) hanya 3 titik. <b>Monte Carlo</b> mengganti asumsi titik dengan <b>distribusi</b> — lalu menjalankan model ribuan kali dan membaca distribusi hasilnya. Yang berubah bukan modelnya, melainkan cara kita memperlakukan ketidakpastian:</p>
+<p><b>Langkah:</b> (1) pilih 2–3 driver yang paling tidak pasti (WACC, g, revenue); (2) beri tiap driver distribusi — diskrit (3 nilai + probabilitas) sudah cukup untuk belajar; (3) hitung EV untuk tiap kombinasi; (4) baca <i>expected value</i>, sebaran, dan P(EV di bawah ambang).</p>
+<div class="example korporat"><div class="lbl">🏢 Contoh — 3×3 = 9 dunia, dihitung tangan</div>
+<p>FCFF₁ Rp100jt. WACC {10%, 12%, 14%} dgn probabilitas {25%, 50%, 25%}; g {2%, 3%, 4%} dgn probabilitas {25%, 50%, 25%}; independen. EV = 100 × (1+g) ÷ (WACC − g):</p>
+<table class="brutal">
+<tr><th>WACC \ g</th><th>2%</th><th>3%</th><th>4%</th></tr>
+<tr><td><b>10%</b></td><td>1.275</td><td>1.471,43</td><td>1.733,33</td></tr>
+<tr><td><b>12%</b></td><td>1.020</td><td>1.144,44</td><td>1.300</td></tr>
+<tr><td><b>14%</b></td><td>850</td><td>936,36</td><td>1.040</td></tr>
+</table>
+<p><b>E[EV] = Rp1.183,23jt</b> (jumlah EV × probabilitas gabungan) — <i>lebih tinggi</i> dari EV base-case Rp1.144,44jt, karena EV cembung terhadap WACC (penurunan WACC menaikkan EV lebih besar daripada kenaikan WACC menurunkannya). <b>P(EV &lt; Rp1.000jt) = 18,75%</b> (sel WACC 14% × g 2–3%: 6,25% + 12,5%). Di Excel L5/L6 kamu membangun ini dengan Data Table + RAND — 9 sel ini adalah versi mininya.</p>
+<div class="callout"><b>Yang tidak boleh dilakukan:</b> mengambil rata-rata WACC lalu menghitung satu EV dan menyebutnya "expected value". E[f(X)] ≠ f(E[X]) bila f tidak linear — dan EV terhadap WACC jelas tidak linear. Itulah seluruh alasan Monte Carlo ada.</div>`},
+{h: "Decision tree: keputusan bertahap punya nilai", body: `
+<p>Beberapa keputusan tidak diambil sekali — melainkan <b>bertahap</b>: investasi hari ini membeli <i>hak</i> untuk memutuskan lagi besok. <b>Decision tree</b> menilai hak itu dengan expected value di tiap cabang (pasangan alami real-07: smelter sebagai opsi bertahap).</p>
+<div class="example korporat"><div class="lbl">🏢 Contoh — tunggu setahun, atau bangun sekarang?</div>
+<p>Investasi sekarang: NPV <b>+Rp50jt</b> (pasti). Tunggu 1 tahun: 60% kondisi bagus → NPV +Rp120jt; 40% kondisi buruk → NPV −Rp20jt. EMV menunggu = 0,6 × 120 + 0,4 × (−20) = 72 − 8 = <b>+Rp64jt &gt; 50</b> → <b>tunggu</b>. Nilai fleksibilitas = 64 − 50 = Rp14jt. Aturan: bandingkan EMV cabang, bukan NPV satu skenario; dan potong cabang yang tidak akan pernah kamu ambil (di kondisi buruk, kamu tidak jadi bangun — itulah yang membuat EMV menunggu lebih tinggi).</p></div>
+<p><b>Jembatan ke Solver (Excel L3):</b> decision tree menjawab <i>kapan</i> memutuskan; Solver menjawab <i>berapa</i> yang optimal bila keputusanmu kontinu (alokasi capex) — dua alat optimasi yang saling melengkapi.</p>`}],
 quiz: [
 {q: "PT Maju Jaya: FCFF0 \u2212Rp2.000rb, FCFFn Rp3.600rb, WACC 12%, g 3%. EV base?", opts: ["Rp33.929rb","Rp40.000rb","Rp35.714rb","\u2212Rp1.786rb"], answer: 0, k: "ev_base", diff: "Easy",
  hints: ["EV = FCFF0/(1+WACC) + [FCFFn/(WACC\u2212g)]/(1+WACC).","\u22122.000/1,12 + [3.600/0,09]/1,12 = ?"],
@@ -2245,7 +2389,17 @@ quiz: [
  explain: "|\u0394EV| WACC 5.921 > FCFFn 3.571 > g 1.232 > FCFF berjalan 179 \u2014 ranking tornado."},
 {q: "Analis memakai g = 13% dengan WACC 12%. Apa yang terjadi?", opts: ["Penyebut negatif \u2192 TV tak bermakna; syarat g < WACC dilanggar","TV naik 8%","TV menjadi nol","Tidak masalah"], answer: 0, k: "jebakan_g", diff: "Medium",
  hints: ["Hitung penyebutnya: 0,12 \u2212 0,13.","Bisakah perusahaan tumbuh selamanya lebih cepat dari biaya modalnya?"],
- explain: "Penyebut \u22120,01 \u2192 TV negatif. g \u2265 WACC = model meminta dunia yang mustahil."}
+ explain: "Penyebut \u22120,01 \u2192 TV negatif. g \u2265 WACC = model meminta dunia yang mustahil."},
+{q: "Grid Monte Carlo 3×3 (WACC 10/12/14%, g 2/3/4%, probabilitas 25/50/25%). E[EV]?", opts: ["Rp1.183,23jt","Rp1.144,44jt","Rp1.020,00jt","Rp1.275,00jt"], answer: 0, k: "monte_carlo", diff: "Medium",
+ hints: ["E[EV] = jumlah EV × probabilitas gabungan.", "E[EV] > EV base-case karena EV cembung terhadap WACC."],
+ explain: "E[EV] = Rp1.183,23jt — di atas EV base-case Rp1.144,44jt. Rata-rata WACC lalu satu EV bukan expected value (E[f(X)] ≠ f(E[X]))."},
+{q: "Dari grid yang sama, P(EV < Rp1.000jt)?", opts: ["18,75%","6,25%","25%","12,5%"], answer: 0, k: "monte_carlo", diff: "Medium",
+ hints: ["Sel EV < 1.000 hanya di baris WACC 14%.", "g 2%: 6,25%; g 3%: 12,5%."],
+ explain: "Hanya sel (14%, 2%) = 850 dan (14%, 3%) = 936,36 di bawah 1.000: 6,25% + 12,5% = 18,75%."},
+{q: "Investasi sekarang NPV +50. Tunggu setahun: 60% NPV +120, 40% NPV −20. Keputusan?", opts: ["Tunggu (EMV 64 > 50)","Bangun sekarang","Tolak proyek","Tidak bisa ditentukan"], answer: 0, k: "decision_tree", diff: "Easy",
+ hints: ["EMV tunggu = 0,6 × 120 + 0,4 × (−20).", "Nilai fleksibilitas = 64 − 50."],
+ explain: "EMV menunggu = 72 − 8 = +64 > 50 → tunggu. Nilai fleksibilitas Rp14jt."}
+
 ],
 hell: [
 {q: "Dari data table: WACC 10% \u2192 14% pada g = 4%. EV turun berapa?", opts: ["Rp22.903rb (43%)","Rp14.530rb (27%)","Rp13.636rb (26%)","Rp8.368rb (16%)"], answer: 0, k: "data_table_baca", diff: "Hard",
@@ -2407,7 +2561,13 @@ sections: [
 </table>
 <p>Checklist ini yang membedakan analis dari penonton: penonton berhenti di baris 4 ("akretif, deal bagus!"); analis lanjut ke baris 5 dan 6.</p>
 <div class="callout"><b>Kenapa baris 6 paling penting?</b> Karena valuasi dan vonis M&A adalah <i>rentang</i>, bukan titik. "Akretif sampai harga 12.540" jauh lebih berguna daripada "akretif" \u2014 ia memberi tahu ruang negosiasi: di atas 12.540, jangan tanda tangan.</div>`}
-],
+,
+{h: "Payout: dividen vs buyback — kapan masing-masing menang", body: `
+<p>Perusahaan punya kas Rp1.000jt untuk dikembalikan. <b>Dividen</b> atau <b>buyback</b>? Tanpa pajak, keduanya setara (Modigliani-Miller) — dengan pajak dan sinyal, tidak:</p>
+<div class="example korporat"><div class="lbl">🏢 Contoh — Rp1.000jt, 1.000 saham @ Rp10</div>
+<p><b>Dividen Rp1/saham:</b> pemegang terima Rp1 tunai + saham ex-div Rp9 → total Rp10. <b>Buyback:</b> perusahaan beli 100 saham @ Rp10 → tersisa 900 saham, harga tetap Rp10 (tanpa sinyal) → pemegang tetap pegang Rp10. Sama — <i>sebelum pajak</i>. Dengan pajak dividen 10%: dividen memberi 0,9 + 9 = <b>Rp9,90</b> vs buyback <b>Rp10</b> → buyback menang Rp0,10/saham. Itulah alasan perusahaan yang sahamnya dinilai murah lebih suka buyback, dan perusahaan yang pemegangnya butuh income rutin (dana pensiun, yayasan) lebih suka dividen.</p></div>
+<p><b>Kasus BEI:</b> UNVR dikenal payout ratio mendekati laba — kas kembali ke pemegang saham karena peluang reinvestasi internalnya terbatas; BBCA payout moderat — laba ditahan untuk pertumbuhan kredit dan buffer modal (lihat H26: CAR membatasi dividen bank). <b>Sinyal:</b> dividen yang dipotong = sinyal buruk yang keras (pasar menghukum); buyback yang dihentikan = sinyal lunak. Maka perusahaan menaikkan dividen hanya bila yakin bisa mempertahankannya — dividen adalah janji, buyback adalah opsi.</p>
+<div class="callout"><b>Jembatan ke H09:</b> payout memengaruhi g (g = ROE × retention). Dividen besar → retention kecil → g kecil → nilai dari pertumbuhan turun, tapi kas hari ini naik. DCF yang konsisten harus memakai g yang sama dengan payout yang diasumsikan — jangan pakai payout 100% dan g 5% sekaligus.</div>`}],
 quiz: [
 {q: "PT Maju Jaya: NI 7.200, 18.000 lembar. EPS standalone?", opts: ["0,30","0,40","0,45","0,50"], answer: 1, k: "eps_standalone", diff: "Easy",
  hints: ["EPS = laba bersih / saham beredar.", "7.200 / 18.000 = ?"],
@@ -2426,7 +2586,14 @@ quiz: [
  explain: "9.000 / 24.666,67 = 0,3649 < 0,40 \u2192 DILUTIVE \u22128,8%."},
 {q: "Deal A: harga 9.000, FV aset neto teridentifikasi 6.950. Goodwill PPA?", opts: ["Rp2.050rb","Rp4.000rb","Rp2.500rb","Rp1.950rb"], answer: 0, k: "goodwill_ppa", diff: "Medium",
  hints: ["Goodwill PPA = harga − aset neto FAIR VALUE, bukan buku.","9.000 − 6.950 = ? (4.000 itu goodwill sederhana; 1.950 itu write-up bersih pajak.)"],
- explain: "9.000 − 6.950 = Rp2.050rb. PPA memisahkan write-up bersih pajak 1.950 dari goodwill sederhana 4.000."}
+ explain: "9.000 − 6.950 = Rp2.050rb. PPA memisahkan write-up bersih pajak 1.950 dari goodwill sederhana 4.000."},
+{q: "Kas Rp1.000jt, 1.000 saham @ Rp10, pajak dividen 10%. Dividen Rp1/saham vs buyback — mana lebih baik bagi pemegang?", opts: ["Buyback (Rp10 vs Rp9,90)","Dividen (Rp10 vs Rp9,90)","Sama persis","Dividen selalu menang"], answer: 0, k: "payout", diff: "Medium",
+ hints: ["Dividen kena pajak 10% → 0,9 + 9.", "Buyback tidak kena pajak dividen."],
+ explain: "Dividen: 0,9 + 9 = Rp9,90; buyback: Rp10. Tanpa pajak keduanya Rp10 (M-M). Pajak membuat buyback menang Rp0,10/saham."},
+{q: "Kenapa perusahaan menaikkan dividen hanya bila yakin bisa mempertahankannya?", opts: ["Dividen adalah janji; pemotongan dihukum pasar","Dividen tidak bisa diubah","Buyback dilarang setelah dividen naik","Pajak dividen naik tiap tahun"], answer: 0, k: "payout", diff: "Easy",
+ hints: ["Sinyal: potong dividen = sinyal buruk yang keras.", "Buyback yang dihentikan = sinyal lunak."],
+ explain: "Dividen adalah janji — pemotongan dibaca pasar sebagai sinyal kesulitan. Buyback adalah opsi yang bisa dihentikan diam-diam."}
+
 ],
 hellPass: 80,
 hell: [
@@ -2575,7 +2742,13 @@ sections: [
 </table>
 <p>Rekap Hari 17: sources = uses <b>51.000</b> \u2713 \u2192 debt schedule 5 tahun \u2192 utang <b>lunas Y5</b> \u2192 exit <b>73.466</b> \u2192 MoIC <b>2,94x</b> \u2192 jebakan leverage (coverage 4,84x, waspada covenant).</p>
 <div class="callout"><b>Kenapa belajar LBO di FMVA?</b> Karena LBO adalah <b>ujian integrasi</b>: forecast (Hari 08) + bunga &amp; pajak + debt schedule + exit multiple (Hari 11) + MoIC/IRR \u2014 semua dalam satu model. Bukan topik baru; ini tempat semua keping menyatu. Kalau debt schedule-mu balance dan MoIC-mu 2,94x, mekanik dasarmu beres.</div>`}
-],
+,
+{h: "Dokumen kredit LBO: covenant test, cash sweep, refi & div recap", body: `
+<p>Debt schedule H17 menghitung bunga &amp; pokok. <b>Credit agreement</b> menentukan <i>apakah perusahaan boleh tetap beroperasi</i> — lewat tiga mekanisme yang wajib kamu modelkan, bukan sekadar disebut:</p>
+<p><b>1. Covenant test (diuji tiap kuartal).</b> Dua yang paling umum: leverage (Total Debt ÷ EBITDA ≤ maks) dan interest coverage (EBITDA ÷ Bunga ≥ min). Contoh: utang Rp600jt, EBITDA Rp100jt → leverage <b>6,0×</b> vs covenant maks 5,5× → <b>BREACH</b> (meski coverage 100 ÷ 45 = 2,22× masih lolos dari min 2,0× — ketat). Breach = lender bisa menuntut pelunasan dipercepat; dalam praktik biasanya dinegosiasi (waiver dengan fee + suku bunga naik).</p>
+<p><b>2. Cash sweep (mandatory vs optional prepayment).</b> Mandatory: amortisasi terjadwal (mis. Rp20jt/tahun) — wajib. Cash sweep: persentase FCF setelah mandatory <i>wajib</i> dipakai melunasi utang lebih awal. Contoh: FCF Rp60jt, mandatory Rp20jt, sweep 50% → prepay tambahan 50% × (60 − 20) = <b>Rp20jt</b> → total paydown Rp40jt. Optional prepayment = di atas itu, sukarela. Sweep mempercepat deleveraging (bagus untuk ekuitas) tapi mengunci kas (tidak bisa untuk dividen/akuisisi).</p>
+<p><b>3. Refi &amp; dividend recap.</b> Refi: ganti utang lama dengan utang baru yang lebih murah/panjang — contoh refi Rp600jt dari 9% ke 7% menghemat <b>Rp12jt/tahun</b> bunga. Dividend recap: tarik utang baru untuk membayar dividen ke sponsor — contoh dividen Rp50jt → leverage naik ke 650 ÷ 100 = <b>6,5×</b>. Recap menaikkan IRR sponsor (kas kembali lebih cepat) tapi menaikkan risiko breach — itulah kenapa covenant diuji <i>setelah</i> recap, bukan sebelumnya.</p>
+<div class="callout"><b>Untuk model H17-mu:</b> tambahkan satu baris covenant test di debt schedule (leverage &amp; coverage per tahun + PASS/BREACH via IF). LBO tanpa covenant test = model yang tidak akan lolos review kreditur.</div>`}],
 quiz: [
 {q: "EV 50.000 + fee transaksi 1.000. TOTAL USES?", opts: ["51.000", "50.000", "52.000", "49.000"], answer: 0, k: "sources_uses", diff: "Easy",
  hints: ["Uses = EV + fee transaksi.", "50.000 + 1.000 = ?"],
@@ -2594,7 +2767,14 @@ quiz: [
  explain: "2,94x \u2014 tiap Rp1 sponsor kembali Rp2,94."},
 {q: "Mezzanine 5.000 @6% PIK. Saldo akhir Tahun 1?", opts: ["5.300","5.000","5.600","4.700"], answer: 0, k: "mezz_pik", diff: "Medium",
  hints: ["PIK = bunga yang ditambahkan ke pokok, bukan dibayar tunai.","5.000 + 5.000 × 6% = ? (5.600 itu bila SEMUA bunga 12% di-PIK; 4.700 itu bila kupon tunai ikut mengurangi pokok.)"],
- explain: "5.000 + 300 = 5.300. PIK menunda kas — pokoknya membesar (Tahun 2: 5.618)."}
+ explain: "5.000 + 300 = 5.300. PIK menunda kas — pokoknya membesar (Tahun 2: 5.618)."},
+{q: "LBO: utang Rp600jt, EBITDA Rp100jt, covenant leverage maks 5,5×. Hasil uji?", opts: ["BREACH (6,0× > 5,5×)","Lolos (6,0× < 5,5×)","Lolos bila coverage cukup","Tidak bisa diuji tanpa bunga"], answer: 0, k: "covenant", diff: "Easy",
+ hints: ["Leverage = 600 ÷ 100.", "Bandingkan dengan maks 5,5×."],
+ explain: "Leverage = 6,0× > maks 5,5× → BREACH, meski coverage 2,22× masih lolos. Satu covenant breach cukup memicu renegosiasi."},
+{q: "FCF Rp60jt, amortisasi mandatory Rp20jt, cash sweep 50%. Prepay tambahan?", opts: ["Rp20jt","Rp30jt","Rp40jt","Rp10jt"], answer: 0, k: "cash_sweep", diff: "Medium",
+ hints: ["Sweep = 50% × (FCF − mandatory).", "50% × (60 − 20) = ?"],
+ explain: "Sweep = 50% × (60 − 20) = Rp20jt → total paydown 40jt. Sweep mempercepat deleveraging tapi mengunci kas."}
+
 ],
 hell: [
 {q: "Exit multiple turun 5x \u2192 4x (jadwal utang tidak berubah). MoIC baru?", opts: ["2,94x", "2,65x", "2,35x", "1,95x"], answer: 2, diff: "Medium",
@@ -2720,7 +2900,40 @@ sections: [
 </table>
 <p>Warung Nusantara dengan musiman tajam (Jun 24.000 vs Jan 16.800) <i>tidak bisa</i> agresif penuh: butuh buffer persediaan menjelang Jun. Kebijakan WC = memilih titik di spektrum <i>secara sadar</i>, bukan terseret.</p>
 <div class="callout"><b>Kenapa ini "policy", bukan "perhitungan"?</b> Karena trade-off-nya melibatkan selera risiko pemilik \u2014 bukan matematika. Analis menghitung biayanya ("buffer Rp5.000rb = return hilang RpX"); pemilik memilih risikonya. Tugasmu: buat trade-off-nya <i>terlihat</i>, bukan memilihkan untuknya.</div>`}
-],
+,
+{h: "Capital budgeting: PI, ARR, payback & discounted payback", body: `
+<p>H18 selama ini hanya punya satu aturan: NPV &gt; 0, terima. Dunia nyata memakai empat alat — karena tiap alat menjawab pertanyaan berbeda. Proyek contoh (Rp jt): investasi <b>1.000</b>, arus masuk 300 / 400 / 500 / 400 (tahun 1–4), WACC 10%:</p>
+<table class="brutal">
+<tr><th>Alat</th><th>Rumus</th><th>Hitungan</th><th>Vonis</th></tr>
+<tr><td><b>NPV</b></td><td>PV masuk − investasi</td><td>272,73 + 330,58 + 375,66 + 273,21 − 1.000 = <b>+252,18</b></td><td>Terima</td></tr>
+<tr><td><b>Profitability Index</b></td><td>PV masuk ÷ investasi</td><td>1.252,18 ÷ 1.000 = <b>1,25</b></td><td>Terima (&gt; 1); berguna saat modal dijatah</td></tr>
+<tr><td><b>Payback</b></td><td>Tahun saat kumulatif ≥ investasi</td><td>300 + 400 = 700 (thn 2); butuh 300 dari 500 → <b>2,6 thn</b></td><td>Cepat, tapi abaikan nilai waktu &amp; arus setelahnya</td></tr>
+<tr><td><b>Discounted payback</b></td><td>Payback atas arus terdiskon</td><td>Kum. disk.: 272,73; 603,31; 978,97; 1.252,18 → <b>3,08 thn</b></td><td>Lebih jujur dari payback biasa</td></tr>
+<tr><td><b>ARR</b></td><td>Laba rata-rata ÷ investasi rata-rata</td><td>Laba: 50, 150, 250, 150 (susut 250/thn) → rata-rata 150 ÷ 500 = <b>30%</b></td><td>Akuntansi, bukan kas — pakai hati-hati</td></tr>
+</table>
+<p><b>IRR proyek ini ≈ 20,5%</b> (NPV +10,03 di 20%, −10,02 di 21%) &gt; WACC 10% → konsisten dengan NPV &gt; 0. Bila NPV dan IRR bertentangan (lihat section berikut), <b>NPV menang</b> — IRR tidak tahu skala proyek.</p>`},
+{h: "Konflik NPV vs IRR & multiple IRR", body: `
+<p><b>Konflik ranking:</b> dua proyek mutually exclusive. A: investasi 1.000, terima 1.300 tahun 1 → NPV @10% = −1.000 + 1.181,82 = <b>181,82</b>; IRR = <b>30%</b>. B: investasi 5.000, terima 6.200 tahun 1 → NPV = −5.000 + 5.636,36 = <b>636,36</b>; IRR = <b>24%</b>. IRR memilih A (30% &gt; 24%), NPV memilih B (636 &gt; 182). <b>NPV benar</b> — pemegang saham peduli rupiah nilai yang diciptakan, bukan persentase. IRR kalah karena tidak melihat skala. (PI juga bisa menyesatkan di sini bila modal tidak dijatah — PI A = 1,18 vs PI B = 1,13 — tetap pilih NPV bila tidak ada penjatahan modal.)</p>
+<p><b>Multiple IRR:</b> arus kas −100, +250, −150 (tahun 0, 1, 2 — mis. proyek tambang dengan biaya penutupan besar di akhir). NPV(r) = −100 + 250÷(1+r) − 150÷(1+r)². Di r = 0%: −100 + 250 − 150 = 0. Di r = 50%: −100 + 166,67 − 66,67 = 0. <b>Dua IRR: 0% dan 50%</b> — karena tanda arus kas berubah dua kali (aturan Descartes). Bila IRR tidak unik, buang IRR, pakai NPV. Excel L5 sudah menyinggung ini di XIRR — sekarang kamu tahu <i>kenapa</i> ia muncul.</p>`},
+{h: "Inflasi, nominal vs riil & FX", body: `
+<p><b>Aturan emas:</b> arus kas nominal ↔ diskon nominal; arus kas riil ↔ diskon riil. Jangan campur. Fisher eksak: (1 + nominal) = (1 + riil) × (1 + inflasi). Contoh: nominal 12%, inflasi 5% → riil = 1,12 ÷ 1,05 − 1 = <b>6,67%</b> (bukan 7% — selisih kecil yang membesar di DCF 10 tahun).</p>
+<p><b>FX:</b> proyek berpendapatan dolar: USD 100rb × Rp16.000 = Rp1.600jt. Rupiah melemah 5% → kurs 16.800 → Rp1.680jt (+Rp80jt). Tapi bila biaya juga dolar, lindungi nilai bersihnya (net exposure), bukan angka bruto. Dan jangan pernah mem-forecast kurs dengan "kurs hari ini + inflasi differential" tanpa menyatakan asumsinya — itu paritas daya beli (PPP), sebuah teori, bukan ramalan. Inflasi &amp; FX adalah alasan H13 memakai skenario, bukan satu angka.</p>`},
+{h: "Forecasting statistik: moving average, exponential smoothing, MAE/MAPE", body: `
+<p>Forecast driver-based (H08) menjawab <i>kenapa</i> angka bergerak. <b>Forecasting statistik</b> menjawab <i>seberapa akurat</i> tebakanmu — dan tanpanya, forecast hanyalah opini yang rapi:</p>
+<div class="example warung"><div class="lbl">🏪 Contoh — penjualan kopi (ribu gelas)</div>
+<p>Aktual: 100, 110, 105, 120, 118. <b>Moving average 3 periode:</b> forecast periode 4 = (100+110+105) ÷ 3 = 105 → error 15; forecast periode 5 = (110+105+120) ÷ 3 = 111,67 → error 6,33. <b>MAE</b> = (15 + 6,33) ÷ 2 = <b>10,67</b>. <b>MAPE</b> = (15÷120 + 6,33÷118) ÷ 2 = (12,5% + 5,37%) ÷ 2 = <b>8,93%</b>.</p>
+<p><b>Exponential smoothing</b> (α = 0,3; F₁ = 100): F₂ = 100; F₃ = 100 + 0,3 × 10 = 103; F₄ = 103 + 0,3 × 2 = 103,6. Error: 10; 2; 16,4 → MAE = <b>9,47</b>, MAPE = (9,09% + 1,90% + 13,67%) ÷ 3 = <b>8,22%</b> — sedikit lebih akurat dari MA-3 di data ini. α besar = responsif tapi berisik; α kecil = halus tapi lambat. Pilih α dengan meminimalkan MAPE di data histori, bukan dengan firasat.</p></div>
+<p><b>Aturan:</b> MAPE &lt; 10% = bagus untuk forecast penjualan stabil; MAPE &gt; 20% = modelmu belum menangkap pola (musiman? tren?). Jangan pernah melaporkan forecast tanpa MAE/MAPE-nya — angka tanpa ukuran error = klaim tanpa bukti.</p>`},
+{h: "LAB: rolling forecast kuartalan (bangun, bukan kuis)", body: `
+<p><b>Tugas lab (bangun di workbook H18-mu):</b> buat rolling forecast 4 kuartal yang <i>update otomatis</i> dari actual. Struktur: kolom Q1–Q4 forecast + kolom Actual yang diisi tiap kuartal berjalan. Rumus kunci: forecast kuartal berikut = rata-rata bergerak 3 kuartal actual terakhir (atau exponential smoothing α = 0,3 dari section sebelumnya) — <b>bukan angka yang diketik ulang</b>. Tiap kuartal: (1) isi Actual; (2) forecast bergeser satu kuartal ke depan (drop kuartal tertua, tambah kuartal baru); (3) hitung MAE/MAPE running; (4) catat di log: forecast mana yang meleset dan kenapa.</p>
+<p>Ini bukan kuis — ini pekerjaan FP&amp;A yang sebenarnya: forecast yang tidak pernah "selesai", melainkan bergulir. Kriteria lolos: ganti satu angka Actual, dan seluruh forecast + MAE/MAPE ikut berubah tanpa edit manual. Kalau ada angka yang harus diketik ulang, lab belum selesai.</p>`},
+{h: "Mix variance, variance bridge & materiality", body: `
+<p>H18 sudah mengurai variance jadi price vs volume. Yang hilang: <b>mix</b> — dan tanpa mix, analis menyalahkan harga padahal yang bergeser adalah komposisi produk:</p>
+<div class="example korporat"><div class="lbl">🏢 Contoh — Warung Kopi Kita (Rp ribu)</div>
+<p>Produk A: budget 1.000 unit @ 10 = 10.000; actual 1.200 @ 9 = 10.800. Produk B: budget 500 @ 20 = 10.000; actual 400 @ 22 = 8.800. Total: budget 20.000 → actual 19.600 (variance <b>−400</b>).</p>
+<p><b>Price variance:</b> A (9−10) × 1.200 = −1.200; B (22−20) × 400 = +800 → <b>−400</b>. <b>Volume variance</b> (harga budget): A (1.200−1.000) × 10 = +2.000; B (400−500) × 20 = −2.000 → <b>0</b>. Total −400 + 0 = −400 ✓.</p>
+<p><b>Urai volume jadi mix + quantity:</b> total volume budget 1.500, actual 1.600. Mix budget A 66,67% / B 33,33% → pada volume actual, A "seharusnya" 1.066,67 dan B 533,33. <b>Mix variance:</b> A (1.200−1.066,67) × 10 = +1.333,33; B (400−533,33) × 20 = −2.666,67 → <b>−1.333,33</b>. <b>Quantity variance:</b> (1.600−1.500) × harga rata-rata budget (20.000 ÷ 1.500 = 13,33) = <b>+1.333,33</b>. Cek: −1.333,33 + 1.333,33 = 0 = volume variance ✓.</p></div>
+<p><b>Variance bridge (narasi):</b> Budget 20.000 → +quantity 1.333,33 → −mix 1.333,33 → −price 400 → Actual 19.600. Ceritanya: volume naik tapi ke produk murah, dan harga produk utama turun — bukan "penjualan turun 400" saja. <b>Materiality:</b> selidiki variance yang &gt; 5% dari budget atau &gt; Rp500jt (pilih ambangmu, tulis di model) — sisanya catat, jangan kejar. FP&amp;A yang menyelidiki semua variance akan kehabisan waktu sebelum menyelidiki yang penting.</p>`}],
 quiz: [
 {q: "Budget revenue tahunan Rp240.000rb, faktor musiman Jun 0,10. Budget revenue Jun?", opts: ["Rp24.000rb","Rp20.000rb","Rp21.600rb","Rp16.800rb"], answer: 0, k: "budget_phasing", diff: "Easy",
  hints: ["Budget bulan = tahunan \u00D7 faktor.","240.000 \u00D7 0,10 = ?"],
@@ -2736,7 +2949,26 @@ quiz: [
  explain: "4.300 - 9.000 = -Rp4.700rb (unfavorable): eksekusi bocor setelah volume disamakan."},
 {q: "Proyek dengan NPV > 0 sebaiknya?", opts: ["Diterima \u2014 menciptakan nilai di atas biaya modal","Ditolak \u2014 NPV positif artinya kemahalan","Ditunda sampai NPV = 0","Diterima hanya jika IRR < WACC"], answer: 0, k: "npv_rule", diff: "Easy",
  hints: ["NPV = nilai tambah setelah didiskon biaya modal.","NPV > 0 artinya tambah nilai \u2192 ?"],
- explain: "NPV > 0 = proyek menambah nilai perusahaan. Terima."}
+ explain: "NPV > 0 = proyek menambah nilai perusahaan. Terima."},
+{q: "Proyek: investasi 1.000; arus 300/400/500/400; WACC 10%. NPV dan PI?", opts: ["NPV +252,18; PI 1,25","NPV +152,18; PI 1,15","NPV −252,18; PI 0,75","NPV +252,18; PI 1,35"], answer: 0, k: "pi", diff: "Medium",
+ hints: ["PV masuk = 272,73 + 330,58 + 375,66 + 273,21 = 1.252,18.", "PI = 1.252,18 ÷ 1.000."],
+ explain: "PV masuk Rp1.252,18jt → NPV = +252,18; PI = 1,25. Terima (NPV > 0, PI > 1)."},
+{q: "Proyek yang sama: payback dan discounted payback?", opts: ["2,6 thn; 3,08 thn","2,0 thn; 2,6 thn","3,0 thn; 3,5 thn","2,6 thn; 2,6 thn"], answer: 0, k: "payback", diff: "Medium",
+ hints: ["Kumulatif: 300 (thn 1), 700 (thn 2), 1.200 (thn 3).", "Kumulatif disk.: 272,73; 603,31; 978,97; 1.252,18."],
+ explain: "Payback = 2 + 300÷500 = 2,6 thn. Discounted payback = 3 + 21,03÷273,21 = 3,08 thn."},
+{q: "Proyek A: NPV 181,82, IRR 30%. Proyek B (mutually exclusive): NPV 636,36, IRR 24%. Pilih?", opts: ["B (NPV lebih besar)","A (IRR lebih besar)","Tolak keduanya","Pilih yang PI-nya lebih besar"], answer: 0, k: "npv_irr", diff: "Medium",
+ hints: ["Pemegang saham peduli rupiah nilai, bukan persentase.", "IRR tidak melihat skala."],
+ explain: "Pilih B — NPV 636,36 > 181,82. IRR memilih A karena tidak melihat skala proyek (1.000 vs 5.000)."},
+{q: "Arus kas −100, +250, −150. Berapa IRR?", opts: ["Dua IRR: 0% dan 50%","Satu IRR: 25%","Tidak ada IRR","IRR 100%"], answer: 0, k: "multiple_irr", diff: "Hard",
+ hints: ["Tanda arus kas berubah dua kali.", "Cek r = 0% dan r = 50%: NPV = 0 di keduanya."],
+ explain: "NPV(0%) = −100 + 250 − 150 = 0; NPV(50%) = −100 + 166,67 − 66,67 = 0. Dua IRR — buang IRR, pakai NPV."},
+{q: "Forecast MA-3: error 15 (aktual 120) dan 6,33 (aktual 118). MAE dan MAPE?", opts: ["MAE 10,67; MAPE 8,93%","MAE 10,67; MAPE 12,5%","MAE 21,33; MAPE 8,93%","MAE 9,47; MAPE 8,22%"], answer: 0, k: "mape", diff: "Medium",
+ hints: ["MAE = (15 + 6,33) ÷ 2.", "MAPE = (12,5% + 5,37%) ÷ 2."],
+ explain: "MAE = 10,67; MAPE = 8,93%. (9,47/8,22% adalah hasil exponential smoothing α = 0,3 di lesson.)"},
+{q: "Mix variance contoh warung (A +1.333,33; B −2.666,67) dan quantity variance?", opts: ["Mix −1.333,33; quantity +1.333,33 (total volume 0)","Mix +1.333,33; quantity −1.333,33","Mix −2.666,67; quantity 0","Mix 0; quantity −1.333,33"], answer: 0, k: "mix_variance", diff: "Hard",
+ hints: ["Total mix = 1.333,33 − 2.666,67.", "Quantity = (1.600 − 1.500) × 13,33."],
+ explain: "Mix total −1.333,33; quantity +1.333,33; jumlahnya 0 = volume variance. Volume naik tapi ke produk murah — itulah cerita mix."}
+
 ],
 hell: [
 {q: "Revenue variance Jun +Rp1.500rb (favorable) tapi price variance -Rp4.500rb. Kesimpulan?", opts: ["Kinerja Jun bagus, tak perlu ditindaklanjuti","Volume menutupi potongan harga \u2014 selidiki apakah diskon sepadan dengan margin yang hilang","Naikkan harga segera","Model salah hitung"], answer: 1, diff: "Medium",
@@ -3263,7 +3495,12 @@ sections: [
 <li><b>Kotak asumsi</b> — g &lt; WACC, 1 tahap Gordon, angka fiktif. Kalau asumsi ini tidak kamu percayai, seluruh halaman di atasnya tidak berlaku.</li>
 </ol>
 <div class="callout"><b>Kenapa urutan ini?</b> Karena keputusan = jangkar → ketidakpastian → validitas asumsi. Analis yang mulai dari bar chart sedang mendekorasi; analis yang mulai dari EV base lalu melompat ke kotak asumsi sedang mengaudit. Jadilah yang kedua.</div>`}
-],
+,
+{h: "KPI tree: dari EV ke driver yang bisa dipegang", body: `
+<p>Dashboard H22 menampilkan EV dan sensitivitas — tapi tidak menunjukkan <i>tuas mana</i> yang menggerakkan EV. <b>KPI tree</b> membaliknya: EV → value driver → KPI operasional:</p>
+<div class="formula">EV ← FCFF ← (Revenue − Biaya − Pajak − ΔWC − Capex) ← Volume × Harga ← Kunjungan × Konversi × Keranjang</div>
+<p>Contoh warung: EV turun? Telusuri pohonnya: FCFF turun karena revenue turun; revenue turun karena kunjungan turun (bukan harga); kunjungan turun karena jam buka dipotong. <b>Satu KPI per cabang, satu pemilik per KPI</b> — pohon tanpa pemilik = dekorasi. Di dashboard capstone-mu, tambahkan satu halaman KPI tree: tiap simpul berisi angka actual vs target + pemiliknya.</p>
+<p><b>Executive pack 1 halaman:</b> (1) judul kesimpulan satu kalimat ("EV RpX, naik/turun karena Y"); (2) 3 angka kunci (EV, FCFF, WACC) + delta vs bulan lalu; (3) satu grafik (tornado H15 atau bridge H18); (4) 2 risiko + 1 aksi. Bila pack-mu butuh halaman 2, potong — eksekutif membaca halaman 1, sisanya arsip. Untuk dashboard Power BI, lihat FSA Lab M48 (tautan silang di H30) — alatnya beda, logika pohonnya sama.</p>`}],
 quiz: [
 {q: "Dashboard menampilkan EV base 33.929 dan EV exit 41.071. Bacaan yang benar?", opts: ["Salah satu pasti salah hitung", "Dua metode TV memberi dua jawaban yang membingkai rentang valuasi — selisihnya informasi, bukan error", "Ambil yang lebih besar sebagai jawaban", "Ambil rata-ratanya dan lupakan selisihnya"], answer: 1, k: "tv_exit", diff: "Medium",
  hints: ["Dua metode independen untuk hal yang sama.", "Selisih 7.143 memberitahu apa tentang asumsi TV?"],
@@ -3279,7 +3516,11 @@ quiz: [
  explain: "Satu titik (mis. 33.929) menyembunyikan bahwa valuasi bisa 24.561 di dunia buruk. Presentasi yang jujur: titik + rentang + skenario di tiap ujung. Mengutak-atik g agar rentang 'cantik' = memalsukan ketidakpastian."},
 {q: "Bar REPT: EV base 14 blok vs EV exit 16 blok (1 blok = 2.500). Apa yang dikomunikasikan dalam 3 detik?", opts: ["Angka pastinya", "EV exit > EV base karena TV exit (48.000) > TV perpetuitas (40.000) — perbandingan visual instan", "Chart-nya salah hitung", "Skala bloknya tidak konsisten"], answer: 1, k: "ev", diff: "Easy",
  hints: ["16 blok vs 14 blok = ?", "Beda 2 blok × 2.500 = 5.000 ≈ selisih EV."],
- explain: "Bar chart bukan untuk presisi — untuk perbandingan instan. 16 vs 14 blok langsung terbaca: metode exit lebih tinggi, konsisten dengan TV exit > TV perpetuitas. Angka pastinya tetap dibaca di sel dashboard."}
+ explain: "Bar chart bukan untuk presisi — untuk perbandingan instan. 16 vs 14 blok langsung terbaca: metode exit lebih tinggi, konsisten dengan TV exit > TV perpetuitas. Angka pastinya tetap dibaca di sel dashboard."},
+{q: "KPI tree yang benar menelusuri EV ke bawah sampai ke…", opts: ["KPI operasional + pemiliknya (mis. kunjungan × konversi)","Satu angka EV saja","Rata-rata industri","Harga saham kemarin"], answer: 0, k: "kpi_tree", diff: "Easy",
+ hints: ["EV ← FCFF ← revenue ← volume × harga ← kunjungan.", "Satu KPI per cabang, satu pemilik per KPI."],
+ explain: "KPI tree: EV → driver nilai → KPI operasional yang punya pemilik. Pohon tanpa pemilik = dekorasi."}
+
 ],
 hellPass: 80,
 hell: [
@@ -3560,7 +3801,17 @@ sections: [
 <tr><td>Lease / NOL / DTA</td><td>Hari 20</td><td>5 varian reklasifikasi &amp; pengakuan</td></tr>
 </table>
 <div class="callout"><b>Target hari ini:</b> 2 area terlemah dari klasifikasimu, masing-masing 5 varian <b>benar beruntun</b>. Standarnya bukan 'merasa paham' \u2014 tapi 5 benar beruntun tanpa lihat catatan.</div>`}
-],
+,
+{h: "Dashboard skor per topik: dari total ke lubang", body: `
+<p>Mock 1 memberi total 68%. Total menyembunyikan lubang — <b>dashboard per topik</b> menunjukkannya. Bangun tabel ini setelah tiap mock (kolom = mock, baris = topik):</p>
+<table class="brutal">
+<tr><th>Topik</th><th>Mock 1</th><th>Mock 2</th><th>Mock 3</th><th>Drill</th></tr>
+<tr><td>DCF / WACC</td><td>55%</td><td>—</td><td>—</td><td>H09–H10 + Latihan Buta</td></tr>
+<tr><td>Comps / SOTP</td><td>80%</td><td>—</td><td>—</td><td>Pertahankan (1 drill/minggu)</td></tr>
+<tr><td>LBO</td><td>40%</td><td>—</td><td>—</td><td>H17 + covenant test (baru di v1.61)</td></tr>
+<tr><td>FP&amp;A / variance</td><td>70%</td><td>—</td><td>—</td><td>H18 mix + bridge</td></tr>
+</table>
+<p><b>Aturan drill:</b> (1) prioritas = topik di bawah 60% <i>atau</i> yang turun antar mock; (2) drill = 5 soal varian angka berbeda dari concept-graph per topik (bukan baca ulang teori); (3) topik yang naik 2 mock beruntun = pindah ke mode pertahankan. <b>Yang diukur di H29:</b> bukan totalmu, melainkan apakah ada topik yang masih di bawah 60% menjelang hari-H — satu lubang di bawah 60% lebih berbahaya daripada total 75%.</p>`}],
 quiz: [
 {q: "Sewa tahunan Rp1.200rb selama 5 tahun, diskonto 8%. Berapa present value-nya?", opts: ["Rp7.040rb \u2014 itu future value, bukan present value", "Rp6.000rb \u2014 1.200 \u00d7 5, tanpa diskonto sama sekali", "Rp4.791rb", "Rp3.993rb \u2014 itu faktornya saja, belum dikali 1.200"], answer: 2, k: "dcf", diff: "Medium",
  hints: ["PV anuitas = PMT \u00d7 [1 \u2212 (1+r)^\u2212n] \u00f7 r.", "1,08^\u22125 = 0,6806 \u2192 faktor = 3,9927."],
@@ -3597,7 +3848,11 @@ quiz: [
  explain: "Forecast memang hidup \u2014 di-update tiap kuartal mengikuti realita. Yang dikunci adalah budget (tolok ukur kinerja). Menuntut forecast tidak berubah = menuntut ramalan cuaca Januari tetap benar di Desember."},
 {q: "Rumus =C10*(1+$C$3) di-copy ke kanan untuk Y1..Y5. Apa yang terjadi pada $C$3?", opts: ["Bergeser ke $D$3, $E$3\u2026 \u2014 $ tidak berpengaruh saat copy ke kanan", "Tetap $C$3 \u2014 sel asumsi dikunci untuk semua tahun", "Bergeser ke C4, C5\u2026", "Error #REF!"], answer: 1, k: "excel", diff: "Easy",
  hints: ["$ mengunci kolom DAN baris.", "Copy ke kanan hanya menggeser referensi relatif."],
- explain: "$C$3 absolut penuh \u2014 di-copy ke mana pun tetap menunjuk sel asumsi yang sama. C10 relatif \u2014 bergeser mengikuti tahunnya. Aturan abadi: asumsi = absolute, deret waktu = relatif."}
+ explain: "$C$3 absolut penuh \u2014 di-copy ke mana pun tetap menunjuk sel asumsi yang sama. C10 relatif \u2014 bergeser mengikuti tahunnya. Aturan abadi: asumsi = absolute, deret waktu = relatif."},
+{q: "Mock 1: total 68%, DCF 55%, Comps 80%, LBO 40%. Drill prioritas pertama?", opts: ["LBO 40% (di bawah 60%)","Comps 80%","Total 68%","DCF 55% saja"], answer: 0, k: "mock_analytics", diff: "Easy",
+ hints: ["Prioritas = topik di bawah 60%.", "LBO paling rendah."],
+ explain: "LBO 40% — paling jauh di bawah ambang 60%. Total 68% menyembunyikan lubang; dashboard per topik menunjukkannya."}
+
 ],
 hellPass: 80,
 hell: [
@@ -3909,7 +4164,13 @@ sections: [
 <li><b>Harga wajar 253,71</b> — hanya bermakna bila empat poin di atas sehat. Valuasi tanpa cek modal = harga tanpa fondasi.</li>
 </ol>
 <div class="callout"><b>Kenapa CAR dibaca pertama, bukan laba?</b> Karena hierarki analis bank: modal dulu, kualitas aset (provisi/NPL) kedua, profitabilitas ketiga. Laba 165,79 dengan CAR jebol = bank yang tidak boleh tumbuh; CAR aman dengan laba tipis = bank yang punya waktu memperbaiki.</div>`}
-],
+,
+{h: "Regulatory capital: CAR membatasi dividen (dan valuasi)", body: `
+<p>DDM H26 mengasumsikan bank bisa membagi dividen sebesar laba ditahannya. <b>CAR (capital adequacy ratio)</b> membatasi itu: bank harus menahan modal minimum terhadap ATMR (aset tertimbang menurut risiko):</p>
+<div class="formula">CAR = Modal ÷ ATMR · Dividen maks ≈ kelebihan modal di atas CAR target</div>
+<div class="example korporat"><div class="lbl">🏢 Contoh — dividen yang tidak boleh dibayar</div>
+<p>Bank: modal Rp10T, ATMR Rp80T → CAR = 10 ÷ 80 = <b>12,5%</b>. CET1 Rp9T → rasio CET1 = 9 ÷ 80 = <b>11,25%</b>. Bila target CET1 10% (minimum + buffer konservasi), kelebihan modal = (11,25% − 10%) × 80 = <b>Rp1,0T</b> — itulah plafon dividen tahun ini, berapa pun labanya. Bank dengan laba Rp2T tapi CAR mepet <i>tidak boleh</i> membagi Rp2T; DDM yang memakai payout 100% di bank seperti itu overvalue.</p></div>
+<p><b>Multiple bank lanjutan:</b> <b>P/TBV</b> (price-to-tangible-book-value) — harga Rp5.000, BV/saham Rp2.000, aset takberwujud Rp200/saham → TBV Rp1.800 → P/TBV = 5.000 ÷ 1.800 = <b>2,78×</b> (vs P/BV 2,50× — TBV lebih ketat karena membuang goodwill). <b>P/PPP</b> (price-to-pre-provision-profit): PPOP/saham Rp400 → P/PPP = 5.000 ÷ 400 = <b>12,5×</b> — berguna membandingkan bank dengan kualitas provisi berbeda, karena PPOP belum dipotong provisi. Aturan: bank yang tumbuh kreditnya cepat <i>harus</i> menahan laba (ATMR naik) — itulah alasan payout BBCA moderat (H16).</p>`}],
 quiz: [
 {q: "NII = NIM × rata-rata kredit, bukan × kredit akhir tahun. Kenapa?", opts: ["Agar rumusnya lebih panjang", "Pendapatan bunga diperoleh sepanjang tahun; stok akhir belum menghasilkan bunga setahun penuh", "Aturan OJK", "Karena kredit awal selalu lebih besar"], answer: 1, k: "is_structure", diff: "Easy",
  hints: ["Kapan bunga dihasilkan: Januari saja atau sepanjang tahun?", "Kredit akhir tahun penuh di bulan apa?"],
@@ -3931,7 +4192,17 @@ quiz: [
  explain: "161,28 ÷ ((8.000+8.960)÷2) = 161,28 ÷ 8.480 = 1,90%. Bukan 1,80% — itu provisi atas kredit AKHIR, CoC memakai RATA-RATA."},
 {q: "Bank model: BV/saham 181,22; ROE 9,77%; CoE 12%; payout 30%. Nilai DDM (= RI) per saham?", opts: ["103,03","253,71","181,22","78,19"], answer: 0, k: "ddm_ri", diff: "Medium",
  hints: ["g = 9,77% × 70% = 6,84%; D1 = 9,77% × 181,22 × 30% = 5,31.","DDM = 5,31 ÷ (12% − 6,84%) = ? (253,71 itu harga dari P/BV 1,4×; 78,19 itu besaran RI negatifnya, bukan nilainya.)"],
- explain: "DDM = RI = 103,03. Justified P/BV 0,57× — ROE 9,77% < CoE 12% berarti bank ini menghancurkan nilai vs buku."}
+ explain: "DDM = RI = 103,03. Justified P/BV 0,57× — ROE 9,77% < CoE 12% berarti bank ini menghancurkan nilai vs buku."},
+{q: "Bank: modal Rp10T, ATMR Rp80T. CAR?", opts: ["12,5%","8,0%","10,0%","80,0%"], answer: 0, k: "car", diff: "Easy",
+ hints: ["CAR = modal ÷ ATMR.", "10 ÷ 80 = ?"],
+ explain: "CAR = 10 ÷ 80 = 12,5%."},
+{q: "CET1 Rp9T, ATMR Rp80T, target CET1 10%. Plafon dividen dari kelebihan modal?", opts: ["Rp1,0T","Rp9,0T","Rp2,0T","Rp0,8T"], answer: 0, k: "car", diff: "Medium",
+ hints: ["CET1 ratio = 9 ÷ 80 = 11,25%.", "Kelebihan = (11,25% − 10%) × 80."],
+ explain: "(11,25% − 10%) × 80 = Rp1,0T. Bank tidak boleh membagi dividen di atas kelebihan modalnya, berapa pun labanya."},
+{q: "Harga Rp5.000; BV/saham Rp2.000; intangibles Rp200/saham; PPOP/saham Rp400. P/TBV dan P/PPP?", opts: ["2,78× dan 12,5×","2,50× dan 12,5×","2,78× dan 5,0×","2,50× dan 5,0×"], answer: 0, k: "ptbv", diff: "Medium",
+ hints: ["TBV = 2.000 − 200 = 1.800.", "P/TBV = 5.000 ÷ 1.800; P/PPP = 5.000 ÷ 400."],
+ explain: "P/TBV = 5.000 ÷ 1.800 = 2,78×; P/PPP = 5.000 ÷ 400 = 12,5×."}
+
 ],
 hellPass: 80,
 hell: [
@@ -4014,7 +4285,18 @@ sections: [
 </table>
 <p><b>Lolos bila total \u226512 dari 16 DAN tidak ada aspek bernilai 1.</b> Satu aspek = 1 berarti ada lubang struktural \u2014 perbaiki blok itu, rekam ulang.</p>
 <div class="callout"><b>Kenapa 'tidak ada skor 1'?</b> Karena total 12 bisa dicapai dengan (4,4,3,1) \u2014 Q&amp;A hancur tapi lolos. Padahal Q&amp;A adalah tempat thesis diuji beneran. Rata-rata menyembunyikan lubang; aturan ini tidak.</div>`}
-],
+,
+{h: "Anatomi pitchbook, CIM & teaser — dan cara deal dijual", body: `
+<p>Thesis defense H27 melatihmu mempresentasikan <i>kesimpulan</i>. Dokumen deal IB menjual <i>perusahaan</i> — dan tiap dokumen punya pembaca, rahasia, dan tujuan berbeda:</p>
+<table class="brutal">
+<tr><th>Dokumen</th><th>Pembaca</th><th>Isi</th><th>Rahasia?</th></tr>
+<tr><td><b>Teaser</b> (1–2 hal)</td><td>Calon pembeli luas</td><td>Profil anonim: industri, revenue, EBITDA, highlight — tanpa nama</td><td>Ya, anonim</td></tr>
+<tr><td><b>CIM</b> (Confidential Information Memorandum, 30–80 hal)</td><td>Pembeli yang tanda tangan NDA</td><td>Model bisnis, keuangan, proyeksi, risiko, proses lelang</td><td>Ya, pasca-NDA</td></tr>
+<tr><td><b>Pitchbook</b></td><td>Klien / komite investasi</td><td>Kenapa deal ini, kenapa sekarang, valuasi (comps/DCF H11–H13), struktur</td><td>Internal klien</td></tr>
+<tr><td><b>Management presentation</b></td><td>Pembeli finalis</td><td>Presentasi manajemen + Q&amp;A</td><td>Ya</td></tr>
+</table>
+<p><b>Sell-side auction (garis waktu tipikal 12 minggu):</b> minggu 1–2 teaser + NDA; minggu 3–6 CIM + indikasi awal (IOI); minggu 7–9 management presentation + due diligence awal; minggu 10–11 penawaran final (binding); minggu 12 SPA + signing. Aturan: jangan pernah memberi CIM sebelum NDA; jangan pernah memberi angka final sebelum IOI — informasi adalah leverage, dan leverage yang dibagi terlalu dini hilang.</p>
+<p><b>Checklist due diligence (yang wajib ada sebelum signing):</b> (1) kualitas laba — apakah EBITDA "bersih" dari one-off (seperti normalisasi GOTO di real-08); (2) working capital — apakah ada musiman yang menyembunyikan kebutuhan kas; (3) utang tersembunyi — lease, garansi, sengketa pajak; (4) pelanggan — konsentrasi top-5; (5) manajemen — siapa yang pergi bila pemilik pergi. Thesis defense 10 menitmu adalah versi mini management presentation — bedanya, di deal nyata, audiensmu memegang cek.</p>`}],
 quiz: [
 {q: "Hook 1 menit yang baik berisi\u2026", opts: ["Satu kalimat kenapa perusahaan ini layak diperhatikan SEKARANG", "Profil perusahaan: berdiri tahun, jumlah karyawan\u2026", "Disclaimer dan daftar isi", "Biodata presenter"], answer: 0, k: "presentasi", diff: "Easy",
  hints: ["Hook = kail. Apa yang mengail perhatian?", "Audiens memutuskan dalam 90 detik pertama."],
@@ -4039,7 +4321,14 @@ quiz: [
  explain: "Buffer = napas + kalimat pembuka Q&A ('tiga risiko terbesar sudah saya tunjukkan \u2014 silakan serang'). Materi baru di menit 9 = ide yang tak sempat dibela."},
 {q: "Rubrik total 16. Lolos bila\u2026", opts: ["Total \u226512 \u2014 cukup", "Semua aspek = 4", "Total \u226512 DAN tidak ada aspek bernilai 1", "Total \u22658"], answer: 2, k: "defense", diff: "Medium",
  hints: ["(4,4,3,1) = total 12. Lolos?", "Rata-rata bisa menyembunyikan apa?"],
- explain: "Total 12 dengan komposisi (4,4,3,1) = Q&A hancur tapi 'lolos' \u2014 padahal Q&A tempat thesis diuji. Aturan 'tanpa skor 1' mencegah rata-rata menyembunyikan lubang struktural."}
+ explain: "Total 12 dengan komposisi (4,4,3,1) = Q&A hancur tapi 'lolos' \u2014 padahal Q&A tempat thesis diuji. Aturan 'tanpa skor 1' mencegah rata-rata menyembunyikan lubang struktural."},
+{q: "Dokumen 1–2 halaman, anonim, untuk calon pembeli luas — apa namanya?", opts: ["Teaser","CIM","Pitchbook","SPA"], answer: 0, k: "pitchbook", diff: "Easy",
+ hints: ["CIM baru dibagikan setelah NDA.", "Pitchbook untuk klien/komite, bukan pembeli luas."],
+ explain: "Teaser: profil anonim tanpa nama perusahaan. CIM (30–80 hal) hanya untuk pembeli yang sudah tanda tangan NDA."},
+{q: "Dalam sell-side auction, kapan CIM dibagikan?", opts: ["Setelah pembeli tanda tangan NDA (minggu 3–6)","Bersamaan dengan teaser minggu 1","Setelah signing","Tidak pernah — CIM hanya internal"], answer: 0, k: "pitchbook", diff: "Easy",
+ hints: ["Teaser dulu, NDA, baru CIM.", "Informasi = leverage; jangan dibagi terlalu dini."],
+ explain: "CIM dibagikan minggu 3–6, hanya ke pembeli yang sudah tanda tangan NDA. Teaser anonim keluar lebih dulu (minggu 1–2)."}
+
 ],
 hellPass: 80,
 hell: [
@@ -4340,7 +4629,9 @@ sections: [
 </table>
 <p>Standar: tulis 10/10 benar dari ingatan, 2\u00d7 beruntun. Kalau satu rumus masih 'kayaknya', itu = 3 soal exam yang dipertaruhkan.</p>
 <div class="callout"><b>Kenapa dari ingatan, bukan fotokopi?</b> Karena exam tidak mengizinkan contekan \u2014 yang boleh dibawa masuk hanya yang ada di kepalamu. Cheatsheet yang ditulis dari ingatan = bukti rumusnya benar-benar tinggal di memori jangka panjangmu.</div>`}
-],
+,
+{h: "Hari-H: baca dashboard H24, bukan totalmu", body: `
+<p>Di H24 kamu membangun dashboard skor per topik lintas mock. Di H29, pakai itu untuk memutuskan <i>apa yang masih boleh dipelajari</i>: topik di atas 80% dua mock beruntun = kunci, jangan sentuh lagi; topik 60–80% = satu drill varian (5 soal) pagi hari-H; topik di bawah 60% = <b>terima</b> — jangan kejar di malam terakhir, kejar justru merusak topik lain yang sudah aman. Aturan 2-pass H29 tetap berlaku: pass 1 soal mudah dulu, pass 2 soal berat. Dashboard yang jujur di H24 adalah alasan kamu bisa tenang di H29 — kamu tahu persis di mana lubangmu, dan sudah memutuskan untuk tidak panik karenanya.</p>`}],
 quiz: [
 {q: "Exam 180 menit, 50 soal. Anggaran per soal?", opts: ["\u00b12 menit \u2014 sisanya cadangan", "\u00b13,5 menit \u2014 180 \u00f7 50", "\u00b15 menit \u2014 sisanya untuk cek", "Bebas, yang penting selesai"], answer: 1, k: "strategi", diff: "Easy",
  hints: ["180 \u00f7 50 = ?", "Anggaran = batas, bukan target."],
@@ -4371,7 +4662,11 @@ quiz: [
  explain: "Tidur = saat otak mengonsolidasi memori. Begadang merusak recall 20\u201330% \u2014 kamu menukar 3 jam hafalan panik (yang tidak tersimpan) dengan 20% seluruh exam. Bukan perdagangan yang bagus."},
 {q: "Soal memberi 6 angka; rumus TV hanya butuh 3. Tindakan?", opts: ["Pakai semua 6 \u2014 semakin lengkap semakin benar", "Rata-ratakan ke-6 angka", "Pilih 3 yang terbesar", "Tulis rumus dulu \u2192 ambil hanya yang dibutuhkan; sisanya pengecoh"], answer: 3, k: "jebakan", diff: "Medium",
  hints: ["Jebakan #2: angka pengecoh.", "Rumus = filter kebutuhan."],
- explain: "Rumus ditulis dulu = kamu tahu persis 3 angka yang dibutuhkan; 3 sisanya = pengecoh yang dirancang untuk dipakai. 'Pakai semua' = jawaban yang diracik pembuat soal untuk yang tidak menulis rumus."}
+ explain: "Rumus ditulis dulu = kamu tahu persis 3 angka yang dibutuhkan; 3 sisanya = pengecoh yang dirancang untuk dipakai. 'Pakai semua' = jawaban yang diracik pembuat soal untuk yang tidak menulis rumus."},
+{q: "Menjelang hari-H, topik LBO masih 55% di Mock 3, topik lain ≥80%. Keputusan H29?", opts: ["Terima LBO; jaga topik lain tetap aman","Begadang kejar LBO sampai 80%","Abaikan dashboard, kerjakan semua ulang","Fokus ke topik yang sudah 80%"], answer: 0, k: "mock_analytics", diff: "Medium",
+ hints: ["Satu lubang di bawah 60% lebih berbahaya bila dikejar panik.", "Topik ≥80% dua mock beruntun = kunci."],
+ explain: "Terima LBO apa adanya; satu drill ringan bila sempat, tapi jangan korbankan topik yang sudah aman. Dashboard H24 ada agar keputusan ini dibuat tenang, bukan panik."}
+
 ],
 hellPass: 80,
 hell: [
@@ -4433,7 +4728,17 @@ sections: [
 <tr><td><b>Menjaga skill</b></td><td>1 model per bulan</td><td>Ambil 1 emiten nyata per bulan, bangun DCF 1 hari. Skill modeling = otot: tidak dipakai = menyusut.</td></tr>
 </table>
 <div class="callout">\ud83c\udf93 <b>Kenapa '1 model per bulan'?</b> Karena 30 hari sprint membangun fondasi \u2014 tapi fondasi tanpa bangunan = tanah kosong. Satu model nyata per bulan = 12 valuasi per tahun = portofolio yang tidak bisa ditandingi sertifikat mana pun.</div>`}
-],
+,
+{h: "Batas cakupan: yang sengaja TIDAK diajarkan Sprint ini", body: `
+<p>Sprint ini menutup kurikulum FMVA (CFI) — dan secara sadar <b>tidak</b> menutup dua wilayah: <b>derivatif &amp; hedging</b> (futures, options, swap, lindung nilai FX/suku bunga) dan <b>valuasi real option dengan Black-Scholes</b> penuh. Alasannya: sertifikasi FMVA tidak menguji derivatif, dan hedging adalah disiplin tersendiri (treasury, bukan modeling). Ini batas eksplisit, bukan backlog — bila kamu butuh hedging untuk pekerjaan, pelajari dari jalur treasury setelah lulus, dengan fondasi DCF-mu sebagai pijakan. Yang sudah kamu kuasai sebagai gantinya: decision tree &amp; binomial sederhana (H15, real-07) — cukup untuk mengenali kapan sebuah proyek punya nilai fleksibilitas, tanpa berpura-pura bisa memberi harga opsi eksotis.</p>
+<p><b>Yang juga baru di v1.61:</b> Hari 31 (Bonus) — IPO &amp; dokumen deal IB — dan real-10 project finance (JSMR). Keduanya di luar gerbang akhir: H30 tetap gerbang kelulusanmu; Hari 31 dan real-10 adalah elektif pasca-lulus, bukan syarat lulus.</p>`},
+{h: "Tautan silang: FSA Lab — MD&A & Power BI", body: `
+<p>Dua keterampilan tidak dibangun duplikatif di Sprint karena sudah ada, lebih dalam, di <b>FSA Lab</b> (jalur belajar saudara Sprint ini):</p>
+<ul>
+<li><b>Workflow membaca annual report end-to-end (MD&amp;A + notes + segmen)</b> — lihat <b>FSA Lab M45</b>. Sprint melatih skeptisisme forensik (H20, real-03); M45 melatih workflow bacanya dari halaman pertama sampai catatan kaki.</li>
+<li><b>Dashboard Power BI + DAX</b> — lihat <b>FSA Lab M48</b>. Sprint mengajarkan dashboard Excel (H22) + KPI tree (v1.61); M48 mengajarkan pipeline Power BI-nya dengan data KLBF/MIKA/BBRI.</li>
+</ul>
+<p>Aturan rumah: satu keterampilan, satu rumah — jangan membangun versi kedua yang lebih dangkal di sini. Bila kamu sudah menyelesaikan keduanya, peta jalanmu lengkap: baca laporan (M45) → modelkan (Sprint) → sajikan (M48).</p>`}],
 quiz: [
 {q: "Bukti terkuat kamu siap sebagai analis?", opts: ["Bisa menjelaskan tiap angka di modelmu TANPA melihat catatan \u2014 termasuk asumsi dan batasnya", "Skor mock 100%", "Hafal semua rumus", "Punya 2 capstone"], answer: 0, k: "refleksi", diff: "Easy",
  hints: ["Pewawancara tidak bertanya skor.", "Yang diuji: pemahaman, bukan hafalan."],
@@ -4449,7 +4754,11 @@ quiz: [
  explain: "Portofolio = kamu mengundang orang menyerang modelmu. Satu capstone yang bisa dipertahankan penuh > dua capstone yang goyah di pertanyaan ketiga. Kualitas pertahanan > kuantitas file."},
 {q: "Satu kebiasaan dari sprint yang paling layak dibawa seumur karier?", opts: ["Begadang sebelum deadline", "Kerja secepat mungkin", "Asumsi tertulis + audit rumus sebelum kirim \u2014 tidak ada angka tanpa dasar dan tanpa jejak", "Hafal semua shortcut Excel"], answer: 2, k: "refleksi", diff: "Easy",
  hints: ["Mana yang menyelamatkanmu di Hari 19\u201321?", "Kebiasaan = yang dilakukan tanpa disuruh."],
- explain: "Asumsi tertulis = angkamu bisa diuji; audit rumus = modelmu bisa dipercaya. Dua kebiasaan ini membedakan analis yang 'kayaknya benar' dari yang benar-benar benar \u2014 di sprint ini maupun 10 tahun ke depan."}
+ explain: "Asumsi tertulis = angkamu bisa diuji; audit rumus = modelmu bisa dipercaya. Dua kebiasaan ini membedakan analis yang 'kayaknya benar' dari yang benar-benar benar \u2014 di sprint ini maupun 10 tahun ke depan."},
+{q: "Mengapa derivatif & hedging TIDAK diajarkan di Sprint ini?", opts: ["Di luar cakupan FMVA — batas eksplisit, bukan backlog","Karena terlalu mudah","Karena sudah ada di H15","Karena dilarang BEI"], answer: 0, k: "scope_boundary", diff: "Easy",
+ hints: ["FMVA (CFI) tidak menguji derivatif.", "Hedging = disiplin treasury tersendiri."],
+ explain: "Batas eksplisit: FMVA tidak menguji derivatif; hedging dipelajari dari jalur treasury setelah lulus. Decision tree & binomial (H15, real-07) sudah cukup untuk mengenali nilai fleksibilitas."}
+
 ],
 hellPass: 80,
 hell: [
@@ -4468,6 +4777,69 @@ tasks: [
 {t: "Task C \u2014 Rayakan \ud83c\udf93", d: "30 hari, 3 gerbang, 3 mock, 2 capstone. Tandai kelulusanmu dengan caramu \u2014 lalu mulai peta jalan: 1 emiten bulan depan."}
 ]
 },
+{
+id: "hari-31", track: "30 Hari", title: "Hari 31 (Bonus) — IPO: dari Bookbuilding ke Pro Forma",
+sub: "Hari 31 (Bonus) · ±6 jam · IPO emiten BEI + dokumen deal",
+est: "6 jam",
+prerequisites: ["capstone"],
+sections: [
+{h: "Proses IPO di BEI, langkah demi langkah", body: `
+<p>IPO bukan satu peristiwa — ini <b>rantai 6–9 bulan</b> dengan 4 aktor: emiten, underwriter (penjamin emisi), OJK, dan BEI. Alurnya:</p>
+<table class="brutal">
+<tr><th>Tahap</th><th>Apa terjadi</th><th>Yang diuji analis</th></tr>
+<tr><td><b>1. Persiapan</b></td><td>RUPS, audit 2 tahun, ubah PT jadi Tbk, tunjuk underwriter &amp; konsultan</td><td>Apakah LK-nya bersih? (forensik H20/real-03 berlaku di sini)</td></tr>
+<tr><td><b>2. Bookbuilding</b></td><td>Underwriter tawarkan kisaran harga ke investor institusi; kumpulkan pesanan (order book)</td><td>Di mana demand menumpuk — bawah, tengah, atau atas kisaran?</td></tr>
+<tr><td><b>3. Pricing &amp; allotment</b></td><td>Harga final ditetapkan; saham dijatah (allotment) bila oversubscribed</td><td>Apakah harga mencerminkan DCF/comps (H09–H13)?</td></tr>
+<tr><td><b>4. Penawaran umum</b></td><td>Masa penawaran ke publik; dana masuk via underwriter</td><td>Berapa % yang diserap ritel vs institusi?</td></tr>
+<tr><td><b>5. Listing</b></td><td>Saham tercatat &amp; mulai diperdagangkan di BEI</td><td>Harga hari pertama vs harga IPO (underpricing?)</td></tr>
+<tr><td><b>6. Lock-up</b></td><td>Pemegang saham pengendali <b>dilarang menjual 8 bulan</b> pasca-IPO (aturan BEI)</td><td>Kapan supply tambahan membanjiri pasar?</td></tr>
+</table>
+<p><b>Life as a public company:</b> laporan keuangan triwulanan, RUPS tahunan, keterbukaan informasi (material fact), dan analis yang menilai tiap kuartal. Perusahaan yang IPO untuk "uang cepat" tanpa siap transparansi akan membayarnya di harga saham.</p>`},
+{h: "Model IPO: proceeds, biaya & neraca pro forma", body: `
+<p>Model IPO adalah DCF/comps yang berujung pada satu tabel: berapa kas masuk, berapa yang hilang untuk biaya, dan seperti apa neraca sesudahnya:</p>
+<div class="example korporat"><div class="lbl">🏢 Contoh — PT Maju Jaya Tbk (ilustratif)</div>
+<p>Pra-IPO: 800 juta saham; aset Rp1.500 miliar, liabilitas Rp700 miliar, ekuitas Rp800 miliar. Penawaran: 200 juta saham baru (20% float) @ <b>Rp1.000</b> → <b>gross proceeds Rp200 miliar</b>. Biaya emisi 3% = Rp6 miliar → <b>net proceeds Rp194 miliar</b>. Pasca-IPO: 1.000 juta saham; kas +194 → aset <b>Rp1.694 miliar</b>; ekuitas 800 + 194 = <b>Rp994 miliar</b>; liabilitas tetap 700. Cek: 1.694 = 700 + 994 ✓ balance.</p>
+<p>Bila harga pasar bertahan Rp1.000 → market cap Rp1.000 miliar; P/BV pro forma = 1.000 ÷ 994 ≈ <b>1,01×</b>. Bila DCF-mu (H13) memberi nilai wajar Rp1.200/saham, IPO di Rp1.000 = diskon 17% — pembeli IPO mendapat margin of safety; bila DCF-mu Rp800, IPO Rp1.000 = kemahalan 25% — jangan ikut penawaran umumnya.</p></div>`},
+{h: "Underpricing: uang yang tertinggal di meja", body: `
+<p><b>Underpricing</b> = (harga hari pertama − harga IPO) ÷ harga IPO. Bila saham contoh di atas ditutup hari pertama di Rp1.150 → underpricing = 150 ÷ 1.000 = <b>15%</b>. "Uang yang tertinggal di meja" (money left on the table) = 200 juta saham × Rp150 = <b>Rp30 miliar</b> — nilai yang pindah dari emiten lama ke pembeli IPO.</p>
+<p>Kenapa underpricing hampir selalu ada? (1) underwriter ingin penawaran laris (reputasi); (2) ketidakpastian — investor butuh diskon untuk risiko yang belum terungkap; (3) sinyal — IPO yang naik hari pertama menarik liputan. Sebagai analis: underpricing 15% bukan bukti IPO "murah" — bandingkan harga hari pertama dengan DCF-mu, bukan dengan harga IPO. Dan ingat lock-up 8 bulan: saat pengendali boleh jual, supply naik — harga pasca-lock-up sering melemah, terpisah dari fundamentalnya.</p>
+<div class="callout"><b>Jembatan ke H27:</b> prospektus IPO adalah CIM yang dipublikasikan — baca prospektus dengan checklist due diligence H27 (kualitas laba, working capital, utang tersembunyi, konsentrasi pelanggan). IPO yang prospektusnya kamu pahami = IPO yang risikonya kamu hargai.</div>`},
+{h: "IPO vs jalur lain: rights issue, private placement, direct listing", body: `
+<p>IPO bukan satu-satunya cara masuk bursa atau menambah modal. Bandingkan sebelum merekomendasikan:</p>
+<table class="brutal">
+<tr><th>Jalur</th><th>Kas baru?</th><th>Cocok bila</th></tr>
+<tr><td><b>IPO</b></td><td>Ya (saham baru)</td><td>Perusahaan swasta siap transparansi &amp; butuh modal besar</td></tr>
+<tr><td><b>Rights issue (HMETD)</b></td><td>Ya</td><td>Sudah Tbk; pemegang lama diberi hak membeli dulu (anti-dilusi)</td></tr>
+<tr><td><b>Private placement</b></td><td>Ya</td><td>Butuh cepat; satu-dua investor strategis; tanpa prospektus penuh</td></tr>
+<tr><td><b>Direct listing</b></td><td>Tidak</td><td>Pemegang lama hanya butuh likuiditas; perusahaan tidak butuh kas</td></tr>
+<tr><td><b>Secondary offering</b></td><td>Tidak (ke penjual)</td><td>Pemegang lama menjual; kas tidak masuk perusahaan</td></tr>
+</table>
+<p><b>Kesalahan klasik:</b> menyebut secondary offering sebagai "perusahaan mendapat dana" — kasnya masuk ke pemegang saham yang menjual, bukan ke kas perusahaan. Di model pro forma, hanya saham <i>baru</i> yang menambah kas &amp; ekuitas.</p>`},
+{h: "Tugas: bangun model IPO mini", body: `
+<p><b>Tugas (di workbook sendiri, tanpa Drive):</b> ambil satu emiten yang IPO 2024–2025 di BEI (cari prospektus ringkasnya): (1) catat jumlah saham ditawarkan, harga IPO, dan biaya emisi; (2) hitung gross &amp; net proceeds; (3) bangun neraca pro forma pra vs pasca-IPO dan cek balance; (4) bandingkan harga IPO dengan DCF sederhanamu (FCFF 1 tahun + TV Gordon) — tulis vonis 1 kalimat: "IPO ini murah/mahal/wajar karena …". Kriteria lolos: neraca pro forma balance, dan vonismu menyebut angka DCF — bukan perasaan.</p>`}
+],
+quiz: [
+{q: "IPO: 200 juta saham baru @ Rp1.000, biaya emisi 3%. Net proceeds?", opts: ["Rp194 miliar","Rp200 miliar","Rp206 miliar","Rp6 miliar"], answer: 0, k: "ipo", diff: "Easy",
+ hints: ["Gross = 200 jt × 1.000.", "Net = gross × (1 − 3%)."],
+ explain: "Gross Rp200 miliar; biaya Rp6 miliar; net = Rp194 miliar."},
+{q: "Pra-IPO ekuitas Rp800 miliar; net proceeds Rp194 miliar. Ekuitas pro forma?", opts: ["Rp994 miliar","Rp800 miliar","Rp1.194 miliar","Rp1.694 miliar"], answer: 0, k: "ipo", diff: "Easy",
+ hints: ["Ekuitas baru = ekuitas lama + net proceeds.", "Rp1.694 miliar adalah aset pro forma, bukan ekuitas."],
+ explain: "Ekuitas pro forma = 800 + 194 = Rp994 miliar. Aset pro forma Rp1.694 miliar (= 700 liabilitas + 994 ekuitas) ✓ balance."},
+{q: "Harga IPO Rp1.000, tutup hari pertama Rp1.150, 200 juta saham ditawarkan. Underpricing & money left on the table?", opts: ["15%; Rp30 miliar","15%; Rp200 miliar","10%; Rp30 miliar","13%; Rp26 miliar"], answer: 0, k: "ipo", diff: "Medium",
+ hints: ["Underpricing = (1.150 − 1.000) ÷ 1.000.", "Money left = 200 jt × Rp150."],
+ explain: "Underpricing 15%; money left on the table = 200 jt × 150 = Rp30 miliar."},
+{q: "Pemegang saham pengendali pasca-IPO di BEI dilarang menjual selama…", opts: ["8 bulan (lock-up)","30 hari","1 tahun","Tidak ada lock-up"], answer: 0, k: "ipo", diff: "Easy",
+ hints: ["Aturan BEI untuk pemegang saham pengendali.", "Bukan 30 hari, bukan 1 tahun."],
+ explain: "Lock-up 8 bulan. Saat lock-up berakhir, supply tambahan bisa menekan harga — terpisah dari fundamental."},
+{q: "Bookbuilding adalah…", opts: ["Pengumpulan pesanan investor institusi pada kisaran harga sebelum pricing","Penjualan saham ke ritel di hari pertama","Audit laporan keuangan pra-IPO","Rapat direksi penentuan dividen"], answer: 0, k: "ipo", diff: "Easy",
+ hints: ["Bookbuilding terjadi sebelum harga final ditetapkan.", "Order book menunjukkan di mana demand menumpuk."],
+ explain: "Bookbuilding: underwriter mengumpulkan pesanan institusi pada kisaran harga; hasilnya menentukan harga final & allotment."},
+{q: "Secondary offering: kas hasil penjualan saham masuk ke…", opts: ["Pemegang saham yang menjual, bukan kas perusahaan","Kas perusahaan","Underwriter","BEI"], answer: 0, k: "ipo", diff: "Medium",
+ hints: ["Secondary = saham lama yang dijual kembali.", "Hanya saham baru yang menambah kas perusahaan."],
+ explain: "Secondary offering menjual saham lama — kasnya ke penjual, bukan perusahaan. Jangan catat sebagai kas masuk di pro forma."}
+],
+hellPass: 80
+}
 ];
 
 const GLOSSARY = [
@@ -4585,6 +4957,7 @@ const EXCELFUNCS = [
 ["UNIQUE","=UNIQUE(rentang)","Daftar nilai unik; tumpah otomatis (dynamic array).","=UNIQUE(kode_saham)"],
 ["FILTER","=FILTER(rentang, kriteria)","Saring baris sesuai kriteria; tumpah otomatis.","=FILTER(data, tahun=2025)"],
 ["SEQUENCE","=SEQUENCE(baris, [kolom])","Deret angka otomatis untuk indeks/simulasi.","=SEQUENCE(5) → 1,2,3,4,5"],
+
 ];
 
 /* ---------- English mode overlays (EN) ---------- */
@@ -4801,7 +5174,37 @@ sections: [
 <li><b>Effective tax rate</b> = tax expense ÷ EBT. Differs from the statutory rate when there are fiscal adjustments.</li>
 <li><b>Common-size IS</b> = the IS expressed as % of revenue. For comparing cost structures across years/companies.</li>
 </ul>`}
-],
+,
+{h: "Ratios: five families on one page", body: `
+<p>One ratio tells you nothing. Five ratio families — read together — tell you about a company's health. This is the taxonomy analysts use everywhere:</p>
+<table class="brutal">
+<tr><th>Family</th><th>Key ratios</th><th>Formula</th><th>The question it asks</th></tr>
+<tr><td><b>Profitability</b></td><td>Gross margin, net margin, ROE, ROIC</td><td>ROE = NI ÷ Equity; ROIC = NOPAT ÷ Capital</td><td>Is the business profitable and efficient with capital?</td></tr>
+<tr><td><b>Liquidity</b></td><td>Current ratio, quick ratio, cash ratio</td><td>Current = Current assets ÷ Current liabilities</td><td>Can it pay bills for the next 12 months?</td></tr>
+<tr><td><b>Leverage</b></td><td>Debt-to-equity, debt-to-assets, interest coverage</td><td>D/E = Total debt ÷ Equity; Coverage = EBIT ÷ Interest</td><td>Has debt gone too far?</td></tr>
+<tr><td><b>Efficiency</b></td><td>Asset turnover, DSO/DIO/DPO, CCC</td><td>Turnover = Revenue ÷ Assets</td><td>How fast do assets turn into cash?</td></tr>
+<tr><td><b>Growth</b></td><td>Revenue growth, profit growth, EPS growth</td><td>(This year ÷ Last year) − 1</td><td>Is growth healthy or bought with debt?</td></tr>
+</table>
+<p><b>Reading rules:</b> (1) compare against <b>same-industry peers</b>, not absolute numbers — a 0.67 current ratio can be healthy for a distributor and alarming for a manufacturer; (2) read the <b>3–5 year trend</b>, not one year; (3) one odd ratio = a question, not a verdict — check the footnotes before concluding.</p>
+<div class="example jebakan"><div class="lbl">🚫 Trap: ratios without context</div>
+<p>A 40% ROE looks great — until you see equity is down to Rp1 after years of losses. High ROE from shrinking equity = an illusion. Always read ROE together with ROIC and D/E.</p></div>`},
+{h: "Reading statements: UNVR vs ASII — two opposite structures", body: `
+<p>The numbers below are <b>illustrative (rounded for practice)</b>, not quotes from official statements — what is trained here is how to read them:</p>
+<table class="brutal">
+<tr><th></th><th>UNVR (consumer, illustrative)</th><th>ASII (conglomerate, illustrative)</th></tr>
+<tr><td>Current ratio</td><td>8.0 ÷ 12.0 = <b>0.67×</b></td><td>180 ÷ 120 = <b>1.50×</b></td></tr>
+<tr><td>Quick ratio</td><td>(8.0 − 2.5) ÷ 12.0 = <b>0.46×</b></td><td>(180 − 60) ÷ 120 = <b>1.00×</b></td></tr>
+<tr><td>Debt-to-equity</td><td>10 ÷ 4 = <b>2.50×</b></td><td>150 ÷ 200 = <b>0.75×</b></td></tr>
+<tr><td>Interest coverage</td><td>6 ÷ 1 = <b>6.0×</b></td><td>40 ÷ 5 = <b>8.0×</b></td></tr>
+</table>
+<p><b>Analyst read:</b> UNVR's current ratio below 1 is not automatically alarming — a consumer company with fast inventory turnover and long supplier terms <i>deliberately</i> runs on negative working capital: customer cash arrives before supplier invoices fall due. What must be checked: whether 6.0× coverage can absorb a shock, and whether 2.50× D/E is matched by stable cash flow. ASII is the opposite: a thick balance sheet, 1.50× liquidity, low leverage — a big cushion, but slower asset turnover. <b>Lesson:</b> the same ratio, a different verdict — it depends on the business model.</p>`},
+{h: "CVP: break-even & margin of safety", body: `
+<p>Before modelling revenue, ask: at what point does the company start making money? <b>Cost-volume-profit (CVP)</b> analysis answers with three numbers:</p>
+<div class="formula">Contribution per unit = Price − Variable cost · BEP (units) = Fixed cost ÷ Contribution per unit</div>
+<div class="example warung"><div class="lbl">🏪 Corner-shop example</div>
+<p>Coffee: price Rp20k, variable cost Rp12k → contribution Rp8k per cup. Fixed cost (rent + wages) Rp800k/month. BEP = 800 ÷ 8 = <b>100 cups/month</b>. Sell 150 cups → profit = (150 − 100) × 8 = Rp400k. <b>Margin of safety</b> = (150 − 100) ÷ 150 = <b>33.3%</b> — sales can fall by a third before losses start.</p></div>
+<p><b>Why analysts care:</b> a high BEP = high <i>operating leverage</i> (Day 02 § opex): a small volume drop, and profit falls hard. That is why fixed-cost-heavy businesses (factories, miners, airlines) have far more volatile profits than their revenue. When modelling a bear scenario in Day 13/15, check first how far volume sits from BEP.</p>
+<div class="callout"><b>Bridge to Day 18:</b> CVP is the simple version of a flex budget — when volume moves, variable cost moves with it, fixed cost does not. Same formula, bigger scale.</div>`}],
 quiz: [
 {q: `Shop: 50 customers/day × Rp20k × 26 open days. Projected monthly revenue?`, opts: ["Rp20m","Rp26m","Rp13m","Rp52m"], answer: 1, k: "revenue_modeling",
  hints: ["Revenue = volume × price × period.","50 × 20,000 × 26 = ?"],
@@ -4826,7 +5229,17 @@ quiz: [
  explain: "0.10 × 1.25 × 2.0 = 25%. Three levers multiplied — not added."},
 {q: "12-month contract Rp12m: goods Rp2m delivered at signing, service Rp10m over 12 months. Month-1 revenue?", opts: ["Rp1m","Rp2.83m","Rp12m","Rp2m"], answer: 1, k: "rev_recog", diff: "Medium",
  hints: ["Goods Rp2m recognized at delivery (point-in-time); service Rp10m/12 per month (over-time).","2 + 10÷12 = ?"],
- explain: "2 + 0.83 = Rp2.83m. The remaining Rp9.17m = contract liability, not revenue — cash received ≠ revenue recognized."}
+ explain: "2 + 0.83 = Rp2.83m. The remaining Rp9.17m = contract liability, not revenue — cash received ≠ revenue recognized."},
+{q: "Current assets Rp8,000m, current liabilities Rp12,000m. Current ratio?", opts: ["0.67×","1.50×","0.46×","2.50×"], answer: 0, k: "current_ratio", diff: "Easy",
+ hints: ["Current ratio = current assets ÷ current liabilities.", "8,000 ÷ 12,000 = ?"],
+ explain: "8,000 ÷ 12,000 = 0.67×. Below 1 — ask about the business model before panicking (Day 02 § UNVR vs ASII)."},
+{q: "Debt Rp10T, equity Rp4T, EBIT Rp6T, interest Rp1T. D/E and interest coverage?", opts: ["D/E 2.50×; coverage 6.0×","D/E 0.40×; coverage 6.0×","D/E 2.50×; coverage 1.0×","D/E 0.40×; coverage 0.17×"], answer: 0, k: "leverage_ratio", diff: "Medium",
+ hints: ["D/E = debt ÷ equity; coverage = EBIT ÷ interest.", "10 ÷ 4 = ?; 6 ÷ 1 = ?"],
+ explain: "D/E = 10 ÷ 4 = 2.50×; coverage = 6 ÷ 1 = 6.0×. High leverage, but interest is still covered 6 times."},
+{q: "Price Rp20k, variable cost Rp12k, fixed cost Rp800k/month. BEP and margin of safety at 150 units?", opts: ["100 units; 33.3%","160 units; 20%","66 units; 50%","100 units; 50%"], answer: 0, k: "cvp", diff: "Medium",
+ hints: ["Contribution = 20 − 12 = 8; BEP = 800 ÷ 8.", "Margin of safety = (150 − BEP) ÷ 150."],
+ explain: "Contribution Rp8k; BEP = 800 ÷ 8 = 100 units. Margin of safety = (150 − 100) ÷ 150 = 33.3%."}
+
 ],
 hell: [
 {q: `Common-size IS: COGS rose from 50% to 57% of revenue over 2 years, revenue rose too. That means?`, opts: ["Improving efficiency — economies of scale from rising revenue","Gross margin squeezed 7 points — weakening pricing power or rising costs","No special meaning as long as revenue still rises","Net income must have risen along with revenue"], answer: 1,
@@ -4931,7 +5344,14 @@ sections: [
 <li><b>Float</b> — cash "floating" from the timing gap between paying and receiving. Negative CCC = positive float.</li>
 <li><b>ΔWC</b> — change in working capital. Up = cash out; down = cash in.</li>
 </ul>`}
-],
+,
+{h: "EFN: how much external funding is needed?", body: `
+<p>Growth in the forecast → assets must grow → who pays for it? <b>EFN (external financing needed)</b> answers with one formula — the bridge from the balance sheet (Day 03) to the forecast (Day 08):</p>
+<div class="formula">EFN = (Assets ÷ Sales) × ΔSales − (Spontaneous liabilities ÷ Sales) × ΔSales − Margin × Sales₁ × (1 − Payout)</div>
+<div class="example warung"><div class="lbl">🏪 Example — Warung Septian</div>
+<p>Sales Rp1,000m, growing 20% → ΔSales Rp200m. Assets/Sales 0.6 → needs +Rp120m of assets. Spontaneous liabilities/Sales 0.3 → suppliers &amp; accruals cover Rp60m. Margin 10% → profit on new sales Rp1,200m × 10% = Rp120m; payout 40% → retained profit Rp72m. EFN = 120 − 60 − 72 = <b>−Rp12m</b>. Negative = a <b>surplus</b>: this growth funds itself, no new debt/equity needed.</p></div>
+<p><b>Three levers when EFN is positive:</b> (1) cut the payout (retain more profit); (2) improve asset efficiency — faster inventory/receivables turns = lower Assets/Sales; (3) negotiate longer supplier terms. A fast-growing company with thin margins and a big payout is the classic cash-crisis candidate — exactly what Day 08 tests when you forecast the balance sheet: if your cash plug goes negative, EFN explains why.</p>
+<div class="callout"><b>Cross-check:</b> large positive EFN + D/E already 2.50× (Day 02) = a red flag. EFN is the first number a lender asks for when a company requests extra facilities.</div>`}],
 quiz: [
 {q: `DSO of 30 days means?`, opts: ["The company pays suppliers within 30 days","Inventory sells out in 30 days on average","On average 30 days from sale to cash received","Company cash lasts 30 days without sales"], answer: 2, k: "dso_dio_dpo",
  hints: ["DSO = Days SALES Outstanding — it's about sales.","Receivables ÷ revenue × 365."],
@@ -4950,7 +5370,14 @@ quiz: [
  explain: `DPO +15 → CCC down 15 days. The supplier finances operations longer = easier cash.`},
 {q: `NI Rp1,700k, depreciation Rp400k, ΔWC +Rp250k (up). Estimated operating cash flow?`, opts: ["Rp1,850k","Rp2,350k","Rp1,450k","Rp2,100k"], answer: 0, k: "working_capital",
  hints: ["CFO = NI + non-cash expenses − ΔWC.","1,700 + 400 − 250 = ?"],
- explain: `1,700 + 400 − 250 = Rp1,850k. Traps: forgetting the add-back (1,450) or flipping the ΔWC sign (2,350).`}
+ explain: `1,700 + 400 − 250 = Rp1,850k. Traps: forgetting the add-back (1,450) or flipping the ΔWC sign (2,350).`},
+{q: "Sales Rp1,000m growing 20%; Assets/Sales 0.6; spontaneous liabilities/Sales 0.3; margin 10%; payout 40%. EFN?", opts: ["Surplus Rp12m (EFN −12)","Needs Rp12m","Needs Rp48m","Needs Rp120m"], answer: 0, k: "efn", diff: "Medium",
+ hints: ["EFN = 120 − 60 − 72.", "Negative = surplus, not a need."],
+ explain: "ΔAssets 120 − Δspontaneous liabilities 60 − retained profit 72 = −12. A Rp12m surplus: growth funds itself."},
+{q: "EFN is large and positive. The fastest lever to cut it without changing operations?", opts: ["Cut the payout ratio (retain profit)","Raise selling prices","Add bank debt","Sell fixed assets"], answer: 0, k: "efn", diff: "Easy",
+ hints: ["Retained profit = an internal funding source.", "Lower payout → (1 − payout) rises → the EFN offset grows."],
+ explain: "Cutting the payout adds retained profit, a direct EFN offset. Bank debt IS the EFN itself — not a solution, but the need being measured."}
+
 ],
 hell: [
 {q: `DSO rises 30 → 45 days, daily revenue stays Rp46.67k. Extra cash trapped in receivables?`, opts: ["Rp350k","Rp1,400k","Rp700k","Rp2,100k"], answer: 2,
@@ -5812,7 +6239,33 @@ sections: [
 <li><b>Trade payables ≠ WACC debt.</b> Non-interest doesn't enter D/V.</li>
 </ul>
 <div class="callout"><b>Why this list before computing TV?</b> Because terminal value = 80–90% of DCF value. A WACC/FCFF misconception carried into TV = a mistake <i>magnified</i> hundreds of times. Foundation first, tower second.</div>`}
-],
+,
+{h: "APV: valuing a firm when debt keeps changing", body: `
+<p>The WACC-based DCF (Day 09) assumes a <b>fixed</b> capital structure. In an LBO (Day 17) that is wrong: debt is repaid every year, D/E falls, and the correct WACC changes every year. <b>APV (Adjusted Present Value)</b> separates two things:</p>
+<div class="formula">APV = Unlevered firm value (VU) + PV of tax shield</div>
+<div class="example korporat"><div class="lbl">🏢 Example — debt amortised over 4 years</div>
+<p>FCFF Rp100m growing 3%, Ku (unlevered cost of capital) 11% → VU = 100 × 1.03 ÷ (0.11 − 0.03) = <b>Rp1,287.50m</b>. Debt Rp400m at 8%, amortised Rp100m/year, tax 22%. Tax shield per year = interest × 22%: year 1: 32 × 22% = 7.04; year 2: 24 × 22% = 5.28; year 3: 3.52; year 4: 1.76. Discounted at Kd 8%: 6.52 + 4.53 + 2.79 + 1.29 = <b>PV tax shield Rp15.13m</b>. APV = 1,287.50 + 15.13 = <b>Rp1,302.63m</b>.</p></div>
+<p><b>When APV beats WACC:</b> (1) leverage changes drastically (LBO, restructuring, project finance); (2) large non-debt tax shields (NOL, Day 20); (3) subsidised debt. <b>When WACC is enough:</b> a stable capital structure like INDF in Day 13. Cross-check your Day 17 LBO: APV value should sit near the IRR/MoIC value — if it is far off, one of your debt assumptions leaks.</p>
+<div class="callout"><b>Trap:</b> discounting the tax shield at Ku (not Kd) when the debt is already scheduled — that shrinks the PV of the tax shield for no reason. Scheduled debt = debt risk (Kd).</div>`},
+{h: "Economic profit: a 2-minute DCF cross-check", body: `
+<p><b>Economic profit (EP)</b> = NOPAT − (WACC × Capital). A company creates value only when NOPAT exceeds its cost of capital — and firm value = capital already invested + PV of all future EP:</p>
+<div class="formula">Value = Capital₀ + EP₁ ÷ (WACC − g)</div>
+<div class="example korporat"><div class="lbl">🏢 Example — reconciling with DCF</div>
+<p>NOPAT Rp150m, capital Rp1,000m, WACC 10% → EP = 150 − 100 = <b>Rp50m</b>. EP grows 3% → PV(EP) = 50 ÷ (0.10 − 0.03) = <b>Rp714.29m</b> → Value = 1,000 + 714.29 = <b>Rp1,714.29m</b>. DCF check: net investment = 3% × 1,000 = 30 → FCFF = 150 − 30 = 120 → EV = 120 ÷ (0.10 − 0.03) = <b>Rp1,714.29m — exactly the same</b>. Two routes, one answer. If yours differ, something is inconsistent between your capital growth and your FCFF.</p></div>
+<p><b>Why EP is useful:</b> annual EP shows <i>when</i> value is created — a 10-year DCF whose value is 80% terminal value (like UNVR in real-01) looks suspicious through the EP lens: early-year EP is small, all value rests on the g assumption. EP is the fastest audit tool for your Day 13 thesis.</p>`},
+{h: "Country risk premium: CAPM for emerging markets", body: `
+<p>Day 09 CAPM uses US Rf and ERP as if every country carried the same risk. For an Indonesian issuer, add a <b>country risk premium (CRP)</b>:</p>
+<div class="formula">Ke = Rf + β × ERP + CRP (or λ × CRP for partial exposure)</div>
+<div class="example korporat"><div class="lbl">🏢 Example — the price of 2.5%</div>
+<p>US Rf 4%, ERP 5%, β 1.2, Indonesia CRP 2.5% → Ke = 4 + 1.2 × 5 + 2.5 = <b>12.5%</b> (without CRP: 10%). Value impact: FCFF Rp100m, g 3% → EV with CRP = 103 ÷ (0.125 − 0.03) = <b>Rp1,084.21m</b>; without CRP = 103 ÷ 0.07 = <b>Rp1,471.43m</b>. CRP cuts value by <b>26%</b> — not a small detail. Lambda (λ) adjusts: a dollar-earning exporter might use λ = 0.7 → Ke = 4 + 6 + 1.75 = 11.75%.</p></div>
+<p><b>Where does CRP come from?</b> Common practice: the USD sovereign bond yield spread over UST, plus an equity adjustment. Do not apply CRP to a 100% domestic company with λ = 1 and then discount again through a bear scenario on the same risk — that double-counts the same risk twice. One risk, one place.</p>`},
+{h: "Capital structure: trade-off, pecking order & the EBIT–EPS break-even", body: `
+<p>How much debt is optimal? Two competing theories — and both are right, at different companies:</p>
+<p><b>Trade-off theory:</b> debt adds value through the tax shield but adds distress costs. Optimal where marginal tax shield = marginal distress cost. Stable, strong-cash-flow companies (TLKM, BBCA) can carry more debt; volatile ones (miners, property) cannot.</p>
+<p><b>Pecking order theory:</b> companies prefer internal funds first, then debt, then new equity last (because new equity signals bad news to the market). This explains why profitable companies are often <i>under-levered</i> — not because they fear debt, but because they do not need it.</p>
+<div class="formula">EBIT–EPS break-even: the EBIT* where the debt plan's EPS = the equity plan's EPS</div>
+<div class="example korporat"><div class="lbl">🏢 Example — EBIT* = Rp800m</div>
+<p>Rp4,000m needed. Plan A (equity): 1,000 shares. Plan B (debt): interest 8% × 4,000 = Rp320m, 600 shares. Tax 22%. Equalise EPS: EBIT × 0.78 ÷ 1,000 = (EBIT − 320) × 0.78 ÷ 600 → EBIT* = <b>Rp800m</b>. Check: EPS = 800 × 0.78 ÷ 1,000 = Rp0.624; plan B: (800 − 320) × 0.78 ÷ 600 = Rp0.624 ✓. Above Rp800m EBIT, debt wins (leverage lifts EPS); below it, debt drags EPS down. EBIT–EPS is not an NPV replacement — it is a quick tool before you build the full model.</p></div>`}],
 quiz: [
 {q: "CFO Rp2,450k, capex Rp2,500k. 2027 FCFF?", opts: ["−Rp50k","Rp4,950k","Rp2,450k","Rp50k"], answer: 0,
  hints: ["FCFF = CFO − capex.","2,450 − 2,500 = ?"],
@@ -5837,7 +6290,20 @@ quiz: [
  explain: "500 − 100×0.78 + 80 = 502. After-tax interest is 78, not 100 — tax already bears 22 of it."},
 {q: "Bond, face Rp1,000k, 8% coupon, YTM 10%, 3-year maturity. Its price?", opts: ["Rp950.26k","Rp1,000k","Rp975.13k","Rp811.42k"], answer: 0, k: "ytm_price", diff: "Medium",
  hints: ["Price = PV of coupons + PV of principal at 10% YTM.","80÷1.1 + 80÷1.21 + 1,080÷1.331 = ? (975.13 is the 9%-coupon price; 811.42 is only the principal's PV.)"],
- explain: "72.73 + 66.12 + 811.42 = Rp950.26k (rounded components sum to 950.27 — the 0.01 gap is rounding) — a discount, because coupon 8% < YTM 10%."}
+ explain: "72.73 + 66.12 + 811.42 = Rp950.26k (rounded components sum to 950.27 — the 0.01 gap is rounding) — a discount, because coupon 8% < YTM 10%."},
+{q: "VU Rp1,287.50m; PV of tax shield on amortising debt Rp15.13m. APV?", opts: ["Rp1,302.63m","Rp1,287.50m","Rp1,272.37m","Rp1,375.50m"], answer: 0, k: "apv", diff: "Easy",
+ hints: ["APV = VU + PV of tax shield.", "1,287.50 + 15.13 = ?"],
+ explain: "APV = 1,287.50 + 15.13 = Rp1,302.63m. (Rp1,375.50 is the APV if the Rp400m debt were permanent — not this amortising case.)"},
+{q: "NOPAT Rp150m, capital Rp1,000m, WACC 10%, EP growing 3%. Firm value via economic profit?", opts: ["Rp1,714.29m","Rp1,500.00m","Rp1,287.50m","Rp2,000.00m"], answer: 0, k: "economic_profit", diff: "Medium",
+ hints: ["EP = 150 − 10% × 1,000 = 50.", "Value = 1,000 + 50 ÷ (0.10 − 0.03)."],
+ explain: "EP = Rp50m; PV(EP) = 50 ÷ 0.07 = 714.29; value = 1,000 + 714.29 = Rp1,714.29m — same as DCF (FCFF 120 ÷ 0.07)."},
+{q: "Rf 4%, ERP 5%, beta 1.2, Indonesia CRP 2.5%. Cost of equity?", opts: ["12.5%","10.0%","11.75%","13.0%"], answer: 0, k: "country_risk", diff: "Easy",
+ hints: ["Ke = 4 + 1.2 × 5 + 2.5.", "Without CRP the answer is 10%."],
+ explain: "Ke = 4 + 6 + 2.5 = 12.5%. The 2.5% CRP cuts the lesson's example EV by 26%."},
+{q: "Equity plan 1,000 shares vs debt plan (interest Rp320m) 600 shares, tax 22%. Break-even EBIT?", opts: ["Rp800m","Rp320m","Rp624m","Rp1,000m"], answer: 0, k: "ebit_eps", diff: "Medium",
+ hints: ["Equalise EPS: EBIT × 0.78 ÷ 1,000 = (EBIT − 320) × 0.78 ÷ 600.", "Above this EBIT, debt wins."],
+ explain: "EBIT* = Rp800m (check: EPS under both plans = Rp0.624). Above 800 debt lifts EPS; below it, debt drags EPS down."}
+
 ],
 hell: [
 {q: "A: beta 0.8; B: beta 1.5 (same Rf & MRP). Which CoE is higher, and why?", opts: ["B — higher beta = bigger systematic risk","A — low beta = expensive","Exactly equal","Can't be compared"], answer: 0, diff: "Medium",
@@ -6116,7 +6582,14 @@ sections: [
 <li><b>A range, not a point.</b> Today's output = the 62.18–102.73T field, not "INDF = 78.18T".</li>
 </ul>
 <div class="callout"><b>Why does this table close the day?</b> Because comps is valuation's fastest justification machine: pick the "right" peers, get the desired number. The only brake = <b>disclosure</b>: which anchors, which illustrations, dated when. An analyst honest about this is more trusted than a "precise" but opaque one.</div>`}
-],
+,
+{h: "From control premium to DLOM: pricing no-control & illiquidity", body: `
+<p>Day 11 already taught control premium: a control buyer pays more. The flip side matters just as much — <b>minority discount</b> and <b>DLOM (discount for lack of marketability)</b>:</p>
+<div class="formula">Minority value = Control value × (1 − minority discount) · Illiquid value = Minority value × (1 − DLOM)</div>
+<div class="example korporat"><div class="lbl">🏢 Example — two stacked discounts</div>
+<p>Control value of the firm Rp1,000m. A 10% minority stake with no control: 20% minority discount → 1,000 × 0.80 = <b>Rp800m</b>. The shares are also unlisted (private company): 25% DLOM → 800 × 0.75 = <b>Rp600m</b>. Combined discount = 1 − 0.80 × 0.75 = <b>40%</b>. Order matters: minority discount first, DLOM second — the arithmetic is the same reversed here, but this is the valuer's order because the reasons differ (control vs liquidity).</p></div>
+<p><b>Where this shows up in exams &amp; practice:</b> private-company valuations, minority shareholder disputes, and PPA (Day 16) when valuing NCI — NCI is almost always minority and often illiquid. <b>Convertibles &amp; stock options</b> change the maths too: a Rp1,000m convertible bond exchangeable into 100 shares — if the share price is Rp12, conversion value = 100 × 12 = Rp1,200m &gt; bond value → the holder converts; your DCF must use diluted shares (treasury stock method, Day 20), not shares outstanding alone.</p>
+<div class="callout"><b>Trap:</b> applying DLOM to liquid listed shares. DLOM only applies to shares that <i>cannot be sold quickly</i> — a liquid public share price already reflects marketability.</div>`}],
 quiz: [
 {q: "Five tickers' EV/EBITDA: 7.76 / 7.86 / 8.18 / 8.57 / 9.99. The median?", opts: ["8.18×","8.57×","8.38×","9.99×"], answer: 0,
  hints: ["Sort smallest to largest, take the middle.","The 3rd of 5 = ?"],
@@ -6138,7 +6611,14 @@ quiz: [
  explain: "11.25 × 9.00 = Rp101.25T → equity 81.25T. Lands in the 78.18–89.38 confidence zone — a third agreeing cross-check."},
 {q: "INDF P/E 11.25×, EPS growth 8%. PEG?", opts: ["1.41×","1.00×","11.25×","0.71×"], answer: 0, k: "peg", diff: "Easy",
  hints: ["PEG = P/E ÷ growth.","11.25 ÷ 8 = ?"],
- explain: "11.25 ÷ 8 = 1.41×. Above 1.0× (Lynch's benchmark) — the market pays a 41% premium over INDF's growth."}
+ explain: "11.25 ÷ 8 = 1.41×. Above 1.0× (Lynch's benchmark) — the market pays a 41% premium over INDF's growth."},
+{q: "Control value Rp1,000m; minority discount 20%; DLOM 25%. Value of the illiquid minority stake?", opts: ["Rp600m","Rp800m","Rp550m","Rp750m"], answer: 0, k: "dlom", diff: "Medium",
+ hints: ["1,000 × (1 − 20%) × (1 − 25%).", "Combined discount = 1 − 0.80 × 0.75."],
+ explain: "1,000 × 0.80 = 800; 800 × 0.75 = Rp600m. Combined discount 40%."},
+{q: "Convertible bond Rp1,000m → 100 shares; share price Rp12. What does the holder do?", opts: ["Convert (conversion value Rp1,200m > bond)","Keep holding the bond","Sell the bond below par","Cannot be determined"], answer: 0, k: "convertible", diff: "Easy",
+ hints: ["Conversion value = 100 × 12.", "Compare with Rp1,000m."],
+ explain: "Conversion value = 100 × Rp12 = Rp1,200m > Rp1,000m → conversion pays. The DCF must use diluted shares."}
+
 ],
 hell: [
 {q: "INDF sits in its own comps table. The methodology problem?", opts: ["Circular — the target appraises itself; pros exclude it","No problem at all","The median is miscalculated","Should use mean, not median"], answer: 0, diff: "Medium",
@@ -6395,7 +6875,19 @@ Path 2 (Days 12&ndash;13): <i>building</i> from blank &rarr; FCFF 15.90T &rarr; 
 <li>Rp8,332 is illustrative, <b>not investment advice</b>.</li>
 </ul>
 <div class="callout"><b>Why does the verdict end with limitations?</b> Because a thesis honest about its weaknesses = the only thesis worth trusting. DCF is a perfect justification machine \u2014 what separates an analyst from a fraud = openness about assumptions. Capstone I complete. Congratulations!</div>`}
-],
+,
+{h: "Normalising cyclicals & high-growth: never value the peak (or the trough)", body: `
+<p>The Day 13 DCF uses current-year FCFF. For a <b>cyclical</b> company (miners, property, commodities), the current year may be a peak or a trough — valuing the peak means paying the peak price:</p>
+<div class="example korporat"><div class="lbl">🏢 Example — mid-cycle, not peak-cycle</div>
+<p>A miner: peak EBIT Rp500m, trough Rp100m, <b>mid-cycle Rp300m</b>. Mid-cycle FCFF Rp200m, WACC 11%, g 3% → EV = 206 ÷ (0.11 − 0.03) = <b>Rp2,575m</b>. Using peak FCFF Rp350m → EV = 360.50 ÷ 0.08 = <b>Rp4,506m — 75% more expensive</b> for the same company. Rule: normalise first (full-cycle average, or mid-cycle margin × normalised revenue), then DCF. The Day 13 bull/base/bear scenarios must use <i>different cycle paths</i>, not just ±10% off the peak year.</p></div>
+<p><b>High-growth without stable profits</b> (like TSLA in real-04): use an explicit two-stage DCF — a high-growth phase with drivers (volume × price × margin), then a mature phase with normal g. Real-04's reverse-DCF is the tool: ask <i>what g the market has already priced in</i> (38.7% for TSLA), then judge whether that g is plausible — not guessing g and hoping the market agrees.</p>
+<div class="example korporat"><div class="lbl">🏢 Example — two-stage DCF, recalculated</div>
+<p>FCFF Rp50m growing 25% for 3 years: 62.50; 78.13; 97.66. WACC 12% → PV: 55.80 + 62.28 + 69.51 = 187.59. TV at end of year 3: 97.66 × 1.03 ÷ (0.12 − 0.03) = 1,117.65 → PV = 795.53. EV = <b>Rp983.12m</b>. Check: 62.50 ÷ 1.12 = 55.80; 78.13 ÷ 1.2544 = 62.28; 97.66 ÷ 1.4049 = 69.51 ✓. If that 25% growth turns out to be only 15%, EV falls hard — which is why a high-growth thesis must state <i>what has to happen</i> for g to hold.</p></div>`},
+{h: "ESG: when it changes WACC or cash flow — and when it is only narrative", body: `
+<p>ESG changes valuation through <b>only two doors</b>: cash flow (carbon costs, fines, transition capex) or the cost of capital (risk the market prices). Outside those two doors, ESG is narrative — write it in the thesis as context, not as a number adjustment.</p>
+<div class="example korporat"><div class="lbl">🏢 Example — +50bps on WACC</div>
+<p>FCFF Rp100m, g 3%. WACC 11% → EV = 103 ÷ 0.08 = Rp1,287.50m. Climate-transition risk lifts Ke by 50bps → WACC 11.5% → EV = 103 ÷ 0.085 = <b>Rp1,211.76m (−5.9%)</b>. Rules: (1) adjust <b>cash flow first</b> when the cost is measurable (e.g. retrofit capex RpX); (2) WACC only when the risk is systematic and not captured in cash flow; (3) never do both for the same risk — that is double-counting, the same error as double CRP in Day 09.</p></div>
+<p><b>Honesty test for your thesis:</b> delete every ESG word from your Day 13 one-page thesis. If the numbers do not change, your ESG really was only narrative — and that is fine, as long as you do not claim otherwise. What is forbidden: a 10% ESG discount with no source and no clear door.</p>`}],
 quiz: [
 {q: "2030 FCFF Rp11.30T, g 1.75%. 2031 FCFF?", opts: ["Rp11.30T","Rp11.50T","Rp13.05T","Rp11.10T"], answer: 1,
  hints: ["2031 FCFF = 2030 FCFF \u00d7 (1+g).","11.30 \u00d7 1.0175 = ?"],
@@ -6411,7 +6903,14 @@ quiz: [
  explain: "113.25 \u2212 40.10 = Rp73.15T = the RC3 canonical anchor."},
 {q: "Equity Rp73.15T, 8.78 billion shares. Per-share value?", opts: ["Rp7,270","Rp8,332","Rp9,620","Rp73,150"], answer: 1,
  hints: ["Per share = equity \u00f7 shares.","73.15T \u00f7 8.78 billion = ?"],
- explain: "73.15 \u00f7 8.78 \u00d7 1,000 = Rp8,332 (illustrative)."}
+ explain: "73.15 \u00f7 8.78 \u00d7 1,000 = Rp8,332 (illustrative)."},
+{q: "Mid-cycle FCFF Rp200m, WACC 11%, g 3%. Normalised EV? (Peak FCFF Rp350m gives EV Rp4,506m.)", opts: ["Rp2,575m","Rp4,506m","Rp2,000m","Rp3,500m"], answer: 0, k: "cyclical", diff: "Medium",
+ hints: ["EV = 200 × 1.03 ÷ (0.11 − 0.03).", "Valuing the peak = paying 75% more."],
+ explain: "EV = 206 ÷ 0.08 = Rp2,575m. Peak FCFF gives Rp4,506m — 75% more for the same company."},
+{q: "ESG lifts WACC from 11% to 11.5% (FCFF Rp100m, g 3%). Effect on EV?", opts: ["Down 5.9% (Rp1,287.50m → Rp1,211.76m)","Up 5.9%","No change","Down 50%"], answer: 0, k: "esg_wacc", diff: "Medium",
+ hints: ["Old EV = 103 ÷ 0.08; new EV = 103 ÷ 0.085.", "1,211.76 ÷ 1,287.50 = 0.941."],
+ explain: "New EV = 103 ÷ 0.085 = Rp1,211.76m, down 5.9%. ESG only enters through WACC or cash flow — never both for the same risk."}
+
 ],
 hell: [
 {q: "Two paths (RC3 repair & capstone build) land on Rp73.15T. Meaning?", opts: ["Pure coincidence","RC3 must have miscalculated","Two independent paths converging = mechanics validated","The capstone must have miscalculated"], answer: 2, diff: "Medium",
@@ -6660,7 +7159,25 @@ sections: [
 <li><b>The 12% WACC is still a teaching assumption</b> (Day 09) \u2014 not a market cost of capital.</li>
 </ol>
 <div class="callout"><b>Why state limits instead of hiding them?</b> Because the model's user (including you in 3 months) will forget the context. Written limits = fences; unwritten limits = cliffs you only see after falling.</div>`}
-],
+,
+{h: "Monte Carlo: from 3 scenarios to 1,000 possibilities", body: `
+<p>Day 15 scenarios (bear/base/bull) are just 3 points. <b>Monte Carlo</b> replaces point assumptions with <b>distributions</b> — then runs the model thousands of times and reads the distribution of results. The model does not change; how we treat uncertainty does:</p>
+<p><b>Steps:</b> (1) pick the 2–3 most uncertain drivers (WACC, g, revenue); (2) give each a distribution — discrete (3 values + probabilities) is enough to learn; (3) compute EV for every combination; (4) read the <i>expected value</i>, the spread, and P(EV below a threshold).</p>
+<div class="example korporat"><div class="lbl">🏢 Example — 3×3 = 9 worlds, computed by hand</div>
+<p>FCFF₁ Rp100m. WACC {10%, 12%, 14%} with probabilities {25%, 50%, 25%}; g {2%, 3%, 4%} with probabilities {25%, 50%, 25%}; independent. EV = 100 × (1+g) ÷ (WACC − g):</p>
+<table class="brutal">
+<tr><th>WACC \ g</th><th>2%</th><th>3%</th><th>4%</th></tr>
+<tr><td><b>10%</b></td><td>1,275</td><td>1,471.43</td><td>1,733.33</td></tr>
+<tr><td><b>12%</b></td><td>1,020</td><td>1,144.44</td><td>1,300</td></tr>
+<tr><td><b>14%</b></td><td>850</td><td>936.36</td><td>1,040</td></tr>
+</table>
+<p><b>E[EV] = Rp1,183.23m</b> (EV × joint probability, summed) — <i>higher</i> than the base-case EV of Rp1,144.44m, because EV is convex in WACC (a WACC fall lifts EV more than a WACC rise cuts it). <b>P(EV &lt; Rp1,000m) = 18.75%</b> (WACC 14% × g 2–3% cells: 6.25% + 12.5%). In Excel L5/L6 you build this with Data Table + RAND — these 9 cells are the mini version.</p>
+<div class="callout"><b>Never do this:</b> average the WACC, compute one EV, and call it the "expected value". E[f(X)] ≠ f(E[X]) when f is not linear — and EV in WACC is clearly not linear. That is the entire reason Monte Carlo exists.</div>`},
+{h: "Decision trees: staged decisions have value", body: `
+<p>Some decisions are not taken once — they are <b>staged</b>: investing today buys the <i>right</i> to decide again tomorrow. A <b>decision tree</b> values that right with expected value at each branch (the natural pair to real-07: the smelter as a staged option).</p>
+<div class="example korporat"><div class="lbl">🏢 Example — wait a year, or build now?</div>
+<p>Invest now: NPV <b>+Rp50m</b> (certain). Wait 1 year: 60% good conditions → NPV +Rp120m; 40% bad → NPV −Rp20m. EMV of waiting = 0.6 × 120 + 0.4 × (−20) = 72 − 8 = <b>+Rp64m &gt; 50</b> → <b>wait</b>. Value of flexibility = 64 − 50 = Rp14m. Rule: compare branch EMVs, not single-scenario NPVs; and prune branches you would never take (in bad conditions you simply do not build — that is what makes waiting's EMV higher).</p></div>
+<p><b>Bridge to Solver (Excel L3):</b> a decision tree answers <i>when</i> to decide; Solver answers <i>how much</i> is optimal when your decision is continuous (capex allocation) — two complementary optimisation tools.</p>`}],
 quiz: [
 {q: "PT Maju Jaya: FCFF0 \u2212Rp2,000k, FCFFn Rp3,600k, WACC 12%, g 3%. Base EV?", opts: ["Rp33,929k","Rp40,000k","Rp35,714k","\u2212Rp1,786k"], answer: 0, k: "ev_base", diff: "Easy",
  hints: ["EV = FCFF0/(1+WACC) + [FCFFn/(WACC\u2212g)]/(1+WACC).","\u22122,000/1.12 + [3,600/0.09]/1.12 = ?"],
@@ -6676,7 +7193,17 @@ quiz: [
  explain: "|\u0394EV| WACC 5,921 > FCFFn 3,571 > g 1,232 > current FCFF 179 \u2014 the tornado ranking."},
 {q: "An analyst uses g = 13% with WACC 12%. What happens?", opts: ["Negative denominator \u2192 meaningless TV; the g < WACC requirement is violated","TV rises 8%","TV becomes zero","No problem"], answer: 0, k: "jebakan_g", diff: "Medium",
  hints: ["Compute the denominator: 0.12 \u2212 0.13.","Can a company grow forever faster than its cost of capital?"],
- explain: "Denominator \u22120.01 \u2192 negative TV. g \u2265 WACC = the model demanding an impossible world."}
+ explain: "Denominator \u22120.01 \u2192 negative TV. g \u2265 WACC = the model demanding an impossible world."},
+{q: "Monte Carlo 3×3 grid (WACC 10/12/14%, g 2/3/4%, probabilities 25/50/25%). E[EV]?", opts: ["Rp1,183.23m","Rp1,144.44m","Rp1,020.00m","Rp1,275.00m"], answer: 0, k: "monte_carlo", diff: "Medium",
+ hints: ["E[EV] = sum of EV × joint probability.", "E[EV] > base-case EV because EV is convex in WACC."],
+ explain: "E[EV] = Rp1,183.23m — above the base-case EV of Rp1,144.44m. Averaging WACC then computing one EV is not an expected value (E[f(X)] ≠ f(E[X]))."},
+{q: "From the same grid, P(EV < Rp1,000m)?", opts: ["18.75%","6.25%","25%","12.5%"], answer: 0, k: "monte_carlo", diff: "Medium",
+ hints: ["EV < 1,000 cells are only in the WACC 14% row.", "g 2%: 6.25%; g 3%: 12.5%."],
+ explain: "Only cells (14%, 2%) = 850 and (14%, 3%) = 936.36 are below 1,000: 6.25% + 12.5% = 18.75%."},
+{q: "Invest now NPV +50. Wait a year: 60% NPV +120, 40% NPV −20. Decision?", opts: ["Wait (EMV 64 > 50)","Build now","Reject the project","Cannot be determined"], answer: 0, k: "decision_tree", diff: "Easy",
+ hints: ["EMV of waiting = 0.6 × 120 + 0.4 × (−20).", "Value of flexibility = 64 − 50."],
+ explain: "EMV of waiting = 72 − 8 = +64 > 50 → wait. Value of flexibility Rp14m."}
+
 ],
 hell: [
 {q: "From the data table: WACC 10% \u2192 14% at g = 4%. By how much does EV fall?", opts: ["Rp22,903k (43%)","Rp14,530k (27%)","Rp13,636k (26%)","Rp8,368k (16%)"], answer: 0, k: "data_table_baca", diff: "Hard",
@@ -6838,7 +7365,13 @@ sections: [
 </table>
 <p>This checklist separates analysts from spectators: spectators stop at row 4 ("accretive, great deal!"); analysts continue to rows 5 and 6.</p>
 <div class="callout"><b>Why is row 6 the most important?</b> Because valuation and M&amp;A verdicts are <i>ranges</i>, not points. "Accretive up to a price of 12,540" is far more useful than "accretive" \u2014 it tells you the negotiation room: above 12,540, do not sign.</div>`}
-],
+,
+{h: "Payout: dividends vs buybacks — when each one wins", body: `
+<p>A company has Rp1,000m of cash to return. <b>Dividend</b> or <b>buyback</b>? Without tax, they are equal (Modigliani-Miller) — with tax and signalling, they are not:</p>
+<div class="example korporat"><div class="lbl">🏢 Example — Rp1,000m, 1,000 shares @ Rp10</div>
+<p><b>Rp1/share dividend:</b> the holder receives Rp1 cash + an ex-div share worth Rp9 → Rp10 total. <b>Buyback:</b> the company buys 100 shares @ Rp10 → 900 shares remain, price stays Rp10 (no signalling) → the holder still holds Rp10. Equal — <i>before tax</i>. With a 10% dividend tax: dividend gives 0.9 + 9 = <b>Rp9.90</b> vs buyback <b>Rp10</b> → buyback wins by Rp0.10/share. That is why companies whose shares look cheap prefer buybacks, and companies whose holders need regular income (pension funds, foundations) prefer dividends.</p></div>
+<p><b>IDX cases:</b> UNVR is known for a payout ratio near earnings — cash returns to shareholders because its internal reinvestment opportunities are limited; BBCA's payout is moderate — profit is retained for loan growth and the capital buffer (see Day 26: CAR constrains bank dividends). <b>Signalling:</b> a cut dividend = a harsh bad signal (the market punishes it); a stopped buyback = a soft signal. So companies raise dividends only when confident they can sustain them — a dividend is a promise, a buyback is an option.</p>
+<div class="callout"><b>Bridge to Day 09:</b> payout drives g (g = ROE × retention). A large dividend → small retention → small g → less value from growth, but more cash today. A consistent DCF must use the g that matches its assumed payout — never pair a 100% payout with 5% g.</div>`}],
 quiz: [
 {q: "PT Maju Jaya: NI 7,200, 18,000 shares. Standalone EPS?", opts: ["0.30","0.40","0.45","0.50"], answer: 1, k: "eps_standalone", diff: "Easy",
  hints: ["EPS = net income / shares outstanding.", "7,200 / 18,000 = ?"],
@@ -6857,7 +7390,14 @@ quiz: [
  explain: "9,000 / 24,666.67 = 0.3649 < 0.40 \u2192 DILUTIVE \u22128.8%."},
 {q: "Deal A: price 9,000, FV of identifiable net assets 6,950. PPA goodwill?", opts: ["Rp2,050k","Rp4,000k","Rp2,500k","Rp1,950k"], answer: 0, k: "goodwill_ppa", diff: "Medium",
  hints: ["PPA goodwill = price − FAIR-VALUE net assets, not book.","9,000 − 6,950 = ? (4,000 is simple goodwill; 1,950 is the after-tax write-up.)"],
- explain: "9,000 − 6,950 = Rp2,050k. PPA separates the 1,950 after-tax write-up out of simple goodwill of 4,000."}
+ explain: "9,000 − 6,950 = Rp2,050k. PPA separates the 1,950 after-tax write-up out of simple goodwill of 4,000."},
+{q: "Cash Rp1,000m, 1,000 shares @ Rp10, 10% dividend tax. Rp1/share dividend vs buyback — which is better for the holder?", opts: ["Buyback (Rp10 vs Rp9.90)","Dividend (Rp10 vs Rp9.90)","Exactly equal","Dividend always wins"], answer: 0, k: "payout", diff: "Medium",
+ hints: ["Dividend taxed 10% → 0.9 + 9.", "Buyback carries no dividend tax."],
+ explain: "Dividend: 0.9 + 9 = Rp9.90; buyback: Rp10. Without tax both are Rp10 (M-M). Tax makes the buyback win by Rp0.10/share."},
+{q: "Why do companies raise dividends only when confident they can sustain them?", opts: ["A dividend is a promise; a cut is punished by the market","Dividends can never be changed","Buybacks are banned after a dividend rise","Dividend tax rises every year"], answer: 0, k: "payout", diff: "Easy",
+ hints: ["Signalling: cutting a dividend = a harsh bad signal.", "A stopped buyback = a soft signal."],
+ explain: "A dividend is a promise — a cut reads as distress. A buyback is an option that can be stopped quietly."}
+
 ],
 hellPass: 80,
 hell: [
@@ -7001,7 +7541,13 @@ sections: [
 </table>
 <p>Day 17 recap: sources = uses <b>51,000</b> \u2713 \u2192 5-year debt schedule \u2192 debt <b>repaid by Y5</b> \u2192 exit <b>73,466</b> \u2192 MoIC <b>2.94x</b> \u2192 leverage trap (4.84x coverage, mind the covenants).</p>
 <div class="callout"><b>Why learn LBO in FMVA?</b> Because the LBO is an <b>integration exam</b>: forecasting (Day 08) + interest &amp; tax + debt schedule + exit multiple (Day 11) + MoIC/IRR \u2014 all in one model. Not a new topic; the place where every piece clicks together. If your debt schedule balances and your MoIC reads 2.94x, your core mechanics are sound.</div>`}
-],
+,
+{h: "LBO credit documents: covenant tests, cash sweep, refi & div recap", body: `
+<p>The Day 17 debt schedule computes interest &amp; principal. The <b>credit agreement</b> decides <i>whether the company may keep operating</i> — through three mechanisms you must model, not merely mention:</p>
+<p><b>1. Covenant tests (tested quarterly).</b> The two most common: leverage (Total Debt ÷ EBITDA ≤ max) and interest coverage (EBITDA ÷ Interest ≥ min). Example: debt Rp600m, EBITDA Rp100m → leverage <b>6.0×</b> vs a 5.5× covenant max → <b>BREACH</b> (even though coverage of 100 ÷ 45 = 2.22× still passes the 2.0× minimum — tightly). A breach lets lenders demand accelerated repayment; in practice it is usually negotiated (a waiver with a fee + higher rate).</p>
+<p><b>2. Cash sweep (mandatory vs optional prepayment).</b> Mandatory: scheduled amortisation (e.g. Rp20m/year) — compulsory. Cash sweep: a percentage of FCF after mandatory amortisation that <i>must</i> repay debt early. Example: FCF Rp60m, mandatory Rp20m, 50% sweep → extra prepay 50% × (60 − 20) = <b>Rp20m</b> → total paydown Rp40m. Optional prepayment = anything above that, voluntary. The sweep speeds deleveraging (good for equity) but locks up cash (none for dividends/acquisitions).</p>
+<p><b>3. Refi &amp; dividend recap.</b> Refi: replace old debt with cheaper/longer new debt — refinancing Rp600m from 9% to 7% saves <b>Rp12m/year</b> of interest. Dividend recap: raise new debt to pay a dividend to the sponsor — a Rp50m dividend lifts leverage to 650 ÷ 100 = <b>6.5×</b>. A recap lifts sponsor IRR (cash back sooner) but raises breach risk — which is why covenants are tested <i>after</i> the recap, not before.</p>
+<div class="callout"><b>For your Day 17 model:</b> add one covenant-test row to the debt schedule (leverage &amp; coverage per year + PASS/BREACH via IF). An LBO without a covenant test is a model that will not pass a lender's review.</div>`}],
 quiz: [
 {q: "EV 50,000 + transaction fee 1,000. TOTAL USES?", opts: ["51,000", "50,000", "52,000", "49,000"], answer: 0, k: "sources_uses", diff: "Easy",
  hints: ["Uses = EV + transaction fee.", "50,000 + 1,000 = ?"],
@@ -7020,7 +7566,14 @@ quiz: [
  explain: "2.94x \u2014 every Rp1 returns Rp2.94."},
 {q: "Mezzanine 5,000 @6% PIK. Balance at end of Year 1?", opts: ["5,300","5,000","5,600","4,700"], answer: 0, k: "mezz_pik", diff: "Medium",
  hints: ["PIK = interest added to principal, not paid in cash.","5,000 + 5,000 × 6% = ? (5,600 is if ALL 12% were PIK; 4,700 is if the cash coupon also reduced principal.)"],
- explain: "5,000 + 300 = 5,300. PIK defers cash — the principal grows (Year 2: 5,618)."}
+ explain: "5,000 + 300 = 5,300. PIK defers cash — the principal grows (Year 2: 5,618)."},
+{q: "LBO: debt Rp600m, EBITDA Rp100m, leverage covenant max 5.5×. Test result?", opts: ["BREACH (6.0× > 5.5×)","Pass (6.0× < 5.5×)","Pass if coverage is enough","Cannot test without interest"], answer: 0, k: "covenant", diff: "Easy",
+ hints: ["Leverage = 600 ÷ 100.", "Compare with the 5.5× max."],
+ explain: "Leverage = 6.0× > max 5.5× → BREACH, even though coverage of 2.22× still passes. One breached covenant is enough to trigger renegotiation."},
+{q: "FCF Rp60m, mandatory amortisation Rp20m, 50% cash sweep. Extra prepay?", opts: ["Rp20m","Rp30m","Rp40m","Rp10m"], answer: 0, k: "cash_sweep", diff: "Medium",
+ hints: ["Sweep = 50% × (FCF − mandatory).", "50% × (60 − 20) = ?"],
+ explain: "Sweep = 50% × (60 − 20) = Rp20m → total paydown 40m. The sweep speeds deleveraging but locks up cash."}
+
 ],
 hell: [
 {q: "Exit multiple drops 5x \u2192 4x (debt schedule unchanged). New MoIC?", opts: ["2.94x", "2.65x", "2.35x", "1.95x"], answer: 2, diff: "Medium",
@@ -7141,7 +7694,40 @@ sections: [
 </table>
 <p>Warung Nusantara, with sharp seasonality (Jun 24,000 vs Jan 16,800), <i>cannot</i> go fully aggressive: it needs an inventory buffer ahead of June. WC policy = choosing the point on the spectrum <i>deliberately</i>, not drifting into it.</p>
 <div class="callout"><b>Why is this a "policy", not a "calculation"?</b> Because the trade-off involves the owner's risk appetite \u2014 not math. The analyst prices it ("a Rp5,000k buffer = RpX of forgone return"); the owner picks the risk. Your job: make the trade-off <i>visible</i>, not choose it for them.</div>`}
-],
+,
+{h: "Capital budgeting: PI, ARR, payback & discounted payback", body: `
+<p>Until now Day 18 had one rule: NPV &gt; 0, accept. The real world uses four tools — because each answers a different question. Example project (Rp m): investment <b>1,000</b>, inflows 300 / 400 / 500 / 400 (years 1–4), WACC 10%:</p>
+<table class="brutal">
+<tr><th>Tool</th><th>Formula</th><th>Maths</th><th>Verdict</th></tr>
+<tr><td><b>NPV</b></td><td>PV of inflows − investment</td><td>272.73 + 330.58 + 375.66 + 273.21 − 1,000 = <b>+252.18</b></td><td>Accept</td></tr>
+<tr><td><b>Profitability Index</b></td><td>PV of inflows ÷ investment</td><td>1,252.18 ÷ 1,000 = <b>1.25</b></td><td>Accept (&gt; 1); useful when capital is rationed</td></tr>
+<tr><td><b>Payback</b></td><td>Year cumulative inflows ≥ investment</td><td>300 + 400 = 700 (yr 2); need 300 of 500 → <b>2.6 yrs</b></td><td>Fast, but ignores time value &amp; later flows</td></tr>
+<tr><td><b>Discounted payback</b></td><td>Payback on discounted flows</td><td>Disc. cum.: 272.73; 603.31; 978.97; 1,252.18 → <b>3.08 yrs</b></td><td>More honest than plain payback</td></tr>
+<tr><td><b>ARR</b></td><td>Average profit ÷ average investment</td><td>Profits: 50, 150, 250, 150 (depn 250/yr) → avg 150 ÷ 500 = <b>30%</b></td><td>Accounting, not cash — use with care</td></tr>
+</table>
+<p><b>IRR of this project ≈ 20.5%</b> (NPV +10.03 at 20%, −10.02 at 21%) &gt; WACC 10% → consistent with NPV &gt; 0. When NPV and IRR conflict (next section), <b>NPV wins</b> — IRR does not know the scale of a project.</p>`},
+{h: "NPV vs IRR conflicts & multiple IRRs", body: `
+<p><b>Ranking conflict:</b> two mutually exclusive projects. A: invest 1,000, receive 1,300 in year 1 → NPV @10% = −1,000 + 1,181.82 = <b>181.82</b>; IRR = <b>30%</b>. B: invest 5,000, receive 6,200 in year 1 → NPV = −5,000 + 5,636.36 = <b>636.36</b>; IRR = <b>24%</b>. IRR picks A (30% &gt; 24%), NPV picks B (636 &gt; 182). <b>NPV is right</b> — shareholders care about rupiah of value created, not percentages. IRR loses because it cannot see scale. (PI can mislead here too when capital is not rationed — PI A = 1.18 vs PI B = 1.13 — still pick NPV when there is no capital rationing.)</p>
+<p><b>Multiple IRRs:</b> cash flows −100, +250, −150 (years 0, 1, 2 — e.g. a mine with large closure costs at the end). NPV(r) = −100 + 250÷(1+r) − 150÷(1+r)². At r = 0%: −100 + 250 − 150 = 0. At r = 50%: −100 + 166.67 − 66.67 = 0. <b>Two IRRs: 0% and 50%</b> — because the cash-flow sign changes twice (Descartes' rule). When IRR is not unique, throw IRR away and use NPV. Excel L5 already hinted at this in XIRR — now you know <i>why</i> it appears.</p>`},
+{h: "Inflation, nominal vs real & FX", body: `
+<p><b>Golden rule:</b> nominal cash flows ↔ nominal discount rate; real cash flows ↔ real discount rate. Never mix them. Exact Fisher: (1 + nominal) = (1 + real) × (1 + inflation). Example: nominal 12%, inflation 5% → real = 1.12 ÷ 1.05 − 1 = <b>6.67%</b> (not 7% — a small gap that compounds over a 10-year DCF).</p>
+<p><b>FX:</b> a dollar-earning project: USD 100k × Rp16,000 = Rp1,600m. Rupiah weakens 5% → rate 16,800 → Rp1,680m (+Rp80m). But if costs are also in dollars, hedge the net exposure, not the gross number. And never forecast an exchange rate as "today's rate + inflation differential" without stating the assumption — that is purchasing-power parity (PPP), a theory, not a forecast. Inflation &amp; FX are why Day 13 uses scenarios, not one number.</p>`},
+{h: "Statistical forecasting: moving averages, exponential smoothing, MAE/MAPE", body: `
+<p>Driver-based forecasting (Day 08) answers <i>why</i> numbers move. <b>Statistical forecasting</b> answers <i>how accurate</i> your guess is — and without it, a forecast is just a tidy opinion:</p>
+<div class="example warung"><div class="lbl">🏪 Example — coffee sales (thousand cups)</div>
+<p>Actual: 100, 110, 105, 120, 118. <b>3-period moving average:</b> period-4 forecast = (100+110+105) ÷ 3 = 105 → error 15; period-5 forecast = (110+105+120) ÷ 3 = 111.67 → error 6.33. <b>MAE</b> = (15 + 6.33) ÷ 2 = <b>10.67</b>. <b>MAPE</b> = (15÷120 + 6.33÷118) ÷ 2 = (12.5% + 5.37%) ÷ 2 = <b>8.93%</b>.</p>
+<p><b>Exponential smoothing</b> (α = 0.3; F₁ = 100): F₂ = 100; F₃ = 100 + 0.3 × 10 = 103; F₄ = 103 + 0.3 × 2 = 103.6. Errors: 10; 2; 16.4 → MAE = <b>9.47</b>, MAPE = (9.09% + 1.90% + 13.67%) ÷ 3 = <b>8.22%</b> — slightly more accurate than MA-3 on this data. Large α = responsive but noisy; small α = smooth but slow. Pick α by minimising MAPE on history, not by gut feel.</p></div>
+<p><b>Rule:</b> MAPE &lt; 10% = good for stable sales forecasts; MAPE &gt; 20% = your model has not caught the pattern (seasonality? trend?). Never report a forecast without its MAE/MAPE — a number without an error measure = a claim without evidence.</p>`},
+{h: "LAB: quarterly rolling forecast (build it, not a quiz)", body: `
+<p><b>Lab task (build in your Day 18 workbook):</b> make a 4-quarter rolling forecast that updates <i>automatically</i> from actuals. Structure: Q1–Q4 forecast columns + an Actual column filled as each quarter passes. Key formulas: next quarter's forecast = 3-quarter moving average of the latest actuals (or exponential smoothing at α = 0.3 from the previous section) — <b>not re-typed numbers</b>. Each quarter: (1) fill in Actual; (2) shift the forecast one quarter forward (drop the oldest, add a new one); (3) compute running MAE/MAPE; (4) log which forecast missed and why.</p>
+<p>This is not a quiz — it is actual FP&amp;A work: a forecast that is never "finished", just rolling. Pass criterion: change one Actual number, and the whole forecast + MAE/MAPE move with no manual edits. If any number must be re-typed, the lab is not done.</p>`},
+{h: "Mix variance, variance bridges & materiality", body: `
+<p>Day 18 already splits variance into price vs volume. What was missing: <b>mix</b> — and without mix, analysts blame price when the product composition shifted:</p>
+<div class="example korporat"><div class="lbl">🏢 Example — Warung Kopi Kita (Rp thousand)</div>
+<p>Product A: budget 1,000 units @ 10 = 10,000; actual 1,200 @ 9 = 10,800. Product B: budget 500 @ 20 = 10,000; actual 400 @ 22 = 8,800. Total: budget 20,000 → actual 19,600 (variance <b>−400</b>).</p>
+<p><b>Price variance:</b> A (9−10) × 1,200 = −1,200; B (22−20) × 400 = +800 → <b>−400</b>. <b>Volume variance</b> (at budget prices): A (1,200−1,000) × 10 = +2,000; B (400−500) × 20 = −2,000 → <b>0</b>. Total −400 + 0 = −400 ✓.</p>
+<p><b>Split volume into mix + quantity:</b> total volume budget 1,500, actual 1,600. Budget mix A 66.67% / B 33.33% → at actual volume, A "should" be 1,066.67 and B 533.33. <b>Mix variance:</b> A (1,200−1,066.67) × 10 = +1,333.33; B (400−533.33) × 20 = −2,666.67 → <b>−1,333.33</b>. <b>Quantity variance:</b> (1,600−1,500) × budget average price (20,000 ÷ 1,500 = 13.33) = <b>+1,333.33</b>. Check: −1,333.33 + 1,333.33 = 0 = volume variance ✓.</p></div>
+<p><b>Variance bridge (the narrative):</b> Budget 20,000 → +quantity 1,333.33 → −mix 1,333.33 → −price 400 → Actual 19,600. The story: volume rose but toward the cheap product, and the main product's price fell — not just "sales fell 400". <b>Materiality:</b> investigate variances &gt; 5% of budget or &gt; Rp500m (pick your threshold, write it in the model) — log the rest, do not chase them. FP&amp;A that investigates every variance runs out of time before investigating the important ones.</p>`}],
 quiz: [
 {q: "Annual budget revenue Rp240,000k, June seasonal factor 0.10. June budget revenue?", opts: ["Rp24,000k","Rp20,000k","Rp21,600k","Rp16,800k"], answer: 0, k: "budget_phasing", diff: "Easy",
  hints: ["Monthly budget = annual \u00D7 factor.","240,000 \u00D7 0.10 = ?"],
@@ -7157,7 +7743,26 @@ quiz: [
  explain: "4,300 - 9,000 = -Rp4,700k (unfavorable): execution leaked once volume is equalized."},
 {q: "A project with NPV > 0 should be?", opts: ["Accepted \u2014 it creates value above the cost of capital","Rejected \u2014 positive NPV means overpriced","Delayed until NPV = 0","Accepted only if IRR < WACC"], answer: 0, k: "npv_rule", diff: "Easy",
  hints: ["NPV = value added after discounting at the cost of capital.","NPV > 0 means value added \u2192 ?"],
- explain: "NPV > 0 = the project adds firm value. Accept."}
+ explain: "NPV > 0 = the project adds firm value. Accept."},
+{q: "Project: invest 1,000; inflows 300/400/500/400; WACC 10%. NPV and PI?", opts: ["NPV +252.18; PI 1.25","NPV +152.18; PI 1.15","NPV −252.18; PI 0.75","NPV +252.18; PI 1.35"], answer: 0, k: "pi", diff: "Medium",
+ hints: ["PV of inflows = 272.73 + 330.58 + 375.66 + 273.21 = 1,252.18.", "PI = 1,252.18 ÷ 1,000."],
+ explain: "PV of inflows Rp1,252.18m → NPV = +252.18; PI = 1.25. Accept (NPV > 0, PI > 1)."},
+{q: "Same project: payback and discounted payback?", opts: ["2.6 yrs; 3.08 yrs","2.0 yrs; 2.6 yrs","3.0 yrs; 3.5 yrs","2.6 yrs; 2.6 yrs"], answer: 0, k: "payback", diff: "Medium",
+ hints: ["Cumulative: 300 (yr 1), 700 (yr 2), 1,200 (yr 3).", "Discounted cum.: 272.73; 603.31; 978.97; 1,252.18."],
+ explain: "Payback = 2 + 300÷500 = 2.6 yrs. Discounted payback = 3 + 21.03÷273.21 = 3.08 yrs."},
+{q: "Project A: NPV 181.82, IRR 30%. Project B (mutually exclusive): NPV 636.36, IRR 24%. Choose?", opts: ["B (bigger NPV)","A (bigger IRR)","Reject both","Pick the bigger PI"], answer: 0, k: "npv_irr", diff: "Medium",
+ hints: ["Shareholders care about rupiah of value, not percentages.", "IRR cannot see scale."],
+ explain: "Choose B — NPV 636.36 > 181.82. IRR picks A because it cannot see project scale (1,000 vs 5,000)."},
+{q: "Cash flows −100, +250, −150. How many IRRs?", opts: ["Two IRRs: 0% and 50%","One IRR: 25%","No IRR","IRR 100%"], answer: 0, k: "multiple_irr", diff: "Hard",
+ hints: ["The cash-flow sign changes twice.", "Check r = 0% and r = 50%: NPV = 0 at both."],
+ explain: "NPV(0%) = −100 + 250 − 150 = 0; NPV(50%) = −100 + 166.67 − 66.67 = 0. Two IRRs — discard IRR, use NPV."},
+{q: "MA-3 forecast: errors 15 (actual 120) and 6.33 (actual 118). MAE and MAPE?", opts: ["MAE 10.67; MAPE 8.93%","MAE 10.67; MAPE 12.5%","MAE 21.33; MAPE 8.93%","MAE 9.47; MAPE 8.22%"], answer: 0, k: "mape", diff: "Medium",
+ hints: ["MAE = (15 + 6.33) ÷ 2.", "MAPE = (12.5% + 5.37%) ÷ 2."],
+ explain: "MAE = 10.67; MAPE = 8.93%. (9.47/8.22% is the exponential-smoothing α = 0.3 result in the lesson.)"},
+{q: "Warung example mix variance (A +1,333.33; B −2,666.67) and quantity variance?", opts: ["Mix −1,333.33; quantity +1,333.33 (volume total 0)","Mix +1,333.33; quantity −1,333.33","Mix −2,666.67; quantity 0","Mix 0; quantity −1,333.33"], answer: 0, k: "mix_variance", diff: "Hard",
+ hints: ["Total mix = 1,333.33 − 2,666.67.", "Quantity = (1,600 − 1,500) × 13.33."],
+ explain: "Total mix −1,333.33; quantity +1,333.33; they sum to 0 = volume variance. Volume rose but toward the cheap product — that is the mix story."}
+
 ],
 hell: [
 {q: "June revenue variance +Rp1,500k (favorable) but price variance -Rp4,500k. Conclusion?", opts: ["June performed well, no follow-up needed","Volume masked the price cut \u2014 check whether the discount was worth the lost margin","Raise prices immediately","The model miscalculated"], answer: 1, diff: "Medium",
@@ -7668,7 +8273,12 @@ sections: [
 <li><b>Assumption box</b> — g &lt; WACC, 1-stage Gordon, fictional numbers. If you don't believe these assumptions, everything above is void.</li>
 </ol>
 <div class="callout"><b>Why this order?</b> Because decisions = anchor → uncertainty → assumption validity. The analyst who starts at the bar chart is decorating; the one who starts at EV base then jumps to the assumption box is auditing. Be the second one.</div>`}
-],
+,
+{h: "KPI tree: from EV down to drivers you can hold", body: `
+<p>The Day 22 dashboard shows EV and sensitivities — but not <i>which lever</i> moves EV. A <b>KPI tree</b> reverses it: EV → value drivers → operating KPIs:</p>
+<div class="formula">EV ← FCFF ← (Revenue − Costs − Tax − ΔWC − Capex) ← Volume × Price ← Visits × Conversion × Basket</div>
+<p>Warung example: EV fell? Walk the tree: FCFF fell because revenue fell; revenue fell because visits fell (not price); visits fell because opening hours were cut. <b>One KPI per branch, one owner per KPI</b> — a tree without owners = decoration. In your capstone dashboard, add one KPI-tree page: each node shows actual vs target + its owner.</p>
+<p><b>One-page executive pack:</b> (1) a one-sentence conclusion ("EV RpX, up/down because of Y"); (2) 3 key numbers (EV, FCFF, WACC) + change vs last month; (3) one chart (Day 15 tornado or Day 18 bridge); (4) 2 risks + 1 action. If your pack needs page 2, cut it — executives read page 1, the rest is archive. For a Power BI dashboard, see FSA Lab M48 (cross-link in Day 30) — different tool, same tree logic.</p>`}],
 quiz: [
 {q: "The dashboard shows EV base 33,929 and EV exit 41,071. The correct reading?", opts: ["One of them must be miscalculated", "Two TV methods give two answers framing a valuation range — the gap is information, not error", "Take the larger one as the answer", "Average them and forget the gap"], answer: 1,
  hints: ["Two independent methods for the same thing.", "What does the 7,143 gap tell you about the TV assumptions?"],
@@ -7684,7 +8294,11 @@ quiz: [
  explain: "One point (e.g. 33,929) hides that valuation could be 24,561 in a bad world. Honest presentation: point + range + scenarios at each end. Tweaking g to make the range 'pretty' = falsifying uncertainty."},
 {q: "REPT bars: EV base 14 blocks vs EV exit 16 blocks (1 block = 2,500). What does it communicate in 3 seconds?", opts: ["The exact numbers", "EV exit > EV base because exit TV (48,000) > perpetuity TV (40,000) — an instant visual comparison", "The chart is miscalculated", "The block scale is inconsistent"], answer: 1,
  hints: ["16 blocks vs 14 blocks = ?", "A 2-block gap × 2,500 = 5,000 ≈ the EV gap."],
- explain: "Bar charts aren't for precision — for instant comparison. 16 vs 14 blocks reads immediately: the exit method is higher, consistent with exit TV > perpetuity TV. Exact numbers still live in the dashboard cells."}
+ explain: "Bar charts aren't for precision — for instant comparison. 16 vs 14 blocks reads immediately: the exit method is higher, consistent with exit TV > perpetuity TV. Exact numbers still live in the dashboard cells."},
+{q: "A proper KPI tree traces EV down to…", opts: ["Operating KPIs + their owners (e.g. visits × conversion)","One EV number alone","The industry average","Yesterday's share price"], answer: 0, k: "kpi_tree", diff: "Easy",
+ hints: ["EV ← FCFF ← revenue ← volume × price ← visits.", "One KPI per branch, one owner per KPI."],
+ explain: "KPI tree: EV → value drivers → operating KPIs with owners. A tree without owners = decoration."}
+
 ],
 hell: [
 {q: "The board asks for 'just one number': EV midpoint 37,500. The danger?", opts: ["None — the midpoint is fair", "The midpoint hides the range, the assumptions, and the sensitivity — decisions go in risk-blind", "The midpoint is hard to compute", "The midpoint isn't the average of the two EVs"], answer: 1,
@@ -7960,7 +8574,17 @@ sections: [
 <tr><td>Leases / NOL / DTA</td><td>Day 20</td><td>5 reclassification &amp; recognition variants</td></tr>
 </table>
 <div class="callout"><b>Today's target:</b> your 2 weakest areas from the classification, 5 <b>correct-in-a-row</b> variants each. The standard is not 'feels understood' \u2014 it is 5 in a row with no notes.</div>`}
-],
+,
+{h: "Per-topic score dashboard: from totals to holes", body: `
+<p>Mock 1 gives a total of 68%. Totals hide holes — a <b>per-topic dashboard</b> points at them. Build this table after every mock (columns = mocks, rows = topics):</p>
+<table class="brutal">
+<tr><th>Topic</th><th>Mock 1</th><th>Mock 2</th><th>Mock 3</th><th>Drill</th></tr>
+<tr><td>DCF / WACC</td><td>55%</td><td>—</td><td>—</td><td>Day 09–10 + Blind Drill</td></tr>
+<tr><td>Comps / SOTP</td><td>80%</td><td>—</td><td>—</td><td>Maintain (1 drill/week)</td></tr>
+<tr><td>LBO</td><td>40%</td><td>—</td><td>—</td><td>Day 17 + covenant test (new in v1.61)</td></tr>
+<tr><td>FP&amp;A / variance</td><td>70%</td><td>—</td><td>—</td><td>Day 18 mix + bridge</td></tr>
+</table>
+<p><b>Drill rules:</b> (1) priority = topics below 60% <i>or</i> falling between mocks; (2) drill = 5 different-numbers variant questions per topic from the concept graph (not re-reading theory); (3) a topic up two mocks in a row = switch to maintenance mode. <b>What Day 29 measures:</b> not your total, but whether any topic is still below 60% near exam day — one hole below 60% is more dangerous than a 75% total.</p>`}],
 quiz: [
 {q: "Annual rent Rp1,200k for 5 years, discount rate 8%. What is its present value?", opts: ["Rp7,040k \u2014 that is future value, not present value", "Rp6,000k \u2014 1,200 \u00d7 5, no discounting at all", "Rp4,791k", "Rp3,993k \u2014 that is only the factor, not yet \u00d7 1,200"], answer: 2,
  hints: ["PV of annuity = PMT \u00d7 [1 \u2212 (1+r)^\u2212n] \u00f7 r.", "1.08^\u22125 = 0.6806 \u2192 factor = 3.9927."],
@@ -7997,7 +8621,11 @@ quiz: [
  explain: "A forecast is alive \u2014 updated quarterly as reality unfolds. What gets locked is the budget (the performance benchmark). Demanding an unchanging forecast = demanding January's weather forecast stay right in December."},
 {q: "The formula =C10*(1+$C$3) is copied right across Y1..Y5. What happens to $C$3?", opts: ["Drifts to $D$3, $E$3\u2026 \u2014 $ does nothing on rightward copy", "Stays $C$3 \u2014 the assumption cell is locked for all years", "Drifts to C4, C5\u2026", "#REF! error"], answer: 1,
  hints: ["$ locks column AND row.", "Copying right only shifts relative references."],
- explain: "$C$3 is fully absolute \u2014 copied anywhere it still points at the same assumption cell. C10 is relative \u2014 it follows its year. The eternal rule: assumptions = absolute, time series = relative."}
+ explain: "$C$3 is fully absolute \u2014 copied anywhere it still points at the same assumption cell. C10 is relative \u2014 it follows its year. The eternal rule: assumptions = absolute, time series = relative."},
+{q: "Mock 1: total 68%, DCF 55%, Comps 80%, LBO 40%. First drill priority?", opts: ["LBO 40% (below 60%)","Comps 80%","Total 68%","DCF 55% only"], answer: 0, k: "mock_analytics", diff: "Easy",
+ hints: ["Priority = topics below 60%.", "LBO is the lowest."],
+ explain: "LBO 40% — furthest below the 60% line. The 68% total hides the hole; the per-topic dashboard points at it."}
+
 ],
 hell: [
 {q: "WACC rises 12%\u219213% AND g falls 4%\u21923% (FCFF5 3,500). Old TV 45,500 \u2014 new TV and direction?", opts: ["Up to 52,000 \u2014 falling g raises TV", "Flat at 45,500 \u2014 the effects cancel", "Down to 36,050: numerator 3,640\u21923,605 AND denominator 0.08\u21920.10 \u2014 both squeeze", "Down to 43,750 \u2014 numerator effect only"], answer: 2,
@@ -8300,7 +8928,13 @@ sections: [
 <li><b>Fair value 253.71</b> — meaningful only if the four points above are healthy. Valuation without a capital check = a price without a foundation.</li>
 </ol>
 <div class="callout"><b>Why read CAR first, not profit?</b> Because of the bank analyst's hierarchy: capital first, asset quality (provisions/NPL) second, profitability third. NI of 165.79 with breached CAR = a bank not allowed to grow; safe CAR with thin profit = a bank with time to fix itself.</div>`}
-],
+,
+{h: "Regulatory capital: CAR caps the dividend (and the valuation)", body: `
+<p>The Day 26 DDM assumes a bank can pay out as much dividend as its retained profit allows. <b>CAR (capital adequacy ratio)</b> limits that: a bank must hold minimum capital against RWA (risk-weighted assets):</p>
+<div class="formula">CAR = Capital ÷ RWA · Max dividend ≈ excess capital above the target CAR</div>
+<div class="example korporat"><div class="lbl">🏢 Example — the dividend that may not be paid</div>
+<p>Bank: capital Rp10T, RWA Rp80T → CAR = 10 ÷ 80 = <b>12.5%</b>. CET1 Rp9T → CET1 ratio = 9 ÷ 80 = <b>11.25%</b>. If the CET1 target is 10% (minimum + conservation buffer), excess capital = (11.25% − 10%) × 80 = <b>Rp1.0T</b> — that is this year's dividend ceiling, whatever the profit. A bank earning Rp2T with a tight CAR may <i>not</i> pay Rp2T; a DDM assuming a 100% payout for such a bank overvalues it.</p></div>
+<p><b>Further bank multiples:</b> <b>P/TBV</b> (price-to-tangible-book-value) — price Rp5,000, BV/share Rp2,000, intangibles Rp200/share → TBV Rp1,800 → P/TBV = 5,000 ÷ 1,800 = <b>2.78×</b> (vs P/BV 2.50× — TBV is stricter because it strips goodwill). <b>P/PPP</b> (price-to-pre-provision-profit): PPOP/share Rp400 → P/PPP = 5,000 ÷ 400 = <b>12.5×</b> — useful for comparing banks with different provision quality, since PPOP is before provisions. Rule: a bank growing loans fast <i>must</i> retain profit (RWA rises) — which is why BBCA's payout is moderate (Day 16).</p>`}],
 quiz: [
 {q: "NII = NIM × average loans, not × year-end loans. Why?", opts: ["To make the formula longer", "Interest income is earned through the year; the year-end stock hasn't earned a full year's interest", "Regulator rule", "Because opening loans are always larger"], answer: 1,
  hints: ["When is interest earned: January only, or through the year?", "Year-end loans are full in which month?"],
@@ -8322,7 +8956,17 @@ quiz: [
  explain: "161.28 ÷ ((8,000+8,960)÷2) = 161.28 ÷ 8,480 = 1.90%. Not 1.80% — that is the provision on ENDING loans; CoC uses the AVERAGE."},
 {q: "Bank model: BV/share 181.22; ROE 9.77%; CoE 12%; payout 30%. DDM (= RI) value per share?", opts: ["103.03","253.71","181.22","78.19"], answer: 0, k: "ddm_ri", diff: "Medium",
  hints: ["g = 9.77% × 70% = 6.84%; D1 = 9.77% × 181.22 × 30% = 5.31.","DDM = 5.31 ÷ (12% − 6.84%) = ? (253.71 is the price from P/BV 1.4×; 78.19 is the size of the negative RI, not the value.)"],
- explain: "DDM = RI = 103.03. Justified P/BV 0.57× — ROE 9.77% < CoE 12% means this bank destroys value vs book."}
+ explain: "DDM = RI = 103.03. Justified P/BV 0.57× — ROE 9.77% < CoE 12% means this bank destroys value vs book."},
+{q: "Bank: capital Rp10T, RWA Rp80T. CAR?", opts: ["12.5%","8.0%","10.0%","80.0%"], answer: 0, k: "car", diff: "Easy",
+ hints: ["CAR = capital ÷ RWA.", "10 ÷ 80 = ?"],
+ explain: "CAR = 10 ÷ 80 = 12.5%."},
+{q: "CET1 Rp9T, RWA Rp80T, CET1 target 10%. Dividend ceiling from excess capital?", opts: ["Rp1.0T","Rp9.0T","Rp2.0T","Rp0.8T"], answer: 0, k: "car", diff: "Medium",
+ hints: ["CET1 ratio = 9 ÷ 80 = 11.25%.", "Excess = (11.25% − 10%) × 80."],
+ explain: "(11.25% − 10%) × 80 = Rp1.0T. A bank may not pay dividends above its excess capital, whatever its profit."},
+{q: "Price Rp5,000; BV/share Rp2,000; intangibles Rp200/share; PPOP/share Rp400. P/TBV and P/PPP?", opts: ["2.78× and 12.5×","2.50× and 12.5×","2.78× and 5.0×","2.50× and 5.0×"], answer: 0, k: "ptbv", diff: "Medium",
+ hints: ["TBV = 2,000 − 200 = 1,800.", "P/TBV = 5,000 ÷ 1,800; P/PPP = 5,000 ÷ 400."],
+ explain: "P/TBV = 5,000 ÷ 1,800 = 2.78×; P/PPP = 5,000 ÷ 400 = 12.5×."}
+
 ],
 hell: [
 {q: "Loans grow 12%/yr but deposits only 5%/yr (all else equal). What breaks first?", opts: ["Nothing — the model still balances", "A funding gap: liabilities outgrow deposits → reliance on non-deposit funding (pricier/more volatile); the model 'balances' but the funding structure deteriorates", "NIM automatically rises", "CAR automatically rises"], answer: 1,
@@ -8404,7 +9048,18 @@ sections: [
 </table>
 <p><b>Pass if total \u226512 of 16 AND no aspect scores 1.</b> One aspect = 1 means a structural hole \u2014 fix that block, re-record.</p>
 <div class="callout"><b>Why 'no score of 1'?</b> Because 12 can be reached as (4,4,3,1) \u2014 Q&amp;A destroyed but 'passed'. Yet Q&amp;A is where the thesis is truly tested. Averages hide holes; this rule doesn't.</div>`}
-],
+,
+{h: "Anatomy of pitchbooks, CIMs & teasers — and how deals are sold", body: `
+<p>The Day 27 thesis defence trains you to present a <i>conclusion</i>. IB deal documents sell a <i>company</i> — and each document has a different reader, secrecy level, and purpose:</p>
+<table class="brutal">
+<tr><th>Document</th><th>Reader</th><th>Contents</th><th>Secret?</th></tr>
+<tr><td><b>Teaser</b> (1–2 pages)</td><td>Broad buyer universe</td><td>Anonymous profile: industry, revenue, EBITDA, highlights — no name</td><td>Yes, anonymous</td></tr>
+<tr><td><b>CIM</b> (Confidential Information Memorandum, 30–80 pages)</td><td>Buyers who signed an NDA</td><td>Business model, financials, projections, risks, auction process</td><td>Yes, post-NDA</td></tr>
+<tr><td><b>Pitchbook</b></td><td>Client / investment committee</td><td>Why this deal, why now, valuation (comps/DCF Day 11–13), structure</td><td>Client-internal</td></tr>
+<tr><td><b>Management presentation</b></td><td>Finalist buyers</td><td>Management presentation + Q&amp;A</td><td>Yes</td></tr>
+</table>
+<p><b>Sell-side auction (typical 12-week timeline):</b> weeks 1–2 teaser + NDA; weeks 3–6 CIM + initial indications (IOI); weeks 7–9 management presentation + early due diligence; weeks 10–11 final binding bids; week 12 SPA + signing. Rules: never share the CIM before the NDA; never share final numbers before the IOI — information is leverage, and leverage given away early is gone.</p>
+<p><b>Due-diligence checklist (mandatory before signing):</b> (1) earnings quality — is EBITDA clean of one-offs (like the GOTO normalisation in real-08); (2) working capital — is there seasonality hiding cash needs; (3) hidden debt — leases, warranties, tax disputes; (4) customers — top-5 concentration; (5) management — who leaves when the owner leaves. Your 10-minute thesis defence is a mini management presentation — except in a real deal, your audience holds the cheque.</p>`}],
 quiz: [
 {q: "A good 1-minute hook contains\u2026", opts: ["One sentence on why this company deserves attention RIGHT NOW", "Company profile: founded year, headcount\u2026", "Disclaimers and table of contents", "Presenter bio"], answer: 0,
  hints: ["A hook = a fishing hook. What catches attention?", "The audience decides in the first 90 seconds."],
@@ -8429,7 +9084,14 @@ quiz: [
  explain: "Buffer = a breath + the Q&A opener ('I've shown the three biggest risks \u2014 attack away'). New material at minute 9 = an idea with no time to defend it."},
 {q: "Rubric total is 16. Pass when\u2026", opts: ["Total \u226512 \u2014 enough", "Every aspect = 4", "Total \u226512 AND no aspect scores 1", "Total \u22658"], answer: 2,
  hints: ["(4,4,3,1) = total 12. Pass?", "What can an average hide?"],
- explain: "A total of 12 as (4,4,3,1) = Q&A destroyed but 'passed' \u2014 yet Q&A is where the thesis is tested. The 'no score of 1' rule stops averages from hiding structural holes."}
+ explain: "A total of 12 as (4,4,3,1) = Q&A destroyed but 'passed' \u2014 yet Q&A is where the thesis is tested. The 'no score of 1' rule stops averages from hiding structural holes."},
+{q: "A 1–2 page anonymous document for a broad buyer universe — what is it called?", opts: ["Teaser","CIM","Pitchbook","SPA"], answer: 0, k: "pitchbook", diff: "Easy",
+ hints: ["The CIM is only shared after the NDA.", "The pitchbook is for the client/committee, not broad buyers."],
+ explain: "Teaser: an anonymous profile with no company name. The CIM (30–80 pages) only goes to buyers who signed an NDA."},
+{q: "In a sell-side auction, when is the CIM shared?", opts: ["After the buyer signs the NDA (weeks 3–6)","Together with the teaser in week 1","After signing","Never — the CIM is internal only"], answer: 0, k: "pitchbook", diff: "Easy",
+ hints: ["Teaser first, NDA, then CIM.", "Information = leverage; do not give it away early."],
+ explain: "The CIM goes out in weeks 3–6, only to buyers who signed an NDA. The anonymous teaser comes first (weeks 1–2)."}
+
 ],
 hell: [
 {q: "'Your thesis says BUY at a Rp5,200 target; the market price is Rp4,800. So you think the market is wrong?' Strongest answer?", opts: ["'Yes, the market is inefficient'", "'The market prices in 5% growth; my model uses 8% on evidence \u2014 that 3-point gap IS the thesis. If the evidence breaks, the thesis dies'", "'I'm smarter than the market'", "'The price will definitely rise'"], answer: 1,
@@ -8725,7 +9387,9 @@ sections: [
 </table>
 <p>Standard: write 10/10 correctly from memory, 2\u00d7 in a row. If one formula is still 'probably', that = 3 exam questions gambled.</p>
 <div class="callout"><b>Why from memory, not a photocopy?</b> Because the exam allows no cheat sheets \u2014 the only thing you may bring in is what's in your head. A cheatsheet written from memory = proof the formulas truly live in your long-term memory.</div>`}
-],
+,
+{h: "Exam day: read your Day 24 dashboard, not your total", body: `
+<p>In Day 24 you built a per-topic score dashboard across mocks. On Day 29, use it to decide <i>what may still be studied</i>: topics above 80% for two mocks in a row = locked, do not touch them again; topics at 60–80% = one variant drill (5 questions) on exam morning; topics below 60% = <b>accept them</b> — do not chase them on the last night, chasing them damages the topics that are already safe. The Day 29 two-pass rule still applies: pass 1 easy questions first, pass 2 hard ones. An honest dashboard from Day 24 is why you can stay calm on Day 29 — you know exactly where your holes are, and you have already decided not to panic about them.</p>`}],
 quiz: [
 {q: "Exam: 180 minutes, 50 questions. Budget per question?", opts: ["\u00b12 min \u2014 the rest as reserve", "\u00b13.5 min \u2014 180 \u00f7 50", "\u00b15 min \u2014 the rest for checking", "Free, just finish"], answer: 1,
  hints: ["180 \u00f7 50 = ?", "A budget = a limit, not a target."],
@@ -8756,7 +9420,11 @@ quiz: [
  explain: "Sleep = when the brain consolidates memory. All-nighters damage recall 20\u201330% \u2014 trading 3 hours of panic cramming (never stored) for 20% of the whole exam. Not a good trade."},
 {q: "A question gives 6 numbers; the TV formula needs 3. Action?", opts: ["Use all 6 \u2014 more complete = more correct", "Average all 6 numbers", "Pick the 3 biggest", "Write the formula first \u2192 take only what's needed; the rest are decoys"], answer: 3,
  hints: ["Trap #2: decoy numbers.", "The formula = a needs filter."],
- explain: "Formula written first = you know exactly the 3 numbers needed; the other 3 = decoys designed to be used. 'Use everything' = the answer the setter cooked for those who skip writing the formula."}
+ explain: "Formula written first = you know exactly the 3 numbers needed; the other 3 = decoys designed to be used. 'Use everything' = the answer the setter cooked for those who skip writing the formula."},
+{q: "Near exam day, LBO is still 55% in Mock 3, other topics ≥80%. Day 29 decision?", opts: ["Accept LBO; keep the other topics safe","Stay up chasing LBO to 80%","Ignore the dashboard, redo everything","Focus on the topics already at 80%"], answer: 0, k: "mock_analytics", diff: "Medium",
+ hints: ["One hole below 60% is more dangerous when chased in panic.", "Topics ≥80% for two mocks = locked."],
+ explain: "Accept LBO as it is; one light drill if time allows, but do not sacrifice topics that are already safe. The Day 24 dashboard exists so this decision is made calmly, not in panic."}
+
 ],
 hell: [
 {q: "Pass 1 overruns: finished at minute 100 (planned 90). Adjustment?", opts: ["Rush pass 2 in 50 minutes with no final check", "Cut: pass 2 = 50 minutes, check = full 30 \u2014 the final check must not be sacrificed", "Redo pass 1 for the doubtful ones", "Give up on the 10 hardest questions"], answer: 1,
@@ -8817,7 +9485,17 @@ sections: [
 <tr><td><b>Keeping the skill</b></td><td>1 model per month</td><td>Take 1 real issuer per month, build a 1-day DCF. Modeling skill = muscle: unused = shrinking.</td></tr>
 </table>
 <div class="callout">\ud83c\udf93 <b>Why '1 model per month'?</b> Because the 30-day sprint built the foundation \u2014 but a foundation with no building = an empty lot. One real model per month = 12 valuations a year = a portfolio no certificate can match.</div>`}
-],
+,
+{h: "Scope boundary: what this Sprint deliberately does NOT teach", body: `
+<p>This Sprint covers the FMVA (CFI) curriculum — and deliberately does <b>not</b> cover two areas: <b>derivatives &amp; hedging</b> (futures, options, swaps, FX/interest-rate hedging) and full <b>Black-Scholes real-option pricing</b>. Reason: the FMVA exam does not test derivatives, and hedging is its own discipline (treasury, not modelling). This is an explicit boundary, not a backlog — if your job needs hedging, study it via a treasury track after graduating, with your DCF foundation as the base. What you do have instead: decision trees &amp; simple binomials (Day 15, real-07) — enough to recognise when a project carries flexibility value, without pretending to price exotic options.</p>
+<p><b>Also new in v1.61:</b> Day 31 (Bonus) — IPOs &amp; IB deal documents — and real-10 project finance (JSMR). Both sit outside the final gate: Day 30 remains your graduation gate; Day 31 and real-10 are post-graduation electives, not graduation requirements.</p>`},
+{h: "Cross-links: FSA Lab — MD&A & Power BI", body: `
+<p>Two skills are not rebuilt here because they already exist, deeper, in <b>FSA Lab</b> (this Sprint's sibling track):</p>
+<ul>
+<li><b>End-to-end annual-report reading (MD&amp;A + notes + segments)</b> — see <b>FSA Lab M45</b>. The Sprint trains forensic scepticism (Day 20, real-03); M45 trains the reading workflow from the first page to the footnotes.</li>
+<li><b>Power BI dashboards + DAX</b> — see <b>FSA Lab M48</b>. The Sprint teaches Excel dashboards (Day 22) + KPI trees (v1.61); M48 teaches the Power BI pipeline with KLBF/MIKA/BBRI data.</li>
+</ul>
+<p>House rule: one skill, one home — do not build a shallower second copy here. Once you finish both, your roadmap is complete: read the report (M45) → model it (Sprint) → present it (M48).</p>`}],
 quiz: [
 {q: "The strongest proof you're ready as an analyst?", opts: ["Explain every number in your model WITHOUT notes \u2014 including assumptions and boundaries", "A 100% mock score", "Memorizing every formula", "Having 2 capstones"], answer: 0,
  hints: ["Interviewers don't ask your score.", "What's tested: understanding, not memorization."],
@@ -8833,7 +9511,11 @@ quiz: [
  explain: "A portfolio = inviting people to attack your model. One fully defensible capstone beats two that wobble at the third question. Defense quality > file quantity."},
 {q: "One sprint habit most worth keeping for your whole career?", opts: ["All-nighters before deadlines", "Working as fast as possible", "Written assumptions + formula audit before sending \u2014 no number without basis and without trail", "Memorizing every Excel shortcut"], answer: 2,
  hints: ["Which saved you on Days 19\u201321?", "A habit = what you do unprompted."],
- explain: "Written assumptions = your numbers can be tested; formula audit = your model can be trusted. These two habits separate analysts who are 'probably right' from those actually right \u2014 in this sprint and 10 years on."}
+ explain: "Written assumptions = your numbers can be tested; formula audit = your model can be trusted. These two habits separate analysts who are 'probably right' from those actually right \u2014 in this sprint and 10 years on."},
+{q: "Why are derivatives & hedging NOT taught in this Sprint?", opts: ["Outside FMVA scope — an explicit boundary, not a backlog","Because they are too easy","Because they are already in Day 15","Because IDX bans them"], answer: 0, k: "scope_boundary", diff: "Easy",
+ hints: ["The FMVA (CFI) exam does not test derivatives.", "Hedging is its own treasury discipline."],
+ explain: "An explicit boundary: FMVA does not test derivatives; hedging is studied via a treasury track after graduating. Decision trees & binomials (Day 15, real-07) already cover recognising flexibility value."}
+
 ],
 hell: [
 {q: "A year from now, an interviewer asks: 'does your INDF thesis still hold?' Best answer?", opts: ["'The thesis was built on 2026 info; what still holds = the method. The data needs refreshing \u2014 and here are the triggers that would change my conclusion\u2026'", "'Of course \u2014 my model was right'", "'Forgot already'", "'No longer relevant'"], answer: 0,
@@ -8851,6 +9533,67 @@ tasks: [
 {t: "Task C \u2014 Celebrate \ud83c\udf93", d: "30 days, 3 gates, 3 mocks, 2 capstones. Mark your graduation your way \u2014 then start the roadmap: 1 issuer next month."}
 ]
 };
+EN["hari-31"] = {
+title: "Day 31 (Bonus) — IPO: From Bookbuilding to Pro Forma",
+sub: "Day 31 (Bonus) · ±6 hrs · IDX IPO + deal documents",
+sections: [
+{h: "The IPO process on the IDX, step by step", body: `
+<p>An IPO is not one event — it is a <b>6–9 month chain</b> with 4 actors: the issuer, the underwriter, the OJK, and the IDX. The flow:</p>
+<table class="brutal">
+<tr><th>Stage</th><th>What happens</th><th>What the analyst tests</th></tr>
+<tr><td><b>1. Preparation</b></td><td>GMS, 2 years of audits, convert to a public (Tbk) company, appoint underwriter &amp; advisers</td><td>Are the statements clean? (Day 20/real-03 forensics apply here)</td></tr>
+<tr><td><b>2. Bookbuilding</b></td><td>Underwriter offers a price range to institutional investors; collects orders (order book)</td><td>Where does demand pile up — bottom, middle, or top of the range?</td></tr>
+<tr><td><b>3. Pricing &amp; allotment</b></td><td>Final price set; shares allotted if oversubscribed</td><td>Does the price reflect DCF/comps (Day 09–13)?</td></tr>
+<tr><td><b>4. Public offering</b></td><td>Offering period to the public; funds flow via the underwriter</td><td>How much is taken by retail vs institutions?</td></tr>
+<tr><td><b>5. Listing</b></td><td>Shares list &amp; start trading on the IDX</td><td>First-day price vs IPO price (underpricing?)</td></tr>
+<tr><td><b>6. Lock-up</b></td><td>Controlling shareholders are <b>banned from selling for 8 months</b> post-IPO (IDX rule)</td><td>When does extra supply flood the market?</td></tr>
+</table>
+<p><b>Life as a public company:</b> quarterly financials, annual GMS, material-fact disclosures, and analysts grading every quarter. A company that IPOs for "fast money" without being ready for transparency pays for it in the share price.</p>`},
+{h: "IPO model: proceeds, costs & the pro forma balance sheet", body: `
+<p>An IPO model is a DCF/comps exercise ending in one table: how much cash comes in, how much is lost to fees, and what the balance sheet looks like after:</p>
+<div class="example korporat"><div class="lbl">🏢 Example — PT Maju Jaya Tbk (illustrative)</div>
+<p>Pre-IPO: 800 million shares; assets Rp1,500 billion, liabilities Rp700 billion, equity Rp800 billion. Offering: 200 million new shares (20% float) @ <b>Rp1,000</b> → <b>gross proceeds Rp200 billion</b>. Issue costs 3% = Rp6 billion → <b>net proceeds Rp194 billion</b>. Post-IPO: 1,000 million shares; cash +194 → assets <b>Rp1,694 billion</b>; equity 800 + 194 = <b>Rp994 billion</b>; liabilities unchanged at 700. Check: 1,694 = 700 + 994 ✓ balanced.</p>
+<p>If the market price holds at Rp1,000 → market cap Rp1,000 billion; pro forma P/BV = 1,000 ÷ 994 ≈ <b>1.01×</b>. If your DCF (Day 13) gives a fair value of Rp1,200/share, an IPO at Rp1,000 = a 17% discount — IPO buyers get a margin of safety; if your DCF says Rp800, an IPO at Rp1,000 = 25% expensive — skip the public offering.</p></div>`},
+{h: "Underpricing: money left on the table", body: `
+<p><b>Underpricing</b> = (first-day price − IPO price) ÷ IPO price. If our example stock closes day one at Rp1,150 → underpricing = 150 ÷ 1,000 = <b>15%</b>. "Money left on the table" = 200 million shares × Rp150 = <b>Rp30 billion</b> — value transferred from existing owners to IPO buyers.</p>
+<p>Why is underpricing almost always there? (1) the underwriter wants the offering to sell out (reputation); (2) uncertainty — investors need a discount for risks not yet revealed; (3) signalling — a first-day pop earns coverage. As an analyst: 15% underpricing is not proof the IPO was "cheap" — compare the first-day price with your DCF, not with the IPO price. And remember the 8-month lock-up: when controlling holders may sell, supply rises — post-lock-up prices often weaken, apart from fundamentals.</p>
+<div class="callout"><b>Bridge to Day 27:</b> an IPO prospectus is a published CIM — read it with the Day 27 due-diligence checklist (earnings quality, working capital, hidden debt, customer concentration). An IPO whose prospectus you understand = an IPO whose risks you have priced.</div>`},
+{h: "IPO vs other routes: rights issues, private placements, direct listings", body: `
+<p>An IPO is not the only way to list or raise capital. Compare before recommending:</p>
+<table class="brutal">
+<tr><th>Route</th><th>New cash?</th><th>Right when</th></tr>
+<tr><td><b>IPO</b></td><td>Yes (new shares)</td><td>Private company ready for transparency &amp; needing big capital</td></tr>
+<tr><td><b>Rights issue</b></td><td>Yes</td><td>Already listed; existing holders get first right to buy (anti-dilution)</td></tr>
+<tr><td><b>Private placement</b></td><td>Yes</td><td>Speed needed; one or two strategic investors; no full prospectus</td></tr>
+<tr><td><b>Direct listing</b></td><td>No</td><td>Existing holders only need liquidity; the company needs no cash</td></tr>
+<tr><td><b>Secondary offering</b></td><td>No (to the seller)</td><td>Existing holders sell; cash does not enter the company</td></tr>
+</table>
+<p><b>Classic mistake:</b> calling a secondary offering "the company raising funds" — the cash goes to the selling shareholder, not to company cash. In the pro forma model, only <i>new</i> shares add cash &amp; equity.</p>`},
+{h: "Task: build a mini IPO model", body: `
+<p><b>Task (in your own workbook, no Drive):</b> pick one issuer that IPO'd on the IDX in 2024–2025 (find its summary prospectus): (1) note shares offered, IPO price, and issue costs; (2) compute gross &amp; net proceeds; (3) build a pre vs post-IPO pro forma balance sheet and check it balances; (4) compare the IPO price with your simple DCF (1-year FCFF + Gordon TV) — write a 1-sentence verdict: "This IPO is cheap/expensive/fair because …". Pass criterion: the pro forma balance sheet balances, and your verdict cites a DCF number — not a feeling.</p>`}
+],
+quiz: [
+{q: "IPO: 200 million new shares @ Rp1,000, 3% issue costs. Net proceeds?", opts: ["Rp194 billion","Rp200 billion","Rp206 billion","Rp6 billion"], answer: 0, k: "ipo", diff: "Easy",
+ hints: ["Gross = 200m × 1,000.", "Net = gross × (1 − 3%)."],
+ explain: "Gross Rp200 billion; costs Rp6 billion; net = Rp194 billion."},
+{q: "Pre-IPO equity Rp800 billion; net proceeds Rp194 billion. Pro forma equity?", opts: ["Rp994 billion","Rp800 billion","Rp1,194 billion","Rp1,694 billion"], answer: 0, k: "ipo", diff: "Easy",
+ hints: ["New equity = old equity + net proceeds.", "Rp1,694 billion is pro forma assets, not equity."],
+ explain: "Pro forma equity = 800 + 194 = Rp994 billion. Pro forma assets Rp1,694 billion (= 700 liabilities + 994 equity) ✓ balanced."},
+{q: "IPO price Rp1,000, first-day close Rp1,150, 200 million shares offered. Underpricing & money left on the table?", opts: ["15%; Rp30 billion","15%; Rp200 billion","10%; Rp30 billion","13%; Rp26 billion"], answer: 0, k: "ipo", diff: "Medium",
+ hints: ["Underpricing = (1,150 − 1,000) ÷ 1,000.", "Money left = 200m × Rp150."],
+ explain: "Underpricing 15%; money left on the table = 200m × 150 = Rp30 billion."},
+{q: "Post-IPO controlling shareholders on the IDX may not sell for…", opts: ["8 months (lock-up)","30 days","1 year","There is no lock-up"], answer: 0, k: "ipo", diff: "Easy",
+ hints: ["The IDX rule for controlling shareholders.", "Not 30 days, not 1 year."],
+ explain: "An 8-month lock-up. When it expires, extra supply can pressure the price — apart from fundamentals."},
+{q: "Bookbuilding is…", opts: ["Collecting institutional orders at a price range before pricing","Selling shares to retail on day one","Auditing pre-IPO financials","A board meeting to set dividends"], answer: 0, k: "ipo", diff: "Easy",
+ hints: ["Bookbuilding happens before the final price is set.", "The order book shows where demand piles up."],
+ explain: "Bookbuilding: the underwriter collects institutional orders at a price range; the result sets the final price & allotment."},
+{q: "Secondary offering: the sale cash goes to…", opts: ["The selling shareholder, not company cash","Company cash","The underwriter","The IDX"], answer: 0, k: "ipo", diff: "Medium",
+ hints: ["Secondary = existing shares resold.", "Only new shares add cash to the company."],
+ explain: "A secondary offering sells existing shares — cash goes to the seller, not the company. Do not record it as cash in the pro forma."}
+]
+};
+
 LESSONS_HARI.forEach(function(l){ if (EN[l.id]) l.en = EN[l.id]; });
 })();
 /* ---------- English glossary + functions (EN mode) ---------- */

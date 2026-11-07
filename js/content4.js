@@ -599,7 +599,14 @@ sections: [
 <li><b>Holding discount</b>: pasar menghargai konglomerat di bawah jumlah bagiannya — jelaskan gap-nya.</li>
 <li><b>Net cash</b> ditambahkan ke EV SOTP untuk dapat equity (seperti net debt dikurangkan di Real-02).</li>
 </ul>`}
-],
+,
+{h: "Binomial tree: memberi harga pada opsi ekspansi smelter", body: `
+<p>Real-07 menilai smelter sebagai real option secara konseptual (staged DCF). Sekarang beri ia harga dengan <b>binomial tree</b> satu periode — rumus yang sama dengan opsi saham, tanpa Black-Scholes:</p>
+<div class="formula">p (risk-neutral) = (1 + r − d) ÷ (u − d) · Nilai opsi = (p × payoff naik + (1−p) × payoff turun) ÷ (1 + r)</div>
+<div class="example korporat"><div class="lbl">🏢 Contoh — opsi ekspansi smelter</div>
+<p>Nilai aset smelter hari ini Rp500jt. Satu periode: naik 25% (u = 1,25 → Rp625jt) atau turun 20% (d = 0,80 → Rp400jt). Suku bunga bebas risiko 5%. Probabilitas risk-neutral: p = (1,05 − 0,80) ÷ (1,25 − 0,80) = 0,25 ÷ 0,45 = <b>0,5556</b>. Opsi ekspansi (strike Rp500jt — bangun tahap 2 hanya bila menguntungkan): payoff naik = 625 − 500 = 125; payoff turun = 0 (tidak jadi bangun). Nilai opsi = (0,5556 × 125 + 0,4444 × 0) ÷ 1,05 = 69,44 ÷ 1,05 = <b>Rp66,13jt</b>.</p></div>
+<p><b>Kenapa risk-neutral, bukan probabilitas sebenarnya?</b> Karena harga opsi diturunkan dari argumen arbitrase (replikasi dengan aset + pinjaman bebas risiko) — probabilitas sebenarnya tidak masuk rumus. Bila kamu memakai probabilitas "manajemen yakin 60% naik" lalu mendiskon di WACC, kamu mencampur dua kerangka dan harganya salah. <b>Kapan binomial cukup:</b> keputusan bertahap dengan 1–2 titik keputusan (seperti smelter ini); untuk opsi Amerika multi-periode, pohonnya bercabang — prinsipnya sama, hitungannya lebih panjang (dan itulah pasangan decision tree H15).</p>
+<div class="callout"><b>Batas jujur:</b> binomial memberi harga opsi <i>bila</i> u/d/r diketahui. Di tambang nyata, u/d adalah tebakan atas volatilitas harga komoditas — harga opsi hanya sebaik tebakan volatilitasmu. Tulis asumsi u/d di model, jangan sembunyikan.</div>`}],
 quiz: [
 {q: "Revenue FY23 $6.518jt vs FY24 $2.080jt. Analis junior: 'kinerja anjlok 68%'. Kesalahannya?", opts: ["Salah hitung — penurunannya 32%","Membandingkan perusahaan yang beda perimeter (spin-off AAI)","Lupa mengonversi kurs dolar","FY24 belum diaudit sehingga tak valid"], answer: 1, k: "discontinued_ops", diff: "Medium",
  hints: ["Apa yang keluar dari grup pada Des 2024?", "AAI = 89% revenue grup. Bandingkan apel vs apel."],
@@ -624,7 +631,14 @@ quiz: [
  explain: "Di bawah 20% = tidak ada pengendalian/signifikansi untuk konsolidasi line-by-line (PSAK 15/IAS 28). Masuk SOTP sebagai 15% × nilai pasar, bukan penjumlahan revenue. (Real-07 § Kenapa spin-off bisa jadi jebakan nilai?)"},
 {q: "Net cash $1.557jt dalam SOTP diperlakukan bagaimana?", opts: ["Dikurangkan seperti utang","Diabaikan — kas bukan aset operasi","Ditambahkan ke EV SOTP → equity","Dibagi ke tiap kaki SOTP"], answer: 2, k: "net_cash", diff: "Medium",
  hints: ["EV = milik semua pemodal. Kas milik siapa?", "Kebalikan dari net debt di Real-02."],
- explain: "Kas bersih milik pemegang saham → EV SOTP + net cash = equity $4.894jt. Cerminan dari 'EV − net debt' di Real-02. (Real-07 § Kenapa valuasinya SOTP?)"}
+ explain: "Kas bersih milik pemegang saham → EV SOTP + net cash = equity $4.894jt. Cerminan dari 'EV − net debt' di Real-02. (Real-07 § Kenapa valuasinya SOTP?)"},
+{q: "Binomial: u = 1,25; d = 0,80; r = 5%. Probabilitas risk-neutral p?", opts: ["0,5556","0,6000","0,5000","0,2500"], answer: 0, k: "binomial", diff: "Medium",
+ hints: ["p = (1 + r − d) ÷ (u − d).", "(1,05 − 0,80) ÷ (1,25 − 0,80) = ?"],
+ explain: "p = 0,25 ÷ 0,45 = 0,5556. Bukan probabilitas sebenarnya — ini probabilitas risk-neutral dari argumen arbitrase."},
+{q: "Opsi ekspansi strike Rp500jt; nilai aset naik Rp625jt / turun Rp400jt; p = 0,5556; r = 5%. Nilai opsi?", opts: ["Rp66,13jt","Rp69,44jt","Rp125,00jt","Rp34,72jt"], answer: 0, k: "binomial", diff: "Medium",
+ hints: ["Payoff naik = 125; payoff turun = 0.", "Nilai = (0,5556 × 125) ÷ 1,05."],
+ explain: "(0,5556 × 125) ÷ 1,05 = 69,44 ÷ 1,05 = Rp66,13jt. Di kondisi turun opsi tidak dieksekusi (payoff 0) — itulah nilai fleksibilitas."}
+
 ],
 hellPass: 80,
 hell: [
@@ -809,7 +823,23 @@ sections: [
 <li><b>Haircut</b> = pengurangan pokok utang; menaikkan ekuitas buku mekanis. SIAPA pemilik ekuitas baru tergantung skenario (forgiveness / swap dengan terms / likuidasi) — bukan otomatis kreditor.</li>
 <li><b>Harga suspensi</b> = fosil, bukan sinyal valuasi.</li>
 </ul>`}
-],
+,
+{h: "Peta proses restrukturisasi: out-of-court vs in-court", body: `
+<p>Real-09 sudah membangun waterfall likuidasi + 3 skenario restrukturisasi (haircut, debt-for-equity, likuidasi). Yang belum: <b>prosesnya</b> — dan proses menentukan berapa lama, berapa mahal, dan siapa yang memegang kendali:</p>
+<table class="brutal">
+<tr><th></th><th>Out-of-court (restrukturisasi sukarela)</th><th>In-court (PKPU / kepailitan, UU 37/2004)</th></tr>
+<tr><td><b>Siapa setuju</b></td><td>Semua kreditur kunci harus setuju (unanimous praktis)</td><td>Mayoritas kualifikasi mengikat minoritas (cram-down)</td></tr>
+<tr><td><b>Waktu</b></td><td>Bulan — cepat bila kreditur sedikit</td><td>PKPU s.d. 270 hari + proses pengadilan</td></tr>
+<tr><td><b>Kendali</b></td><td>Manajemen tetap memegang kendali</td><td>Pengurus/kurator mengawasi; manajemen dibatasi</td></tr>
+<tr><td><b>Biaya &amp; stigma</b></td><td>Rendah; tidak publik</td><td>Tinggi; publik — pemasok &amp; pelanggan bisa lari</td></tr>
+<tr><td><b>Kapan dipilih</b></td><td>Struktur kreditur sederhana; perusahaan masih dipercaya</td><td>Kreditur terfragmentasi / ada holdout; butuh moratorium</td></tr>
+</table>
+<p><b>Aturan praktis:</b> coba out-of-court dulu — bila satu kreditur holdout memblokir, in-court menjadi ancaman yang kredibel (bukan tujuan). WSKT dengan kreditur sindikasi besar + obligasi ritel = kandidat in-court yang kuat, karena unanimous hampir mustahil.</p>`},
+{h: "Distress probability, DIP financing & recap — plus pajaknya", body: `
+<p><b>Distress probability — Altman Z-score (ilustratif WSKT):</b> Z = 1,2×(WC÷TA) + 1,4×(RE÷TA) + 3,3×(EBIT÷TA) + 0,6×(MVE÷TL) + 1,0×(Sales÷TA). Dengan angka ilustratif (WC/TA −0,05; RE/TA −0,10; EBIT/TA 0,02; MVE/TL 0,10; Sales/TA 0,30): Z = −0,06 − 0,14 + 0,066 + 0,06 + 0,30 = <b>0,226</b> — jauh di bawah 1,8 (zona distress). Z-score bukan ramalan kebangkrutan; ia adalah <i>ranking</i> risiko relatif — pakai untuk membandingkan, bukan untuk memberi tanggal.</p>
+<p><b>DIP financing (debtor-in-possession):</b> pinjaman baru yang masuk <i>selama</i> proses PKPU/kepailitan, dengan prioritas super (didahulukan dari kreditur lama) — tanpa DIP, perusahaan kehabisan kas operasional sebelum restrukturisasi selesai. DIP mahal (bunga tinggi + fee + covenant ketat) karena lender mengambil risiko proses. Di waterfall real-09, DIP duduk <i>di atas</i> Tranche A — itulah harganya: uang baru hanya masuk bila paling aman.</p>
+<p><b>Recap &amp; pajak:</b> debt-for-equity (Tranche B di real-09: haircut 30% → Rp6,52T dihapus, sisa Rp15,22T) mengubah struktur modal tanpa kas — tapi penghapusan utang umumnya = <i>penghasilan kena pajak</i> bagi debitur (debt forgiveness income), kecuali ada ketentuan khusus insolvensi. Dan NOL (H20) bisa hilang/terbatas setelah perubahan kepemilikan besar. Selalu libatkan penasihat pajak sebelum menandatangani skema — angka waterfall yang indah bisa runtuh oleh satu pasal pajak.</p>
+<div class="callout"><b>Jembatan ke APV (H09):</b> valuasi perusahaan distressed yang benar memakai APV — VU tanpa utang + PV tax shield yang <i>hampir nol</i> (perusahaan rugi tidak membayar pajak, jadi tidak ada shield). DCF-WACC dengan WACC "normal" akan overvalue perusahaan distressed.</div>`}],
 quiz: [
 {q: "Ekuitas WSKT per 30 Sep 2026 = −Rp3,34tn. Kenapa P/E dan P/BV tidak bermakna?", opts: ["Karena datanya belum diaudit","Ekuitas negatif — penyebut tak bermakna","Karena sahamnya sedang disuspensi","Karena ruginya terlalu besar"], answer: 1, k: "distressed", diff: "Easy",
  hints: ["P/BV = harga ÷ book value per saham.", "Book value negatif → hasil bagi tak bisa diinterpretasikan."],
@@ -831,7 +861,17 @@ quiz: [
  explain: "Haircut = 21,736 × 30% = Rp6,52tn. Liabilitas turun Rp6,52tn → ekuitas mekanis = −3,34 + 6,52 = +Rp3,18tn. Tapi SIAPA pemiliknya tergantung skenario: pure forgiveness → milik pemegang lama; debt-for-equity swap → tergantung terms (jumlah saham & valuasi); likuidasi → Rp0. (Real-09 § Tiga skenario yang berbeda)"},
 {q: "Saham suspensi di Rp202 sejak Mei 2023. Kenapa Rp202 BUKAN sinyal 'murah'?", opts: ["Karena Rp202 sebenarnya terlalu mahal","Harga beku 3,5 tahun — tak ada price discovery","Karena Danantara pegang 74,6%","Karena minimal pembelian 1 lot"], answer: 1, k: "distressed", diff: "Medium",
  hints: ["Kapan terakhir harga itu terbentuk? Mei 2023.", "Apa yang terjadi sejak itu? Rugi −4,48tn, ekuitas negatif, MRA."],
- explain: "Rp202 adalah fosil — harga terakhir sebelum suspensi, tidak mencerminkan 3,5 tahun kabar buruk. Saham suspensi = saham tanpa pasar, bukan saham murah. (Real-09 § Kenapa multiple ekuitas tak bermakna?)"}
+ explain: "Rp202 adalah fosil — harga terakhir sebelum suspensi, tidak mencerminkan 3,5 tahun kabar buruk. Saham suspensi = saham tanpa pasar, bukan saham murah. (Real-09 § Kenapa multiple ekuitas tak bermakna?)"},
+{q: "Z-score ilustratif WSKT = 0,226. Interpretasi?", opts: ["Zona distress dalam (< 1,8)","Sehat (> 3,0)","Abu-abu (1,8–3,0)","Bangkrut besok pagi"], answer: 0, k: "restructuring", diff: "Easy",
+ hints: ["Z < 1,8 = zona distress.", "Z-score = ranking risiko, bukan tanggal bangkrut."],
+ explain: "Z = 0,226 jauh di bawah 1,8 → zona distress dalam. Z-score membandingkan risiko relatif, bukan meramal tanggal kebangkrutan."},
+{q: "Kenapa DIP financing bisa masuk saat kreditur lama menolak memberi uang baru?", opts: ["Prioritas super — didahulukan dari kreditur lama","Bunganya paling murah","Dijamin pemerintah","Tidak perlu dibayar kembali"], answer: 0, k: "restructuring", diff: "Medium",
+ hints: ["DIP duduk di atas Tranche A di waterfall.", "Uang baru hanya masuk bila paling aman."],
+ explain: "DIP punya prioritas super atas kreditur lama — itulah yang membuat lender baru berani masuk di tengah proses, dengan bunga + fee tinggi sebagai harganya."},
+{q: "Kreditur terfragmentasi + satu holdout memblokir kesepakatan sukarela. Jalur yang kredibel?", opts: ["In-court (PKPU) — mayoritas mengikat minoritas","Tetap out-of-court selamanya","Likuidasi langsung tanpa proses","Minta holdout keluar gratis"], answer: 0, k: "restructuring", diff: "Medium",
+ hints: ["Out-of-court butuh persetujuan praktis unanimous.", "In-court punya cram-down."],
+ explain: "In-court: mayoritas kualifikasi mengikat minoritas (cram-down). Out-of-court gagal bila satu holdout bisa memveto."}
+
 ],
 hellPass: 80,
 hell: [
@@ -857,6 +897,68 @@ blind: {h: "Uji Kilat — angka beda", body: `
 <p><b>2.</b> Tranche B Rp21,736tn di-haircut 50%. Sisa Tranche B = ?</p>
 <details class="ans"><summary>Jawaban</summary><p>21,736 × 50% = Rp10,868tn.</p></details>`}
 },
+{
+id: "real-10", track: "Real Cases", title: "JSMR: Jalan Tol sebagai Project Finance",
+sub: "Real Case 10 · ±6 jam · DSCR, cashflow waterfall & debt sculpting",
+est: "6 jam",
+prerequisites: ["capstone"],
+sections: [
+{h: "Kenapa jalan tol bukan DCF biasa", body: `
+<p>Project finance membiayai <b>satu proyek</b> (bukan perusahaan): SPV (special purpose vehicle) meminjam dengan jaminan arus kas proyek itu sendiri — tanpa recourse ke induk (JSMR) bila proyek gagal. Tiga hal yang membuatnya berbeda dari DCF korporat H09–H13:</p>
+<p><b>1. Lender melihat DSCR, bukan EV.</b> Bank tidak peduli berapa EV proyekmu — ia peduli apakah kas tiap tahun cukup membayar cicilan. <b>2. Cashflow waterfall</b> menentukan urutan pembagian kas (bukan manajemen yang memutuskan tiap tahun). <b>3. Utang "dipahat" (sculpted)</b> mengikuti pola kas proyek, bukan angsuran tetap. Ruas tol contoh di bawah memakai angka <b>ilustratif (Rp miliar)</b> dengan pola JSMR — bukan LK resmi.</p>`},
+{h: "Base case: DSCR 1,45x — bankable atau tidak?", body: `
+<p>Proyek ruas tol (Rp miliar): biaya proyek 2.000 (utang 1.000 / ekuitas 1.000), konsesi 30 tahun, tarif Rp12rb, lalu lintas 30 juta kendaraan/tahun:</p>
+<table class="brutal">
+<tr><th>Item</th><th>Rp miliar</th><th>Hitungan</th></tr>
+<tr><td>Revenue</td><td>360</td><td>30 jt × Rp12rb</td></tr>
+<tr><td>Opex</td><td>(100)</td><td></td></tr>
+<tr><td><b>EBITDA</b></td><td><b>260</b></td><td>360 − 100</td></tr>
+<tr><td>Depresiasi</td><td>(80)</td><td></td></tr>
+<tr><td><b>EBIT</b></td><td><b>180</b></td><td>260 − 80</td></tr>
+<tr><td>Bunga 8% × 1.000</td><td>(80)</td><td></td></tr>
+<tr><td><b>EBT</b></td><td><b>100</b></td><td>180 − 80</td></tr>
+<tr><td>Pajak 22%</td><td>(22)</td><td>100 × 22%</td></tr>
+<tr><td><b>CFADS</b></td><td><b>218</b></td><td>260 − 22 − 20 (capex perawatan)</td></tr>
+<tr><td>Debt service (bunga 80 + pokok 70)</td><td>(150)</td><td></td></tr>
+<tr><td><b>DSCR</b></td><td><b>1,45×</b></td><td>218 ÷ 150</td></tr>
+</table>
+<p><b>Vonis:</b> DSCR 1,45× &gt; 1,25× (ambang tipikal lender untuk tol) → <b>bankable</b>, dengan bantalan. DSCR &lt; 1,0× = kas tidak cukup membayar cicilan tahun itu (default teknis); 1,0–1,2× = zona renegosiasi; &gt; 1,3× = nyaman. Perhatikan: CFADS memakai EBITDA − pajak − capex perawatan — <i>bukan</i> laba bersih. Laba bisa positif sementara CFADS negatif (bila capex perawatan besar), dan bank hanya peduli CFADS.</p>`},
+{h: "Cashflow waterfall: siapa dibayar dulu?", body: `
+<p>Waterfall proyek ini (Rp miliar, tahun base case):</p>
+<div class="formula">Revenue 360 → Opex (100) → Pajak (22) → Debt service (150) → DSRA top-up (10) → Distribusi ke ekuitas (78)</div>
+<p>Cek: 360 − 100 − 22 − 150 − 10 = <b>78</b> ✓. <b>DSRA (debt service reserve account)</b> = rekening cadangan (biasanya 6 bulan debt service) yang diisi sebelum ekuitas mendapat apa pun — bantalan bila satu tahun lalu lintas jatuh. Urutan ini <i>kontraktual</i> (di facility agreement), bukan kebijakan manajemen: ekuitas tidak boleh mengambil dividen bila DSRA belum penuh atau DSCR di bawah ambang (cash trap / lock-up). Bandingkan dengan waterfall <i>likuidasi</i> real-09: yang itu membagi hasil penjualan aset saat perusahaan mati; yang ini membagi kas operasi saat proyek hidup.</p>`},
+{h: "Debt sculpting & skenario: tarif dan volume", body: `
+<p><b>Debt sculpting:</b> daripada pokok tetap Rp70jt/tahun, pahat pokok agar DSCR konstan. Target DSCR 1,30× → debt service target = CFADS ÷ 1,30 = 218 ÷ 1,30 = 167,69 → pokok tahun ini = 167,69 − bunga 80 = <b>Rp87,69 miliar</b>. Saat CFADS naik (lalu lintas tumbuh), pokok ikut naik; saat CFADS turun, pokok mengecil — utang mengikuti kas, bukan sebaliknya. Itulah kenapa tenor pinjaman (mis. 15 tahun) lebih pendek dari umur konsesi (30 tahun): lender ingin keluar sebelum risiko akhir konsesi.</p>
+<p><b>Skenario (DSCR tahun yang sama):</b></p>
+<table class="brutal">
+<tr><th>Skenario</th><th>Revenue</th><th>CFADS</th><th>DSCR</th><th>Vonis</th></tr>
+<tr><td>Base</td><td>360</td><td>218,00</td><td><b>1,45×</b></td><td>Bankable</td></tr>
+<tr><td>Tarif −10%</td><td>324</td><td>189,92</td><td><b>1,27×</b></td><td>Masih di atas 1,20×, di bawah kenyamanan</td></tr>
+<tr><td>Volume −20%</td><td>288</td><td>161,84</td><td><b>1,08×</b></td><td>Zona bahaya — DSRA terpakai, lock-up dividen</td></tr>
+</table>
+<p>Hitungan tarif −10%: EBITDA 224; EBIT 144; EBT 64; pajak 14,08; CFADS = 224 − 14,08 − 20 = 189,92; DSCR = 189,92 ÷ 150 = 1,27×. Volume −20%: EBITDA 188; EBIT 108; EBT 28; pajak 6,16; CFADS = 188 − 6,16 − 20 = 161,84; DSCR = 161,84 ÷ 150 = 1,08×. <b>Pelajaran:</b> volume adalah risiko terbesar tol (tarif diatur &amp; naik berkala; volume tergantung ekonomi &amp; jalan alternatif). Itulah kenapa lender meminta traffic study independen sebelum signing — dan kenapa skenario volume-mu harus lebih lebar dari skenario tarif.</p>`},
+{h: "Tugas: bangun model project finance mini", body: `
+<p><b>Tugas (di workbook sendiri, tanpa Drive):</b> bangun model 5 tahun ruas tol contoh di atas: (1) sheet asumsi (tarif, volume, opex, capex perawatan, bunga, tenor); (2) CFADS + debt service per tahun + DSCR; (3) waterfall tahunan (revenue → distribusi); (4) dua skenario (tarif −10%, volume −20%) dengan switch CHOOSE (Excel L5); (5) satu baris "bankable?" (IF DSCR &gt;= 1,25 "YA" "TIDAK"). Kriteria lolos: DSCR base 1,45×, waterfall menutup ke 78, dan switch skenario mengubah seluruh model tanpa edit manual.</p>`}
+],
+quiz: [
+{q: "Base case tol: CFADS Rp218 miliar, debt service Rp150 miliar. DSCR dan vonis?", opts: ["1,45× — bankable (> 1,25×)","1,08× — zona bahaya","1,27× — masih di atas ambang","0,84× — default teknis"], answer: 0, k: "dscr", diff: "Easy",
+ hints: ["DSCR = CFADS ÷ debt service.", "218 ÷ 150 = ?"],
+ explain: "DSCR = 218 ÷ 150 = 1,45× > 1,25× (ambang tipikal lender tol) → bankable dengan bantalan."},
+{q: "Waterfall: revenue 360, opex 100, pajak 22, debt service 150, DSRA top-up 10. Distribusi ke ekuitas?", opts: ["Rp78 miliar","Rp88 miliar","Rp150 miliar","Rp68 miliar"], answer: 0, k: "project_finance", diff: "Easy",
+ hints: ["360 − 100 − 22 − 150 − 10 = ?", "DSRA diisi sebelum ekuitas mendapat apa pun."],
+ explain: "360 − 100 − 22 − 150 − 10 = Rp78 miliar. Urutan waterfall kontraktual: ekuitas paling terakhir."},
+{q: "Debt sculpting target DSCR 1,30×; CFADS 218; bunga 80. Pokok tahun ini?", opts: ["Rp87,69 miliar","Rp70,00 miliar","Rp137,69 miliar","Rp167,69 miliar"], answer: 0, k: "project_finance", diff: "Medium",
+ hints: ["Debt service target = 218 ÷ 1,30.", "Pokok = debt service target − bunga."],
+ explain: "Debt service target = 218 ÷ 1,30 = 167,69; pokok = 167,69 − 80 = Rp87,69 miliar. Utang mengikuti kas."},
+{q: "Skenario volume −20%: DSCR 1,08×. Apa yang terjadi?", opts: ["Zona bahaya — DSRA terpakai, dividen di-lock-up","Tetap bankable nyaman","Default teknis (DSCR < 1,0)","Tidak ada efek ke ekuitas"], answer: 0, k: "dscr", diff: "Medium",
+ hints: ["1,08× berada di 1,0–1,2× = zona renegosiasi.", "Volume adalah risiko terbesar tol."],
+ explain: "DSCR 1,08× = zona bahaya: DSRA terpakai dan dividen ekuitas di-lock-up. Volume −20% jauh lebih merusak daripada tarif −10% (1,27×)."},
+{q: "Kenapa tenor pinjaman tol (15 tahun) lebih pendek dari umur konsesi (30 tahun)?", opts: ["Lender ingin keluar sebelum risiko akhir konsesi","Karena bunga lebih murah","Karena ekuitas meminta begitu","Aturan BEI"], answer: 0, k: "project_finance", diff: "Easy",
+ hints: ["Risiko akhir konsesi (perpanjangan? kondisi aset?) ditanggung siapa?", "Lender membatasi tenor pada periode kas paling pasti."],
+ explain: "Lender ingin lunas sebelum ketidakpastian akhir konsesi (perpanjangan, kondisi aset serah-terima). Utang mengikuti kas yang paling pasti."}
+],
+hellPass: 80
+}
 ];
 
 /* ---------- English mode overlays (EN) ---------- */
@@ -1411,7 +1513,14 @@ sections: [
 <li><b>Holding discount</b>: the market prices a conglomerate below the sum of its parts — explain the gap.</li>
 <li><b>Net cash</b> is added to SOTP EV to get equity (the mirror of subtracting net debt in Real-02).</li>
 </ul>`}
-],
+,
+{h: "Binomial tree: pricing the smelter expansion option", body: `
+<p>Real-07 valued the smelter as a real option conceptually (staged DCF). Now price it with a one-period <b>binomial tree</b> — the same formula as a stock option, without Black-Scholes:</p>
+<div class="formula">p (risk-neutral) = (1 + r − d) ÷ (u − d) · Option value = (p × up payoff + (1−p) × down payoff) ÷ (1 + r)</div>
+<div class="example korporat"><div class="lbl">🏢 Example — the smelter expansion option</div>
+<p>Smelter asset value today Rp500m. One period: up 25% (u = 1.25 → Rp625m) or down 20% (d = 0.80 → Rp400m). Risk-free rate 5%. Risk-neutral probability: p = (1.05 − 0.80) ÷ (1.25 − 0.80) = 0.25 ÷ 0.45 = <b>0.5556</b>. Expansion option (strike Rp500m — build stage 2 only if it pays): up payoff = 625 − 500 = 125; down payoff = 0 (do not build). Option value = (0.5556 × 125 + 0.4444 × 0) ÷ 1.05 = 69.44 ÷ 1.05 = <b>Rp66.13m</b>.</p></div>
+<p><b>Why risk-neutral, not the true probability?</b> Because the option price comes from an arbitrage argument (replication with the asset + risk-free borrowing) — the true probability never enters the formula. If you use management's "60% sure it rises" and discount at WACC, you mix two frameworks and the price is wrong. <b>When a binomial is enough:</b> staged decisions with 1–2 decision points (like this smelter); for multi-period American options the tree branches — same principle, longer maths (and that is the Day 15 decision-tree pair).</p>
+<div class="callout"><b>Honest limit:</b> a binomial prices the option <i>given</i> u/d/r. In a real mine, u/d are guesses about commodity-price volatility — the option price is only as good as your volatility guess. Write the u/d assumptions in the model, do not hide them.</div>`}],
 quiz: [
 {q: `Revenue FY23 $6,518m vs FY24 $2,080m. Junior analyst: 'performance collapsed 68%'. The error?`, opts: ["Wrong math — the drop is 32%","Comparing different perimeters (the AAI spin-off)","Forgot to convert the dollar rate","FY24 is unaudited so it's invalid"], answer: 1, k: "discontinued_ops",
  hints: ["What left the group in Dec 2024?", "AAI = 89% of group revenue. Compare apples to apples."],
@@ -1436,7 +1545,14 @@ quiz: [
  explain: `Below 20% = no control/significance for line-by-line consolidation (PSAK 15/IAS 28). It enters the SOTP as 15% × market value, not as added revenue.`},
 {q: `How is the $1,557m net cash treated in the SOTP?`, opts: ["Subtracted like debt","Ignored — cash isn't an operating asset","Added to SOTP EV → equity","Split across each SOTP leg"], answer: 2, k: "net_cash",
  hints: ["EV = for all capital providers. Who owns cash?", "The mirror image of net debt in Real-02."],
- explain: `Net cash belongs to shareholders → SOTP EV + net cash = equity of $4,894m. The mirror of 'EV − net debt' in Real-02.`}
+ explain: `Net cash belongs to shareholders → SOTP EV + net cash = equity of $4,894m. The mirror of 'EV − net debt' in Real-02.`},
+{q: "Binomial: u = 1.25; d = 0.80; r = 5%. Risk-neutral probability p?", opts: ["0.5556","0.6000","0.5000","0.2500"], answer: 0, k: "binomial", diff: "Medium",
+ hints: ["p = (1 + r − d) ÷ (u − d).", "(1.05 − 0.80) ÷ (1.25 − 0.80) = ?"],
+ explain: "p = 0.25 ÷ 0.45 = 0.5556. Not the true probability — the risk-neutral probability from the arbitrage argument."},
+{q: "Expansion option strike Rp500m; asset value up Rp625m / down Rp400m; p = 0.5556; r = 5%. Option value?", opts: ["Rp66.13m","Rp69.44m","Rp125.00m","Rp34.72m"], answer: 0, k: "binomial", diff: "Medium",
+ hints: ["Up payoff = 125; down payoff = 0.", "Value = (0.5556 × 125) ÷ 1.05."],
+ explain: "(0.5556 × 125) ÷ 1.05 = 69.44 ÷ 1.05 = Rp66.13m. In the down state the option is not exercised (payoff 0) — that is the value of flexibility."}
+
 ],
 hell: [
 {q: `ADMR: sales +26%, ASP −16%. Implied revenue change?`, opts: ["+10% (26−16)","−16% (price decides)","1.26 × 0.84 − 1 = +5.8% ≈ +6% reported","+30% (follow production)"], answer: 2,
@@ -1609,7 +1725,23 @@ sections: [
 <li><b>Haircut</b> = principal reduction; lifts book equity mechanically. WHO owns the new equity depends on the scenario (forgiveness / swap with terms / liquidation) — not automatically the creditors.</li>
 <li><b>Suspension price</b> = a fossil, not a valuation signal.</li>
 </ul>`}
-],
+,
+{h: "Restructuring process map: out-of-court vs in-court", body: `
+<p>Real-09 already built the liquidation waterfall + 3 restructuring scenarios (haircut, debt-for-equity, liquidation). What was missing: the <b>process</b> — and the process decides how long, how costly, and who stays in control:</p>
+<table class="brutal">
+<tr><th></th><th>Out-of-court (voluntary restructuring)</th><th>In-court (PKPU / bankruptcy, Law 37/2004)</th></tr>
+<tr><td><b>Who must agree</b></td><td>All key creditors must agree (practically unanimous)</td><td>A qualified majority binds the minority (cram-down)</td></tr>
+<tr><td><b>Time</b></td><td>Months — fast when creditors are few</td><td>PKPU up to 270 days + court process</td></tr>
+<tr><td><b>Control</b></td><td>Management stays in control</td><td>Administrator/curator supervises; management constrained</td></tr>
+<tr><td><b>Cost &amp; stigma</b></td><td>Low; not public</td><td>High; public — suppliers &amp; customers may flee</td></tr>
+<tr><td><b>When chosen</b></td><td>Simple creditor structure; company still trusted</td><td>Fragmented creditors / a holdout; needs a moratorium</td></tr>
+</table>
+<p><b>Rule of thumb:</b> try out-of-court first — if one holdout creditor blocks it, in-court becomes a credible threat (not the goal). WSKT, with large syndicated lenders + retail bonds, is a strong in-court candidate, because unanimity is nearly impossible.</p>`},
+{h: "Distress probability, DIP financing & recap — plus the tax", body: `
+<p><b>Distress probability — Altman Z-score (illustrative WSKT):</b> Z = 1.2×(WC÷TA) + 1.4×(RE÷TA) + 3.3×(EBIT÷TA) + 0.6×(MVE÷TL) + 1.0×(Sales÷TA). With illustrative inputs (WC/TA −0.05; RE/TA −0.10; EBIT/TA 0.02; MVE/TL 0.10; Sales/TA 0.30): Z = −0.06 − 0.14 + 0.066 + 0.06 + 0.30 = <b>0.226</b> — far below 1.8 (the distress zone). The Z-score is not a bankruptcy forecast; it is a <i>ranking</i> of relative risk — use it to compare, not to set a date.</p>
+<p><b>DIP financing (debtor-in-possession):</b> new money that enters <i>during</i> the PKPU/bankruptcy process, with super-priority (ahead of old creditors) — without DIP, the company runs out of operating cash before the restructuring finishes. DIP is expensive (high rate + fees + tight covenants) because the lender takes process risk. In the real-09 waterfall, DIP sits <i>above</i> Tranche A — that is its price: new money only enters when it is safest.</p>
+<p><b>Recap &amp; tax:</b> debt-for-equity (Tranche B in real-09: 30% haircut → Rp6.52T written off, Rp15.22T remaining) changes the capital structure without cash — but forgiven debt is generally <i>taxable income</i> for the debtor (debt-forgiveness income), unless a specific insolvency rule applies. And NOLs (Day 20) can be lost/limited after a large ownership change. Always involve a tax adviser before signing a scheme — a beautiful waterfall can collapse on one tax article.</p>
+<div class="callout"><b>Bridge to APV (Day 09):</b> the correct valuation of a distressed firm uses APV — unlevered value + a PV tax shield that is <i>near zero</i> (a loss-making firm pays no tax, so there is no shield). A WACC-DCF with a "normal" WACC will overvalue a distressed company.</div>`}],
 quiz: [
 {q: `WSKT's equity at 30 Sep 2026 = −Rp3.34tn. Why are P/E and P/BV meaningless?`, opts: ["Because the data is unaudited","Negative equity — the denominator is meaningless","Because the shares are suspended","Because the loss is too large"], answer: 1, k: "distressed",
  hints: ["P/BV = price ÷ book value per share.","Negative book value → the quotient can't be interpreted."],
@@ -1631,7 +1763,17 @@ quiz: [
  explain: `Haircut = 21.736 × 30% = Rp6.52tn. Liabilities fall Rp6.52tn → mechanical equity = −3.34 + 6.52 = +Rp3.18tn. But WHO owns it depends on the scenario: pure forgiveness → old holders; debt-for-equity swap → depends on terms (share count & valuation); liquidation → Rp0. (Real-09 § Three different scenarios)`},
 {q: `Shares suspended at Rp202 since May 2023. Why is Rp202 NOT a 'cheap' signal?`, opts: ["Because Rp202 is actually too expensive","The price is frozen 3.5 years — no price discovery","Because Danantara holds 74.6%","Because the minimum buy is 1 lot"], answer: 1, k: "distressed",
  hints: ["When was that price last formed? May 2023.","What happened since? A −Rp4.48tn loss, negative equity, the MRA."],
- explain: `Rp202 is a fossil — the last price before suspension, reflecting none of 3.5 years of bad news. A suspended share = a share with no market, not a cheap share.`}
+ explain: `Rp202 is a fossil — the last price before suspension, reflecting none of 3.5 years of bad news. A suspended share = a share with no market, not a cheap share.`},
+{q: "Illustrative WSKT Z-score = 0.226. Interpretation?", opts: ["Deep distress zone (< 1.8)","Healthy (> 3.0)","Grey zone (1.8–3.0)","Bankrupt tomorrow morning"], answer: 0, k: "restructuring", diff: "Easy",
+ hints: ["Z < 1.8 = distress zone.", "The Z-score = a risk ranking, not a bankruptcy date."],
+ explain: "Z = 0.226, far below 1.8 → deep distress zone. The Z-score ranks relative risk; it does not forecast a bankruptcy date."},
+{q: "Why can DIP financing enter when old creditors refuse new money?", opts: ["Super-priority — ahead of old creditors","Its rate is the cheapest","It is government-guaranteed","It never has to be repaid"], answer: 0, k: "restructuring", diff: "Medium",
+ hints: ["DIP sits above Tranche A in the waterfall.", "New money only enters when it is safest."],
+ explain: "DIP carries super-priority over old creditors — that is what lets a new lender enter mid-process, at a high rate + fees as the price."},
+{q: "Fragmented creditors + one holdout blocking a voluntary deal. The credible route?", opts: ["In-court (PKPU) — the majority binds the minority","Stay out-of-court forever","Straight to liquidation with no process","Ask the holdout to leave for free"], answer: 0, k: "restructuring", diff: "Medium",
+ hints: ["Out-of-court needs practically unanimous agreement.", "In-court has cram-down."],
+ explain: "In-court: a qualified majority binds the minority (cram-down). Out-of-court fails when one holdout can veto."}
+
 ],
 hell: [
 {q: `Liquidation costs rise 5% → 10%. The bank recovery rate becomes?`, opts: ["Stays 54.3%","51.4%","48.9%","45.0%"], answer: 1,
@@ -1656,6 +1798,66 @@ blind: {h: "Speed Drill — different numbers", body: `
 <p><b>2.</b> Tranche B Rp21.736tn takes a 50% haircut. Remaining Tranche B = ?</p>
 <details class="ans"><summary>Answer</summary><p>21.736 × 50% = Rp10.868tn.</p></details>`}
 };
+EN["real-10"] = {
+title: "JSMR: A Toll Road as Project Finance",
+sub: "Real Case 10 · ±6 hrs · DSCR, cashflow waterfall & debt sculpting",
+sections: [
+{h: "Why a toll road is not an ordinary DCF", body: `
+<p>Project finance funds <b>one project</b> (not a company): an SPV (special purpose vehicle) borrows against that project's own cash flows — with no recourse to the parent (JSMR) if the project fails. Three things make it different from the corporate DCF in Day 09–13:</p>
+<p><b>1. Lenders watch DSCR, not EV.</b> A bank does not care about your project's EV — it cares whether each year's cash covers the instalment. <b>2. A cashflow waterfall</b> decides the order cash is shared (not management, year by year). <b>3. Debt is "sculpted"</b> to follow the project's cash pattern, not fixed instalments. The toll-road example below uses <b>illustrative figures (Rp billion)</b> in JSMR's pattern — not official statements.</p>`},
+{h: "Base case: DSCR 1.45x — bankable or not?", body: `
+<p>Toll-road project (Rp billion): project cost 2,000 (debt 1,000 / equity 1,000), 30-year concession, tariff Rp12k, traffic 30 million vehicles/year:</p>
+<table class="brutal">
+<tr><th>Item</th><th>Rp billion</th><th>Maths</th></tr>
+<tr><td>Revenue</td><td>360</td><td>30m × Rp12k</td></tr>
+<tr><td>Opex</td><td>(100)</td><td></td></tr>
+<tr><td><b>EBITDA</b></td><td><b>260</b></td><td>360 − 100</td></tr>
+<tr><td>Depreciation</td><td>(80)</td><td></td></tr>
+<tr><td><b>EBIT</b></td><td><b>180</b></td><td>260 − 80</td></tr>
+<tr><td>Interest 8% × 1,000</td><td>(80)</td><td></td></tr>
+<tr><td><b>EBT</b></td><td><b>100</b></td><td>180 − 80</td></tr>
+<tr><td>Tax 22%</td><td>(22)</td><td>100 × 22%</td></tr>
+<tr><td><b>CFADS</b></td><td><b>218</b></td><td>260 − 22 − 20 (maintenance capex)</td></tr>
+<tr><td>Debt service (interest 80 + principal 70)</td><td>(150)</td><td></td></tr>
+<tr><td><b>DSCR</b></td><td><b>1.45×</b></td><td>218 ÷ 150</td></tr>
+</table>
+<p><b>Verdict:</b> DSCR 1.45× &gt; 1.25× (the typical lender threshold for toll roads) → <b>bankable</b>, with a cushion. DSCR &lt; 1.0× = cash cannot cover that year's instalment (technical default); 1.0–1.2× = renegotiation zone; &gt; 1.3× = comfortable. Note: CFADS uses EBITDA − tax − maintenance capex — <i>not</i> net profit. Profit can be positive while CFADS is negative (when maintenance capex is large), and the bank only cares about CFADS.</p>`},
+{h: "Cashflow waterfall: who gets paid first?", body: `
+<p>This project's waterfall (Rp billion, base-case year):</p>
+<div class="formula">Revenue 360 → Opex (100) → Tax (22) → Debt service (150) → DSRA top-up (10) → Distributions to equity (78)</div>
+<p>Check: 360 − 100 − 22 − 150 − 10 = <b>78</b> ✓. The <b>DSRA (debt service reserve account)</b> = a reserve account (usually 6 months of debt service) filled before equity receives anything — a cushion if one year's traffic falls. This order is <i>contractual</i> (in the facility agreement), not management policy: equity may not take dividends while the DSRA is unfilled or DSCR is below the threshold (cash trap / lock-up). Compare with the real-09 <i>liquidation</i> waterfall: that one shares sale proceeds when the company dies; this one shares operating cash while the project lives.</p>`},
+{h: "Debt sculpting & scenarios: tariff and volume", body: `
+<p><b>Debt sculpting:</b> instead of a fixed Rp70bn/year of principal, carve principal so DSCR stays constant. Target DSCR 1.30× → target debt service = CFADS ÷ 1.30 = 218 ÷ 1.30 = 167.69 → this year's principal = 167.69 − interest 80 = <b>Rp87.69 billion</b>. When CFADS rises (traffic grows), principal rises with it; when CFADS falls, principal shrinks — debt follows cash, not the other way round. That is why the loan tenor (e.g. 15 years) is shorter than the concession life (30 years): the lender wants out before end-of-concession risk.</p>
+<p><b>Scenarios (same-year DSCR):</b></p>
+<table class="brutal">
+<tr><th>Scenario</th><th>Revenue</th><th>CFADS</th><th>DSCR</th><th>Verdict</th></tr>
+<tr><td>Base</td><td>360</td><td>218.00</td><td><b>1.45×</b></td><td>Bankable</td></tr>
+<tr><td>Tariff −10%</td><td>324</td><td>189.92</td><td><b>1.27×</b></td><td>Still above 1.20×, below comfort</td></tr>
+<tr><td>Volume −20%</td><td>288</td><td>161.84</td><td><b>1.08×</b></td><td>Danger zone — DSRA drawn, dividend lock-up</td></tr>
+</table>
+<p>Tariff −10% maths: EBITDA 224; EBIT 144; EBT 64; tax 14.08; CFADS = 224 − 14.08 − 20 = 189.92; DSCR = 189.92 ÷ 150 = 1.27×. Volume −20%: EBITDA 188; EBIT 108; EBT 28; tax 6.16; CFADS = 188 − 6.16 − 20 = 161.84; DSCR = 161.84 ÷ 150 = 1.08×. <b>Lesson:</b> volume is a toll road's biggest risk (tariffs are regulated &amp; rise periodically; volume depends on the economy &amp; alternative roads). That is why lenders demand an independent traffic study before signing — and why your volume scenarios must be wider than your tariff scenarios.</p>`},
+{h: "Task: build a mini project-finance model", body: `
+<p><b>Task (in your own workbook, no Drive):</b> build a 5-year model of the toll road above: (1) an assumptions sheet (tariff, volume, opex, maintenance capex, interest, tenor); (2) CFADS + debt service per year + DSCR; (3) the annual waterfall (revenue → distributions); (4) two scenarios (tariff −10%, volume −20%) with a CHOOSE switch (Excel L5); (5) one "bankable?" row (IF DSCR &gt;= 1.25 "YES" "NO"). Pass criterion: base DSCR 1.45×, the waterfall closes at 78, and the scenario switch moves the whole model with no manual edits.</p>`}
+],
+quiz: [
+{q: "Base-case toll road: CFADS Rp218 billion, debt service Rp150 billion. DSCR and verdict?", opts: ["1.45× — bankable (> 1.25×)","1.08× — danger zone","1.27× — still above the threshold","0.84× — technical default"], answer: 0, k: "dscr", diff: "Easy",
+ hints: ["DSCR = CFADS ÷ debt service.", "218 ÷ 150 = ?"],
+ explain: "DSCR = 218 ÷ 150 = 1.45× > 1.25× (the typical toll-road lender threshold) → bankable with a cushion."},
+{q: "Waterfall: revenue 360, opex 100, tax 22, debt service 150, DSRA top-up 10. Distribution to equity?", opts: ["Rp78 billion","Rp88 billion","Rp150 billion","Rp68 billion"], answer: 0, k: "project_finance", diff: "Easy",
+ hints: ["360 − 100 − 22 − 150 − 10 = ?", "The DSRA is filled before equity receives anything."],
+ explain: "360 − 100 − 22 − 150 − 10 = Rp78 billion. The waterfall order is contractual: equity is last."},
+{q: "Debt sculpting at target DSCR 1.30×; CFADS 218; interest 80. This year's principal?", opts: ["Rp87.69 billion","Rp70.00 billion","Rp137.69 billion","Rp167.69 billion"], answer: 0, k: "project_finance", diff: "Medium",
+ hints: ["Target debt service = 218 ÷ 1.30.", "Principal = target debt service − interest."],
+ explain: "Target debt service = 218 ÷ 1.30 = 167.69; principal = 167.69 − 80 = Rp87.69 billion. Debt follows cash."},
+{q: "Volume −20% scenario: DSCR 1.08×. What happens?", opts: ["Danger zone — DSRA drawn, dividends locked up","Still comfortably bankable","Technical default (DSCR < 1.0)","No effect on equity"], answer: 0, k: "dscr", diff: "Medium",
+ hints: ["1.08× sits in the 1.0–1.2× renegotiation zone.", "Volume is a toll road's biggest risk."],
+ explain: "DSCR 1.08× = danger zone: the DSRA is drawn and equity dividends are locked up. Volume −20% hurts far more than tariff −10% (1.27×)."},
+{q: "Why is the toll-road loan tenor (15 years) shorter than the concession life (30 years)?", opts: ["The lender wants out before end-of-concession risk","Because interest is cheaper","Because equity asks for it","IDX rules"], answer: 0, k: "project_finance", diff: "Easy",
+ hints: ["Who bears end-of-concession risk (extension? handover condition)?", "Lenders limit tenor to the most certain cash period."],
+ explain: "The lender wants to be repaid before end-of-concession uncertainty (extension, handover condition). Debt follows the most certain cash."}
+]
+};
+
 LESSONS_REAL.forEach(function(l){ if (EN[l.id]) l.en = EN[l.id]; });
 })();
 

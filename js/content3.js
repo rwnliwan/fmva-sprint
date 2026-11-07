@@ -234,7 +234,14 @@ sections: [
 <li><b>Array</b> = sekumpulan nilai; (A1:A10>5) menghasilkan array TRUE/FALSE.</li>
 <li><b>Anchor</b> = sel tempat rumus spill ditulis (hanya sel ini berisi rumus).</li>
 </ul>`}
-],
+,
+{h: "Solver: optimasi multi-variabel dengan constraints", body: `
+<p>Goal Seek (L3) mengubah <b>satu</b> input hingga satu target tercapai. <b>Solver</b> mengubah <b>banyak</b> input sekaligus, dengan batasan (constraints) — inilah optimasi yang dipakai Wharton di capstone-nya:</p>
+<p><b>Cara pakai:</b> Data → Solver → Set Objective (sel yang dimaksimalkan/diminimalkan) → By Changing Variable Cells → Subject to the Constraints → Solving Method: <b>Simplex LP</b> untuk model linear (seperti di bawah), GRG Nonlinear bila ada perkalian/pangkat antar variabel.</p>
+<div class="example korporat"><div class="lbl">🏢 Contoh — alokasi capex Rp1.000jt</div>
+<p>Tiga proyek, NPV per Rp1 yang diinvestasikan: A 0,25; B 0,20; C 0,15. Kapasitas: A maks 400; B maks 500; C maks 600. Total ≤ 1.000. Solver: alokasikan A 400 (NPV 100), B 500 (NPV 100), C 100 (NPV 15) → <b>NPV total Rp215jt</b>. Cek: 400 + 500 + 100 = 1.000 ✓; NPV = 100 + 100 + 15 = 215 ✓. Intuisi "isi dari NPV/Rp tertinggi dulu" bekerja di sini karena modelnya linear — Solver membuktikannya, bukan menebaknya.</p></div>
+<p><b>Aturan audit:</b> (1) tulis constraints di sel (bukan hanya di dialog Solver) agar reviewer melihat batasannya; (2) catat solving method di samping hasil; (3) uji sensitivitas: ubah satu constraint, lihat apakah alokasi berubah — bila tidak berubah, constraint itu tidak mengikat (non-binding) dan boleh dihapus. Solver tanpa constraints yang terdokumentasi = jawaban yang tidak bisa direplikasi.</p>
+<div class="callout"><b>Jembatan ke H15:</b> decision tree menjawab <i>kapan</i> memutuskan; Solver menjawab <i>berapa</i> yang optimal. Keduanya adalah optimasi — yang satu atas waktu, yang satu atas jumlah.</div>`}],
 quiz: [
 {q: "=SEQUENCE(10) ditulis di A1. Nilai di A5?", opts: ["Nilai 10","Nilai 1","Nilai 5","#SPILL!"], answer: 2, k: "dynamic_arrays", diff: "Easy",
  hints: ["SEQUENCE(n) menumpahkan 1 sampai n.", "A1=1, A2=2, …"],
@@ -250,7 +257,14 @@ quiz: [
  explain: "Perkalian array = AND: hanya baris yang memenuhi keduanya menyumbang nilai C-nya. (Excel L3 § SUMPRODUCT 2 kriteria)"},
 {q: "=LET(t, SUM(A:A), t*1.1) vs =SUM(A:A)*1.1. Kapan LET benar-benar berguna?", opts: ["Tidak pernah","Hanya angka","Rumus pendek","Dipakai berulang"], answer: 3, k: "let_lambda", diff: "Hard",
  hints: ["Bayangkan SUM(A:A) ditulis 4 kali dalam satu rumus.", "LET = beri nama, hitung sekali."],
- explain: "LET bersinar saat sub-hitung panjang dipakai berulang: =LET(t, SUM(...besar...), t*1.1 - t*0.05). Sekali hitung, terbaca, lebih cepat. (Excel L3 § LET)"}
+ explain: "LET bersinar saat sub-hitung panjang dipakai berulang: =LET(t, SUM(...besar...), t*1.1 - t*0.05). Sekali hitung, terbaca, lebih cepat. (Excel L3 § LET)"},
+{q: "Alokasi capex Rp1.000jt; NPV/Rp: A 0,25 (maks 400), B 0,20 (maks 500), C 0,15 (maks 600). NPV total optimal Solver?", opts: ["Rp215jt (A 400, B 500, C 100)","Rp200jt (A 400, B 500, C 0)","Rp250jt (A 400, B 500, C 600)","Rp150jt (C 600, B 400)"], answer: 0, k: "solver", diff: "Medium",
+ hints: ["Isi dari NPV/Rp tertinggi: A dulu, lalu B, lalu sisa ke C.", "400 + 500 + 100 = 1.000; NPV = 100 + 100 + 15."],
+ explain: "A 400 (NPV 100) + B 500 (NPV 100) + C 100 (NPV 15) = Rp215jt. Total 1.000 tepat di batas."},
+{q: "Goal Seek vs Solver — perbedaan utamanya?", opts: ["Solver mengubah banyak input dengan constraints; Goal Seek satu input satu target","Goal Seek lebih akurat","Solver hanya untuk DCF","Tidak ada perbedaan"], answer: 0, k: "solver", diff: "Easy",
+ hints: ["Goal Seek: satu sel berubah.", "Solver: banyak sel + batasan."],
+ explain: "Goal Seek = satu input, satu target. Solver = banyak input sekaligus dengan constraints (Simplex LP untuk model linear)."}
+
 ],
 hellPass: 80,
 hell: [
@@ -326,7 +340,13 @@ sections: [
 <li><b>Precedent/Dependent</b> = sel yang menjadi sumber / tujuan dari sebuah rumus.</li>
 <li><b>Volatile</b> = fungsi yang menghitung ulang terus-menerus (NOW, OFFSET, INDIRECT). Bikin model besar lambat.</li>
 </ul>`}
-],
+,
+{h: "Governance model: versioning, changelog, color-coding & protection", body: `
+<p>Model yang tidak bisa diaudit = model yang tidak bisa dipercaya. <b>Governance</b> adalah disiplin yang membuat modelmu bertahan 3 bulan kemudian — saat kamu sendiri sudah lupa konteksnya:</p>
+<p><b>1. Versioning &amp; changelog.</b> Satu file, satu versi: nama file <i>Model_v1.2_2026-11-08.xlsx</i> (bukan <i>Model_final_FINAL2.xlsx</i>). Sheet "Changelog" di depan: tanggal | versi | apa berubah | kenapa. Aturan: tidak ada perubahan tanpa baris changelog — perubahan tanpa jejak = bug yang menunggu ditemukan orang lain.</p>
+<p><b>2. Color-coding (konvensi baku).</b> Biru = input (angka yang diketik); hitam = rumus; hijau = link ke sheet lain; merah = peringatan/cek gagal. Konsisten di seluruh workbook — reviewer harus bisa membaca modelmu tanpa legenda panjang.</p>
+<p><b>3. Protection.</b> Kunci (Review → Protect Sheet) semua sel rumus; biarkan input terbuka. Satu sel rumus yang tertimpa angka mati = seluruh kolom di bawahnya salah diam-diam — dan itulah bug termahal di Excel (H02 § $ yang lupa). Tambahan: satu "single source of truth" — asumsi yang sama tidak boleh diketik di dua tempat (H08: tarif pajak di satu sel input, dirujuk ke mana-mana).</p>
+<div class="callout"><b>Sub-poin:</b> membangun 3-statement dari <i>trial balance mentah</i> (bukan dari transaksi seperti H05) adalah latihan governance yang sama: mapping akun → laporan harus terdokumentasi di satu sheet pemetaan, bukan dihafal di kepala.</div>`}],
 quiz: [
 {q: "=16800*1,1 dan =B5*(1+B6) memberi hasil sama hari ini (B5=16800, B6=10%). Mana yang benar untuk model?", opts: ["Yang =B5*(1+B6)","Keduanya benar","Yang =16800*1,1","Tidak ada yang benar"], answer: 0, k: "model_structure", diff: "Easy",
  hints: ["Tiga bulan lagi growth berubah jadi 15%.", "Rumus mana yang ikut berubah otomatis?"],
@@ -342,7 +362,14 @@ quiz: [
  explain: "Trace Dependents: menggambar panah ke semua sel yang memakai B5. Precedents sebaliknya. (Excel L4 § Audit)"},
 {q: "Model 5000 baris terasa lambat. Satu sel memakai =INDIRECT(\"Sheet\"&A1&\"!B2\") di 5000 baris. Diagnosis?", opts: ["Data terlalu banyak","Volatile — pakai INDEX saja","IFERROR disalahgunakan","RAM tidak mencukupi"], answer: 1, k: "audit_rumus", diff: "Hard",
  hints: ["Volatile = dihitung ulang setiap ada perubahan apa pun.", "INDIRECT dan OFFSET adalah biang keladi klasik."],
- explain: "INDIRECT volatile — 5000 selnya dihitung ulang terus. Ganti dengan INDEX/MATCH langsung yang non-volatile. (Excel L4 § Bekal Hell Mode)"}
+ explain: "INDIRECT volatile — 5000 selnya dihitung ulang terus. Ganti dengan INDEX/MATCH langsung yang non-volatile. (Excel L4 § Bekal Hell Mode)"},
+{q: "Konvensi color-coding baku: sel input (angka diketik) berwarna…", opts: ["Biru","Hitam","Hijau","Merah"], answer: 0, k: "governance", diff: "Easy",
+ hints: ["Hitam = rumus; hijau = link antar-sheet; merah = peringatan.", "Input = yang diketik manusia."],
+ explain: "Biru = input; hitam = rumus; hijau = link ke sheet lain; merah = peringatan/cek gagal. Konsisten di seluruh workbook."},
+{q: "Kenapa perubahan model wajib dicatat di changelog?", opts: ["Agar perubahan punya jejak & bisa diaudit","Agar file lebih besar","Agar warna sheet konsisten","Agar Solver berjalan"], answer: 0, k: "governance", diff: "Easy",
+ hints: ["Perubahan tanpa jejak = bug yang menunggu ditemukan.", "Satu file, satu versi."],
+ explain: "Changelog = jejak audit: tanggal, versi, apa berubah, kenapa. Tanpa itu, tidak ada yang bisa membedakan perbaikan dari kerusakan."}
+
 ],
 hellPass: 80,
 hell: [
@@ -451,7 +478,11 @@ sections: [
 <li><b>Index basis-1</b> = CHOOSE mulai dari 1, bukan 0.</li>
 <li><b>Grid manual</b> = tabel sensitivitas dengan rumus per sel (cara Sheets) — lawan dari Data Table Excel.</li>
 </ul>`}
-],
+,
+{h: "Dari Data Table ke Monte Carlo: simulasi di Excel", body: `
+<p>H15 menghitung Monte Carlo 3×3 dengan tangan (E[EV] Rp1.183,23jt; P(EV &lt; 1.000) = 18,75%). Di Excel, ganti grid 3×3 dengan <b>simulasi</b>: tiap iterasi menarik WACC dan g secara acak, lalu hitung EV-nya:</p>
+<p><b>Resep minimal (tanpa VBA):</b> (1) WACC simulasi = <i>NORM.INV(RAND(); 12%; 2%)</i> — rata-rata 12%, simpangan baku 2%; g simulasi = <i>NORM.INV(RAND(); 3%; 1%)</i>. (2) EV simulasi = 100 × (1+g) ÷ (WACC − g) — dengan <i>IF(WACC &lt;= g; "error"; …)</i> agar tidak membagi nol/negatif. (3) Buat <b>Data Table</b> 1.000 baris: kolom iterasi 1–1.000, tiap baris menarik RAND baru (tekan F9 = simulasi baru). (4) Baca hasil: <i>AVERAGE</i> (expected value), <i>STDEV</i> (risiko), <i>COUNTIF(EV&lt;1000)/1000</i> (probabilitas gagal).</p>
+<p><b>Aturan:</b> (1) jangan pakai RAND langsung di dalam rumus EV tanpa Data Table — tiap F9 mengubah semua angka dan tidak ada yang bisa direplikasi; (2) simpan satu run (paste values) sebagai bukti — simulasi yang tidak tersimpan = simulasi yang tidak terjadi; (3) 1.000 iterasi cukup untuk belajar; 10.000 untuk keputusan nyata (pakai VBA di L6 bila perlu kecepatan). Perbandingan dengan grid H15: simulasimu harus memberi E[EV] ≈ 1.183 dan P(EV&lt;1.000) ≈ 19% — bila jauh, distribusimu salah, bukan modelnya.</p>`}],
 quiz: [
 {q: "Arus kas: investasi 5 Jan, top-up 20 Mar, hasil 11 Nov (tahun sama). Fungsi valuasi yang tepat?", opts: ["=NPV(10%, …) biasa", "=IRR(…) biasa", "=XNPV(10%, values, dates)", "=SUM(…)/(1+10%)"], answer: 2, k: "xnpv", diff: "Easy",
  hints: ["NPV mengasumsikan periode sama besar.", "Huruf X = tanggal nyata."],
@@ -479,7 +510,14 @@ quiz: [
  explain: "Grid manual dengan $B3/C$1 — tiap sel transparan dan bisa diaudit, justru lebih baik dari Data Table. (Excel L5 §5)"},
 {q: "Grid sensitivitas: WACC di C1:E1, growth di B3:B5. Rumus di C3 (Gordon, FCF=100) yang benar untuk di-copy ke seluruh grid?", opts: ["=100*(1+B3)/(C1-B3)", "=100*(1+B$3)/(C1-$B3)", "=100*(1+$B3)/(C$1-$B3)", "=100*(1+$B$3)/($C$1-$B$3)"], answer: 2, k: "sensitivity", diff: "Hard",
  hints: ["Growth harus ikut baris (kunci kolom B), WACC ikut kolom (kunci baris 1).", "Tanpa $ = bocor saat di-copy; $ penuh = tidak jalan."],
- explain: "=100*(1+$B3)/(C$1-$B3). $B3: kolom dikunci baris bebas; C$1: baris dikunci kolom bebas. Opsi pertama bocor, ketiga terkunci total. (Excel L5 §5 + L1 §$) "}
+ explain: "=100*(1+$B3)/(C$1-$B3). $B3: kolom dikunci baris bebas; C$1: baris dikunci kolom bebas. Opsi pertama bocor, ketiga terkunci total. (Excel L5 §5 + L1 §$) "},
+{q: "Simulasi Monte Carlo di Excel: rumus WACC acak (rata-rata 12%, std 2%) yang benar?", opts: ["=NORM.INV(RAND(); 12%; 2%)","=RAND()*12%","=12% + RAND()","=NORM.INV(12%; 2%)"], answer: 0, k: "monte_carlo", diff: "Medium",
+ hints: ["NORM.INV butuh probabilitas acak + rata-rata + std.", "RAND() memberi probabilitas 0–1."],
+ explain: "=NORM.INV(RAND(); 12%; 2%) menarik WACC dari distribusi normal mean 12%, std 2%. RAND() saja memberi uniform 0–1, bukan normal."},
+{q: "Kenapa RAND tidak boleh langsung di dalam rumus EV tanpa Data Table?", opts: ["Tiap F9 mengubah semua angka; tidak bisa direplikasi","RAND tidak bisa dipakai di EV","Data Table lebih cepat","RAND hanya untuk VBA"], answer: 0, k: "monte_carlo", diff: "Easy",
+ hints: ["Replikasi = hasil yang sama bisa dicek ulang.", "Simulasi yang tidak tersimpan = tidak terjadi."],
+ explain: "RAND di dalam rumus membuat tiap F9 mengubah seluruh hasil tanpa jejak. Data Table + paste values satu run = bukti yang bisa diaudit."}
+
 ],
 hellPass: 80,
 hell: [
@@ -513,6 +551,71 @@ blind: {h: "Uji Kilat — angka beda", body: `
 <details class="ans"><summary>Jawaban</summary>
 <p>=$C4*(1+D$1). $C4: kolom C dikunci, baris bebas (nilai ikut baris). D$1: baris 1 dikunci, kolom bebas (rate ikut kolom). Pola sama seperti grid Gordon di lesson.</p>
 </details>`}
+}
+,
+{
+id: "excel-l6", track: "Excel", title: "Excel Data Prep & Automation: Power Query, PivotTable & VBA",
+sub: "Excel L6 · ±6 jam · Bersihkan data sekali, pakai selamanya",
+est: "6 jam",
+prerequisites: ["hardcode_rule"],
+sections: [
+{h: "Power Query: bersihkan data sekali, pakai selamanya", body: `
+<p>Analis menghabiskan 80% waktunya membersihkan data — dan kebanyakan melakukannya manual, tiap bulan, dengan cara yang sama. <b>Power Query</b> (Data → Get Data) mengubah pembersihan itu jadi <i>resep yang bisa diulang</i>: tiap bulan, data baru masuk, klik Refresh, dan seluruh langkah berjalan lagi otomatis.</p>
+<p><b>Alur standar (5 langkah, selalu sama):</b> (1) <b>Connect</b> — ambil dari CSV/Excel/folder (jangan copy-paste ke sheet!); (2) <b>Clean</b> — hapus baris kosong, ubah tipe data (teks → angka/tanggal), pisah kolom (Text to Columns); (3) <b>Transform</b> — unpivot tabel lebar jadi tabel panjang (kolom bulan → baris), ganti nilai salah; (4) <b>Merge/Append</b> — gabung tabel lookup (mis. mapping akun → laporan, seperti governance L4); (5) <b>Load</b> — muat sebagai tabel ke sheet "Data" (bukan ke model langsung — model membaca dari tabel ini).</p>
+<div class="example warung"><div class="lbl">🏪 Contoh — rekap penjualan 12 cabang</div>
+<p>12 file CSV dengan format tanggal berbeda (12/01 vs Jan-12) dan kolom "Total" yang kadang teks. Tanpa Power Query: 2 jam copy-paste + risiko salah ketik. Dengan Power Query: satu query folder → ubah tipe tanggal → unpivot bulan → load. Bulan depan: taruh file baru di folder, Refresh, selesai dalam 1 menit. <b>Aturan:</b> jangan pernah edit hasil load secara manual — edit querynya. Hasil load yang diedit manual akan tertimpa saat Refresh, dan kamu tidak akan ingat apa yang kamu ubah.</p></div>`},
+{h: "PivotTable sebagai alat analisis (bukan sekadar ringkasan)", body: `
+<p>PivotTable bukan alat presentasi — ini alat <b>audit &amp; analisis</b>. Tiga kegunaan yang membedakan analis dari pengguna biasa:</p>
+<p><b>1. Cek kewajaran cepat:</b> tarik data transaksi ke PivotTable (baris = produk, nilai = sum revenue) — dalam 30 detik kamu melihat produk mana yang mendominasi, dan apakah totalnya cocok dengan laporan (cek silang H06).</p>
+<p><b>2. Cari anomali:</b> group by bulan → lonjakan satu bulan langsung terlihat; drill-down (double-click sel) menampilkan transaksi penyusunnya — cara tercepat menemukan satu faktur yang salah ketik Rp10jt jadi Rp100jt.</p>
+<p><b>3. Analisis sebelum rumus:</b> sebelum menulis SUMIFS yang rumit (L2), buat PivotTable-nya dulu — bila jawabannya bisa didapat dari PivotTable, jangan tulis rumus. Rumus untuk yang berulang &amp; terstruktur; PivotTable untuk eksplorasi &amp; audit. Pivot chart = PivotTable yang divisualkan — satu grafik yang ikut berubah saat filter berubah.</p>
+<div class="callout"><b>Perangkap:</b> PivotTable yang di-copy nilainya ke model (paste values) lalu dilupakan — bulan depan angkanya basi. Bila model butuh angka PivotTable, pakai GETPIVOTDATA atau biarkan PivotTable tetap live di sheet yang sama.</div>`},
+{h: "VBA dasar: rekam, baca, edit — lalu loop", body: `
+<p><b>VBA (Visual Basic for Applications)</b> adalah macro Excel. Kamu tidak perlu jadi programmer — cukup 3 kemampuan: merekam, membaca hasil rekaman, dan mengeditnya sedikit:</p>
+<p><b>1. Record:</b> Developer → Record Macro → lakukan tugas repetitif sekali (mis. format 12 sheet laporan) → Stop. Excel menulis kode VBA-nya untukmu.</p>
+<p><b>2. Baca &amp; bersihkan:</b> Alt+F11 → hapus baris <i>Select</i> dan <i>Selection</i> yang berlebihan (hasil rekaman selalu bertele-tele); ganti range yang di-hardcode dengan variabel.</p>
+<p><b>3. Loop (satu pola, pakai selamanya):</b></p>
+<div class="formula">For Each ws In ThisWorkbook.Worksheets<br>&nbsp;&nbsp;ws.Range("A1").Value = "FMVA Sprint"<br>Next ws</div>
+<p>Itu saja: lakukan hal yang sama ke semua sheet. Tambahkan <i>On Error GoTo ErrHandler</i> agar satu sheet yang gagal tidak membunuh seluruh macro — dan selalu simpan salinan sebelum menjalankan macro ke file asli (macro tidak punya Undo!).</p>
+<div class="example jebakan"><div class="lbl">🚫 Aturan keamanan macro</div>
+<p>Macro dari internet = kode yang bisa menghapus file. Jangan pernah jalankan macro yang tidak kamu baca baris per baris. Di Sprint ini: macro hanya yang kamu rekam/tulis sendiri, untuk filemu sendiri.</p></div>`},
+{h: "Keyboard shortcuts: kecepatan adalah akurasi", body: `
+<p>Analis yang memakai mouse untuk semua hal bukan hanya lambat — ia lelah, dan analis yang lelah membuat salah ketik. 10 shortcut yang membayar kembali dalam seminggu:</p>
+<table class="brutal">
+<tr><th>Shortcut</th><th>Fungsi</th></tr>
+<tr><td><b>Ctrl + panah</b></td><td>Lompat ke ujung blok data</td></tr>
+<tr><td><b>Ctrl + Shift + panah</b></td><td>Seleksi blok data</td></tr>
+<tr><td><b>Ctrl + T</b></td><td>Ubah range jadi tabel (untuk Power Query &amp; PivotTable)</td></tr>
+<tr><td><b>Alt + =</b></td><td>AutoSum</td></tr>
+<tr><td><b>Ctrl + ;</b></td><td>Sisip tanggal hari ini</td></tr>
+<tr><td><b>F4</b></td><td>Putar $ (absolut/relatif) saat edit rumus</td></tr>
+<tr><td><b>Ctrl + \`</b></td><td>Tampilkan semua rumus (mode audit)</td></tr>
+<tr><td><b>Ctrl + [</b></td><td>Lompat ke precedent (audit L4)</td></tr>
+<tr><td><b>Ctrl + Shift + L</b></td><td>Filter on/off</td></tr>
+<tr><td><b>Alt + E, S, V</b></td><td>Paste values</td></tr>
+</table>
+<p><b>Latihan:</b> kerjakan satu tugas H18 (rolling forecast) tanpa menyentuh mouse kecuali untuk klik Refresh Power Query. Lambat di hari pertama, 2× lebih cepat di hari kelima — dan lebih sedikit salah ketik karena tanganmu tidak berpindah-pindah.</p>`},
+{h: "Tugas: pipeline penjualan warung end-to-end", body: `
+<p><b>Tugas (di workbook sendiri, tanpa Drive):</b> (1) buat folder dengan 3 file CSV penjualan (Jan–Mar, format tanggal berbeda); (2) bangun 1 Power Query: ambil dari folder → samakan format tanggal → unpivot → load ke tabel; (3) buat PivotTable dari tabel itu: revenue per produk per bulan + drill-down ke satu anomali yang kamu sisipkan sengaja; (4) rekam macro yang memformat laporan (header tebal, angka Rp, print area) lalu edit hasil rekamannya agar berlaku ke semua sheet (loop For Each). Kriteria lolos: tambah file CSV April → Refresh → PivotTable &amp; laporan ikut berubah tanpa edit manual.</p>`}
+],
+quiz: [
+{q: "Prinsip #1 Power Query: data baru bulan depan ditangani dengan cara…", opts: ["Taruh file di folder → Refresh query","Copy-paste manual lagi","Edit hasil load langsung","Buat query baru dari nol"], answer: 0, k: "power_query", diff: "Easy",
+ hints: ["Query = resep yang bisa diulang.", "Hasil load yang diedit manual tertimpa saat Refresh."],
+ explain: "Power Query menyimpan langkah sebagai resep. File baru di folder + Refresh = seluruh pembersihan berjalan lagi otomatis."},
+{q: "Untuk apa PivotTable paling berguna bagi analis (selain ringkasan)?", opts: ["Audit & cari anomali (cek total, drill-down ke transaksi)","Menggantikan semua rumus SUMIFS","Membuat grafik untuk laporan tahunan saja","Menggantikan Power Query"], answer: 0, k: "pivot", diff: "Easy",
+ hints: ["Double-click sel PivotTable = transaksi penyusunnya.", "Cek silang total vs laporan = audit H06."],
+ explain: "PivotTable = alat audit: cek total dalam 30 detik, drill-down ke transaksi anomali. Rumus untuk yang berulang; PivotTable untuk eksplorasi & audit."},
+{q: "Macro VBA direkam untuk memformat 12 sheet. Langkah pertama yang benar sebelum menjalankannya di file asli?", opts: ["Simpan salinan (macro tidak punya Undo)","Langsung jalankan","Hapus semua Select dulu","Ubah ke Python"], answer: 0, k: "vba", diff: "Easy",
+ hints: ["Macro tidak punya Undo.", "Baca macro baris per baris sebelum menjalankan."],
+ explain: "Simpan salinan dulu — macro tidak bisa di-Undo. Lalu baca kodenya (Alt+F11), bersihkan Select berlebihan, baru jalankan."},
+{q: "Shortcut untuk menampilkan semua rumus sekaligus (mode audit)?", opts: ["Ctrl + `","Ctrl + R","Alt + F4","Ctrl + Shift + L"], answer: 0, k: "shortcuts", diff: "Easy",
+ hints: ["Tombol di kiri angka 1.", "Dipakai bersama Ctrl + [ (lompat ke precedent)."],
+ explain: "Ctrl + ` (backtick) menampilkan semua rumus — mode audit L4. Ctrl + Shift + L = filter on/off."},
+{q: "Hasil load Power Query diedit manual, lalu Refresh ditekan. Apa yang terjadi?", opts: ["Edit manual tertimpa (hilang)","Edit manual dipertahankan","Query error permanen","File terkunci"], answer: 0, k: "power_query", diff: "Medium",
+ hints: ["Load = output query, bukan input.", "Edit querynya, bukan hasilnya."],
+ explain: "Refresh menimpa hasil load dengan output query terbaru — edit manual hilang tanpa peringatan. Selalu edit query, bukan hasil."}
+],
+hellPass: 80
 }
 ];
 
@@ -736,7 +839,14 @@ sections: [
 <li><b>Array</b> = a set of values; (A1:A10&gt;5) produces a TRUE/FALSE array.</li>
 <li><b>Anchor</b> = the cell where the spill formula is written (only this cell holds the formula).</li>
 </ul>`}
-],
+,
+{h: "Solver: multi-variable optimisation with constraints", body: `
+<p>Goal Seek (L3) changes <b>one</b> input until one target is met. <b>Solver</b> changes <b>many</b> inputs at once, under constraints — the optimisation Wharton uses in its capstone:</p>
+<p><b>How to use it:</b> Data → Solver → Set Objective (the cell to maximise/minimise) → By Changing Variable Cells → Subject to the Constraints → Solving Method: <b>Simplex LP</b> for linear models (like below), GRG Nonlinear when variables multiply each other or carry powers.</p>
+<div class="example korporat"><div class="lbl">🏢 Example — allocating Rp1,000m of capex</div>
+<p>Three projects, NPV per Rp1 invested: A 0.25; B 0.20; C 0.15. Caps: A max 400; B max 500; C max 600. Total ≤ 1,000. Solver: allocate A 400 (NPV 100), B 500 (NPV 100), C 100 (NPV 15) → <b>total NPV Rp215m</b>. Check: 400 + 500 + 100 = 1,000 ✓; NPV = 100 + 100 + 15 = 215 ✓. The "fill from the highest NPV-per-rupiah first" intuition works here because the model is linear — Solver proves it, not guesses it.</p></div>
+<p><b>Audit rules:</b> (1) write constraints in cells (not only in the Solver dialog) so reviewers can see the limits; (2) note the solving method next to the result; (3) sensitivity-test: change one constraint and see whether the allocation moves — if it does not, that constraint is non-binding and may be dropped. Solver without documented constraints = an answer nobody can replicate.</p>
+<div class="callout"><b>Bridge to Day 15:</b> a decision tree answers <i>when</i> to decide; Solver answers <i>how much</i> is optimal. Both are optimisation — one over time, one over quantity.</div>`}],
 quiz: [
 {q: `=SEQUENCE(10) written in A1. The value in A5?`, opts: ["The result is the value 10","The result is the value 1","The result is the value 5","A #SPILL! error appears"], answer: 2, k: "dynamic_arrays",
  hints: ["SEQUENCE(n) spills 1 through n.","A1=1, A2=2, …"],
@@ -752,7 +862,14 @@ quiz: [
  explain: `Array multiplication = AND: only rows meeting both contribute their C value.`},
 {q: `=LET(t, SUM(A:A), t*1.1) vs =SUM(A:A)*1.1. When is LET actually useful?`, opts: ["It is never worth it","Only for plain numbers","For short, simple formulas","When a value is used repeatedly"], answer: 3, k: "let_lambda",
  hints: ["Imagine SUM(A:A) written 4 times in one formula.","LET = name it, compute once."],
- explain: `LET shines when a long sub-calculation is reused: =LET(t, SUM(...big...), t*1.1 - t*0.05). Compute once, readable, faster.`}
+ explain: `LET shines when a long sub-calculation is reused: =LET(t, SUM(...big...), t*1.1 - t*0.05). Compute once, readable, faster.`},
+{q: "Capex Rp1,000m; NPV per Rp: A 0.25 (max 400), B 0.20 (max 500), C 0.15 (max 600). Optimal Solver NPV?", opts: ["Rp215m (A 400, B 500, C 100)","Rp200m (A 400, B 500, C 0)","Rp250m (A 400, B 500, C 600)","Rp150m (C 600, B 400)"], answer: 0, k: "solver", diff: "Medium",
+ hints: ["Fill from the highest NPV-per-rupiah: A first, then B, then the rest to C.", "400 + 500 + 100 = 1,000; NPV = 100 + 100 + 15."],
+ explain: "A 400 (NPV 100) + B 500 (NPV 100) + C 100 (NPV 15) = Rp215m. Total exactly at the 1,000 limit."},
+{q: "Goal Seek vs Solver — the main difference?", opts: ["Solver changes many inputs with constraints; Goal Seek one input, one target","Goal Seek is more accurate","Solver is only for DCF","There is no difference"], answer: 0, k: "solver", diff: "Easy",
+ hints: ["Goal Seek: one cell changes.", "Solver: many cells + constraints."],
+ explain: "Goal Seek = one input, one target. Solver = many inputs at once with constraints (Simplex LP for linear models)."}
+
 ],
 hell: [
 {q: `=SORT(UNIQUE(A:A), 1, TRUE) — the execution order?`, opts: ["Apply SORT first, then UNIQUE after it","UNIQUE first (inner), then SORT (outer)","Apply both of them at the same time","Error — these two can't be stacked"], answer: 1,
@@ -822,7 +939,13 @@ sections: [
 <li><b>Precedent/Dependent</b> = cells that are the source / destination of a formula.</li>
 <li><b>Volatile</b> = functions that keep recalculating (NOW, OFFSET, INDIRECT). They slow big models down.</li>
 </ul>`}
-],
+,
+{h: "Model governance: versioning, changelog, colour-coding & protection", body: `
+<p>A model that cannot be audited = a model that cannot be trusted. <b>Governance</b> is the discipline that keeps your model alive 3 months later — when you yourself have forgotten the context:</p>
+<p><b>1. Versioning &amp; changelog.</b> One file, one version: name it <i>Model_v1.2_2026-11-08.xlsx</i> (not <i>Model_final_FINAL2.xlsx</i>). A "Changelog" sheet up front: date | version | what changed | why. Rule: no change without a changelog row — a change with no trail = a bug waiting for someone else to find.</p>
+<p><b>2. Colour-coding (standard convention).</b> Blue = inputs (typed numbers); black = formulas; green = links to other sheets; red = warnings/failed checks. Consistent across the whole workbook — a reviewer must be able to read your model without a long legend.</p>
+<p><b>3. Protection.</b> Lock (Review → Protect Sheet) every formula cell; leave inputs open. One formula cell overwritten by a hard number = the whole column below it silently wrong — the most expensive bug in Excel (Day 02 § the forgotten $). Plus: one "single source of truth" — the same assumption must never be typed in two places (Day 08: the tax rate lives in one input cell, referenced everywhere).</p>
+<div class="callout"><b>Sub-point:</b> building 3 statements from a raw <i>trial balance</i> (not from transactions like Day 05) is the same governance exercise: the account → statement mapping must be documented on one mapping sheet, not memorised in your head.</div>`}],
 quiz: [
 {q: `=16800*1.1 and =B5*(1+B6) give the same result today (B5=16800, B6=10%). Which is right for a model?`, opts: ["The =B5*(1+B6) one","Both are right","The =16800*1.1 one","Neither is right"], answer: 0, k: "model_structure",
  hints: ["Three months from now growth changes to 15%.","Which formula follows automatically?"],
@@ -838,7 +961,14 @@ quiz: [
  explain: `Trace Dependents: draws arrows to every cell using B5. Precedents is the reverse.`},
 {q: `A 5000-row model feels slow. One cell uses =INDIRECT("Sheet"&A1&"!B2") across 5000 rows. Diagnosis?`, opts: ["There is simply too much data","Volatile — just use INDEX","The IFERROR function is misused","The computer has insufficient RAM"], answer: 1, k: "audit_rumus",
  hints: ["Volatile = recalculated on every change whatsoever.","INDIRECT and OFFSET are the classic culprits."],
- explain: `INDIRECT is volatile — all 5000 cells recalculate constantly. Replace with a direct non-volatile INDEX/MATCH.`}
+ explain: `INDIRECT is volatile — all 5000 cells recalculate constantly. Replace with a direct non-volatile INDEX/MATCH.`},
+{q: "Standard colour-coding: input cells (typed numbers) are…", opts: ["Blue","Black","Green","Red"], answer: 0, k: "governance", diff: "Easy",
+ hints: ["Black = formulas; green = links between sheets; red = warnings.", "Inputs = what a human types."],
+ explain: "Blue = inputs; black = formulas; green = links to other sheets; red = warnings/failed checks. Consistent across the workbook."},
+{q: "Why must model changes be logged in a changelog?", opts: ["So changes leave a trail & can be audited","So the file gets bigger","So sheet colours stay consistent","So Solver runs"], answer: 0, k: "governance", diff: "Easy",
+ hints: ["A change with no trail = a bug waiting to be found.", "One file, one version."],
+ explain: "The changelog = the audit trail: date, version, what changed, why. Without it, nobody can tell an improvement from damage."}
+
 ],
 hell: [
 {q: `=VLOOKUP(A1, Data!A:Z, 26, FALSE) copied to 10 thousand rows and the file is slow. Best fix?`, opts: ["Switch to XLOOKUP with tight, exact ranges","Nothing — VLOOKUP is just slow","Wrap it in IFERROR","Move it to another sheet"], answer: 0,
@@ -943,7 +1073,11 @@ sections: [
 <li><b>1-based index</b> = CHOOSE starts at 1, not 0.</li>
 <li><b>Manual grid</b> = a per-cell-formula sensitivity table (the Sheets way) — the opposite of Excel's Data Table.</li>
 </ul>`}
-],
+,
+{h: "From Data Table to Monte Carlo: simulation in Excel", body: `
+<p>Day 15 computed a 3×3 Monte Carlo by hand (E[EV] Rp1,183.23m; P(EV &lt; 1,000) = 18.75%). In Excel, replace the 3×3 grid with a <b>simulation</b>: each iteration draws WACC and g at random, then computes EV:</p>
+<p><b>Minimal recipe (no VBA):</b> (1) simulated WACC = <i>NORM.INV(RAND(), 12%, 2%)</i> — mean 12%, standard deviation 2%; simulated g = <i>NORM.INV(RAND(), 3%, 1%)</i>. (2) simulated EV = 100 × (1+g) ÷ (WACC − g) — wrapped in <i>IF(WACC &lt;= g, "error", …)</i> so you never divide by zero or a negative. (3) Build a <b>Data Table</b> of 1,000 rows: iteration column 1–1,000, each row drawing fresh RAND (press F9 = a new simulation). (4) Read the results: <i>AVERAGE</i> (expected value), <i>STDEV</i> (risk), <i>COUNTIF(EV&lt;1000)/1000</i> (failure probability).</p>
+<p><b>Rules:</b> (1) never put RAND directly inside the EV formula without a Data Table — every F9 changes all numbers and nothing is replicable; (2) save one run (paste values) as evidence — a simulation that is not saved = a simulation that never happened; (3) 1,000 iterations is enough to learn; 10,000 for real decisions (use L6 VBA if you need speed). Cross-check against the Day 15 grid: your simulation should give E[EV] ≈ 1,183 and P(EV&lt;1,000) ≈ 19% — if it is far off, your distributions are wrong, not the model.</p>`}],
 quiz: [
 {q: `Cash flows: invest Jan 5, top-up Mar 20, proceeds Nov 11 (same year). The right valuation function?`, opts: ["Plain =NPV(10%, …)", "Plain =IRR(…)", "=XNPV(10%, values, dates)", "=SUM(…)/(1+10%)"], answer: 2, k: "xnpv",
  hints: ["NPV assumes equal-sized periods.", "The X = real dates."],
@@ -971,7 +1105,14 @@ quiz: [
  explain: `Manual grid with $B3/C$1 — every cell transparent and auditable, actually better than Data Table. (Excel L5 §5)`},
 {q: `Sensitivity grid: WACC in C1:E1, growth in B3:B5. The correct C3 formula (Gordon, FCF=100) to copy across the grid?`, opts: ["=100*(1+B3)/(C1-B3)", "=100*(1+B$3)/(C1-$B3)", "=100*(1+$B3)/(C$1-$B3)", "=100*(1+$B$3)/($C$1-$B$3)"], answer: 2, k: "sensitivity",
  hints: ["Growth must follow rows (lock column B), WACC follows columns (lock row 1).", "No $ = leaks when copied; full $ = frozen."],
- explain: `=100*(1+$B3)/(C$1-$B3). $B3: column locked, row free; C$1: row locked, column free. First option leaks, third is fully frozen. (Excel L5 §5 + L1 §$)`}
+ explain: `=100*(1+$B3)/(C$1-$B3). $B3: column locked, row free; C$1: row locked, column free. First option leaks, third is fully frozen. (Excel L5 §5 + L1 §$)`},
+{q: "Monte Carlo in Excel: the correct random-WACC formula (mean 12%, std 2%)?", opts: ["=NORM.INV(RAND(), 12%, 2%)","=RAND()*12%","=12% + RAND()","=NORM.INV(12%, 2%)"], answer: 0, k: "monte_carlo", diff: "Medium",
+ hints: ["NORM.INV needs a random probability + mean + std.", "RAND() gives a 0–1 probability."],
+ explain: "=NORM.INV(RAND(), 12%, 2%) draws WACC from a normal distribution with mean 12%, std 2%. Bare RAND() gives a uniform 0–1, not a normal."},
+{q: "Why must RAND not sit directly inside the EV formula without a Data Table?", opts: ["Every F9 changes all numbers; nothing is replicable","RAND cannot be used in EV","Data Table is faster","RAND is VBA-only"], answer: 0, k: "monte_carlo", diff: "Easy",
+ hints: ["Replication = the same result can be re-checked.", "A simulation that is not saved = one that never happened."],
+ explain: "RAND inside the formula makes every F9 rewrite all results with no trail. Data Table + one pasted-values run = auditable evidence."}
+
 ],
 hell: [
 {q: `=XNPV(XIRR(B2:B5, A2:A5), B2:B5, A2:A5). The result (approximately)?`, opts: ["0", "#NUM!", "Same as =NPV(…)", "#DIV/0!"], answer: 0,
@@ -1005,5 +1146,67 @@ blind: {h: "Speed Drill — different numbers", body: `
 <p>=$C4*(1+D$1). $C4: column C locked, row free (value follows rows). D$1: row 1 locked, column free (rate follows columns). Same pattern as the lesson's Gordon grid.</p>
 </details>`}
 };
+EN["excel-l6"] = {
+title: "Excel Data Prep & Automation: Power Query, PivotTables & VBA",
+sub: "Excel L6 · ±6 hrs · Clean data once, use it forever",
+sections: [
+{h: "Power Query: clean data once, use it forever", body: `
+<p>Analysts spend 80% of their time cleaning data — and most do it manually, every month, the same way. <b>Power Query</b> (Data → Get Data) turns that cleaning into a <i>repeatable recipe</i>: new data arrives each month, click Refresh, and every step runs again automatically.</p>
+<p><b>Standard flow (5 steps, always the same):</b> (1) <b>Connect</b> — pull from CSV/Excel/a folder (never copy-paste into a sheet!); (2) <b>Clean</b> — drop blank rows, fix data types (text → numbers/dates), split columns; (3) <b>Transform</b> — unpivot wide tables into long ones (month columns → rows), fix wrong values; (4) <b>Merge/Append</b> — join lookup tables (e.g. account → statement mapping, like L4 governance); (5) <b>Load</b> — load as a table to a "Data" sheet (not straight into the model — the model reads from this table).</p>
+<div class="example warung"><div class="lbl">🏪 Example — sales recap for 12 branches</div>
+<p>12 CSV files with different date formats (12/01 vs Jan-12) and a "Total" column that is sometimes text. Without Power Query: 2 hours of copy-paste + typo risk. With Power Query: one folder query → fix date types → unpivot months → load. Next month: drop the new file in the folder, Refresh, done in 1 minute. <b>Rule:</b> never edit the loaded output manually — edit the query. Manually edited output gets overwritten on Refresh, and you will not remember what you changed.</p></div>`},
+{h: "PivotTables as an analysis tool (not just a summary)", body: `
+<p>A PivotTable is not a presentation tool — it is an <b>audit &amp; analysis</b> tool. Three uses that separate analysts from ordinary users:</p>
+<p><b>1. Fast reasonableness check:</b> drop transactions into a PivotTable (rows = product, values = sum of revenue) — in 30 seconds you see which product dominates, and whether the total matches the report (Day 06 cross-check).</p>
+<p><b>2. Find anomalies:</b> group by month → a one-month spike is instantly visible; drill down (double-click a cell) to see the underlying transactions — the fastest way to find one invoice mistyped from Rp10m to Rp100m.</p>
+<p><b>3. Analyse before writing formulas:</b> before writing a complicated SUMIFS (L2), build the PivotTable first — if the answer comes from the PivotTable, do not write a formula. Formulas are for repeated &amp; structured work; PivotTables are for exploration &amp; audit. A pivot chart = a PivotTable visualised — one chart that moves when the filter moves.</p>
+<div class="callout"><b>Trap:</b> a PivotTable whose values are pasted into the model (paste values) and then forgotten — next month the numbers are stale. If the model needs PivotTable numbers, use GETPIVOTDATA or keep the PivotTable live on the same sheet.</div>`},
+{h: "VBA basics: record, read, edit — then loop", body: `
+<p><b>VBA (Visual Basic for Applications)</b> is Excel macros. You do not need to be a programmer — just 3 skills: recording, reading the recording, and editing it a little:</p>
+<p><b>1. Record:</b> Developer → Record Macro → do the repetitive task once (e.g. format 12 report sheets) → Stop. Excel writes the VBA code for you.</p>
+<p><b>2. Read &amp; clean:</b> Alt+F11 → delete the excessive <i>Select</i> and <i>Selection</i> lines (recordings are always verbose); replace hard-coded ranges with variables.</p>
+<p><b>3. Loop (one pattern, use it forever):</b></p>
+<div class="formula">For Each ws In ThisWorkbook.Worksheets<br>&nbsp;&nbsp;ws.Range("A1").Value = "FMVA Sprint"<br>Next ws</div>
+<p>That is it: do the same thing to every sheet. Add <i>On Error GoTo ErrHandler</i> so one failing sheet does not kill the whole macro — and always save a copy before running a macro on the original file (macros have no Undo!).</p>
+<div class="example jebakan"><div class="lbl">🚫 Macro safety rule</div>
+<p>A macro from the internet = code that can delete files. Never run a macro you have not read line by line. In this Sprint: macros are only the ones you record/write yourself, for your own files.</p></div>`},
+{h: "Keyboard shortcuts: speed is accuracy", body: `
+<p>An analyst who uses the mouse for everything is not just slow — they get tired, and tired analysts make typos. 10 shortcuts that pay back within a week:</p>
+<table class="brutal">
+<tr><th>Shortcut</th><th>Function</th></tr>
+<tr><td><b>Ctrl + arrows</b></td><td>Jump to the edge of a data block</td></tr>
+<tr><td><b>Ctrl + Shift + arrows</b></td><td>Select a data block</td></tr>
+<tr><td><b>Ctrl + T</b></td><td>Turn a range into a table (for Power Query &amp; PivotTables)</td></tr>
+<tr><td><b>Alt + =</b></td><td>AutoSum</td></tr>
+<tr><td><b>Ctrl + ;</b></td><td>Insert today's date</td></tr>
+<tr><td><b>F4</b></td><td>Cycle $ (absolute/relative) while editing a formula</td></tr>
+<tr><td><b>Ctrl + \`</b></td><td>Show all formulas (audit mode)</td></tr>
+<tr><td><b>Ctrl + [</b></td><td>Jump to precedents (L4 audit)</td></tr>
+<tr><td><b>Ctrl + Shift + L</b></td><td>Filter on/off</td></tr>
+<tr><td><b>Alt + E, S, V</b></td><td>Paste values</td></tr>
+</table>
+<p><b>Exercise:</b> do one Day 18 task (rolling forecast) without touching the mouse except to click Refresh in Power Query. Slow on day one, 2× faster by day five — and fewer typos because your hands stop moving back and forth.</p>`},
+{h: "Task: end-to-end warung sales pipeline", body: `
+<p><b>Task (in your own workbook, no Drive):</b> (1) make a folder with 3 sales CSVs (Jan–Mar, different date formats); (2) build 1 Power Query: pull from the folder → unify date formats → unpivot → load to a table; (3) make a PivotTable from that table: revenue per product per month + drill down into one anomaly you planted on purpose; (4) record a macro that formats the report (bold headers, Rp numbers, print area), then edit the recording so it applies to all sheets (For Each loop). Pass criterion: add an April CSV → Refresh → the PivotTable &amp; report update with no manual edits.</p>`}
+],
+quiz: [
+{q: "Power Query rule #1: next month's new data is handled by…", opts: ["Dropping the file in the folder → Refresh query","Copy-pasting manually again","Editing the loaded output directly","Building a new query from scratch"], answer: 0, k: "power_query", diff: "Easy",
+ hints: ["A query = a repeatable recipe.", "Manually edited output is overwritten on Refresh."],
+ explain: "Power Query stores the steps as a recipe. A new file in the folder + Refresh = the whole cleaning runs again automatically."},
+{q: "What is a PivotTable most useful for, besides summarising?", opts: ["Audit & anomaly hunting (check totals, drill to transactions)","Replacing all SUMIFS formulas","Making charts for the annual report only","Replacing Power Query"], answer: 0, k: "pivot", diff: "Easy",
+ hints: ["Double-click a PivotTable cell = its underlying transactions.", "Cross-checking totals vs the report = Day 06 audit."],
+ explain: "PivotTable = audit tool: check totals in 30 seconds, drill down to anomalous transactions. Formulas for repeated work; PivotTables for exploration & audit."},
+{q: "A VBA macro is recorded to format 12 sheets. The first correct step before running it on the original file?", opts: ["Save a copy (macros have no Undo)","Run it immediately","Delete all Select lines first","Rewrite it in Python"], answer: 0, k: "vba", diff: "Easy",
+ hints: ["Macros have no Undo.", "Read the macro line by line before running."],
+ explain: "Save a copy first — macros cannot be undone. Then read the code (Alt+F11), clean the verbose Select lines, then run."},
+{q: "Shortcut to show all formulas at once (audit mode)?", opts: ["Ctrl + `","Ctrl + R","Alt + F4","Ctrl + Shift + L"], answer: 0, k: "shortcuts", diff: "Easy",
+ hints: ["The key left of number 1.", "Used with Ctrl + [ (jump to precedents)."],
+ explain: "Ctrl + ` (backtick) shows all formulas — L4 audit mode. Ctrl + Shift + L = filter on/off."},
+{q: "Power Query output is edited manually, then Refresh is pressed. What happens?", opts: ["The manual edit is overwritten (lost)","The manual edit is kept","The query errors permanently","The file locks"], answer: 0, k: "power_query", diff: "Medium",
+ hints: ["The load = the query's output, not an input.", "Edit the query, not the output."],
+ explain: "Refresh overwrites the loaded output with the query's latest result — manual edits vanish without warning. Always edit the query, not the output."}
+]
+};
+
 LESSONS_EXCEL.forEach(function(l){ if (EN[l.id]) l.en = EN[l.id]; });
 })();
