@@ -107,6 +107,14 @@ sections: [
 <p>EV (enterprise value) = nilai untuk <b>semua pemodal</b> (saham + kreditur). Untuk dapat nilai <b>pemegang saham</b>, kurangi utang bersih: Rp110,30T − Rp52,62T = <b>Rp57,68T</b>. Equity SOTP = 306,18 − 57,68 = <b>Rp248,50T</b> → Rp6.261/saham.</p>
 <div class="example jebakan"><div class="lbl">🚫 Bug klasik</div>
 <p>Lupa kurangi net debt = mengklaim kas kreditur sebagai milik pemegang saham. Atau lebih halus: memakai <i>gross debt</i> tanpa kurangi kas — padahal kas bisa dipakai melunasi utang. Selalu <b>net</b>.</p></div>`},
+{h: "Catatan: jembatan lengkap vs simplifikasi case ini", body: `
+<p>Sebelum lanjut: satu kejujuran metodologi. Jembatan <i>lengkap</i> menurut textbook adalah:</p>
+<div class="formula">Ekuitas induk = EV − Net Debt − NCI</div>
+<p>EV adalah nilai <i>seluruh</i> perusahaan konsolidasi — termasuk bagian minoritas. Tiga pengurang itu berurutan: utang bersih dulu (hak kreditur), lalu NCI (hak minoritas), sisanya milik pemegang saham induk.</p>
+<p><b>Case ini memakai simplifikasi yang dinyatakan: NCI = 0.</b> Data NCI per segmen tidak disediakan di case ini, sehingga jembatan yang dipakai adalah EV − net debt saja: 306,18 − 57,68 = <b>Rp248,50T</b> → Rp6.261/saham → diskon 23,3%. <b>Ketiga angka itu berlaku DALAM simplifikasi tersebut.</b></p>
+<p>Kenapa ini penting? Astra tidak memiliki 100% semua anak usahanya (mis. UNTR) — dan EBIT segmen yang dipakai adalah EBIT <i>konsolidasi</i>, yang mencakup laba milik minoritas. Mengabaikan NCI = mengklaim bagian minoritas sebagai milik induk — persis Error #1 di real-03 (INDF) yang menggelembungkan nilai Rp5.364/saham. Bedanya: di real-03, NCI-nya tersedia (Rp47,09T) sehingga bisa dikurangkan; di sini tidak tersedia, sehingga simplifikasinya <i>dinyatakan</i>, bukan disembunyikan.</p>
+<p>Apa yang mengubah jawaban? Bila suatu hari data NCI segmen tersedia — katakanlah NCI total RpXT — ekuitas menjadi 248,50 − X, nilai/saham turun, dan diskon konglomerat tercatat <i>membesar</i> (harga pasar yang sama dibagi nilai SOTP yang lebih kecil). Tanpa data itu, angka yang benar untuk dilaporkan adalah 248,50T <i>dengan catatan simplifikasi ini</i> — bukan pura-pura NCI tidak ada.</p>
+<div class="callout"><b>Kenapa simplifikasi yang dinyatakan ≠ kesalahan?</b> Karena analis profesional selalu bekerja dengan data yang tidak lengkap — yang membedakan analis jujur dari yang ceroboh adalah apakah batasannya ditulis di tempat yang sama dengan jawabannya. Simplifikasi yang dinyatakan bisa diperbaiki saat datanya datang; simplifikasi yang disembunyikan menjadi kesalahan yang diwariskan.</div>`},
 {h: "Kenapa ada diskon konglomerat?", body: `
 <p>Nilai SOTP Rp6.261 vs harga pasar Rp4.800 (yfinance, Okt 2026) → <b>diskon 23,3%</b>. Pasar menilai Astra lebih murah dari jumlah bagian-bagiannya. Ini bukan kesalahan pasar yang otomatis = peluang — ini <b>pertanyaan</b>.</p>
 <div class="callout"><b>Kenapa pasar memberi diskon?</b> Kandidat penjelasan: inefisiensi alokasi modal antar segmen, tata kelola konglomerasi, segmen siklikal (alat berat/tambang) yang sedang di puncak siklus, atau sekadar sentimen. Tugas analis: <b>menjelaskan gap</b>, bukan mengasumsikan pasar bodoh. Kadang diskonnya beralasan — kadang itulah peluangmu.</p></div>`},
@@ -137,7 +145,10 @@ quiz: [
  explain: "Multiple = harga untuk kualitas laba. IT tumbuh cepat (10×), alat berat siklikal (4,5×). Satu multiple untuk semua = mengasumsikan semua bisnis sama. (Real-02 § Kenapa multiple tiap segmen beda?)"},
 {q: "Segmen kontributor EV terbesar?", opts: ["Segmen Properti Rp11,13T","Segmen Agribisnis Rp31,81T","Segmen Otomotif Rp92,78T","Segmen Teknologi Informasi Rp21,21T"], answer: 2, k: "sotp", diff: "Easy",
  hints: ["Porsi × multiple terbesar.", "35% × 5 = ?"],
- explain: "Otomotif: 35% × Rp53,02T × 5 = Rp92,78T — hampir sepertiga EV SOTP. (Real-02 § Kenapa multiple tiap segmen beda?)"}
+ explain: "Otomotif: 35% × Rp53,02T × 5 = Rp92,78T — hampir sepertiga EV SOTP. (Real-02 § Kenapa multiple tiap segmen beda?)"},
+{q: "Jembatan LENGKAP textbook dari EV ke ekuitas induk?", opts: ["EV − net debt − NCI","EV − net debt saja","EV + net debt − NCI","EV − NCI saja"], answer: 0, k: "bridge_full", diff: "Medium",
+ hints: ["EV milik SEMUA pemodal; ekuitas induk = sisa setelah semua klaim yang lebih senior.","Kreditur dulu, lalu minoritas, lalu induk."],
+ explain: "EV − net debt − NCI. Case ini memakai simplifikasi NCI = 0 (data segmen tidak tersedia) — 248,50T berlaku dalam simplifikasi itu."}
 ],
 hellPass: 80,
 hell: [
@@ -155,7 +166,7 @@ hell: [
 tasks: [
 {t: "Tugas A — SOTP Astra (±3 jam)", d: "Download workbook RC2. Hitung EV 7 segmen (porsi × multiple), total → net debt → equity → nilai/saham → diskon konglomerat. Semua rumus link ke input.", url: "https://drive.google.com/drive/folders/15etlyOcKIB4Uz9b_I401Iz2ASubqGa2A"},
 {t: "Tugas B — Stress test multiple (±1 jam)", d: "Ubah multiple alat berat 4,5→3 (skenario komoditas jatuh). Catat nilai/saham baru. Segmen mana yang paling 'berbahaya' bagi valuasi?"},
-{t: "Tugas C — Kuis di atas", d: "Target ≥4/5 benar."}
+{t: "Tugas C — Kuis di atas", d: "Target ≥5/6 benar."}
 ],
 blind: {h: "Uji Kilat — angka beda", body: `
 <p><b>1.</b> EBIT grup Rp40T, 2 segmen: A (60%, 6×), B (40%, 8×). EV SOTP = ?</p>
@@ -947,6 +958,14 @@ sections: [
 <p>EV (enterprise value) = value for <b>all capital providers</b> (equity + creditors). To get <b>shareholder</b> value, subtract net debt: Rp110.30T − Rp52.62T = <b>Rp57.68T</b>. SOTP equity = 306.18 − 57.68 = <b>Rp248.50T</b> → Rp6,261/share.</p>
 <div class="example jebakan"><div class="lbl">🚫 Classic bug</div>
 <p>Forgetting to subtract net debt = claiming creditors' cash as shareholders'. Or subtler: using <i>gross debt</i> without subtracting cash — even though cash can repay debt. Always <b>net</b>.</p></div>`},
+{h: "Note: the full bridge vs this case's simplification", body: `
+<p>Before moving on: one methodological honesty note. The <i>full</i> textbook bridge is:</p>
+<div class="formula">Parent equity = EV − Net Debt − NCI</div>
+<p>EV is the value of the <i>whole</i> consolidated company — including the minority's share. The three deductions run in order: net debt first (lenders' claim), then NCI (minorities' claim), the rest belongs to parent shareholders.</p>
+<p><b>This case uses a stated simplification: NCI = 0.</b> Segment-level NCI data is not provided in this case, so the bridge used is EV − net debt only: 306.18 − 57.68 = <b>Rp248.50T</b> → Rp6,261/share → 23.3% discount. <b>All three numbers hold WITHIN that simplification.</b></p>
+<p>Why does it matter? Astra doesn't own 100% of all its subsidiaries (e.g., UNTR) — and the segment EBIT used here is <i>consolidated</i> EBIT, which includes profit belonging to minorities. Ignoring NCI = claiming the minority's share as the parent's — exactly Error #1 in real-03 (INDF), which inflated value by Rp5,364/share. The difference: in real-03 the NCI was available (Rp47.09T) so it could be deducted; here it isn't, so the simplification is <i>stated</i>, not hidden.</p>
+<p>What would change the answer? If segment NCI data ever becomes available — say total NCI of RpXT — equity becomes 248.50 − X, value per share falls, and the recorded conglomerate discount <i>grows</i> (the same market price divided by a smaller SOTP value). Without that data, the correct number to report is 248.50T <i>with this simplification noted</i> — not pretending NCI doesn't exist.</p>
+<div class="callout"><b>Why is a stated simplification ≠ an error?</b> Because professional analysts always work with incomplete data — what separates an honest analyst from a careless one is whether the limitation is written next to the answer. A stated simplification can be fixed when the data arrives; a hidden one becomes an inherited error.</div>`},
 {h: "Why is there a conglomerate discount?", body: `
 <p>SOTP value Rp6,261 vs market price Rp4,800 (yfinance, Oct 2026) → <b>23.3% discount</b>. The market prices Astra below the sum of its parts. That's not an automatic market mistake = opportunity — it's a <b>question</b>.</p>
 <div class="callout"><b>Why does the market discount it?</b> Candidate explanations: inefficient capital allocation across segments, conglomerate governance, cyclical segments (heavy equipment/mining) at cycle peak, or just sentiment. The analyst's job: <b>explain the gap</b>, not assume the market is dumb. Sometimes the discount is justified — sometimes it's your opportunity.</p></div>`},
@@ -977,7 +996,10 @@ quiz: [
  explain: `Multiple = the price of earnings quality. Fast-growing IT (10×), cyclical heavy equipment (4.5×). One multiple for all = assuming all businesses are equal.`},
 {q: `The biggest EV-contributing segment?`, opts: ["Property at Rp11.13T","Agribusiness at Rp31.81T","Automotive at Rp92.78T","IT segment at Rp21.21T"], answer: 2, k: "sotp",
  hints: ["Biggest weight × multiple.","35% × 5 = ?"],
- explain: `Automotive: 35% × Rp53.02T × 5 = Rp92.78T — nearly a third of SOTP EV.`}
+ explain: `Automotive: 35% × Rp53.02T × 5 = Rp92.78T — nearly a third of SOTP EV.`},
+{q: "The FULL textbook bridge from EV to parent equity?", opts: ["EV − net debt − NCI","EV − net debt only","EV + net debt − NCI","EV − NCI only"], answer: 0, k: "bridge_full", diff: "Medium",
+ hints: ["EV belongs to ALL capital providers; parent equity = what's left after all senior claims.","Lenders first, then minorities, then the parent."],
+ explain: "EV − net debt − NCI. This case uses the stated simplification NCI = 0 (segment data unavailable) — 248.50T holds within that simplification."}
 ],
 hell: [
 {q: `Financial services multiple falls 7→5. Effect on SOTP per-share value?`, opts: ["The value rises by ~Rp400","The value falls by ~Rp400","Flat because it's insensitive","It rises because risk fell"], answer: 1,
@@ -994,7 +1016,7 @@ hell: [
 tasks: [
 {t: "Task A — Astra SOTP (±3 hrs)", d: "Download the RC2 workbook. Compute 7 segments' EV (weight × multiple), total → net debt → equity → per-share value → conglomerate discount. All formulas link to inputs.", url: "https://drive.google.com/drive/folders/15etlyOcKIB4Uz9b_I401Iz2ASubqGa2A"},
 {t: "Task B — Multiple stress test (±1 hr)", d: "Change heavy-equipment multiple 4.5→3 (commodity-crash scenario). Note the new per-share value. Which segment is most 'dangerous' to valuation?", url: ""},
-{t: "Task C — The quiz above", d: "Target ≥4/5 correct.", url: ""}
+{t: "Task C — The quiz above", d: "Target ≥5/6 correct.", url: ""}
 ],
 blind: {h: "Speed Drill — different numbers", body: `
 <p><b>1.</b> Group EBIT Rp40T, 2 segments: A (60%, 6×), B (40%, 8×). SOTP EV = ?</p>

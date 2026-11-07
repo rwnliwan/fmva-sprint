@@ -140,6 +140,26 @@ sections: [
 </table>
 <div class="formula">Revenue = Volume × Harga</div>
 <div class="callout"><b>Kenapa bottom-up paling auditable?</b> Karena setiap drivernya bisa dicek ke dunia nyata: jumlah pelanggan bisa dihitung di depan toko, harga tertera di etalase. "Growth 12%" itu klaim; "50 pelanggan × Rp20rb × 26 hari" itu bukti. Analis kredit lebih percaya driver daripada angka persen yang digantung.</div>`},
+{h: "Pengakuan pendapatan: kapan revenue jadi revenue? (IFRS 15 / PSAK 72)", body: `
+<p>Seksi sebelumnya menjawab <b>berapa</b> revenue-nya (forecast). Seksi ini menjawab <b>kapan</b> ia boleh dicatat sebagai revenue. Dua pertanyaan berbeda — dan analis yang mencampurnya akan salah baca laba.</p>
+<p><b>Lima langkah IFRS 15 / PSAK 72</b> (berlaku untuk semua kontrak dengan pelanggan):</p>
+<ol>
+<li><b>Identifikasi kontrak</b> — ada kesepakatan yang mengikat?</li>
+<li><b>Identifikasi kewajiban pelaksanaan</b> (performance obligations) — barang/jasa apa saja yang dijanjikan? Tiap kewajiban = satu unit pengakuan.</li>
+<li><b>Tentukan harga transaksi</b> — berapa yang berhak diterima perusahaan?</li>
+<li><b>Alokasikan harga ke tiap kewajiban</b> — proporsional dengan harga jual mandiri masing-masing.</li>
+<li><b>Akui revenue saat (atau selama) kewajiban dipenuhi</b> — point-in-time atau over-time.</li>
+</ol>
+<p><b>Point-in-time vs over-time.</b> Warung menjual barang: revenue diakui <b>saat barang diserahkan</b> (point-in-time) — kendali berpindah, selesai. Jasa yang dinikmati bertahap (langganan, pemeliharaan, konstruksi bertahap) diakui <b>over-time</b>, sebanding dengan progres.</p>
+<p><b>Contoh kerja (ilustrasi dinyatakan):</b> kontrak servis 12 bulan Rp12jt, dibayar di muka. Kewajibannya dua: barang Rp2jt (diserahkan saat tanda tangan) + servis Rp10jt selama 12 bulan.</p>
+<table class="brutal">
+<tr><th></th><th>Bulan 1</th><th>Setelah 6 bulan</th></tr>
+<tr><td>Revenue diakui</td><td>2 + 10÷12 = <b>Rp2,83jt</b></td><td>2 + 6 × 0,83 = <b>Rp7,00jt</b></td></tr>
+<tr><td>Liabilitas kontrak (pendapatan diterima di muka)</td><td>12 − 2,83 = <b>Rp9,17jt</b></td><td>12 − 7,00 = <b>Rp5,00jt</b></td></tr>
+</table>
+<p>Uang Rp12jt sudah di tangan sejak bulan 1 — tapi revenue bulan 1 hanya Rp2,83jt. Sisanya adalah <b>liabilitas kontrak</b> (utang jasa), bukan revenue. <b>Tagihan ≠ revenue; kas diterima ≠ revenue.</b> Perusahaan yang mengakui seluruh 12jt di bulan 1 sedang menarik laba masa depan ke hari ini.</p>
+<p><b>Variable consideration (imbalan variabel).</b> Diskon, rabat, retur, bonus kinerja: harga transaksi = estimasi terbaik, TAPI hanya sebesar yang <i>sangat mungkin tidak berbalik</i> (constraint). Contoh: harga katalog Rp100jt dengan perkiraan retur 5% → akui <b>Rp95jt</b>, bukan 100. Retur yang ternyata terjadi = penyesuaian, bukan kejutan.</p>
+<div class="callout"><b>Kenapa analis peduli?</b> Karena revenue yang ditarik maju = laba yang ditarik maju. Periksa: liabilitas kontrak tumbuh vs revenue tumbuh — bila revenue naik sementara liabilitas kontrak menyusut, perusahaan mungkin mengakui lebih cepat daripada menyerahkan. Dan bila "revenue" tumbuh tanpa kas (piutang meledak), kembali ke Hari 03: laba bukan kas.</div>`},
 {h: "COGS & gross margin: sinyal pertama", body: `
 <p><b>COGS</b> = biaya langsung menghasilkan barang yang terjual. Dua cara memodelkannya:</p>
 <ul>
@@ -182,6 +202,20 @@ sections: [
 <tr><td><b>Laba bersih</b></td><td><b>1.700</b></td><td>tanpa bunga & pajak; net margin 10,1%</td></tr>
 </table>
 <p><b>Baca modelnya:</b> revenue naik 12% tapi EBIT naik 54,5% (1.100 → 1.700) — kenapa? Karena sewa & gaji (fixed) naik cuma 5%, tidak ikut revenue. Itulah operating leverage bekerja <i>untukmu</i>. Tugas praktik: bangun ulang ini di Excel (file latihan di Drive) — semua sel jawaban harus rumus. <b>Konvensi tanda hari ini:</b> beban diketik <b>positif</b> — contoh: 2520; rumuslah yang mengurangkan. (Beda dengan Hari 01!) Margin diketik sebagai desimal/persen: 0,101 atau 10,1% — bukan 10,1.</p>`},
+{h: "DuPont: membedah ROE jadi tiga tuas", body: `
+<p>ROE 25% terdengar hebat — sampai kamu tanya: <i>dari mana</i> datangnya 25% itu? <b>DuPont</b> membedah ROE jadi tiga tuas yang bisa dibaca satu-satu:</p>
+<div class="formula">ROE = Margin laba × Perputaran aset × Pengali ekuitas = (NI ÷ Penjualan) × (Penjualan ÷ Rata-rata aset) × (Rata-rata aset ÷ Rata-rata ekuitas)</div>
+<p><b>Contoh kerja (ilustrasi dinyatakan):</b> margin 10% × perputaran 1,25× × pengali 2,0× = <b>ROE 25%</b>.</p>
+<p>Tiga tuas, tiga cerita: <b>margin</b> = pricing power & efisiensi biaya; <b>perputaran</b> = seberapa keras aset bekerja; <b>pengali</b> = seberapa besar utang menopang aset.</p>
+<p><b>ROE sama, risiko beda:</b></p>
+<table class="brutal">
+<tr><th>Perusahaan</th><th>Margin</th><th>Perputaran</th><th>Pengali</th><th>ROE</th></tr>
+<tr><td>A — margin-led</td><td>25%</td><td>0,5×</td><td>2,0×</td><td><b>25%</b></td></tr>
+<tr><td>B — leverage-led</td><td>5%</td><td>1,25×</td><td>4,0×</td><td><b>25%</b></td></tr>
+</table>
+<p>ROE-nya identik — risikonya tidak. A menghasilkan ROE dari harga & efisiensi (margin 25%); B dari utang (pengali 4,0×). Saat penjualan turun 10%, laba B jatuh jauh lebih dalam: bunga tetap, margin tipis. <b>ROE tanpa DuPont adalah satu angka yang menyembunyikan risikonya sendiri.</b></p>
+<p><b>Kaitkan ke Warung:</b> margin Warung 2026 = 1.700 ÷ 16.800 = <b>10,12%</b> — komponen pertama DuPont-mu sudah ada (dari seksi COGS hari ini). Dua komponen lain (perputaran & pengali) kamu hitung dari neraca model 3-laporan di Hari 12: ROE Warung yang lengkap baru terlihat setelah ketiganya dikalikan.</p>
+<div class="callout"><b>Kenapa analis selalu membedah ROE?</b> Karena target "ROE 25%" tanpa tuas = perintah kosong. Naikkan margin (harga/biaya), putar aset lebih cepat (persediaan/piutang), atau tambah leverage (utang) — tiga jalan, tiga risiko. DuPont mengubah "naikkan ROE" dari slogan menjadi pilihan yang bisa diuji satu-satu.</div>`},
 {h: "🔥 Bekal Hell Mode", body: `
 <p>Istilah yang dipakai soal Hell Mode:</p>
 <ul>
@@ -209,7 +243,13 @@ quiz: [
  explain: "Fixed cost A tetap Rp5jt walau revenue turun — labanya terpukul lebih keras. Itulah operating leverage. (Hari 02 § Opex: fixed vs variable)"},
 {q: "Revenue naik 20% tapi gross margin turun 55% → 48%. Diagnosis paling mungkin?", opts: ["Harga jual naik lebih cepat dari biaya","Beban gaji dan sewa yang ikut naik","Biaya per unit naik lebih cepat dari harga jual","Tidak ada masalah — yang penting revenue naik"], answer: 2, k: "margin", diff: "Hard",
  hints: ["Margin = (Revenue − COGS)/Revenue. Kalau margin turun padahal revenue naik…", "…maka COGS naik LEBIH CEPAT dari revenue."],
- explain: "Margin tertekan = biaya per unit naik lebih cepat dari harga jual (atau mix bergeser ke produk murah). Revenue naik menutupi masalahnya — jangan terkecoh. (Hari 02 § COGS & gross margin)"}
+ explain: "Margin tertekan = biaya per unit naik lebih cepat dari harga jual (atau mix bergeser ke produk murah). Revenue naik menutupi masalahnya — jangan terkecoh. (Hari 02 § COGS & gross margin)"},
+{q: "Margin 10%, perputaran aset 1,25×, pengali ekuitas 2,0×. ROE (DuPont)?", opts: ["25%","13,5%","10%","50%"], answer: 0, k: "dupont", diff: "Easy",
+ hints: ["ROE = margin × perputaran × pengali.","0,10 × 1,25 × 2,0 = ?"],
+ explain: "0,10 × 1,25 × 2,0 = 25%. Tiga tuas dikalikan — bukan dijumlah."},
+{q: "Kontrak 12 bln Rp12jt: barang Rp2jt diserahkan saat tanda tangan, servis Rp10jt selama 12 bln. Revenue bulan 1?", opts: ["Rp1jt","Rp2,83jt","Rp12jt","Rp2jt"], answer: 1, k: "rev_recog", diff: "Medium",
+ hints: ["Barang 2jt diakui saat diserahkan (point-in-time); servis 10jt/12 per bulan (over-time).","2 + 10÷12 = ?"],
+ explain: "2 + 0,83 = Rp2,83jt. Sisanya Rp9,17jt = liabilitas kontrak, bukan revenue — kas sudah diterima ≠ revenue sudah diakui."}
 ],
 hellPass: 80,
 hell: [
@@ -227,7 +267,7 @@ hell: [
 tasks: [
 {t: "Tugas A — Forecast IS warung 2026 (±3 jam)", d: "Download file latihan Hari 02 dari Drive. Bangun forecast Income Statement 2026 dari data 2025 + asumsi. Semua sel jawaban harus rumus — file jawaban untuk cross-check.", url: "https://drive.google.com/drive/folders/1PRqb3h9yNF6p0x0ZW5QhqMB9vnDLmI2b"},
 {t: "Tugas B — Common-size & analisis margin (±1 jam)", d: "Ubah IS 2025 dan forecast 2026 jadi common-size (% dari revenue). Tulis 3 kalimat: apa yang berubah dan kenapa."},
-{t: "Tugas C — Kuis di atas", d: "Target ≥5/6 benar. Salah? Baca hint, coba lagi."}
+{t: "Tugas C — Kuis di atas", d: "Target ≥6/8 benar. Salah? Baca hint, coba lagi."}
 ],
 blind: {h: "Uji Kilat — angka beda", body: `
 <p><b>1.</b> Warung: 80 pelanggan/hari × Rp15rb × 25 hari buka. Revenue sebulan?</p>
@@ -1224,6 +1264,23 @@ sections: [
 <tr><td>Kenapa dikali (1 − pajak)?</td><td>Bunga <b>deductible</b> — mengurangi laba kena pajak</td></tr>
 </table>
 <div class="callout"><b>Kenapa pajak muncul di WACC tapi tidak di FCFF?</b> FCFF dihitung <i>seolah tanpa utang</i> (unlevered) — pajak atas operasi sudah tercermin di NI/CFO. Pajak di WACC hanya lewat <i>perisai bunga</i>. Mencampur keduanya = double counting.</div>`},
+{h: "YTM: harga obligasi menentukan biaya utang", body: `
+<p>Biaya utang setelah pajak 7,8% di seksi pajak tadi datang dari obligasi <b>di harga par</b> (kupon 10% = YTM 10%). Harga obligasi jarang tepat di par — dan saat harganya bergerak, biaya utangnya ikut bergerak. Itulah <b>yield to maturity (YTM)</b>: imbal hasil yang didapat investor bila membeli di harga pasar hari ini dan memegang sampai jatuh tempo.</p>
+<p><b>Harga obligasi = PV seluruh arus kasnya pada YTM:</b></p>
+<div class="formula">Harga = Kupon ÷ (1+YTM) + Kupon ÷ (1+YTM)² + … + (Kupon + Pokok) ÷ (1+YTM)<sup>n</sup></div>
+<p><b>Contoh kerja (ilustrasi dinyatakan):</b> obligasi nominal Rp1.000rb, kupon 8% (Rp80rb/tahun), tenor 3 tahun, YTM 10%:</p>
+<table class="brutal">
+<tr><th>Arus kas</th><th>Hitungan</th><th>PV</th></tr>
+<tr><td>Kupon tahun 1</td><td>80 ÷ 1,10</td><td>72,73</td></tr>
+<tr><td>Kupon tahun 2</td><td>80 ÷ 1,21</td><td>66,12</td></tr>
+<tr><td>Kupon + pokok tahun 3</td><td>1.080 ÷ 1,331</td><td>811,42</td></tr>
+<tr><td><b>Harga</b></td><td></td><td><b>Rp950,26rb</b></td></tr>
+</table>
+<p>Harga <b>Rp950,26rb</b> — di bawah par (diskon Rp49,74), karena kupon 8% &lt; YTM 10%. Aturannya: kupon &lt; YTM → diskon; kupon &gt; YTM → premium; kupon = YTM → par. Kupon adalah sejarah (ditetapkan saat terbit); YTM adalah harga uang hari ini untuk risiko itu.</p>
+<p><i>Catatan pembulatan:</i> komponen tabel ditampilkan 2 desimal — jumlahnya 950,27; total eksak dari rumus adalah 950,26. Selisih 0,01 adalah pembulatan, bukan kesalahan — di model, biarkan rumus yang menjumlah, jangan mengetik totalnya.</p>
+<p><b>Durasi — seberapa sensitif harga terhadap YTM:</b> bobot PV tiap arus kas: tahun 1 = 72,73 ÷ 950,26 = 7,65%; tahun 2 = 6,96%; tahun 3 = 85,39%. <b>Durasi Macaulay</b> = 1×7,65% + 2×6,96% + 3×85,39% = <b>2,78 tahun</b>. <b>Durasi modifikasi</b> = 2,78 ÷ 1,10 = <b>2,52</b> → YTM naik 1pp ≈ harga turun 2,52%. Aturan: kupon lebih tinggi / tenor lebih pendek → durasi lebih kecil → harga lebih kebal.</p>
+<p><b>Kaitkan ke WACC:</b> biaya utang = YTM (10% di sini) → setelah pajak 10% × 0,78 = <b>7,8%</b> — angka yang sama dengan yang dipakai di WACC. Obligasi yang diperdagangkan di diskon berarti pasar menuntut lebih dari kuponnya — CoD-mu adalah YTM, bukan kupon.</p>
+<div class="callout"><b>Kenapa analis obligasi membaca harga, bukan kupon?</b> Karena kupon tidak pernah berubah setelah terbit, sementara harga bergerak setiap hari mengikuti suku bunga & risiko kredit. Dua obligasi kupon 8% yang sama bisa punya YTM 6% dan 12% — yang satu "murah", yang satu "mahal" — dan hanya harga yang membedakannya.</div>`},
 {h: "PV FCFF 2027 = −Rp44,21rb", body: `
 <div class="formula">PV = −50 ÷ 1,131 = <b>−Rp44,21rb</b></div>
 <p>FCFF 2027 yang negatif didiskonto tetap negatif — wajar: kas keluar tahun depan nilainya <i>sedikit lebih ringan</i> dari kas keluar hari ini (karena didiskonto).</p>
@@ -1270,7 +1327,10 @@ quiz: [
  explain: "1,25 ÷ 1,468 = 0,8515 ≈ 0,85. Unlever membuang leverage peer — beta asetnya lebih kecil dari beta levered-nya."},
 {q: "FCFF Rp500rb, bunga Rp100rb, pajak 22%, net borrowing Rp80rb. FCFE?", opts: ["Rp500rb","Rp502rb","Rp422rb","Rp580rb"], answer: 1, k: "fcfe", diff: "Medium",
  hints: ["FCFE = FCFF − bunga×(1−pajak) + net borrowing.","500 − 78 + 80 = ?"],
- explain: "500 − 100×0,78 + 80 = 502. Bunga after-tax 78, bukan 100 — pajak sudah menanggung 22-nya."}
+ explain: "500 − 100×0,78 + 80 = 502. Bunga after-tax 78, bukan 100 — pajak sudah menanggung 22-nya."},
+{q: "Obligasi nominal Rp1.000rb, kupon 8%, YTM 10%, tenor 3 tahun. Harganya?", opts: ["Rp950,26rb","Rp1.000rb","Rp975,13rb","Rp811,42rb"], answer: 0, k: "ytm_price", diff: "Medium",
+ hints: ["Harga = PV kupon + PV pokok pada YTM 10%.","80÷1,1 + 80÷1,21 + 1.080÷1,331 = ? (975,13 itu harga kupon 9%; 811,42 hanya PV pokoknya.)"],
+ explain: "72,73 + 66,12 + 811,42 = Rp950,26rb (jumlah komponen terbulatkan 950,27 — selisih 0,01 dari pembulatan) — diskon, karena kupon 8% < YTM 10%."}
 ],
 hell: [
 {q: "A: beta 0,8; B: beta 1,5 (Rf & MRP sama). Mana CoE lebih tinggi, kenapa?", opts: ["B — beta lebih tinggi = risiko sistematis lebih besar","A — beta rendah = mahal","Sama persis","Tidak bisa dibandingkan"], answer: 0, diff: "Medium",
@@ -1287,7 +1347,7 @@ hell: [
 tasks: [
 {t: "Task A — WACC & FCFF Warung Septian (±2 jam)", d: "Download file latihan Hari 09 dari Drive. Hitung CoE via CAPM, WACC, FCFF 2027, dan PV-nya. Semua sel jawaban rumus — ingat: ini ASUMSI pengajaran, bukan data pasar.", url: "https://drive.google.com/drive/folders/18aYqHpgZj-w-ZOw8WvadxDt-HoS_-Ix3"},
 {t: "Task B — Sensitivitas beta (±30 mnt)", d: "Di kertas: hitung CoE untuk beta 0,9 / 1,1 / 1,3 (Rf 6,5%, MRP 6%). Rasakan: beta ±0,2 = CoE ±1,2 poin."},
-{t: "Task C — Quiz di atas", d: "Target ≥5/7 benar. Salah? Baca hint, ulangi."}
+{t: "Task C — Quiz di atas", d: "Target ≥6/8 benar. Salah? Baca hint, ulangi."}
 ],
 blind: {h: "Latihan Buta — CAPM Kios Rina", body: `
 <p>"Kios Rina": Rf 7%, beta 1,2, MRP 5% (asumsi dinyatakan). FCFF tahun depan Rp1.000rb. <b>Hitung CoE dan PV-nya TANPA mengintip contoh</b>.</p>
@@ -1354,6 +1414,19 @@ sections: [
 <p>EV naik <b>+6,3%</b> (21.189 vs 19.924) — mendiskonto setengah tahun lebih pendek. Itu bukan "bonus": kas yang diterima lebih awal memang lebih berharga.</p>
 <p><b>Kapan dipakai, kapan tidak:</b> pakai mid-year bila arus kas tersebar merata sepanjang tahun (revenue, opex). <b>Jangan</b> pakai untuk item yang memang jatuh di satu tanggal: dividen sekali setahun, pelunasan bullet, penjualan aset di tanggal yang diketahui — item itu didiskonto pada tanggal sebenarnya.</p>
 <div class="callout"><b>Kenapa tanpa mid-year = undervalue sistematis?</b> Karena setiap tahun kasmu "dipaksa" menunggu sampai 31 Desember — padahal separuhnya sudah di tangan di Juni. DCF tanpa mid-year selalu menilai sedikit terlalu rendah (± setengah tahun diskonto, di sini ≈ +6%). Analis yang tidak tahu ini akan selalu kalah tender dari analis yang tahu.</div>`},
+{h: "Stub period: valuasi di tengah tahun (bukan 1 Januari)", body: `
+<p>DCF sejauh ini rapi: FCFF tahun penuh, didiskon per tahun penuh. Dunia nyata jarang rapi: valuasi dilakukan <b>di tengah tahun</b> — misal 31 Juli — sehingga "Tahun 1" tinggal 5–7 bulan. Periode parsial ini disebut <b>stub period</b>.</p>
+<p><b>Aturannya sederhana: potong arusnya, potong diskonnya.</b> Pakai FCFF 2027 dari pelajaran ini sendiri = <b>−50</b> (bukan angka lain) dan stub 7 bulan:</p>
+<table class="brutal">
+<tr><th></th><th>Hitungan</th><th>Hasil</th></tr>
+<tr><td>FCFF stub (7 bulan)</td><td>−50 × 7/12</td><td><b>−29,17</b></td></tr>
+<tr><td>Faktor diskonto stub</td><td>1,131^(7/12)</td><td>1,0745</td></tr>
+<tr><td>PV FCFF stub</td><td>−29,17 ÷ 1,0745</td><td><b>−27,15</b></td></tr>
+</table>
+<p>Perhatikan eksponennya: <b>7/12 tahun</b> — fraksi tahun yang tersisa. Bukan 1 (itu tahun penuh), bukan 0,5 (itu mid-year — lihat bawah).</p>
+<p><b>Terminal value juga ikut stub:</b> TV 22.584 yang tadinya didiskon setahun penuh (PV 19.968) kini didiskon 7/12 tahun: 22.584 ÷ 1,0745 = <b>21.019,11</b> — lebih besar dari 19.968, karena kas dianggap tiba lebih cepat. Setiap arus kas setelah stub ikut bergeser maju dengan eksponen yang sama.</p>
+<p><b>Jangan tumpuk mid-year di atas stub.</b> Mid-year (Hari 10 § mid-year) mengasumsikan kas tiba di tengah tahun — stub <i>sudah</i> memotong tahun pertama ke fraksinya. Memakai keduanya sekaligus = mendiskon dua kali untuk ketidakpastian yang sama. Pilih satu: stub bila tanggal valuasi di tengah tahun; mid-year bila valuasi di awal tahun penuh.</p>
+<div class="callout"><b>Kenapa analis peduli stub?</b> Karena selisihnya tidak kecil: TV yang sama bernilai 21.019,11 vs 19.968 — selisih 1.051,11 (5,3%) hanya karena tanggal valuasi. Deal yang dinegosiasikan pada Juli vs Januari punya "harga wajar" yang berbeda — dan selisih itu harus bisa dijelaskan baris demi baris, bukan dibiarkan sebagai selisih model.</div>`},
 {h: "Tabel sensitivitas 2D: WACC × g", body: `
 <p>Satu angka EV = satu kombinasi asumsi. Tabel ini menunjukkan <b>sembilan</b> (Rp ribu):</p>
 <table class="brutal">
@@ -1412,7 +1485,10 @@ quiz: [
  explain: "2.281 ÷ 0,121 = Rp18.851rb < 22.584. WACC naik = diskonto lebih galak = TV turun."},
 {q: "WACC 13,1%, TV Rp22.584rb (akhir 2027). PV mid-year?", opts: ["Rp19.968rb","Rp21.236rb","Rp22.584rb","Rp24.020rb"], answer: 1, k: "midyear", diff: "Medium",
  hints: ["Faktor mid-year = 1,131^0,5 = 1,06348.","22.584 ÷ 1,06348 = ?"],
- explain: "22.584 ÷ 1,06348 = Rp21.236rb — lebih besar dari 19.968 karena kas dianggap tiba di tengah tahun, bukan akhir tahun."}
+ explain: "22.584 ÷ 1,06348 = Rp21.236rb — lebih besar dari 19.968 karena kas dianggap tiba di tengah tahun, bukan akhir tahun."},
+{q: "FCFF 2027 = −50, valuasi 31 Mei (stub 7 bulan), WACC 13,1%. PV FCFF stub?", opts: ["−27,15","−29,17","−44,21","−50,00"], answer: 0, k: "stub_pv", diff: "Medium",
+ hints: ["FCFF stub = −50 × 7/12 = −29,17; lalu diskonto 1,131^(7/12) = 1,0745.","−29,17 ÷ 1,0745 = ? (−44,21 itu PV tahun penuhnya.)"],
+ explain: "−29,17 ÷ 1,0745 = −27,15. Potong arusnya (7/12) DAN potong diskonnya (eksponen 7/12) — jangan salah satunya saja."}
 ],
 hell: [
 {q: "g ≥ WACC. Apa yang terjadi pada rumus Gordon?", opts: ["TV tak terdefinisi — syarat mutlak g < WACC","TV jadi lebih akurat","Tidak masalah","Gunakan exit multiple saja (tanpa syarat)"], answer: 0, diff: "Medium",
@@ -1429,7 +1505,7 @@ hell: [
 tasks: [
 {t: "Task A — DCF lengkap Warung Septian (±3 jam)", d: "Download file latihan Hari 10 dari Drive. Bangun TV dua metode + EV + tabel sensitivitas 3×3 (semua rumus). Target: EV perpetuity 19.924, EV exit 18.523.", url: "https://drive.google.com/drive/folders/1aj_b-xSjHkUerOVqEIUhS81zrCjiZhSz"},
 {t: "Task B — Tabel sensitivitas manual (±45 mnt)", d: "Di kertas: hitung EV untuk WACC 15,1% × g 2% (jawaban: 15.085). Rasakan betapa kecil perubahan asumsi, betapa besar perubahan EV."},
-{t: "Task C — Quiz di atas", d: "Target ≥5/6 benar. Salah? Baca hint, ulangi."}
+{t: "Task C — Quiz di atas", d: "Target ≥5/7 benar. Salah? Baca hint, ulangi."}
 ],
 blind: {h: "Latihan Buta — TV Kios Rina", body: `
 <p>"Kios Rina": FCFF tahun depan Rp3.000rb; WACC 12%; g 2% (asumsi dinyatakan). EBITDA Rp4.000rb; exit multiple 7×. <b>Hitung TV dua metode TANPA mengintip contoh</b>.</p>
@@ -1498,6 +1574,23 @@ sections: [
 <p>Cara baca profesional: <b>bukan</b> rata-rata keempatnya, melainkan <i>di mana mereka berkumpul</i>. Di sini 78,18–89,38 (dua comps) berdekatan = <b>zona keyakinan</b>; DCF di bawahnya (konservatif), precedent di atasnya (harga kendali). Lapangan 62,18–102,73 = rentang negosiasi.</p>
 <p><b>Tutup ke per saham:</b> tiap batang di atas masih level ekuitas agregat (Rp triliun). Bagi dengan saham beredar INDF (8,78 miliar, diluted) \u2192 <b>rentang target price</b>: DCF Rp7.082&ndash;9.581, comps EV/EBITDA Rp8.904, comps P/E Rp10.180, precedent Rp11.701. Inilah angka yang dibandingkan dengan harga pasar &mdash; bukan 62,18T-nya. (Mekanik lengkapnya di Hari 13.)</p>
 <div class="callout"><b>Kenapa namanya football field?</b> Karena batangnya seperti garis-garis lapangan: tiap metode menempati "yard"-nya sendiri. Investor tidak bertanya "berapa angkanya" — mereka bertanya "di yard mana keyakinanmu berada, dan kenapa".</div>`},
+{h: "Multiple lain: EV/Sales, EV/EBIT, P/BV, PEG", body: `
+<p>EV/EBITDA dan P/E adalah kuda kerja comps — tapi empat multiple ini menutup celah yang keduanya tinggalkan. Input baru di bawah ini <b>ilustrasi dinyatakan 2026-10-31</b> (sama seperti tabel utama; EBITDA dan laba bersih TIDAK berubah):</p>
+<table class="brutal">
+<tr><th>Emiten</th><th>EV/Sales</th><th>EV/EBIT</th><th>P/BV</th><th>PEG</th></tr>
+<tr><td>UNVR</td><td>1,26×</td><td>13,32×</td><td>20,27×</td><td>2,72×</td></tr>
+<tr><td>INDF</td><td>0,85×</td><td>10,35×</td><td>1,22×</td><td>1,41×</td></tr>
+<tr><td>ICBP</td><td>1,71×</td><td>11,43×</td><td>2,10×</td><td>1,38×</td></tr>
+<tr><td>KLBF</td><td>1,69×</td><td>9,82×</td><td>2,25×</td><td>2,84×</td></tr>
+<tr><td>MYOR</td><td>1,29×</td><td>11,25×</td><td>2,91×</td><td>1,40×</td></tr>
+<tr><td><b>MEDIAN</b></td><td><b>1,29×</b></td><td><b>11,25×</b></td><td><b>2,25×</b></td><td><b>1,41×</b></td></tr>
+</table>
+<p><b>EV/Sales — dipakai saat laba tidak bisa dipakai.</b> Perusahaan rugi, startup, atau siklus di titik bawah: revenue adalah satu-satunya angka yang stabil. Jebakannya: EV/Sales <i>mengabaikan margin</i>. Median 1,29× × penjualan INDF Rp110,00T = EV <b>Rp141,90T</b> — jauh di atas lapangan (62–103T). Kenapa? Margin INDF ±11% vs KLBF ±21%: penjualan yang sama, laba separuhnya. Menilai revenue tanpa mengecek margin = menilai omzet, bukan laba. <b>Vonis: jangan masukkan ke football field.</b></p>
+<p><b>EV/EBIT — EV/EBITDA yang sudah dikurangi depresiasi.</b> Berguna saat intensitas capex antar peer beda (yang satu mesinnya baru, yang satu mesinnya tua — EBITDA menyamakan keduanya, EBIT tidak). Median 11,25× × EBIT INDF Rp9,00T = EV <b>Rp101,25T</b> → ekuitas 101,25 − 20 = <b>Rp81,25T</b> — mendarat <i>di dalam</i> zona keyakinan (78,18–89,38). Cross-check independen ketiga yang sepakat. <b>Vonis: layak dicatat di samping dua comps utama.</b></p>
+<p><b>P/BV — harga ÷ nilai buku ekuitas.</b> Rumus pembenarnya: P/BV wajar = (ROE − g) ÷ (CoE − g) — multiple ini hidup dari selisih ROE vs biaya modal (lihat Hari 26 & real-06 BBCA). INDF 1,22× vs median 2,25× → ekuitas <b>Rp135,00T</b> (2,25 × 60,00). Terlalu tinggi — kenapa? UNVR 20,27× adalah outlier (mereknya tidak ada di neraca) dan buku INDF penuh aset tetap, sementara buku UNVR ringan. P/BV hanya valid bila "buku" mengukur hal yang sama. <b>Vonis: jangan masukkan; pakai P/BV untuk bank (Hari 26), di mana buku = mesinnya.</b></p>
+<p><b>PEG — P/E ÷ pertumbuhan laba.</b> Aturan praktis Lynch: PEG ±1,0× = wajar; di atas itu pasar membayar premi atas growth. INDF 11,25 ÷ 8 = <b>1,41×</b> (median 1,41×): pasar membayar premi 41% di atas pertumbuhan — tidak murah secara growth-adjusted, tapi sejalan dengan peer. Ingat: PEG adalah <i>screening</i>, bukan valuasi — growth-nya sendiri adalah opini analis, bukan fakta.</p>
+<p>Aturan konsistensi dari seksi sebelumnya <i>tetap berlaku</i> dan meluas: EV berpasangan dengan Sales/EBIT/EBITDA (sebelum utang); harga/ekuitas berpasangan dengan laba bersih/nilai buku (setelah utang). PEG memakai P/E — jadi ia multiple <i>ekuitas</i>.</p>
+<div class="callout"><b>Kenapa lapangan tidak berubah?</b> Karena dua dari empat multiple baru ini gagal uji keterbandingan di sini (EV/Sales buta margin, P/BV buta isi buku); EV/EBIT <i>mengonfirmasi</i> zona yang sudah ada; PEG hanya menyaring. Football field tetap 62,18–102,73T — multiple tambahan yang baik tidak selalu menambah jawaban baru; kadang ia hanya menguji jawaban yang sudah ada. Itulah gunanya.</div>`},
 {h: "DCF vs comps: dua lensa, satu perusahaan", body: `
 <p>Hari 09–10 memberi lensa <b>intrinsik</b> (DCF: kas yang dihasilkan). Hari ini memberi lensa <b>relatif</b> (comps: harga yang dibayar pasar untuk tetangga). Keduanya menilai INDF:</p>
 <ul>
@@ -1543,7 +1636,13 @@ quiz: [
  explain: "98,18 × 1,25 = Rp122,73T."},
 {q: "Football field INDF: 62,18–102,73T. Batas bawah dari metode apa? Batas atas?", opts: ["DCF low & precedent","P/E & DCF high","EV/EBITDA & precedent","DCF low & P/E"], answer: 0, k: "fb_read", diff: "Medium",
  hints: ["MIN(62,18; 78,18; 89,38; 102,73) = ?","MAX(84,12; 78,18; 89,38; 102,73) = ?"],
- explain: "Bawah 62,18 = DCF low; atas 102,73 = precedent ekuitas."}
+ explain: "Bawah 62,18 = DCF low; atas 102,73 = precedent ekuitas."},
+{q: "Median EV/EBIT 11,25× × EBIT INDF Rp9,00T. Implied EV?", opts: ["Rp101,25T","Rp93,15T","Rp81,25T","Rp122,73T"], answer: 0, k: "impl_ev_ebit", diff: "Medium",
+ hints: ["Implied EV = median × EBIT target.","11,25 × 9,00 = ? (81,25 itu ekuitasnya, setelah kurangi net debt 20.)"],
+ explain: "11,25 × 9,00 = Rp101,25T → ekuitas 81,25T. Mendarat di zona keyakinan 78,18–89,38 — cross-check ketiga yang sepakat."},
+{q: "P/E INDF 11,25×, pertumbuhan EPS 8%. PEG?", opts: ["1,41×","1,00×","11,25×","0,71×"], answer: 0, k: "peg", diff: "Easy",
+ hints: ["PEG = P/E ÷ growth.","11,25 ÷ 8 = ?"],
+ explain: "11,25 ÷ 8 = 1,41×. Di atas 1,0× (patokan Lynch) — pasar membayar premi 41% atas pertumbuhan INDF."}
 ],
 hell: [
 {q: "INDF ada di tabel comps-nya sendiri. Masalah metodologinya?", opts: ["Sirkular — target ikut menilai dirinya sendiri; analis pro mengeluarkannya","Tidak ada masalah sama sekali","Median jadi salah hitung","Harusnya pakai mean, bukan median"], answer: 0, diff: "Medium",
@@ -1560,7 +1659,7 @@ hell: [
 tasks: [
 {t: "Task A — Comps + football field INDF (±4 jam)", d: "Download file latihan Hari 11 dari Drive. Bangun 10 multiple + 2 median + implied + precedent + football field (semua rumus). Target: median 8,18/13,75, implied EV 98,18, football 62,18–102,73.", url: "https://drive.google.com/drive/folders/15TFQXH7bi-YezJmcLSsj36EpKTdQoO72"},
 {t: "Task B — Median tanpa INDF (±30 mnt)", d: "Di kertas: hitung median EV/EBITDA & P/E dari 4 peer TANPA INDF. Jawaban: 8,38 & 15,28. Rasakan efek sirkularitas: target ikut menilai dirinya sendiri menggeser median."},
-{t: "Task C — Quiz di atas", d: "Target ≥4/5 benar. Salah? Baca hint, ulangi."}
+{t: "Task C — Quiz di atas", d: "Target ≥5/7 benar. Salah? Baca hint, ulangi."}
 ],
 blind: {h: "Latihan Buta — Comps Kios Rina", body: `
 <p>"Kios Rina" dinilai via comps. Tiga peer EV/EBITDA: <b>6×, 7×, 9×</b>. EBITDA Kios Rina <b>Rp4 miliar</b> (LTM). Utang bersih <b>Rp4 miliar</b>. Precedent memakai control premium <b>20%</b>. <b>Hitung median, implied EV, implied ekuitas, dan precedent EV TANPA mengintip contoh</b>.</p>
@@ -2236,6 +2335,23 @@ sections: [
 <tr><td>4.000 = 44% harga deal</td><td>Hampir separuh yang dibayar = "harapan", bukan aset teridentifikasi</td></tr>
 </table>
 <div class="callout"><b>Kenapa goodwill berbahaya?</b> Karena ia mengubah kegagalan bisnis menjadi bom akuntansi: tahun target meleset, goodwill di-impair 2.000, NI tahun itu ambruk \u2014 padahal kasnya sudah keluar <i>di hari deal</i>. Analis membaca rasio goodwill/ekuitas sebelum memuji "akretif".</div>`},
+{h: "PPA: harga beli ≠ nilai asetnya (dan neraca pro forma)", body: `
+<p>Seksi sebelumnya menghitung goodwill secara sederhana: harga − ekuitas buku = 9.000 − 5.000 = <b>Rp4.000rb</b>. Itu jawaban cepat — dan jawaban yang salah menurut standar. <b>Purchase price allocation (PPA)</b> menuntut satu langkah tambahan: aset & liabilitas target dinilai ulang ke <i>fair value</i> dulu, baru sisanya jadi goodwill.</p>
+<p><b>Data Deal A (Rp ribu, sama seperti seksi sebelumnya):</b> harga 9.000; ekuitas buku target 5.000; fee 2% = 180; uses 9.180; saham baru 2.500 @1,8 = 4.500; utang plug 4.680. <b>Ilustrasi dinyatakan</b> (neraca buku target): aset 8.000; liabilitas 3.000; ekuitas 5.000. Asumsi PPA: PP&E target dinilai ulang naik <b>+2.500</b>.</p>
+<p><b>Langkah 1 — pajak tangguhan atas write-up.</b> Write-up 2.500 menaikkan nilai buku aset tanpa menaikkan basis pajaknya → liabilitas pajak tangguhan (DTL) = 2.500 × 22% = <b>550</b>.</p>
+<p><b>Langkah 2 — aset neto teridentifikasi pada fair value.</b> Ekuitas buku 5.000 + write-up 2.500 − DTL 550 = <b>6.950</b>.</p>
+<p><b>Langkah 3 — goodwill PPA.</b> Harga 9.000 − 6.950 = <b>2.050</b> — bukan 4.000. Selisih 1.950 = write-up bersih pajak (2.500 − 550). Goodwill sederhana 4.000 <i>mengandung</i> 1.950 nilai aset yang sebenarnya bisa diidentifikasi — PPA memisahkannya.</p>
+<p><b>Pro forma balance sheet — jembatan dari baseline penjumlahan sederhana:</b></p>
+<table class="brutal">
+<tr><th></th><th>Δ</th><th>Penjelasan</th></tr>
+<tr><td>Aset</td><td><b>+4.550</b></td><td>Write-up 2.500 + goodwill PPA 2.050. Kas masuk/keluar net 0: pendanaan 9.180 masuk, harga + fee 9.180 keluar.</td></tr>
+<tr><td>Liabilitas</td><td><b>+5.230</b></td><td>Utang baru 4.680 + DTL 550.</td></tr>
+<tr><td>Ekuitas</td><td><b>−680</b></td><td>Saham baru 4.500 − fee 180 − ekuitas target dieliminasi 5.000.</td></tr>
+</table>
+<p>Cek: ΔLiab + ΔEkuitas = 5.230 − 680 = <b>4.550 = ΔAset</b> ✓. Neraca tetap seimbang — kalau tidak seimbang, ada yang hilang di jembatan.</p>
+<p><b>Bargain purchase (pembelian murah).</b> Bila harga <i>di bawah</i> aset neto fair value, tidak ada goodwill negatif — selisihnya diakui sebagai <b>gain di P&L</b>. Contoh: harga 6.500 vs FV 6.950 → gain <b>450</b>. Jarang, tapi standar mengaturnya eksplisit.</p>
+<p><b>Efek lanjutan yang tidak boleh dilupakan:</b> write-up 2.500 disusutkan — misal 10 tahun → D&A +250/tahun → laba bersih −195/tahun (250 × 0,78). Goodwill PPA yang lebih kecil + depresiasi write-up = laba pasca-akuisisi lebih rendah daripada yang dijanjikan model sederhana. Inilah kenapa deal yang "accretive" di hari pengumuman bisa berubah setelah PPA selesai.</p>
+<div class="callout"><b>Kenapa analis menuntut PPA?</b> Karena goodwill adalah tempat bersembunyinya overpayment. Harga 9.000 untuk aset neto 6.950 berarti pembeli membayar 2.050 untuk sinergi & aset tak teridentifikasi — klaim yang harus dibuktikan, bukan diasumsikan. PPA mengubah "kami membayar 4.000 goodwill" menjadi "kami membayar 2.050 untuk hal yang belum teridentifikasi, dan 1.950 untuk aset yang memang ada".</div>`},
 {h: "Deal A dibedah: 0,40 \u2192 0,4248 (+6,2%)", body: `
 <p>Jalur angka lengkap Deal A (Rp ribu, kecuali EPS):</p>
 <table class="brutal">
@@ -2305,7 +2421,10 @@ quiz: [
  explain: "0,4248 / 0,40 \u2212 1 = +6,2% \u2192 ACCRETIVE. (Tapi akresi \u2260 vonis deal bagus.)"},
 {q: "Deal B: pro forma NI 9.000, shares 24.666,67. EPS dan vonis?", opts: ["0,3649 \u2014 dilutif \u22128,8%","0,3649 \u2014 akretif +8,8%","0,4248 \u2014 akretif","0,5000 \u2014 netral"], answer: 0, k: "dilution", diff: "Medium",
  hints: ["EPS = 9.000 / 24.666,67.", "Bandingkan 0,3649 vs 0,40."],
- explain: "9.000 / 24.666,67 = 0,3649 < 0,40 \u2192 DILUTIVE \u22128,8%."}
+ explain: "9.000 / 24.666,67 = 0,3649 < 0,40 \u2192 DILUTIVE \u22128,8%."},
+{q: "Deal A: harga 9.000, FV aset neto teridentifikasi 6.950. Goodwill PPA?", opts: ["Rp2.050rb","Rp4.000rb","Rp2.500rb","Rp1.950rb"], answer: 0, k: "goodwill_ppa", diff: "Medium",
+ hints: ["Goodwill PPA = harga − aset neto FAIR VALUE, bukan buku.","9.000 − 6.950 = ? (4.000 itu goodwill sederhana; 1.950 itu write-up bersih pajak.)"],
+ explain: "9.000 − 6.950 = Rp2.050rb. PPA memisahkan write-up bersih pajak 1.950 dari goodwill sederhana 4.000."}
 ],
 hellPass: 80,
 hell: [
@@ -2325,7 +2444,7 @@ hell: [
 tasks: [
 {t: "Task A \u2014 Model accretion/dilution PT Maju Jaya (\u00B13 jam)", d: "Download file latihan Hari 16 dari Drive. Bangun: metrik standalone, sources & uses (utang = plug), pro forma Deal A + akresi %, Deal B + dilusi %. Semua sel jawaban rumus \u2014 target semua BENAR \u2713 + BALANCE \u2713.", url: "https://drive.google.com/drive/folders/1SFcAX7al18VDh4HEPsC8cfxpNrJn5CGK"},
 {t: "Task B \u2014 Uji sensitivitas deal (\u00B130 mnt)", d: "Di file jawaban: ubah harga Deal A 9.000 \u2192 10.500, catat EPS dan akresi baru. Lalu cari break-even (EPS = 0,40) dengan trial \u2014 harus \u00B112.540. Terakhir: geser porsi saham 50% \u2192 100%, jelaskan kenapa vonis berubah."},
-{t: "Task C \u2014 Quiz di atas", d: "Target \u22654/5 benar. Salah? Baca hint, ulangi."}
+{t: "Task C \u2014 Quiz di atas", d: "Target \u22655/6 benar. Salah? Baca hint, ulangi."}
 ],
 blind: {h: "Latihan Buta \u2014 Akuisisi Warung Budi", body: `
 <p>Warung Budi: NI 2.075, 1.000 "lembar", valuasi per lembar 3,0. Target Warung Ani: NI 600, ekuitas buku 1.500, valuasi pasar 1.500. Budi membeli Ani <b>seharga 1.800</b>: 60% dibayar "saham warung" baru @ 3,0, 40% pinjam bank 10%, fee 3%, pajak 22%. <b>Hitung TANPA mengintip lesson</b>: sources &amp; uses, goodwill, bunga after-tax, pro forma NI, pro forma EPS, dan vonis akretif/dilutif.</p>
@@ -2379,6 +2498,23 @@ sections: [
 <tr><td><b>Utang akhir</b></td><td><b>21.055,6</b></td><td>MAX(26.000 \u2212 4.944,4; 0)</td></tr>
 </table>
 <div class="callout"><b>Kenapa bunga dari utang AWAL tahun?</b> Karena bunga berjalan atas saldo yang dipinjam <i>selama</i> tahun itu. Pakai utang akhir = <b>circular reference</b>: bunga \u2192 NI \u2192 kas \u2192 utang akhir \u2192 bunga \u2192 \u2026 Model profesional memutus lingkaran dengan utang awal tahun. Jebakan klasik analis junior.</div>`},
+{h: "Struktur utang LBO: tranche, PIK & rollover (struktur alternatif)", body: `
+<p>Kasus kanonis hari ini memakai <b>satu</b> Term Loan Rp26.000rb — bersih untuk belajar debt paydown. Dunia nyata jarang sesederhana itu: paket utang LBO berlapis (<i>tranches</i>), masing-masing dengan harga & hak yang berbeda. Seksi ini membangun <b>struktur alternatif dengan uses yang sama Rp51.000rb</b> — kasus kanonisnya TIDAK berubah, ini lensa kedua untuk membandingkan.</p>
+<p><b>Struktur alternatif (uses tetap 51.000):</b></p>
+<table class="brutal">
+<tr><th>Tranche</th><th>Jumlah</th><th>Harga</th><th>Posisi</th></tr>
+<tr><td>Term Loan (TL)</td><td>21.000</td><td>7% tunai</td><td>Senior secured — dibayar pertama, bunga terendah</td></tr>
+<tr><td>Mezzanine</td><td>5.000</td><td>12% (6% tunai + 6% PIK)</td><td>Subordinated — dibayar setelah TL, bunga tertinggi</td></tr>
+<tr><td>Rollover equity</td><td>2.000</td><td>—</td><td>Manajemen ikut menanam modal lama</td></tr>
+<tr><td>Sponsor equity</td><td>23.000</td><td>—</td><td>Kas sponsor (dari 25.000 — rollover 2.000)</td></tr>
+<tr><td>Revolver</td><td>3.000 committed</td><td>Undrawn</td><td>Fasilitas siaga — cadangan likuiditas, bukan pendanaan</td></tr>
+</table>
+<p><b>PIK (payment-in-kind):</b> bunga yang <i>tidak dibayar tunai</i> — ia ditambahkan ke pokok utang. Mezzanine 5.000 @6% PIK → akhir Tahun 1: 5.000 + 300 = <b>5.300</b>; akhir Tahun 2: 5.300 × 1,06 = <b>5.618</b>. PIK menunda kas keluar hari ini dengan harga pokok yang membesar besok — utang yang beranak.</p>
+<p><b>Tahun 1 struktur alternatif</b> (EBITDA 10.800, EBIT 8.800, D&A 2.000, capex 2.500 — sama dengan kasus kanonis): bunga TL 1.470 + mezz tunai 300 + PIK 300 = total 2.070. <b>Cash coverage</b> = 8.800 ÷ 1.770 = <b>4,97×</b> (vs kanonis 4,84× — PIK menunda kas, jadi coverage tunai terlihat lebih baik); <b>accounting coverage</b> = 8.800 ÷ 2.070 = <b>4,25×</b> (lebih rendah — PIK tetap beban). EBT = 6.730; NI = 6.730 × 0,78 = <b>5.249,4</b>.</p>
+<p><b>Kas ke utang Tahun 1:</b> NI + D&A + PIK (non-tunai) − capex = 5.249,4 + 2.000 + 300 − 2.500 = <b>5.049,4</b> → TL akhir Tahun 1 = 21.000 − 5.049,4 = <b>15.950,6</b>. Perhatikan: PIK <i>ditambahkan kembali</i> dalam hitungan kas (ia bukan kas keluar) — tapi ia <i>menambah</i> saldo mezzanine. Dua sisi koin yang sama.</p>
+<p><b>Rollover equity — kenapa manajemen ikut menanam?</b> Manajemen menukar 2.000 nilai lama menjadi saham di perusahaan baru → sponsor hanya keluar kas 23.000 (dari total ekuitas 25.000). Fungsinya <i>alignment</i>: manajemen yang punya uang sendiri di meja yang sama akan berpikir seperti pemilik — bukan seperti karyawan yang dibayar untuk menutup deal.</p>
+<p><b>Revolver — kenapa committed tapi undrawn?</b> Fasilitas 3.000 ini <i>tidak</i> masuk uses (belum ditarik) — ia asuransi likuiditas: bila kas kuartal macet, perusahaan menarik revolver, bukan gagal bayar. Lender mengenakan commitment fee atas yang tidak ditarik — harga untuk tidur nyenyak.</p>
+<div class="callout"><b>Kenapa struktur berlapis?</b> Karena tiap lender punya selera risiko berbeda: bank mau senior secured 7%, dana mezzanine mau 12% dengan PIK, sponsor mau ekuitas. Melapis utang = menjual risiko yang sama ke pembeli yang berbeda dengan harga berbeda. Tapi ingat: total uses tetap 51.000 — tranche tidak menambah uang, ia hanya membagi klaim atas uang yang sama.</div>`},
 {h: "Kenapa debt paydown = return", body: `
 
 <p>Perhatikan perjalanan utang 5 tahun (Rp ribu):</p>
@@ -2453,7 +2589,10 @@ quiz: [
  explain: "21.055,6 \u2014 tahun pertama dari pelunasan 5 tahun."},
 {q: "Equity exit 73.466,4; equity sponsor 25.000. MoIC?", opts: ["2,94x", "1,94x", "2,47x", "3,94x"], answer: 0, k: "moic", diff: "Medium",
  hints: ["MoIC = equity exit \u00f7 equity yang disetor.", "73.466,4 \u00f7 25.000 = ?"],
- explain: "2,94x \u2014 tiap Rp1 sponsor kembali Rp2,94."}
+ explain: "2,94x \u2014 tiap Rp1 sponsor kembali Rp2,94."},
+{q: "Mezzanine 5.000 @6% PIK. Saldo akhir Tahun 1?", opts: ["5.300","5.000","5.600","4.700"], answer: 0, k: "mezz_pik", diff: "Medium",
+ hints: ["PIK = bunga yang ditambahkan ke pokok, bukan dibayar tunai.","5.000 + 5.000 × 6% = ? (5.600 itu bila SEMUA bunga 12% di-PIK; 4.700 itu bila kupon tunai ikut mengurangi pokok.)"],
+ explain: "5.000 + 300 = 5.300. PIK menunda kas — pokoknya membesar (Tahun 2: 5.618)."}
 ],
 hell: [
 {q: "Exit multiple turun 5x \u2192 4x (jadwal utang tidak berubah). MoIC baru?", opts: ["2,94x", "2,65x", "2,35x", "1,95x"], answer: 2, diff: "Medium",
@@ -2468,7 +2607,7 @@ hell: [
 tasks: [
 {t: "Task A \u2014 Workbook LBO PT Sinar Abadi (\u00b14 jam)", d: "Download file latihan Hari 17 dari Drive. Isi sel input + tulis rumus: sources & uses, debt schedule 5 tahun, exit math. Semua sel jawaban = rumus \u2014 target semua BENAR \u2713 + BALANCE \u2713.", url: "https://drive.google.com/drive/folders/1CodmXvgm7OcVAWPv6Lfh6M90YRGAEdey"},
 {t: "Task B \u2014 Eksperimen input live (\u00b145 mnt)", d: "Setelah 100/100: ubah growth 8%\u21920%, catat MoIC baru; ubah bunga 7%\u219210%, catat utang akhir Y1 baru. Kembalikan ke kanonis (8%/7%) sebelum upload.", url: "https://drive.google.com/drive/folders/1CodmXvgm7OcVAWPv6Lfh6M90YRGAEdey"},
-{t: "Task C \u2014 Quiz di atas", d: "Target \u22654/5 benar. Salah? Baca hint, ulangi.", url: "https://drive.google.com/drive/folders/1CodmXvgm7OcVAWPv6Lfh6M90YRGAEdey"}
+{t: "Task C \u2014 Quiz di atas", d: "Target \u22655/6 benar. Salah? Baca hint, ulangi.", url: "https://drive.google.com/drive/folders/1CodmXvgm7OcVAWPv6Lfh6M90YRGAEdey"}
 ],
 blind: {h: "Latihan Buta \u2014 LBO mini 'PT Maju Kecil'", body: `
 
@@ -3749,6 +3888,15 @@ sections: [
 <li><b>Multiple mencerminkan ROE vs cost of equity.</b> P/BV 1,4× berkata: pasar membayar premi karena ROE bank ini di atas biaya modalnya. Kalau ROE < cost of equity, P/BV < 1 — pasar menilai modalnya lebih murah daripada nilai bukunya.</li>
 </ol>
 <div class="callout"><b>Kenapa 1,4×, bukan 2×?</b> Karena multiple bukan tebakan — ia jangkar dari ROE persisten vs cost of equity. Dalam model latihan ini 1,4× diberikan; dalam pekerjaan nyata, ia diestimasi dari comps bank sejenis dan diuji sensitivitasnya seperti WACC di DCF.</div>`},
+{h: "DDM & residual income: valuasi bank dari dividen dan ROE-nya", body: `
+<p>Sejauh ini bank dinilai dengan P/BV 1,4× — sebuah multiple yang <i>diberikan</i> begitu saja. Seksi ini menurunkan multiple itu dari dua model yang saling mengunci: <b>dividend discount model (DDM)</b> dan <b>residual income (RI)</b>. Keduanya memakai data model bank di pelajaran ini sendiri (Rp miliar): ekuitas T3 1.812,18; BV/saham T3 181,22; saham beredar 10 miliar; NI T1 132,16; NI T3 165,79; payout 30%; kredit T0 8.000, T1 8.960, T3 11.239; CAR T3 17,89%.</p>
+<p><b>Langkah 1 — ekuitas T2 (clean surplus).</b> Ekuitas T2 = ekuitas T3 − NI T3 + dividen T3 = 1.812,18 − 165,79 + 49,74 = <b>1.696,13</b>. (Cek silang: dari NI T2 ≈148,02 → 1.592,51 + 148,02 − 44,41 = 1.696,12 — sama, selisih pembulatan.)</p>
+<p><b>Langkah 2 — ROE & g.</b> ROE = 165,79 ÷ 1.696,13 = <b>9,77%</b>. g = ROE × (1 − payout) = 9,77% × 70% = <b>6,84%</b>.</p>
+<p><b>Langkah 3 — DDM.</b> CoE 12% (<b>ilustrasi dinyatakan</b>). Dividen per saham tahun depan D1 = 9,77% × 181,22 × 30% = <b>5,31</b>. Nilai DDM = D1 ÷ (CoE − g) = 5,31 ÷ (12% − 6,84%) = <b>103,03</b>.</p>
+<p><b>Langkah 4 — residual income (cek silang).</b> RI = BV + (ROE − CoE) × BV ÷ (CoE − g) = 181,22 + (9,77% − 12%) × 181,22 ÷ 5,16% = 181,22 − 78,19 = <b>103,03</b>. <b>DDM dan RI bertemu persis</b> — keduanya adalah rumus yang sama yang ditulis dua cara (clean surplus). Bila keduanya berbeda, ada yang salah di aritmetikanya.</p>
+<p><b>Justified P/BV = 103,03 ÷ 181,22 = 0,57×.</b> Bandingkan dengan P/BV pelajaran 1,4× → harga 253,71. Konfrontasi yang jujur: model bank ini sendiri, dengan ROE 9,77% < CoE 12%, <i>menghancurkan</i> nilai (RI negatif 78,19) — bank yang ROE-nya di bawah biaya modal <i>layak</i> diperdagangkan di bawah nilai buku. P/BV 1,4× adalah KLAIM bahwa ROE persisten akan naik ke <b>≈13,1%</b> (solve: 1,4 = (ROE − g) ÷ (CoE − g), g = 0,7 × ROE). Klaim itu boleh — tapi harus ditulis sebagai klaim, bukan sebagai fakta.</p>
+<p><b>Bandingkan dengan real-06 BBCA:</b> di sana ROE jauh di atas CoE, sehingga DDM-nya ≈3,4× nilai buku — arah yang berlawanan dengan bank model ini. Itulah isi rumus P/BV wajar = (ROE − g) ÷ (CoE − g): multiple mengikuti selisih ROE vs CoE, bukan sebaliknya. DCF tidak dipakai untuk bank (lihat seksi sebelumnya) — tapi DDM & RI adalah DCF-nya bank: dividen & laba ditahan, didiskon pada CoE.</p>
+<div class="callout"><b>Kenapa dua model yang bertemu itu penting?</b> Karena valuasi bank sering jadi adu klaim multiple ("bank sejenis 1,4×"). DDM/RI memaksa klaim itu menunjukkan perutnya: ROE berapa, payout berapa, CoE berapa. Bila multiple-nya tidak bisa direkonsiliasi ke ketiganya, multiple itu bukan valuasi — itu harga pasar yang disamar sebagai valuasi.</div>`},
 {h: "Membaca model bank dalam 60 detik", body: `
 <p>Urutan baca analis bank — latih sampai otomatis:</p>
 <ol>
@@ -3778,7 +3926,10 @@ quiz: [
  explain: "P/BV > 1 adalah premi atas kemampuan bank menghasilkan ROE di atas cost of equity. Bila ROE jatuh di bawahnya secara persisten, premi menguap — bahkan menjadi diskon (P/BV < 1): pasar menilai Rp1 modal bank kurang berharga dari Rp1. Multiple = cerminan ROE, bukan angka sakti."},
 {q: "Beban CKPN T1 Rp161,28rb; kredit awal 8.000, akhir 8.960. Cost of Credit?", opts: ["1,80%","1,90%","2,02%","3,60%"], answer: 1, k: "coc", diff: "Medium",
  hints: ["CoC = beban CKPN ÷ rata-rata kredit.","161,28 ÷ 8.480 = ?"],
- explain: "161,28 ÷ ((8.000+8.960)÷2) = 161,28 ÷ 8.480 = 1,90%. Bukan 1,80% — itu provisi atas kredit AKHIR, CoC memakai RATA-RATA."}
+ explain: "161,28 ÷ ((8.000+8.960)÷2) = 161,28 ÷ 8.480 = 1,90%. Bukan 1,80% — itu provisi atas kredit AKHIR, CoC memakai RATA-RATA."},
+{q: "Bank model: BV/saham 181,22; ROE 9,77%; CoE 12%; payout 30%. Nilai DDM (= RI) per saham?", opts: ["103,03","253,71","181,22","78,19"], answer: 0, k: "ddm_ri", diff: "Medium",
+ hints: ["g = 9,77% × 70% = 6,84%; D1 = 9,77% × 181,22 × 30% = 5,31.","DDM = 5,31 ÷ (12% − 6,84%) = ? (253,71 itu harga dari P/BV 1,4×; 78,19 itu besaran RI negatifnya, bukan nilainya.)"],
+ explain: "DDM = RI = 103,03. Justified P/BV 0,57× — ROE 9,77% < CoE 12% berarti bank ini menghancurkan nilai vs buku."}
 ],
 hellPass: 80,
 hell: [
@@ -3793,7 +3944,7 @@ hell: [
 ],
 tasks: [
 {t: "Task A — Bangun bank mini-model dari template", d: "Download template Hari 26 dari Drive. Isi 42 sel BIRU dengan rumus: proyeksi kredit & aset lain → laba rugi T1–T3 → equity walk → CAR → valuasi P/BV. Upload untuk dinilai — target checker ≥80.", url: "https://drive.google.com/drive/folders/1EqnCvs5fr4X7d7o2vU8PvuR2aFDwDR8y"},
-{t: "Task B — Quiz 6 soal di atas", d: "Target ≥5 benar (80%). Salah? Kembali ke seksi 'Kenapa?'-nya, ulangi."},
+{t: "Task B — Quiz 7 soal di atas", d: "Target ≥6 benar (80%). Salah? Kembali ke seksi 'Kenapa?'-nya, ulangi."},
 {t: "Task C — Uji trade-off dividen", d: "Naikkan payout input ke 60%: amati Ekuitas T3, CAR T3, dan harga wajar ikut bergerak. Kembalikan ke 30%. Catat: berapa pp CAR yang 'dibayar' untuk dividen ekstra itu?"},
 ]
 },
@@ -4564,6 +4715,26 @@ sections: [
 </table>
 <div class="formula">Revenue = Volume × Price</div>
 <div class="callout"><b>Why is bottom-up the most auditable?</b> Because every driver can be checked against the real world: customers can be counted in front of the shop, prices are on the shelf. "12% growth" is a claim; "50 customers × Rp20k × 26 days" is evidence. Credit analysts trust drivers over floating percentages.</div>`},
+{h: "Revenue recognition: when does revenue become revenue? (IFRS 15 / PSAK 72)", body: `
+<p>The previous section answered <b>how much</b> revenue (forecast). This section answers <b>when</b> it may be recorded as revenue. Two different questions — and an analyst who mixes them will misread profit.</p>
+<p><b>The five steps of IFRS 15 / PSAK 72</b> (for all contracts with customers):</p>
+<ol>
+<li><b>Identify the contract</b> — is there a binding agreement?</li>
+<li><b>Identify the performance obligations</b> — which goods/services are promised? Each obligation = one recognition unit.</li>
+<li><b>Determine the transaction price</b> — how much is the company entitled to receive?</li>
+<li><b>Allocate the price to each obligation</b> — in proportion to each one's standalone selling price.</li>
+<li><b>Recognize revenue when (or as) obligations are satisfied</b> — point-in-time or over-time.</li>
+</ol>
+<p><b>Point-in-time vs over-time.</b> The warung sells goods: revenue is recognized <b>when the goods are handed over</b> (point-in-time) — control transfers, done. Services enjoyed gradually (subscriptions, maintenance, phased construction) are recognized <b>over time</b>, in line with progress.</p>
+<p><b>Worked example (stated illustration):</b> a 12-month service contract for Rp12m, paid in advance. Two obligations: goods Rp2m (delivered at signing) + service Rp10m over 12 months.</p>
+<table class="brutal">
+<tr><th></th><th>Month 1</th><th>After 6 months</th></tr>
+<tr><td>Revenue recognized</td><td>2 + 10÷12 = <b>Rp2.83m</b></td><td>2 + 6 × 0.83 = <b>Rp7.00m</b></td></tr>
+<tr><td>Contract liability (deferred revenue)</td><td>12 − 2.83 = <b>Rp9.17m</b></td><td>12 − 7.00 = <b>Rp5.00m</b></td></tr>
+</table>
+<p>The Rp12m cash has been in hand since month 1 — but month-1 revenue is only Rp2.83m. The rest is a <b>contract liability</b> (an obligation to deliver service), not revenue. <b>Billings ≠ revenue; cash received ≠ revenue.</b> A company recognizing all 12m in month 1 is pulling future profit into today.</p>
+<p><b>Variable consideration.</b> Discounts, rebates, returns, performance bonuses: the transaction price = the best estimate, BUT only up to the amount <i>highly probable not to reverse</i> (the constraint). Example: list price Rp100m with expected returns of 5% → recognize <b>Rp95m</b>, not 100. Returns that actually happen = an adjustment, not a surprise.</p>
+<div class="callout"><b>Why does an analyst care?</b> Because revenue pulled forward = profit pulled forward. Check: contract liabilities growing vs revenue growing — if revenue rises while contract liabilities shrink, the company may be recognizing faster than it delivers. And if "revenue" grows without cash (receivables exploding), back to Day 03: profit is not cash.</div>`},
 {h: "COGS & gross margin: the first signal", body: `
 <p><b>COGS</b> = the direct cost of producing the goods sold. Two ways to model it:</p>
 <ul>
@@ -4606,6 +4777,20 @@ sections: [
 <tr><td><b>Net income</b></td><td><b>1,700</b></td><td>no interest &amp; tax; 10.1% net margin</td></tr>
 </table>
 <p><b>Read the model:</b> revenue up 12% but EBIT up 54.5% (1,100 → 1,700) — why? Because rent &amp; salaries (fixed) rose only 5%, not with revenue. That's operating leverage working <i>for</i> you. Practice task: rebuild this in Excel (practice file in Drive) — every answer cell must be a formula. <b>Today's sign convention:</b> expenses typed <b>positive</b> — e.g. 2520; the formulas do the subtracting. (Different from Day 01!) Type margins as decimals/percent: 0.101 or 10.1% — not 10.1.</p>`},
+{h: "DuPont: dissecting ROE into three levers", body: `
+<p>ROE of 25% sounds great — until you ask: <i>where</i> does that 25% come from? <b>DuPont</b> dissects ROE into three levers you can read one by one:</p>
+<div class="formula">ROE = Profit margin × Asset turnover × Equity multiplier = (NI ÷ Sales) × (Sales ÷ Average assets) × (Average assets ÷ Average equity)</div>
+<p><b>Worked example (stated illustration):</b> margin 10% × turnover 1.25× × multiplier 2.0× = <b>ROE 25%</b>.</p>
+<p>Three levers, three stories: <b>margin</b> = pricing power & cost efficiency; <b>turnover</b> = how hard assets work; <b>multiplier</b> = how much debt supports the assets.</p>
+<p><b>Same ROE, different risk:</b></p>
+<table class="brutal">
+<tr><th>Company</th><th>Margin</th><th>Turnover</th><th>Multiplier</th><th>ROE</th></tr>
+<tr><td>A — margin-led</td><td>25%</td><td>0.5×</td><td>2.0×</td><td><b>25%</b></td></tr>
+<tr><td>B — leverage-led</td><td>5%</td><td>1.25×</td><td>4.0×</td><td><b>25%</b></td></tr>
+</table>
+<p>The ROEs are identical — the risks are not. A earns its ROE from pricing & efficiency (25% margin); B from debt (4.0× multiplier). When sales fall 10%, B's profit falls far deeper: interest is fixed, margin is thin. <b>ROE without DuPont is a single number hiding its own risk.</b></p>
+<p><b>Tie it to the Warung:</b> the Warung's 2026 margin = 1,700 ÷ 16,800 = <b>10.12%</b> — your first DuPont component is already in hand (from today's COGS section). The other two (turnover & multiplier) you compute from the balance sheet of the 3-statement model on Day 12: the Warung's full ROE only appears once all three are multiplied.</p>
+<div class="callout"><b>Why do analysts always dissect ROE?</b> Because a target of "ROE 25%" without levers = an empty order. Raise margin (price/cost), turn assets faster (inventory/receivables), or add leverage (debt) — three paths, three risks. DuPont turns "raise ROE" from a slogan into choices you can test one by one.</div>`},
 {h: "🔥 Hell Mode briefing", body: `
 <p>Terms used in the Hell Mode questions:</p>
 <ul>
@@ -4633,7 +4818,13 @@ quiz: [
  explain: `A's Rp5m fixed cost stays even as revenue falls — its profit gets hit harder. That's operating leverage.`},
 {q: `Revenue up 20% but gross margin down 55% → 48%. Most likely diagnosis?`, opts: ["Selling prices rose faster than costs","Salaries and rent rose along","Unit costs rose faster than selling prices","No problem — what matters is revenue grew"], answer: 2, k: "margin",
  hints: ["Margin = (Revenue − COGS)/Revenue. If margin falls while revenue rises…","…then COGS rose FASTER than revenue."],
- explain: `Squeezed margin = unit costs rising faster than prices (or mix shifting to cheap products). Rising revenue hides the problem — don't be fooled.`}
+ explain: `Squeezed margin = unit costs rising faster than prices (or mix shifting to cheap products). Rising revenue hides the problem — don't be fooled.`},
+{q: "Margin 10%, asset turnover 1.25×, equity multiplier 2.0×. ROE (DuPont)?", opts: ["25%","13.5%","10%","50%"], answer: 0, k: "dupont", diff: "Easy",
+ hints: ["ROE = margin × turnover × multiplier.","0.10 × 1.25 × 2.0 = ?"],
+ explain: "0.10 × 1.25 × 2.0 = 25%. Three levers multiplied — not added."},
+{q: "12-month contract Rp12m: goods Rp2m delivered at signing, service Rp10m over 12 months. Month-1 revenue?", opts: ["Rp1m","Rp2.83m","Rp12m","Rp2m"], answer: 1, k: "rev_recog", diff: "Medium",
+ hints: ["Goods Rp2m recognized at delivery (point-in-time); service Rp10m/12 per month (over-time).","2 + 10÷12 = ?"],
+ explain: "2 + 0.83 = Rp2.83m. The remaining Rp9.17m = contract liability, not revenue — cash received ≠ revenue recognized."}
 ],
 hell: [
 {q: `Common-size IS: COGS rose from 50% to 57% of revenue over 2 years, revenue rose too. That means?`, opts: ["Improving efficiency — economies of scale from rising revenue","Gross margin squeezed 7 points — weakening pricing power or rising costs","No special meaning as long as revenue still rises","Net income must have risen along with revenue"], answer: 1,
@@ -4650,7 +4841,7 @@ hell: [
 tasks: [
 {t: "Task A — 2026 shop IS forecast (±3 hrs)", d: "Download the Day 02 practice file from Drive. Build the 2026 Income Statement forecast from 2025 data + assumptions. Every answer cell must be a formula — the answer file is for cross-checking.", url: "https://drive.google.com/drive/folders/1PRqb3h9yNF6p0x0ZW5QhqMB9vnDLmI2b"},
 {t: "Task B — Common-size & margin analysis (±1 hr)", d: "Convert the 2025 IS and the 2026 forecast to common-size (% of revenue). Write 3 sentences: what changed and why.", url: ""},
-{t: "Task C — The quiz above", d: "Target ≥5/6 correct. Missed some? Read the hints, try again.", url: ""}
+{t: "Task C — The quiz above", d: "Target ≥6/8 correct. Missed some? Read the hints, try again.", url: ""}
 ],
 blind: {h: "Speed Drill — different numbers", body: `
 <p><b>1.</b> Shop: 80 customers/day × Rp15k × 25 open days. Monthly revenue?</p>
@@ -5576,6 +5767,23 @@ sections: [
 <tr><td>Why multiply by (1 − tax)?</td><td>Interest is <b>deductible</b> — it reduces taxable profit</td></tr>
 </table>
 <div class="callout"><b>Why does tax appear in WACC but not in FCFF?</b> FCFF is computed <i>as if unlevered</i> — operating tax is already inside NI/CFO. Tax in WACC comes only via the <i>interest shield</i>. Mixing both = double counting.</div>`},
+{h: "YTM: the bond price sets the cost of debt", body: `
+<p>The 7.8% after-tax cost of debt in the tax section came from a bond <b>at par</b> (coupon 10% = YTM 10%). Bond prices rarely sit exactly at par — and when the price moves, the cost of debt moves with it. That is the <b>yield to maturity (YTM)</b>: the return an investor earns buying at today's market price and holding to maturity.</p>
+<p><b>A bond's price = the PV of all its cash flows at the YTM:</b></p>
+<div class="formula">Price = Coupon ÷ (1+YTM) + Coupon ÷ (1+YTM)² + … + (Coupon + Principal) ÷ (1+YTM)<sup>n</sup></div>
+<p><b>Worked example (stated illustration):</b> a bond with face value Rp1,000k, 8% coupon (Rp80k/year), 3-year maturity, YTM 10%:</p>
+<table class="brutal">
+<tr><th>Cash flow</th><th>Math</th><th>PV</th></tr>
+<tr><td>Year-1 coupon</td><td>80 ÷ 1.10</td><td>72.73</td></tr>
+<tr><td>Year-2 coupon</td><td>80 ÷ 1.21</td><td>66.12</td></tr>
+<tr><td>Coupon + principal, year 3</td><td>1,080 ÷ 1.331</td><td>811.42</td></tr>
+<tr><td><b>Price</b></td><td></td><td><b>Rp950.26k</b></td></tr>
+</table>
+<p>Price <b>Rp950.26k</b> — below par (a Rp49.74 discount), because coupon 8% &lt; YTM 10%. The rule: coupon &lt; YTM → discount; coupon &gt; YTM → premium; coupon = YTM → par. The coupon is history (set at issuance); the YTM is today's price of money for that risk.</p>
+<p><i>Rounding note:</i> the table components are shown to 2 decimals — they sum to 950.27; the exact total from the formula is 950.26. The 0.01 gap is rounding, not an error — in the model, let the formula add them up, don't type the total.</p>
+<p><b>Duration — how sensitive the price is to the YTM:</b> PV weights of each cash flow: year 1 = 72.73 ÷ 950.26 = 7.65%; year 2 = 6.96%; year 3 = 85.39%. <b>Macaulay duration</b> = 1×7.65% + 2×6.96% + 3×85.39% = <b>2.78 years</b>. <b>Modified duration</b> = 2.78 ÷ 1.10 = <b>2.52</b> → YTM up 1pp ≈ price down 2.52%. The rule: higher coupon / shorter maturity → smaller duration → a tougher price.</p>
+<p><b>Tie it to WACC:</b> the cost of debt = the YTM (10% here) → after tax 10% × 0.78 = <b>7.8%</b> — the same number used in WACC. A bond trading at a discount means the market demands more than its coupon — your CoD is the YTM, not the coupon.</p>
+<div class="callout"><b>Why do bond analysts read the price, not the coupon?</b> Because the coupon never changes after issuance, while the price moves every day with rates & credit risk. Two identical 8% bonds can carry YTMs of 6% and 12% — one "cheap", one "expensive" — and only the price tells them apart.</div>`},
 {h: "PV of 2027 FCFF = −Rp44.21k", body: `
 <div class="formula">PV = −50 ÷ 1.131 = <b>−Rp44.21k</b></div>
 <p>Discounted negative 2027 FCFF stays negative — fair: a cash outflow next year is <i>slightly lighter</i> than one today (it's discounted).</p>
@@ -5622,7 +5830,10 @@ quiz: [
  explain: "1.25 ÷ 1.468 = 0.8515 ≈ 0.85. Unlevering strips the peer's leverage — the asset beta is smaller than the levered beta."},
 {q: "FCFF Rp500k, interest Rp100k, tax 22%, net borrowing Rp80k. FCFE?", opts: ["Rp500k","Rp502k","Rp422k","Rp580k"], answer: 1, k: "fcfe", diff: "Medium",
  hints: ["FCFE = FCFF − interest×(1−tax) + net borrowing.","500 − 78 + 80 = ?"],
- explain: "500 − 100×0.78 + 80 = 502. After-tax interest is 78, not 100 — tax already bears 22 of it."}
+ explain: "500 − 100×0.78 + 80 = 502. After-tax interest is 78, not 100 — tax already bears 22 of it."},
+{q: "Bond, face Rp1,000k, 8% coupon, YTM 10%, 3-year maturity. Its price?", opts: ["Rp950.26k","Rp1,000k","Rp975.13k","Rp811.42k"], answer: 0, k: "ytm_price", diff: "Medium",
+ hints: ["Price = PV of coupons + PV of principal at 10% YTM.","80÷1.1 + 80÷1.21 + 1,080÷1.331 = ? (975.13 is the 9%-coupon price; 811.42 is only the principal's PV.)"],
+ explain: "72.73 + 66.12 + 811.42 = Rp950.26k (rounded components sum to 950.27 — the 0.01 gap is rounding) — a discount, because coupon 8% < YTM 10%."}
 ],
 hell: [
 {q: "A: beta 0.8; B: beta 1.5 (same Rf & MRP). Which CoE is higher, and why?", opts: ["B — higher beta = bigger systematic risk","A — low beta = expensive","Exactly equal","Can't be compared"], answer: 0, diff: "Medium",
@@ -5639,7 +5850,7 @@ hell: [
 tasks: [
 {t: "Task A — Warung Septian WACC & FCFF (±2 hrs)", d: "Download the Day 09 practice file from Drive. Compute CAPM CoE, WACC, 2027 FCFF and its PV. Every answer cell a formula — remember: these are TEACHING assumptions, not market data.", url: "https://drive.google.com/drive/folders/18aYqHpgZj-w-ZOw8WvadxDt-HoS_-Ix3"},
 {t: "Task B — Beta sensitivity (±30 min)", d: "On paper: compute CoE for beta 0.9 / 1.1 / 1.3 (Rf 6.5%, MRP 6%). Feel it: beta ±0.2 = CoE ±1.2 points."},
-{t: "Task C — Quiz above", d: "Target ≥5/7 correct. Missed? Read the hints, retake."}
+{t: "Task C — Quiz above", d: "Target ≥6/8 correct. Missed? Read the hints, retake."}
 ],
 blind: {h: "Blind Drill — Kios Rina CAPM", body: `
 <p>"Kios Rina": Rf 7%, beta 1.2, MRP 5% (stated assumptions). Next-year FCFF Rp1,000k. <b>Compute CoE and its PV WITHOUT peeking</b>.</p>
@@ -5701,6 +5912,19 @@ sections: [
 <p>EV rises <b>+6.3%</b> (21,189 vs 19,924) — discounting half a year less. That's not a "bonus": earlier cash genuinely is worth more.</p>
 <p><b>When to use it, when not:</b> use mid-year when cash flows spread evenly through the year (revenue, opex). <b>Don't</b> use it for items that genuinely land on one date: a once-a-year dividend, a bullet repayment, an asset sale on a known date — those are discounted on their actual date.</p>
 <div class="callout"><b>Why does no mid-year = systematic undervaluation?</b> Because every year's cash is "forced" to wait until December 31 — while half of it was already in hand by June. A DCF without mid-year always values slightly too low (≈ half a year of discounting, here ≈ +6%). An analyst who doesn't know this will always lose the bid to one who does.</div>`},
+{h: "Stub period: valuing mid-year (not on 1 January)", body: `
+<p>The DCF so far has been tidy: full-year FCFF, discounted per full year. The real world is rarely tidy: a valuation happens <b>mid-year</b> — say 31 July — so "Year 1" has only 5–7 months left. This partial period is called a <b>stub period</b>.</p>
+<p><b>The rule is simple: cut the cash flow, cut the discount.</b> Using this lesson's own 2027 FCFF = <b>−50</b> (no other number) and a 7-month stub:</p>
+<table class="brutal">
+<tr><th></th><th>Math</th><th>Result</th></tr>
+<tr><td>Stub FCFF (7 months)</td><td>−50 × 7/12</td><td><b>−29.17</b></td></tr>
+<tr><td>Stub discount factor</td><td>1.131^(7/12)</td><td>1.0745</td></tr>
+<tr><td>PV of stub FCFF</td><td>−29.17 ÷ 1.0745</td><td><b>−27.15</b></td></tr>
+</table>
+<p>Watch the exponent: <b>7/12 of a year</b> — the fraction of the year remaining. Not 1 (that's a full year), not 0.5 (that's mid-year — see below).</p>
+<p><b>Terminal value follows the stub too:</b> the TV of 22,584 that was discounted for a full year (PV 19,968) is now discounted for 7/12 of a year: 22,584 ÷ 1.0745 = <b>21,019.11</b> — bigger than 19,968, because the cash is treated as arriving sooner. Every cash flow after the stub shifts forward with the same exponent.</p>
+<p><b>Don't stack mid-year on top of a stub.</b> Mid-year (Day 10 § mid-year) assumes cash arrives mid-year — the stub <i>already</i> cuts the first year to its fraction. Using both at once = discounting twice for the same timing. Pick one: stub when the valuation date is mid-year; mid-year when valuing at the start of a full year.</p>
+<div class="callout"><b>Why do analysts care about stubs?</b> Because the difference isn't small: the same TV is worth 21,019.11 vs 19,968 — a 1,051.11 gap (5.3%) from the valuation date alone. A deal negotiated in July vs January has a different "fair price" — and that gap must be explainable line by line, not left as a model difference.</div>`},
 {h: "2D sensitivity table: WACC × g", body: `
 <p>One EV number = one assumption combo. This table shows <b>nine</b> (Rp thousand):</p>
 <table class="brutal">
@@ -5759,7 +5983,10 @@ quiz: [
  explain: "2,281 ÷ 0.121 = Rp18,851k < 22,584. Higher WACC = harsher discount = lower TV."},
 {q: "WACC 13.1%, TV Rp22,584k (end of 2027). Mid-year PV?", opts: ["Rp19,968k","Rp21,236k","Rp22,584k","Rp24,020k"], answer: 1, k: "midyear", diff: "Medium",
  hints: ["Mid-year factor = 1.131^0.5 = 1.06348.","22,584 ÷ 1.06348 = ?"],
- explain: "22,584 ÷ 1.06348 = Rp21,236k — bigger than 19,968 because cash is treated as arriving mid-year, not year-end."}
+ explain: "22,584 ÷ 1.06348 = Rp21,236k — bigger than 19,968 because cash is treated as arriving mid-year, not year-end."},
+{q: "2027 FCFF = −50, valuation on 31 May (7-month stub), WACC 13.1%. PV of stub FCFF?", opts: ["−27.15","−29.17","−44.21","−50.00"], answer: 0, k: "stub_pv", diff: "Medium",
+ hints: ["Stub FCFF = −50 × 7/12 = −29.17; then discount by 1.131^(7/12) = 1.0745.","−29.17 ÷ 1.0745 = ? (−44.21 is the full-year PV.)"],
+ explain: "−29.17 ÷ 1.0745 = −27.15. Cut the cash flow (7/12) AND cut the discount (exponent 7/12) — not just one of them."}
 ],
 hell: [
 {q: "g ≥ WACC. What happens to the Gordon formula?", opts: ["TV undefined — the g < WACC rule is absolute","TV becomes more accurate","No problem","Just use exit multiple (no conditions)"], answer: 0, diff: "Medium",
@@ -5776,7 +6003,7 @@ hell: [
 tasks: [
 {t: "Task A — Warung Septian full DCF (±3 hrs)", d: "Download the Day 10 practice file from Drive. Build both TV methods + EV + the 3×3 sensitivity table (all formulas). Target: perpetuity EV 19,924, exit EV 18,523.", url: "https://drive.google.com/drive/folders/1aj_b-xSjHkUerOVqEIUhS81zrCjiZhSz"},
 {t: "Task B — Manual sensitivity cell (±45 min)", d: "On paper: compute EV for WACC 15.1% × g 2% (answer: 15,085). Feel how small the assumption change is, how big the EV change is."},
-{t: "Task C — Quiz above", d: "Target ≥5/6 correct. Missed? Read the hints, retake."}
+{t: "Task C — Quiz above", d: "Target ≥5/7 correct. Missed? Read the hints, retake."}
 ],
 blind: {h: "Blind Drill — Kios Rina TV", body: `
 <p>"Kios Rina": next-year FCFF Rp3,000k; WACC 12%; g 2% (stated assumptions). EBITDA Rp4,000k; 7× exit multiple. <b>Compute both TV methods WITHOUT peeking</b>.</p>
@@ -5839,6 +6066,23 @@ sections: [
 </table>
 <p>The professional read: <b>not</b> the average of the four, but <i>where they cluster</i>. Here 78.18–89.38 (the two comps) sit close together = the <b>confidence zone</b>; DCF below it (conservative), precedent above it (control price). The 62.18–102.73 field = the negotiation range.</p>
 <div class="callout"><b>Why "football field"?</b> Because the bars look like yard lines: each method occupies its own "yard". Investors don't ask "what's the number" — they ask "which yard is your conviction in, and why".</div>`},
+{h: "Other multiples: EV/Sales, EV/EBIT, P/BV, PEG", body: `
+<p>EV/EBITDA and P/E are the comps workhorses — but these four multiples cover gaps both leave behind. New inputs below are <b>stated illustration 2026-10-31</b> (same as the main table; EBITDA and net income UNCHANGED):</p>
+<table class="brutal">
+<tr><th>Company</th><th>EV/Sales</th><th>EV/EBIT</th><th>P/BV</th><th>PEG</th></tr>
+<tr><td>UNVR</td><td>1.26×</td><td>13.32×</td><td>20.27×</td><td>2.72×</td></tr>
+<tr><td>INDF</td><td>0.85×</td><td>10.35×</td><td>1.22×</td><td>1.41×</td></tr>
+<tr><td>ICBP</td><td>1.71×</td><td>11.43×</td><td>2.10×</td><td>1.38×</td></tr>
+<tr><td>KLBF</td><td>1.69×</td><td>9.82×</td><td>2.25×</td><td>2.84×</td></tr>
+<tr><td>MYOR</td><td>1.29×</td><td>11.25×</td><td>2.91×</td><td>1.40×</td></tr>
+<tr><td><b>MEDIAN</b></td><td><b>1.29×</b></td><td><b>11.25×</b></td><td><b>2.25×</b></td><td><b>1.41×</b></td></tr>
+</table>
+<p><b>EV/Sales — used when earnings can't be used.</b> Loss-making companies, startups, or a cycle trough: revenue is the only stable number. Its trap: EV/Sales <i>ignores margins</i>. Median 1.29× × INDF sales Rp110.00T = EV <b>Rp141.90T</b> — far above the field (62–103T). Why? INDF margin ±11% vs KLBF ±21%: same sales, half the profit. Valuing revenue without checking margin = valuing turnover, not profit. <b>Verdict: don't add it to the football field.</b></p>
+<p><b>EV/EBIT — EV/EBITDA after depreciation.</b> Useful when peers differ in capex intensity (one with new machines, one with old — EBITDA equalizes them, EBIT doesn't). Median 11.25× × INDF EBIT Rp9.00T = EV <b>Rp101.25T</b> → equity 101.25 − 20 = <b>Rp81.25T</b> — landing <i>inside</i> the confidence zone (78.18–89.38). A third independent cross-check that agrees. <b>Verdict: worth noting next to the two main comps.</b></p>
+<p><b>P/BV — price ÷ book value of equity.</b> Its justified formula: fair P/BV = (ROE − g) ÷ (CoE − g) — this multiple lives on the gap between ROE and the cost of capital (see Day 26 & real-06 BBCA). INDF 1.22× vs median 2.25× → equity <b>Rp135.00T</b> (2.25 × 60.00). Too high — why? UNVR at 20.27× is an outlier (its brand isn't on the balance sheet) and INDF's book is full of fixed assets while UNVR's is light. P/BV is only valid when "book" measures the same thing. <b>Verdict: don't add it; use P/BV for banks (Day 26), where book value IS the machine.</b></p>
+<p><b>PEG — P/E ÷ earnings growth.</b> Lynch's rule of thumb: PEG ±1.0× = fair; above that, the market pays a premium for growth. INDF 11.25 ÷ 8 = <b>1.41×</b> (median 1.41×): the market pays a 41% premium over growth — not cheap on a growth-adjusted basis, but in line with peers. Remember: PEG is a <i>screen</i>, not a valuation — the growth itself is an analyst's opinion, not a fact.</p>
+<p>The consistency rule from the earlier section <i>still applies</i> and extends: EV pairs with Sales/EBIT/EBITDA (pre-debt); price/equity pairs with net income/book value (post-debt). PEG uses P/E — so it is an <i>equity</i> multiple.</p>
+<div class="callout"><b>Why doesn't the field change?</b> Because two of these four new multiples fail the comparability test here (EV/Sales is margin-blind, P/BV is book-blind); EV/EBIT <i>confirms</i> the zone that already exists; PEG only screens. The football field stays 62.18–102.73T — a good extra multiple doesn't always add a new answer; sometimes it only tests the answer you already have. That's its job.</div>`},
 {h: "DCF vs comps: two lenses, one company", body: `
 <p>Days 09–10 gave the <b>intrinsic</b> lens (DCF: the cash it generates). Today gives the <b>relative</b> lens (comps: what the market pays for neighbors). Both appraise INDF:</p>
 <ul>
@@ -5884,7 +6128,13 @@ quiz: [
  explain: "98.18 × 1.25 = Rp122.73T."},
 {q: "INDF football field: 62.18–102.73T. Which methods set the low and high?", opts: ["DCF low & precedent","P/E & DCF high","EV/EBITDA & precedent","DCF low & P/E"], answer: 0,
  hints: ["MIN(62.18; 78.18; 89.38; 102.73) = ?","MAX(84.12; 78.18; 89.38; 102.73) = ?"],
- explain: "Low 62.18 = DCF low; high 102.73 = precedent equity."}
+ explain: "Low 62.18 = DCF low; high 102.73 = precedent equity."},
+{q: "Median EV/EBIT 11.25× × INDF EBIT Rp9.00T. Implied EV?", opts: ["Rp101.25T","Rp93.15T","Rp81.25T","Rp122.73T"], answer: 0, k: "impl_ev_ebit", diff: "Medium",
+ hints: ["Implied EV = median × target EBIT.","11.25 × 9.00 = ? (81.25 is the equity, after subtracting net debt 20.)"],
+ explain: "11.25 × 9.00 = Rp101.25T → equity 81.25T. Lands in the 78.18–89.38 confidence zone — a third agreeing cross-check."},
+{q: "INDF P/E 11.25×, EPS growth 8%. PEG?", opts: ["1.41×","1.00×","11.25×","0.71×"], answer: 0, k: "peg", diff: "Easy",
+ hints: ["PEG = P/E ÷ growth.","11.25 ÷ 8 = ?"],
+ explain: "11.25 ÷ 8 = 1.41×. Above 1.0× (Lynch's benchmark) — the market pays a 41% premium over INDF's growth."}
 ],
 hell: [
 {q: "INDF sits in its own comps table. The methodology problem?", opts: ["Circular — the target appraises itself; pros exclude it","No problem at all","The median is miscalculated","Should use mean, not median"], answer: 0, diff: "Medium",
@@ -5901,7 +6151,7 @@ hell: [
 tasks: [
 {t: "Task A — INDF comps + football field (±4 hrs)", d: "Download the Day 11 practice file from Drive. Build 10 multiples + 2 medians + implied + precedent + football field (all formulas). Target: medians 8.18/13.75, implied EV 98.18, field 62.18–102.73.", url: "https://drive.google.com/drive/folders/15TFQXH7bi-YezJmcLSsj36EpKTdQoO72"},
 {t: "Task B — Median ex-INDF (±30 min)", d: "On paper: compute median EV/EBITDA & P/E from the 4 peers WITHOUT INDF. Answer: 8.38 & 15.28. Feel the circularity effect: the target appraising itself shifts the median."},
-{t: "Task C — Quiz above", d: "Target ≥4/5 correct. Missed? Read the hints, retake."}
+{t: "Task C — Quiz above", d: "Target ≥5/7 correct. Missed? Read the hints, retake."}
 ],
 blind: {h: "Blind Drill — Kios Rina Comps", body: `
 <p>"Kios Rina" appraised via comps. Three peers' EV/EBITDA: <b>6×, 7×, 9×</b>. Kios Rina EBITDA <b>Rp4 billion</b> (LTM). Net debt <b>Rp4 billion</b>. Precedents use a <b>20%</b> control premium. <b>Compute the median, implied EV, implied equity, and precedent EV WITHOUT peeking</b>.</p>
@@ -6514,6 +6764,23 @@ sections: [
 <tr><td>4,000 = 44% of deal price</td><td>Nearly half of what was paid = "hope", not identifiable assets</td></tr>
 </table>
 <div class="callout"><b>Why is goodwill dangerous?</b> Because it turns business failure into an accounting bomb: the year the target misses, goodwill is impaired by 2,000, that year's NI collapses \u2014 even though the cash left <i>on deal day</i>. Analysts read the goodwill/equity ratio before praising "accretive".</div>`},
+{h: "PPA: the purchase price ≠ the value of its assets (and the pro forma balance sheet)", body: `
+<p>The previous section computed goodwill the simple way: price − book equity = 9,000 − 5,000 = <b>Rp4,000k</b>. That's the quick answer — and the wrong one under the standard. <b>Purchase price allocation (PPA)</b> demands one extra step: the target's assets & liabilities are revalued to <i>fair value</i> first, and only the remainder becomes goodwill.</p>
+<p><b>Deal A data (Rp thousand, same as the previous section):</b> price 9,000; target book equity 5,000; fee 2% = 180; uses 9,180; new shares 2,500 @1.8 = 4,500; plug debt 4,680. <b>Stated illustration</b> (target book balance sheet): assets 8,000; liabilities 3,000; equity 5,000. PPA assumption: target PP&E revalued upward by <b>+2,500</b>.</p>
+<p><b>Step 1 — deferred tax on the write-up.</b> The 2,500 write-up raises the assets' book value without raising their tax base → deferred tax liability (DTL) = 2,500 × 22% = <b>550</b>.</p>
+<p><b>Step 2 — identifiable net assets at fair value.</b> Book equity 5,000 + write-up 2,500 − DTL 550 = <b>6,950</b>.</p>
+<p><b>Step 3 — PPA goodwill.</b> Price 9,000 − 6,950 = <b>2,050</b> — not 4,000. The 1,950 gap = the after-tax write-up (2,500 − 550). Simple goodwill of 4,000 <i>contains</i> 1,950 of value in assets that can actually be identified — PPA separates it out.</p>
+<p><b>Pro forma balance sheet — bridge from the simple-sum baseline:</b></p>
+<table class="brutal">
+<tr><th></th><th>Δ</th><th>Explanation</th></tr>
+<tr><td>Assets</td><td><b>+4,550</b></td><td>Write-up 2,500 + PPA goodwill 2,050. Cash in/out net 0: funding 9,180 in, price + fee 9,180 out.</td></tr>
+<tr><td>Liabilities</td><td><b>+5,230</b></td><td>New debt 4,680 + DTL 550.</td></tr>
+<tr><td>Equity</td><td><b>−680</b></td><td>New shares 4,500 − fee 180 − target equity eliminated 5,000.</td></tr>
+</table>
+<p>Check: ΔLiab + ΔEquity = 5,230 − 680 = <b>4,550 = ΔAssets</b> ✓. The balance sheet still balances — if it doesn't, something is missing from the bridge.</p>
+<p><b>Bargain purchase.</b> If the price is <i>below</i> fair-value net assets, there is no negative goodwill — the difference is recognized as a <b>gain in P&L</b>. Example: price 6,500 vs FV 6,950 → gain <b>450</b>. Rare, but the standard covers it explicitly.</p>
+<p><b>The follow-on effect you must not forget:</b> the 2,500 write-up gets depreciated — say over 10 years → D&A +250/year → net income −195/year (250 × 0.78). Smaller PPA goodwill + write-up depreciation = lower post-deal profit than the simple model promised. This is why a deal that looks "accretive" on announcement day can change once the PPA is done.</p>
+<div class="callout"><b>Why do analysts demand PPA?</b> Because goodwill is where overpayment hides. Paying 9,000 for net assets of 6,950 means the buyer paid 2,050 for synergies & unidentified assets — a claim to be proven, not assumed. PPA turns "we paid 4,000 of goodwill" into "we paid 2,050 for things not yet identified, and 1,950 for assets that actually exist".</div>`},
 {h: "Deal A dissected: 0.40 \u2192 0.4248 (+6.2%)", body: `
 <p>The full Deal A number trail (Rp thousand, except EPS):</p>
 <table class="brutal">
@@ -6583,7 +6850,10 @@ quiz: [
  explain: "0.4248 / 0.40 \u2212 1 = +6.2% \u2192 ACCRETIVE. (But accretion \u2260 a good deal.)"},
 {q: "Deal B: pro forma NI 9,000, shares 24,666.67. EPS and verdict?", opts: ["0.3649 \u2014 dilutive \u22128.8%","0.3649 \u2014 accretive +8.8%","0.4248 \u2014 accretive","0.5000 \u2014 neutral"], answer: 0, k: "dilution", diff: "Medium",
  hints: ["EPS = 9,000 / 24,666.67.", "Compare 0.3649 to 0.40."],
- explain: "9,000 / 24,666.67 = 0.3649 < 0.40 \u2192 DILUTIVE \u22128.8%."}
+ explain: "9,000 / 24,666.67 = 0.3649 < 0.40 \u2192 DILUTIVE \u22128.8%."},
+{q: "Deal A: price 9,000, FV of identifiable net assets 6,950. PPA goodwill?", opts: ["Rp2,050k","Rp4,000k","Rp2,500k","Rp1,950k"], answer: 0, k: "goodwill_ppa", diff: "Medium",
+ hints: ["PPA goodwill = price − FAIR-VALUE net assets, not book.","9,000 − 6,950 = ? (4,000 is simple goodwill; 1,950 is the after-tax write-up.)"],
+ explain: "9,000 − 6,950 = Rp2,050k. PPA separates the 1,950 after-tax write-up out of simple goodwill of 4,000."}
 ],
 hellPass: 80,
 hell: [
@@ -6603,7 +6873,7 @@ hell: [
 tasks: [
 {t: "Task A \u2014 PT Maju Jaya accretion/dilution model (\u00B13 hrs)", d: "Download the Day 16 practice file from Drive. Build: standalone metrics, sources & uses (debt = plug), Deal A pro forma + accretion %, Deal B + dilution %. All answer cells are formulas \u2014 target: all BENAR \u2713 + BALANCE \u2713.", url: "https://drive.google.com/drive/folders/1SFcAX7al18VDh4HEPsC8cfxpNrJn5CGK"},
 {t: "Task B \u2014 Deal sensitivity test (\u00B130 min)", d: "In the answer file: change Deal A price 9,000 \u2192 10,500, record the new EPS and accretion. Then find break-even (EPS = 0.40) by trial \u2014 it should be \u00B112,540. Finally: shift the equity portion 50% \u2192 100% and explain why the verdict changes."},
-{t: "Task C \u2014 Quiz above", d: "Target \u22654/5 correct. Missed one? Read the hint, retry."}
+{t: "Task C \u2014 Quiz above", d: "Target \u22655/6 correct. Missed one? Read the hint, retry."}
 ],
 blind: {h: "Blind Drill \u2014 Budi's Warung Acquisition", body: `
 <p>Budi's warung: NI 2,075, 1,000 "shares", valuation 3.0 per share. Target Warung Ani: NI 600, book equity 1,500, market value 1,500. Budi buys Ani <b>for 1,800</b>: 60% paid in new "warung shares" @ 3.0, 40% bank loan at 10%, 3% fee, 22% tax. <b>Compute WITHOUT peeking at the lesson</b>: sources &amp; uses, goodwill, after-tax interest, pro forma NI, pro forma EPS, and the accretive/dilutive verdict.</p>
@@ -6652,6 +6922,23 @@ sections: [
 <tr><td><b>Ending debt</b></td><td><b>21,055.6</b></td><td>MAX(26,000 \u2212 4,944.4, 0)</td></tr>
 </table>
 <div class="callout"><b>Why interest on BEGINNING-of-year debt?</b> Because interest accrues on the balance borrowed <i>during</i> the year. Using ending debt = <b>circular reference</b>: interest \u2192 NI \u2192 cash \u2192 ending debt \u2192 interest \u2192 \u2026 Professional models break the circle with beginning debt. A classic junior-analyst trap.</div>`},
+{h: "LBO debt structure: tranches, PIK & rollover (alternative structure)", body: `
+<p>Today's canonical case uses <b>one</b> Term Loan of Rp26,000k — clean for learning debt paydown. The real world is rarely that simple: LBO debt packages are layered (<i>tranches</i>), each with a different price & claim. This section builds an <b>alternative structure with the same Rp51,000k of uses</b> — the canonical case is UNCHANGED; this is a second lens for comparison.</p>
+<p><b>Alternative structure (uses still 51,000):</b></p>
+<table class="brutal">
+<tr><th>Tranche</th><th>Amount</th><th>Price</th><th>Position</th></tr>
+<tr><td>Term Loan (TL)</td><td>21,000</td><td>7% cash</td><td>Senior secured — paid first, lowest rate</td></tr>
+<tr><td>Mezzanine</td><td>5,000</td><td>12% (6% cash + 6% PIK)</td><td>Subordinated — paid after TL, highest rate</td></tr>
+<tr><td>Rollover equity</td><td>2,000</td><td>—</td><td>Management rolls in old capital</td></tr>
+<tr><td>Sponsor equity</td><td>23,000</td><td>—</td><td>Sponsor cash (from 25,000 − rollover 2,000)</td></tr>
+<tr><td>Revolver</td><td>3,000 committed</td><td>Undrawn</td><td>Standby facility — liquidity reserve, not funding</td></tr>
+</table>
+<p><b>PIK (payment-in-kind):</b> interest that is <i>not paid in cash</i> — it is added to the debt principal. Mezzanine 5,000 @6% PIK → end of Year 1: 5,000 + 300 = <b>5,300</b>; end of Year 2: 5,300 × 1.06 = <b>5,618</b>. PIK postpones cash out today at the price of a growing principal tomorrow — debt that breeds.</p>
+<p><b>Year 1 of the alternative structure</b> (EBITDA 10,800, EBIT 8,800, D&A 2,000, capex 2,500 — same as the canonical case): TL interest 1,470 + mezz cash 300 + PIK 300 = 2,070 total. <b>Cash coverage</b> = 8,800 ÷ 1,770 = <b>4.97×</b> (vs canonical 4.84× — PIK defers cash, so cash coverage looks better); <b>accounting coverage</b> = 8,800 ÷ 2,070 = <b>4.25×</b> (lower — PIK is still an expense). EBT = 6,730; NI = 6,730 × 0.78 = <b>5,249.4</b>.</p>
+<p><b>Cash to debt in Year 1:</b> NI + D&A + PIK (non-cash) − capex = 5,249.4 + 2,000 + 300 − 2,500 = <b>5,049.4</b> → TL at end of Year 1 = 21,000 − 5,049.4 = <b>15,950.6</b>. Note: PIK is <i>added back</i> in the cash math (it isn't a cash outflow) — but it <i>adds</i> to the mezzanine balance. Two sides of the same coin.</p>
+<p><b>Rollover equity — why does management co-invest?</b> Management converts 2,000 of old value into shares of the new company → the sponsor only puts in 23,000 of cash (of 25,000 total equity). Its function is <i>alignment</i>: managers with their own money on the same table think like owners — not like employees paid to close a deal.</p>
+<p><b>Revolver — why committed but undrawn?</b> This 3,000 facility is <i>not</i> in uses (not yet drawn) — it is liquidity insurance: if a quarter's cash stalls, the company draws the revolver instead of defaulting. Lenders charge a commitment fee on the undrawn part — the price of sleeping well.</p>
+<div class="callout"><b>Why layer the debt?</b> Because each lender has a different risk appetite: banks want senior secured at 7%, mezzanine funds want 12% with PIK, sponsors want equity. Layering debt = selling the same risk to different buyers at different prices. But remember: total uses are still 51,000 — tranches don't add money, they only split the claims on the same money.</div>`},
 {h: "Why debt paydown = return", body: `
 
 <p>Watch the 5-year debt journey (Rp thousand):</p>
@@ -6726,7 +7013,10 @@ quiz: [
  explain: "21,055.6 \u2014 year one of a five-year paydown."},
 {q: "Exit equity 73,466.40; sponsor equity 25,000. MoIC?", opts: ["2.94x", "1.94x", "2.47x", "3.94x"], answer: 0, k: "moic", diff: "Medium",
  hints: ["MoIC = exit equity \u00f7 equity invested.", "73,466.40 \u00f7 25,000 = ?"],
- explain: "2.94x \u2014 every Rp1 returns Rp2.94."}
+ explain: "2.94x \u2014 every Rp1 returns Rp2.94."},
+{q: "Mezzanine 5,000 @6% PIK. Balance at end of Year 1?", opts: ["5,300","5,000","5,600","4,700"], answer: 0, k: "mezz_pik", diff: "Medium",
+ hints: ["PIK = interest added to principal, not paid in cash.","5,000 + 5,000 × 6% = ? (5,600 is if ALL 12% were PIK; 4,700 is if the cash coupon also reduced principal.)"],
+ explain: "5,000 + 300 = 5,300. PIK defers cash — the principal grows (Year 2: 5,618)."}
 ],
 hell: [
 {q: "Exit multiple drops 5x \u2192 4x (debt schedule unchanged). New MoIC?", opts: ["2.94x", "2.65x", "2.35x", "1.95x"], answer: 2, diff: "Medium",
@@ -6741,7 +7031,7 @@ hell: [
 tasks: [
 {t: "Task A \u2014 PT Sinar Abadi LBO workbook (\u00b14 hrs)", d: "Download the Day 17 practice file from Drive. Fill the inputs + write formulas: sources & uses, 5-year debt schedule, exit math. Every answer cell = a formula \u2014 target all BENAR \u2713 + BALANCE \u2713.", url: "https://drive.google.com/drive/folders/1CodmXvgm7OcVAWPv6Lfh6M90YRGAEdey"},
 {t: "Task B \u2014 Live-input experiments (\u00b145 min)", d: "After 100/100: change growth 8%\u21920%, record the new MoIC; change rate 7%\u219210%, record the new Y1 ending debt. Restore canonical (8%/7%) before uploading.", url: "https://drive.google.com/drive/folders/1CodmXvgm7OcVAWPv6Lfh6M90YRGAEdey"},
-{t: "Task C \u2014 Quiz above", d: "Target \u22654/5 correct. Missed? Read the hints, retake.", url: "https://drive.google.com/drive/folders/1CodmXvgm7OcVAWPv6Lfh6M90YRGAEdey"}
+{t: "Task C \u2014 Quiz above", d: "Target \u22655/6 correct. Missed? Read the hints, retake.", url: "https://drive.google.com/drive/folders/1CodmXvgm7OcVAWPv6Lfh6M90YRGAEdey"}
 ],
 blind: {h: "Blind Drill \u2014 mini-LBO 'PT Maju Kecil'", body: `
 
@@ -7987,6 +8277,15 @@ sections: [
 <li><b>The multiple reflects ROE vs cost of equity.</b> A 1.4× P/BV says: the market pays a premium because this bank's ROE exceeds its cost of equity. If ROE < cost of equity, P/BV < 1 — the market prices its capital below book.</li>
 </ol>
 <div class="callout"><b>Why 1.4×, not 2×?</b> Because a multiple isn't a guess — it's anchored on persistent ROE vs cost of equity. Given in this exercise; in real work, estimated from peer-bank comps and sensitivity-tested like WACC in a DCF.</div>`},
+{h: "DDM & residual income: valuing a bank from its dividends and ROE", body: `
+<p>So far the bank has been valued at a P/BV of 1.4× — a multiple simply <i>handed</i> to you. This section derives that multiple from two models that lock together: the <b>dividend discount model (DDM)</b> and <b>residual income (RI)</b>. Both use this lesson's own bank model data (Rp billion): equity Y3 1,812.18; BV/share Y3 181.22; shares outstanding 10 billion; NI Y1 132.16; NI Y3 165.79; payout 30%; loans Y0 8,000, Y1 8,960, Y3 11,239; CAR Y3 17.89%.</p>
+<p><b>Step 1 — equity Y2 (clean surplus).</b> Equity Y2 = equity Y3 − NI Y3 + dividends Y3 = 1,812.18 − 165.79 + 49.74 = <b>1,696.13</b>. (Cross-check: from NI Y2 ≈148.02 → 1,592.51 + 148.02 − 44.41 = 1,696.12 — same, rounding aside.)</p>
+<p><b>Step 2 — ROE & g.</b> ROE = 165.79 ÷ 1,696.13 = <b>9.77%</b>. g = ROE × (1 − payout) = 9.77% × 70% = <b>6.84%</b>.</p>
+<p><b>Step 3 — DDM.</b> CoE 12% (<b>stated illustration</b>). Next-year dividend per share D1 = 9.77% × 181.22 × 30% = <b>5.31</b>. DDM value = D1 ÷ (CoE − g) = 5.31 ÷ (12% − 6.84%) = <b>103.03</b>.</p>
+<p><b>Step 4 — residual income (cross-check).</b> RI = BV + (ROE − CoE) × BV ÷ (CoE − g) = 181.22 + (9.77% − 12%) × 181.22 ÷ 5.16% = 181.22 − 78.19 = <b>103.03</b>. <b>DDM and RI meet exactly</b> — they are the same formula written two ways (clean surplus). If they differ, something is wrong in the arithmetic.</p>
+<p><b>Justified P/BV = 103.03 ÷ 181.22 = 0.57×.</b> Compare with the lesson's P/BV of 1.4× → price 253.71. The honest confrontation: this bank model itself, with ROE 9.77% &lt; CoE 12%, <i>destroys</i> value (negative RI of 78.19) — a bank earning below its cost of equity <i>deserves</i> to trade below book value. P/BV 1.4× is a CLAIM that persistent ROE will rise to <b>≈13.1%</b> (solve: 1.4 = (ROE − g) ÷ (CoE − g), g = 0.7 × ROE). That claim is allowed — but it must be written as a claim, not as a fact.</p>
+<p><b>Compare with real-06 BBCA:</b> there ROE is far above CoE, so its DDM is ≈3.4× book value — the opposite direction from this model bank. That is the content of fair P/BV = (ROE − g) ÷ (CoE − g): the multiple follows the ROE-vs-CoE gap, not the other way around. DCF isn't used for banks (see the earlier section) — but DDM & RI are a bank's DCF: dividends & retained earnings, discounted at CoE.</p>
+<div class="callout"><b>Why do two models that agree matter?</b> Because bank valuation often becomes a multiple contest ("peer banks trade at 1.4×"). DDM/RI forces that claim to show its belly: what ROE, what payout, what CoE. If the multiple can't be reconciled to all three, it isn't a valuation — it's a market price disguised as one.</div>`},
 {h: "Reading a bank model in 60 seconds", body: `
 <p>The bank analyst's read order — drill until automatic:</p>
 <ol>
@@ -8016,7 +8315,10 @@ quiz: [
  explain: "P/BV > 1 is a premium on the bank's ability to earn ROE above its cost of equity. If ROE falls persistently below it, the premium evaporates — even becoming a discount (P/BV < 1): the market prices Rp1 of bank capital below Rp1. A multiple mirrors ROE; it isn't magic."},
 {q: "Year-1 provision expense Rp161.28k; loans opening 8,000, closing 8,960. Cost of Credit?", opts: ["1.80%","1.90%","2.02%","3.60%"], answer: 1, k: "coc", diff: "Medium",
  hints: ["CoC = provision expense ÷ average loans.","161.28 ÷ 8,480 = ?"],
- explain: "161.28 ÷ ((8,000+8,960)÷2) = 161.28 ÷ 8,480 = 1.90%. Not 1.80% — that is the provision on ENDING loans; CoC uses the AVERAGE."}
+ explain: "161.28 ÷ ((8,000+8,960)÷2) = 161.28 ÷ 8,480 = 1.90%. Not 1.80% — that is the provision on ENDING loans; CoC uses the AVERAGE."},
+{q: "Bank model: BV/share 181.22; ROE 9.77%; CoE 12%; payout 30%. DDM (= RI) value per share?", opts: ["103.03","253.71","181.22","78.19"], answer: 0, k: "ddm_ri", diff: "Medium",
+ hints: ["g = 9.77% × 70% = 6.84%; D1 = 9.77% × 181.22 × 30% = 5.31.","DDM = 5.31 ÷ (12% − 6.84%) = ? (253.71 is the price from P/BV 1.4×; 78.19 is the size of the negative RI, not the value.)"],
+ explain: "DDM = RI = 103.03. Justified P/BV 0.57× — ROE 9.77% < CoE 12% means this bank destroys value vs book."}
 ],
 hell: [
 {q: "Loans grow 12%/yr but deposits only 5%/yr (all else equal). What breaks first?", opts: ["Nothing — the model still balances", "A funding gap: liabilities outgrow deposits → reliance on non-deposit funding (pricier/more volatile); the model 'balances' but the funding structure deteriorates", "NIM automatically rises", "CAR automatically rises"], answer: 1,
@@ -8030,7 +8332,7 @@ hell: [
 ],
 tasks: [
 {t: "Task A — Build the mini bank model from the template", d: "Download the Day 26 template from Drive. Fill 42 BLUE cells with formulas: loan & other-asset projection → Y1–Y3 income → equity walk → CAR → P/BV valuation. Upload for grading — target checker ≥80.", url: "https://drive.google.com/drive/folders/1EqnCvs5fr4X7d7o2vU8PvuR2aFDwDR8y"},
-{t: "Task B — 6-question quiz above", d: "Target ≥5 correct (80%). Missed? Back to its 'Why?' section, retake."},
+{t: "Task B — 7-question quiz above", d: "Target ≥6 correct (80%). Missed? Back to its 'Why?' section, retake."},
 {t: "Task C — Test the dividend trade-off", d: "Raise the payout input to 60%: watch Y3 equity, Y3 CAR, and fair value move. Revert to 30%. Note: how many pp of CAR does the extra dividend 'cost'?"},
 ]
 };
