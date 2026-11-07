@@ -183,7 +183,7 @@ sections: [
 <div class="formula">Ekuitas induk = Total ekuitas − NCI</div>
 <p><b>NCI (non-controlling interest)</b> = bagian ekuitas anak usaha yang dimiliki pihak lain. Indofood tidak memiliki 100% semua anak usahanya — Rp47,09T dari Rp120,24T ekuitas adalah milik minoritas. Valuasi saham INDF hanya boleh memakai <b>Rp73,15T</b>.</p>
 <div class="example jebakan"><div class="lbl">🚫 Error #1 — NCI dilupakan</div>
-<p>Model junior: Ekuitas induk = Rp120,24T (total!). Overstate Rp47,09T ≈ <b>Rp5.364/saham</b> — lebih besar dari harga… eh, dari sebagian harga sahamnya (Rp6.400). Satu baris yang lupa = valuasi hancur.</p></div>`},
+<p>Overstate Rp47,09T ≈ <b>Rp5.364/saham</b> — lebih besar dari sebagian harga sahamnya (Rp6.400). Satu baris yang lupa = valuasi hancur.</p></div>`},
 {h: "Kenapa bunga harus link ke debt schedule?", body: `
 <div class="formula">Beban bunga = Utang AWAL × tarif = 74,96 × 6% = Rp4,50T</div>
 <p>Bunga berjalan dari <b>saldo awal</b> utang (prinsip debt schedule Hari 03/Fondasi C): uang dipinjam dulu, bunga dihitung dari situ. Model junior mengetik <b>Rp3,00T</b> manual — angka yang tidak bisa dilacak asal-usulnya dan tidak ikut berubah kalau asumsi utang berubah.</p>

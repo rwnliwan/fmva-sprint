@@ -893,7 +893,7 @@ sections: [
 <tr><td>Quiz 15 soal</td><td>Otomatis (di bawah)</td><td><b>≥80%</b> — skor tersimpan otomatis</td></tr>
 <tr><td>Mini-model</td><td>Checker (upload xlsx)</td><td><b>Skor ≥80</b> + neraca balance + rumus (bukan angka ketik)</td></tr>
 </table>
-<p>Checker menilai tiga hal: <b>(1)</b> sel jawaban berisi rumus yang me-link input (60%), <b>(2)</b> angka cocok kunci (30–40%), <b>(3)</b> neraca balance (10%). Rumus <b>=angka</b> (hardcode berkedok rumus) ditandai — bukan dihitung sebagai rumus.</p>
+<p>Checker menilai tiga hal: <b>(1)</b> sel jawaban berisi rumus yang me-link input (60%), <b>(2)</b> angka cocok kunci (30%), <b>(3)</b> neraca balance (10%). Rumus <b>=angka</b> (hardcode berkedok rumus) ditandai — bukan dihitung sebagai rumus.</p>
 <div class="callout"><b>Kenapa checker cerewet soal rumus-vs-angka?</b> Karena di dunia nyata, model dengan angka ketik = bom waktu: asumsi berubah, angka tidak ikut. Gerbang melatih kebiasaan yang benar, bukan sekadar jawaban yang benar.</div>`},
 {h: "Setelah gerbang: dua jalan", body: `
 <p><b>Lolos dua kunci → Hari 08.</b> Minggu 2 = valuation: forecast 2027 dilanjutkan, lalu DCF pertama Warung Septian. Fondasimu sudah terbukti — sekarang bangun di atasnya.</p>
@@ -1310,18 +1310,18 @@ sections: [
 <p>Satu angka EV = satu kombinasi asumsi. Tabel ini menunjukkan <b>sembilan</b> (Rp ribu):</p>
 <table class="brutal">
 <tr><th>EV \ g</th><th>2%</th><th>3%</th><th>4%</th></tr>
-<tr><td><b>WACC 11,1%</b></td><td>21.687</td><td>24.900</td><td>28.872</td></tr>
-<tr><td><b>WACC 13,1%</b></td><td>15.085</td><td><b>19.924</b></td><td>23.763</td></tr>
-<tr><td><b>WACC 15,1%</b></td><td>11.641</td><td>13.952</td><td>17.412</td></tr>
+<tr><td><b>WACC 11,1%</b></td><td>22.517</td><td>25.302</td><td>28.872</td></tr>
+<tr><td><b>WACC 13,1%</b></td><td>18.125</td><td><b>19.924</b></td><td>22.118</td></tr>
+<tr><td><b>WACC 15,1%</b></td><td>15.084</td><td>16.335</td><td>17.810</td></tr>
 </table>
-<p>Sel tengah (11,1%×3%... dst) dihitung dengan rumus yang sama: TV = 2.281/(WACC−g), PV = TV/(1+WACC), EV = −50/(1+WACC) + PV TV. Di workbook, tabel ini <b>rumus semua</b> — ubah satu asumsi, sembilan sel ikut berubah.</p>
+<p>Sel tengah (13,1%×3%... dst) dihitung dengan rumus yang sama: TV = 2.281/(WACC−g), PV = TV/(1+WACC), EV = −50/(1+WACC) + PV TV. Di workbook, tabel ini <b>rumus semua</b> — ubah satu asumsi, sembilan sel ikut berubah.</p>
 <div class="callout"><b>Kenapa tabel, bukan tiga skenario?</b> Karena tabel menunjukkan <i>gradien</i>: EV naik ke kanan-atas (g tinggi, WACC rendah), turun ke kiri-bawah. Skenario memberi tiga titik; tabel memberi peta. Peta inilah yang dipakai negosiasi ("di WACC berapa valuasi ini jebol?").</div>`},
 {h: "Membaca sensitivitas: insight-nya", body: `
 <p>Tiga pelajaran dari tabel:</p>
 <ul>
-<li><b>Rentang 11.641 – 28.872.</b> EV bisa 2,5× lipat hanya dari asumsi yang "masuk akal". Valuasi = <b>rentang</b>, bukan titik 19.924.</li>
+<li><b>Rentang 15.084 – 28.872.</b> EV bisa 1,9× lipat hanya dari asumsi yang "masuk akal". Valuasi = <b>rentang</b>, bukan titik 19.924.</li>
 <li><b>Penyebut kecil = bom.</b> (WACC−g) terkecil = 11,1%−4% = 7,1% → EV 28.872. Makin dekat g ke WACC, makin liar angkanya — alasan syarat g &lt; WACC.</li>
-<li><b>WACC lebih galak dari g.</b> Naik 2 poin WACC (13,1→15,1, g tetap 3%) memangkas EV 19.924 → 13.952 (−30%). Beta yang salah sedikit = valuasi salah besar.</li>
+<li><b>WACC lebih galak dari g.</b> Naik 2 poin WACC (13,1→15,1, g tetap 3%) memangkas EV 19.924 → 16.335 (−18%). Beta yang salah sedikit = valuasi salah besar.</li>
 </ul>
 <div class="callout"><b>Kenapa insight ini lebih penting dari angka EV?</b> Karena angka EV akan usang besok (asumsi berubah). Yang awet = pemahaman <i>di mana model rapuh</i>. Analis senior tidak ditanya "berapa EV-nya?" — ditanya "asumsi apa yang kalau salah 1% menghancurkan valuasimu?"</div>`},
 {h: "DCF lengkap pertama: rekap jembatan", body: `
@@ -1782,7 +1782,7 @@ Jalur 2 (Hari 12&ndash;13): <i>build</i> dari blank &rarr; FCFF 15,90T &rarr; DC
 <ul>
 <li>Semua angka ilustrasi &mdash; WACC 12%, g 1,75%, multiple 7&times; = asumsi pengajaran, bukan data pasar.</li>
 <li>Model tanpa kepentingan non-pengendali (NCI) &mdash; simplifikasi konsolidasi yang dinyatakan.</li>
-<li>TV &asymp; 70% EV &mdash; akurasi thesis ini &asymp; akurasi asumsi g &amp; multiple.</li>
+<li>TV &asymp; 56% EV &mdash; akurasi thesis ini &asymp; akurasi asumsi g &amp; multiple.</li>
 <li>Rp8.332 ilustrasi, <b>bukan rekomendasi investasi</b>.</li>
 </ul>
 <div class="callout"><b>Kenapa vonis terakhir = batasan?</b> Karena thesis yang jujur soal kelemahannya = satu-satunya thesis yang bisa dipercaya. DCF adalah mesin pembenar sempurna &mdash; yang membedakan analis dan pembohong = keterbukaan asumsi. Capstone I tuntas. Selamat!</div>`}
@@ -2811,7 +2811,7 @@ sections: [
 <div class="example jebakan"><div class="lbl">\uD83D\uDEA8 Error #4 \u2014 NOL tidak dimanfaatkan</div>
 <p>Voucher Rp440rb <b>tidak dipakai</b>: pajak kini tercatat Rp1.342rb (harusnya Rp870,86rb), DTA Rp440rb menganggur di neraca. Kas keluar Rp440rb lebih besar dari kewajiban sebenarnya.</p></div>
 <div class="callout"><b>Kenapa misi ini penting?</b> Di dunia kerja kamu lebih sering <b>mewarisi</b> model daripada membangun dari nol. Empat error ini adalah empat pola yang PALING SERING muncul di model warisan: utang tersamar, pajak ditunda yang dilupakan, non-kas yang salah arah, dan aset pajak yang terbuang. Temukan polanya sekali \u2014 kenali selamanya.</div>
-<div class="callout"><b>Kenapa selisih balance \u22121.700 adalah petunjuk, bukan vonis?</b> Karena \u22121.700 = \u2212500 (add-back hilang) + \u22121.200 (kas lease tercatat dua kali: di CFO sebagai "sewa operasi" DAN di CFF sebagai pembayaran lease). Angka selisihnya sendiri membisikkan <i>di mana</i> kebocorannya. Detektif membaca selisih, bukan cuma melihatnya.</div>`},
+<div class="callout"><b>Kenapa selisih balance \u22121.700 adalah petunjuk, bukan vonis?</b> Dua kebocoran kas paling mudah dibaca membisikkan arahnya: \u2212500 (add-back stock comp hilang) dan \u22121.200 (kas lease tercatat dua kali: di CFO sebagai "sewa operasi" DAN di CFF sebagai pembayaran lease). Tapi selisih itu bukan jumlah keduanya saja — dua error pajak (DTL Rp88rb tidak dicatat, DTA Rp440rb menganggur) dan penyesuaian lease lainnya juga menggeser liabilitas dan ekuitas. Detektif membaca selisih, lalu memeriksa keempat titik, bukan cuma melihatnya.</div>`},
 {h: "Tugas praktik", body: `
 <p>Unduh file latihan Hari 20 dari Drive. Bangun 4 penyesuaian + 3 statement ringkas \u2014 semua sel jawaban <b>rumus</b> (angka ketik yang benar pun ditolak checker). Target: skor 100 + BALANCE.</p>
 <p>Lalu unduh <b>file misi</b> (model junior yang rusak). Audit 4 titik di atas, perbaiki semuanya dengan <b>rumus</b>, pastikan neraca kembali balance, lalu upload ke Misi Detektif Akuntansi. Target: 5/5 + balance \u2713.</p>
@@ -3655,6 +3655,7 @@ sections: [
 <p>Perhatikan CAR ikut turun tiap tahun (19,56% → 18,68% → 17,89%) <i>meski</i> laba positif — karena kredit tumbuh 12%, lebih cepat dari pertumbuhan ekuitas. Bank yang tumbuh cepat <b>memakan modalnya sendiri</b>; dividen mempercepatnya.</p>
 <div class="callout"><b>Kenapa ini jantungnya, bukan laba rugi?</b> Karena di bank, laba tanpa modal = ilusi. NI 165,79 di T3 tidak ada artinya bila CAR jebol ke bawah ambang — regulator dan pasar menilai modal dulu, laba kemudian. Equity walk adalah tempat dividen, pertumbuhan, dan kecukupan modal bertemu.</div>`},
 {h: "Kenapa latihan ini valuasi bank pakai P/BV?", body: `
+<p>Saham beredar: <b>10 miliar lembar</b> (ekuitas Tahun-3 Rp1.812,18 miliar ÷ BV per saham Rp181,22).</p>
 <p>Harga wajar = <b>BV per saham × 1,4</b> = 181,22 × 1,4 = <b>253,71 Rp/lembar</b>. Tidak ada DCF FCFF/WACC di sini — dan itu disengaja. Tiga alasan:</p>
 <div class="callout"><b>Kejujuran penuh:</b> “bukan DCF” di sini maksudnya bukan DCF ala perusahaan non-keuangan. Varian DCF sisi ekuitas — <i>dividend discount model</i> dan <i>excess return model</i> — tetap dipakai praktisi untuk bank. Latihan ini memilih P/BV karena datanya paling sedikit dan logikanya paling transparan untuk model pertama; bukan karena DCF mustahil untuk bank.</div>
 <ol>
@@ -5184,7 +5185,7 @@ sections: [
 <tr><td>15-question quiz</td><td>Automatic (below)</td><td><b>≥80%</b> — score saved automatically</td></tr>
 <tr><td>Mini-model</td><td>Checker (xlsx upload)</td><td><b>Score ≥80</b> + balanced BS + formulas (not typed numbers)</td></tr>
 </table>
-<p>The checker grades three things: <b>(1)</b> answer cells contain formulas linking inputs (60%), <b>(2)</b> numbers match the key (30–40%), <b>(3)</b> balanced BS (10%). <b>=number</b> (hardcode dressed as a formula) is flagged — not counted as a formula.</p>
+<p>The checker grades three things: <b>(1)</b> answer cells contain formulas linking inputs (60%), <b>(2)</b> numbers match the key (30%), <b>(3)</b> balanced BS (10%). <b>=number</b> (hardcode dressed as a formula) is flagged — not counted as a formula.</p>
 <div class="callout"><b>Why is the checker picky about formulas-vs-numbers?</b> Because in the real world, a model with typed numbers = a time bomb: assumptions change, numbers don't follow. The gate trains the right habit, not just the right answer.</div>`},
 {h: "After the gate: two paths", body: `
 <p><b>Pass both keys → Day 08.</b> Week 2 = valuation: the 2027 forecast continues, then Warung Septian's first DCF. Your foundation is proven — now build on it.</p>
@@ -5568,18 +5569,18 @@ sections: [
 <p>One EV number = one assumption combo. This table shows <b>nine</b> (Rp thousand):</p>
 <table class="brutal">
 <tr><th>EV \ g</th><th>2%</th><th>3%</th><th>4%</th></tr>
-<tr><td><b>WACC 11.1%</b></td><td>21,687</td><td>24,900</td><td>28,872</td></tr>
-<tr><td><b>WACC 13.1%</b></td><td>15,085</td><td><b>19,924</b></td><td>23,763</td></tr>
-<tr><td><b>WACC 15.1%</b></td><td>11,641</td><td>13,952</td><td>17,412</td></tr>
+<tr><td><b>WACC 11.1%</b></td><td>22,517</td><td>25,302</td><td>28,872</td></tr>
+<tr><td><b>WACC 13.1%</b></td><td>18,125</td><td><b>19,924</b></td><td>22,118</td></tr>
+<tr><td><b>WACC 15.1%</b></td><td>15,084</td><td>16,335</td><td>17,810</td></tr>
 </table>
 <p>Each cell uses the same formula: TV = 2,281/(WACC−g), PV = TV/(1+WACC), EV = −50/(1+WACC) + PV of TV. In the workbook this table is <b>all formulas</b> — change one assumption, all nine cells follow.</p>
 <div class="callout"><b>Why a table instead of three scenarios?</b> Because a table shows the <i>gradient</i>: EV rises top-right (high g, low WACC), falls bottom-left. Scenarios give three points; a table gives a map. The map is what negotiations use ("at what WACC does this valuation break?").</div>`},
 {h: "Reading sensitivity: the insights", body: `
 <p>Three lessons from the table:</p>
 <ul>
-<li><b>Range 11,641 – 28,872.</b> EV can swing 2.5× from merely "reasonable" assumptions. Valuation = <b>range</b>, not the 19,924 point.</li>
+<li><b>Range 15,084 – 28,872.</b> EV can swing 1.9× from merely "reasonable" assumptions. Valuation = <b>range</b>, not the 19,924 point.</li>
 <li><b>Small denominator = bomb.</b> The smallest (WACC−g) = 11.1%−4% = 7.1% → EV 28,872. The closer g gets to WACC, the wilder the number — the reason for the g &lt; WACC rule.</li>
-<li><b>WACC bites harder than g.</b> +2 points of WACC (13.1→15.1, g fixed at 3%) cuts EV 19,924 → 13,952 (−30%). A slightly wrong beta = a hugely wrong valuation.</li>
+<li><b>WACC bites harder than g.</b> +2 points of WACC (13.1→15.1, g fixed at 3%) cuts EV 19,924 → 16,335 (−18%). A slightly wrong beta = a hugely wrong valuation.</li>
 </ul>
 <div class="callout"><b>Why do these insights beat the EV number?</b> Because the EV number expires tomorrow (assumptions change). What lasts = knowing <i>where the model is fragile</i>. Senior analysts aren't asked "what's the EV?" — they're asked "which assumption, wrong by 1%, destroys your valuation?"</div>`},
 {h: "First complete DCF: the bridge recap", body: `
@@ -5997,7 +5998,7 @@ Path 2 (Days 12&ndash;13): <i>building</i> from blank &rarr; FCFF 15.90T &rarr; 
 <ul>
 <li>All illustrative numbers \u2014 WACC 12%, g 1.75%, the 7&times; multiple = teaching assumptions, not market data.</li>
 <li>Model has no non-controlling interests (NCI) \u2014 a stated consolidation simplification.</li>
-<li>TV &asymp; 70% of EV \u2014 this thesis's accuracy &asymp; the accuracy of the g &amp; multiple assumptions.</li>
+<li>TV &asymp; 56% of EV \u2014 this thesis's accuracy &asymp; the accuracy of the g &amp; multiple assumptions.</li>
 <li>Rp8,332 is illustrative, <b>not investment advice</b>.</li>
 </ul>
 <div class="callout"><b>Why does the verdict end with limitations?</b> Because a thesis honest about its weaknesses = the only thesis worth trusting. DCF is a perfect justification machine \u2014 what separates an analyst from a fraud = openness about assumptions. Capstone I complete. Congratulations!</div>`}
@@ -7795,7 +7796,7 @@ sections: [
 <p>Because interest income is <b>earned through the year</b>. Year-end loans are only full in December — they haven't earned a full year's interest. Using the ending stock overstates NII by half that year's growth; using the opening stock understates it. The average = the honest approach for a flowing stream.</p>
 <div class="callout"><b>Why does this matter at a bank, not a factory?</b> Because at a bank NII is 70–80% of revenue. A 6% base error on loans = a 6% error on nearly the whole topline. At a factory, a depreciation-base error doesn't hit this hard. Base precision = bank-model precision.</div>`},
 {h: "Why are provisions on ending loans, not average?", body: `
-<p>The reverse for provisions: <b>Provision = 1.8% × END-of-year loans</b>. Year 1: 1.8% × 8,960 = <b>161.28</b>. The 1.8% is <b>this exercise's forecast assumption</b>, not a general accounting rule — accounting (IFRS 9) uses an allowance <i>roll-forward</i>: opening allowance + impairment charge − write-offs + recoveries = closing allowance.</p>
+<p>The reverse for provisions: <b>Provision = 1.8% × END-of-year loans</b>. Year 1: 1.8% × 8,960 = <b>161.28</b>. The 1.8% is <b>this exercise's forecast assumption</b>, not a general accounting rule — accounting (IFRS 9/PSAK 71) uses an allowance <i>roll-forward</i>: opening allowance + impairment charge − write-offs + recoveries = closing allowance.</p>
 <p> Why not average like NII?</p>
 <p>Because provisions reserve against <b>risk embedded in the stock</b>, not the flow. Non-performing loans are a portfolio condition at the balance-sheet date — the loans sit on the books at year-end, so the risk is reserved at year-end. Its logic is balance-sheet (stock), not income-statement (flow).</p>
 <div class="callout"><b>Why is this asymmetry deliberate?</b> Because a good model mimics good accounting: income follows the flow (accrual through the year), reserves follow the stock (year-end position). Equalizing the two bases mixes two measurement logics — the model still balances, but it's economically wrong.</div>`},
@@ -7804,6 +7805,7 @@ sections: [
 <p>Note CAR falls each year (19.56% → 18.68% → 17.89%) <i>despite</i> positive profit — because loans grow 12%, faster than equity. A fast-growing bank <b>eats its own capital</b>; dividends accelerate it.</p>
 <div class="callout"><b>Why is this the heart, not the income statement?</b> Because at a bank, profit without capital = illusion. Year-3 NI of 165.79 means nothing if CAR breaches the floor — regulators and markets judge capital first, profit second. The equity walk is where dividends, growth, and capital adequacy meet.</div>`},
 {h: "Why does this exercise value the bank on P/BV?", body: `
+<p>Shares outstanding: <b>10 billion shares</b> (Year-3 equity Rp1,812.18 billion ÷ BV per share Rp181.22).</p>
 <p>Fair value = <b>BV per share × 1.4</b> = 181.22 × 1.4 = <b>253.71 Rp/share</b>. No FCFF/WACC-style DCF here — deliberate. Three reasons:</p>
 <div class="callout"><b>Full honesty:</b> “no DCF” here means no non-financial-style DCF. Equity-side DCF variants — the <i>dividend discount model</i> and the <i>excess return model</i> — are used by practitioners for banks. This exercise picks P/BV because it needs the least data and its logic is the most transparent for a first model; not because DCF is impossible for banks.</div>
 <ol>
