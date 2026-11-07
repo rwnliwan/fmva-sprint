@@ -140,9 +140,9 @@ sections: [
 </table>
 <div class="formula">Revenue = Volume × Harga</div>
 <div class="callout"><b>Kenapa bottom-up paling auditable?</b> Karena setiap drivernya bisa dicek ke dunia nyata: jumlah pelanggan bisa dihitung di depan toko, harga tertera di etalase. "Growth 12%" itu klaim; "50 pelanggan × Rp20rb × 26 hari" itu bukti. Analis kredit lebih percaya driver daripada angka persen yang digantung.</div>`},
-{h: "Pengakuan pendapatan: kapan revenue jadi revenue? (IFRS 15 / PSAK 72)", body: `
+{h: "Pengakuan pendapatan: kapan revenue jadi revenue? (IFRS 15 / PSAK 115)", body: `
 <p>Seksi sebelumnya menjawab <b>berapa</b> revenue-nya (forecast). Seksi ini menjawab <b>kapan</b> ia boleh dicatat sebagai revenue. Dua pertanyaan berbeda — dan analis yang mencampurnya akan salah baca laba.</p>
-<p><b>Lima langkah IFRS 15 / PSAK 72</b> (berlaku untuk semua kontrak dengan pelanggan):</p>
+<p><b>Lima langkah IFRS 15 / PSAK 115</b> (berlaku untuk semua kontrak dengan pelanggan):</p>
 <ol>
 <li><b>Identifikasi kontrak</b> — ada kesepakatan yang mengikat?</li>
 <li><b>Identifikasi kewajiban pelaksanaan</b> (performance obligations) — barang/jasa apa saja yang dijanjikan? Tiap kewajiban = satu unit pengakuan.</li>
@@ -2896,7 +2896,7 @@ blind: {h: "Latihan Buta \u2014 warung tetangga di Solo", body: `
 },
 {
 id: "hari-20", track: "30 Hari", title: "Akuntansi Sulit: Lease, Pajak Tangguhan & Detektif Akuntansi",
-sub: "Hari 20 \u00b7 \u00b18 jam \u00b7 PSAK 73, DTL/DTA, stock comp, NOL + misi repair",
+sub: "Hari 20 \u00b7 \u00b18 jam \u00b7 PSAK 116, DTL/DTA, stock comp, NOL + misi repair",
 est: "8 jam",
 prerequisites: ["cfo","beban_non_kas","model_3_statement","akrual"],
 driveFolder: "https://drive.google.com/drive/folders/1NNTaCDj4Rqp4JHKSeNMCZJZgByaR5J9f",
@@ -2910,7 +2910,7 @@ sections: [
 <p>Sejauh ini semua penyesuaianmu melibatkan kas yang jelas: beli, jual, bayar, terima. Hari ini: <b>4 penyesuaian yang TIDAK melibatkan kas hari ini</b> \u2014 tapi mengubah laba, utang, ekuitas, dan arus kas yang dilaporkan:</p>
 <table class="brutal">
 <tr><th>Penyesuaian</th><th>Kas hari ini</th><th>Yang berubah</th></tr>
-<tr><td>Lease (PSAK 73)</td><td>Tetap keluar 1.200</td><td>Muncul utang Rp4.791rb + aset yang tak ada kemarin</td></tr>
+<tr><td>Lease (PSAK 116)</td><td>Tetap keluar 1.200</td><td>Muncul utang Rp4.791rb + aset yang tak ada kemarin</td></tr>
 <tr><td>Deferred tax (DTL)</td><td>Nol</td><td>Muncul liabilitas pajak Rp88rb</td></tr>
 <tr><td>Stock comp</td><td>Nol</td><td>Beban Rp500rb + saham bertambah 1.000</td></tr>
 <tr><td>NOL carryforward</td><td>Nol</td><td>Pajak tahun ini turun Rp440rb</td></tr>
@@ -2918,11 +2918,11 @@ sections: [
 <div class="example warung"><div class="lbl">\uD83C\uDFEA Versi warung</div>
 <p>Warung Septian tidak punya 4 hal ini \u2014 makanya "akuntansi sulit" identik dengan korporat. Tapi logikanya warung banget: <b>sewa ruko 5 tahun yang "tidak tercatat sebagai utang"</b> (padahal kamu WAJIB bayar 5 tahun) = lease; <b>"bayar pajaknya nanti aja"</b> = deferred tax; <b>"gaji karyawan dibayar pakai bagi hasil, bukan kas"</b> = stock comp; <b>"rugi tahun lalu jadi potongan tahun ini"</b> = NOL.</p></div>
 <div class="callout"><b>Kenapa dipelajari di Hari 20, bukan Minggu 1?</b> Karena 4 hal ini adalah <i>lapisan kedua</i> akuntansi: kamu harus sudah fasih membaca 3 statement dulu (Minggu 1) sebelum bisa melihat "apa yang disembunyikan" di baliknya. Analis yang melewatkan lapisan ini akan salah baca leverage, salah baca pajak, dan salah baca kas \u2014 tiga-tiganya sekaligus.</div>`},
-{h: "Kenapa lease = utang tersamar (PSAK 73)", body: `
-<p>PT Maju Jaya menyewa alat 5 tahun, Rp1.200rb/tahun, discount rate 8%. Perlakuan lama (dan perlakuan "analis junior" di file misi): catat <b>beban sewa Rp1.200rb/tahun</b>, selesai. Masalahnya: perusahaan <b>terikat kontrak membayar Rp6.000rb selama 5 tahun</b> \u2014 itu utang, apa pun namanya. PSAK 73/IFRS 16 memaksa mengakuinya:</p>
+{h: "Kenapa lease = utang tersamar (PSAK 116)", body: `
+<p>PT Maju Jaya menyewa alat 5 tahun, Rp1.200rb/tahun, discount rate 8%. Perlakuan lama (dan perlakuan "analis junior" di file misi): catat <b>beban sewa Rp1.200rb/tahun</b>, selesai. Masalahnya: perusahaan <b>terikat kontrak membayar Rp6.000rb selama 5 tahun</b> \u2014 itu utang, apa pun namanya. PSAK 116/IFRS 16 memaksa mengakuinya:</p>
 <div class="formula">PV liabilitas = 1.200 \u00d7 (1 \u2212 1,08<sup>\u22125</sup>) \u00f7 0,08 = 1.200 \u00d7 3,99271 = <b>Rp4.791,25rb</b></div>
 <table class="brutal">
-<tr><th>Lease Y1 (Rp ribu)</th><th>Benar (PSAK 73)</th><th>Salah (sewa biasa)</th></tr>
+<tr><th>Lease Y1 (Rp ribu)</th><th>Benar (PSAK 116)</th><th>Salah (sewa biasa)</th></tr>
 <tr><td>Liabilitas diakui</td><td><b>4.791,25</b></td><td>0</td></tr>
 <tr><td>Aset ROU diakui</td><td><b>4.791,25</b></td><td>0</td></tr>
 <tr><td>Beban Y1</td><td>Depresiasi 958,25 + bunga 383,30 = <b>1.341,55</b></td><td>Sewa <b>1.200</b></td></tr>
@@ -2930,7 +2930,7 @@ sections: [
 </table>
 <p>Bunga Y1 = 4.791,25 \u00d7 8% = <b>383,30</b>; pokok = 1.200 \u2212 383,30 = <b>816,70</b>; liabilitas akhir = 4.791,25 \u2212 816,70 = <b>3.974,55</b>. Depresiasi ROU = 4.791,25 \u00f7 5 = <b>958,25</b>/tahun.</p>
 <div class="callout"><b>Kenapa beban tahun-1 (1.341,55) LEBIH BESAR dari sewa (1.200)?</b> Karena bunga dihitung dari saldo utang penuh di awal \u2014 pola <i>front-loaded</i>. Total 5 tahun tetap Rp6.000rb, tapi bebannya condong ke awal. Analis yang membandingkan "beban sewa antar perusahaan" tanpa tahu ini akan salah menyimpulkan efisiensi.</div>
-<div class="callout"><b>Kenapa ini "utang tersamar"?</b> Sebelum PSAK 73, operating lease memang tidak muncul di neraca \u2014 perusahaan bisa terlihat ringan utang padahal terikat kontrak miliaran. Kasus klasik: ritel & penerbangan. Sekarang aturannya: <b>kalau kamu wajib bayar, itu utang</b> \u2014 tidak peduli disebut "sewa".</div>`},
+<div class="callout"><b>Kenapa ini "utang tersamar"?</b> Sebelum PSAK 73 (kini PSAK 116), operating lease memang tidak muncul di neraca \u2014 perusahaan bisa terlihat ringan utang padahal terikat kontrak miliaran. Kasus klasik: ritel & penerbangan. Sekarang aturannya: <b>kalau kamu wajib bayar, itu utang</b> \u2014 tidak peduli disebut "sewa".</div>`},
 {h: "Kenapa DTL bukan kas \u2014 tapi tetap utang", body: `
 <p>Penyusutan buku Rp800rb, penyusutan pajak Rp1.200rb. Fiskus mengizinkan susut <b>lebih cepat</b> \u2014 tahun ini bayar pajak lebih kecil. Apakah selisihnya "penghematan"? <b>Bukan.</b> Total susut 5 tahun tetap sama; yang bergeser hanya <i>waktunya</i>:</p>
 <div class="formula">Beda temporer = 1.200 \u2212 800 = 400 \u2192 DTL = 400 \u00d7 22% = <b>Rp88rb</b></div>
@@ -3013,7 +3013,7 @@ sections: [
 {h: "Detektif Akuntansi: 4 jebakan di file misi", body: `
 <p>File misi = model PT Maju Jaya buatan "analis junior" \u2014 <b>rusak di 4 titik</b>, persis 4 topik hari ini. Petunjuk pertamamu: neracanya pun <b>TIDAK BALANCE</b> (selisih \u22121.700). Empat jebolannya:</p>
 <div class="example jebakan"><div class="lbl">\uD83D\uDEA8 Error #1 \u2014 Lease = beban sewa biasa</div>
-<p>Junior mencatat <b>beban sewa Rp1.200rb</b>, liabilitas lease <b>0</b>, bunga <b>0</b>, ROU <b>0</b>. Akibat: utang Rp4.791rb hilang dari neraca, struktur beban salah (seharusnya depresiasi 958,25 + bunga 383,30). Ini pelanggaran PSAK 73 paling klasik.</p></div>
+<p>Junior mencatat <b>beban sewa Rp1.200rb</b>, liabilitas lease <b>0</b>, bunga <b>0</b>, ROU <b>0</b>. Akibat: utang Rp4.791rb hilang dari neraca, struktur beban salah (seharusnya depresiasi 958,25 + bunga 383,30). Ini pelanggaran PSAK 116 paling klasik.</p></div>
 <div class="example jebakan"><div class="lbl">\uD83D\uDEA8 Error #2 \u2014 DTL tidak dicatat</div>
 <p>Beda temporer Rp400rb "diabaikan" \u2014 DTL <b>0</b> (harusnya Rp88rb). Liabilitas understated, dan beban pajak kehilangan komponen tangguhannya.</p></div>
 <div class="example jebakan"><div class="lbl">\uD83D\uDEA8 Error #3 \u2014 Stock comp tidak di-add-back</div>
@@ -3041,7 +3041,7 @@ quiz: [
 {q: "Sewa alat 5 tahun, Rp1.200rb/thn, discount rate 8%. PV liabilitas lease?", opts: ["Rp4.791,25rb","Rp6.000rb","Rp3.833rb","Rp5.500rb"], answer: 0, k: "lease_pv", diff: "Easy",
  hints: ["PV = 1.200 \u00d7 (1 \u2212 1,08^-5) \u00f7 0,08.","Faktor anuitasnya 3,99271 \u2014 kalikan 1.200."],
  explain: "1.200 \u00d7 3,99271 = Rp4.791,25rb. Inilah liabilitas (dan aset ROU) yang diakui hari ini."},
-{q: "Lease di atas: total beban tahun-1 menurut PSAK 73?", opts: ["Rp1.200rb (sewa)","Rp958,25rb","Rp1.341,55rb","Rp383,30rb"], answer: 2, k: "lease_expense", diff: "Medium",
+{q: "Lease di atas: total beban tahun-1 menurut PSAK 116?", opts: ["Rp1.200rb (sewa)","Rp958,25rb","Rp1.341,55rb","Rp383,30rb"], answer: 2, k: "lease_expense", diff: "Medium",
  hints: ["Beban = depresiasi ROU + bunga.","958,25 + 383,30 = ?"],
  explain: "958,25 + 383,30 = Rp1.341,55rb \u2014 lebih besar dari sewa 1.200 karena bunga front-loaded."},
 {q: "D&A buku Rp800rb, D&A pajak Rp1.200rb, tarif 22%. DTL?", opts: ["Rp88rb","Rp176rb","Rp264rb","Rp0"], answer: 0, k: "dtl", diff: "Easy",
@@ -3607,7 +3607,7 @@ hell: [
  explain: "Bunga = 10% \u00d7 12.000 = 1.200; utang akhir = 12.000 \u2212 5.000 = 7.000; dan utang awal Y2 = utang akhir Y1 = 7.000 \u2014 rantai tahunan. Putus satu link (awal Y2 tetap 12.000) = bunga Y2 salah = lima tahun salah."},
 {q: "Rugi fiskal 8.000 \u00d7 tarif 22% = DTA 1.760. Perusahaan diproyeksi rugi 3 tahun ke depan. Perlakuan yang benar?", opts: ["Akui penuh 1.760 \u2014 rugi \u00d7 tarif pasti jadi aset", "Tidak boleh diakui penuh: tanpa laba fiskal masa depan yang probable, bentuk valuation allowance \u2014 DTA 1.760 adalah janji, bukan kas", "NOL hangus otomatis saat rugi", "Akui 3.520 \u2014 digandakan agar konservatif"], answer: 1,
  explain: "DTA = janji penghematan pajak masa depan; syaratnya laba kena pajak yang probable. Proyeksi rugi 3 tahun = tidak probable \u2192 valuation allowance, DTA neto bisa nol. Mengakui penuh = menggelembungkan aset dengan harapan."},
-{q: "Beban sewa operasi 2.400/tahun. Setelah PSAK 73 (kapitalisasi lease), dampak ke EBITDA?", opts: ["Turun 2.400 \u2014 beban bertambah", "Tetap \u2014 ekonomi tidak berubah", "Naik 2.400: beban sewa (di atas EBITDA) \u2192 depresiasi + bunga (di bawah EBITDA); ekonomi sama, angka beda", "Naik 4.800 \u2014 double count"], answer: 2,
+{q: "Beban sewa operasi 2.400/tahun. Setelah PSAK 116 (kapitalisasi lease), dampak ke EBITDA?", opts: ["Turun 2.400 \u2014 beban bertambah", "Tetap \u2014 ekonomi tidak berubah", "Naik 2.400: beban sewa (di atas EBITDA) \u2192 depresiasi + bunga (di bawah EBITDA); ekonomi sama, angka beda", "Naik 4.800 \u2014 double count"], answer: 2,
  explain: "EBITDA naik 2.400 tanpa perubahan ekonomi sepeser pun: beban sewa operasi dulu di atas EBITDA, kini menjadi depresiasi hak-guna + bunga sewa di bawahnya. Jebakan: EV/EBITDA terlihat 'murah' \u2014 bandingkan multiple hanya dalam standar yang sama."}
 ],
 tasks: [
@@ -3859,7 +3859,7 @@ sections: [
 <p>Karena pendapatan bunga <b>diperoleh sepanjang tahun</b>. Kredit akhir tahun baru penuh di Desember — ia belum menghasilkan bunga setahun penuh. Memakai stok akhir melebih-lebihkan NII sebesar setengah pertumbuhan tahun itu; memakai stok awal mengecilkannya. Rata-rata = pendekatan jujur untuk arus yang mengalir.</p>
 <div class="callout"><b>Kenapa ini penting di bank, bukan di pabrik?</b> Karena di bank, NII adalah 70–80% pendapatan. Salah basis 6% di kredit = salah 6% di hampir seluruh topline. Di pabrik, kesalahan basis depresiasi tidak sebesar ini dampaknya. Presisi basis = presisi model bank.</div>`},
 {h: "Kenapa provisi dari kredit akhir, bukan rata-rata?", body: `
-<p>Sebaliknya untuk provisi: <b>Provisi = 1,8% × kredit AKHIR tahun</b>. Tahun-1: 1,8% × 8.960 = <b>161,28</b>. Angka 1,8% adalah <b>asumsi forecast latihan ini</b>, bukan aturan akuntansi umum — akuntansi (IFRS 9/PSAK 71) memakai <i>roll-forward</i> cadangan: cadangan awal + beban penurunan nilai − hapus buku + recovery = cadangan akhir.</p>
+<p>Sebaliknya untuk provisi: <b>Provisi = 1,8% × kredit AKHIR tahun</b>. Tahun-1: 1,8% × 8.960 = <b>161,28</b>. Angka 1,8% adalah <b>asumsi forecast latihan ini</b>, bukan aturan akuntansi umum — akuntansi (IFRS 9/PSAK 109) memakai <i>roll-forward</i> cadangan: cadangan awal + beban penurunan nilai − hapus buku + recovery = cadangan akhir.</p>
 <p> Kenapa tidak rata-rata seperti NII?</p>
 <p>Karena provisi mencadangkan <b>risiko yang melekat pada stok</b>, bukan arus. Kredit macet (NPL) adalah kondisi portofolio pada tanggal neraca — pinjamannya ada di pembukuan akhir tahun, risikonya dicadangkan akhir tahun. Logikanya neraca (stok), bukan laba rugi (arus).</p>
 <div class="callout"><b>Kenapa asimetri ini disengaja?</b> Karena model yang baik meniru akuntansi yang baik: pendapatan mengikuti arus (accrual sepanjang tahun), cadangan mengikuti stok (posisi akhir). Menyamakan basis keduanya = mencampur dua logika pengukuran — model tetap balance, tetapi salah secara ekonomi.</div>`},
@@ -3874,7 +3874,7 @@ sections: [
 <p><b>Yang bisa dihitung dari model ini — CoC:</b> beban CKPN Tahun-1 Rp161,28rb ÷ rata-rata kredit (8.000 + 8.960) ÷ 2 = 8.480 → <b>1,90%</b>. Tahun-3: 202,31 ÷ 10.637 = <b>1,90%</b> juga. Flat — karena provisi model ini flat 1,8% dari kredit <i>akhir</i>, dan 1,90% vs 1,8% itu selisih basis (akhir vs rata-rata) yang sudah kamu kenal dari NII.</p>
 <p><b>Yang TIDAK bisa dihitung dari model ini — NPL & coverage:</b> model ini tidak punya <i>stok</i> kredit bermasalah maupun <i>stok</i> CKPN (provisi di sini hanya <i>arus</i> beban). Bila diasumsikan NPL Tahun-3 = 2,8% × 11.239 = <b>Rp314,69 miliar (ilustrasi dinyatakan)</b>, coverage tetap tak bisa dihitung tanpa stok CKPN. Itu batasan model latihan — di model kerja, CKPN adalah akun neraca (roll-forward: awal + beban − hapus buku + recovery = akhir).</p>
 <p><b>Jangkar nyata — BBRI FY2024 [B]:</b> NPL gross <b>2,78%</b>; coverage diungkap <b>215,01%</b> vs terhitung <b>213,07%</b> (CKPN pinjaman Rp76.902.889 jt ÷ NPL Rp36.093.243 jt — selisihnya = CKPN aset produktif non-kredit, bukan kesalahan hitung); CoC <b>3,2%</b> [B]. Bandingkan dengan model latihan (CoC 1,90%): bank nyata dengan portofolio UMKM menanggung biaya risiko lebih tinggi — dan coverage >200% artinya cadangannya dua kali lipat kredit macetnya.</p>
-<p><b>ECL & staging (IFRS 9 / PSAK 71):</b> akuntansi modern tidak menunggu kredit macet baru mencadangkan. Tiga stage: <b>Stage 1</b> — kredit sehat, cadangan = expected credit loss 12 bulan; <b>Stage 2</b> — risiko kredit naik signifikan (SICR), cadangan = ECL seumur hidup; <b>Stage 3</b> — kredit macet (credit-impaired), ECL seumur hidup + bunga dihitung dari nilai neto. Provisi flat 1,8% di model ini <b>bukan</b> staging — ia jalan pintas forecast. Di bank nyata, migrasi Stage 1 → 2 adalah alarm dini yang dibaca analis sebelum NPL-nya bergerak.</p>
+<p><b>ECL & staging (IFRS 9 / PSAK 109):</b> akuntansi modern tidak menunggu kredit macet baru mencadangkan. Tiga stage: <b>Stage 1</b> — kredit sehat, cadangan = expected credit loss 12 bulan; <b>Stage 2</b> — risiko kredit naik signifikan (SICR), cadangan = ECL seumur hidup; <b>Stage 3</b> — kredit macet (credit-impaired), ECL seumur hidup + bunga dihitung dari nilai neto. Provisi flat 1,8% di model ini <b>bukan</b> staging — ia jalan pintas forecast. Di bank nyata, migrasi Stage 1 → 2 adalah alarm dini yang dibaca analis sebelum NPL-nya bergerak.</p>
 <div class="callout"><b>Kenapa CoC 1,90% model ini "terlalu rapi"?</b> Karena ia turunan langsung dari asumsi flat 1,8% — bukan dari analisis portofolio. Bank nyata: CoC bergerak dengan siklus (naik saat ekonomi memburuk, turun saat pulih). Kalau CoC modelmu flat selamanya, kamu mengasumsikan siklus kredit tidak ada. Uji sensitivitasnya seperti menguji WACC: CoC 1,9% → 3,6% (skenario NPL memburuk 2×) memotong NI, ekuitas, dan CAR berantai — persis yang ditanyakan kuis hari ini.</div>`},
 {h: "Kenapa equity walk adalah jantung model bank?", body: `
 <p><b>E<sub>t</sub> = E<sub>t-1</sub> + NI − Dividen.</b> Tahun-1: 1.500 + 132,16 − 39,65 = <b>1.592,51</b>. Tahun-3: <b>1.812,18</b>. Sederhana — dan inilah seluruh drama perbankan: setiap rupiah dividen yang dibayar hari ini adalah satu rupiah modal yang <b>tidak</b> tersedia untuk menopang pertumbuhan kredit besok.</p>
@@ -4717,9 +4717,9 @@ sections: [
 </table>
 <div class="formula">Revenue = Volume × Price</div>
 <div class="callout"><b>Why is bottom-up the most auditable?</b> Because every driver can be checked against the real world: customers can be counted in front of the shop, prices are on the shelf. "12% growth" is a claim; "50 customers × Rp20k × 26 days" is evidence. Credit analysts trust drivers over floating percentages.</div>`},
-{h: "Revenue recognition: when does revenue become revenue? (IFRS 15 / PSAK 72)", body: `
+{h: "Revenue recognition: when does revenue become revenue? (IFRS 15 / PSAK 115)", body: `
 <p>The previous section answered <b>how much</b> revenue (forecast). This section answers <b>when</b> it may be recorded as revenue. Two different questions — and an analyst who mixes them will misread profit.</p>
-<p><b>The five steps of IFRS 15 / PSAK 72</b> (for all contracts with customers):</p>
+<p><b>The five steps of IFRS 15 / PSAK 115</b> (for all contracts with customers):</p>
 <ol>
 <li><b>Identify the contract</b> — is there a binding agreement?</li>
 <li><b>Identify the performance obligations</b> — which goods/services are promised? Each obligation = one recognition unit.</li>
@@ -7317,7 +7317,7 @@ blind: {h: "Blind Drill \u2014 the neighbor warung in Solo", body: `
 };
 EN["hari-20"] = {
 title: "Hard Accounting: Leases, Deferred Tax & the Accounting Detective",
-sub: "Day 20 \u00b7 \u00b18 hrs \u00b7 PSAK 73, DTL/DTA, stock comp, NOL + repair mission",
+sub: "Day 20 \u00b7 \u00b18 hrs \u00b7 PSAK 116, DTL/DTA, stock comp, NOL + repair mission",
 mission: {file: "https://docs.google.com/spreadsheets/d/1Bmor8rFGbXX4jNdT3M8SlRFnV6FWzoFp/edit", key: "detektif",
   title: "\uD83D\uDD75\uFE0F Accounting Detective Mission \u2014 PT Maju Jaya (broken)",
   desc: "You've received a PT Maju Jaya model built by a 'junior analyst'. This file was <b>deliberately broken in 4 places</b>: the lease booked as plain rent (Rp4,791k of liability missing), DTL not recorded, stock comp not added back (CFO Rp2,600k vs Rp5,500k), and the NOL left unused (Rp440k of overpaid tax). Bonus: the balance sheet doesn't even BALANCE (gap of \u22121,700) \u2014 your first clue. Your mission: <b>find \u2192 explain why it's wrong \u2192 fix with formulas \u2192 upload the result</b>."},
@@ -7326,7 +7326,7 @@ sections: [
 <p>So far every adjustment involved obvious cash: buy, sell, pay, receive. Today: <b>4 adjustments with NO cash today</b> \u2014 yet they change reported profit, debt, equity, and cash flow:</p>
 <table class="brutal">
 <tr><th>Adjustment</th><th>Cash today</th><th>What changes</th></tr>
-<tr><td>Lease (PSAK 73)</td><td>Still 1,200 out</td><td>Rp4,791k of debt + an asset appear from nowhere</td></tr>
+<tr><td>Lease (PSAK 116)</td><td>Still 1,200 out</td><td>Rp4,791k of debt + an asset appear from nowhere</td></tr>
 <tr><td>Deferred tax (DTL)</td><td>Zero</td><td>Rp88k tax liability appears</td></tr>
 <tr><td>Stock comp</td><td>Zero</td><td>Rp500k expense + 1,000 new shares</td></tr>
 <tr><td>NOL carryforward</td><td>Zero</td><td>This year's tax falls Rp440k</td></tr>
@@ -7334,11 +7334,11 @@ sections: [
 <div class="example warung"><div class="lbl">\uD83C\uDFEA Warung version</div>
 <p>Warung Septian has none of these \u2014 that's why "hard accounting" screams corporate. But the logic is pure warung: <b>a 5-year shop lease "not recorded as debt"</b> (though you MUST pay for 5 years) = lease; <b>"pay the tax later"</b> = deferred tax; <b>"staff paid in profit share, not cash"</b> = stock comp; <b>"last year's loss becomes this year's discount"</b> = NOL.</p></div>
 <div class="callout"><b>Why Day 20, not Week 1?</b> Because these four are accounting's <i>second layer</i>: you must read 3 statements fluently first (Week 1) before you can see "what's hidden" behind them. An analyst who skips this layer misreads leverage, misreads tax, and misreads cash \u2014 all three at once.</div>`},
-{h: "Why a lease = disguised debt (PSAK 73)", body: `
-<p>PT Maju Jaya leases equipment for 5 years at Rp1,200k/year, 8% discount rate. The old treatment (and the "junior analyst's" treatment in the mission file): book <b>Rp1,200k/year rent expense</b>, done. The problem: the firm is <b>contractually bound to pay Rp6,000k over 5 years</b> \u2014 that's debt, whatever you call it. PSAK 73/IFRS 16 forces recognition:</p>
+{h: "Why a lease = disguised debt (PSAK 116)", body: `
+<p>PT Maju Jaya leases equipment for 5 years at Rp1,200k/year, 8% discount rate. The old treatment (and the "junior analyst's" treatment in the mission file): book <b>Rp1,200k/year rent expense</b>, done. The problem: the firm is <b>contractually bound to pay Rp6,000k over 5 years</b> \u2014 that's debt, whatever you call it. PSAK 116/IFRS 16 forces recognition:</p>
 <div class="formula">PV of liability = 1,200 \u00d7 (1 \u2212 1.08<sup>\u22125</sup>) \u00f7 0.08 = 1,200 \u00d7 3.99271 = <b>Rp4,791.25k</b></div>
 <table class="brutal">
-<tr><th>Lease Y1 (Rp thousand)</th><th>Correct (PSAK 73)</th><th>Wrong (plain rent)</th></tr>
+<tr><th>Lease Y1 (Rp thousand)</th><th>Correct (PSAK 116)</th><th>Wrong (plain rent)</th></tr>
 <tr><td>Liability recognized</td><td><b>4,791.25</b></td><td>0</td></tr>
 <tr><td>ROU asset recognized</td><td><b>4,791.25</b></td><td>0</td></tr>
 <tr><td>Y1 expense</td><td>Depreciation 958.25 + interest 383.30 = <b>1,341.55</b></td><td>Rent <b>1,200</b></td></tr>
@@ -7346,7 +7346,7 @@ sections: [
 </table>
 <p>Y1 interest = 4,791.25 \u00d7 8% = <b>383.30</b>; principal = 1,200 \u2212 383.30 = <b>816.70</b>; ending liability = 4,791.25 \u2212 816.70 = <b>3,974.55</b>. ROU depreciation = 4,791.25 \u00f7 5 = <b>958.25</b>/year.</p>
 <div class="callout"><b>Why is Y1 expense (1,341.55) BIGGER than rent (1,200)?</b> Because interest is charged on the full opening debt balance \u2014 a <i>front-loaded</i> pattern. Five-year total is still Rp6,000k, but expense skews early. An analyst comparing "rent expense across firms" without knowing this misjudges efficiency.</div>
-<div class="callout"><b>Why "disguised debt"?</b> Before PSAK 73, operating leases stayed off-balance-sheet \u2014 firms could look lightly indebted while bound to billions in contracts. Classic cases: retail & airlines. The rule now: <b>if you must pay, it's debt</b> \u2014 no matter what it's called.</div>`},
+<div class="callout"><b>Why "disguised debt"?</b> Before PSAK 73 (now PSAK 116), operating leases stayed off-balance-sheet \u2014 firms could look lightly indebted while bound to billions in contracts. Classic cases: retail & airlines. The rule now: <b>if you must pay, it's debt</b> \u2014 no matter what it's called.</div>`},
 {h: "Why DTL isn't cash \u2014 but is still debt", body: `
 <p>Book depreciation Rp800k, tax depreciation Rp1,200k. The tax office lets you depreciate <b>faster</b> \u2014 you pay less tax this year. Is the gap "savings"? <b>No.</b> Five-year total depreciation is identical; only the <i>timing</i> shifts:</p>
 <div class="formula">Temporary difference = 1,200 \u2212 800 = 400 \u2192 DTL = 400 \u00d7 22% = <b>Rp88k</b></div>
@@ -7429,7 +7429,7 @@ sections: [
 {h: "Accounting Detective: 4 traps in the mission file", body: `
 <p>The mission file = a PT Maju Jaya model by a "junior analyst" \u2014 <b>broken in 4 places</b>, exactly today's 4 topics. Your first clue: the balance sheet doesn't even <b>BALANCE</b> (gap of \u22121,700). The four breaches:</p>
 <div class="example jebakan"><div class="lbl">\uD83D\uDEA8 Error #1 \u2014 Lease as plain rent</div>
-<p>The junior books <b>Rp1,200k rent expense</b>, lease liability <b>0</b>, interest <b>0</b>, ROU <b>0</b>. Result: Rp4,791k of debt vanishes from the balance sheet and the expense structure is wrong (should be 958.25 depreciation + 383.30 interest). The most classic PSAK 73 violation.</p></div>
+<p>The junior books <b>Rp1,200k rent expense</b>, lease liability <b>0</b>, interest <b>0</b>, ROU <b>0</b>. Result: Rp4,791k of debt vanishes from the balance sheet and the expense structure is wrong (should be 958.25 depreciation + 383.30 interest). The most classic PSAK 116 violation.</p></div>
 <div class="example jebakan"><div class="lbl">\uD83D\uDEA8 Error #2 \u2014 DTL not recorded</div>
 <p>The Rp400k temporary difference is "ignored" \u2014 DTL <b>0</b> (should be Rp88k). Liabilities understated, and tax expense loses its deferred component.</p></div>
 <div class="example jebakan"><div class="lbl">\uD83D\uDEA8 Error #3 \u2014 Stock comp not added back</div>
@@ -7457,7 +7457,7 @@ quiz: [
 {q: "5-year equipment lease, Rp1,200k/year, 8% discount rate. PV of the lease liability?", opts: ["Rp4,791.25k","Rp6,000k","Rp3,833k","Rp5,500k"], answer: 0,
  hints: ["PV = 1,200 \u00d7 (1 \u2212 1.08^-5) \u00f7 0.08.","The annuity factor is 3.99271 \u2014 multiply by 1,200."],
  explain: "1,200 \u00d7 3.99271 = Rp4,791.25k. That's the liability (and ROU asset) recognized today."},
-{q: "Same lease: total Y1 expense under PSAK 73?", opts: ["Rp1,200k (rent)","Rp958.25k","Rp1,341.55k","Rp383.30k"], answer: 2,
+{q: "Same lease: total Y1 expense under PSAK 116?", opts: ["Rp1,200k (rent)","Rp958.25k","Rp1,341.55k","Rp383.30k"], answer: 2,
  hints: ["Expense = ROU depreciation + interest.","958.25 + 383.30 = ?"],
  explain: "958.25 + 383.30 = Rp1,341.55k \u2014 above the 1,200 rent because interest is front-loaded."},
 {q: "Book D&A Rp800k, tax D&A Rp1,200k, 22% rate. DTL?", opts: ["Rp88k","Rp176k","Rp264k","Rp0"], answer: 0,
@@ -8006,7 +8006,7 @@ hell: [
  explain: "Interest = 10% \u00d7 12,000 = 1,200; ending debt = 12,000 \u2212 5,000 = 7,000; and Y2 beginning debt = Y1 ending debt = 7,000 \u2014 the annual chain. Break one link (Y2 beginning stays 12,000) = wrong Y2 interest = five wrong years."},
 {q: "Tax losses 8,000 \u00d7 22% rate = DTA 1,760. The company is projected to lose money 3 more years. Correct treatment?", opts: ["Recognize the full 1,760 \u2014 loss \u00d7 rate always becomes an asset", "Cannot fully recognize: without probable future taxable profit, book a valuation allowance \u2014 the 1,760 DTA is a promise, not cash", "NOLs expire automatically when losing", "Recognize 3,520 \u2014 doubled to be conservative"], answer: 1,
  explain: "A DTA = a promise of future tax savings; the condition is probable taxable profit. Three projected loss years = not probable \u2192 valuation allowance, net DTA can be zero. Recognizing it fully = inflating assets with hope."},
-{q: "Operating rent expense 2,400/year. After lease capitalization (PSAK 73/IFRS 16), the EBITDA impact?", opts: ["Falls 2,400 \u2014 expenses rise", "Flat \u2014 economics unchanged", "Rises 2,400: rent expense (above EBITDA) \u2192 depreciation + interest (below EBITDA); same economics, different number", "Rises 4,800 \u2014 double count"], answer: 2,
+{q: "Operating rent expense 2,400/year. After lease capitalization (PSAK 116/IFRS 16), the EBITDA impact?", opts: ["Falls 2,400 \u2014 expenses rise", "Flat \u2014 economics unchanged", "Rises 2,400: rent expense (above EBITDA) \u2192 depreciation + interest (below EBITDA); same economics, different number", "Rises 4,800 \u2014 double count"], answer: 2,
  explain: "EBITDA rises 2,400 with zero economic change: operating rent used to sit above EBITDA, now it becomes right-of-use depreciation + lease interest below it. Trap: EV/EBITDA looks 'cheap' \u2014 compare multiples only under the same standard."}
 ],
 tasks: [
@@ -8250,7 +8250,7 @@ sections: [
 <p>Because interest income is <b>earned through the year</b>. Year-end loans are only full in December — they haven't earned a full year's interest. Using the ending stock overstates NII by half that year's growth; using the opening stock understates it. The average = the honest approach for a flowing stream.</p>
 <div class="callout"><b>Why does this matter at a bank, not a factory?</b> Because at a bank NII is 70–80% of revenue. A 6% base error on loans = a 6% error on nearly the whole topline. At a factory, a depreciation-base error doesn't hit this hard. Base precision = bank-model precision.</div>`},
 {h: "Why are provisions on ending loans, not average?", body: `
-<p>The reverse for provisions: <b>Provision = 1.8% × END-of-year loans</b>. Year 1: 1.8% × 8,960 = <b>161.28</b>. The 1.8% is <b>this exercise's forecast assumption</b>, not a general accounting rule — accounting (IFRS 9/PSAK 71) uses an allowance <i>roll-forward</i>: opening allowance + impairment charge − write-offs + recoveries = closing allowance.</p>
+<p>The reverse for provisions: <b>Provision = 1.8% × END-of-year loans</b>. Year 1: 1.8% × 8,960 = <b>161.28</b>. The 1.8% is <b>this exercise's forecast assumption</b>, not a general accounting rule — accounting (IFRS 9/PSAK 109) uses an allowance <i>roll-forward</i>: opening allowance + impairment charge − write-offs + recoveries = closing allowance.</p>
 <p> Why not average like NII?</p>
 <p>Because provisions reserve against <b>risk embedded in the stock</b>, not the flow. Non-performing loans are a portfolio condition at the balance-sheet date — the loans sit on the books at year-end, so the risk is reserved at year-end. Its logic is balance-sheet (stock), not income-statement (flow).</p>
 <div class="callout"><b>Why is this asymmetry deliberate?</b> Because a good model mimics good accounting: income follows the flow (accrual through the year), reserves follow the stock (year-end position). Equalizing the two bases mixes two measurement logics — the model still balances, but it's economically wrong.</div>`},
@@ -8265,7 +8265,7 @@ sections: [
 <p><b>What this model CAN compute — CoC:</b> Year-1 provision expense Rp161.28k ÷ average loans (8,000 + 8,960) ÷ 2 = 8,480 → <b>1.90%</b>. Year 3: 202.31 ÷ 10,637 = <b>1.90%</b> as well. Flat — because this model's provision is a flat 1.8% of <i>ending</i> loans, and the 1.90% vs 1.8% gap is the ending-vs-average basis gap you already know from NII.</p>
 <p><b>What this model CANNOT compute — NPL & coverage:</b> it has no <i>stock</i> of non-performing loans and no <i>stock</i> of reserves (provisions here are only an expense <i>flow</i>). If we assume Year-3 NPL = 2.8% × 11,239 = <b>Rp314.69 billion (stated illustration)</b>, coverage still can't be computed without a reserve stock. That's a training-model limitation — in a working model, reserves are a balance-sheet account (roll-forward: opening + expense − write-offs + recoveries = closing).</p>
 <p><b>Real anchor — BBRI FY2024 [B]:</b> gross NPL <b>2.78%</b>; coverage disclosed <b>215.01%</b> vs computed <b>213.07%</b> (loan reserves Rp76,902,889m ÷ NPL Rp36,093,243m — the gap is reserves on non-loan earning assets, not a calculation error); CoC <b>3.2%</b> [B]. Compare with the training model (CoC 1.90%): a real bank with an MSME book bears a higher risk cost — and coverage above 200% means its reserves are twice its bad loans.</p>
-<p><b>ECL & staging (IFRS 9 / PSAK 71):</b> modern accounting doesn't wait for loans to go bad before reserving. Three stages: <b>Stage 1</b> — healthy loans, reserves = 12-month expected credit loss; <b>Stage 2</b> — significant increase in credit risk (SICR), reserves = lifetime ECL; <b>Stage 3</b> — credit-impaired, lifetime ECL + interest on the net value. The flat 1.8% provision in this model is <b>not</b> staging — it's a forecasting shortcut. In a real bank, Stage 1 → 2 migration is the early warning analysts read before NPL itself moves.</p>
+<p><b>ECL & staging (IFRS 9 / PSAK 109):</b> modern accounting doesn't wait for loans to go bad before reserving. Three stages: <b>Stage 1</b> — healthy loans, reserves = 12-month expected credit loss; <b>Stage 2</b> — significant increase in credit risk (SICR), reserves = lifetime ECL; <b>Stage 3</b> — credit-impaired, lifetime ECL + interest on the net value. The flat 1.8% provision in this model is <b>not</b> staging — it's a forecasting shortcut. In a real bank, Stage 1 → 2 migration is the early warning analysts read before NPL itself moves.</p>
 <div class="callout"><b>Why is this model's 1.90% CoC "too tidy"?</b> Because it follows directly from the flat 1.8% assumption — not from portfolio analysis. A real bank's CoC moves with the cycle (up when the economy worsens, down when it recovers). If your model's CoC is flat forever, you're assuming the credit cycle doesn't exist. Stress-test it like WACC: CoC 1.9% → 3.6% (the NPL-doubles scenario) cuts NI, equity, and CAR in a chain — exactly what today's quiz asks.</div>`},
 {h: "Why is the equity walk the heart of a bank model?", body: `
 <p><b>E<sub>t</sub> = E<sub>t-1</sub> + NI − Dividends.</b> Year 1: 1,500 + 132.16 − 39.65 = <b>1,592.51</b>. Year 3: <b>1,812.18</b>. Simple — and it's the entire drama of banking: every rupiah of dividends paid today is one rupiah of capital <b>not</b> available to support loan growth tomorrow.</p>
