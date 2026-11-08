@@ -33,7 +33,8 @@ sections: [
 <p><b>VLOOKUP</b> rapuh: pakai nomor kolom (tambah kolom = rusak), hanya cari ke kanan, dan butuh FALSE agar exact match. <b>XLOOKUP</b> memperbaiki ketiganya: range terpisah (tidak ada nomor kolom), cari ke segala arah, exact match sebagai default.</p>
 <div class="example korporat"><div class="lbl">🏢 Contoh</div>
 <p>=XLOOKUP("Kopi", B6:B13, D6:D13) → 8. Tambah kolom baru di tengah tabel? Rumus tetap benar — karena yang dipegang adalah range, bukan "kolom ke-3".</p></div>
-<div class="callout"><b>Kenapa langsung XLOOKUP, bukan VLOOKUP dulu?</b> Karena kamu tidak perlu mewarisi kebiasaan buruk. VLOOKUP hanya perlu dikenal (banyak file lama memakainya) — untuk semua pekerjaan baru, XLOOKUP. Waktu belajarmu terbatas; investasikan di yang benar.</div>`},
+<div class="callout"><b>Kenapa langsung XLOOKUP, bukan VLOOKUP dulu?</b> Karena kamu tidak perlu mewarisi kebiasaan buruk. VLOOKUP hanya perlu dikenal (banyak file lama memakainya) — untuk semua pekerjaan baru, XLOOKUP. Waktu belajarmu terbatas; <div class="callout"><b>⚠️ Prasyarat versi:</b> XLOOKUP hanya ada di <b>Microsoft 365 dan Excel 2021+</b> — di Excel 2019 atau lebih lama rumusnya tidak dikenal (#NAME?). Kalau file-mu harus jalan di Excel lama, pakai alternatif <b>INDEX+MATCH</b> (diajarkan di Excel L2 § Kenapa INDEX+MATCH mengalahkan VLOOKUP) — bekerja di semua versi.</div>
+investasikan di yang benar.</div>`},
 {h: "Tugas praktik", body: `
 <p>Bangun <b>rekap penjualan mingguan</b> Warung Septian (file latihan di Drive): 8 transaksi → total qty, total penjualan (SUMPRODUCT), rata-rata harga, COUNTIF, total setelah diskon (dengan $!), bonus IF, dan harga via XLOOKUP. Semua sel jawaban harus rumus.</p>
 <div class="callout"><b>Kenapa tugas ini penting?</b> Ini "Hello World"-nya modeling: data mentah → jawaban lewat rumus. Kalau 7 rumus ini belum refleks, level berikutnya akan terasa seperti berlari dengan sepatu terikat.</div>`},
@@ -119,6 +120,9 @@ sections: [
 <li><b>LEN/LEFT/RIGHT/MID</b> — bedah teks: =LEN(...) untuk validasi panjang kode.</li>
 <li><b>DATE/EOMONTH</b> — tanggal sebagai angka: =EOMONTH(tanggal, 1) untuk akhir bulan depan.</li>
 </ul>
+<div class="example korporat"><div class="lbl">🏢 Contoh</div>
+<p>Kolom Tanggal berisi teks '2026-01-15'. =MONTH(DATEVALUE(A1)) → <b>1</b>: DATEVALUE mengubah teks menjadi tanggal Excel (angka seri 46037), MONTH mengambil bulannya. Tanpa DATEVALUE kamu mengandalkan konversi implisit Excel — tidak kelihatan di audit trail. DATEVALUE membuat konversinya eksplisit: kalau teksnya bukan tanggal yang dikenali, hasilnya #VALUE! yang kelihatan, bukan angka diam-diam salah.</p></div>
+<div class="callout"><b>⚠️ Tergantung regional settings:</b> DATEVALUE membaca teks menurut format tanggal Windows/Excel-mu — '01/02/2026' dibaca 2 Januari di locale AS (MM/DD) tapi 1 Februari di locale Indonesia (DD/MM). Kalau hasil DATEVALUE meleset sebulan, cek regional settings dulu sebelum menyalahkan rumus. Format ISO '2026-01-15' aman di kedua locale — dan untuk teks ambigu, yang paling eksplisit adalah merakit tanggal dengan DATE + LEFT/MID/RIGHT.</div>
 <div class="callout"><b>Kenapa ini skill analis?</b> Karena 80% waktu analis habis untuk membersihkan data, bukan menganalisis. Yang bisa merapikan data dalam 10 menit dengan rumus akan selalu lebih cepat dari yang mengedit manual 2 jam — dan hasilnya bisa diulang.</div>`},
 {h: "Pagar pengaman: validasi data & conditional formatting", body: `
 <p>Dua fitur yang mencegah sampah masuk <i>sebelum</i> merusak model:</p>
@@ -655,7 +659,8 @@ sections: [
 <p><b>VLOOKUP</b> is fragile: it uses a column number (insert a column = broken), only searches rightward, and needs FALSE for exact match. <b>XLOOKUP</b> fixes all three: separate ranges (no column number), searches any direction, exact match by default.</p>
 <div class="example korporat"><div class="lbl">🏢 Example</div>
 <p>=XLOOKUP("Kopi", B6:B13, D6:D13) → 8. Insert a new column in the middle of the table? The formula stays correct — because it holds ranges, not "column 3".</p></div>
-<div class="callout"><b>Why XLOOKUP straight away, not VLOOKUP first?</b> Because you don't need to inherit bad habits. VLOOKUP only needs to be recognized (many old files use it) — for all new work, XLOOKUP. Your learning time is limited; invest it in what's right.</div>`},
+<div class="callout"><b>Why XLOOKUP straight away, not VLOOKUP first?</b> Because you don't need to inherit bad habits. VLOOKUP only needs to be recognized (many old files use it) — for all new work, XLOOKUP. Your learning time is limited; <div class="callout"><b>⚠️ Version prerequisite:</b> XLOOKUP exists only in <b>Microsoft 365 and Excel 2021+</b> — in Excel 2019 or older the formula is unknown (#NAME?). If your file must run on older Excel, use the <b>INDEX+MATCH</b> alternative (taught in Excel L2 § Why INDEX+MATCH beats VLOOKUP) — it works in every version.</div>
+invest it in what's right.</div>`},
 {h: "Practice task", body: `
 <p>Build Warung Septian's <b>weekly sales recap</b> (practice file in Drive): 8 transactions → total qty, total sales (SUMPRODUCT), average price, COUNTIF, discounted total (with $!), IF bonus, and price via XLOOKUP. Every answer cell must be a formula.</p>
 <div class="callout"><b>Why does this task matter?</b> It's the "Hello World" of modeling: raw data → answers via formulas. If these 7 formulas aren't reflexive yet, the next level will feel like running with tied shoes.</div>`},
@@ -735,6 +740,9 @@ sections: [
 <li><b>LEN/LEFT/RIGHT/MID</b> — dissect text: =LEN(...) to validate code lengths.</li>
 <li><b>DATE/EOMONTH</b> — dates as numbers: =EOMONTH(date, 1) for next month-end.</li>
 </ul>
+<div class="example korporat"><div class="lbl">🏢 Example</div>
+<p>The Date column holds the text '2026-01-15'. =MONTH(DATEVALUE(A1)) → <b>1</b>: DATEVALUE turns the text into a real Excel date (serial 46037), then MONTH takes the month. Without DATEVALUE you rely on Excel's implicit conversion — invisible in the audit trail. DATEVALUE makes the conversion explicit: if the text isn't a recognizable date, you get a visible #VALUE!, not a silently wrong number.</p></div>
+<div class="callout"><b>⚠️ Depends on regional settings:</b> DATEVALUE reads text using your Windows/Excel date format — '01/02/2026' is 2 January in a US locale (MM/DD) but 1 February in an Indonesian locale (DD/MM). If a DATEVALUE result is off by a month, check regional settings before blaming the formula. The ISO format '2026-01-15' is safe in both locales — and for ambiguous text, the most explicit route is building the date with DATE + LEFT/MID/RIGHT.</div>
 <div class="callout"><b>Why is this an analyst skill?</b> Because analysts spend 80% of their time cleaning data, not analyzing. Whoever can tidy data in 10 minutes with formulas will always beat whoever hand-edits for 2 hours — and the result is repeatable.</div>`},
 {h: "Guardrails: data validation & conditional formatting", body: `
 <p>Two features that stop garbage <i>before</i> it wrecks the model:</p>

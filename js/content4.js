@@ -25,6 +25,12 @@ sections: [
 <div class="formula">TV = FCFF_2030 × (1+g) / (WACC − g)</div>
 <p>Hasil Base: <b>PV FCFF 2026–2030 = Rp12,05T</b>, tapi <b>terminal value = Rp51,39T</b> (PV-nya Rp31,91T). Lebih dari 70% nilai DCF datang dari terminal value — rumus Gordon yang mengasumsikan perusahaan tumbuh 3% <b>selamanya</b>.</p>
 <div class="callout"><b>Kenapa ini penting?</b> Karena artinya DCF-mu <b>sangat sensitif</b> pada dua angka kecil: WACC dan g terminal. Naikkan WACC 10%→11%, nilai anjlok. Analis yang tidak melakukan <b>analisis sensitivitas</b> pada dua angka ini sedang membangun istana di atas asumsi yang tidak pernah ia uji.</p></div>`},
+{h: "Dari EV ke nilai per saham: jembatan bridge", body: `
+<div class="formula">Equity = EV − Net Debt &nbsp;·&nbsp; Nilai/saham = Equity ÷ saham beredar</div>
+<p>PV FCFF + PV terminal value baru menghasilkan <b>EV (enterprise value)</b> — nilai untuk <b>semua pemodal</b>. Tugas praktik meminta EV → equity → nilai per saham → upside, dan jembatan itu butuh tiga input yang <b>hanya ada di workbook</b> (bukan di prosa): kas, utang, dan jumlah saham.</p>
+<div class="example korporat"><div class="lbl">🏢 Jembatan Base — angka workbook</div>
+<p>EV Base = PV FCFF Rp12,05T + PV terminal Rp31,91T = <b>Rp43,96T</b>. Kas 2025 <b>Rp5,71T</b> − utang 2025 <b>Rp0,64T</b> = <b>net cash Rp5,07T</b> — UNVR memegang kas lebih besar dari utang, jadi jembatan ini <i>menambah</i>, bukan mengurangi. Equity = 43,96 + 5,07 = <b>Rp49,03T</b>. Dengan <b>37,98 miliar saham beredar</b>: Rp49,03T ÷ 37,98 miliar = <b>Rp1.291/saham</b>. Upside vs harga pasar Rp1.390 = 1.291 ÷ 1.390 − 1 = <b>−7,1%</b>.</p></div>
+<div class="callout"><b>Kenapa tanda net cash penting?</b> Kebanyakan perusahaan punya net debt (utang &gt; kas) sehingga equity &lt; EV. UNVR di sini sebaliknya: net cash membuat equity <i>lebih besar</i> dari EV. Lupa satu tanda = salah arah Rp5,07T — sekitar <b>Rp133/saham</b>. Selalu tulis kas dan utang terpisah sebelum dijumlahkan.</div>`},
 {h: "Kenapa Bear/Base/Bull berbeda?", body: `
 <p>Tiga skenario berbeda di <b>dua tuas</b>: kecepatan pemulihan revenue (g 2,5% / 4,5% / 6%) dan normalisasi margin EBIT (12% / 15% / 17%). Margin Bull 17% bukan angka ngawur — <b>margin EBIT 2022 (sebelum boikot) adalah 17,2%</b>: Bull = "kembali ke level historis".</p>
 <div class="example korporat"><div class="lbl">🏢 Hasilnya</div>
@@ -101,7 +107,8 @@ sections: [
 <p>Multiple mencerminkan <b>kualitas laba</b>: jasa keuangan (arus kas stabil, 7×) vs alat berat (siklikal komoditas, 4,5×) vs IT (tumbuh cepat, 10×). Multiple yang sama untuk semua segmen = mengasumsikan semua bisnis sama menariknya — jelas salah.</p>
 <div class="example korporat"><div class="lbl">🏢 Contoh</div>
 <p>Otomotif: 35% × Rp53,02T × 5 = <b>Rp92,78T</b> — kontributor EV terbesar. Properti: 3% × Rp53,02T × 7 = Rp11,13T. Total 7 segmen = <b>Rp306,18T</b>.</p></div>
-<div class="callout"><b>Kenapa porsi & multiple-nya ilustratif?</b> Angka segmen rinci ada di annual report; di sini disederhanakan agar fokusmu ke <b>mekanik SOTP</b> — bukan menghafal angka. Asumsi boleh diganti; yang dinilai caramu berpikir, bukan ketepatan tebakan.</p></div>`},
+<div class="callout"><b>Kenapa porsi & multiple-nya ilustratif?</b> Angka segmen rinci ada di annual report; di sini disederhanakan agar fokusmu ke <b>mekanik SOTP</b> — bukan menghafal angka. Asumsi boleh diganti; yang dinilai caramu berpikir, <div class="callout"><b>⚠️ Mekanik case ini bukan praktik sektor keuangan:</b> di SOTP ini jasa keuangan dinilai 7× EV/EBIT — itu <b>mekanik latihan</b> supaya ketujuh segmen bisa dijumlahkan dalam satu EV. Dalam praktik, bank &amp; perusahaan pembiayaan <b>normalnya TIDAK dinilai dengan EV/EBIT</b>: utang mereka (DPK) adalah bahan baku, bukan pendanaan — sehingga EV dan net debt kehilangan makna. Praktik sektor memakai <b>P/BV</b>, <b>excess return / residual income</b> (laba di atas cost of equity × ekuitas), atau DDM. Jangan bawa multiple 7× ini ke valuasi bank sungguhan.</div>
+bukan ketepatan tebakan.</p></div>`},
 {h: "Kenapa dikurangi net debt?", body: `
 <div class="formula">Equity = EV SOTP − Net Debt</div>
 <p>EV (enterprise value) = nilai untuk <b>semua pemodal</b> (saham + kreditur). Untuk dapat nilai <b>pemegang saham</b>, kurangi utang bersih: Rp110,30T − Rp52,62T = <b>Rp57,68T</b>. Equity SOTP = 306,18 − 57,68 = <b>Rp248,50T</b> → Rp6.261/saham.</p>
@@ -1106,6 +1113,12 @@ sections: [
 <div class="formula">TV = FCFF_2030 × (1+g) / (WACC − g)</div>
 <p>Base result: <b>PV of FCFF 2026–2030 = Rp12.05T</b>, but <b>terminal value = Rp51.39T</b> (PV Rp31.91T). Over 70% of DCF value comes from terminal value — the Gordon formula assuming the company grows 3% <b>forever</b>.</p>
 <div class="callout"><b>Why does this matter?</b> Because your DCF is <b>extremely sensitive</b> to two small numbers: WACC and terminal g. Raise WACC 10%→11% and value collapses. An analyst who skips <b>sensitivity analysis</b> on these two numbers is building a castle on assumptions they never tested.</p></div>`},
+{h: "From EV to per-share value: the bridge", body: `
+<div class="formula">Equity = EV − Net Debt &nbsp;·&nbsp; Per-share value = Equity ÷ shares outstanding</div>
+<p>PV of FCFF + PV of terminal value only gives you <b>EV (enterprise value)</b> — the value for <b>all capital providers</b>. The practice task asks for EV → equity → per-share value → upside, and that bridge needs three inputs that live <b>only in the workbook</b> (not in the prose): cash, debt, and shares outstanding.</p>
+<div class="example korporat"><div class="lbl">🏢 The Base bridge — workbook figures</div>
+<p>Base EV = PV of FCFF Rp12.05T + PV of terminal Rp31.91T = <b>Rp43.96T</b>. 2025 cash <b>Rp5.71T</b> − 2025 debt <b>Rp0.64T</b> = <b>net cash Rp5.07T</b> — UNVR holds more cash than debt, so this bridge <i>adds</i>, not subtracts. Equity = 43.96 + 5.07 = <b>Rp49.03T</b>. With <b>37.98 billion shares outstanding</b>: Rp49.03T ÷ 37.98 billion = <b>Rp1,291/share</b>. Upside vs the Rp1,390 market price = 1,291 ÷ 1,390 − 1 = <b>−7.1%</b>.</p></div>
+<div class="callout"><b>Why does the net-cash sign matter?</b> Most companies carry net debt (debt &gt; cash), so equity &lt; EV. UNVR here is the opposite: net cash makes equity <i>larger</i> than EV. Miss one sign and you're wrong by Rp5.07T — about <b>Rp133/share</b>. Always write cash and debt separately before netting them.</div>`},
 {h: "Why do Bear/Base/Bull differ?", body: `
 <p>The three scenarios differ on <b>two levers</b>: revenue recovery speed (g 2.5% / 4.5% / 6%) and EBIT margin normalization (12% / 15% / 17%). The 17% Bull margin isn't made up — <b>2022 EBIT margin (pre-boycott) was 17.2%</b>: Bull = "back to historical levels".</p>
 <div class="example korporat"><div class="lbl">🏢 The result</div>
@@ -1176,7 +1189,8 @@ sections: [
 <p>Multiples reflect <b>earnings quality</b>: financial services (stable cash flow, 7×) vs heavy equipment (commodity-cyclical, 4.5×) vs IT (fast-growing, 10×). One multiple for all segments = assuming all businesses are equally attractive — clearly wrong.</p>
 <div class="example korporat"><div class="lbl">🏢 Example</div>
 <p>Automotive: 35% × Rp53.02T × 5 = <b>Rp92.78T</b> — the biggest EV contributor. Property: 3% × Rp53.02T × 7 = Rp11.13T. All 7 segments = <b>Rp306.18T</b>.</p></div>
-<div class="callout"><b>Why are the weights &amp; multiples illustrative?</b> Detailed segment numbers are in the annual report; here they're simplified so your focus stays on the <b>SOTP mechanics</b> — not memorizing numbers. Assumptions can be swapped; what's scored is how you think, not how precisely you guess.</p></div>`},
+<div class="callout"><b>Why are the weights &amp; multiples illustrative?</b> Detailed segment numbers are in the annual report; here they're simplified so your focus stays on the <b>SOTP mechanics</b> — not memorizing numbers. Assumptions can be swapped; what's scored is how you think, <div class="callout"><b>⚠️ This case's mechanics are not financial-sector practice:</b> here financial services are valued at 7× EV/EBIT — a <b>teaching mechanic</b> so all seven segments can be added into one EV. In practice, banks &amp; finance companies are <b>normally NOT valued with EV/EBIT</b>: their debt (deposits) is raw material, not funding — so EV and net debt lose their meaning. Sector practice uses <b>P/BV</b>, <b>excess return / residual income</b> (profit above cost of equity × equity), or DDM. Don't carry this 7× multiple into a real bank valuation.</div>
+not how precisely you guess.</p></div>`},
 {h: "Why subtract net debt?", body: `
 <div class="formula">Equity = SOTP EV − Net Debt</div>
 <p>EV (enterprise value) = value for <b>all capital providers</b> (equity + creditors). To get <b>shareholder</b> value, subtract net debt: Rp110.30T − Rp52.62T = <b>Rp57.68T</b>. SOTP equity = 306.18 − 57.68 = <b>Rp248.50T</b> → Rp6,261/share.</p>
