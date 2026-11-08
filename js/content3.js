@@ -346,7 +346,8 @@ sections: [
 <p><b>1. Versioning &amp; changelog.</b> Satu file, satu versi: nama file <i>Model_v1.2_2026-11-08.xlsx</i> (bukan <i>Model_final_FINAL2.xlsx</i>). Sheet "Changelog" di depan: tanggal | versi | apa berubah | kenapa. Aturan: tidak ada perubahan tanpa baris changelog — perubahan tanpa jejak = bug yang menunggu ditemukan orang lain.</p>
 <p><b>2. Color-coding (konvensi baku).</b> Biru = input (angka yang diketik); hitam = rumus; hijau = link ke sheet lain; merah = peringatan/cek gagal. Konsisten di seluruh workbook — reviewer harus bisa membaca modelmu tanpa legenda panjang.</p>
 <p><b>3. Protection.</b> Kunci (Review → Protect Sheet) semua sel rumus; biarkan input terbuka. Satu sel rumus yang tertimpa angka mati = seluruh kolom di bawahnya salah diam-diam — dan itulah bug termahal di Excel (H02 § $ yang lupa). Tambahan: satu "single source of truth" — asumsi yang sama tidak boleh diketik di dua tempat (H08: tarif pajak di satu sel input, dirujuk ke mana-mana).</p>
-<div class="callout"><b>Sub-poin:</b> membangun 3-statement dari <i>trial balance mentah</i> (bukan dari transaksi seperti H05) adalah latihan governance yang sama: mapping akun → laporan harus terdokumentasi di satu sheet pemetaan, bukan dihafal di kepala.</div>`}],
+<div class="callout"><b>Sub-poin:</b> membangun 3-statement dari <i>trial balance mentah</i> (bukan dari transaksi seperti H05) adalah latihan governance yang sama: mapping akun → laporan harus terdokumentasi di satu sheet pemetaan, bukan dihafal di kepala.</div>
+<p><b>Contoh kerja \u2014 3-statement dari trial balance mentah.</b> Trial balance (Rp ribu) \u2014 debit: Kas 500, Piutang 300, Persediaan 200, Beban 600 (total 1.600); kredit: Utang 400, Modal 400, Revenue 800 (total 1.600). <b>Langkah 1 \u2014 cek balance:</b> debit 1.600 = kredit 1.600 \u2713 (bila tidak sama, jangan lanjut \u2014 ada akun yang salah sisi). <b>Langkah 2 \u2014 laba:</b> Revenue 800 \u2212 Beban 600 = <b>laba 200</b>. <b>Langkah 3 \u2014 neraca:</b> aset 500 + 300 + 200 = 1.000; liabilitas 400 + ekuitas (400 + 200) = 1.000 \u2713. Kuncinya: <b>sheet pemetaan</b> \u2014 satu tabel yang menulis tiap akun trial balance dipetakan ke baris laporan mana (Kas \u2192 aset lancar; Revenue \u2192 laba rugi). Tanpa sheet pemetaan, mapping itu hanya ada di kepala pembuatnya \u2014 dan hilang saat ia cuti.</p>`}],
 quiz: [
 {q: "=16800*1,1 dan =B5*(1+B6) memberi hasil sama hari ini (B5=16800, B6=10%). Mana yang benar untuk model?", opts: ["Yang =B5*(1+B6)","Keduanya benar","Yang =16800*1,1","Tidak ada yang benar"], answer: 0, k: "model_structure", diff: "Easy",
  hints: ["Tiga bulan lagi growth berubah jadi 15%.", "Rumus mana yang ikut berubah otomatis?"],
@@ -368,7 +369,10 @@ quiz: [
  explain: "Biru = input; hitam = rumus; hijau = link ke sheet lain; merah = peringatan/cek gagal. Konsisten di seluruh workbook."},
 {q: "Kenapa perubahan model wajib dicatat di changelog?", opts: ["Agar perubahan punya jejak & bisa diaudit","Agar file lebih besar","Agar warna sheet konsisten","Agar Solver berjalan"], answer: 0, k: "governance", diff: "Easy",
  hints: ["Perubahan tanpa jejak = bug yang menunggu ditemukan.", "Satu file, satu versi."],
- explain: "Changelog = jejak audit: tanggal, versi, apa berubah, kenapa. Tanpa itu, tidak ada yang bisa membedakan perbaikan dari kerusakan."}
+ explain: "Changelog = jejak audit: tanggal, versi, apa berubah, kenapa. Tanpa itu, tidak ada yang bisa membedakan perbaikan dari kerusakan."},
+{q: "Trial balance: debit Kas 500, Piutang 300, Persediaan 200, Beban 600; kredit Utang 400, Modal 400, Revenue 800. Laba dan cek neraca?", opts: ["Laba 200; aset 1.000 = utang 400 + ekuitas 600","Laba 600; aset 1.600 = utang 400 + ekuitas 1.200","Laba 800; aset 1.000 = utang 1.000 + ekuitas 0","Tidak balance \u2014 debit dan kredit beda"], answer: 0, k: "trial_balance", diff: "Medium",
+ hints: ["Debit total = 500+300+200+600; kredit total = 400+400+800.", "Laba = revenue \u2212 beban; ekuitas = modal + laba."],
+ explain: "Debit 1.600 = kredit 1.600 \u2713. Laba = 800 \u2212 600 = 200. Aset 1.000 = utang 400 + ekuitas (400+200) 600 \u2713."}
 
 ],
 hellPass: 80,
@@ -946,7 +950,8 @@ sections: [
 <p><b>1. Versioning &amp; changelog.</b> One file, one version: name it <i>Model_v1.2_2026-11-08.xlsx</i> (not <i>Model_final_FINAL2.xlsx</i>). A "Changelog" sheet up front: date | version | what changed | why. Rule: no change without a changelog row — a change with no trail = a bug waiting for someone else to find.</p>
 <p><b>2. Colour-coding (standard convention).</b> Blue = inputs (typed numbers); black = formulas; green = links to other sheets; red = warnings/failed checks. Consistent across the whole workbook — a reviewer must be able to read your model without a long legend.</p>
 <p><b>3. Protection.</b> Lock (Review → Protect Sheet) every formula cell; leave inputs open. One formula cell overwritten by a hard number = the whole column below it silently wrong — the most expensive bug in Excel (Day 02 § the forgotten $). Plus: one "single source of truth" — the same assumption must never be typed in two places (Day 08: the tax rate lives in one input cell, referenced everywhere).</p>
-<div class="callout"><b>Sub-point:</b> building 3 statements from a raw <i>trial balance</i> (not from transactions like Day 05) is the same governance exercise: the account → statement mapping must be documented on one mapping sheet, not memorised in your head.</div>`}],
+<div class="callout"><b>Sub-point:</b> building 3 statements from a raw <i>trial balance</i> (not from transactions like Day 05) is the same governance exercise: the account → statement mapping must be documented on one mapping sheet, not memorised in your head.</div>
+<p><b>Worked example \u2014 3 statements from a raw trial balance.</b> Trial balance (Rp thousands) \u2014 debits: Cash 500, Receivables 300, Inventory 200, Expenses 600 (total 1,600); credits: Payables 400, Capital 400, Revenue 800 (total 1,600). <b>Step 1 \u2014 check the balance:</b> debits 1,600 = credits 1,600 \u2713 (if they differ, stop \u2014 some account sits on the wrong side). <b>Step 2 \u2014 profit:</b> Revenue 800 \u2212 Expenses 600 = <b>profit 200</b>. <b>Step 3 \u2014 balance sheet:</b> assets 500 + 300 + 200 = 1,000; liabilities 400 + equity (400 + 200) = 1,000 \u2713. The key: a <b>mapping sheet</b> \u2014 one table writing which trial-balance account maps to which statement line (Cash \u2192 current assets; Revenue \u2192 income statement). Without a mapping sheet, the mapping lives only in its author's head \u2014 and leaves when they go on leave.</p>`}],
 quiz: [
 {q: `=16800*1.1 and =B5*(1+B6) give the same result today (B5=16800, B6=10%). Which is right for a model?`, opts: ["The =B5*(1+B6) one","Both are right","The =16800*1.1 one","Neither is right"], answer: 0, k: "model_structure",
  hints: ["Three months from now growth changes to 15%.","Which formula follows automatically?"],
@@ -968,7 +973,10 @@ quiz: [
  explain: "Blue = inputs; black = formulas; green = links to other sheets; red = warnings/failed checks. Consistent across the workbook."},
 {q: "Why must model changes be logged in a changelog?", opts: ["So changes leave a trail & can be audited","So the file gets bigger","So sheet colours stay consistent","So Solver runs"], answer: 0, k: "governance", diff: "Easy",
  hints: ["A change with no trail = a bug waiting to be found.", "One file, one version."],
- explain: "The changelog = the audit trail: date, version, what changed, why. Without it, nobody can tell an improvement from damage."}
+ explain: "The changelog = the audit trail: date, version, what changed, why. Without it, nobody can tell an improvement from damage."},
+{q: "Trial balance: debits Cash 500, Receivables 300, Inventory 200, Expenses 600; credits Payables 400, Capital 400, Revenue 800. Profit and balance-sheet check?", opts: ["Profit 200; assets 1,000 = payables 400 + equity 600","Profit 600; assets 1,600 = payables 400 + equity 1,200","Profit 800; assets 1,000 = payables 1,000 + equity 0","Out of balance \u2014 debits and credits differ"], answer: 0, k: "trial_balance", diff: "Medium",
+ hints: ["Debit total = 500+300+200+600; credit total = 400+400+800.", "Profit = revenue \u2212 expenses; equity = capital + profit."],
+ explain: "Debits 1,600 = credits 1,600 \u2713. Profit = 800 \u2212 600 = 200. Assets 1,000 = payables 400 + equity (400+200) 600 \u2713."}
 
 ],
 hell: [

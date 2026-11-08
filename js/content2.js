@@ -254,7 +254,9 @@ sections: [
 <div class="example warung"><div class="lbl">🏪 Contoh warung</div>
 <p>Kopi: harga Rp20rb, biaya variabel Rp12rb → kontribusi Rp8rb per gelas. Biaya tetap (sewa + gaji) Rp800rb/bulan. BEP = 800 ÷ 8 = <b>100 gelas/bulan</b>. Jual 150 gelas → laba = (150 − 100) × 8 = Rp400rb. <b>Margin of safety</b> = (150 − 100) ÷ 150 = <b>33,3%</b> — penjualan boleh turun sepertiga sebelum rugi.</p></div>
 <p><b>Kenapa analis peduli:</b> BEP yang tinggi = <i>operating leverage</i> tinggi (H02 § opex): sedikit penurunan volume, laba jatuh dalam. Itulah alasan perusahaan berbiaya tetap besar (pabrik, tambang, maskapai) punya laba yang jauh lebih volatil daripada revenue-nya. Saat memodelkan skenario bear di H13/H15, cek dulu berapa jauh volume dari BEP.</p>
-<div class="callout"><b>Jembatan ke H18:</b> CVP adalah versi sederhana dari flex budget — begitu volume bergerak, biaya variabel ikut, biaya tetap tidak. Rumus yang sama, skala yang lebih besar.</div>`}],
+<div class="callout"><b>Jembatan ke H18:</b> CVP adalah versi sederhana dari flex budget — begitu volume bergerak, biaya variabel ikut, biaya tetap tidak. Rumus yang sama, skala yang lebih besar.</div>
+<p><b>ABC costing: overhead tidak selalu ikut volume.</b> Alokasi tradisional membagi overhead Rp1.200rb menurut unit (1.500 unit \u2192 Rp0,8rb/unit): Kopi (1.000 unit) menanggung 800, Kue (500 unit) 400. <b>Activity-based costing (ABC)</b> menelusuri pemicu biaya: setup Rp400rb/40 setup = Rp10rb per setup; inspeksi Rp800rb/200 inspeksi = Rp4rb per inspeksi. Kopi (20 setup, 50 inspeksi) \u2192 20\u00d710 + 50\u00d74 = <b>Rp400rb (Rp0,4rb/unit)</b>; Kue (20 setup, 150 inspeksi) \u2192 200 + 600 = <b>Rp800rb (Rp1,6rb/unit)</b> \u2014 kebalikan dari alokasi volume! Kue yang \u201ckecil\u201d ternyata rakus inspeksi. Alokasi volume menghukum produk bervolume dan menyembunyikan produk yang rakus aktivitas.</p>
+<p><b>Transfer pricing: harga internal mengubah laba divisi, bukan laba grup.</b> Divisi Hulu menjual ke Hilir: biaya variabel Rp30rb/unit, harga pasar Rp60rb. Harga transfer Rp50rb \u2192 laba Hulu Rp20rb/unit. Bila kapasitas Hulu menganggur, harga transfer minimum = biaya variabel Rp30rb \u2014 di bawah itu Hulu rugi tiap unit yang ditransfer. Di atas harga pasar (Rp60rb), Hilir lebih baik beli dari luar. Aturan: transfer internal hanya masuk akal bila harga transfer berada di antara biaya variabel dan harga pasar \u2014 dan laba grup tidak berubah oleh pilihan harga transfernya, hanya pembagiannya antar divisi (yang memengaruhi bonus dan keputusan beli/jual internal).</p>`}],
 quiz: [
 {q: "Warung: 50 pelanggan/hari × Rp20rb × 26 hari buka. Proyeksi revenue sebulan?", opts: ["Rp20jt","Rp26jt","Rp13jt","Rp52jt"], answer: 1, k: "revenue_modeling", diff: "Easy",
  hints: ["Revenue = volume × harga × periode.", "50 × 20.000 × 26 = ?"],
@@ -288,7 +290,13 @@ quiz: [
  explain: "D/E (utang berbunga) = 10 ÷ 4 = 2,50×; coverage = 6 ÷ 1 = 6,0×. Leverage tinggi tapi bunga masih tertutup 6 kali."},
 {q: "Harga Rp20rb, biaya variabel Rp12rb, biaya tetap Rp800rb/bulan. BEP dan margin of safety pada 150 unit?", opts: ["100 unit; 33,3%","160 unit; 20%","66 unit; 50%","100 unit; 50%"], answer: 0, k: "cvp", diff: "Medium",
  hints: ["Kontribusi = 20 − 12 = 8; BEP = 800 ÷ 8.", "Margin of safety = (150 − BEP) ÷ 150."],
- explain: "Kontribusi Rp8rb; BEP = 800 ÷ 8 = 100 unit. Margin of safety = (150 − 100) ÷ 150 = 33,3%."}
+ explain: "Kontribusi Rp8rb; BEP = 800 ÷ 8 = 100 unit. Margin of safety = (150 − 100) ÷ 150 = 33,3%."},
+{q: "Overhead Rp1.200rb: setup Rp400rb/40 setup, inspeksi Rp800rb/200 inspeksi. Kopi: 20 setup, 50 inspeksi, 1.000 unit. Biaya overhead Kopi menurut ABC?", opts: ["Rp400rb (Rp0,4rb/unit)","Rp800rb (Rp0,8rb/unit)","Rp1.200rb","Rp200rb"], answer: 0, k: "abc_costing", diff: "Medium",
+ hints: ["Setup: 20 \u00d7 (400 \u00f7 40) = 200; inspeksi: 50 \u00d7 (800 \u00f7 200) = 200.", "Alokasi volume (Rp800rb) adalah jawaban yang salah di sini."],
+ explain: "ABC Kopi = 20\u00d710 + 50\u00d74 = 200 + 200 = Rp400rb (Rp0,4rb/unit). Alokasi volume memberi 800 \u2014 kebalikannya, karena Kue yang rakus inspeksi."},
+{q: "Biaya variabel Hulu Rp30rb, harga pasar Rp60rb, kapasitas Hulu menganggur. Harga transfer minimum?", opts: ["Rp30rb","Rp50rb","Rp60rb","Rp0"], answer: 0, k: "transfer_pricing", diff: "Easy",
+ hints: ["Di bawah biaya variabel, Hulu rugi tiap unit.", "Harga pasar adalah batas atas, bukan batas bawah."],
+ explain: "Minimum = biaya variabel Rp30rb (kapasitas menganggur). Di atas Rp60rb, Hilir lebih baik beli dari luar."}
 
 ],
 hellPass: 80,
@@ -3149,7 +3157,8 @@ sections: [
 </table>
 <div class="example warung"><div class="lbl">\uD83C\uDFEA Versi warung</div>
 <p>Warung Septian tidak punya 4 hal ini \u2014 makanya "akuntansi sulit" identik dengan korporat. Tapi logikanya warung banget: <b>sewa ruko 5 tahun yang "tidak tercatat sebagai utang"</b> (padahal kamu WAJIB bayar 5 tahun) = lease; <b>"bayar pajaknya nanti aja"</b> = deferred tax; <b>"gaji karyawan dibayar pakai bagi hasil, bukan kas"</b> = stock comp; <b>"rugi tahun lalu jadi potongan tahun ini"</b> = NOL.</p></div>
-<div class="callout"><b>Kenapa dipelajari di Hari 20, bukan Minggu 1?</b> Karena 4 hal ini adalah <i>lapisan kedua</i> akuntansi: kamu harus sudah fasih membaca 3 statement dulu (Minggu 1) sebelum bisa melihat "apa yang disembunyikan" di baliknya. Analis yang melewatkan lapisan ini akan salah baca leverage, salah baca pajak, dan salah baca kas \u2014 tiga-tiganya sekaligus.</div>`},
+<div class="callout"><b>Kenapa dipelajari di Hari 20, bukan Minggu 1?</b> Karena 4 hal ini adalah <i>lapisan kedua</i> akuntansi: kamu harus sudah fasih membaca 3 statement dulu (Minggu 1) sebelum bisa melihat "apa yang disembunyikan" di baliknya. Analis yang melewatkan lapisan ini akan salah baca leverage, salah baca pajak, dan salah baca kas \u2014 tiga-tiganya sekaligus.</div>
+<p><b>Tautan silang:</b> misi detektif di atas melatih skeptisisme \u2014 menemukan yang disembunyikan. Workflow membaca annual report end-to-end (MD&amp;A + notes + segmen, dari halaman pertama sampai catatan kaki) ada di <b>FSA Lab M45</b>; selesaikan M45 dulu bila kamu belum pernah membaca satu annual report utuh.</p>`},
 {h: "Kenapa lease = utang tersamar (PSAK 116)", body: `
 <p>PT Maju Jaya menyewa alat 5 tahun, Rp1.200rb/tahun, discount rate 8%. Perlakuan lama (dan perlakuan "analis junior" di file misi): catat <b>beban sewa Rp1.200rb/tahun</b>, selesai. Masalahnya: perusahaan <b>terikat kontrak membayar Rp6.000rb selama 5 tahun</b> \u2014 itu utang, apa pun namanya. PSAK 116/IFRS 16 memaksa mengakuinya:</p>
 <div class="formula">PV liabilitas = 1.200 \u00d7 (1 \u2212 1,08<sup>\u22125</sup>) \u00f7 0,08 = 1.200 \u00d7 3,99271 = <b>Rp4.791,25rb</b></div>
@@ -4731,7 +4740,8 @@ sections: [
 ,
 {h: "Batas cakupan: yang sengaja TIDAK diajarkan Sprint ini", body: `
 <p>Sprint ini menutup kurikulum FMVA (CFI) — dan secara sadar <b>tidak</b> menutup dua wilayah: <b>derivatif &amp; hedging</b> (futures, options, swap, lindung nilai FX/suku bunga) dan <b>valuasi real option dengan Black-Scholes</b> penuh. Alasannya: sertifikasi FMVA tidak menguji derivatif, dan hedging adalah disiplin tersendiri (treasury, bukan modeling). Ini batas eksplisit, bukan backlog — bila kamu butuh hedging untuk pekerjaan, pelajari dari jalur treasury setelah lulus, dengan fondasi DCF-mu sebagai pijakan. Yang sudah kamu kuasai sebagai gantinya: decision tree &amp; binomial sederhana (H15, real-07) — cukup untuk mengenali kapan sebuah proyek punya nilai fleksibilitas, tanpa berpura-pura bisa memberi harga opsi eksotis.</p>
-<p><b>Yang juga baru di v1.61:</b> Hari 31 (Bonus) — IPO &amp; dokumen deal IB — dan real-10 project finance (JSMR). Keduanya di luar gerbang akhir: H30 tetap gerbang kelulusanmu; Hari 31 dan real-10 adalah elektif pasca-lulus, bukan syarat lulus.</p>`},
+<p><b>Yang juga baru di v1.61:</b> Hari 31 (Bonus) — IPO &amp; dokumen deal IB — dan real-10 project finance (JSMR). Keduanya di luar gerbang akhir: H30 tetap gerbang kelulusanmu; Hari 31 dan real-10 adalah elektif pasca-lulus, bukan syarat lulus.</p>
+<p><b>Yang juga baru di v1.64:</b> real-11 asuransi (combined ratio, reserving, RBC &amp; embedded value) dan real-12 SaaS (LTV/CAC, churn cohort, NRR &amp; Rule of 40) \u2014 keduanya elektif pasca-lulus seperti real-10, bukan syarat lulus.</p>`},
 {h: "Tautan silang: FSA Lab — MD&A & Power BI", body: `
 <p>Dua keterampilan tidak dibangun duplikatif di Sprint karena sudah ada, lebih dalam, di <b>FSA Lab</b> (jalur belajar saudara Sprint ini):</p>
 <ul>
@@ -5205,7 +5215,9 @@ sections: [
 <div class="example warung"><div class="lbl">🏪 Corner-shop example</div>
 <p>Coffee: price Rp20k, variable cost Rp12k → contribution Rp8k per cup. Fixed cost (rent + wages) Rp800k/month. BEP = 800 ÷ 8 = <b>100 cups/month</b>. Sell 150 cups → profit = (150 − 100) × 8 = Rp400k. <b>Margin of safety</b> = (150 − 100) ÷ 150 = <b>33.3%</b> — sales can fall by a third before losses start.</p></div>
 <p><b>Why analysts care:</b> a high BEP = high <i>operating leverage</i> (Day 02 § opex): a small volume drop, and profit falls hard. That is why fixed-cost-heavy businesses (factories, miners, airlines) have far more volatile profits than their revenue. When modelling a bear scenario in Day 13/15, check first how far volume sits from BEP.</p>
-<div class="callout"><b>Bridge to Day 18:</b> CVP is the simple version of a flex budget — when volume moves, variable cost moves with it, fixed cost does not. Same formula, bigger scale.</div>`}],
+<div class="callout"><b>Bridge to Day 18:</b> CVP is the simple version of a flex budget — when volume moves, variable cost moves with it, fixed cost does not. Same formula, bigger scale.</div>
+<p><b>ABC costing: overhead does not always follow volume.</b> Traditional allocation splits Rp1,200k of overhead by units (1,500 units \u2192 Rp0.8k/unit): Coffee (1,000 units) bears 800, Cake (500 units) 400. <b>Activity-based costing (ABC)</b> traces cost drivers: setups Rp400k/40 setups = Rp10k per setup; inspections Rp800k/200 inspections = Rp4k per inspection. Coffee (20 setups, 50 inspections) \u2192 20\u00d710 + 50\u00d74 = <b>Rp400k (Rp0.4k/unit)</b>; Cake (20 setups, 150 inspections) \u2192 200 + 600 = <b>Rp800k (Rp1.6k/unit)</b> \u2014 the reverse of volume allocation! The \u201csmall\u201d cake is inspection-hungry. Volume allocation punishes high-volume products and hides activity-hungry ones.</p>
+<p><b>Transfer pricing: an internal price moves profit between divisions, not group profit.</b> The Upstream division sells to Downstream: variable cost Rp30k/unit, market price Rp60k. A transfer price of Rp50k \u2192 Upstream profit Rp20k/unit. With idle Upstream capacity, the minimum transfer price = variable cost Rp30k \u2014 below that, Upstream loses on every unit transferred. Above the market price (Rp60k), Downstream should buy outside. Rule: an internal transfer only makes sense when the transfer price sits between variable cost and market price \u2014 and group profit does not change with the transfer price chosen, only its split between divisions (which drives bonuses and buy/sell decisions).</p>`}],
 quiz: [
 {q: `Shop: 50 customers/day × Rp20k × 26 open days. Projected monthly revenue?`, opts: ["Rp20m","Rp26m","Rp13m","Rp52m"], answer: 1, k: "revenue_modeling",
  hints: ["Revenue = volume × price × period.","50 × 20,000 × 26 = ?"],
@@ -5239,7 +5251,13 @@ quiz: [
  explain: "D/E (interest-bearing debt) = 10 ÷ 4 = 2.50×; coverage = 6 ÷ 1 = 6.0×. High leverage, but interest is still covered 6 times."},
 {q: "Price Rp20k, variable cost Rp12k, fixed cost Rp800k/month. BEP and margin of safety at 150 units?", opts: ["100 units; 33.3%","160 units; 20%","66 units; 50%","100 units; 50%"], answer: 0, k: "cvp", diff: "Medium",
  hints: ["Contribution = 20 − 12 = 8; BEP = 800 ÷ 8.", "Margin of safety = (150 − BEP) ÷ 150."],
- explain: "Contribution Rp8k; BEP = 800 ÷ 8 = 100 units. Margin of safety = (150 − 100) ÷ 150 = 33.3%."}
+ explain: "Contribution Rp8k; BEP = 800 ÷ 8 = 100 units. Margin of safety = (150 − 100) ÷ 150 = 33.3%."},
+{q: "Overhead Rp1,200k: setups Rp400k/40 setups, inspections Rp800k/200 inspections. Coffee: 20 setups, 50 inspections, 1,000 units. Coffee overhead under ABC?", opts: ["Rp400k (Rp0.4k/unit)","Rp800k (Rp0.8k/unit)","Rp1,200k","Rp200k"], answer: 0, k: "abc_costing", diff: "Medium",
+ hints: ["Setups: 20 \u00d7 (400 \u00f7 40) = 200; inspections: 50 \u00d7 (800 \u00f7 200) = 200.", "Volume allocation (Rp800k) is the wrong answer here."],
+ explain: "ABC Coffee = 20\u00d710 + 50\u00d74 = 200 + 200 = Rp400k (Rp0.4k/unit). Volume allocation gives 800 \u2014 the reverse, because Cake is inspection-hungry."},
+{q: "Upstream variable cost Rp30k, market price Rp60k, idle Upstream capacity. Minimum transfer price?", opts: ["Rp30k","Rp50k","Rp60k","Rp0"], answer: 0, k: "transfer_pricing", diff: "Easy",
+ hints: ["Below variable cost, Upstream loses on every unit.", "Market price is the ceiling, not the floor."],
+ explain: "Minimum = variable cost Rp30k (idle capacity). Above Rp60k, Downstream should buy outside."}
 
 ],
 hell: [
@@ -7939,7 +7957,8 @@ sections: [
 </table>
 <div class="example warung"><div class="lbl">\uD83C\uDFEA Warung version</div>
 <p>Warung Septian has none of these \u2014 that's why "hard accounting" screams corporate. But the logic is pure warung: <b>a 5-year shop lease "not recorded as debt"</b> (though you MUST pay for 5 years) = lease; <b>"pay the tax later"</b> = deferred tax; <b>"staff paid in profit share, not cash"</b> = stock comp; <b>"last year's loss becomes this year's discount"</b> = NOL.</p></div>
-<div class="callout"><b>Why Day 20, not Week 1?</b> Because these four are accounting's <i>second layer</i>: you must read 3 statements fluently first (Week 1) before you can see "what's hidden" behind them. An analyst who skips this layer misreads leverage, misreads tax, and misreads cash \u2014 all three at once.</div>`},
+<div class="callout"><b>Why Day 20, not Week 1?</b> Because these four are accounting's <i>second layer</i>: you must read 3 statements fluently first (Week 1) before you can see "what's hidden" behind them. An analyst who skips this layer misreads leverage, misreads tax, and misreads cash \u2014 all three at once.</div>
+<p><b>Cross-link:</b> the detective mission above trains scepticism \u2014 finding what is hidden. The end-to-end annual-report reading workflow (MD&amp;A + notes + segments, first page to footnotes) lives in <b>FSA Lab M45</b>; do M45 first if you have never read a full annual report.</p>`},
 {h: "Why a lease = disguised debt (PSAK 116)", body: `
 <p>PT Maju Jaya leases equipment for 5 years at Rp1,200k/year, 8% discount rate. The old treatment (and the "junior analyst's" treatment in the mission file): book <b>Rp1,200k/year rent expense</b>, done. The problem: the firm is <b>contractually bound to pay Rp6,000k over 5 years</b> \u2014 that's debt, whatever you call it. PSAK 116/IFRS 16 forces recognition:</p>
 <div class="formula">PV of liability = 1,200 \u00d7 (1 \u2212 1.08<sup>\u22125</sup>) \u00f7 0.08 = 1,200 \u00d7 3.99271 = <b>Rp4,791.25k</b></div>
@@ -9489,7 +9508,8 @@ sections: [
 ,
 {h: "Scope boundary: what this Sprint deliberately does NOT teach", body: `
 <p>This Sprint covers the FMVA (CFI) curriculum — and deliberately does <b>not</b> cover two areas: <b>derivatives &amp; hedging</b> (futures, options, swaps, FX/interest-rate hedging) and full <b>Black-Scholes real-option pricing</b>. Reason: the FMVA exam does not test derivatives, and hedging is its own discipline (treasury, not modelling). This is an explicit boundary, not a backlog — if your job needs hedging, study it via a treasury track after graduating, with your DCF foundation as the base. What you do have instead: decision trees &amp; simple binomials (Day 15, real-07) — enough to recognise when a project carries flexibility value, without pretending to price exotic options.</p>
-<p><b>Also new in v1.61:</b> Day 31 (Bonus) — IPOs &amp; IB deal documents — and real-10 project finance (JSMR). Both sit outside the final gate: Day 30 remains your graduation gate; Day 31 and real-10 are post-graduation electives, not graduation requirements.</p>`},
+<p><b>Also new in v1.61:</b> Day 31 (Bonus) — IPOs &amp; IB deal documents — and real-10 project finance (JSMR). Both sit outside the final gate: Day 30 remains your graduation gate; Day 31 and real-10 are post-graduation electives, not graduation requirements.</p>
+<p><b>Also new in v1.64:</b> real-11 insurance (combined ratio, reserving, RBC &amp; embedded value) and real-12 SaaS (LTV/CAC, churn cohorts, NRR &amp; Rule of 40) \u2014 both post-graduation electives like real-10, not graduation requirements.</p>`},
 {h: "Cross-links: FSA Lab — MD&A & Power BI", body: `
 <p>Two skills are not rebuilt here because they already exist, deeper, in <b>FSA Lab</b> (this Sprint's sibling track):</p>
 <ul>
