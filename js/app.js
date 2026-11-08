@@ -830,22 +830,22 @@ const WB_CFG = {
       "Precedent EV (Rp T)","Selisih DCF-vs-comps (Rp T)"],
     expect: [["Median EV/EBITDA",8.1818,0.01],["Median P/E",13.75,0.01],
       ["INDF implied EV (Rp T)",98.18,0.1],["INDF implied ekuitas P/E (Rp T)",89.38,0.1],
-      ["Football low (Rp T)",62.18,0.1],["Football high (Rp T)",102.73,0.1],
-      ["Precedent EV (Rp T)",122.73,0.1],["Selisih DCF-vs-comps (Rp T)",5.03,0.1]],
+      ["Football low (Rp T)",63.37,0.1],["Football high (Rp T)",102.73,0.1],
+      ["Precedent EV (Rp T)",122.73,0.1],["Selisih DCF-vs-comps (Rp T)",3.63,0.1]],
     balance: false
   },
 "hari-12": {
     tpl: "Latihan Hari 12",
     labels: ["Revenue 2026 (Rp triliun)","COGS % revenue","Beban SG&A 2026 (Rp triliun)","Beban bunga 2026 (Rp triliun)","Tarif pajak","Penyusutan 2026 (Rp triliun)","Capex 2026 (Rp triliun)","Dividen 2026 (Rp triliun)","Bayar utang bank 2026 (Rp triliun)","Kas awal 2026 (Rp triliun)","Piutang awal 2026 (Rp triliun)","Persediaan awal 2026 (Rp triliun)","PPE neto awal 2026 (Rp triliun)","Utang usaha awal 2026 (Rp triliun)","Utang bank awal 2026 (Rp triliun)","Modal disetor (Rp triliun)","Laba ditahan awal 2026 (Rp triliun)","Piutang akhir 2026 (Rp triliun)","Persediaan akhir 2026 (Rp triliun)","Utang usaha akhir 2026 (Rp triliun)","Laba kotor 2026","EBIT 2026","Laba bersih 2026","ΔWC 2026","Arus kas operasi (CFO)","Kas akhir 2026","FCFF 2026","PPE neto 2026","Laba ditahan 2026","Utang bank 2026","TOTAL ASET","TOTAL LIABILITAS","TOTAL EKUITAS","Cek balance (A = L + E)"],
     formulaLabels: ["Laba bersih 2026","Arus kas operasi (CFO)","Kas akhir 2026","TOTAL ASET","Laba ditahan 2026","ΔWC 2026","FCFF 2026","Cek balance (A = L + E)"],
-    expect: [["Laba bersih 2026",15.21,0.02],["Arus kas operasi (CFO)",21.5,0.02],["Kas akhir 2026",26.9,0.02],["TOTAL ASET",150.8,0.05],["Laba ditahan 2026",60.43,0.02],["ΔWC 2026",0.21,0.01],["FCFF 2026",15.9,0.02]],
+    expect: [["Laba bersih 2026",15.21,0.02],["Arus kas operasi (CFO)",21.5,0.02],["Kas akhir 2026",26.9,0.02],["TOTAL ASET",150.8,0.05],["Laba ditahan 2026",60.43,0.02],["ΔWC 2026",0.21,0.01],["FCFF 2026",17.46,0.02]],
     balance: true
   },
 "hari-13": {
     tpl: "Latihan Hari 13",
     labels: ["FCFF 2026 (Rp triliun)","FCFF 2027 (Rp triliun)","FCFF 2028 (Rp triliun)","FCFF 2029 (Rp triliun)","FCFF 2030 (Rp triliun)","WACC","g perpetuitas","EBITDA 2030 (Rp triliun)","Exit multiple","Utang bank 2026 (Rp triliun)","Kas akhir 2026 (Rp triliun)","Saham beredar (miliar)","WACC sens rendah","WACC sens tinggi","PV FCFF 2026–2030","TV perpetuitas (akhir 2030)","PV TV","EV (perpetuitas)","Net debt","Ekuitas","Nilai per saham ilustrasi (Rp)","Sens ekuitas (WACC 13%)","Sens ekuitas (WACC 11%)","TV exit multiple","PV TV exit","EV (exit multiple)","Ekuitas (exit)"],
     formulaLabels: ["TV perpetuitas (akhir 2030)","PV TV","EV (perpetuitas)","Net debt","Ekuitas","Nilai per saham ilustrasi (Rp)","Sens ekuitas (WACC 13%)","Sens ekuitas (WACC 11%)"],
-    expect: [["TV perpetuitas (akhir 2030)",112.17,0.1],["PV TV",63.65,0.1],["EV (perpetuitas)",113.25,0.1],["Net debt",40.1,0.05],["Ekuitas",73.15,0.05],["Nilai per saham ilustrasi (Rp)",8332,5],["Sens ekuitas (WACC 13%)",63.84,0.1],["Sens ekuitas (WACC 11%)",84.45,0.1]],
+    expect: [["TV perpetuitas (akhir 2030)",112.17,0.1],["PV TV",63.65,0.1],["EV (perpetuitas)",114.65,0.1],["Net debt",40.1,0.05],["Ekuitas",74.55,0.05],["Nilai per saham ilustrasi (Rp)",8491,5],["Sens ekuitas (WACC 13%)",65.22,0.1],["Sens ekuitas (WACC 11%)",85.85,0.1]],
     balance: false
   },
 "hari-14": {

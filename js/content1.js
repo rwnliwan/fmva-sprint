@@ -141,7 +141,7 @@ sections: [
 <li><b>Dividen bukan beban.</b> Dividen mengurangi laba ditahan langsung, tidak lewat laba rugi.
 <br><i>Kenapa?</i> Lihat bagian Laba ditahan di atas: dividen = pembagian hasil ke pemilik, bukan biaya menghasilkan pendapatan.</li>
 </ul>`},
-{h: "FIFO vs LIFO: persediaan sama, laba beda", body: `
+{h: "FIFO (First-In, First-Out) vs LIFO (Last-In, First-Out): persediaan sama, laba beda", body: `
 <p>Persediaan yang sama bisa menghasilkan laba yang <b>beda</b> — tergantung <i>urutan</i> mana yang dianggap terjual dulu:</p>
 <p><b>Contoh kerja (ilustrasi dinyatakan):</b> beli 100 unit @ Rp10rb, lalu 100 unit @ Rp12rb. Jual 100 unit @ Rp20rb (revenue Rp2.000rb).</p>
 <table class="brutal">
@@ -190,7 +190,7 @@ hell: [
  explain: "Pendapatan sudah diakui bulan lalu. Saat bayar: aset bertukar bentuk — kas naik, piutang turun."},
 {q: "Neraca: Aset 100, Liabilitas 60. Tahun ini rugi 10, tidak ada setoran/penarikan modal. Ekuitas baru?", opts: ["40","50","30","60"], answer: 2,
  explain: "Ekuitas awal 40. Rugi 10 → 30. Cek: aset ikut turun 10 (90) = 60 + 30 ✓"},
-{q: "Dividen Rp5jt diumumkan dan dibayar tunai. Efek ke 3 laporan?", opts: ["IS turun 5jt; BS dan CFS tetap","IS tetap; BS: kas −5, RE −5; CFS: −5 pendanaan","IS tetap; CFS: −5 di operasi","BS tidak berubah sama sekali"], answer: 1,
+{q: "Dividen Rp5jt diumumkan dan dibayar tunai. Efek ke 3 laporan?", opts: ["IS turun 5jt; BS dan CFS tetap","IS tetap; BS: kas −5, RE −5; CFS (laporan arus kas): −5 pendanaan","IS tetap; CFS: −5 di operasi","BS tidak berubah sama sekali"], answer: 1,
  explain: "Dividen bukan beban — tidak menyentuh IS. Langsung mengurangi kas dan laba ditahan; di CFS masuk pendanaan."},
 {q: "Beli mesin Rp120jt tunai, umur 6 tahun, garis lurus. Beban tahun 1 dan efek ke laba vs kas?", opts: ["Beban 120jt; laba dan kas turun 120jt","Tidak ada beban di tahun pertama","Beban 20jt; laba turun, kas tidak keluar","Beban 20jt; kas ikut turun 20jt"], answer: 2,
  explain: "120/6 = 20jt beban/tahun. Kas sudah keluar saat beli (tahun 0). Tahun 1: laba turun 20jt, kas tidak bergerak."},
@@ -439,7 +439,7 @@ sections: [
 <li><b>Dividends are not expenses.</b> Dividends reduce retained earnings directly, bypassing the income statement.
 <br><i>Why?</i> See Retained earnings above: dividends = sharing results with owners, not a cost of earning revenue.</li>
 </ul>`},
-{h: "FIFO vs LIFO: same inventory, different profit", body: `
+{h: "FIFO (First-In, First-Out) vs LIFO (Last-In, First-Out): same inventory, different profit", body: `
 <p>The same inventory can produce a <b>different</b> profit — depending on <i>which</i> units are deemed sold first:</p>
 <p><b>Worked example (stated illustration):</b> buy 100 units @ Rp10k, then 100 units @ Rp12k. Sell 100 units @ Rp20k (revenue Rp2,000k).</p>
 <table class="brutal">
@@ -486,7 +486,7 @@ hell: [
  explain: `Revenue was already recognized last month. On payment: assets swap form — cash up, receivables down.`},
 {q: `Balance sheet: Assets 100, Liabilities 60. This year a loss of 10, no capital injections/withdrawals. New equity?`, opts: ["40","50","30","60"], answer: 2,
  explain: `Starting equity 40. Loss of 10 → 30. Check: assets fell by 10 too (90) = 60 + 30 ✓`},
-{q: `Rp5m dividend declared and paid in cash. Effect on the 3 statements?`, opts: ["IS down 5m; BS and CFS unchanged","IS unchanged; BS: cash −5, RE −5; CFS: −5 financing","IS unchanged; CFS: −5 in operations","The BS is completely unchanged"], answer: 1,
+{q: `Rp5m dividend declared and paid in cash. Effect on the 3 statements?`, opts: ["IS down 5m; BS and CFS unchanged","IS unchanged; BS: cash −5, RE −5; CFS (Cash Flow Statement): −5 financing","IS unchanged; CFS: −5 in operations","The BS is completely unchanged"], answer: 1,
  explain: `Dividends aren't expenses — they never touch the IS. They directly cut cash and retained earnings; in the CFS they sit in financing.`},
 {q: `Buy a Rp120m machine in cash, 6-year life, straight line. Year-1 expense and profit vs cash effect?`, opts: ["120m expense; profit and cash fall 120m","No expense is recorded in year one","20m expense; profit falls, no cash leaves","20m expense; cash falls 20m too"], answer: 2,
  explain: `120/6 = 20m expense/year. Cash already left at purchase (year 0). Year 1: profit down 20m, cash unmoved.`},

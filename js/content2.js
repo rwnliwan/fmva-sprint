@@ -203,7 +203,7 @@ sections: [
 <tr><td><b>Laba bersih</b></td><td><b>1.700</b></td><td>tanpa bunga & pajak; net margin 10,1%</td></tr>
 </table>
 <p><b>Baca modelnya:</b> revenue naik 12% tapi EBIT naik 54,5% (1.100 → 1.700) — kenapa? Karena sewa & gaji (fixed) naik cuma 5%, tidak ikut revenue. Itulah operating leverage bekerja <i>untukmu</i>. Tugas praktik: bangun ulang ini di Excel (file latihan di Drive) — semua sel jawaban harus rumus. <b>Konvensi tanda hari ini:</b> beban diketik <b>positif</b> — contoh: 2520; rumuslah yang mengurangkan. (Beda dengan Hari 01!) Margin diketik sebagai desimal/persen: 0,101 atau 10,1% — bukan 10,1.</p>`},
-{h: "DuPont: membedah ROE jadi tiga tuas", body: `
+{h: "DuPont: membedah ROE (Return on Equity) jadi tiga tuas", body: `
 <p>ROE 25% terdengar hebat — sampai kamu tanya: <i>dari mana</i> datangnya 25% itu? <b>DuPont</b> membedah ROE jadi tiga tuas yang bisa dibaca satu-satu:</p>
 <div class="formula">ROE = Margin laba × Perputaran aset × Pengali ekuitas = (NI ÷ Penjualan) × (Penjualan ÷ Rata-rata aset) × (Rata-rata aset ÷ Rata-rata ekuitas)</div>
 <p><b>Contoh kerja (ilustrasi dinyatakan):</b> margin 10% × perputaran 1,25× × pengali 2,0× = <b>ROE 25%</b>.</p>
@@ -230,7 +230,7 @@ sections: [
 <p>Satu rasio tidak bercerita apa-apa. Lima keluarga rasio — dibaca bersama — bercerita tentang kesehatan perusahaan. Inilah taksonomi yang dipakai analis di mana-mana:</p>
 <table class="brutal">
 <tr><th>Keluarga</th><th>Rasio kunci</th><th>Rumus</th><th>Yang ditanyakan</th></tr>
-<tr><td><b>Profitabilitas</b></td><td>Gross margin, net margin, ROE, ROIC</td><td>ROE = NI ÷ Ekuitas; ROIC = NOPAT ÷ Modal</td><td>Apakah bisnisnya menguntungkan &amp; efisien memakai modal?</td></tr>
+<tr><td><b>Profitabilitas</b></td><td>Gross margin, net margin, ROE, ROIC (Return on Invested Capital)</td><td>ROE = NI ÷ Ekuitas; ROIC = NOPAT ÷ Modal</td><td>Apakah bisnisnya menguntungkan &amp; efisien memakai modal?</td></tr>
 <tr><td><b>Likuiditas</b></td><td>Current ratio, quick ratio, cash ratio</td><td>Current = Aset lancar ÷ Liabilitas lancar</td><td>Bisakah membayar tagihan 12 bulan ke depan?</td></tr>
 <tr><td><b>Leverage</b></td><td>Debt-to-equity, debt-to-assets, interest coverage</td><td>D/E = Utang berbunga ÷ Ekuitas; Coverage = EBIT ÷ Bunga</td><td>Apakah utangnya sudah kelewatan?</td></tr>
 <tr><td><b>Efisiensi</b></td><td>Perputaran aset, DSO/DIO/DPO, CCC</td><td>Perputaran = Revenue ÷ Aset</td><td>Seberapa cepat aset berubah jadi kas?</td></tr>
@@ -551,8 +551,8 @@ sections: [
 <div class="callout"><b>Kenapa linkage = setengah nilai model?</b> Karena linkage membuat model <b>self-checking</b>: satu angka salah, tiga jembatan berteriak. Tanpa linkage, kesalahan Rp1 miliar bisa tidur di sel yang tidak pernah dicek. Dengan linkage, ia ketahuan dalam 5 detik.</div>`},
 {h: "FCFF: pengantar (jembatan ke DCF)", body: `
 <p>Satu turunan CFO yang akan menjadi bintang Minggu 2:</p>
-<div class="formula">FCFF = CFO − Capex</div>
-<p><b>FCFF</b> (free cash flow to firm) = kas yang benar-benar "bebas" setelah operasi berjalan dan investasi pemeliharaan dibayar — kas yang tersedia untuk <b>semua</b> pemodal (kreditor + pemegang saham). Inilah angka yang didiskon di DCF.</p>
+<div class="formula">FCFF = CFO + bunga×(1−t) − Capex</div>
+<p>Rumus singkat "CFO − capex" berlaku di warung ini karena ia <b>100% ekuitas tanpa utang</b> — tanpa bunga, CFO sudah bersih dari biaya utang. Rumus umumnya (Hari 09): FCFF = CFO + bunga×(1−t) − capex. <b>FCFF</b> (free cash flow to firm) = kas yang benar-benar "bebas" setelah operasi berjalan dan investasi pemeliharaan dibayar — kas yang tersedia untuk <b>semua</b> pemodal (kreditor + pemegang saham). Inilah angka yang didiskon di DCF.</p>
 <div class="example warung"><div class="lbl">🏪 Contoh warung</div>
 <p>FCFF 2026 = 1.850 − 2.000 = <b>−Rp150rb</b>. Negatif! Tapi bukan vonis mati: warung sedang ekspansi (capex > CFO). FCFF negatif saat ekspansi = wajar; FCFF negatif terus-menerus tanpa pertumbuhan = model bisnis berdarah.</p></div>
 <div class="callout"><b>Kenapa FCFF, bukan laba, yang didiskon?</b> Karena investor tidak bisa membelanjakan "laba akuntansi" — yang bisa dibagikan sebagai dividen atau dipakai bayar utang hanyalah <b>kas bebas</b>. DCF = memproyeksikan FCFF 5–10 tahun, mendiskonnya ke hari ini. Hari 04 memberimu fondasinya; Minggu 2 membangun menaranya.</div>`},
@@ -574,7 +574,7 @@ sections: [
 <li><b>Metode tidak langsung</b> (indirect method) — CFO dihitung dari NI: add-back beban non-kas ± ΔWC.</li>
 <li><b>Add-back</b> — menambahkan kembali beban non-kas (penyusutan) ke NI.</li>
 <li><b>CFO / CFI / CFF</b> — kas operasi / investasi / pendanaan. Tiga seksi, tiga cerita.</li>
-<li><b>FCFF</b> — free cash flow to firm = CFO − capex. Kas bebas untuk semua pemodal; didiskon di DCF.</li>
+<li><b>FCFF</b> — free cash flow to firm = CFO + bunga×(1−t) − capex (tanpa utang: CFO − capex). Kas bebas untuk semua pemodal; didiskon di DCF.</li>
 <li><b>Linkage</b> — tiga jembatan IS ↔ BS ↔ CFS yang harus selalu balance.</li>
 </ul>`}
 ],
@@ -1181,7 +1181,7 @@ sections: [
 <p>RE: 200 + 2.075 − 1.500 = <b>775</b> ✓. Balance: 11.545 = 11.545 ✓. Kas: 3.300 = kas akhir arus kas ✓ (Jembatan 2).</p>
 <div class="callout"><b>Kenapa tiga cek ini diulang setiap tahun forecast?</b> Karena forecast = puluhan asumsi yang saling terkait; satu link putus, seluruh tahun rusak. Tiga cek (balance, tie-out, RE roll) adalah <i>alarm</i> yang menangkap putusnya link sebelum angka dipakai valuasi.</div>`},
 {h: "FCFF 2027 & jembatan ke DCF", body: `
-<div class="formula">FCFF = CFO − Capex = 2.450 − 2.500 = <b>−Rp50rb</b></div>
+<div class="formula">FCFF = CFO − Capex = 2.450 − 2.500 = <b>−Rp50rb</b> (warung tanpa utang)</div>
 <p>FCFF 2027 negatif — dan itu <b>bukan vonis</b>. Artinya: tahun ini warung menginvestasikan Rp50rb <i>lebih</i> dari kas operasinya. Wajar di fase ekspansi; yang penting: <b>disengaja dan terlacak</b>, bukan bocor.</p>
 <p>Besok (Hari 09): FCFF inilah yang didiskonto. Hari ini: pastikan kamu bisa menjelaskan <i>kenapa</i> −50 — "capex 2.500 melebihi CFO 2.450 karena ekspansi peralatan" — bukan sekadar membaca angkanya.</p>
 <div class="callout"><b>Kenapa FCFF negatif tidak otomatis buruk?</b> Karena FCFF mengukur <i>kas bebas setelah investasi</i>. Amazon bertahun-tahun FCFF tipis/negatif saat membangun gudang — pasar tidak menghukum, karena investasinya terlacak ke aset produktif. Yang dihukum = FCFF negatif tanpa jejak (kas hilang tak jelas).</div>`},
@@ -1568,7 +1568,7 @@ sections: [
 {h: "Kejujuran model: batasan yang dinyatakan", body: `
 <ul>
 <li><b>Asumsi ilustrasi, bukan data pasar.</b> Rf, beta, MRP, g, multiple 8× = dinyatakan untuk belajar mekanik. Valuasi beneran butuh riset pasar.</li>
-<li><b>Model sederhana.</b> Tanpa pajak atas operasi (NI = EBIT), tanpa utang berbunga, tanpa NWC musiman. Cukup untuk mekanik; capstone nanti menambah lapisan.</li>
+<li><b>Model sederhana.</b> Tanpa pajak atas operasi (NI = EBIT), tanpa utang berbunga, tanpa NWC (Net Working Capital — modal kerja bersih) musiman. Cukup untuk mekanik; capstone nanti menambah lapisan.</li>
 <li><b>TV mendominasi.</b> ~100% EV dari TV — artinya ketepatan DCF ini ≈ ketepatan asumsi g & multiple. Jujur soal ini = profesional.</li>
 <li><b>Rp19,9 juta ≠ harga jual.</b> Ini nilai <i>model</i> dengan asumsi <i>model</i>. Harga transaksi butuh negosiasi, due diligence, dan comps.</li>
 </ul>
@@ -1641,8 +1641,8 @@ sections: [
 <tr><td>KLBF</td><td>55,00</td><td>7,00</td><td>7,86×</td><td>17,06×</td></tr>
 <tr><td>MYOR</td><td>45,00</td><td>5,50</td><td>8,18×</td><td>16,80×</td></tr>
 </table>
-<p><b>JANGKAR kanonis</b> (rc_final.json): UNVR EV 43,96T, INDF ekuitas 73,15T. <b>ILUSTRASI DINYATAKAN 2026-10-31</b> (bukan data live): seluruh EBITDA, laba bersih, dan kap. pasar peer di tabel ini.</p>
-<div class="callout"><b>Kenapa multiple?</b> Karena EV/EBITDA 8× punya arti universal: "pasar membayar 8 tahun EBITDA untuk seluruh perusahaan". Harga saham tanpa penyebut = angka buta; multiple = harga yang bisa dibandingkan antar perusahaan beda ukuran.</div>`},
+<p><b>JANGKAR kanonis</b> (rc_final.json): UNVR EV 43,96T, INDF ekuitas 73,15T (jangkar RC3). <b>ILUSTRASI DINYATAKAN 2026-10-31</b> (bukan data live): seluruh EBITDA, laba bersih, dan kap. pasar peer di tabel ini.</p>
+<div class="callout"><b>Kenapa multiple?</b> Karena EV/EBITDA 8× punya arti universal: "pasar menilai perusahaan sebesar 8× EBITDA LTM". Ingat: multiple <b>bukan</b> jangka waktu payback — "8×" bukan berarti modal kembali dalam 8 tahun. Harga saham tanpa penyebut = angka buta; multiple = harga yang bisa dibandingkan antar perusahaan beda ukuran.</div>`},
 {h: "Memilih multiple: EV/EBITDA vs P/E", body: `
 <p>Dua multiple, dua lensa — dan <b>tidak boleh tertukar</b>:</p>
 <ul>
@@ -1661,7 +1661,7 @@ sections: [
 <div class="callout"><b>Kenapa LTM untuk latihan ini?</b> Karena NTM butuh forecast analis eksternal yang tidak kita punya — dan multiple ilustrasi kita dinyatakan bertanggal 2026-10-31. Prinsipnya: <i>nyatakan</i> basis waktunya; multiple tanpa tanggal = tidak bisa diperdebatkan.</div>`},
 {h: "Memilih peer: menyamakan apel dengan apel", body: `
 <p>Lima emiten di tabel = <b>konsumen Indonesia</b>: makanan, farmasi, consumer goods. Kriteria peer yang benar: sektor sama, ukuran seorde, pertumbuhan & marjin mirip, struktur modal tidak ekstrem beda.</p>
-<p><b>Catatan metodologi — dibaca, bukan dilewati:</b> INDF adalah <i>target</i> valuasi kita, dan analis profesional <b>mengeluarkan target dari set comps</b> (kalau tidak, target menilai dirinya sendiri = sirkular). Di sini INDF tetap di tabel karena barisnya berfungsi ganda: <b>jangkar kalibrasi</b> (ekuitas 73,15T kanonis) + latihan mekanik median. Efeknya terukur: median EV/EBITDA 5 emiten = <b>8,18×</b>, tanpa INDF = <b>8,38×</b> (coba hitung sendiri di Task B).</p>
+<p><b>Catatan metodologi — dibaca, bukan dilewati:</b> INDF adalah <i>target</i> valuasi kita, dan analis profesional <b>mengeluarkan target dari set comps</b> (kalau tidak, target menilai dirinya sendiri = sirkular). Di sini INDF tetap di tabel karena barisnya berfungsi ganda: <b>jangkar kalibrasi</b> (ekuitas 73,15T kanonis — jangkar RC3) + latihan mekanik median. Efeknya terukur: median EV/EBITDA 5 emiten = <b>8,18×</b>, tanpa INDF = <b>8,38×</b> (coba hitung sendiri di Task B).</p>
 <div class="callout"><b>Kenapa peer salah = valuasi salah?</b> Karena comps meminjam "harga pasar" dari tetangga. Meminjam dari tetangga yang salah (beda sektor, beda growth) = meminjam harga yang salah. Separuh kerja comps adalah <i>memilih siapa yang boleh jadi pembanding</i>.</div>`},
 {h: "Precedent transactions: harga yang benar-benar dibayar", body: `
 <p>Comps memakai harga <b>kuotasi</b> (saham minoritas di bursa). Precedent memakai harga <b>transaksi</b>: berapa yang benar-benar dibayar saat sebuah perusahaan <i>diakuisisi</i>. Bedanya satu kata: <b>kendali</b>.</p>
@@ -1672,14 +1672,14 @@ sections: [
 <p>Empat metode, empat jawaban (ekuitas INDF, Rp T). <b>Football field</b> menaruh semuanya dalam satu sumbu sebagai batang-batang rentang:</p>
 <table class="brutal">
 <tr><th>Metode</th><th>Rendah</th><th>Tinggi</th></tr>
-<tr><td>DCF (±15% dinyatakan)</td><td>62,18</td><td>84,12</td></tr>
+<tr><td>DCF (±15% dinyatakan)</td><td>63,37</td><td>85,73</td></tr>
 <tr><td>Comps EV/EBITDA</td><td colspan="2">78,18</td></tr>
 <tr><td>Comps P/E</td><td colspan="2">89,38</td></tr>
 <tr><td>Precedent (+25%)</td><td colspan="2">102,73</td></tr>
-<tr><td><b>Lapangan (min–max)</b></td><td><b>62,18</b></td><td><b>102,73</b></td></tr>
+<tr><td><b>Lapangan (min–max)</b></td><td><b>63,37</b></td><td><b>102,73</b></td></tr>
 </table>
-<p>Cara baca profesional: <b>bukan</b> rata-rata keempatnya, melainkan <i>di mana mereka berkumpul</i>. Di sini 78,18–89,38 (dua comps) berdekatan = <b>zona keyakinan</b>; DCF di bawahnya (konservatif), precedent di atasnya (harga kendali). Lapangan 62,18–102,73 = rentang negosiasi.</p>
-<p><b>Tutup ke per saham:</b> tiap batang di atas masih level ekuitas agregat (Rp triliun). Bagi dengan saham beredar INDF (8,78 miliar, diluted) \u2192 <b>rentang target price</b>: DCF Rp7.082&ndash;9.581, comps EV/EBITDA Rp8.904, comps P/E Rp10.180, precedent Rp11.701. Inilah angka yang dibandingkan dengan harga pasar &mdash; bukan 62,18T-nya. (Mekanik lengkapnya di Hari 13.)</p>
+<p>Cara baca profesional: <b>bukan</b> rata-rata keempatnya, melainkan <i>di mana mereka berkumpul</i>. Di sini 78,18–89,38 (dua comps) berdekatan = <b>zona keyakinan</b>; DCF di bawahnya (konservatif), precedent di atasnya (harga kendali). Lapangan 63,37–102,73 = rentang negosiasi.</p>
+<p><b>Tutup ke per saham:</b> tiap batang di atas masih level ekuitas agregat (Rp triliun). Bagi dengan saham beredar INDF (8,78 miliar, diluted) \u2192 <b>rentang target price</b>: DCF Rp7.218&ndash;9.764, comps EV/EBITDA Rp8.904, comps P/E Rp10.180, precedent Rp11.701. Inilah angka yang dibandingkan dengan harga pasar &mdash; bukan 63,37T-nya. (Mekanik lengkapnya di Hari 13.)</p>
 <div class="callout"><b>Kenapa namanya football field?</b> Karena batangnya seperti garis-garis lapangan: tiap metode menempati "yard"-nya sendiri. Investor tidak bertanya "berapa angkanya" — mereka bertanya "di yard mana keyakinanmu berada, dan kenapa".</div>`},
 {h: "Multiple lain: EV/Sales, EV/EBIT, P/BV, PEG", body: `
 <p>EV/EBITDA dan P/E adalah kuda kerja comps — tapi empat multiple ini menutup celah yang keduanya tinggalkan. Input baru di bawah ini <b>ilustrasi dinyatakan 2026-10-31</b> (sama seperti tabel utama; EBITDA dan laba bersih TIDAK berubah):</p>
@@ -1692,21 +1692,21 @@ sections: [
 <tr><td>MYOR</td><td>1,29×</td><td>11,25×</td><td>2,91×</td><td>1,40×</td></tr>
 <tr><td><b>MEDIAN</b></td><td><b>1,29×</b></td><td><b>11,25×</b></td><td><b>2,25×</b></td><td><b>1,41×</b></td></tr>
 </table>
-<p><b>EV/Sales — dipakai saat laba tidak bisa dipakai.</b> Perusahaan rugi, startup, atau siklus di titik bawah: revenue adalah satu-satunya angka yang stabil. Jebakannya: EV/Sales <i>mengabaikan margin</i>. Median 1,29× × penjualan INDF Rp110,00T = EV <b>Rp141,90T</b> — jauh di atas lapangan (62–103T). Kenapa? Margin INDF ±11% vs KLBF ±21%: penjualan yang sama, laba separuhnya. Menilai revenue tanpa mengecek margin = menilai omzet, bukan laba. <b>Vonis: jangan masukkan ke football field.</b></p>
+<p><b>EV/Sales — dipakai saat laba tidak bisa dipakai.</b> Perusahaan rugi, startup, atau siklus di titik bawah: revenue adalah satu-satunya angka yang stabil. Jebakannya: EV/Sales <i>mengabaikan margin</i>. Median 1,29× × penjualan INDF Rp110,00T = EV <b>Rp141,90T</b> — jauh di atas lapangan (63–103T). Kenapa? Margin INDF ±11% vs KLBF ±21%: penjualan yang sama, laba separuhnya. Menilai revenue tanpa mengecek margin = menilai omzet, bukan laba. <b>Vonis: jangan masukkan ke football field.</b></p>
 <p><b>EV/EBIT — EV/EBITDA yang sudah dikurangi depresiasi.</b> Berguna saat intensitas capex antar peer beda (yang satu mesinnya baru, yang satu mesinnya tua — EBITDA menyamakan keduanya, EBIT tidak). Median 11,25× × EBIT INDF Rp9,00T = EV <b>Rp101,25T</b> → ekuitas 101,25 − 20 = <b>Rp81,25T</b> — mendarat <i>di dalam</i> zona keyakinan (78,18–89,38). Cross-check independen ketiga yang sepakat. <b>Vonis: layak dicatat di samping dua comps utama.</b></p>
 <p><b>P/BV — harga ÷ nilai buku ekuitas.</b> Rumus pembenarnya: P/BV wajar = (ROE − g) ÷ (CoE − g) — multiple ini hidup dari selisih ROE vs biaya modal (lihat Hari 26 & real-06 BBCA). INDF 1,22× vs median 2,25× → ekuitas <b>Rp135,00T</b> (2,25 × 60,00). Terlalu tinggi — kenapa? UNVR 20,27× adalah outlier (mereknya tidak ada di neraca) dan buku INDF penuh aset tetap, sementara buku UNVR ringan. P/BV hanya valid bila "buku" mengukur hal yang sama. <b>Vonis: jangan masukkan; pakai P/BV untuk bank (Hari 26), di mana buku = mesinnya.</b></p>
 <p><b>PEG — P/E ÷ pertumbuhan laba.</b> Aturan praktis Lynch: PEG ±1,0× = wajar; di atas itu pasar membayar premi atas growth. INDF 11,25 ÷ 8 = <b>1,41×</b> (median 1,41×): pasar membayar premi 41% di atas pertumbuhan — tidak murah secara growth-adjusted, tapi sejalan dengan peer. Ingat: PEG adalah <i>screening</i>, bukan valuasi — growth-nya sendiri adalah opini analis, bukan fakta.</p>
 <p>Aturan konsistensi dari seksi sebelumnya <i>tetap berlaku</i> dan meluas: EV berpasangan dengan Sales/EBIT/EBITDA (sebelum utang); harga/ekuitas berpasangan dengan laba bersih/nilai buku (setelah utang). PEG memakai P/E — jadi ia multiple <i>ekuitas</i>.</p>
-<div class="callout"><b>Kenapa lapangan tidak berubah?</b> Karena dua dari empat multiple baru ini gagal uji keterbandingan di sini (EV/Sales buta margin, P/BV buta isi buku); EV/EBIT <i>mengonfirmasi</i> zona yang sudah ada; PEG hanya menyaring. Football field tetap 62,18–102,73T — multiple tambahan yang baik tidak selalu menambah jawaban baru; kadang ia hanya menguji jawaban yang sudah ada. Itulah gunanya.</div>`},
+<div class="callout"><b>Kenapa lapangan tidak berubah?</b> Karena dua dari empat multiple baru ini gagal uji keterbandingan di sini (EV/Sales buta margin, P/BV buta isi buku); EV/EBIT <i>mengonfirmasi</i> zona yang sudah ada; PEG hanya menyaring. Football field tetap 63,37–102,73T — multiple tambahan yang baik tidak selalu menambah jawaban baru; kadang ia hanya menguji jawaban yang sudah ada. Itulah gunanya.</div>`},
 {h: "DCF vs comps: dua lensa, satu perusahaan", body: `
 <p>Hari 09–10 memberi lensa <b>intrinsik</b> (DCF: kas yang dihasilkan). Hari ini memberi lensa <b>relatif</b> (comps: harga yang dibayar pasar untuk tetangga). Keduanya menilai INDF:</p>
 <ul>
-<li>DCF (jangkar): ekuitas <b>73,15T</b></li>
-<li>Comps EV/EBITDA: <b>78,18T</b> → selisih <b>|73,15 − 78,18| = 5,03T</b> (≈6,9% di atas DCF)</li>
+<li>DCF (hasil build Hari 12–13): ekuitas <b>74,55T</b></li>
+<li>Comps EV/EBITDA: <b>78,18T</b> → selisih <b>|74,55 − 78,18| = 3,63T</b> (≈4,9% di atas DCF)</li>
 <li>Comps P/E: <b>89,38T</b> (lebih optimistis — atau pasar menghargai growth INDF lebih tinggi)</li>
 </ul>
-<p>Selisih 5,03T bukan "kesalahan" — ia <b>informasi</b>: pasar relatif menilai INDF sedikit lebih mahal dari DCF jangkar kita. Tugas analis: menjelaskan <i>kenapa</i> (asumsi growth? multiple peer ketinggian?), bukan memaksa keduanya sama.</p>
-<div class="callout"><b>Kenapa dua lensa?</b> Karena DCF bisa salah asumsi (g, WACC) dan comps bisa salah pasar (gelembung sektor). Dua lensa independen yang <i>sepakat</i> = keyakinan; yang <i>berbeda 5T</i> = pertanyaan riset. Capstone Hari 12–13 (DCF INDF penuh) akan menguji lensa intrinsiknya habis-habisan.</div>`},
+<p>Selisih 3,63T bukan "kesalahan" — ia <b>informasi</b>: pasar relatif menilai INDF sedikit lebih mahal dari DCF hasil build kita. (Jangkar repair RC3 sendiri 73,15T — selisih DCF build vs jangkar repair 1,40T dijelaskan di Hari 13 § validasi: itu PV dari add-back bunga setelah pajak.) Tugas analis: menjelaskan <i>kenapa</i> (asumsi growth? multiple peer ketinggian?), bukan memaksa keduanya sama.</p>
+<div class="callout"><b>Kenapa dua lensa?</b> Karena DCF bisa salah asumsi (g, WACC) dan comps bisa salah pasar (gelembung sektor). Dua lensa independen yang <i>sepakat</i> = keyakinan; yang <i>berbeda 3,63T</i> = pertanyaan riset. Capstone Hari 12–13 (DCF INDF penuh) akan menguji lensa intrinsiknya habis-habisan.</div>`},
 {h: "Jebakan comps yang paling mahal", body: `
 <ul>
 <li><b>Mean vs median.</b> Satu peer outlier (mis. EV/EBITDA 25× karena EBITDA anjlok sesaat) menarik <i>mean</i> ke atas; <i>median</i> tidak bergeming. Itu sebabnya tabel ini memakai MEDIAN.</li>
@@ -1718,13 +1718,13 @@ sections: [
 {h: "Kejujuran: jangkar vs ilustrasi", body: `
 <table class="brutal">
 <tr><th>Status</th><th>Item</th><th>Nilai</th></tr>
-<tr><td><b>Jangkar</b> (rc_final.json)</td><td>UNVR Base EV; INDF ekuitas; rumus median/MIN/MAX</td><td>43,96T · 73,15T</td></tr>
+<tr><td><b>Jangkar</b> (rc_final.json — jangkar RC3)</td><td>UNVR Base EV; INDF ekuitas; rumus median/MIN/MAX</td><td>43,96T · 73,15T</td></tr>
 <tr><td><b>Ilustrasi dinyatakan</b> 2026-10-31</td><td>EBITDA/NI/Kap peer; utang bersih INDF; DCF ±15%; premium 25%</td><td>12,00T · 6,50T · 20T · ±15% · 25%</td></tr>
 </table>
 <ul>
 <li><b>Bukan data live.</b> Multiple peer adalah ilustrasi pengajaran bertanggal 2026-10-31 — jangan dikutip sebagai harga pasar.</li>
 <li><b>INDF ganda peran.</b> Target + anggota comps (dinyatakan; analis pro mengeluarkannya — lihat Task B).</li>
-<li><b>Rentang, bukan titik.</b> Output hari ini = lapangan 62,18–102,73T, bukan "INDF = 78,18T".</li>
+<li><b>Rentang, bukan titik.</b> Output hari ini = lapangan 63,37–102,73T, bukan "INDF = 78,18T".</li>
 </ul>
 <div class="callout"><b>Kenapa tabel ini menutup hari?</b> Karena comps adalah mesin pembenar tercepat di valuasi: pilih peer yang "tepat", dapat angka yang diinginkan. Satu-satunya rem = <b>keterbukaan</b>: jangkar apa, ilustrasi apa, bertanggal kapan. Analis yang jujur soal ini lebih dipercaya dari analis yang "tepat" tapi buram.</div>`}
 ,
@@ -1733,7 +1733,7 @@ sections: [
 <div class="formula">Nilai minoritas = Nilai kendali × (1 − diskon minoritas) · Nilai tak-likuid = Nilai minoritas × (1 − DLOM)</div>
 <div class="example korporat"><div class="lbl">🏢 Contoh — dua diskon berlapis</div>
 <p>Nilai perusahaan dengan kendali Rp1.000jt. Saham minoritas 10% tanpa kendali: diskon minoritas 20% → 1.000 × 0,80 = <b>Rp800jt</b>. Sahamnya juga tidak diperdagangkan di bursa (perusahaan tertutup): DLOM 25% → 800 × 0,75 = <b>Rp600jt</b>. Diskon gabungan = 1 − 0,80 × 0,75 = <b>40%</b>. Urutan penting: diskon minoritas dulu, DLOM kemudian — membaliknya memberi angka yang sama di sini, tapi urutan ini yang dipakai penilai karena alasannya berbeda (kontrol vs likuiditas).</p></div>
-<p><b>Kapan ini muncul di ujian &amp; praktik:</b> valuasi perusahaan tertutup, sengketa pemegang saham minoritas, dan PPA (H16) saat menilai NCI — NCI hampir selalu minoritas dan sering tak-likuid. <b>Convertibles &amp; opsi saham</b> juga mengubah hitungan: obligasi konversi Rp1.000jt yang bisa ditukar 100 saham — bila harga saham Rp12jt, nilai konversi = 100 × Rp12jt = Rp1.200jt &gt; nilai obligasi → pemegang akan konversi; DCF-mu harus memakai saham terdilusi (treasury stock method, H20), bukan saham beredar saja.</p>
+<p><b>Kapan ini muncul di ujian &amp; praktik:</b> valuasi perusahaan tertutup, sengketa pemegang saham minoritas, dan PPA (Purchase Price Allocation — alokasi harga beli) (H16) saat menilai NCI — NCI hampir selalu minoritas dan sering tak-likuid. <b>Convertibles &amp; opsi saham</b> juga mengubah hitungan: obligasi konversi Rp1.000jt yang bisa ditukar 100 saham — bila harga saham Rp12jt, nilai konversi = 100 × Rp12jt = Rp1.200jt &gt; nilai obligasi → pemegang akan konversi; DCF-mu harus memakai saham terdilusi (treasury stock method, H20), bukan saham beredar saja.</p>
 <div class="callout"><b>Perangkap:</b> menerapkan DLOM pada saham emiten BEI yang likuid. DLOM hanya untuk saham yang <i>tidak bisa dijual cepat</i> — saham publik likuid sudah mencerminkan marketability di harganya.</div>`}],
 quiz: [
 {q: "EV/EBITDA lima emiten: 7,76 / 7,86 / 8,18 / 8,57 / 9,99. Mediannya?", opts: ["8,18×","8,57×","8,38×","9,99×"], answer: 0, k: "med_ev", diff: "Easy",
@@ -1742,15 +1742,15 @@ quiz: [
 {q: "Median EV/EBITDA 8,1818 × EBITDA INDF Rp12,00T. INDF implied EV?", opts: ["Rp98,18T","Rp93,15T","Rp122,73T","Rp78,18T"], answer: 0, k: "impl_ev", diff: "Easy",
  hints: ["Implied EV = median × EBITDA target.","8,1818 × 12,00 = ?"],
  explain: "8,1818 × 12,00 = Rp98,18T."},
-{q: "Median P/E 13,75 × laba bersih INDF Rp6,50T. INDF implied ekuitas?", opts: ["Rp89,38T","Rp73,15T","Rp102,73T","Rp84,12T"], answer: 0, k: "impl_eq", diff: "Easy",
+{q: "Median P/E 13,75 × laba bersih INDF Rp6,50T. INDF implied ekuitas?", opts: ["Rp89,38T","Rp73,15T","Rp102,73T","Rp85,73T"], answer: 0, k: "impl_eq", diff: "Easy",
  hints: ["P/E langsung memberi nilai ekuitas: median × NI.","13,75 × 6,50 = ?"],
  explain: "13,75 × 6,50 = Rp89,38T."},
 {q: "INDF implied EV Rp98,18T, control premium 25%. Precedent EV?", opts: ["Rp122,73T","Rp98,18T","Rp147,27T","Rp102,73T"], answer: 0, k: "prec_ev", diff: "Easy",
  hints: ["Precedent EV = implied EV × (1 + premium).","98,18 × 1,25 = ?"],
  explain: "98,18 × 1,25 = Rp122,73T."},
-{q: "Football field INDF: 62,18–102,73T. Batas bawah dari metode apa? Batas atas?", opts: ["DCF low & precedent","P/E & DCF high","EV/EBITDA & precedent","DCF low & P/E"], answer: 0, k: "fb_read", diff: "Medium",
- hints: ["MIN(62,18; 78,18; 89,38; 102,73) = ?","MAX(84,12; 78,18; 89,38; 102,73) = ?"],
- explain: "Bawah 62,18 = DCF low; atas 102,73 = precedent ekuitas."},
+{q: "Football field INDF: 63,37–102,73T. Batas bawah dari metode apa? Batas atas?", opts: ["DCF low & precedent","P/E & DCF high","EV/EBITDA & precedent","DCF low & P/E"], answer: 0, k: "fb_read", diff: "Medium",
+ hints: ["MIN(63,37; 78,18; 89,38; 102,73) = ?","MAX(85,73; 78,18; 89,38; 102,73) = ?"],
+ explain: "Bawah 63,37 = DCF low; atas 102,73 = precedent ekuitas."},
 {q: "Median EV/EBIT 11,25× × EBIT INDF Rp9,00T. Implied EV?", opts: ["Rp101,25T","Rp93,15T","Rp81,25T","Rp122,73T"], answer: 0, k: "impl_ev_ebit", diff: "Medium",
  hints: ["Implied EV = median × EBIT target.","11,25 × 9,00 = ? (81,25 itu ekuitasnya, setelah kurangi net debt 20.)"],
  explain: "11,25 × 9,00 = Rp101,25T → ekuitas 81,25T. Mendarat di zona keyakinan 78,18–89,38 — cross-check ketiga yang sepakat."},
@@ -1772,13 +1772,13 @@ hell: [
  explain: "Harga kuotasi = harga minoritas tanpa kuasa. Akuisisi membeli kendali → premi 25% (ilustrasi). Itu sebabnya precedent biasanya di atas trading comps."},
 {q: "Dua emiten: bisnis identik, satu berutang besar. Multiple yang netral struktur modal?", opts: ["EV/EBITDA","P/E","Dividend yield","Price-to-book"], answer: 0, diff: "Medium",
  explain: "EV dan EBITDA keduanya sebelum bunga/utang → distorsi leverage hilang. P/E memakai laba bersih (setelah bunga) sehingga emiten berutang terlihat 'lebih mahal' semu."},
-{q: "Football field INDF 62–103T. Cara baca profesional?", opts: ["Rentang negosiasi; klaster 78–89T = zona keyakinan","Ambil titik tengahnya, pasti benar","Abaikan DCF, pakai precedent saja","Pilih angka tertinggi agar meyakinkan"], answer: 0, diff: "Medium",
+{q: "Football field INDF 63–103T. Cara baca profesional?", opts: ["Rentang negosiasi; klaster 78–89T = zona keyakinan","Ambil titik tengahnya, pasti benar","Abaikan DCF, pakai precedent saja","Pilih angka tertinggi agar meyakinkan"], answer: 0, diff: "Medium",
  explain: "Bukan rata-rata, bukan titik. Baca di mana metode berkumpul (78,18 & 89,38 berdekatan), pahami kenapa DCF di bawah dan precedent di atas."},
 {q: "Satu peer EV/EBITDA 25× (EBITDA anjlok sesaat), lainnya 7–9×. Kenapa median?", opts: ["Median kebal outlier; mean akan ketarik ke ~12×","Mean selalu lebih benar","Buang saja peer outliernya","Median menghitungnya salah"], answer: 0, diff: "Easy",
  explain: "Mean = (25+8+8+7+7)/5 ≈ 11× — satu data merusak semuanya. Median tetap 8×. Untuk comps 5 emiten, median adalah default yang aman."}
 ],
 tasks: [
-{t: "Task A — Comps + football field INDF (±4 jam)", d: "Download file latihan Hari 11 dari Drive. Bangun 10 multiple + 2 median + implied + precedent + football field (semua rumus). Target: median 8,18/13,75, implied EV 98,18, football 62,18–102,73.", url: "https://drive.google.com/drive/folders/15TFQXH7bi-YezJmcLSsj36EpKTdQoO72"},
+{t: "Task A — Comps + football field INDF (±4 jam)", d: "Download file latihan Hari 11 dari Drive. Bangun 10 multiple + 2 median + implied + precedent + football field (semua rumus). Target: median 8,18/13,75, implied EV 98,18, football 63,37–102,73.", url: "https://drive.google.com/drive/folders/15TFQXH7bi-YezJmcLSsj36EpKTdQoO72"},
 {t: "Task B — Median tanpa INDF (±30 mnt)", d: "Di kertas: hitung median EV/EBITDA & P/E dari 4 peer TANPA INDF. Jawaban: 8,38 & 15,28. Rasakan efek sirkularitas: target ikut menilai dirinya sendiri menggeser median."},
 {t: "Task C — Quiz di atas", d: "Target ≥5/7 benar. Salah? Baca hint, ulangi."}
 ],
@@ -1805,7 +1805,7 @@ sections: [
 <p>Keputusan emiten capstone ini <b>disengaja</b>, bukan acak:</p>
 <ul>
 <li><b>UNVR tidak dipakai lagi</b> — DCF 3-skenario UNVR sudah dikerjakan tuntas di Real Case RC1. Mengulanginya di capstone = duplikasi, bukan skill baru.</li>
-<li><b>RC3 INDF adalah misi <i>repair</i></b> — model yang sudah ada diperbaiki sampai ketemu ekuitas induk <b>Rp73,15T</b> dan FCFF <b>Rp15,90T</b>. Repair melatihmu membaca model orang lain.</li>
+<li><b>RC3 INDF adalah misi <i>repair</i></b> — model yang sudah ada diperbaiki sampai ketemu ekuitas induk <b>Rp73,15T</b>. Repair melatihmu membaca model orang lain. (FCFF model misi RC3 memakai input misi itu sendiri — angka FCFF capstone dihitung ulang dari blank di bawah.)</li>
 <li><b>Capstone ini = <i>build</i> penuh dari blank.</b> Tidak ada template setengah jadi — kamu arsiteknya. Arc-nya: <i>repair &rarr; build &rarr; thesis</i>.</li>
 <li><b>INDF = konglomerat</b> (mie instan, dairy, agribisnis, distribusi) &rarr; skill barunya = <b>simplifikasi konsolidasi</b>: puluhan entitas dipetakan ke segelintir akun.</li>
 </ul>
@@ -1854,7 +1854,7 @@ sections: [
 {h: "Laporan laba rugi 2026: revenue \u2192 NI Rp15,21T", body: `
 <p>Jembatan laba rugi (Rp triliun):</p>
 <div class="formula">132,00 &minus; 92,40 (COGS) = 39,60 &minus; 18,10 (SG&amp;A) = <b>EBIT 21,50</b> &minus; 2,00 (bunga) = 19,50 &minus; 4,29 (pajak 22%) = <b>NI 15,21</b></div>
-<p>Marjin EBIT = 21,50 &divide; 132,00 = <b>16,3%</b>. Satu catatan jujur: ini <b>di atas historis INDF (&plusmn;11&ndash;12%)</b> &mdash; disengaja agar model tiba di jangkar FCFF kanonis, dan dinyatakan sebagai asumsi ilustrasi.</p>
+<p>Marjin EBIT = 21,50 &divide; 132,00 = <b>16,3%</b>. Satu catatan jujur: ini <b>di atas historis INDF (&plusmn;11&ndash;12%)</b> &mdash; disengaja agar model tiba di dekat jangkar ekuitas kanonis (73,15T), dan dinyatakan sebagai asumsi ilustrasi.</p>
 <div class="callout"><b>Kenapa marjin &ldquo;di atas historis&rdquo; dinyatakan terbuka?</b> Karena kejujuran asumsi &gt; ketepatan semu. Model ini ilustrasi mekanik &mdash; valuasi beneran butuh riset marjin aktual segmen per segmen. Analis yang menyembunyikan asumsi agresifnya = pembohong berkedok model.</div>`},
 {h: "Neraca 2026: mapping akun konglomerat", body: `
 <p>Simplifikasi konsolidasi: puluhan entitas INDF dipetakan ke 8 akun. Tiap akun tahu &ldquo;rumah&rdquo;-nya:</p>
@@ -1871,12 +1871,12 @@ sections: [
 </table>
 <p>Jebakan klasik: <b>utang usaha &ne; utang bank</b>. Utang usaha non-bunga &mdash; tidak masuk net debt, tidak masuk WACC. Utang bank berbunga &mdash; masuk keduanya.</p>
 <div class="callout"><b>Kenapa disederhanakan sampai 8 akun?</b> Karena capstone melatih <i>arsitektur</i>, bukan audit. Prinsipnya identik di model 200 baris: tiap akun tahu rumahnya, tiap jembatan bisa dilacak. Kompleksitas tanpa arsitektur = kuburan angka.</div>`},
-{h: "Arus kas 2026: NI \u2192 FCFF Rp15,90T", body: `
+{h: "Arus kas 2026: NI \u2192 FCFF Rp17,46T", body: `
 <p>Jembatan kas (Rp triliun):</p>
-<div class="formula">CFO = 15,21 + 6,50 &minus; 0,21 (&Delta;WC) = <b>21,50</b> &nbsp;&nbsp; FCFF = 21,50 &minus; 5,60 (capex) = <b>15,90</b></div>
+<div class="formula">CFO = 15,21 + 6,50 &minus; 0,21 (&Delta;WC) = <b>21,50</b> &nbsp;&nbsp; FCFF = 21,50 + 1,56 (bunga setelah pajak) &minus; 5,60 (capex) = <b>17,46</b></div>
 <p>CFI = &minus;5,60. CFF = &minus;3,00 (bayar utang) &minus; 4,00 (dividen) = &minus;7,00. &Delta;kas = 21,50 &minus; 5,60 &minus; 7,00 = +8,90 &rarr; kas akhir <b>26,90</b> (= kas di neraca &#10003;).</p>
-<p><b>FCFF 15,90T = jangkar kanonis RC3.</b> Angka ini ditemukan lewat <i>repair</i> &mdash; bukan di-setting. Model build independenmu wajib tiba di angka yang sama.</p>
-<div class="callout"><b>Kenapa FCFF 15,90T adalah momen validasi?</b> Karena dua jalur independen (repair model lama &rarr; 15,90T; build dari blank &rarr; 15,90T) yang konvergen = rekonsiliasi yang KUAT — bukan bukti mutlak. Kedua jalur memakai input yang sama, jadi kesalahan input yang sama bisa lolos di keduanya. Bukti penuh butuh pemeriksaan rumus + independensi input. Inilah &ldquo;uji kebenaran&rdquo; pertama capstone — kuat, tapi bukan final.</div>`},
+<p><b>FCFF 17,46T — dua jalan, satu angka.</b> Jalur NOPAT: 21,50 × 0,78 + 6,50 − 5,60 − 0,21 = 17,46. Jalur CFO: 21,50 + 1,56 (bunga setelah pajak) − 5,60 = 17,46. Angka lama 15,90T = CFO − capex = arus kas <i>levered</i> — tanpa add-back bunga setelah pajak, itu bukan FCFF. FCFE = 17,46 − 1,56 − 3,00 = 12,90T. Jangkar ekuitas kanonis RC3 (73,15T) tetap dipakai sebagai pembanding di Hari 13.</p>
+<div class="callout"><b>Kenapa FCFF 17,46T adalah momen validasi?</b> Karena dua jalan perhitungan yang independen (NOPAT &rarr; 17,46T; CFO + add-back &rarr; 17,46T) yang bertemu = rekonsiliasi yang KUAT — bukan bukti mutlak. Kedua jalan memakai input yang sama, jadi kesalahan input yang sama bisa lolos di keduanya. Bukti penuh butuh pemeriksaan rumus + independensi input. Inilah &ldquo;uji kebenaran&rdquo; pertama capstone — kuat, tapi bukan final.</div>`},
 {h: "4 golden checks: tie-out penuh", body: `
 <p>Empat pemeriksaan yang harus lolos di <i>setiap</i> model 3-statement (Rp triliun):</p>
 <table class="brutal">
@@ -1899,7 +1899,7 @@ sections: [
 <tr><td>3</td><td>Susut IS vs &Delta; akum. susut</td><td>6,50T = kenaikan akumulasi</td></tr>
 <tr><td>4</td><td>Beban bunga vs utang bank</td><td>2,00T &divide; 70,00T &asymp; 2,9% &mdash; wajar? tandai bila tidak</td></tr>
 <tr><td>5</td><td>Dividen vs RE roll-forward vs CFF</td><td>4,00T dikurangkan di RE <i>dan</i> muncul di CFF</td></tr>
-<tr><td>6</td><td>FCFF narasi vs model</td><td>"FCFF 15,90T" = sel FCFF, bukan ketikan</td></tr>
+<tr><td>6</td><td>FCFF narasi vs model</td><td>"FCFF 17,46T" = sel FCFF, bukan ketikan</td></tr>
 </table>
 <div class="callout"><b>Kenapa cek #4 (beban bunga &divide; utang) ada di audit konsistensi?</b> Karena ini <b>reasonableness check</b>: 2,00 &divide; 70,00 = 2,86% &mdash; murah untuk utang bank korporat Indonesia. Belum tentu salah (bisa jadi utang lama berbunga rendah), tapi analis profesional <b>menandai</b> angka yang tidak wajar dan mencari penjelasannya &mdash; bukan melewatkannya. Konsistensi bukan cuma "cocok", tapi juga "masuk akal".</div>
 <p><b>Aturan capstone:</b> sebelum submit, jalankan 6 cek ini + 4 golden checks = <b>10 cek total</b>. Temuan diperbaiki di sel sumber. Model yang lolos 10/10 = model yang berani diuji.</p>
@@ -1912,7 +1912,7 @@ sections: [
 <li><b>Hardcode.</b> Mengetik 15,21 di dalam rumus CFO = model mati saat asumsi berubah. Link, jangan ketik.</li>
 <li><b>Tidak cek balance.</b> Baris &ldquo;Cek balance&rdquo; ada untuk dipakai, bukan dipajang.</li>
 </ul>
-<p>Output Hari 12 untuk Hari 13: <b>FCFF 15,90T</b> dan <b>net debt 40,10T</b> (= 67,00 &minus; 26,90).</p>
+<p>Output Hari 12 untuk Hari 13: <b>FCFF 17,46T</b> dan <b>net debt 40,10T</b> (= 67,00 &minus; 26,90).</p>
 <div class="callout"><b>Kenapa Hari 13 butuh net debt dari sini?</b> Karena DCF menghitung <i>enterprise value</i> (nilai untuk semua investor), dan ekuitas = EV &minus; net debt. Salah net debt Rp1T = salah ekuitas Rp1T = salah thesis Rp1T. Rantai ini tidak putus.</div>`}
 ],
 quiz: [
@@ -1922,9 +1922,9 @@ quiz: [
 {q: "NI Rp15,21T, susut Rp6,50T, \u0394WC +Rp0,21T. CFO 2026?", opts: ["Rp21,50T","Rp8,92T","Rp15,21T","Rp27,10T"], answer: 0, k: "cfo12", diff: "Easy",
  hints: ["CFO = NI + susut \u2212 \u0394WC.","15,21 + 6,50 \u2212 0,21 = ?"],
  explain: "15,21 + 6,50 \u2212 0,21 = Rp21,50T."},
-{q: "CFO Rp21,50T, capex Rp5,60T. FCFF 2026?", opts: ["Rp21,50T","Rp15,21T","Rp9,80T","Rp15,90T"], answer: 3, k: "fcff12", diff: "Easy",
- hints: ["FCFF = CFO \u2212 capex.","21,50 \u2212 5,60 = ?"],
- explain: "21,50 \u2212 5,60 = Rp15,90T = jangkar kanonis RC3."},
+{q: "CFO Rp21,50T, bunga Rp2,00T, pajak 22%, capex Rp5,60T. FCFF 2026?", opts: ["Rp21,50T","Rp15,21T","Rp15,90T","Rp17,46T"], answer: 3, k: "fcff12", diff: "Easy",
+ hints: ["FCFF = CFO + bunga×(1−t) − capex.","21,50 + 2,00×0,78 − 5,60 = ?"],
+ explain: "21,50 + 1,56 − 5,60 = Rp17,46T. Rp15,90T = CFO − capex = arus kas levered — tanpa add-back bunga, bukan FCFF."},
 {q: "RE awal Rp49,22T, NI Rp15,21T, dividen Rp4,00T. RE akhir 2026?", opts: ["Rp64,43T","Rp60,43T","Rp68,43T","Rp45,22T"], answer: 1, k: "laba_ditahan", diff: "Easy",
  hints: ["RE akhir = RE awal + NI \u2212 dividen.","49,22 + 15,21 \u2212 4,00 = ?"],
  explain: "49,22 + 15,21 \u2212 4,00 = Rp60,43T."},
@@ -1945,7 +1945,7 @@ hell: [
  explain: "Balance = syarat perlu, bukan syarat cukup. Model bisa balance sempurna tapi salah total (satuan, mapping, logika). Golden checks + audit asumsi = paket lengkap."}
 ],
 tasks: [
-{t: "Task A \u2014 Build 3-statement INDF (\u00b14 jam)", d: "Download file latihan Hari 12 dari Drive. Bangun IS/BS/CFS 2026 INDF dari blank \u2014 semua sel jawaban rumus yang me-link ke input. Target: NI 15,21 \u00b7 CFO 21,50 \u00b7 kas akhir 26,90 \u00b7 FCFF 15,90 \u00b7 A 150,80 = L+E \u00b7 BALANCE \u2713.", url: "https://drive.google.com/drive/folders/1io-5Xwx8t91bsLRlu8rM4mgAJEg2BxJc"},
+{t: "Task A \u2014 Build 3-statement INDF (\u00b14 jam)", d: "Download file latihan Hari 12 dari Drive. Bangun IS/BS/CFS 2026 INDF dari blank \u2014 semua sel jawaban rumus yang me-link ke input. Target: NI 15,21 \u00b7 CFO 21,50 \u00b7 kas akhir 26,90 \u00b7 FCFF 17,46 \u00b7 A 150,80 = L+E \u00b7 BALANCE \u2713.", url: "https://drive.google.com/drive/folders/1io-5Xwx8t91bsLRlu8rM4mgAJEg2BxJc"},
 {t: "Task B \u2014 Mapping akun manual (\u00b130 mnt)", d: "Di kertas: petakan 5 akun (kas, piutang, PPE neto, utang bank, laba ditahan) ke A/L/E plus jembatan antar-laporannya (mis. RE: IS \u2192 BS). Lalu cocokkan dengan modelmu."},
 {t: "Task C \u2014 Quiz di atas", d: "Target \u22654/5 benar. Salah? Baca hint, ulangi."}
 ],
@@ -1953,7 +1953,7 @@ blind: {h: "Latihan Buta \u2014 3-Statement Kios Rina", body: `
 <p>"Kios Rina" (Rp juta, <b>bukan</b> triliun): revenue 240; COGS 60%; SG&amp;A 40; bunga 2; pajak 20%; susut 8; capex 10; dividen 6; bayar utang bank 5. Basis: kas 30, piutang 20, persediaan 15, PPE 60, utang usaha 10, utang bank 25, modal 50, RE 40. Akhir: piutang 24, persediaan 18, utang usaha 12. <b>Bangun 3-statement TANPA mengintip contoh</b>.</p>
 <details class="ans"><summary>Lihat jawaban (coba sendiri dulu!)</summary>
 <p><b>IS:</b> GP = 240 \u2212 144 = 96; EBIT = 96 \u2212 40 = 56; EBT = 54; pajak 10,8; <b>NI = 43,2</b>.</p>
-<p><b>CFS:</b> \u0394WC = (24+18\u221212) \u2212 (20+15\u221210) = 5; CFO = 43,2 + 8 \u2212 5 = <b>46,2</b>; kas akhir = 30 + 46,2 \u2212 10 \u2212 5 \u2212 6 = <b>55,2</b>; <b>FCFF = 36,2</b>.</p>
+<p><b>CFS:</b> \u0394WC = (24+18\u221212) \u2212 (20+15\u221210) = 5; CFO = 43,2 + 8 \u2212 5 = <b>46,2</b>; kas akhir = 30 + 46,2 \u2212 10 \u2212 5 \u2212 6 = <b>55,2</b>; <b>FCFF = 37,8</b> (NOPAT 56 \u00d7 0,80 + 8 \u2212 10 \u2212 5; atau CFO 46,2 + 1,6 bunga setelah pajak \u2212 10. Angka 36,2 = CFO \u2212 capex = arus kas levered \u2014 tanpa add-back bunga, bukan FCFF).</p>
 <p><b>BS:</b> A = 55,2 + 24 + 18 + 62 = <b>159,2</b>; L = 12 + 20 = 32; E = 50 + (40 + 43,2 \u2212 6) = 122,2; L+E = <b>159,2 \u2713</b>.</p>
 <p><i>Kenapa basis RE 40 penting?</i> Karena neraca awal harus balance dulu (125 = 125) \u2014 kalau basisnya jebol, seluruh forecast ikut jebol.</p>
 </details>`}
@@ -1968,12 +1968,12 @@ audio: "assets/audio/hari-13.mp3",
 checker: "hari-13",
 sections: [
 {h: "FCFF 2026\u20132030: asumsi normalisasi yang dinyatakan", body: `
-<p>FCFF 2026 = <b>15,90T</b> sudah di tangan (Hari 12). Lima tahun eksplisit memakai <b>asumsi normalisasi yang dinyatakan</b> &mdash; menurun, bukan tumbuh:</p>
+<p>FCFF 2026 = <b>17,46T</b> sudah di tangan (Hari 12). Lima tahun eksplisit memakai <b>asumsi normalisasi yang dinyatakan</b> &mdash; menurun, bukan tumbuh:</p>
 <table class="brutal">
 <tr><th>Tahun</th><th>2026</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th></tr>
-<tr><td><b>FCFF (Rp triliun)</b></td><td><b>15,90</b></td><td>14,60</td><td>13,40</td><td>12,30</td><td>11,30</td></tr>
+<tr><td><b>FCFF (Rp triliun)</b></td><td><b>17,46</b></td><td>14,60</td><td>13,40</td><td>12,30</td><td>11,30</td></tr>
 </table>
-<p>Narasinya: marjin menormalisasi pasca-siklus kuat + belanja modal disiplin. Ini <b>skenario yang dinyatakan dan bisa diperdebatkan</b> &mdash; bukan ramalan.</p>
+<p>Narasinya: marjin menormalisasi pasca-siklus kuat + belanja modal disiplin. Ini <b>skenario yang dinyatakan dan bisa diperdebatkan</b> &mdash; bukan ramalan. Penurunan 2026&rarr;2027 (17,46 &rarr; 14,60) lebih curam dari rencana lama karena 2026 kini memakai FCFF yang benar; 2027&ndash;2030 tidak berubah.</p>
 <div class="callout"><b>Kenapa menurun, bukan tumbuh?</b> Karena DCF tidak butuh optimisme &mdash; butuh asumsi yang dinyatakan dan bisa diserang. Skenario konservatif yang konvergen ke jangkar kanonis > skenario agresif yang runtuh saat ditanya — tapi ingat: konvergensi = rekonsiliasi kuat, bukan bukti (lihat § validasi). Thesis-mu boleh bull; modelnya harus jujur.</div>`},
 {h: "TV perpetuitas: Gordon di akhir 2030", body: `
 <p>Satu FCFF &ldquo;normal&rdquo; untuk selamanya: FCFF 2031 = 11,30 &times; 1,0175 = <b>11,49775T</b>.</p>
@@ -1984,77 +1984,77 @@ sections: [
 <p>Lensa kedua &mdash; tanpa asumsi &ldquo;selamanya&rdquo;: INDF <i>dijual</i> di akhir 2030.</p>
 <div class="formula">TV = EBITDA<sub>2030</sub> &times; multiple = 16,50 &times; 7 = <b>Rp115,50T</b></div>
 <p>EBITDA 2030 = <b>16,50T dinyatakan sebagai asumsi</b>; multiple <b>7&times; dinyatakan sebagai asumsi ilustrasi</b> (bukan data transaksi pasar).</p>
-<div class="callout"><b>Kenapa dua metode lagi?</b> Karena TV mendominasi nilai DCF &mdash; satu lensa = satu titik kegagalan. (Catatan: di model INDF ini, PV TV hanya 56,2% dari EV — angka 80&ndash;90% adalah gambaran umum DCF, bukan model ini. Lihat kuis hell § TV.) Dua lensa independen yang seorde (112,17 vs 115,50) = keyakinan; yang bertolak belakang = sinyal ada yang salah.</div>`},
+<div class="callout"><b>Kenapa dua metode lagi?</b> Karena TV mendominasi nilai DCF &mdash; satu lensa = satu titik kegagalan. (Catatan: di model INDF ini, PV TV hanya 55,5% dari EV — angka 80&ndash;90% adalah gambaran umum DCF, bukan model ini. Lihat kuis hell § TV.) Dua lensa independen yang seorde (112,17 vs 115,50) = keyakinan; yang bertolak belakang = sinyal ada yang salah.</div>`},
 {h: "EV \u2192 ekuitas \u2192 per saham: jembatan valuasi", body: `
 <table class="brutal">
 <tr><th>Komponen (Rp triliun)</th><th>Nilai</th></tr>
-<tr><td>PV FCFF 2026&ndash;2030</td><td>49,60</td></tr>
+<tr><td>PV FCFF 2026&ndash;2030</td><td>51,00</td></tr>
 <tr><td>PV TV (112,17 &divide; 1,12&#8309;)</td><td>63,65</td></tr>
-<tr><td><b>Enterprise Value</b></td><td><b>113,25</b></td></tr>
+<tr><td><b>Enterprise Value</b></td><td><b>114,65</b></td></tr>
 <tr><td>Net debt (67,00 &minus; 26,90, dari Hari 12)</td><td>(40,10)</td></tr>
-<tr><td><b>Ekuitas</b></td><td><b>73,15</b></td></tr>
+<tr><td><b>Ekuitas</b></td><td><b>74,55</b></td></tr>
 <tr><td>Saham beredar (diluted terkini &mdash; lih. Hari 20)</td><td>8,78 miliar</td></tr>
-<tr><td><b>Target price (base)</b></td><td><b>Rp8.332</b></td></tr>
+<tr><td><b>Target price (base)</b></td><td><b>Rp8.491</b></td></tr>
 </table>
 <div class="callout"><b>Kenapa EV dulu, bukan langsung ekuitas?</b> Karena FCFF milik <i>semua</i> investor (kreditor + pemegang saham). Ekuitas = sisa setelah kreditor dibayar (net debt). Membalik urutannya = mengklaim kas kreditor sebagai milikmu.</div>`},
 {h: "Target price: nama untuk angka per sahammu", body: `
-<p>Angka <b>Rp8.332</b> yang baru kamu turunkan punya nama di industri: <b>target price</b>. Inilah output valuasi yang dipublikasikan analis &mdash; angka per saham yang masuk ke thesis dan rekomendasi.</p>
+<p>Angka <b>Rp8.491</b> yang baru kamu turunkan punya nama di industri: <b>target price</b>. Inilah output valuasi yang dipublikasikan analis &mdash; angka per saham yang masuk ke thesis dan rekomendasi.</p>
 <table class="brutal">
 <tr><th>Istilah</th><th>Artinya</th><th>Sifat</th></tr>
 <tr><td><b>Harga pasar</b></td><td>Harga kuotasi saham <i>sekarang</i> di bursa</td><td>Fakta yang teramati</td></tr>
 <tr><td><b>Fair value</b> (nilai wajar)</td><td>Estimasi modelmu atas nilai intrinsik &mdash; inilah yang dijawab DCF dan comps</td><td>Rentang dari skenario</td></tr>
-<tr><td><b>Target price</b></td><td>Fair value yang diterjemahkan jadi angka per saham <i>actionable</i> dalam horizon yang dinyatakan</td><td>Bear/base/bull: Rp7.270 / 8.332 / 9.620</td></tr>
+<tr><td><b>Target price</b></td><td>Fair value yang diterjemahkan jadi angka per saham <i>actionable</i> dalam horizon yang dinyatakan</td><td>Bear/base/bull: Rp7.428 / 8.491 / 9.778</td></tr>
 </table>
 <p><b>Kapan analis memakai istilah ini?</b> Saat menulis thesis (beli/tahan/jual = target price vs harga pasar), saat pitch 10 menit (Hari 27), dan di research note. Target price yang profesional selalu membawa empat pendamping: <b>as-of date, horizon, basis saham (diluted), dan rentang skenario</b> &mdash; tanpa itu angkanya tidak bisa dibaca, dicek, atau dibandingkan nanti.</p>
-<div class="callout"><b>Kenapa bukan satu angka?</b> Karena satu angka tanpa rentang = presisi palsu (ingat real-01: tiga skenario memetakan ruang kemungkinan, bukan satu tebakan). Di course ini, "target price" = <b>rentang per saham</b> dari skenariomu sendiri: Rp7.270&ndash;9.620 dengan base Rp8.332. Keputusan investasi lahir dari membandingkan harga pasar dengan rentang itu.</div>`},
+<div class="callout"><b>Kenapa bukan satu angka?</b> Karena satu angka tanpa rentang = presisi palsu (ingat real-01: tiga skenario memetakan ruang kemungkinan, bukan satu tebakan). Di course ini, "target price" = <b>rentang per saham</b> dari skenariomu sendiri: Rp7.428&ndash;9.778 dengan base Rp8.491. Keputusan investasi lahir dari membandingkan harga pasar dengan rentang itu.</div>`},
 {h: "Validasi: dua jalur independen, satu angka", body: `
 <p>Dengar baik-baik &mdash; ini momen terpenting capstone:</p>
-<div class="formula">Model independen ini tiba di <b>Rp73,15T</b> &mdash; konsisten dengan hasil <i>repair</i> RC3 (73,15T)</div>
-<p>Jalur 1 (RC3): <i>repair</i> model yang sudah ada &rarr; ekuitas induk 73,15T, FCFF 15,90T.<br>
-Jalur 2 (Hari 12&ndash;13): <i>build</i> dari blank &rarr; FCFF 15,90T &rarr; DCF &rarr; ekuitas 73,15T.</p>
-<p>Dua metode, dua arah kerja, <b>satu angka</b> (selisih 0,00T &mdash; dalam toleransi &plusmn;1T).</p>
+<div class="formula">Model independen ini tiba di <b>Rp74,55T</b> &mdash; dekat dengan hasil <i>repair</i> RC3 (73,15T), selisih 1,40T</div>
+<p>Jalur 1 (RC3): <i>repair</i> model yang sudah ada &rarr; ekuitas induk 73,15T.<br>
+Jalur 2 (Hari 12&ndash;13): <i>build</i> dari blank &rarr; FCFF 17,46T &rarr; DCF &rarr; ekuitas 74,55T.</p>
+<p>Dua metode, dua arah kerja, <b>hampir satu angka</b> — selisih 1,40T (1,9%) = PV dari add-back bunga setelah pajak (1,56 &divide; 1,12 = 1,39). Gap itu punya penjelasan mekanik: jalur 2 memakai FCFF yang benar (dengan add-back), jalur 1 memakai ekuitas repair sebagai jangkar. Konvergensi dekat + gap yang bisa dijelaskan = rekonsiliasi yang kuat, bukan klaim angka yang terlalu rapi.</p>
 <div class="callout"><b>Kenapa ini yang dipresentasikan ke komite?</b> Karena angka tunggal bisa direkayasa; <i>konvergensi dua jalur independen</i> sulit direkayasa. Inilah rekonsiliasi yang kuat &mdash; bukan klaim, tapi validasi. (Bukan bukti mutlak: kedua jalur berbagi input, jadi periksa rumus dan independensi input sebelum menyebutnya terbukti.) Thesis tanpa validasi = opini; dengan validasi = argumen.</div>`},
 {h: "Sensitivitas WACC: rentang, bukan titik", body: `
 <p>WACC &plusmn;1pp (g tetap 1,75%) &mdash; ekuitas mengayun:</p>
 <table class="brutal">
 <tr><th>Skenario</th><th>Ekuitas (Rp triliun)</th><th>vs Base</th></tr>
-<tr><td>WACC 11% (rendah)</td><td>84,45</td><td>+15,4%</td></tr>
-<tr><td><b>WACC 12% (base)</b></td><td><b>73,15</b></td><td>&mdash;</td></tr>
-<tr><td>WACC 13% (tinggi)</td><td>63,84</td><td>&minus;12,7%</td></tr>
+<tr><td>WACC 11% (rendah)</td><td>85,85</td><td>+15,2%</td></tr>
+<tr><td><b>WACC 12% (base)</b></td><td><b>74,55</b></td><td>&mdash;</td></tr>
+<tr><td>WACC 13% (tinggi)</td><td>65,22</td><td>&minus;12,5%</td></tr>
 </table>
-<p>Rentang <b>20,61T</b> dari perubahan asumsi yang &ldquo;masuk akal&rdquo;. Di workbook, dua sel sensitivitas ini <b>rumus penuh</b> &mdash; ubah WACC, ekuitas ikut bergerak.</p>
-<div class="callout"><b>Kenapa &plusmn;1pp WACC mengayun Rp20T?</b> Karena penyebut (WACC&minus;g) kecil = tuas raksasa. Inilah alasan WACC disebut &ldquo;tuas paling berbahaya&rdquo; sejak Hari 09. Valuasi = rentang + peta sensitivitas, bukan titik 73,15.</div>`},
+<p>Rentang <b>20,63T</b> dari perubahan asumsi yang &ldquo;masuk akal&rdquo;. Di workbook, dua sel sensitivitas ini <b>rumus penuh</b> &mdash; ubah WACC, ekuitas ikut bergerak.</p>
+<div class="callout"><b>Kenapa &plusmn;1pp WACC mengayun Rp20T?</b> Karena penyebut (WACC&minus;g) kecil = tuas raksasa. Inilah alasan WACC disebut &ldquo;tuas paling berbahaya&rdquo; sejak Hari 09. Valuasi = rentang + peta sensitivitas, bukan titik 74,55.</div>`},
 {h: "Thesis 1 halaman: anatomi", body: `
 <p>Thesis investasi = argumen 1 halaman kenapa saham ini layak dibeli/dijual. Template-nya:</p>
 <table class="brutal">
 <tr><th>Blok</th><th>Isi (INDF, contoh)</th></tr>
 <tr><td><b>Basis</b></td><td>As-of: Des 2025 &middot; Horizon: 12 bulan &middot; Satuan: Rp &middot; Saham: 8,78 miliar (diluted)</td></tr>
 <tr><td><b>Tesis (1 kalimat)</b></td><td>INDF undervalued: pasar mengharga normalisasi berlebihan.</td></tr>
-<tr><td><b>Bull / Base / Bear</b></td><td>84,45T / 73,15T / 63,84T (Rp9.620 / 8.332 / 7.270 per saham)</td></tr>
+<tr><td><b>Bull / Base / Bear</b></td><td>85,85T / 74,55T / 65,22T (Rp9.778 / 8.491 / 7.428 per saham)</td></tr>
 <tr><td><b>Katalis</b></td><td>Disiplin capex berlanjut; kenaikan dividen; spin-off segmen.</td></tr>
 <tr><td><b>Risiko</b></td><td>Marjin tertekan lagi; rupiah melemah; regulasi pangan.</td></tr>
-<tr><td><b>Valuasi</b></td><td>Base Rp8.332 vs harga pasar &rarr; upside/downside &rarr; margin of safety.</td></tr>
+<tr><td><b>Valuasi</b></td><td>Base Rp8.491 vs harga pasar &rarr; upside/downside &rarr; margin of safety.</td></tr>
 <tr><td><b>Keputusan</b></td><td>Beli / tunggu / jual &mdash; dengan harga pemicu eksplisit.</td></tr>
 </table>
 <div class="callout"><b>Kenapa tepat 1 halaman?</b> Karena komite investasi tidak membaca 40 halaman. Kalau argumenmu tidak muat 1 halaman, kamu belum paham &mdash; bukan pembaca yang kurang pintar. Keterbatasan halaman = uji pemahaman.</div>`},
 {h: "Bull / base / bear + katalis + risiko", body: `
 <p>Tiga skenario INDF dari sensitivitasmu sendiri &mdash; bukan dari langit:</p>
 <ul>
-<li><b>Bull (WACC 11%):</b> ekuitas 84,45T &rarr; Rp9.620/saham. Katalis: capex disiplin permanen, dividen naik.</li>
-<li><b>Base (WACC 12%):</b> ekuitas 73,15T &rarr; Rp8.332/saham. Skenario normalisasi yang dinyatakan.</li>
-<li><b>Bear (WACC 13%):</b> ekuitas 63,84T &rarr; Rp7.270/saham. Risiko: marjin tertekan, biaya modal naik.</li>
+<li><b>Bull (WACC 11%):</b> ekuitas 85,85T &rarr; Rp9.778/saham. Katalis: capex disiplin permanen, dividen naik.</li>
+<li><b>Base (WACC 12%):</b> ekuitas 74,55T &rarr; Rp8.491/saham. Skenario normalisasi yang dinyatakan.</li>
+<li><b>Bear (WACC 13%):</b> ekuitas 65,22T &rarr; Rp7.428/saham. Risiko: marjin tertekan, biaya modal naik.</li>
 </ul>
 <p><b>Margin of safety</b> = selisih nilai wajar vs harga yang kamu bayar. Beli di 70% nilai base = bantalan 30% bila asumsimu salah.</p>
 <div class="callout"><b>Kenapa bull/base/bear, bukan satu angka?</b> Karena keputusan investasi = harga pasar vs <i>rentang</i> nilaimu. Harga di bawah bear = beli dengan margin of safety tebal; harga di atas bull = jual/tunggu. Satu angka tidak bisa memberi keputusan ini.</div>`},
 {h: "Menulis vonis: kejujuran terakhir", body: `
 <p>Contoh vonis 3 baris:</p>
-<div class="formula">&ldquo;Base Rp8.332/saham (ekuitas 73,15T). Beli di bawah Rp7.270 (bear) dengan margin of safety; di atas Rp9.620 (bull) = tidak ada margin. Model independen terkonvergensi dengan repair RC3.&rdquo;</div>
+<div class="formula">&ldquo;Base Rp8.491/saham (ekuitas 74,55T). Beli di bawah Rp7.428 (bear) dengan margin of safety; di atas Rp9.778 (bull) = tidak ada margin. Model independen hampir terkonvergensi dengan repair RC3 (selisih 1,40T = PV add-back bunga).&rdquo;</div>
 <p>Batasan yang <b>wajib</b> dinyatakan di thesis-mu:</p>
 <ul>
 <li>Semua angka ilustrasi &mdash; WACC 12%, g 1,75%, multiple 7&times; = asumsi pengajaran, bukan data pasar.</li>
 <li>Model tanpa kepentingan non-pengendali (NCI) &mdash; simplifikasi konsolidasi yang dinyatakan.</li>
-<li>TV &asymp; 56% EV &mdash; akurasi thesis ini &asymp; akurasi asumsi g &amp; multiple.</li>
-<li>Rp8.332 ilustrasi, <b>bukan rekomendasi investasi</b>.</li>
+<li>TV &asymp; 55% EV &mdash; akurasi thesis ini &asymp; akurasi asumsi g &amp; multiple.</li>
+<li>Rp8.491 ilustrasi, <b>bukan rekomendasi investasi</b>.</li>
 </ul>
 <div class="callout"><b>Kenapa vonis terakhir = batasan?</b> Karena thesis yang jujur soal kelemahannya = satu-satunya thesis yang bisa dipercaya. DCF adalah mesin pembenar sempurna &mdash; yang membedakan analis dan pembohong = keterbukaan asumsi. Capstone I tuntas. Selamat!</div>`}
 ,
@@ -2077,15 +2077,15 @@ quiz: [
 {q: "TV = 11,49775 \u00f7 (0,12 \u2212 0,0175). Hasil?", opts: ["Rp95,81T","Rp65,54T","Rp130,02T","Rp112,17T"], answer: 3, k: "tv13", diff: "Easy",
  hints: ["Penyebut = 0,1025.","11,49775 \u00f7 0,1025 = ?"],
  explain: "11,49775 \u00f7 0,1025 = Rp112,17T."},
-{q: "PV TV Rp63,65T + PV FCFF Rp49,60T. Enterprise value?", opts: ["Rp113,25T","Rp177,82T","Rp103,25T","Rp73,15T"], answer: 0, k: "ev13", diff: "Easy",
- hints: ["EV = PV FCFF + PV TV.","49,60 + 63,65 = ?"],
- explain: "49,60 + 63,65 = Rp113,25T."},
-{q: "EV Rp113,25T, net debt Rp40,10T. Ekuitas?", opts: ["Rp153,35T","Rp40,10T","Rp73,15T","Rp113,25T"], answer: 2, k: "eq13", diff: "Easy",
- hints: ["Ekuitas = EV \u2212 net debt.","113,25 \u2212 40,10 = ?"],
- explain: "113,25 \u2212 40,10 = Rp73,15T = jangkar kanonis RC3."},
-{q: "Ekuitas Rp73,15T, saham 8,78 miliar. Nilai per saham?", opts: ["Rp7.270","Rp8.332","Rp9.620","Rp73.150"], answer: 1, k: "ps13", diff: "Medium",
- hints: ["ps = ekuitas \u00f7 saham.","73,15T \u00f7 8,78 miliar = ?"],
- explain: "73,15 \u00f7 8,78 \u00d7 1.000 = Rp8.332 (ilustrasi)."},
+{q: "PV TV Rp63,65T + PV FCFF Rp51,00T. Enterprise value?", opts: ["Rp114,65T","Rp177,82T","Rp103,25T","Rp73,15T"], answer: 0, k: "ev13", diff: "Easy",
+ hints: ["EV = PV FCFF + PV TV.","51,00 + 63,65 = ?"],
+ explain: "51,00 + 63,65 = Rp114,65T."},
+{q: "EV Rp114,65T, net debt Rp40,10T. Ekuitas?", opts: ["Rp153,35T","Rp40,10T","Rp74,55T","Rp114,65T"], answer: 2, k: "eq13", diff: "Easy",
+ hints: ["Ekuitas = EV \u2212 net debt.","114,65 \u2212 40,10 = ?"],
+ explain: "114,65 \u2212 40,10 = Rp74,55T (jangkar repair RC3 73,15T; selisih 1,40T = PV add-back bunga)."},
+{q: "Ekuitas Rp74,55T, saham 8,78 miliar. Nilai per saham?", opts: ["Rp7.428","Rp8.491","Rp9.778","Rp74.550"], answer: 1, k: "ps13", diff: "Medium",
+ hints: ["ps = ekuitas \u00f7 saham.","74,55T \u00f7 8,78 miliar = ?"],
+ explain: "74,55 \u00f7 8,78 \u00d7 1.000 = Rp8.491 (ilustrasi)."},
 {q: "FCFF mid-cycle Rp200jt, WACC 11%, g 3%. EV ternormalisasi? (FCFF puncak Rp350jt memberi EV Rp4.506jt.)", opts: ["Rp2.575jt","Rp4.506jt","Rp2.000jt","Rp3.500jt"], answer: 0, k: "cyclical", diff: "Medium",
  hints: ["EV = 200 × 1,03 ÷ (0,11 − 0,03).", "Menilai puncak = membayar 75% lebih mahal."],
  explain: "EV = 206 ÷ 0,08 = Rp2.575jt. FCFF puncak memberi Rp4.506jt — 75% lebih mahal untuk perusahaan yang sama."},
@@ -2095,19 +2095,19 @@ quiz: [
 
 ],
 hell: [
-{q: "Dua jalur (repair RC3 & build capstone) tiba di Rp73,15T. Maknanya?", opts: ["Kebetulan semata","RC3 pasti salah hitung","Konvergensi dua jalur independen = validasi mekanik","Capstone pasti salah hitung"], answer: 2, diff: "Medium",
- explain: "Angka tunggal bisa direkayasa; konvergensi dua jalur independen sulit direkayasa. Inilah rekonsiliasi yang kuat \u2014 validasi, bukan klaim — tapi bukan bukti mutlak: kedua jalur berbagi input."},
-{q: "WACC 12% \u2192 13%, ekuitas 73,15T \u2192 63,84T. Pelajarannya?", opts: ["WACC tuas paling berbahaya \u2014 \u00b11pp mengayun \u00b120T","WACC tidak penting untuk valuasi","Naikkan saja g untuk menutup","Ganti metode valuasi"], answer: 0, diff: "Medium",
- explain: "Penyebut (WACC\u2212g) kecil = tuas raksasa. WACC \u00b11pp = ekuitas \u221212,7%. Inilah kenapa sensitivitas WACC selalu diuji."},
-{q: "PV TV Rp63,65T vs EV Rp113,25T. Berapa pangsa TV dari nilai?", opts: ["56,2%","\u223c70%","49,6%","112,17%"], answer: 0, diff: "Medium",
- explain: "63,65 \u00f7 113,25 = 56,2%. Angka \u223c70% adalah jebakan basis: 112,17 \u00f7 (112,17 + 49,60) = 69,3% membagi TV NOMINAL dengan jumlah nominal — pangsa nilai harus dihitung dari PV. TV tetap dominan, tapi tidak 70%."},
-{q: "Exit multiple memberi ekuitas Rp75,04T vs perpetuitas Rp73,15T. Vonis?", opts: ["Ambil 75,04T (lebih tinggi)","Ambil 73,15T (lebih konservatif)","Rentang 73,15\u201375,04T \u2014 dua lensa, satu perusahaan","Rata-rata paksa jadi 74,10T"], answer: 2, diff: "Medium",
+{q: "Build capstone tiba di ekuitas Rp74,55T vs jangkar repair RC3 Rp73,15T (selisih Rp1,40T). Maknanya?", opts: ["Kebetulan semata","RC3 pasti salah hitung","Konvergensi dua jalur independen = validasi mekanik","Capstone pasti salah hitung"], answer: 2, diff: "Medium",
+ explain: "Selisih Rp1,40T (1,9%) = PV dari add-back bunga setelah pajak (1,56 \u00f7 1,12 = 1,39) — gap yang punya penjelasan mekanik, bukan kesalahan. Dua jalur yang hampir bertemu = rekonsiliasi yang kuat \u2014 validasi, bukan klaim — tapi bukan bukti mutlak: kedua jalur berbagi input."},
+{q: "WACC 12% \u2192 13%, ekuitas 74,55T \u2192 65,22T. Pelajarannya?", opts: ["WACC tuas paling berbahaya \u2014 \u00b11pp mengayun \u00b120T","WACC tidak penting untuk valuasi","Naikkan saja g untuk menutup","Ganti metode valuasi"], answer: 0, diff: "Medium",
+ explain: "Penyebut (WACC\u2212g) kecil = tuas raksasa. WACC \u00b11pp = ekuitas \u221212,5%. Inilah kenapa sensitivitas WACC selalu diuji."},
+{q: "PV TV Rp63,65T vs EV Rp114,65T. Berapa pangsa TV dari nilai?", opts: ["55,5%","\u223c70%","44,5%","112,17%"], answer: 0, diff: "Medium",
+ explain: "63,65 \u00f7 114,65 = 55,5%. Angka \u223c70% adalah jebakan basis: 112,17 \u00f7 (112,17 + 51,00) = 68,7% membagi TV NOMINAL dengan jumlah nominal — pangsa nilai harus dihitung dari PV. 44,5% itu pangsa PV FCFF, bukan TV. TV tetap dominan, tapi tidak 70%."},
+{q: "Exit multiple memberi ekuitas Rp76,44T vs perpetuitas Rp74,55T. Vonis?", opts: ["Ambil 76,44T (lebih tinggi)","Ambil 74,55T (lebih konservatif)","Rentang 74,55\u201376,44T \u2014 dua lensa, satu perusahaan","Rata-rata paksa jadi 75,50T"], answer: 2, diff: "Medium",
  explain: "Dua lensa independen yang seorde = keyakinan. Yang benar = rentang + pemahaman dari mana selisih Rp1,89T berasal."},
 {q: "Thesis-mu tidak muat 1 halaman. Artinya?", opts: ["Kamu belum cukup paham \u2014 sederhanakan sampai muat","Perpanjang jadi 2 halaman","Kecilkan fontnya","Hapus bagian risiko"], answer: 0, diff: "Easy",
  explain: "Keterbatasan 1 halaman = uji pemahaman. Kalau tidak muat, argumennya belum kristal \u2014 bukan pembaca yang kurang pintar."}
 ],
 tasks: [
-{t: "Task A \u2014 DCF INDF (\u00b13 jam)", d: "Download file latihan Hari 13 dari Drive. Selesaikan DCF: TV perpetuitas + PV TV + EV + net debt + ekuitas + per saham + 2 sel sensitivitas (semua rumus). Target: TV 112,17 \u00b7 EV 113,25 \u00b7 ekuitas 73,15 \u00b7 Rp8.332/saham \u00b7 sens 63,84 / 84,45.", url: "https://drive.google.com/drive/folders/1v-92ytXR9FTNjl-iBW7vUR3eyDQM5Dat"},
+{t: "Task A \u2014 DCF INDF (\u00b13 jam)", d: "Download file latihan Hari 13 dari Drive. Selesaikan DCF: TV perpetuitas + PV TV + EV + net debt + ekuitas + per saham + 2 sel sensitivitas (semua rumus). Target: TV 112,17 \u00b7 EV 114,65 \u00b7 ekuitas 74,55 \u00b7 Rp8.491/saham \u00b7 sens 65,22 / 85,85.", url: "https://drive.google.com/drive/folders/1v-92ytXR9FTNjl-iBW7vUR3eyDQM5Dat"},
 {t: "Task B \u2014 Thesis 1 halaman (\u00b12 jam)", d: "Tulis thesis investasi INDF 1 halaman pakai template \u00a77: tesis 1 kalimat, bull/base/bear, katalis, risiko, valuasi vs harga, keputusan + batasan yang dinyatakan."},
 {t: "Task C \u2014 Quiz di atas", d: "Target \u22656/7 benar. Salah? Baca hint, ulangi."}
 ],
@@ -2117,7 +2117,7 @@ blind: {h: "Latihan Buta \u2014 DCF Kios Rina", body: `
 <p><b>TV:</b> FCFF tahun-4 = 9 \u00d7 1,02 = 9,18; TV = 9,18 \u00f7 (0,12 \u2212 0,02) = <b>91,8</b>.</p>
 <p><b>PV:</b> PV TV = 91,8 \u00f7 1,12\u00b3 = <b>65,34</b>; PV FCFF = 8/1,12 + 8,5/1,12\u00b2 + 9/1,12\u00b3 = <b>20,32</b>.</p>
 <p><b>EV</b> = 65,34 + 20,32 = <b>85,66</b>; <b>ekuitas</b> = 85,66 \u2212 10 = <b>75,66</b>; <b>per saham</b> = 75,66 \u00f7 2.000 = <b>Rp0,03783</b>.</p>
-<p><i>Jebakan satuan:</i> ekuitas 75,66 dalam Rp JUTA (= Rp75.660.000) dan saham 2 miliar (= 2.000 juta saham) — Rp juta ÷ juta saham = Rp, jadi jawabannya Rp0,03783/saham. Mengalikan 1.000 hanya benar bila pembilang dalam triliun dan penyebut dalam miliar — seperti contoh INDF (73,15T ÷ 8,78 miliar saham = Rp8.332). Selalu samakan satuannya dulu sebelum membagi.</p>
+<p><i>Jebakan satuan:</i> ekuitas 75,66 dalam Rp JUTA (= Rp75.660.000) dan saham 2 miliar (= 2.000 juta saham) — Rp juta ÷ juta saham = Rp, jadi jawabannya Rp0,03783/saham. Mengalikan 1.000 hanya benar bila pembilang dalam triliun dan penyebut dalam miliar — seperti contoh INDF (74,55T ÷ 8,78 miliar saham = Rp8.491). Selalu samakan satuannya dulu sebelum membagi.</p>
 <p><i>Kenapa TV didiskonto 3 tahun?</i> Karena TV duduk di akhir tahun ke-3 \u2014 tahun yang sama dengan FCFF terakhir. Salah tahun = salah PV.</p>
 </details>`}
 },
@@ -2149,21 +2149,22 @@ sections: [
 <tr><td>Multiple = vonis</td><td>Exit multiple = <b>asumsi ilustratif</b> — titik rawan perdebatan</td><td>Hari 10</td></tr>
 <tr><td>Football field dibaca titik</td><td>Dibaca sebagai <b>rentang</b> — keputusan dari harga vs rentang</td><td>Hari 10</td></tr>
 <tr><td>Sensitivitas satu arah</td><td>WACC <b>dan</b> g dua-duanya menggigit via penyebut (WACC\u2212g)</td><td>Hari 10</td></tr>
-<tr><td>FCFF = laba bersih</td><td>FCFF = CFO \u2212 capex — \u0394WC &amp; capex memisahkan laba dari kas</td><td>Hari 09</td></tr>
+<tr><td>FCFF = laba bersih</td><td>FCFF = CFO + bunga×(1−t) \u2212 capex (tanpa utang: CFO \u2212 capex) — \u0394WC &amp; capex memisahkan laba dari kas</td><td>Hari 09</td></tr>
 <tr><td>Tax shield dipotong dari FCFF</td><td>Tax shield <b>hanya hidup di WACC</b> (saat ada bunga) — double-count kalau dipotong dua kali</td><td>Hari 09</td></tr>
 <tr><td>Utang dagang masuk WACC</td><td>Non-bunga = <b>konsekuensi operasi</b>, bukan keputusan pendanaan</td><td>Hari 08/09</td></tr>
 </table>
 <div class="callout"><b>Kenapa daftar ini dihafal, bukan dipahami ulang?</b> Karena di kondisi ujian 2 jam, otakmu tidak sempat "berpikir dari nol" untuk setiap jebakan. Jebakan yang sudah dikenali = 1 menit; yang belum = 20 menit + potensi salah yang mengalir ke seluruh DCF.</div>`},
 {h: "Strategi 2 jam: menaklukkan DCF PT Maju Jaya", body: `
 <p>Kasus "PT Maju Jaya" (di file latihan): dari template <b>kosong</b>, bangun mini 3-statement + FCFF + TV dua metode + EV dua versi. WACC, g, multiple, dan FCFF normal <b>sudah diberikan</b> — jangan dihitung ulang. Urutan yang terbukti:</p>
+<p>Dua metode TV = perpetuitas Gordon dan exit multiple; tampilkan kedua EV sebagai rentang (football field), bukan satu titik.</p>
 <ol>
 <li><b>0\u201310 mnt: baca SEMUA data dulu.</b> Tandai angka input vs yang harus dihitung vs yang diberikan. Jangan sentuh keyboard sebelum peta lengkap.</li>
 <li><b>10\u201340 mnt: mini 3-statement.</b> NI \u2192 neraca (roll-forward tiap akun) \u2192 kas. Balance dulu — DCF di atas neraca tak-balance = menara di atas pasir.</li>
 <li><b>40\u201370 mnt: \u0394WC \u2192 CFO \u2192 FCFF.</b> Sanity check: FCFF negatif BOLEH — asal dijelaskan (capex &gt; CFO = tahun investasi).</li>
-<li><b>70\u2013100 mnt: TV dua metode \u2192 PV \u2192 EV dua versi.</b> Cek syarat g &lt; WACC sebelum membagi. Football field = rentang, bukan titik.</li>
+<li><b>70\u2013100 mnt: TV dua metode (perpetuitas Gordon + exit multiple) \u2192 PV \u2192 EV dua versi.</b> Cek syarat g &lt; WACC sebelum membagi. Football field = rentang, bukan titik.</li>
 <li><b>100\u2013120 mnt: golden checks.</b> A=L+E \u00b7 tie-out kas 0 \u00b7 RE roll \u00b7 \u0394WC dua arah \u00b7 semua sel jawaban rumus (bukan angka ketik). Satu gagal = cari, jangan submit.</li>
 </ol>
-<div class="callout"><b>Kenapa mini 3-statement dulu, bukan langsung TV?</b> Karena NI menggerakkan RE dan CFO, dan FCFF = CFO \u2212 capex. TV tanpa FCFF yang benar = valuasi atas angka hantu. Urutan IS \u2192 BS \u2192 CF \u2192 FCFF \u2192 TV \u2192 EV adalah <b>urutan ketergantungan</b>, bukan kebiasaan.</div>`},
+<div class="callout"><b>Kenapa mini 3-statement dulu, bukan langsung TV?</b> Karena NI menggerakkan RE dan CFO, dan FCFF = CFO + bunga×(1−t) \u2212 capex (di kasus Maju Jaya tanpa bunga: CFO \u2212 capex). TV tanpa FCFF yang benar = valuasi atas angka hantu. Urutan IS \u2192 BS \u2192 CF \u2192 FCFF \u2192 TV \u2192 EV adalah <b>urutan ketergantungan</b>, bukan kebiasaan.</div>`},
 {h: "\u23F1\uFE0F Timer kondisi ujian", body: `
 <div class="callout">\u23F1\uFE0F <b>Timer 2 jam</b> \u2014 klik Mulai, kerjakan tanpa jeda: <span id="gatetimer2" style="font-weight:bold;font-size:1.3rem">120:00</span>
 <button class="btn small blue" onclick="var s=7200,btn=this;btn.disabled=true;var iv=setInterval(function(){s--;var m=Math.floor(s/60),ss=s%60;var el=document.getElementById('gatetimer2');if(!el){clearInterval(iv);return;}el.textContent=m+':'+(ss<10?'0':'')+ss;if(s<=0){clearInterval(iv);el.textContent='\u26D4 WAKTU HABIS \u2014 berhenti, simpan file, upload untuk dinilai.';}},1000);">\u25B6 Mulai timer</button>
@@ -2233,9 +2234,9 @@ quiz: [
 {q: "Utang usaha Rp2.000rb (non-bunga, tempo supplier). Masuk perhitungan WACC?", opts: ["Tidak \u2014 utang dagang adalah konsekuensi operasi, bukan keputusan pendanaan","Ya, sebagai komponen utang","Ya, setengahnya","Tergantung analis"], answer: 0, k: "wacc", diff: "Medium",
  hints: ["WACC menilai biaya modal ...","Apakah supplier menagih bunga 30 hari?"],
  explain: "Tidak. WACC = biaya modal berbunga (bank, obligasi). Utang dagang non-bunga adalah konsekuensi operasi \u2014 mencampurnya mengotori biaya modal."},
-{q: "FCFF didefinisikan sebagai\u2026", opts: ["Laba bersih \u2212 dividen","CFO \u2212 capex","EBITDA \u2212 pajak","Revenue \u2212 COGS"], answer: 1, k: "fcff", diff: "Easy",
+{q: "FCFF didefinisikan sebagai\u2026", opts: ["Laba bersih \u2212 dividen","CFO + bunga×(1−t) \u2212 capex","EBITDA \u2212 pajak","Revenue \u2212 COGS"], answer: 1, k: "fcff", diff: "Easy",
  hints: ["Kas operasi setelah ...","Mesin harus dijaga dulu sebelum kas bebas."],
- explain: "FCFF = CFO \u2212 capex: kas operasi setelah belanja modal \u2014 kas yang benar-benar bebas untuk semua pemodal."},
+ explain: "FCFF = CFO + bunga×(1−t) \u2212 capex: kas operasi setelah belanja modal \u2014 kas yang benar-benar bebas untuk semua pemodal. Tanpa utang (tanpa bunga): CFO \u2212 capex."},
 {q: "Setiap angka di model Gerbang 2 harus bisa ditelusur kembali ke\u2026", opts: ["Feeling analis","Angka tahun lalu mentah-mentah","Sel input asumsi yang dinyatakan eksplisit","Rata-rata industri"], answer: 2, k: "asumsi", diff: "Easy",
  hints: ["Driver \u00d7 asumsi, bukan tebakan.","Di mana asumsi tinggal? Sel ..."],
  explain: "Sel input (biru) yang dinyatakan eksplisit. Angka yang tidak bisa ditelusur ke asumsi = tidak bisa diperdebatkan = tidak bisa dipercaya."},
@@ -2257,7 +2258,7 @@ hell: [
  explain: "Skor 100 dengan link salah = lulus palsu. Di dunia nyata asumsi berubah dan link salah itu meledak. Gerbang menguji kebiasaan me-link yang benar \u2014 perbaiki, upload ulang."}
 ],
 tasks: [
-{t: "Task A \u2014 DCF PT Maju Jaya, 2 jam kondisi ujian", d: "Download template Hari 14 dari Drive. Nyalakan timer di lesson, bangun dari KOSONG: mini 3-statement \u2192 FCFF \u2192 TV dua metode \u2192 EV dua versi. Upload untuk dinilai \u2014 target checker \u226580 + balance.", url: "https://drive.google.com/drive/folders/14hIvkRPJ2wzLEsrW4UWAJQT58JB-t2xx"},
+{t: "Task A \u2014 DCF PT Maju Jaya, 2 jam kondisi ujian", d: "Download template Hari 14 dari Drive. Nyalakan timer di lesson, bangun dari KOSONG: mini 3-statement \u2192 FCFF \u2192 TV dua metode (perpetuitas Gordon + exit multiple) \u2192 EV dua versi. Upload untuk dinilai \u2014 target checker \u226580 + balance.", url: "https://drive.google.com/drive/folders/14hIvkRPJ2wzLEsrW4UWAJQT58JB-t2xx"},
 {t: "Task B \u2014 Quiz 20 soal di atas", d: "Target \u226516 benar (80%). Salah? Kembali ke rekap jebakan Minggu 2, ulangi."},
 {t: "Task C \u2014 Cek gerbang", d: "Quiz \u226580% DAN checker DCF \u226580 = GERBANG 2 LOLOS \u2192 Capstone II (Minggu 3). Gagal satu = 1 hari repair, ulangi yang gagal saja."}
 ],
@@ -2386,7 +2387,7 @@ sections: [
 {h: "Decision tree: keputusan bertahap punya nilai", body: `
 <p>Beberapa keputusan tidak diambil sekali — melainkan <b>bertahap</b>: investasi hari ini membeli <i>hak</i> untuk memutuskan lagi besok. <b>Decision tree</b> menilai hak itu dengan expected value di tiap cabang (pasangan alami real-07: smelter sebagai opsi bertahap).</p>
 <div class="example korporat"><div class="lbl">🏢 Contoh — tunggu setahun, atau bangun sekarang?</div>
-<p>Investasi sekarang: NPV <b>+Rp50jt</b> (pasti). Tunggu 1 tahun — dua varian, jangan dicampur: <b>(A) bangun-selalu:</b> 60% kondisi bagus → NPV +Rp120jt; 40% kondisi buruk → NPV −Rp20jt (tetap bangun). EMV menunggu = 0,6 × 120 + 0,4 × (−20) = 72 − 8 = <b>+Rp64jt</b>, nilai fleksibilitas = 64 − 50 = Rp14jt. <b>(B) opsi-mundur:</b> di kondisi buruk kamu <i>tidak jadi bangun</i> — payoff-nya 0, bukan −20. EMV menunggu = 0,6 × 120 + 0,4 × 0 = <b>+Rp72jt</b>, nilai fleksibilitas = 72 − 50 = <b>Rp22jt</b>. Varian B-lah yang benar-benar memakai hak menunggu: cabang yang tidak akan pernah kamu ambil dipotong (payoff −20 tidak pernah terjadi bila kamu boleh mundur). Aturan: bandingkan EMV cabang, bukan NPV satu skenario; dan bila kamu memotong cabang, hitung EMV-nya dengan payoff 0, bukan −20.</p></div>
+<p>Investasi sekarang: NPV <b>+Rp50jt</b> (pasti). Tunggu 1 tahun — dua varian, jangan dicampur: <b>(A) bangun-selalu:</b> 60% kondisi bagus → NPV +Rp120jt; 40% kondisi buruk → NPV −Rp20jt (tetap bangun). EMV (Expected Monetary Value — nilai moneter harapan) menunggu = 0,6 × 120 + 0,4 × (−20) = 72 − 8 = <b>+Rp64jt</b>, nilai fleksibilitas = 64 − 50 = Rp14jt. <b>(B) opsi-mundur:</b> di kondisi buruk kamu <i>tidak jadi bangun</i> — payoff-nya 0, bukan −20. EMV menunggu = 0,6 × 120 + 0,4 × 0 = <b>+Rp72jt</b>, nilai fleksibilitas = 72 − 50 = <b>Rp22jt</b>. Varian B-lah yang benar-benar memakai hak menunggu: cabang yang tidak akan pernah kamu ambil dipotong (payoff −20 tidak pernah terjadi bila kamu boleh mundur). Aturan: bandingkan EMV cabang, bukan NPV satu skenario; dan bila kamu memotong cabang, hitung EMV-nya dengan payoff 0, bukan −20.</p></div>
 <p><b>Jembatan ke Solver (Excel L3):</b> decision tree menjawab <i>kapan</i> memutuskan; Solver menjawab <i>berapa</i> yang optimal bila keputusanmu kontinu (alokasi capex) — dua alat optimasi yang saling melengkapi.</p>`}],
 quiz: [
 {q: "PT Maju Jaya: FCFF0 \u2212Rp2.000rb, FCFFn Rp3.600rb, WACC 12%, g 3%. EV base?", opts: ["Rp33.929rb","Rp40.000rb","Rp35.714rb","\u2212Rp1.786rb"], answer: 0, k: "ev_base", diff: "Easy",
@@ -2556,7 +2557,7 @@ sections: [
 <tr><td>Deal akretif <i>hanya dengan</i> sinergi</td><td>Kamu membeli <i>janji</i>, bukan perusahaan \u26a0\ufe0f</td></tr>
 <tr><td>Sinergi > 20% NI target</td><td>Angka fantasi \u2014 minta bukti integrasi yang pernah berhasil</td></tr>
 </table>
-<div class="callout"><b>Kenapa sinergi dicurigai duluan?</b> Karena studi M&A berulang menunjukkan 70\u201380% akuisisi gagal mencapai sinergi yang dijanjikan \u2014 dan sinergi selalu 100% terealisasi <i>di spreadsheet penjual</i>. Akresi sebelum sinergi = fakta; akresi sesudah sinergi = harapan.</div>`},
+<div class="callout"><b>Kenapa sinergi dicurigai duluan?</b> Karena sejumlah studi (mis. KPMG 1999) melaporkan sebagian besar akuisisi gagal menciptakan nilai bagi pemegang saham — dan definisi "gagal" bervariasi menurut studi — sementara sinergi selalu 100% terealisasi <i>di spreadsheet penjual</i>. Akresi sebelum sinergi = fakta; akresi sesudah sinergi = harapan.</div>`},
 {h: "Warung \u2192 korporat: analogi kios sebelah", body: `
 <p>Terjemahkan ke bahasa warung. Warung Septian: laba 2.075, 1.000 "lembar" milik keluarga, tiap lembar "seharga" 3,0 (valuasi warung 3.000). Kios sebelah (Warung Ani): laba 600, ekuitas buku 1.500, valuasi pasar 1.500.</p>
 <p>Septian beli Warung Ani 1.800 (premi 20%): 60% dibayar "saham warung" baru (360 lembar @ 3,0 = 1.080) + 40% pinjam bank 10%, fee 3% (54), pajak 22%.</p>
@@ -2568,7 +2569,7 @@ sections: [
 <tr><th>#</th><th>Cek</th><th>Deal A</th></tr>
 <tr><td>1</td><td>Sources = uses? (fee ikut?)</td><td>9.180 = 9.180 \u2713</td></tr>
 <tr><td>2</td><td>P/E bayar vs P/E acquirer?</td><td>5,0x vs 4,5x \u2014 bayar mahal, diselamatkan utang</td></tr>
-<tr><td>3</td><td>Goodwill / harga deal?</td><td>4.000/9.000 = 44% \u2014 separuh harga = harapan</td></tr>
+<tr><td>3</td><td>Goodwill / harga deal?</td><td>Goodwill sederhana 4.000/9.000 = 44% (goodwill PPA 2.050) \u2014 separuh harga = harapan</td></tr>
 <tr><td>4</td><td>Akretif tanpa sinergi?</td><td>Ya, +6,2% \u2713</td></tr>
 <tr><td>5</td><td>Leverage sesudah deal?</td><td>0 \u2192 utang 4.680 \u2014 risiko baru</td></tr>
 <tr><td>6</td><td>Apa yang membalik vonis?</td><td>Harga &gt; 12.540, atau bunga &gt; ~24%</td></tr>
@@ -2916,7 +2917,7 @@ sections: [
 <p>Warung Nusantara dengan musiman tajam (Jun 24.000 vs Jan 16.800) <i>tidak bisa</i> agresif penuh: butuh buffer persediaan menjelang Jun. Kebijakan WC = memilih titik di spektrum <i>secara sadar</i>, bukan terseret.</p>
 <div class="callout"><b>Kenapa ini "policy", bukan "perhitungan"?</b> Karena trade-off-nya melibatkan selera risiko pemilik \u2014 bukan matematika. Analis menghitung biayanya ("buffer Rp5.000rb = return hilang RpX"); pemilik memilih risikonya. Tugasmu: buat trade-off-nya <i>terlihat</i>, bukan memilihkan untuknya.</div>`}
 ,
-{h: "Capital budgeting: PI, ARR, payback & discounted payback", body: `
+{h: "Capital budgeting: PI, ARR (Accounting Rate of Return), payback & discounted payback", body: `
 <p>H18 selama ini hanya punya satu aturan: NPV &gt; 0, terima. Dunia nyata memakai empat alat — karena tiap alat menjawab pertanyaan berbeda. Proyek contoh (Rp jt): investasi <b>1.000</b>, arus masuk 300 / 400 / 500 / 400 (tahun 1–4), WACC 10%:</p>
 <table class="brutal">
 <tr><th>Alat</th><th>Rumus</th><th>Hitungan</th><th>Vonis</th></tr>
@@ -2933,7 +2934,7 @@ sections: [
 {h: "Inflasi, nominal vs riil & FX", body: `
 <p><b>Aturan emas:</b> arus kas nominal ↔ diskon nominal; arus kas riil ↔ diskon riil. Jangan campur. Fisher eksak: (1 + nominal) = (1 + riil) × (1 + inflasi). Contoh: nominal 12%, inflasi 5% → riil = 1,12 ÷ 1,05 − 1 = <b>6,67%</b> (bukan 7% — selisih kecil yang membesar di DCF 10 tahun).</p>
 <p><b>FX:</b> proyek berpendapatan dolar: USD 100rb × Rp16.000 = Rp1.600jt. Rupiah melemah 5% → kurs 16.800 → Rp1.680jt (+Rp80jt). Tapi bila biaya juga dolar, lindungi nilai bersihnya (net exposure), bukan angka bruto. Dan jangan pernah mem-forecast kurs dengan "kurs hari ini + inflasi differential" tanpa menyatakan asumsinya — itu paritas daya beli (PPP), sebuah teori, bukan ramalan. Inflasi &amp; FX adalah alasan H13 memakai skenario, bukan satu angka.</p>`},
-{h: "Forecasting statistik: moving average, exponential smoothing, MAE/MAPE", body: `
+{h: "Forecasting statistik: moving average, exponential smoothing, MAE (Mean Absolute Error)/MAPE (Mean Absolute Percentage Error)", body: `
 <p>Forecast driver-based (H08) menjawab <i>kenapa</i> angka bergerak. <b>Forecasting statistik</b> menjawab <i>seberapa akurat</i> tebakanmu — dan tanpanya, forecast hanyalah opini yang rapi:</p>
 <div class="example warung"><div class="lbl">🏪 Contoh — penjualan kopi (ribu gelas)</div>
 <p>Aktual: 100, 110, 105, 120, 118. <b>Moving average 3 periode:</b> forecast periode 4 = (100+110+105) ÷ 3 = 105 → error 15; forecast periode 5 = (110+105+120) ÷ 3 = 111,67 → error 6,33. <b>MAE</b> = (15 + 6,33) ÷ 2 = <b>10,67</b>. <b>MAPE</b> = (15÷120 + 6,33÷118) ÷ 2 = (12,5% + 5,37%) ÷ 2 = <b>8,93%</b>.</p>
@@ -3143,7 +3144,7 @@ blind: {h: "Latihan Buta \u2014 warung tetangga di Solo", body: `
 },
 {
 id: "hari-20", track: "30 Hari", title: "Akuntansi Sulit: Lease, Pajak Tangguhan & Detektif Akuntansi",
-sub: "Hari 20 \u00b7 \u00b18 jam \u00b7 PSAK 116, DTL/DTA, stock comp, NOL + misi repair",
+sub: "Hari 20 \u00b7 \u00b18 jam \u00b7 PSAK 116, DTL/DTA (pajak tangguhan), stock comp, NOL + misi repair",
 est: "8 jam",
 prerequisites: ["cfo","beban_non_kas","model_3_statement","akrual"],
 driveFolder: "https://drive.google.com/drive/folders/1NNTaCDj4Rqp4JHKSeNMCZJZgByaR5J9f",
@@ -3172,7 +3173,7 @@ sections: [
 <table class="brutal">
 <tr><th>Lease Y1 (Rp ribu)</th><th>Benar (PSAK 116)</th><th>Salah (sewa biasa)</th></tr>
 <tr><td>Liabilitas diakui</td><td><b>4.791,25</b></td><td>0</td></tr>
-<tr><td>Aset ROU diakui</td><td><b>4.791,25</b></td><td>0</td></tr>
+<tr><td>Aset ROU (Right-of-Use — hak pakai) diakui</td><td><b>4.791,25</b></td><td>0</td></tr>
 <tr><td>Beban Y1</td><td>Depresiasi 958,25 + bunga 383,30 = <b>1.341,55</b></td><td>Sewa <b>1.200</b></td></tr>
 <tr><td>Liabilitas akhir Y1</td><td><b>3.974,55</b></td><td>0</td></tr>
 </table>
@@ -3656,7 +3657,7 @@ quiz: [
  explain: "2.200 \u00f7 (0,11 \u2212 0,03) = 2.200 \u00f7 0,08 = 27.500. 20.000 = pakai FCFF tanpa growth di penyebut WACC saja; 18.333 = penyebut WACC+g (salah tanda)."},
 {q: "EBITDA tahun-5 Rp4.000 ribu, exit multiple 7x. Terminal value?", opts: ["Rp28.000 ribu","Rp20.000 ribu","Rp35.000 ribu","Rp11.000 ribu"], answer: 0, k: "tv", diff: "Medium",
  hints: ["TV = EBITDA5 \u00d7 multiple.","Tanya dulu: TV duduk di tahun ke berapa?"],
- explain: "4.000 \u00d7 7 = 28.000 \u2014 'jual perusahaan' di akhir tahun-5 seharga 7 tahun EBITDA. Sederhana, tapi multiple-nya harus dari comps yang sebanding."},
+ explain: "4.000 \u00d7 7 = 28.000 \u2014 'jual perusahaan' di akhir tahun-5 seharga 7\u00d7 EBITDA (bukan '7 tahun' \u2014 multiple bukan payback). Sederhana, tapi multiple-nya harus dari comps yang sebanding."},
 {q: "EV Rp50.000 ribu, utang Rp12.000 ribu, kas Rp3.000 ribu, saham beredar 8.200. Nilai wajar per saham?", opts: ["Rp5.000","Rp4.634","Rp6.098","Rp5.488"], answer: 0, k: "dcf", diff: "Hard",
  hints: ["Ekuitas = EV \u2212 utang + kas.","41.000 \u00f7 8.200 = ?"],
  explain: "Ekuitas = 50.000 \u2212 12.000 + 3.000 = 41.000; \u00f7 8.200 = 5.000/saham. 4.634 = lupa tambah kas; 6.098 = lupa kurangi utang. Jembatan EV\u2192ekuitas adalah tempat paling umum valuasi 'bocor'."},
@@ -4121,7 +4122,7 @@ audio: "assets/audio/hari-26.mp3",
 checker: "hari-26",
 sections: [
 {h: "Kenapa bank dimodelkan beda dari perusahaan biasa?", body: `
-<p>Di perusahaan biasa, utang adalah <b>beban</b> — sesuatu yang dikurangkan dari valuasi. Di bank, utang (dana pihak ketiga/DPK) adalah <b>bahan baku</b>: bank meminjam murah, meminjamkan mahal, dan selisihnya (NIM) adalah nafkahnya. Model yang memperlakukan bank seperti pabrik akan salah membaca seluruh bisnisnya.</p>
+<p>Di perusahaan biasa, utang adalah <b>beban</b> — sesuatu yang dikurangkan dari valuasi. Di bank, utang (dana pihak ketiga/DPK) adalah <b>bahan baku</b>: bank meminjam murah, meminjamkan mahal, dan selisihnya (NIM — Net Interest Margin, marjin bunga bersih) adalah nafkahnya. Model yang memperlakukan bank seperti pabrik akan salah membaca seluruh bisnisnya.</p>
 <p>Tiga perbedaan struktural: <b>(1)</b> yang dinilai bukan EBITDA melainkan <b>NIM & provisi</b>; <b>(2)</b> leverage bukan risiko tambahan melainkan inti model — yang dijaga adalah <b>CAR</b>, bukan debt/EBITDA; <b>(3)</b> valuasi memakai <b>P/BV</b>, bukan DCF — karena arus kas ke ekuitas bank tak bisa dipisahkan dari pendanaannya.</p>
 <div class="callout"><b>Kenapa tidak sekalian DCF saja?</b> Karena pada bank, "free cash flow" adalah konsep yang licin: kas yang ditahan vs dibagikan vs wajib jadi modal minimum tercampur. Analis bank menilai <b>modal yang bekerja</b> (book value) dan <b>imbal hasil atas modal itu</b> (ROE) — bukan arus kas yang direkayasa keluar dari neraca leverage 8×.</div>`},
 {h: "Kenapa NIM dihitung dari rata-rata kredit?", body: `
@@ -4145,7 +4146,7 @@ sections: [
 <p><b>Yang bisa dihitung dari model ini — CoC:</b> beban CKPN Tahun-1 Rp161,28rb ÷ rata-rata kredit (8.000 + 8.960) ÷ 2 = 8.480 → <b>1,90%</b>. Tahun-3: 202,31 ÷ 10.637 = <b>1,90%</b> juga. Flat — karena provisi model ini flat 1,8% dari kredit <i>akhir</i>, dan 1,90% vs 1,8% itu selisih basis (akhir vs rata-rata) yang sudah kamu kenal dari NII.</p>
 <p><b>Yang TIDAK bisa dihitung dari model ini — NPL & coverage:</b> model ini tidak punya <i>stok</i> kredit bermasalah maupun <i>stok</i> CKPN (provisi di sini hanya <i>arus</i> beban). Bila diasumsikan NPL Tahun-3 = 2,8% × 11.239 = <b>Rp314,69 miliar (ilustrasi dinyatakan)</b>, coverage tetap tak bisa dihitung tanpa stok CKPN. Itu batasan model latihan — di model kerja, CKPN adalah akun neraca (roll-forward: awal + beban − hapus buku + recovery = akhir).</p>
 <p><b>Jangkar nyata — BBRI FY2024 [B]:</b> NPL gross <b>2,78%</b>; coverage diungkap <b>215,01%</b> vs terhitung <b>213,07%</b> (CKPN pinjaman Rp76.902.889 jt ÷ NPL Rp36.093.243 jt — selisihnya = CKPN aset produktif non-kredit, bukan kesalahan hitung); CoC <b>3,2%</b> [B]. Bandingkan dengan model latihan (CoC 1,90%): bank nyata dengan portofolio UMKM menanggung biaya risiko lebih tinggi — dan coverage >200% artinya cadangannya dua kali lipat kredit macetnya.</p>
-<p><b>ECL & staging (IFRS 9 / PSAK 109):</b> akuntansi modern tidak menunggu kredit macet baru mencadangkan. Tiga stage: <b>Stage 1</b> — kredit sehat, cadangan = expected credit loss 12 bulan; <b>Stage 2</b> — risiko kredit naik signifikan (SICR), cadangan = ECL seumur hidup; <b>Stage 3</b> — kredit macet (credit-impaired), ECL seumur hidup + bunga dihitung dari nilai neto. Provisi flat 1,8% di model ini <b>bukan</b> staging — ia jalan pintas forecast. Di bank nyata, migrasi Stage 1 → 2 adalah alarm dini yang dibaca analis sebelum NPL-nya bergerak.</p>
+<p><b>ECL (Expected Credit Loss — kerugian kredit ekspektasian) & staging (IFRS 9 / PSAK 109):</b> akuntansi modern tidak menunggu kredit macet baru mencadangkan. Tiga stage: <b>Stage 1</b> — kredit sehat, cadangan = expected credit loss 12 bulan; <b>Stage 2</b> — risiko kredit naik signifikan (SICR), cadangan = ECL seumur hidup; <b>Stage 3</b> — kredit macet (credit-impaired), ECL seumur hidup + bunga dihitung dari nilai neto. Provisi flat 1,8% di model ini <b>bukan</b> staging — ia jalan pintas forecast. Di bank nyata, migrasi Stage 1 → 2 adalah alarm dini yang dibaca analis sebelum NPL-nya bergerak.</p>
 <div class="callout"><b>Kenapa CoC 1,90% model ini "terlalu rapi"?</b> Karena ia turunan langsung dari asumsi flat 1,8% — bukan dari analisis portofolio. Bank nyata: CoC bergerak dengan siklus (naik saat ekonomi memburuk, turun saat pulih). Kalau CoC modelmu flat selamanya, kamu mengasumsikan siklus kredit tidak ada. Uji sensitivitasnya seperti menguji WACC: CoC 1,9% → 3,6% (skenario NPL memburuk 2×) memotong NI, ekuitas, dan CAR berantai — persis yang ditanyakan kuis hari ini.</div>`},
 {h: "Kenapa equity walk adalah jantung model bank?", body: `
 <p><b>E<sub>t</sub> = E<sub>t-1</sub> + NI − Dividen.</b> Tahun-1: 1.500 + 132,16 − 39,65 = <b>1.592,51</b>. Tahun-3: <b>1.812,18</b>. Sederhana — dan inilah seluruh drama perbankan: setiap rupiah dividen yang dibayar hari ini adalah satu rupiah modal yang <b>tidak</b> tersedia untuk menopang pertumbuhan kredit besok.</p>
@@ -4302,16 +4303,16 @@ sections: [
 <p><b>Lolos bila total \u226512 dari 16 DAN tidak ada aspek bernilai 1.</b> Satu aspek = 1 berarti ada lubang struktural \u2014 perbaiki blok itu, rekam ulang.</p>
 <div class="callout"><b>Kenapa 'tidak ada skor 1'?</b> Karena total 12 bisa dicapai dengan (4,4,3,1) \u2014 Q&amp;A hancur tapi lolos. Padahal Q&amp;A adalah tempat thesis diuji beneran. Rata-rata menyembunyikan lubang; aturan ini tidak.</div>`}
 ,
-{h: "Anatomi pitchbook, CIM & teaser — dan cara deal dijual", body: `
+{h: "Anatomi pitchbook, CIM (Confidential Information Memorandum) & teaser — dan cara deal dijual", body: `
 <p>Thesis defense H27 melatihmu mempresentasikan <i>kesimpulan</i>. Dokumen deal IB menjual <i>perusahaan</i> — dan tiap dokumen punya pembaca, rahasia, dan tujuan berbeda:</p>
 <table class="brutal">
 <tr><th>Dokumen</th><th>Pembaca</th><th>Isi</th><th>Rahasia?</th></tr>
 <tr><td><b>Teaser</b> (1–2 hal)</td><td>Calon pembeli luas</td><td>Profil anonim: industri, revenue, EBITDA, highlight — tanpa nama</td><td>Ya, anonim</td></tr>
-<tr><td><b>CIM</b> (Confidential Information Memorandum, 30–80 hal)</td><td>Pembeli yang tanda tangan NDA</td><td>Model bisnis, keuangan, proyeksi, risiko, proses lelang</td><td>Ya, pasca-NDA</td></tr>
+<tr><td><b>CIM</b> (Confidential Information Memorandum, 30–80 hal)</td><td>Pembeli yang tanda tangan NDA (Non-Disclosure Agreement — perjanjian kerahasiaan)</td><td>Model bisnis, keuangan, proyeksi, risiko, proses lelang</td><td>Ya, pasca-NDA</td></tr>
 <tr><td><b>Pitchbook</b></td><td>Klien / komite investasi</td><td>Kenapa deal ini, kenapa sekarang, valuasi (comps/DCF H11–H13), struktur</td><td>Internal klien</td></tr>
 <tr><td><b>Management presentation</b></td><td>Pembeli finalis</td><td>Presentasi manajemen + Q&amp;A</td><td>Ya</td></tr>
 </table>
-<p><b>Sell-side auction (garis waktu tipikal 12 minggu):</b> minggu 1–2 teaser + NDA; minggu 3–6 CIM + indikasi awal (IOI); minggu 7–9 management presentation + due diligence awal; minggu 10–11 penawaran final (binding); minggu 12 SPA + signing. Aturan: jangan pernah memberi CIM sebelum NDA; jangan pernah memberi angka final sebelum IOI — informasi adalah leverage, dan leverage yang dibagi terlalu dini hilang.</p>
+<p><b>Sell-side auction (garis waktu tipikal 12 minggu):</b> minggu 1–2 teaser + NDA; minggu 3–6 CIM + indikasi awal (IOI); minggu 7–9 management presentation + due diligence awal; minggu 10–11 penawaran final (binding); minggu 12 SPA (Share Purchase Agreement — perjanjian jual beli saham) + signing. Aturan: jangan pernah memberi CIM sebelum NDA; jangan pernah memberi angka final sebelum IOI — informasi adalah leverage, dan leverage yang dibagi terlalu dini hilang.</p>
 <p><b>Checklist due diligence (yang wajib ada sebelum signing):</b> (1) kualitas laba — apakah EBITDA "bersih" dari one-off (seperti normalisasi GOTO di real-08); (2) working capital — apakah ada musiman yang menyembunyikan kebutuhan kas; (3) utang tersembunyi — lease, garansi, sengketa pajak; (4) pelanggan — konsentrasi top-5; (5) manajemen — siapa yang pergi bila pemilik pergi. Thesis defense 10 menitmu adalah versi mini management presentation — bedanya, di deal nyata, audiensmu memegang cek.</p>`}],
 quiz: [
 {q: "Hook 1 menit yang baik berisi\u2026", opts: ["Satu kalimat kenapa perusahaan ini layak diperhatikan SEKARANG", "Profil perusahaan: berdiri tahun, jumlah karyawan\u2026", "Disclaimer dan daftar isi", "Biodata presenter"], answer: 0, k: "presentasi", diff: "Easy",
@@ -4748,7 +4749,7 @@ sections: [
 {h: "Batas cakupan: yang sengaja TIDAK diajarkan Sprint ini", body: `
 <p>Sprint ini menutup kurikulum FMVA (CFI) — dan secara sadar <b>tidak</b> menutup dua wilayah: <b>derivatif &amp; hedging</b> (futures, options, swap, lindung nilai FX/suku bunga) dan <b>valuasi real option dengan Black-Scholes</b> penuh. Alasannya: sertifikasi FMVA tidak menguji derivatif, dan hedging adalah disiplin tersendiri (treasury, bukan modeling). Ini batas eksplisit, bukan backlog — bila kamu butuh hedging untuk pekerjaan, pelajari dari jalur treasury setelah lulus, dengan fondasi DCF-mu sebagai pijakan. Yang sudah kamu kuasai sebagai gantinya: decision tree &amp; binomial sederhana (H15, real-07) — cukup untuk mengenali kapan sebuah proyek punya nilai fleksibilitas, tanpa berpura-pura bisa memberi harga opsi eksotis.</p>
 <p><b>Yang juga baru di v1.61:</b> Hari 31 (Bonus) — IPO &amp; dokumen deal IB — dan real-10 project finance (JSMR). Keduanya di luar gerbang akhir: H30 tetap gerbang kelulusanmu; Hari 31 dan real-10 adalah elektif pasca-lulus, bukan syarat lulus.</p>
-<p><b>Yang juga baru di v1.64:</b> real-11 asuransi (combined ratio, reserving, RBC &amp; embedded value) dan real-12 SaaS (LTV/CAC, churn cohort, NRR &amp; Rule of 40) \u2014 keduanya elektif pasca-lulus seperti real-10, bukan syarat lulus.</p>`},
+<p><b>Yang juga baru di v1.64:</b> real-11 asuransi (combined ratio, reserving, RBC &amp; embedded value) dan real-12 SaaS (LTV (Lifetime Value) / CAC (Customer Acquisition Cost), churn cohort, NRR &amp; Rule of 40) \u2014 keduanya elektif pasca-lulus seperti real-10, bukan syarat lulus.</p>`},
 {h: "Tautan silang: FSA Lab — MD&A & Power BI", body: `
 <p>Dua keterampilan tidak dibangun duplikatif di Sprint karena sudah ada, lebih dalam, di <b>FSA Lab</b> (jalur belajar saudara Sprint ini):</p>
 <ul>
@@ -4913,13 +4914,13 @@ const GLOSSARY = [
 ["Driver","Driver","Variabel penentu angka forecast (growth %, margin %, hari WC).","DSO 30 hari → piutang = pendapatan × 30/360."],
 ["Perpetuitas","Perpetuity","Arus kas yang tumbuh selamanya — deret geometri tak hingga ada rumus tutupnya.","TV = 2.281 ÷ (0,131 − 0,03) = Rp22.584rb."],
 ["Precedent transaction","Precedent transaction","Valuasi banding memakai multiple dari transaksi akuisisi masa lalu, bukan harga kuotasi berjalan. Biasanya lebih tinggi karena mengandung control premium.","Precedent EV INDF = 98,18T \u00d7 1,25 = 122,73T."],
-["Football field","Football field","Bagan batang rentang valuasi per metode (DCF, comps, precedent) dalam satu sumbu; tempat metode berkumpul = zona keyakinan.","Lapangan INDF: 62,18\u2013102,73T; klaster comps 78,18\u201389,38T."],
+["Football field","Football field","Bagan batang rentang valuasi per metode (DCF, comps, precedent) dalam satu sumbu; tempat metode berkumpul = zona keyakinan.","Lapangan INDF: 63,37\u2013102,73T; klaster comps 78,18\u201389,38T."],
 ["Control premium","Control premium","Premi di atas harga pasar yang dibayar pembeli akuisisi untuk memperoleh kendali perusahaan (ilustrasi: 25%).","EV comps 98,18T \u00d7 1,25 = precedent EV 122,73T."],
-["Multiple","Multiple","Rasio valuasi relatif: nilai perusahaan dibagi metrik keuangan (mis. EV/EBITDA, P/E).","EV/EBITDA 8,18\u00d7 = pasar membayar 8,18 tahun EBITDA."],
+["Multiple","Multiple","Rasio valuasi relatif: nilai perusahaan dibagi metrik keuangan (mis. EV/EBITDA, P/E).","EV/EBITDA 8,18\u00d7 = pasar menilai perusahaan sebesar 8,18\u00d7 EBITDA LTM (bukan '8,18 tahun' \u2014 multiple bukan payback)."],
 ["LTM","LTM (Last Twelve Months)","Metrik keuangan 12 bulan terakhir yang sudah terjadi \u2014 basis penyebut multiple trading yang faktual.","EBITDA LTM INDF Rp12T (ilustrasi dinyatakan)."],
 ["Capstone","Capstone","Proyek puncak yang menggabungkan semua keterampilan \u2014 build penuh dari blank, bukan latihan parsial.","Hari 12\u201313: 3-statement + DCF + thesis INDF."],
-["Tesis investasi","Investment thesis","Argumen 1 halaman: kenapa saham ini layak dibeli/dijual \u2014 bull/base/bear, katalis, risiko, valuasi, keputusan.","Base Rp8.332 vs harga pasar = keputusan beli dengan margin of safety."],
-["Bull / base / bear","Bull / base / bear","Tiga skenario: optimis, tengah, pesimis \u2014 valuasi sebagai rentang, bukan titik.","Base 73,15T; bull 84,45T; bear 63,84T."],
+["Tesis investasi","Investment thesis","Argumen 1 halaman: kenapa saham ini layak dibeli/dijual \u2014 bull/base/bear, katalis, risiko, valuasi, keputusan.","Base Rp8.491 vs harga pasar = keputusan beli dengan margin of safety."],
+["Bull / base / bear","Bull / base / bear","Tiga skenario: optimis, tengah, pesimis \u2014 valuasi sebagai rentang, bukan titik.","Base 74,55T; bull 85,85T; bear 65,22T."],
 ["Katalis","Catalyst","Peristiwa yang memaksa pasar mengakui nilai: dividen, spin-off, perbaikan marjin.","Kenaikan dividen INDF = katalis."],
 ["Marjin pengaman","Margin of safety","Selisih nilai wajar vs harga bayar \u2014 bantalan bila asumsi salah.","Beli di 70% nilai wajar = margin of safety 30%."],
 ["Gerbang","Gate","Ujian kelulusan tiap minggu: dua kunci (quiz + model timed) harus lolos sebelum lanjut.","Gerbang 2: quiz \u226516/20 dan checker DCF \u226580."],
@@ -5171,7 +5172,7 @@ sections: [
 <tr><td><b>Net income</b></td><td><b>1,700</b></td><td>no interest &amp; tax; 10.1% net margin</td></tr>
 </table>
 <p><b>Read the model:</b> revenue up 12% but EBIT up 54.5% (1,100 → 1,700) — why? Because rent &amp; salaries (fixed) rose only 5%, not with revenue. That's operating leverage working <i>for</i> you. Practice task: rebuild this in Excel (practice file in Drive) — every answer cell must be a formula. <b>Today's sign convention:</b> expenses typed <b>positive</b> — e.g. 2520; the formulas do the subtracting. (Different from Day 01!) Type margins as decimals/percent: 0.101 or 10.1% — not 10.1.</p>`},
-{h: "DuPont: dissecting ROE into three levers", body: `
+{h: "DuPont: dissecting ROE (Return on Equity) into three levers", body: `
 <p>ROE of 25% sounds great — until you ask: <i>where</i> does that 25% come from? <b>DuPont</b> dissects ROE into three levers you can read one by one:</p>
 <div class="formula">ROE = Profit margin × Asset turnover × Equity multiplier = (NI ÷ Sales) × (Sales ÷ Average assets) × (Average assets ÷ Average equity)</div>
 <p><b>Worked example (stated illustration):</b> margin 10% × turnover 1.25× × multiplier 2.0× = <b>ROE 25%</b>.</p>
@@ -5198,7 +5199,7 @@ sections: [
 <p>One ratio tells you nothing. Five ratio families — read together — tell you about a company's health. This is the taxonomy analysts use everywhere:</p>
 <table class="brutal">
 <tr><th>Family</th><th>Key ratios</th><th>Formula</th><th>The question it asks</th></tr>
-<tr><td><b>Profitability</b></td><td>Gross margin, net margin, ROE, ROIC</td><td>ROE = NI ÷ Equity; ROIC = NOPAT ÷ Capital</td><td>Is the business profitable and efficient with capital?</td></tr>
+<tr><td><b>Profitability</b></td><td>Gross margin, net margin, ROE, ROIC (Return on Invested Capital)</td><td>ROE = NI ÷ Equity; ROIC = NOPAT ÷ Capital</td><td>Is the business profitable and efficient with capital?</td></tr>
 <tr><td><b>Liquidity</b></td><td>Current ratio, quick ratio, cash ratio</td><td>Current = Current assets ÷ Current liabilities</td><td>Can it pay bills for the next 12 months?</td></tr>
 <tr><td><b>Leverage</b></td><td>Debt-to-equity, debt-to-assets, interest coverage</td><td>D/E = Interest-bearing debt ÷ Equity; Coverage = EBIT ÷ Interest</td><td>Has debt gone too far?</td></tr>
 <tr><td><b>Efficiency</b></td><td>Asset turnover, DSO/DIO/DPO, CCC</td><td>Turnover = Revenue ÷ Assets</td><td>How fast do assets turn into cash?</td></tr>
@@ -5507,8 +5508,8 @@ sections: [
 <div class="callout"><b>Why is linkage half the model's value?</b> Because linkage makes the model <b>self-checking</b>: one wrong number, three bridges scream. Without linkage, a Rp1 billion error can sleep in a cell nobody checks. With linkage, it's caught in 5 seconds.</div>`},
 {h: "FCFF: the intro (bridge to DCF)", body: `
 <p>One CFO derivative that will star in Week 2:</p>
-<div class="formula">FCFF = CFO − Capex</div>
-<p><b>FCFF</b> (free cash flow to firm) = the cash truly "free" after operations run and maintenance investment is paid — cash available to <b>all</b> capital providers (lenders + shareholders). This is the number discounted in a DCF.</p>
+<div class="formula">FCFF = CFO + interest×(1−t) − Capex</div>
+<p>The short form "CFO − capex" holds for this shop because it is <b>100% equity with no debt</b> — without interest, CFO is already clean of debt costs. The general form (Day 09): FCFF = CFO + interest×(1−t) − capex. <b>FCFF</b> (free cash flow to firm) = the cash truly "free" after operations run and maintenance investment is paid — cash available to <b>all</b> capital providers (lenders + shareholders). This is the number discounted in a DCF.</p>
 <div class="example warung"><div class="lbl">🏪 Corner-shop example</div>
 <p>FCFF 2026 = 1,850 − 2,000 = <b>−Rp150k</b>. Negative! But not a death sentence: the shop is expanding (capex &gt; CFO). Negative FCFF during expansion = normal; persistently negative FCFF with no growth = a bleeding business model.</p></div>
 <div class="callout"><b>Why FCFF, not profit, gets discounted?</b> Because investors can't spend "accounting profit" — only <b>free cash</b> can be paid as dividends or used to repay debt. DCF = projecting FCFF for 5–10 years, discounting it to today. Day 04 gives you the foundation; Week 2 builds the tower.</div>`},
@@ -5530,7 +5531,7 @@ sections: [
 <li><b>Indirect method</b> — CFO computed from NI: add back non-cash expenses ± ΔWC.</li>
 <li><b>Add-back</b> — adding back non-cash expenses (depreciation) to NI.</li>
 <li><b>CFO / CFI / CFF</b> — operating / investing / financing cash flow. Three sections, three stories.</li>
-<li><b>FCFF</b> — free cash flow to firm = CFO − capex. Free cash for all capital providers; discounted in DCF.</li>
+<li><b>FCFF</b> — free cash flow to firm = CFO + interest×(1−t) − capex (no debt: CFO − capex). Free cash for all capital providers; discounted in DCF.</li>
 <li><b>Linkage</b> — the three IS ↔ BS ↔ CFS bridges that must always balance.</li>
 </ul>`}
 ],
@@ -6100,7 +6101,7 @@ sections: [
 <p>RE: 200 + 2,075 − 1,500 = <b>775</b> ✓. Balance: 11,545 = 11,545 ✓. Cash: 3,300 = ending CFS cash ✓ (Bridge 2).</p>
 <div class="callout"><b>Why repeat these three checks every forecast year?</b> Because a forecast = dozens of linked assumptions; one broken link corrupts the whole year. The three checks (balance, tie-out, RE roll) are <i>alarms</i> that catch broken links before the numbers feed a valuation.</div>`},
 {h: "2027 FCFF & the bridge to DCF", body: `
-<div class="formula">FCFF = CFO − Capex = 2,450 − 2,500 = <b>−Rp50k</b></div>
+<div class="formula">FCFF = CFO − Capex = 2,450 − 2,500 = <b>−Rp50k</b> (a no-debt shop)</div>
 <p>Negative 2027 FCFF — and that's <b>not a verdict</b>. It means: this year the shop invests Rp50k <i>more</i> than its operating cash. Normal in an expansion phase; what matters: <b>deliberate and traceable</b>, not leaking.</p>
 <p>Tomorrow (Day 09): this FCFF gets discounted. Today: make sure you can explain <i>why</i> −50 — "capex 2,500 exceeded CFO 2,450 on equipment expansion" — not just read the number.</p>
 <div class="callout"><b>Why isn't negative FCFF automatically bad?</b> Because FCFF measures cash <i>after investment</i>. Amazon ran thin/negative FCFF for years building warehouses — the market didn't punish it, because the investment traced to productive assets. What's punished = negative FCFF with no trail (cash vanishing unclearly).</div>`}
@@ -6459,7 +6460,7 @@ sections: [
 {h: "Model honesty: stated limitations", body: `
 <ul>
 <li><b>Illustrative assumptions, not market data.</b> Rf, beta, MRP, g, the 8× multiple = stated for learning mechanics. Real valuations need market research.</li>
-<li><b>Simple model.</b> No operating tax (NI = EBIT), no interest-bearing debt, no seasonal NWC. Enough for mechanics; the capstone adds layers later.</li>
+<li><b>Simple model.</b> No operating tax (NI = EBIT), no interest-bearing debt, no seasonal NWC (Net Working Capital). Enough for mechanics; the capstone adds layers later.</li>
 <li><b>TV dominates.</b> ~100% of EV from TV — meaning this DCF's accuracy ≈ the accuracy of the g & multiple assumptions. Saying so = professional.</li>
 <li><b>Rp19.9 million ≠ sale price.</b> That's the <i>model's</i> value under the <i>model's</i> assumptions. A transaction price needs negotiation, due diligence, and comps.</li>
 </ul>
@@ -6527,8 +6528,8 @@ sections: [
 <tr><td>KLBF</td><td>55.00</td><td>7.00</td><td>7.86×</td><td>17.06×</td></tr>
 <tr><td>MYOR</td><td>45.00</td><td>5.50</td><td>8.18×</td><td>16.80×</td></tr>
 </table>
-<p><b>Canonical ANCHORS</b> (rc_final.json): UNVR EV 43.96T, INDF equity 73.15T. <b>STATED ILLUSTRATIONS dated 2026-10-31</b> (not live data): all peer EBITDA, net income, and market caps in this table.</p>
-<div class="callout"><b>Why multiples?</b> Because 8× EV/EBITDA means something universal: "the market pays 8 years of EBITDA for the whole firm". A share price without a denominator = a blind number; a multiple = a price you can compare across different-sized companies.</div>`},
+<p><b>Canonical ANCHORS</b> (rc_final.json): UNVR EV 43.96T, INDF equity 73.15T (RC3 anchor). <b>STATED ILLUSTRATIONS dated 2026-10-31</b> (not live data): all peer EBITDA, net income, and market caps in this table.</p>
+<div class="callout"><b>Why multiples?</b> Because 8× EV/EBITDA means something universal: "the market values the firm at 8× LTM EBITDA". Remember: a multiple is <b>not</b> a payback period — "8×" does not mean the capital returns in 8 years. A share price without a denominator = a blind number; a multiple = a price you can compare across different-sized companies.</div>`},
 {h: "Picking the multiple: EV/EBITDA vs P/E", body: `
 <p>Two multiples, two lenses — and they <b>must not be mixed up</b>:</p>
 <ul>
@@ -6547,7 +6548,7 @@ sections: [
 <div class="callout"><b>Why LTM for this exercise?</b> Because NTM needs external analyst forecasts we don't have — and our illustrative multiples are stated as of 2026-10-31. The principle: <i>state</i> your time basis; a multiple without a date cannot be argued with.</div>`},
 {h: "Picking peers: apples to apples", body: `
 <p>The five tickers in the table = <b>Indonesian consumers</b>: food, pharma, consumer goods. Proper peer criteria: same sector, same order of size, similar growth & margins, no extreme capital-structure mismatch.</p>
-<p><b>Methodology note — read, don't skip:</b> INDF is our valuation <i>target</i>, and professional analysts <b>exclude the target from the comps set</b> (otherwise the target appraises itself = circular). INDF stays in this table because its row does double duty: <b>calibration anchor</b> (canonical 73.15T equity) + median-mechanics practice. The effect is measurable: 5-ticker median EV/EBITDA = <b>8.18×</b>, ex-INDF = <b>8.38×</b> (compute it yourself in Task B).</p>
+<p><b>Methodology note — read, don't skip:</b> INDF is our valuation <i>target</i>, and professional analysts <b>exclude the target from the comps set</b> (otherwise the target appraises itself = circular). INDF stays in this table because its row does double duty: <b>calibration anchor</b> (canonical 73.15T equity — the RC3 anchor) + median-mechanics practice. The effect is measurable: 5-ticker median EV/EBITDA = <b>8.18×</b>, ex-INDF = <b>8.38×</b> (compute it yourself in Task B).</p>
 <div class="callout"><b>Why does a wrong peer = a wrong valuation?</b> Because comps borrows "market price" from neighbors. Borrowing from the wrong neighbors (different sector, different growth) = borrowing the wrong price. Half of comps work is <i>choosing who gets to be a comparable</i>.</div>`},
 {h: "Precedent transactions: prices actually paid", body: `
 <p>Comps uses <b>quoted</b> prices (minority shares on the exchange). Precedents use <b>transaction</b> prices: what was actually paid when a company got <i>acquired</i>. The difference is one word: <b>control</b>.</p>
@@ -6558,13 +6559,13 @@ sections: [
 <p>Four methods, four answers (INDF equity, Rp T). A <b>football field</b> puts them all on one axis as range bars:</p>
 <table class="brutal">
 <tr><th>Method</th><th>Low</th><th>High</th></tr>
-<tr><td>DCF (±15% stated)</td><td>62.18</td><td>84.12</td></tr>
+<tr><td>DCF (±15% stated)</td><td>63.37</td><td>85.73</td></tr>
 <tr><td>EV/EBITDA comps</td><td colspan="2">78.18</td></tr>
 <tr><td>P/E comps</td><td colspan="2">89.38</td></tr>
 <tr><td>Precedent (+25%)</td><td colspan="2">102.73</td></tr>
-<tr><td><b>Field (min–max)</b></td><td><b>62.18</b></td><td><b>102.73</b></td></tr>
+<tr><td><b>Field (min–max)</b></td><td><b>63.37</b></td><td><b>102.73</b></td></tr>
 </table>
-<p>The professional read: <b>not</b> the average of the four, but <i>where they cluster</i>. Here 78.18–89.38 (the two comps) sit close together = the <b>confidence zone</b>; DCF below it (conservative), precedent above it (control price). The 62.18–102.73 field = the negotiation range.</p>
+<p>The professional read: <b>not</b> the average of the four, but <i>where they cluster</i>. Here 78.18–89.38 (the two comps) sit close together = the <b>confidence zone</b>; DCF below it (conservative), precedent above it (control price). The 63.37–102.73 field = the negotiation range.</p>
 <div class="callout"><b>Why "football field"?</b> Because the bars look like yard lines: each method occupies its own "yard". Investors don't ask "what's the number" — they ask "which yard is your conviction in, and why".</div>`},
 {h: "Other multiples: EV/Sales, EV/EBIT, P/BV, PEG", body: `
 <p>EV/EBITDA and P/E are the comps workhorses — but these four multiples cover gaps both leave behind. New inputs below are <b>stated illustration 2026-10-31</b> (same as the main table; EBITDA and net income UNCHANGED):</p>
@@ -6577,21 +6578,21 @@ sections: [
 <tr><td>MYOR</td><td>1.29×</td><td>11.25×</td><td>2.91×</td><td>1.40×</td></tr>
 <tr><td><b>MEDIAN</b></td><td><b>1.29×</b></td><td><b>11.25×</b></td><td><b>2.25×</b></td><td><b>1.41×</b></td></tr>
 </table>
-<p><b>EV/Sales — used when earnings can't be used.</b> Loss-making companies, startups, or a cycle trough: revenue is the only stable number. Its trap: EV/Sales <i>ignores margins</i>. Median 1.29× × INDF sales Rp110.00T = EV <b>Rp141.90T</b> — far above the field (62–103T). Why? INDF margin ±11% vs KLBF ±21%: same sales, half the profit. Valuing revenue without checking margin = valuing turnover, not profit. <b>Verdict: don't add it to the football field.</b></p>
+<p><b>EV/Sales — used when earnings can't be used.</b> Loss-making companies, startups, or a cycle trough: revenue is the only stable number. Its trap: EV/Sales <i>ignores margins</i>. Median 1.29× × INDF sales Rp110.00T = EV <b>Rp141.90T</b> — far above the field (63–103T). Why? INDF margin ±11% vs KLBF ±21%: same sales, half the profit. Valuing revenue without checking margin = valuing turnover, not profit. <b>Verdict: don't add it to the football field.</b></p>
 <p><b>EV/EBIT — EV/EBITDA after depreciation.</b> Useful when peers differ in capex intensity (one with new machines, one with old — EBITDA equalizes them, EBIT doesn't). Median 11.25× × INDF EBIT Rp9.00T = EV <b>Rp101.25T</b> → equity 101.25 − 20 = <b>Rp81.25T</b> — landing <i>inside</i> the confidence zone (78.18–89.38). A third independent cross-check that agrees. <b>Verdict: worth noting next to the two main comps.</b></p>
 <p><b>P/BV — price ÷ book value of equity.</b> Its justified formula: fair P/BV = (ROE − g) ÷ (CoE − g) — this multiple lives on the gap between ROE and the cost of capital (see Day 26 & real-06 BBCA). INDF 1.22× vs median 2.25× → equity <b>Rp135.00T</b> (2.25 × 60.00). Too high — why? UNVR at 20.27× is an outlier (its brand isn't on the balance sheet) and INDF's book is full of fixed assets while UNVR's is light. P/BV is only valid when "book" measures the same thing. <b>Verdict: don't add it; use P/BV for banks (Day 26), where book value IS the machine.</b></p>
 <p><b>PEG — P/E ÷ earnings growth.</b> Lynch's rule of thumb: PEG ±1.0× = fair; above that, the market pays a premium for growth. INDF 11.25 ÷ 8 = <b>1.41×</b> (median 1.41×): the market pays a 41% premium over growth — not cheap on a growth-adjusted basis, but in line with peers. Remember: PEG is a <i>screen</i>, not a valuation — the growth itself is an analyst's opinion, not a fact.</p>
 <p>The consistency rule from the earlier section <i>still applies</i> and extends: EV pairs with Sales/EBIT/EBITDA (pre-debt); price/equity pairs with net income/book value (post-debt). PEG uses P/E — so it is an <i>equity</i> multiple.</p>
-<div class="callout"><b>Why doesn't the field change?</b> Because two of these four new multiples fail the comparability test here (EV/Sales is margin-blind, P/BV is book-blind); EV/EBIT <i>confirms</i> the zone that already exists; PEG only screens. The football field stays 62.18–102.73T — a good extra multiple doesn't always add a new answer; sometimes it only tests the answer you already have. That's its job.</div>`},
+<div class="callout"><b>Why doesn't the field change?</b> Because two of these four new multiples fail the comparability test here (EV/Sales is margin-blind, P/BV is book-blind); EV/EBIT <i>confirms</i> the zone that already exists; PEG only screens. The football field stays 63.37–102.73T — a good extra multiple doesn't always add a new answer; sometimes it only tests the answer you already have. That's its job.</div>`},
 {h: "DCF vs comps: two lenses, one company", body: `
 <p>Days 09–10 gave the <b>intrinsic</b> lens (DCF: the cash it generates). Today gives the <b>relative</b> lens (comps: what the market pays for neighbors). Both appraise INDF:</p>
 <ul>
-<li>DCF (anchor): equity <b>73.15T</b></li>
-<li>EV/EBITDA comps: <b>78.18T</b> → gap <b>|73.15 − 78.18| = 5.03T</b> (≈6.9% above DCF)</li>
+<li>DCF (Day 12–13 build result): equity <b>74.55T</b></li>
+<li>EV/EBITDA comps: <b>78.18T</b> → gap <b>|74.55 − 78.18| = 3.63T</b> (≈4.9% above DCF)</li>
 <li>P/E comps: <b>89.38T</b> (more optimistic — or the market prices INDF's growth higher)</li>
 </ul>
-<p>The 5.03T gap isn't an "error" — it's <b>information</b>: the relative market prices INDF a bit richer than our anchor DCF. The analyst's job: explain <i>why</i> (growth assumptions? overstated peer multiples?), not force them to match.</p>
-<div class="callout"><b>Why two lenses?</b> Because DCF can be wrong on assumptions (g, WACC) and comps can be wrong on the market (a sector bubble). Two independent lenses that <i>agree</i> = conviction; that <i>differ by 5T</i> = a research question. The Day 12–13 capstone (full INDF DCF) will stress-test the intrinsic lens hard.</div>`},
+<p>The 3.63T gap isn't an "error" — it's <b>information</b>: the relative market prices INDF a bit richer than our build DCF. (The RC3 repair anchor itself is 73.15T — the 1.40T build-vs-repair gap is explained in Day 13 § validation: it is the PV of the after-tax interest add-back.) The analyst's job: explain <i>why</i> (growth assumptions? overstated peer multiples?), not force them to match.</p>
+<div class="callout"><b>Why two lenses?</b> Because DCF can be wrong on assumptions (g, WACC) and comps can be wrong on the market (a sector bubble). Two independent lenses that <i>agree</i> = conviction; that <i>differ by 3.63T</i> = a research question. The Day 12–13 capstone (full INDF DCF) will stress-test the intrinsic lens hard.</div>`},
 {h: "The most expensive comps traps", body: `
 <ul>
 <li><b>Mean vs median.</b> One outlier peer (e.g. 25× EV/EBITDA because EBITDA collapsed for a quarter) drags the <i>mean</i> up; the <i>median</i> doesn't flinch. That's why this table uses MEDIAN.</li>
@@ -6603,13 +6604,13 @@ sections: [
 {h: "Honesty: anchors vs illustrations", body: `
 <table class="brutal">
 <tr><th>Status</th><th>Item</th><th>Value</th></tr>
-<tr><td><b>Anchor</b> (rc_final.json)</td><td>UNVR Base EV; INDF equity; median/MIN/MAX formulas</td><td>43.96T · 73.15T</td></tr>
+<tr><td><b>Anchor</b> (rc_final.json — RC3 anchor)</td><td>UNVR Base EV; INDF equity; median/MIN/MAX formulas</td><td>43.96T · 73.15T</td></tr>
 <tr><td><b>Stated illustration</b> 2026-10-31</td><td>Peer EBITDA/NI/market caps; INDF net debt; DCF ±15%; 25% premium</td><td>12.00T · 6.50T · 20T · ±15% · 25%</td></tr>
 </table>
 <ul>
 <li><b>Not live data.</b> Peer multiples are teaching illustrations dated 2026-10-31 — don't quote them as market prices.</li>
 <li><b>INDF's double role.</b> Target + comps member (stated; pros exclude it — see Task B).</li>
-<li><b>A range, not a point.</b> Today's output = the 62.18–102.73T field, not "INDF = 78.18T".</li>
+<li><b>A range, not a point.</b> Today's output = the 63.37–102.73T field, not "INDF = 78.18T".</li>
 </ul>
 <div class="callout"><b>Why does this table close the day?</b> Because comps is valuation's fastest justification machine: pick the "right" peers, get the desired number. The only brake = <b>disclosure</b>: which anchors, which illustrations, dated when. An analyst honest about this is more trusted than a "precise" but opaque one.</div>`}
 ,
@@ -6618,7 +6619,7 @@ sections: [
 <div class="formula">Minority value = Control value × (1 − minority discount) · Illiquid value = Minority value × (1 − DLOM)</div>
 <div class="example korporat"><div class="lbl">🏢 Example — two stacked discounts</div>
 <p>Control value of the firm Rp1,000m. A 10% minority stake with no control: 20% minority discount → 1,000 × 0.80 = <b>Rp800m</b>. The shares are also unlisted (private company): 25% DLOM → 800 × 0.75 = <b>Rp600m</b>. Combined discount = 1 − 0.80 × 0.75 = <b>40%</b>. Order matters: minority discount first, DLOM second — the arithmetic is the same reversed here, but this is the valuer's order because the reasons differ (control vs liquidity).</p></div>
-<p><b>Where this shows up in exams &amp; practice:</b> private-company valuations, minority shareholder disputes, and PPA (Day 16) when valuing NCI — NCI is almost always minority and often illiquid. <b>Convertibles &amp; stock options</b> change the maths too: a Rp1,000m convertible bond exchangeable into 100 shares — if the share price is Rp12m, conversion value = 100 × Rp12m = Rp1,200m &gt; bond value → the holder converts; your DCF must use diluted shares (treasury stock method, Day 20), not shares outstanding alone.</p>
+<p><b>Where this shows up in exams &amp; practice:</b> private-company valuations, minority shareholder disputes, and PPA (Purchase Price Allocation) (Day 16) when valuing NCI — NCI is almost always minority and often illiquid. <b>Convertibles &amp; stock options</b> change the maths too: a Rp1,000m convertible bond exchangeable into 100 shares — if the share price is Rp12m, conversion value = 100 × Rp12m = Rp1,200m &gt; bond value → the holder converts; your DCF must use diluted shares (treasury stock method, Day 20), not shares outstanding alone.</p>
 <div class="callout"><b>Trap:</b> applying DLOM to liquid listed shares. DLOM only applies to shares that <i>cannot be sold quickly</i> — a liquid public share price already reflects marketability.</div>`}],
 quiz: [
 {q: "Five tickers' EV/EBITDA: 7.76 / 7.86 / 8.18 / 8.57 / 9.99. The median?", opts: ["8.18×","8.57×","8.38×","9.99×"], answer: 0,
@@ -6627,15 +6628,15 @@ quiz: [
 {q: "Median EV/EBITDA 8.1818 × INDF EBITDA Rp12.00T. INDF implied EV?", opts: ["Rp98.18T","Rp93.15T","Rp122.73T","Rp78.18T"], answer: 0,
  hints: ["Implied EV = median × target EBITDA.","8.1818 × 12.00 = ?"],
  explain: "8.1818 × 12.00 = Rp98.18T."},
-{q: "Median P/E 13.75 × INDF net income Rp6.50T. INDF implied equity?", opts: ["Rp89.38T","Rp73.15T","Rp102.73T","Rp84.12T"], answer: 0,
+{q: "Median P/E 13.75 × INDF net income Rp6.50T. INDF implied equity?", opts: ["Rp89.38T","Rp73.15T","Rp102.73T","Rp85.73T"], answer: 0,
  hints: ["P/E gives equity value directly: median × NI.","13.75 × 6.50 = ?"],
  explain: "13.75 × 6.50 = Rp89.38T."},
 {q: "INDF implied EV Rp98.18T, 25% control premium. Precedent EV?", opts: ["Rp122.73T","Rp98.18T","Rp147.27T","Rp102.73T"], answer: 0,
  hints: ["Precedent EV = implied EV × (1 + premium).","98.18 × 1.25 = ?"],
  explain: "98.18 × 1.25 = Rp122.73T."},
-{q: "INDF football field: 62.18–102.73T. Which methods set the low and high?", opts: ["DCF low & precedent","P/E & DCF high","EV/EBITDA & precedent","DCF low & P/E"], answer: 0,
- hints: ["MIN(62.18; 78.18; 89.38; 102.73) = ?","MAX(84.12; 78.18; 89.38; 102.73) = ?"],
- explain: "Low 62.18 = DCF low; high 102.73 = precedent equity."},
+{q: "INDF football field: 63.37–102.73T. Which methods set the low and high?", opts: ["DCF low & precedent","P/E & DCF high","EV/EBITDA & precedent","DCF low & P/E"], answer: 0,
+ hints: ["MIN(63.37; 78.18; 89.38; 102.73) = ?","MAX(85.73; 78.18; 89.38; 102.73) = ?"],
+ explain: "Low 63.37 = DCF low; high 102.73 = precedent equity."},
 {q: "Median EV/EBIT 11.25× × INDF EBIT Rp9.00T. Implied EV?", opts: ["Rp101.25T","Rp93.15T","Rp81.25T","Rp122.73T"], answer: 0, k: "impl_ev_ebit", diff: "Medium",
  hints: ["Implied EV = median × target EBIT.","11.25 × 9.00 = ? (81.25 is the equity, after subtracting net debt 20.)"],
  explain: "11.25 × 9.00 = Rp101.25T → equity 81.25T. Lands in the 78.18–89.38 confidence zone — a third agreeing cross-check."},
@@ -6657,13 +6658,13 @@ hell: [
  explain: "Quoted price = minority price with no power. Acquisitions buy control → 25% premium (illustration). That's why precedents usually sit above trading comps."},
 {q: "Two tickers: identical businesses, one heavily indebted. The capital-structure-neutral multiple?", opts: ["EV/EBITDA","P/E","Dividend yield","Price-to-book"], answer: 0, diff: "Medium",
  explain: "EV and EBITDA are both pre-interest/pre-debt → the leverage distortion vanishes. P/E uses post-interest net income, so the indebted ticker looks falsely 'more expensive'."},
-{q: "INDF football field 62–103T. The professional read?", opts: ["A negotiation range; the 78–89T cluster = the confidence zone","Take the midpoint, it's certainly right","Ignore DCF, use precedent only","Pick the highest number to sound convincing"], answer: 0, diff: "Medium",
+{q: "INDF football field 63–103T. The professional read?", opts: ["A negotiation range; the 78–89T cluster = the confidence zone","Take the midpoint, it's certainly right","Ignore DCF, use precedent only","Pick the highest number to sound convincing"], answer: 0, diff: "Medium",
  explain: "Not an average, not a point. Read where methods cluster (78.18 & 89.38 close together), and understand why DCF sits below and precedent above."},
 {q: "One peer at 25× EV/EBITDA (one-off EBITDA collapse), others at 7–9×. Why median?", opts: ["Median is outlier-proof; the mean would be dragged to ~12×","The mean is always more correct","Just drop the outlier peer","The median miscalculates it"], answer: 0, diff: "Easy",
  explain: "Mean = (25+8+8+7+7)/5 ≈ 11× — one data point wrecks everything. Median stays 8×. For a 5-ticker comps, median is the safe default."}
 ],
 tasks: [
-{t: "Task A — INDF comps + football field (±4 hrs)", d: "Download the Day 11 practice file from Drive. Build 10 multiples + 2 medians + implied + precedent + football field (all formulas). Target: medians 8.18/13.75, implied EV 98.18, field 62.18–102.73.", url: "https://drive.google.com/drive/folders/15TFQXH7bi-YezJmcLSsj36EpKTdQoO72"},
+{t: "Task A — INDF comps + football field (±4 hrs)", d: "Download the Day 11 practice file from Drive. Build 10 multiples + 2 medians + implied + precedent + football field (all formulas). Target: medians 8.18/13.75, implied EV 98.18, field 63.37–102.73.", url: "https://drive.google.com/drive/folders/15TFQXH7bi-YezJmcLSsj36EpKTdQoO72"},
 {t: "Task B — Median ex-INDF (±30 min)", d: "On paper: compute median EV/EBITDA & P/E from the 4 peers WITHOUT INDF. Answer: 8.38 & 15.28. Feel the circularity effect: the target appraising itself shifts the median."},
 {t: "Task C — Quiz above", d: "Target ≥5/7 correct. Missed? Read the hints, retake."}
 ],
@@ -6685,7 +6686,7 @@ sections: [
 <p>The capstone issuer choice is <b>deliberate</b>, not random:</p>
 <ul>
 <li><b>UNVR is retired</b> \u2014 its 3-scenario DCF was completed in Real Case RC1. Repeating it = duplication, not a new skill.</li>
-<li><b>RC3 INDF was a <i>repair</i> mission</b> \u2014 an existing model fixed until parent equity <b>Rp73.15T</b> and FCFF <b>Rp15.90T</b> surfaced. Repair trains you to read others' models.</li>
+<li><b>RC3 INDF was a <i>repair</i> mission</b> \u2014 an existing model fixed until parent equity <b>Rp73.15T</b> surfaced. Repair trains you to read others' models. (The RC3 mission model's own FCFF uses that mission's inputs — the capstone FCFF is recomputed from blank below.)</li>
 <li><b>This capstone = full <i>build</i> from blank.</b> No half-finished template \u2014 you are the architect. The arc: <i>repair &rarr; build &rarr; thesis</i>.</li>
 <li><b>INDF = conglomerate</b> (instant noodles, dairy, agribusiness, distribution) &rarr; the new skill = <b>consolidation simplification</b>: dozens of entities mapped to a handful of accounts.</li>
 </ul>
@@ -6734,7 +6735,7 @@ sections: [
 {h: "2026 income statement: revenue \u2192 NI Rp15.21T", body: `
 <p>The income bridge (Rp trillion):</p>
 <div class="formula">132.00 &minus; 92.40 (COGS) = 39.60 &minus; 18.10 (SG&amp;A) = <b>EBIT 21.50</b> &minus; 2.00 (interest) = 19.50 &minus; 4.29 (22% tax) = <b>NI 15.21</b></div>
-<p>EBIT margin = 21.50 &divide; 132.00 = <b>16.3%</b>. One honest note: this is <b>above INDF's history (&plusmn;11&ndash;12%)</b> \u2014 deliberate so the model lands on the canonical FCFF anchor, and stated as an illustrative assumption.</p>
+<p>EBIT margin = 21.50 &divide; 132.00 = <b>16.3%</b>. One honest note: this is <b>above INDF's history (&plusmn;11&ndash;12%)</b> \u2014 deliberate so the model lands near the canonical equity anchor (73.15T), and stated as an illustrative assumption.</p>
 <div class="callout"><b>Why state the &ldquo;above history&rdquo; margin openly?</b> Because assumption honesty &gt; false precision. This model illustrates mechanics \u2014 a real valuation needs segment-by-segment margin research. An analyst who hides an aggressive assumption = a liar with a model.</div>`},
 {h: "2026 balance sheet: conglomerate account mapping", body: `
 <p>Consolidation simplification: INDF's dozens of entities mapped to 8 accounts. Every account knows its &ldquo;home&rdquo;:</p>
@@ -6751,12 +6752,12 @@ sections: [
 </table>
 <p>The classic trap: <b>trade payables &ne; bank debt</b>. Payables are non-interest-bearing \u2014 excluded from net debt and WACC. Bank debt is interest-bearing \u2014 included in both.</p>
 <div class="callout"><b>Why simplify to 8 accounts?</b> Because the capstone trains <i>architecture</i>, not auditing. The principle is identical in a 200-line model: every account knows its home, every bridge is traceable. Complexity without architecture = a number graveyard.</div>`},
-{h: "2026 cash flow: NI \u2192 FCFF Rp15.90T", body: `
+{h: "2026 cash flow: NI \u2192 FCFF Rp17.46T", body: `
 <p>The cash bridge (Rp trillion):</p>
-<div class="formula">CFO = 15.21 + 6.50 &minus; 0.21 (&Delta;WC) = <b>21.50</b> &nbsp;&nbsp; FCFF = 21.50 &minus; 5.60 (capex) = <b>15.90</b></div>
+<div class="formula">CFO = 15.21 + 6.50 &minus; 0.21 (&Delta;WC) = <b>21.50</b> &nbsp;&nbsp; FCFF = 21.50 + 1.56 (after-tax interest) &minus; 5.60 (capex) = <b>17.46</b></div>
 <p>CFI = &minus;5.60. CFF = &minus;3.00 (debt repaid) &minus; 4.00 (dividends) = &minus;7.00. &Delta;cash = 21.50 &minus; 5.60 &minus; 7.00 = +8.90 &rarr; ending cash <b>26.90</b> (= balance-sheet cash &#10003;).</p>
-<p><b>FCFF 15.90T = the RC3 canonical anchor.</b> This number was <i>discovered</i> through repair \u2014 not set. Your independent build model must land on the same number.</p>
-<div class="callout"><b>Why is FCFF 15.90T a validation moment?</b> Because two independent paths (repairing the old model &rarr; 15.90T; building from blank &rarr; 15.90T) converging = STRONG reconciliation — not absolute proof. Both paths share inputs, so the same input error can pass both. Full proof needs formula checks + input independence. The capstone's first &ldquo;truth test&rdquo; — strong, but not final.</div>`},
+<p><b>FCFF 17.46T — two roads, one number.</b> The NOPAT road: 21.50 × 0.78 + 6.50 − 5.60 − 0.21 = 17.46. The CFO road: 21.50 + 1.56 (after-tax interest) − 5.60 = 17.46. The old 15.90T = CFO − capex = <i>levered</i> cash flow — without the after-tax interest add-back, that is not FCFF. FCFE = 17.46 − 1.56 − 3.00 = 12.90T. The RC3 canonical equity anchor (73.15T) still stands as the Day 13 comparison.</p>
+<div class="callout"><b>Why is FCFF 17.46T a validation moment?</b> Because two independent calculation roads (NOPAT &rarr; 17.46T; CFO + add-back &rarr; 17.46T) meeting = STRONG reconciliation — not absolute proof. Both roads share inputs, so the same input error can pass both. Full proof needs formula checks + input independence. The capstone's first &ldquo;truth test&rdquo; — strong, but not final.</div>`},
 {h: "4 golden checks: full tie-out", body: `
 <p>Four checks that must pass in <i>every</i> 3-statement model (Rp trillion):</p>
 <table class="brutal">
@@ -6776,7 +6777,7 @@ sections: [
 <li><b>Hardcode.</b> Typing 15.21 inside the CFO formula = a dead model when assumptions change. Link, don't type.</li>
 <li><b>Skipping the balance check.</b> The &ldquo;balance check&rdquo; row exists to be used, not displayed.</li>
 </ul>
-<p>Day 12's outputs for Day 13: <b>FCFF 15.90T</b> and <b>net debt 40.10T</b> (= 67.00 &minus; 26.90).</p>
+<p>Day 12's outputs for Day 13: <b>FCFF 17.46T</b> and <b>net debt 40.10T</b> (= 67.00 &minus; 26.90).</p>
 <div class="callout"><b>Why does Day 13 need net debt from here?</b> Because DCF computes <i>enterprise value</i> (value to all investors), and equity = EV &minus; net debt. Rp1T of wrong net debt = Rp1T of wrong equity = Rp1T of wrong thesis. The chain never breaks.</div>`}
 ],
 quiz: [
@@ -6786,9 +6787,9 @@ quiz: [
 {q: "NI Rp15.21T, depreciation Rp6.50T, \u0394WC +Rp0.21T. 2026 CFO?", opts: ["Rp21.50T","Rp8.92T","Rp15.21T","Rp27.10T"], answer: 0,
  hints: ["CFO = NI + depreciation \u2212 \u0394WC.","15.21 + 6.50 \u2212 0.21 = ?"],
  explain: "15.21 + 6.50 \u2212 0.21 = Rp21.50T."},
-{q: "CFO Rp21.50T, capex Rp5.60T. 2026 FCFF?", opts: ["Rp21.50T","Rp15.21T","Rp9.80T","Rp15.90T"], answer: 3,
- hints: ["FCFF = CFO \u2212 capex.","21.50 \u2212 5.60 = ?"],
- explain: "21.50 \u2212 5.60 = Rp15.90T = the RC3 canonical anchor."},
+{q: "CFO Rp21.50T, interest Rp2.00T, tax 22%, capex Rp5.60T. 2026 FCFF?", opts: ["Rp21.50T","Rp15.21T","Rp15.90T","Rp17.46T"], answer: 3,
+ hints: ["FCFF = CFO + interest×(1−t) − capex.","21.50 + 2.00×0.78 − 5.60 = ?"],
+ explain: "21.50 + 1.56 − 5.60 = Rp17.46T. Rp15.90T = CFO − capex = levered cash flow — without the interest add-back, not FCFF."},
 {q: "Beginning RE Rp49.22T, NI Rp15.21T, dividends Rp4.00T. Ending 2026 RE?", opts: ["Rp64.43T","Rp60.43T","Rp68.43T","Rp45.22T"], answer: 1,
  hints: ["Ending RE = beginning RE + NI \u2212 dividends.","49.22 + 15.21 \u2212 4.00 = ?"],
  explain: "49.22 + 15.21 \u2212 4.00 = Rp60.43T."},
@@ -6809,7 +6810,7 @@ hell: [
  explain: "Balance = necessary, not sufficient. A model can balance perfectly yet be totally wrong (units, mapping, logic). Golden checks + assumption audit = the full package."}
 ],
 tasks: [
-{t: "Task A \u2014 Build the INDF 3-statement (\u00b14 hrs)", d: "Download the Day 12 practice file from Drive. Build INDF's 2026 IS/BS/CFS from blank \u2014 every answer cell a formula linking to inputs. Target: NI 15.21 \u00b7 CFO 21.50 \u00b7 ending cash 26.90 \u00b7 FCFF 15.90 \u00b7 A 150.80 = L+E \u00b7 BALANCE \u2713.", url: "https://drive.google.com/drive/folders/1io-5Xwx8t91bsLRlu8rM4mgAJEg2BxJc"},
+{t: "Task A \u2014 Build the INDF 3-statement (\u00b14 hrs)", d: "Download the Day 12 practice file from Drive. Build INDF's 2026 IS/BS/CFS from blank \u2014 every answer cell a formula linking to inputs. Target: NI 15.21 \u00b7 CFO 21.50 \u00b7 ending cash 26.90 \u00b7 FCFF 17.46 \u00b7 A 150.80 = L+E \u00b7 BALANCE \u2713.", url: "https://drive.google.com/drive/folders/1io-5Xwx8t91bsLRlu8rM4mgAJEg2BxJc"},
 {t: "Task B \u2014 Manual account mapping (\u00b130 min)", d: "On paper: map 5 accounts (cash, receivables, net PPE, bank debt, retained earnings) to A/L/E plus their cross-statement bridges (e.g. RE: IS \u2192 BS). Then reconcile with your model."},
 {t: "Task C \u2014 Quiz above", d: "Target \u22654/5 correct. Missed? Read the hints, retake."}
 ],
@@ -6817,7 +6818,7 @@ blind: {h: "Blind Drill \u2014 Kios Rina 3-Statement", body: `
 <p>"Kios Rina" (Rp million, <b>not</b> trillion): revenue 240; COGS 60%; SG&amp;A 40; interest 2; tax 20%; depreciation 8; capex 10; dividends 6; debt repaid 5. Base: cash 30, receivables 20, inventory 15, PPE 60, payables 10, bank debt 25, capital 50, RE 40. Ending: receivables 24, inventory 18, payables 12. <b>Build the 3-statement WITHOUT peeking</b>.</p>
 <details class="ans"><summary>See the answer (try it yourself first!)</summary>
 <p><b>IS:</b> GP = 240 \u2212 144 = 96; EBIT = 96 \u2212 40 = 56; EBT = 54; tax 10.8; <b>NI = 43.2</b>.</p>
-<p><b>CFS:</b> \u0394WC = (24+18\u221212) \u2212 (20+15\u221210) = 5; CFO = 43.2 + 8 \u2212 5 = <b>46.2</b>; ending cash = 30 + 46.2 \u2212 10 \u2212 5 \u2212 6 = <b>55.2</b>; <b>FCFF = 36.2</b>.</p>
+<p><b>CFS:</b> \u0394WC = (24+18\u221212) \u2212 (20+15\u221210) = 5; CFO = 43.2 + 8 \u2212 5 = <b>46.2</b>; ending cash = 30 + 46.2 \u2212 10 \u2212 5 \u2212 6 = <b>55.2</b>; <b>FCFF = 37.8</b> (NOPAT 56 \u00d7 0.80 + 8 \u2212 10 \u2212 5; or CFO 46.2 + 1.6 after-tax interest \u2212 10. 36.2 = CFO \u2212 capex = levered cash flow \u2014 without the interest add-back, not FCFF).</p>
 <p><b>BS:</b> A = 55.2 + 24 + 18 + 62 = <b>159.2</b>; L = 12 + 20 = 32; E = 50 + (40 + 43.2 \u2212 6) = 122.2; L+E = <b>159.2 \u2713</b>.</p>
 <p><i>Why does the base RE of 40 matter?</i> Because the opening balance sheet must balance first (125 = 125) \u2014 if the base is broken, the whole forecast breaks with it.</p>
 </details>`}
@@ -6827,12 +6828,12 @@ title: "Capstone I: DCF + 1-Page Thesis",
 sub: "Day 13 \u00b7 \u00b18 hrs \u00b7 INDF DCF + 1-page investment thesis",
 sections: [
 {h: "2026\u20132030 FCFF: the stated normalization assumptions", body: `
-<p>2026 FCFF = <b>15.90T</b> is in hand (Day 12). The five explicit years use <b>stated normalization assumptions</b> \u2014 declining, not growing:</p>
+<p>2026 FCFF = <b>17.46T</b> is in hand (Day 12). The five explicit years use <b>stated normalization assumptions</b> \u2014 declining, not growing:</p>
 <table class="brutal">
 <tr><th>Year</th><th>2026</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th></tr>
-<tr><td><b>FCFF (Rp trillion)</b></td><td><b>15.90</b></td><td>14.60</td><td>13.40</td><td>12.30</td><td>11.30</td></tr>
+<tr><td><b>FCFF (Rp trillion)</b></td><td><b>17.46</b></td><td>14.60</td><td>13.40</td><td>12.30</td><td>11.30</td></tr>
 </table>
-<p>The narrative: margin normalization after a strong cycle + disciplined capex. A <b>stated, debatable scenario</b> \u2014 not a forecast from the sky.</p>
+<p>The narrative: margin normalization after a strong cycle + disciplined capex. A <b>stated, debatable scenario</b> \u2014 not a forecast from the sky. The 2026→2027 drop (17.46 → 14.60) is steeper than the old plan because 2026 now uses the correct FCFF; 2027–2030 are unchanged.</p>
 <div class="callout"><b>Why declining, not growing?</b> Because DCF needs no optimism \u2014 it needs stated, attackable assumptions. A conservative scenario converging on the canonical anchor beats an aggressive one that collapses under questioning — but remember: convergence is strong reconciliation, not proof (see the validation section). Your thesis may be bull; your model must be honest.</div>`},
 {h: "Perpetuity TV: Gordon at end-2030", body: `
 <p>One &ldquo;normal&rdquo; FCFF for forever: 2031 FCFF = 11.30 &times; 1.0175 = <b>11.49775T</b>.</p>
@@ -6843,66 +6844,66 @@ sections: [
 <p>The second lens \u2014 no &ldquo;forever&rdquo; assumption: INDF is <i>sold</i> at end-2030.</p>
 <div class="formula">TV = EBITDA<sub>2030</sub> &times; multiple = 16.50 &times; 7 = <b>Rp115.50T</b></div>
 <p>2030 EBITDA = <b>16.50T stated as an assumption</b>; the <b>7&times; multiple stated as an illustrative assumption</b> (not market transaction data).</p>
-<div class="callout"><b>Why two methods again?</b> Because TV dominates DCF value \u2014 one lens = one single point of failure. (Note: in this INDF model, PV of TV is only 56.2% of EV — 80&ndash;90% is the general DCF picture, not this model. See the hell quiz on TV.) Two independent lenses in the same order (112.17 vs 115.50) = confidence; contradicting ones = a signal something's wrong.</div>`},
+<div class="callout"><b>Why two methods again?</b> Because TV dominates DCF value \u2014 one lens = one single point of failure. (Note: in this INDF model, PV of TV is only 55.5% of EV — 80&ndash;90% is the general DCF picture, not this model. See the hell quiz on TV.) Two independent lenses in the same order (112.17 vs 115.50) = confidence; contradicting ones = a signal something's wrong.</div>`},
 {h: "EV \u2192 equity \u2192 per share: the valuation bridge", body: `
 <table class="brutal">
 <tr><th>Component (Rp trillion)</th><th>Value</th></tr>
-<tr><td>PV of 2026&ndash;2030 FCFF</td><td>49.60</td></tr>
+<tr><td>PV of 2026&ndash;2030 FCFF</td><td>51.00</td></tr>
 <tr><td>PV of TV (112.17 &divide; 1.12&#8309;)</td><td>63.65</td></tr>
-<tr><td><b>Enterprise Value</b></td><td><b>113.25</b></td></tr>
+<tr><td><b>Enterprise Value</b></td><td><b>114.65</b></td></tr>
 <tr><td>Net debt (67.00 &minus; 26.90, from Day 12)</td><td>(40.10)</td></tr>
-<tr><td><b>Equity</b></td><td><b>73.15</b></td></tr>
+<tr><td><b>Equity</b></td><td><b>74.55</b></td></tr>
 <tr><td>Shares outstanding</td><td>8.78 billion</td></tr>
-<tr><td><b>Per-share value (illustrative)</b></td><td><b>Rp8,332</b></td></tr>
+<tr><td><b>Per-share value (illustrative)</b></td><td><b>Rp8,491</b></td></tr>
 </table>
 <div class="callout"><b>Why EV first, not equity directly?</b> Because FCFF belongs to <i>all</i> investors (lenders + shareholders). Equity = the remainder after lenders are paid (net debt). Reversing the order = claiming the lenders' cash as your own.</div>`},
 {h: "Validation: two independent paths, one number", body: `
 <p>Listen carefully \u2014 this is the capstone's most important moment:</p>
-<div class="formula">This independent model lands on <b>Rp73.15T</b> \u2014 consistent with the RC3 <i>repair</i> result (73.15T)</div>
-<p>Path 1 (RC3): <i>repairing</i> an existing model &rarr; parent equity 73.15T, FCFF 15.90T.<br>
-Path 2 (Days 12&ndash;13): <i>building</i> from blank &rarr; FCFF 15.90T &rarr; DCF &rarr; equity 73.15T.</p>
-<p>Two methods, two directions of work, <b>one number</b> (gap 0.00T \u2014 within the &plusmn;1T tolerance).</p>
+<div class="formula">This independent model lands on <b>Rp74.55T</b> \u2014 close to the RC3 <i>repair</i> result (73.15T), a 1.40T gap</div>
+<p>Path 1 (RC3): <i>repairing</i> an existing model &rarr; parent equity 73.15T.<br>
+Path 2 (Days 12&ndash;13): <i>building</i> from blank &rarr; FCFF 17.46T &rarr; DCF &rarr; equity 74.55T.</p>
+<p>Two methods, two directions of work, <b>almost one number</b> — the 1.40T gap (1.9%) is the PV of the after-tax interest add-back (1.56 \u00f7 1.12 = 1.39). A gap with a mechanical explanation: path 2 uses the correct FCFF (with add-back), path 1 uses the repair equity as anchor. Near-convergence + an explainable gap = strong reconciliation, not a suspiciously neat number.</p>
 <div class="callout"><b>Why is this what you present to the committee?</b> Because a single number can be engineered; <i>two independent paths converging</i> is hard to engineer. This is strong reconciliation \u2014 not a claim, but validation. (Not absolute proof: both paths share inputs, so check the formulas and input independence before calling it proven.) A thesis without validation = an opinion; with validation = an argument.</div>`},
 {h: "WACC sensitivity: a range, not a point", body: `
 <p>WACC &plusmn;1pp (g fixed at 1.75%) \u2014 equity swings:</p>
 <table class="brutal">
 <tr><th>Scenario</th><th>Equity (Rp trillion)</th><th>vs Base</th></tr>
-<tr><td>WACC 11% (low)</td><td>84.45</td><td>+15.4%</td></tr>
-<tr><td><b>WACC 12% (base)</b></td><td><b>73.15</b></td><td>&mdash;</td></tr>
-<tr><td>WACC 13% (high)</td><td>63.84</td><td>&minus;12.7%</td></tr>
+<tr><td>WACC 11% (low)</td><td>85.85</td><td>+15.2%</td></tr>
+<tr><td><b>WACC 12% (base)</b></td><td><b>74.55</b></td><td>&mdash;</td></tr>
+<tr><td>WACC 13% (high)</td><td>65.22</td><td>&minus;12.5%</td></tr>
 </table>
-<p>A <b>20.61T</b> range from merely &ldquo;reasonable&rdquo; assumption shifts. In the workbook these two sensitivity cells are <b>full formulas</b> \u2014 change WACC, equity follows.</p>
-<div class="callout"><b>Why does &plusmn;1pp of WACC swing Rp20T?</b> Because a small (WACC&minus;g) denominator = a giant lever. That's why WACC has been called &ldquo;the most dangerous lever&rdquo; since Day 09. Valuation = a range + a sensitivity map, not the 73.15 point.</div>`},
+<p>A <b>20.63T</b> range from merely &ldquo;reasonable&rdquo; assumption shifts. In the workbook these two sensitivity cells are <b>full formulas</b> \u2014 change WACC, equity follows.</p>
+<div class="callout"><b>Why does &plusmn;1pp of WACC swing Rp20T?</b> Because a small (WACC&minus;g) denominator = a giant lever. That's why WACC has been called &ldquo;the most dangerous lever&rdquo; since Day 09. Valuation = a range + a sensitivity map, not the 74.55 point.</div>`},
 {h: "The 1-page thesis: anatomy", body: `
 <p>An investment thesis = a 1-page argument for why a stock is worth buying/selling. The template:</p>
 <table class="brutal">
 <tr><th>Block</th><th>Content (INDF example)</th></tr>
 <tr><td><b>Thesis (1 sentence)</b></td><td>INDF is undervalued: the market overprices normalization.</td></tr>
-<tr><td><b>Bull / Base / Bear</b></td><td>84.45T / 73.15T / 63.84T (Rp9,620 / 8,332 / 7,270 per share)</td></tr>
+<tr><td><b>Bull / Base / Bear</b></td><td>85.85T / 74.55T / 65.22T (Rp9,778 / 8,491 / 7,428 per share)</td></tr>
 <tr><td><b>Catalysts</b></td><td>Sustained capex discipline; dividend hike; segment spin-off.</td></tr>
 <tr><td><b>Risks</b></td><td>Margin pressure returns; rupiah weakens; food regulation.</td></tr>
-<tr><td><b>Valuation</b></td><td>Base Rp8,332 vs market price &rarr; upside/downside &rarr; margin of safety.</td></tr>
+<tr><td><b>Valuation</b></td><td>Base Rp8,491 vs market price &rarr; upside/downside &rarr; margin of safety.</td></tr>
 <tr><td><b>Decision</b></td><td>Buy / wait / sell \u2014 with an explicit trigger price.</td></tr>
 </table>
 <div class="callout"><b>Why exactly 1 page?</b> Because investment committees don't read 40 pages. If your argument doesn't fit 1 page, you don't understand it yet \u2014 the reader isn't the dumb one. The page limit = a comprehension test.</div>`},
 {h: "Bull / base / bear + catalysts + risks", body: `
 <p>INDF's three scenarios \u2014 from your own sensitivity, not from the sky:</p>
 <ul>
-<li><b>Bull (WACC 11%):</b> equity 84.45T &rarr; Rp9,620/share. Catalysts: permanent capex discipline, higher dividends.</li>
-<li><b>Base (WACC 12%):</b> equity 73.15T &rarr; Rp8,332/share. The stated normalization scenario.</li>
-<li><b>Bear (WACC 13%):</b> equity 63.84T &rarr; Rp7,270/share. Risks: margin pressure, higher cost of capital.</li>
+<li><b>Bull (WACC 11%):</b> equity 85.85T &rarr; Rp9,778/share. Catalysts: permanent capex discipline, higher dividends.</li>
+<li><b>Base (WACC 12%):</b> equity 74.55T &rarr; Rp8,491/share. The stated normalization scenario.</li>
+<li><b>Bear (WACC 13%):</b> equity 65.22T &rarr; Rp7,428/share. Risks: margin pressure, higher cost of capital.</li>
 </ul>
 <p><b>Margin of safety</b> = the gap between fair value and the price you pay. Buying at 70% of base value = a 30% cushion if your assumptions are wrong.</p>
 <div class="callout"><b>Why bull/base/bear instead of one number?</b> Because an investment decision = market price vs <i>your value range</i>. Price below bear = buy with a thick margin of safety; price above bull = sell/wait. One number cannot give you this decision.</div>`},
 {h: "Writing the verdict: the final honesty", body: `
 <p>A 3-line verdict example:</p>
-<div class="formula">&ldquo;Base Rp8,332/share (equity 73.15T). Buy below Rp7,270 (bear) with margin of safety; above Rp9,620 (bull) = no margin. Independent model converged with the RC3 repair.&rdquo;</div>
+<div class="formula">&ldquo;Base Rp8,491/share (equity 74.55T). Buy below Rp7,428 (bear) with margin of safety; above Rp9,778 (bull) = no margin. Independent model nearly converged with the RC3 repair (1.40T gap = PV of the interest add-back).&rdquo;</div>
 <p>Limitations you <b>must</b> state in your thesis:</p>
 <ul>
 <li>All illustrative numbers \u2014 WACC 12%, g 1.75%, the 7&times; multiple = teaching assumptions, not market data.</li>
 <li>Model has no non-controlling interests (NCI) \u2014 a stated consolidation simplification.</li>
-<li>TV &asymp; 56% of EV \u2014 this thesis's accuracy &asymp; the accuracy of the g &amp; multiple assumptions.</li>
-<li>Rp8,332 is illustrative, <b>not investment advice</b>.</li>
+<li>TV &asymp; 55% of EV \u2014 this thesis's accuracy &asymp; the accuracy of the g &amp; multiple assumptions.</li>
+<li>Rp8,491 is illustrative, <b>not investment advice</b>.</li>
 </ul>
 <div class="callout"><b>Why does the verdict end with limitations?</b> Because a thesis honest about its weaknesses = the only thesis worth trusting. DCF is a perfect justification machine \u2014 what separates an analyst from a fraud = openness about assumptions. Capstone I complete. Congratulations!</div>`}
 ,
@@ -6925,15 +6926,15 @@ quiz: [
 {q: "TV = 11.49775 \u00f7 (0.12 \u2212 0.0175). Result?", opts: ["Rp95.81T","Rp65.54T","Rp130.02T","Rp112.17T"], answer: 3,
  hints: ["Denominator = 0.1025.","11.49775 \u00f7 0.1025 = ?"],
  explain: "11.49775 \u00f7 0.1025 = Rp112.17T."},
-{q: "PV of TV Rp63.65T + PV of FCFF Rp49.60T. Enterprise value?", opts: ["Rp113.25T","Rp177.82T","Rp103.25T","Rp73.15T"], answer: 0,
- hints: ["EV = PV of FCFF + PV of TV.","49.60 + 63.65 = ?"],
- explain: "49.60 + 63.65 = Rp113.25T."},
-{q: "EV Rp113.25T, net debt Rp40.10T. Equity?", opts: ["Rp153.35T","Rp40.10T","Rp73.15T","Rp113.25T"], answer: 2,
- hints: ["Equity = EV \u2212 net debt.","113.25 \u2212 40.10 = ?"],
- explain: "113.25 \u2212 40.10 = Rp73.15T = the RC3 canonical anchor."},
-{q: "Equity Rp73.15T, 8.78 billion shares. Per-share value?", opts: ["Rp7,270","Rp8,332","Rp9,620","Rp73,150"], answer: 1,
- hints: ["Per share = equity \u00f7 shares.","73.15T \u00f7 8.78 billion = ?"],
- explain: "73.15 \u00f7 8.78 \u00d7 1,000 = Rp8,332 (illustrative)."},
+{q: "PV of TV Rp63.65T + PV of FCFF Rp51.00T. Enterprise value?", opts: ["Rp114.65T","Rp177.82T","Rp103.25T","Rp73.15T"], answer: 0,
+ hints: ["EV = PV of FCFF + PV of TV.","51.00 + 63.65 = ?"],
+ explain: "51.00 + 63.65 = Rp114.65T."},
+{q: "EV Rp114.65T, net debt Rp40.10T. Equity?", opts: ["Rp153.35T","Rp40.10T","Rp74.55T","Rp114.65T"], answer: 2,
+ hints: ["Equity = EV \u2212 net debt.","114.65 \u2212 40.10 = ?"],
+ explain: "114.65 \u2212 40.10 = Rp74.55T (RC3 repair anchor 73.15T; 1.40T gap = PV of the interest add-back)."},
+{q: "Equity Rp74.55T, 8.78 billion shares. Per-share value?", opts: ["Rp7,428","Rp8,491","Rp9,778","Rp74,550"], answer: 1,
+ hints: ["Per share = equity \u00f7 shares.","74.55T \u00f7 8.78 billion = ?"],
+ explain: "74.55 \u00f7 8.78 \u00d7 1,000 = Rp8,491 (illustrative)."},
 {q: "Mid-cycle FCFF Rp200m, WACC 11%, g 3%. Normalised EV? (Peak FCFF Rp350m gives EV Rp4,506m.)", opts: ["Rp2,575m","Rp4,506m","Rp2,000m","Rp3,500m"], answer: 0, k: "cyclical", diff: "Medium",
  hints: ["EV = 200 × 1.03 ÷ (0.11 − 0.03).", "Valuing the peak = paying 75% more."],
  explain: "EV = 206 ÷ 0.08 = Rp2,575m. Peak FCFF gives Rp4,506m — 75% more for the same company."},
@@ -6943,19 +6944,19 @@ quiz: [
 
 ],
 hell: [
-{q: "Two paths (RC3 repair & capstone build) land on Rp73.15T. Meaning?", opts: ["Pure coincidence","RC3 must have miscalculated","Two independent paths converging = mechanics validated","The capstone must have miscalculated"], answer: 2, diff: "Medium",
- explain: "A single number can be engineered; two independent paths converging is hard to engineer. That's strong reconciliation \u2014 validation, not a claim — but not absolute proof: both paths share inputs."},
-{q: "WACC 12% \u2192 13%, equity 73.15T \u2192 63.84T. The lesson?", opts: ["WACC is the most dangerous lever \u2014 \u00b11pp swings \u00b1Rp20T","WACC doesn't matter for valuation","Just raise g to cover it","Switch valuation methods"], answer: 0, diff: "Medium",
- explain: "A small (WACC\u2212g) denominator = a giant lever. \u00b11pp of WACC = \u221212.7% equity. That's why WACC sensitivity is always tested."},
-{q: "PV of TV Rp63.65T vs EV Rp113.25T. What share of value is TV?", opts: ["56.2%","\u223c70%","49.6%","112.17%"], answer: 0, diff: "Medium",
- explain: "63.65 \u00f7 113.25 = 56.2%. The \u223c70% is a basis trap: 112.17 \u00f7 (112.17 + 49.60) = 69.3% divides NOMINAL TV by a nominal sum — a value share must be computed from PV. TV still dominates, just not at 70%."},
-{q: "Exit multiple gives equity Rp75.04T vs perpetuity Rp73.15T. Verdict?", opts: ["Take 75.04T (higher)","Take 73.15T (more conservative)","The 73.15\u201375.04T range \u2014 two lenses, one company","Force-average to 74.10T"], answer: 2, diff: "Medium",
+{q: "The capstone build lands on equity Rp74.55T vs the RC3 repair anchor Rp73.15T (a Rp1.40T gap). Meaning?", opts: ["Pure coincidence","RC3 must have miscalculated","Two independent paths converging = mechanics validated","The capstone must have miscalculated"], answer: 2, diff: "Medium",
+ explain: "The Rp1.40T gap (1.9%) is the PV of the after-tax interest add-back (1.56 \u00f7 1.12 = 1.39) — a gap with a mechanical explanation, not an error. Two paths nearly meeting = strong reconciliation \u2014 validation, not a claim — but not absolute proof: both paths share inputs."},
+{q: "WACC 12% \u2192 13%, equity 74.55T \u2192 65.22T. The lesson?", opts: ["WACC is the most dangerous lever \u2014 \u00b11pp swings \u00b1Rp20T","WACC doesn't matter for valuation","Just raise g to cover it","Switch valuation methods"], answer: 0, diff: "Medium",
+ explain: "A small (WACC\u2212g) denominator = a giant lever. \u00b11pp of WACC = \u221212.5% equity. That's why WACC sensitivity is always tested."},
+{q: "PV of TV Rp63.65T vs EV Rp114.65T. What share of value is TV?", opts: ["55.5%","\u223c70%","44.5%","112.17%"], answer: 0, diff: "Medium",
+ explain: "63.65 \u00f7 114.65 = 55.5%. The \u223c70% is a basis trap: 112.17 \u00f7 (112.17 + 51.00) = 68.7% divides NOMINAL TV by a nominal sum — a value share must be computed from PV. 44.5% is the PV-of-FCFF share, not TV's. TV still dominates, just not at 70%."},
+{q: "Exit multiple gives equity Rp76.44T vs perpetuity Rp74.55T. Verdict?", opts: ["Take 76.44T (higher)","Take 74.55T (more conservative)","The 74.55\u201376.44T range \u2014 two lenses, one company","Force-average to 75.50T"], answer: 2, diff: "Medium",
  explain: "Two independent lenses in the same order = confidence. What's right = the range + understanding where the Rp1.89T gap comes from."},
 {q: "Your thesis doesn't fit 1 page. Meaning?", opts: ["You don't understand it well enough yet \u2014 simplify until it fits","Extend to 2 pages","Shrink the font","Delete the risks section"], answer: 0, diff: "Easy",
  explain: "The 1-page limit = a comprehension test. If it doesn't fit, the argument isn't crystal yet \u2014 the reader isn't the dumb one."}
 ],
 tasks: [
-{t: "Task A \u2014 INDF DCF (\u00b13 hrs)", d: "Download the Day 13 practice file from Drive. Complete the DCF: perpetuity TV + PV of TV + EV + net debt + equity + per share + 2 sensitivity cells (all formulas). Target: TV 112.17 \u00b7 EV 113.25 \u00b7 equity 73.15 \u00b7 Rp8,332/share \u00b7 sensitivity 63.84 / 84.45.", url: "https://drive.google.com/drive/folders/1v-92ytXR9FTNjl-iBW7vUR3eyDQM5Dat"},
+{t: "Task A \u2014 INDF DCF (\u00b13 hrs)", d: "Download the Day 13 practice file from Drive. Complete the DCF: perpetuity TV + PV of TV + EV + net debt + equity + per share + 2 sensitivity cells (all formulas). Target: TV 112.17 \u00b7 EV 114.65 \u00b7 equity 74.55 \u00b7 Rp8,491/share \u00b7 sensitivity 65.22 / 85.85.", url: "https://drive.google.com/drive/folders/1v-92ytXR9FTNjl-iBW7vUR3eyDQM5Dat"},
 {t: "Task B \u2014 1-page thesis (\u00b12 hrs)", d: "Write your 1-page INDF investment thesis using the \u00a77 template: 1-sentence thesis, bull/base/bear, catalysts, risks, valuation vs price, decision + stated limitations."},
 {t: "Task C \u2014 Quiz above", d: "Target \u22656/7 correct. Missed? Read the hints, retake."}
 ],
@@ -6965,7 +6966,7 @@ blind: {h: "Blind Drill \u2014 Kios Rina DCF", body: `
 <p><b>TV:</b> year-4 FCFF = 9 \u00d7 1.02 = 9.18; TV = 9.18 \u00f7 (0.12 \u2212 0.02) = <b>91.8</b>.</p>
 <p><b>PV:</b> PV of TV = 91.8 \u00f7 1.12\u00b3 = <b>65.34</b>; PV of FCFF = 8/1.12 + 8.5/1.12\u00b2 + 9/1.12\u00b3 = <b>20.32</b>.</p>
 <p><b>EV</b> = 65.34 + 20.32 = <b>85.66</b>; <b>equity</b> = 85.66 \u2212 10 = <b>75.66</b>; <b>per share</b> = 75.66 \u00f7 2,000 = <b>Rp0.03783</b>.</p>
-<p><i>The unit trap:</i> equity of 75.66 is in Rp MILLION (= Rp75,660,000) and shares are 2 billion (= 2,000 million shares) — Rp million ÷ million shares = Rp, so the answer is Rp0.03783/share. Multiplying by 1,000 is only right when the numerator is in trillions and the denominator in billions — as in the INDF example (73.15T ÷ 8.78 billion shares = Rp8,332). Always align the units before dividing.</p>
+<p><i>The unit trap:</i> equity of 75.66 is in Rp MILLION (= Rp75,660,000) and shares are 2 billion (= 2,000 million shares) — Rp million ÷ million shares = Rp, so the answer is Rp0.03783/share. Multiplying by 1,000 is only right when the numerator is in trillions and the denominator in billions — as in the INDF example (74.55T ÷ 8.78 billion shares = Rp8,491). Always align the units before dividing.</p>
 <p><i>Why is the TV discounted 3 years?</i> Because the TV sits at end of year 3 \u2014 the same year as the last FCFF. Wrong year = wrong PV.</p>
 </details>`}
 };
@@ -6992,21 +6993,22 @@ sections: [
 <tr><td>Multiple = verdict</td><td>The exit multiple = a <b>stated illustrative assumption</b> — a debate hotspot</td><td>Day 10</td></tr>
 <tr><td>Football field read as a point</td><td>Read as a <b>range</b> — decide from price vs range</td><td>Day 10</td></tr>
 <tr><td>One-way sensitivity</td><td>WACC <b>and</b> g both bite through the (WACC\u2212g) denominator</td><td>Day 10</td></tr>
-<tr><td>FCFF = net income</td><td>FCFF = CFO \u2212 capex — \u0394WC &amp; capex separate profit from cash</td><td>Day 09</td></tr>
+<tr><td>FCFF = net income</td><td>FCFF = CFO + interest×(1−t) \u2212 capex (no debt: CFO \u2212 capex) — \u0394WC &amp; capex separate profit from cash</td><td>Day 09</td></tr>
 <tr><td>Tax shield deducted from FCFF</td><td>The tax shield <b>lives only in WACC</b> (when there is debt) — double-count if deducted twice</td><td>Day 09</td></tr>
 <tr><td>Trade payables enter WACC</td><td>Non-interest = an <b>operating consequence</b>, not a financing decision</td><td>Day 08/09</td></tr>
 </table>
 <div class="callout"><b>Why memorize this list instead of re-deriving it?</b> Because under 2-hour exam conditions your brain can't "think from zero" on every trap. A recognized trap = 1 minute; an unrecognized one = 20 minutes + an error that flows through the whole DCF.</div>`},
 {h: "2-hour strategy: conquering the PT Maju Jaya DCF", body: `
 <p>The "PT Maju Jaya" case (in the practice file): from a <b>blank</b> template, build a mini 3-statement + FCFF + two TV methods + two EV versions. WACC, g, the multiple, and normalized FCFF are <b>already given</b> — don't recompute them. The proven order:</p>
+<p>The two TV methods = Gordon perpetuity and exit multiple; present both EVs as a range (football field), not a single point.</p>
 <ol>
 <li><b>0\u201310 min: read ALL the data first.</b> Mark inputs vs computed vs given. Don't touch the keyboard until the map is complete.</li>
 <li><b>10\u201340 min: mini 3-statement.</b> NI \u2192 BS (roll every account) \u2192 cash. Balance first — a DCF on an unbalanced BS = a tower on sand.</li>
 <li><b>40\u201370 min: \u0394WC \u2192 CFO \u2192 FCFF.</b> Sanity check: negative FCFF is ALLOWED — if explained (capex &gt; CFO = investment year).</li>
-<li><b>70\u2013100 min: two TV methods \u2192 PV \u2192 two EV versions.</b> Check g &lt; WACC before dividing. The football field = a range, not a point.</li>
+<li><b>70\u2013100 min: two TV methods (Gordon perpetuity + exit multiple) \u2192 PV \u2192 two EV versions.</b> Check g &lt; WACC before dividing. The football field = a range, not a point.</li>
 <li><b>100\u2013120 min: golden checks.</b> A=L+E \u00b7 cash tie-out 0 \u00b7 RE roll \u00b7 two-way \u0394WC \u00b7 every answer cell a formula (not a typed number). One fails = hunt it down, don't submit.</li>
 </ol>
-<div class="callout"><b>Why the mini 3-statement first, not straight to TV?</b> Because NI drives RE and CFO, and FCFF = CFO \u2212 capex. TV without correct FCFF = valuation on ghost numbers. IS \u2192 BS \u2192 CF \u2192 FCFF \u2192 TV \u2192 EV is <b>dependency order</b>, not habit.</div>`},
+<div class="callout"><b>Why the mini 3-statement first, not straight to TV?</b> Because NI drives RE and CFO, and FCFF = CFO + interest×(1−t) \u2212 capex (in the no-interest Maju Jaya case: CFO \u2212 capex). TV without correct FCFF = valuation on ghost numbers. IS \u2192 BS \u2192 CF \u2192 FCFF \u2192 TV \u2192 EV is <b>dependency order</b>, not habit.</div>`},
 {h: "\u23F1\uFE0F Exam-condition timer", body: `
 <div class="callout">\u23F1\uFE0F <b>2-hour timer</b> \u2014 click Start, work without breaks: <span id="gatetimer2" style="font-weight:bold;font-size:1.3rem">120:00</span>
 <button class="btn small blue" onclick="var s=7200,btn=this;btn.disabled=true;var iv=setInterval(function(){s--;var m=Math.floor(s/60),ss=s%60;var el=document.getElementById('gatetimer2');if(!el){clearInterval(iv);return;}el.textContent=m+':'+(ss<10?'0':'')+ss;if(s<=0){clearInterval(iv);el.textContent='\u26D4 TIME UP \u2014 stop, save the file, upload for grading.';}},1000);">\u25B6 Start timer</button>
@@ -7076,9 +7078,9 @@ quiz: [
 {q: "Trade payables Rp2,000k (non-interest, supplier terms). Enter WACC?", opts: ["No \u2014 trade payables are an operating consequence, not a financing decision","Yes, as a debt component","Yes, half of it","Depends on the analyst"], answer: 0,
  hints: ["WACC prices ... capital.","Do suppliers charge interest for 30 days?"],
  explain: "No. WACC = the cost of interest-bearing capital (banks, bonds). Non-interest trade payables are an operating consequence \u2014 mixing them pollutes the cost of capital."},
-{q: "FCFF is defined as\u2026", opts: ["Net income \u2212 dividends","CFO \u2212 capex","EBITDA \u2212 tax","Revenue \u2212 COGS"], answer: 1,
+{q: "FCFF is defined as\u2026", opts: ["Net income \u2212 dividends","CFO + interest×(1−t) \u2212 capex","EBITDA \u2212 tax","Revenue \u2212 COGS"], answer: 1,
  hints: ["Operating cash after ...","The machines must be maintained before cash is free."],
- explain: "FCFF = CFO \u2212 capex: operating cash after capital spending \u2014 the cash genuinely free to all capital providers."},
+ explain: "FCFF = CFO + interest×(1−t) \u2212 capex: operating cash after capital spending \u2014 the cash genuinely free to all capital providers. With no debt (no interest): CFO \u2212 capex."},
 {q: "Every number in the Gate 2 model must trace back to\u2026", opts: ["Analyst gut feel","Last year's raw numbers","Explicitly stated assumption input cells","Industry averages"], answer: 2,
  hints: ["Driver \u00d7 assumption, not guesses.","Where do assumptions live? ... cells."],
  explain: "Blue input cells with explicit assumptions. A number that can't be traced to an assumption can't be debated = can't be trusted."},
@@ -7087,7 +7089,7 @@ quiz: [
  explain: "40,000 \u00f7 1.12 = Rp35,714k. Traps: 40,000 = forgot to discount; 44,800 = multiplied instead."}
 ],
 tasks: [
-{t: "Task A \u2014 PT Maju Jaya DCF, 2 exam hours", d: "Download the Day 14 template from Drive. Start the lesson timer, build from BLANK: mini 3-statement \u2192 FCFF \u2192 two TV methods \u2192 two EV versions. Upload for grading \u2014 target checker \u226580 + balance.", url: "https://drive.google.com/drive/folders/14hIvkRPJ2wzLEsrW4UWAJQT58JB-t2xx"},
+{t: "Task A \u2014 PT Maju Jaya DCF, 2 exam hours", d: "Download the Day 14 template from Drive. Start the lesson timer, build from BLANK: mini 3-statement \u2192 FCFF \u2192 two TV methods (Gordon perpetuity + exit multiple) \u2192 two EV versions. Upload for grading \u2014 target checker \u226580 + balance.", url: "https://drive.google.com/drive/folders/14hIvkRPJ2wzLEsrW4UWAJQT58JB-t2xx"},
 {t: "Task B \u2014 20-question quiz above", d: "Target \u226516 correct (80%). Missed? Back to the Week 2 trap recap, retake."},
 {t: "Task C \u2014 Check the gate", d: "Quiz \u226580% AND DCF checker \u226580 = GATE 2 PASSED \u2192 Capstone II (Week 3). Fail one = 1 repair day, redo only the failed part."}
 ],
@@ -7208,7 +7210,7 @@ sections: [
 {h: "Decision trees: staged decisions have value", body: `
 <p>Some decisions are not taken once — they are <b>staged</b>: investing today buys the <i>right</i> to decide again tomorrow. A <b>decision tree</b> values that right with expected value at each branch (the natural pair to real-07: the smelter as a staged option).</p>
 <div class="example korporat"><div class="lbl">🏢 Example — wait a year, or build now?</div>
-<p>Invest now: NPV <b>+Rp50m</b> (certain). Wait 1 year — two variants, do not mix them: <b>(A) build-always:</b> 60% good conditions → NPV +Rp120m; 40% bad → NPV −Rp20m (you build anyway). EMV of waiting = 0.6 × 120 + 0.4 × (−20) = 72 − 8 = <b>+Rp64m</b>, value of flexibility = 64 − 50 = Rp14m. <b>(B) walk-away option:</b> in bad conditions you simply <i>do not build</i> — the payoff is 0, not −20. EMV of waiting = 0.6 × 120 + 0.4 × 0 = <b>+Rp72m</b>, value of flexibility = 72 − 50 = <b>Rp22m</b>. Variant B is the one that truly uses the right to wait: a branch you would never take is pruned (the −20 payoff never happens if you may walk away). Rule: compare branch EMVs, not single-scenario NPVs; and when you prune a branch, compute its EMV with a payoff of 0, not −20.</p></div>
+<p>Invest now: NPV <b>+Rp50m</b> (certain). Wait 1 year — two variants, do not mix them: <b>(A) build-always:</b> 60% good conditions → NPV +Rp120m; 40% bad → NPV −Rp20m (you build anyway). EMV (Expected Monetary Value) of waiting = 0.6 × 120 + 0.4 × (−20) = 72 − 8 = <b>+Rp64m</b>, value of flexibility = 64 − 50 = Rp14m. <b>(B) walk-away option:</b> in bad conditions you simply <i>do not build</i> — the payoff is 0, not −20. EMV of waiting = 0.6 × 120 + 0.4 × 0 = <b>+Rp72m</b>, value of flexibility = 72 − 50 = <b>Rp22m</b>. Variant B is the one that truly uses the right to wait: a branch you would never take is pruned (the −20 payoff never happens if you may walk away). Rule: compare branch EMVs, not single-scenario NPVs; and when you prune a branch, compute its EMV with a payoff of 0, not −20.</p></div>
 <p><b>Bridge to Solver (Excel L3):</b> a decision tree answers <i>when</i> to decide; Solver answers <i>how much</i> is optimal when your decision is continuous (capex allocation) — two complementary optimisation tools.</p>`}],
 quiz: [
 {q: "PT Maju Jaya: FCFF0 \u2212Rp2,000k, FCFFn Rp3,600k, WACC 12%, g 3%. Base EV?", opts: ["Rp33,929k","Rp40,000k","Rp35,714k","\u2212Rp1,786k"], answer: 0, k: "ev_base", diff: "Easy",
@@ -7378,7 +7380,7 @@ sections: [
 <tr><td>Deal accretive <i>only with</i> synergies</td><td>You are buying a <i>promise</i>, not a company \u26a0\ufe0f</td></tr>
 <tr><td>Synergies &gt; 20% of target NI</td><td>Fantasy numbers \u2014 ask for proof of an integration that ever worked</td></tr>
 </table>
-<div class="callout"><b>Why suspect synergies first?</b> Because M&amp;A studies repeatedly show 70\u201380% of acquisitions miss their promised synergies \u2014 and synergies are always 100% realised <i>in the seller's spreadsheet</i>. Accretion before synergies = fact; accretion after synergies = hope.</div>`},
+<div class="callout"><b>Why suspect synergies first?</b> Because several studies (e.g. KPMG 1999) report that most acquisitions fail to create shareholder value — and the definition of "fail" varies by study — while synergies are always 100% realised <i>in the seller's spreadsheet</i>. Accretion before synergies = fact; accretion after synergies = hope.</div>`},
 {h: "Warung \u2192 corporate: the kiosk-next-door analogy", body: `
 <p>Translate it into warung language. Septian's warung: earnings 2,075, 1,000 family "shares", each "priced" at 3.0 (warung valued at 3,000). The kiosk next door (Warung Ani): earnings 600, book equity 1,500, market value 1,500.</p>
 <p>Septian buys Warung Ani for 1,800 (20% premium): 60% paid in new "warung shares" (360 shares @ 3.0 = 1,080) + 40% bank loan at 10%, 3% fee (54), 22% tax.</p>
@@ -7390,7 +7392,7 @@ sections: [
 <tr><th>#</th><th>Check</th><th>Deal A</th></tr>
 <tr><td>1</td><td>Sources = uses? (fees included?)</td><td>9,180 = 9,180 \u2713</td></tr>
 <tr><td>2</td><td>P/E paid vs acquirer P/E?</td><td>5.0x vs 4.5x \u2014 paid rich, rescued by debt</td></tr>
-<tr><td>3</td><td>Goodwill / deal price?</td><td>4,000/9,000 = 44% \u2014 half the price = hope</td></tr>
+<tr><td>3</td><td>Goodwill / deal price?</td><td>Simple goodwill 4,000/9,000 = 44% (PPA goodwill 2,050) \u2014 half the price = hope</td></tr>
 <tr><td>4</td><td>Accretive without synergies?</td><td>Yes, +6.2% \u2713</td></tr>
 <tr><td>5</td><td>Leverage after the deal?</td><td>0 \u2192 debt 4,680 \u2014 new risk</td></tr>
 <tr><td>6</td><td>What flips the verdict?</td><td>Price &gt; 12,540, or rates &gt; ~24%</td></tr>
@@ -7728,7 +7730,7 @@ sections: [
 <p>Warung Nusantara, with sharp seasonality (Jun 24,000 vs Jan 16,800), <i>cannot</i> go fully aggressive: it needs an inventory buffer ahead of June. WC policy = choosing the point on the spectrum <i>deliberately</i>, not drifting into it.</p>
 <div class="callout"><b>Why is this a "policy", not a "calculation"?</b> Because the trade-off involves the owner's risk appetite \u2014 not math. The analyst prices it ("a Rp5,000k buffer = RpX of forgone return"); the owner picks the risk. Your job: make the trade-off <i>visible</i>, not choose it for them.</div>`}
 ,
-{h: "Capital budgeting: PI, ARR, payback & discounted payback", body: `
+{h: "Capital budgeting: PI, ARR (Accounting Rate of Return), payback & discounted payback", body: `
 <p>Until now Day 18 had one rule: NPV &gt; 0, accept. The real world uses four tools — because each answers a different question. Example project (Rp m): investment <b>1,000</b>, inflows 300 / 400 / 500 / 400 (years 1–4), WACC 10%:</p>
 <table class="brutal">
 <tr><th>Tool</th><th>Formula</th><th>Maths</th><th>Verdict</th></tr>
@@ -7745,7 +7747,7 @@ sections: [
 {h: "Inflation, nominal vs real & FX", body: `
 <p><b>Golden rule:</b> nominal cash flows ↔ nominal discount rate; real cash flows ↔ real discount rate. Never mix them. Exact Fisher: (1 + nominal) = (1 + real) × (1 + inflation). Example: nominal 12%, inflation 5% → real = 1.12 ÷ 1.05 − 1 = <b>6.67%</b> (not 7% — a small gap that compounds over a 10-year DCF).</p>
 <p><b>FX:</b> a dollar-earning project: USD 100k × Rp16,000 = Rp1,600m. Rupiah weakens 5% → rate 16,800 → Rp1,680m (+Rp80m). But if costs are also in dollars, hedge the net exposure, not the gross number. And never forecast an exchange rate as "today's rate + inflation differential" without stating the assumption — that is purchasing-power parity (PPP), a theory, not a forecast. Inflation &amp; FX are why Day 13 uses scenarios, not one number.</p>`},
-{h: "Statistical forecasting: moving averages, exponential smoothing, MAE/MAPE", body: `
+{h: "Statistical forecasting: moving averages, exponential smoothing, MAE (Mean Absolute Error)/MAPE (Mean Absolute Percentage Error)", body: `
 <p>Driver-based forecasting (Day 08) answers <i>why</i> numbers move. <b>Statistical forecasting</b> answers <i>how accurate</i> your guess is — and without it, a forecast is just a tidy opinion:</p>
 <div class="example warung"><div class="lbl">🏪 Example — coffee sales (thousand cups)</div>
 <p>Actual: 100, 110, 105, 120, 118. <b>3-period moving average:</b> period-4 forecast = (100+110+105) ÷ 3 = 105 → error 15; period-5 forecast = (110+105+120) ÷ 3 = 111.67 → error 6.33. <b>MAE</b> = (15 + 6.33) ÷ 2 = <b>10.67</b>. <b>MAPE</b> = (15÷120 + 6.33÷118) ÷ 2 = (12.5% + 5.37%) ÷ 2 = <b>8.93%</b>.</p>
@@ -7955,7 +7957,7 @@ blind: {h: "Blind Drill \u2014 the neighbor warung in Solo", body: `
 };
 EN["hari-20"] = {
 title: "Hard Accounting: Leases, Deferred Tax & the Accounting Detective",
-sub: "Day 20 \u00b7 \u00b18 hrs \u00b7 PSAK 116, DTL/DTA, stock comp, NOL + repair mission",
+sub: "Day 20 \u00b7 \u00b18 hrs \u00b7 PSAK 116, DTL/DTA (deferred tax), stock comp, NOL + repair mission",
 mission: {file: "https://docs.google.com/spreadsheets/d/1Bmor8rFGbXX4jNdT3M8SlRFnV6FWzoFp/edit", key: "detektif",
   title: "\uD83D\uDD75\uFE0F Accounting Detective Mission \u2014 PT Maju Jaya (broken)",
   desc: "You've received a PT Maju Jaya model built by a 'junior analyst'. This file was <b>deliberately broken in 4 places</b>: the lease booked as plain rent (Rp4,791k of liability missing), DTL not recorded, stock comp not added back (CFO Rp2,600k vs Rp5,500k), and the NOL left unused (Rp440k of overpaid tax). Bonus: the balance sheet doesn't even BALANCE (gap of \u22121,700) \u2014 your first clue. Your mission: <b>find \u2192 explain why it's wrong \u2192 fix with formulas \u2192 upload the result</b>."},
@@ -7979,7 +7981,7 @@ sections: [
 <table class="brutal">
 <tr><th>Lease Y1 (Rp thousand)</th><th>Correct (PSAK 116)</th><th>Wrong (plain rent)</th></tr>
 <tr><td>Liability recognized</td><td><b>4,791.25</b></td><td>0</td></tr>
-<tr><td>ROU asset recognized</td><td><b>4,791.25</b></td><td>0</td></tr>
+<tr><td>ROU (Right-of-Use) asset recognized</td><td><b>4,791.25</b></td><td>0</td></tr>
 <tr><td>Y1 expense</td><td>Depreciation 958.25 + interest 383.30 = <b>1,341.55</b></td><td>Rent <b>1,200</b></td></tr>
 <tr><td>Ending Y1 liability</td><td><b>3,974.55</b></td><td>0</td></tr>
 </table>
@@ -8448,7 +8450,7 @@ quiz: [
  explain: "2,200 \u00f7 (0.11 \u2212 0.03) = 2,200 \u00f7 0.08 = 27,500. 20,000 = no-growth cash flow over WACC alone; 18,333 = WACC+g denominator (wrong sign)."},
 {q: "Year-5 EBITDA Rp4,000k, exit multiple 7x. Terminal value?", opts: ["Rp28,000k","Rp20,000k","Rp35,000k","Rp11,000k"], answer: 0, k: "tv", diff: "Medium",
  hints: ["TV = EBITDA5 \u00d7 multiple.","Ask first: which year does the TV sit in?"],
- explain: "4,000 \u00d7 7 = 28,000 \u2014 'selling the company' at end of year 5 for 7 years of EBITDA. Simple, but the multiple must come from comparable comps."},
+ explain: "4,000 \u00d7 7 = 28,000 \u2014 'selling the company' at end of year 5 for 7\u00d7 EBITDA (not '7 years' \u2014 a multiple is not a payback). Simple, but the multiple must come from comparable comps."},
 {q: "EV Rp50,000k, debt Rp12,000k, cash Rp3,000k, 8,200 shares. Fair value per share?", opts: ["Rp5,000","Rp4,634","Rp6,098","Rp5,488"], answer: 0, k: "dcf", diff: "Hard",
  hints: ["Equity = EV \u2212 debt + cash.","41,000 \u00f7 8,200 = ?"],
  explain: "Equity = 50,000 \u2212 12,000 + 3,000 = 41,000; \u00f7 8,200 = 5,000/share. 4,634 = forgot to add cash; 6,098 = forgot to subtract debt. The EV\u2192equity bridge is where valuations most often 'leak'."},
@@ -8903,7 +8905,7 @@ title: "Capstone II: Mini Bank Model",
 sub: "Day 26 · ±8 hrs · PT Bank Maju Bersama — 3-year projection, CAR & P/BV valuation",
 sections: [
 {h: "Why is a bank modeled differently from an ordinary company?", body: `
-<p>At an ordinary company, debt is a <b>burden</b> — subtracted from valuation. At a bank, debt (third-party funds/deposits) is <b>raw material</b>: the bank borrows cheap, lends dear, and the spread (NIM) is its living. A model treating a bank like a factory misreads the entire business.</p>
+<p>At an ordinary company, debt is a <b>burden</b> — subtracted from valuation. At a bank, debt (third-party funds/deposits) is <b>raw material</b>: the bank borrows cheap, lends dear, and the spread (NIM — Net Interest Margin) is its living. A model treating a bank like a factory misreads the entire business.</p>
 <p>Three structural differences: <b>(1)</b> what matters isn't EBITDA but <b>NIM & provisions</b>; <b>(2)</b> leverage isn't added risk but the core of the model — what's guarded is <b>CAR</b>, not debt/EBITDA; <b>(3)</b> valuation uses <b>P/BV</b>, not DCF — because a bank's cash flow to equity can't be separated from its funding.</p>
 <div class="callout"><b>Why not just DCF it?</b> Because "free cash flow" is slippery at a bank: retained vs distributed vs mandatory-minimum cash all blend together. Bank analysts value <b>working capital</b> (book value) and <b>return on that capital</b> (ROE) — not cash flows engineered out of an 8×-leveraged balance sheet.</div>`},
 {h: "Why is NIM computed on average loans?", body: `
@@ -8927,7 +8929,7 @@ sections: [
 <p><b>What this model CAN compute — CoC:</b> Year-1 provision expense Rp161.28k ÷ average loans (8,000 + 8,960) ÷ 2 = 8,480 → <b>1.90%</b>. Year 3: 202.31 ÷ 10,637 = <b>1.90%</b> as well. Flat — because this model's provision is a flat 1.8% of <i>ending</i> loans, and the 1.90% vs 1.8% gap is the ending-vs-average basis gap you already know from NII.</p>
 <p><b>What this model CANNOT compute — NPL & coverage:</b> it has no <i>stock</i> of non-performing loans and no <i>stock</i> of reserves (provisions here are only an expense <i>flow</i>). If we assume Year-3 NPL = 2.8% × 11,239 = <b>Rp314.69 billion (stated illustration)</b>, coverage still can't be computed without a reserve stock. That's a training-model limitation — in a working model, reserves are a balance-sheet account (roll-forward: opening + expense − write-offs + recoveries = closing).</p>
 <p><b>Real anchor — BBRI FY2024 [B]:</b> gross NPL <b>2.78%</b>; coverage disclosed <b>215.01%</b> vs computed <b>213.07%</b> (loan reserves Rp76,902,889m ÷ NPL Rp36,093,243m — the gap is reserves on non-loan earning assets, not a calculation error); CoC <b>3.2%</b> [B]. Compare with the training model (CoC 1.90%): a real bank with an MSME book bears a higher risk cost — and coverage above 200% means its reserves are twice its bad loans.</p>
-<p><b>ECL & staging (IFRS 9 / PSAK 109):</b> modern accounting doesn't wait for loans to go bad before reserving. Three stages: <b>Stage 1</b> — healthy loans, reserves = 12-month expected credit loss; <b>Stage 2</b> — significant increase in credit risk (SICR), reserves = lifetime ECL; <b>Stage 3</b> — credit-impaired, lifetime ECL + interest on the net value. The flat 1.8% provision in this model is <b>not</b> staging — it's a forecasting shortcut. In a real bank, Stage 1 → 2 migration is the early warning analysts read before NPL itself moves.</p>
+<p><b>ECL (Expected Credit Loss) & staging (IFRS 9 / PSAK 109):</b> modern accounting doesn't wait for loans to go bad before reserving. Three stages: <b>Stage 1</b> — healthy loans, reserves = 12-month expected credit loss; <b>Stage 2</b> — significant increase in credit risk (SICR), reserves = lifetime ECL; <b>Stage 3</b> — credit-impaired, lifetime ECL + interest on the net value. The flat 1.8% provision in this model is <b>not</b> staging — it's a forecasting shortcut. In a real bank, Stage 1 → 2 migration is the early warning analysts read before NPL itself moves.</p>
 <div class="callout"><b>Why is this model's 1.90% CoC "too tidy"?</b> Because it follows directly from the flat 1.8% assumption — not from portfolio analysis. A real bank's CoC moves with the cycle (up when the economy worsens, down when it recovers). If your model's CoC is flat forever, you're assuming the credit cycle doesn't exist. Stress-test it like WACC: CoC 1.9% → 3.6% (the NPL-doubles scenario) cuts NI, equity, and CAR in a chain — exactly what today's quiz asks.</div>`},
 {h: "Why is the equity walk the heart of a bank model?", body: `
 <p><b>E<sub>t</sub> = E<sub>t-1</sub> + NI − Dividends.</b> Year 1: 1,500 + 132.16 − 39.65 = <b>1,592.51</b>. Year 3: <b>1,812.18</b>. Simple — and it's the entire drama of banking: every rupiah of dividends paid today is one rupiah of capital <b>not</b> available to support loan growth tomorrow.</p>
@@ -9083,16 +9085,16 @@ sections: [
 <p><b>Pass if total \u226512 of 16 AND no aspect scores 1.</b> One aspect = 1 means a structural hole \u2014 fix that block, re-record.</p>
 <div class="callout"><b>Why 'no score of 1'?</b> Because 12 can be reached as (4,4,3,1) \u2014 Q&amp;A destroyed but 'passed'. Yet Q&amp;A is where the thesis is truly tested. Averages hide holes; this rule doesn't.</div>`}
 ,
-{h: "Anatomy of pitchbooks, CIMs & teasers — and how deals are sold", body: `
+{h: "Anatomy of pitchbooks, CIMs (Confidential Information Memoranda) & teasers — and how deals are sold", body: `
 <p>The Day 27 thesis defence trains you to present a <i>conclusion</i>. IB deal documents sell a <i>company</i> — and each document has a different reader, secrecy level, and purpose:</p>
 <table class="brutal">
 <tr><th>Document</th><th>Reader</th><th>Contents</th><th>Secret?</th></tr>
 <tr><td><b>Teaser</b> (1–2 pages)</td><td>Broad buyer universe</td><td>Anonymous profile: industry, revenue, EBITDA, highlights — no name</td><td>Yes, anonymous</td></tr>
-<tr><td><b>CIM</b> (Confidential Information Memorandum, 30–80 pages)</td><td>Buyers who signed an NDA</td><td>Business model, financials, projections, risks, auction process</td><td>Yes, post-NDA</td></tr>
+<tr><td><b>CIM</b> (Confidential Information Memorandum, 30–80 pages)</td><td>Buyers who signed an NDA (Non-Disclosure Agreement)</td><td>Business model, financials, projections, risks, auction process</td><td>Yes, post-NDA</td></tr>
 <tr><td><b>Pitchbook</b></td><td>Client / investment committee</td><td>Why this deal, why now, valuation (comps/DCF Day 11–13), structure</td><td>Client-internal</td></tr>
 <tr><td><b>Management presentation</b></td><td>Finalist buyers</td><td>Management presentation + Q&amp;A</td><td>Yes</td></tr>
 </table>
-<p><b>Sell-side auction (typical 12-week timeline):</b> weeks 1–2 teaser + NDA; weeks 3–6 CIM + initial indications (IOI); weeks 7–9 management presentation + early due diligence; weeks 10–11 final binding bids; week 12 SPA + signing. Rules: never share the CIM before the NDA; never share final numbers before the IOI — information is leverage, and leverage given away early is gone.</p>
+<p><b>Sell-side auction (typical 12-week timeline):</b> weeks 1–2 teaser + NDA; weeks 3–6 CIM + initial indications (IOI); weeks 7–9 management presentation + early due diligence; weeks 10–11 final binding bids; week 12 SPA (Share Purchase Agreement) + signing. Rules: never share the CIM before the NDA; never share final numbers before the IOI — information is leverage, and leverage given away early is gone.</p>
 <p><b>Due-diligence checklist (mandatory before signing):</b> (1) earnings quality — is EBITDA clean of one-offs (like the GOTO normalisation in real-08); (2) working capital — is there seasonality hiding cash needs; (3) hidden debt — leases, warranties, tax disputes; (4) customers — top-5 concentration; (5) management — who leaves when the owner leaves. Your 10-minute thesis defence is a mini management presentation — except in a real deal, your audience holds the cheque.</p>`}],
 quiz: [
 {q: "A good 1-minute hook contains\u2026", opts: ["One sentence on why this company deserves attention RIGHT NOW", "Company profile: founded year, headcount\u2026", "Disclaimers and table of contents", "Presenter bio"], answer: 0,
@@ -9523,7 +9525,7 @@ sections: [
 {h: "Scope boundary: what this Sprint deliberately does NOT teach", body: `
 <p>This Sprint covers the FMVA (CFI) curriculum — and deliberately does <b>not</b> cover two areas: <b>derivatives &amp; hedging</b> (futures, options, swaps, FX/interest-rate hedging) and full <b>Black-Scholes real-option pricing</b>. Reason: the FMVA exam does not test derivatives, and hedging is its own discipline (treasury, not modelling). This is an explicit boundary, not a backlog — if your job needs hedging, study it via a treasury track after graduating, with your DCF foundation as the base. What you do have instead: decision trees &amp; simple binomials (Day 15, real-07) — enough to recognise when a project carries flexibility value, without pretending to price exotic options.</p>
 <p><b>Also new in v1.61:</b> Day 31 (Bonus) — IPOs &amp; IB deal documents — and real-10 project finance (JSMR). Both sit outside the final gate: Day 30 remains your graduation gate; Day 31 and real-10 are post-graduation electives, not graduation requirements.</p>
-<p><b>Also new in v1.64:</b> real-11 insurance (combined ratio, reserving, RBC &amp; embedded value) and real-12 SaaS (LTV/CAC, churn cohorts, NRR &amp; Rule of 40) \u2014 both post-graduation electives like real-10, not graduation requirements.</p>`},
+<p><b>Also new in v1.64:</b> real-11 insurance (combined ratio, reserving, RBC &amp; embedded value) and real-12 SaaS (LTV (Lifetime Value) / CAC (Customer Acquisition Cost), churn cohorts, NRR &amp; Rule of 40) \u2014 both post-graduation electives like real-10, not graduation requirements.</p>`},
 {h: "Cross-links: FSA Lab — MD&A & Power BI", body: `
 <p>Two skills are not rebuilt here because they already exist, deeper, in <b>FSA Lab</b> (this Sprint's sibling track):</p>
 <ul>
@@ -9685,13 +9687,13 @@ const GLOSSARY_EN = [
 ["Driver","Driver","The variable that determines a forecast number (growth %, margin %, WC days).","DSO 30 days → receivables = revenue × 30/360."],
 ["Perpetuity","Perpetuitas","Cash flows growing forever — an infinite geometric series with a closed-form sum.","TV = 2,281 ÷ (0.131 − 0.03) = 22,584k."],
 ["Precedent transaction","Precedent transaction","Relative valuation using multiples from past acquisition transactions, not live quoted prices. Usually higher due to control premium.","Precedent EV for INDF = 98.18T \u00d7 1.25 = 122.73T."],
-["Football field","Football field","Bar chart of valuation ranges per method (DCF, comps, precedent) on one axis; where methods cluster = confidence zone.","INDF field: 62.18\u2013102.73T; comps cluster 78.18\u201389.38T."],
+["Football field","Football field","Bar chart of valuation ranges per method (DCF, comps, precedent) on one axis; where methods cluster = confidence zone.","INDF field: 63.37\u2013102.73T; comps cluster 78.18\u201389.38T."],
 ["Control premium","Control premium","Premium over market price paid by an acquirer for control of the company (illustration: 25%).","Comps EV 98.18T \u00d7 1.25 = precedent EV 122.73T."],
-["Multiple","Multiple","Relative valuation ratio: enterprise value divided by a financial metric (e.g. EV/EBITDA, P/E).","EV/EBITDA 8.18\u00d7 = the market pays 8.18 years of EBITDA."],
+["Multiple","Multiple","Relative valuation ratio: enterprise value divided by a financial metric (e.g. EV/EBITDA, P/E).","EV/EBITDA 8.18\u00d7 = the market values the firm at 8.18\u00d7 LTM EBITDA (not '8.18 years' \u2014 a multiple is not a payback)."],
 ["LTM","LTM (Last Twelve Months)","Financial metrics for the last 12 months that already happened \u2014 the factual denominator basis for trading multiples.","INDF LTM EBITDA Rp12T (stated illustration)."],
 ["Capstone","Capstone","The peak project combining all skills \u2014 a full build from blank, not a partial drill.","Days 12\u201313: INDF 3-statement + DCF + thesis."],
-["Investment thesis","Tesis investasi","A 1-page argument for why a stock is worth buying/selling \u2014 bull/base/bear, catalysts, risks, valuation, decision.","Base Rp8,332 vs market = buy decision with margin of safety."],
-["Bull / base / bear","Bull / base / bear","Three scenarios: optimistic, central, pessimistic \u2014 valuation as a range, not a point.","Base 73.15T; bull 84.45T; bear 63.84T."],
+["Investment thesis","Tesis investasi","A 1-page argument for why a stock is worth buying/selling \u2014 bull/base/bear, catalysts, risks, valuation, decision.","Base Rp8,491 vs market = buy decision with margin of safety."],
+["Bull / base / bear","Bull / base / bear","Three scenarios: optimistic, central, pessimistic \u2014 valuation as a range, not a point.","Base 74.55T; bull 85.85T; bear 65.22T."],
 ["Catalyst","Katalis","An event forcing the market to recognize value: dividends, spin-offs, margin repair.","An INDF dividend hike = catalyst."],
 ["Margin of safety","Marjin pengaman","The gap between fair value and price paid \u2014 cushion for wrong assumptions.","Buying at 70% of fair value = 30% margin of safety."],
 ["Gate","Gerbang","Weekly graduation exam: two keys (quiz + timed model) must pass before continuing.","Gate 2: quiz \u226516/20 and DCF checker \u226580."],

@@ -216,7 +216,7 @@ sections: [
 {h: "SUMPRODUCT 2 kriteria & LET: rumus yang terbaca", body: `
 <p>Dua teknik membuat rumus kompleks tetap manusiawi:</p>
 <div class="formula">=SUMPRODUCT((Produk="Kopi Susu")*(Kategori="Minuman")*Omzet)</div>
-<p><b>SUMPRODUCT 2 kriteria:</b> perkalian array (syarat1)*(syarat2) = AND — baris yang memenuhi keduanya menghasilkan nilai Omzet-nya, yang lain dikali 0. Berfungsi <b>identik</b> di Excel, Google Sheets, dan LibreOffice (trik <tt>XLOOKUP(1, ...)</tt> yang setara justru <tt>#VALUE!</tt> di Google Sheets).</p>
+<p><b>SUMPRODUCT 2 kriteria:</b> perkalian array (syarat1)*(syarat2) = AND — baris yang memenuhi keduanya menghasilkan nilai Omzet-nya, yang lain dikali 0. Umumnya bekerja sama di versi modern (Excel 365, Google Sheets saat ini, LibreOffice 24.8+) — cek versi aplikasimu bila ada perbedaan perilaku.</p>
 <div class="formula">=LET(t, SUM(Omzet), t*1.1)</div>
 <p><b>LET</b> memberi nama pada perhitungan: hitung sekali (t), pakai berkali-kali. Rumus 200 karakter menjadi terbaca — dan dihitung lebih cepat karena tidak mengulang.</p>
 <div class="callout"><b>Kenapa keterbacaan = fitur, bukan gaya?</b> Karena rumus dibaca 10× lebih sering dari ditulis — oleh kamu 3 bulan lagi, atau oleh atasan yang mengaudit. Rumus yang tidak bisa dibaca = rumus yang tidak bisa dipercaya.</div>`},
@@ -276,8 +276,8 @@ hell: [
  explain: "Fungsi dalam dievaluasi dulu: UNIQUE menghasilkan daftar unik, SORT mengurutkannya. Komposisi = baca dari dalam ke luar. (Argumen 1, TRUE = urut menaik — bentuk yang jalan identik di Excel & Google Sheets.)"},
 {q: "=FILTER(A:A, B:B>100, \"kosong\"). Tidak ada yang cocok. Hasil?", opts: ["#CALC!","\"kosong\"","0","#N/A"], answer: 1, diff: "Medium",
  explain: "Argumen ke-3 FILTER = if_empty. Tanpa itu: #CALC!. Selalu isi — seperti if_not_found di XLOOKUP."},
-{q: "Rumus spill di A1 menumpahkan 10 baris. Kamu hapus baris 5 (di tengah tumpahan). Apa yang terjadi?", opts: ["Rumus rusak permanen","Spill menyesuaikan — tetap 10 nilai, baris 5 kosong dilewati","#SPILL! permanen sampai file dibuka ulang","Excel membuat 9 baris saja"], answer: 1, diff: "Hard",
- explain: "Spill itu dinamis: hapus baris di tengah, tumpahan mengatur ulang — tetap 10 nilai. Beda dengan rumus copy yang meninggalkan lubang #REF!."},
+{q: "Rumus spill di A1 menumpahkan 10 baris (baris 1–10). Kamu hapus SELURUH baris 5 (klik kanan → Delete). Apa yang terjadi?", opts: ["Rumus rusak permanen","Spill menghitung ulang — tetap 10 nilai, menempati baris 1–10 setelah pergeseran; tidak ada baris kosong yang \"dilewati\"","#SPILL! permanen sampai file dibuka ulang","Excel membuat 9 baris saja"], answer: 1, diff: "Hard",
+ explain: "Hapus SELURUH baris = baris di bawahnya bergeser naik; spill menghitung ulang dan tetap menumpahkan 10 nilai di baris 1–10. Beda dengan mengosongkan isi sel A5 saja (clear contents): spill mengisi ulang sel itu. Beda lagi dengan rumus copy yang meninggalkan lubang #REF!."},
 {q: "=SEQUENCE(5, 3) menghasilkan?", opts: ["5 baris × 3 kolom angka 1–15","3 baris × 5 kolom","Error — SEQUENCE hanya 1 dimensi","5 kolom × 3 baris"], answer: 0, diff: "Hard",
  explain: "SEQUENCE(baris, kolom): 5×3 = 15 angka berurutan. Fondasi membuat matriks tanggal/scenario."},
 {q: "Kenapa =SUM(FILTER(Omzet, Kategori=\"Minuman\")) lebih baik dari SUMIFS di kasus ini?", opts: ["Selalu lebih cepat dihitung","FILTER bisa dipakai ulang untuk daftarnya juga — satu logika, dua output","SUMIFS tidak bisa memfilter teks","Tidak ada bedanya"], answer: 1, diff: "Hard",
@@ -830,7 +830,7 @@ sections: [
 {h: "2-criteria SUMPRODUCT & LET: readable formulas", body: `
 <p>Two techniques that keep complex formulas human:</p>
 <div class="formula">=SUMPRODUCT((Product="Kopi Susu")*(Category="Beverages")*Revenue)</div>
-<p><b>2-criteria SUMPRODUCT:</b> array multiplication (condition1)*(condition2) = AND — rows meeting both contribute their Revenue, the rest are multiplied by 0. Works <b>identically</b> in Excel, Google Sheets, and LibreOffice (the equivalent <tt>XLOOKUP(1, ...)</tt> trick returns <tt>#VALUE!</tt> in Google Sheets).</p>
+<p><b>2-criteria SUMPRODUCT:</b> array multiplication (condition1)*(condition2) = AND — rows meeting both contribute their Revenue, the rest are multiplied by 0. It generally works the same on modern versions (Excel 365, current Google Sheets, LibreOffice 24.8+) — check your app version if behavior differs.</p>
 <div class="formula">=LET(t, SUM(Revenue), t*1.1)</div>
 <p><b>LET</b> names a calculation: compute once (t), use many times. A 200-character formula becomes readable — and computes faster by not repeating.</p>
 <div class="callout"><b>Why is readability a feature, not style?</b> Because formulas are read 10× more often than written — by you 3 months from now, or by a boss auditing. A formula that can't be read = a formula that can't be trusted.</div>`},
@@ -889,8 +889,8 @@ hell: [
  explain: `Inner functions evaluate first: UNIQUE produces the unique list, SORT sorts it. Composition = read inside-out. (Arguments 1, TRUE = ascending — the form that works identically in Excel & Google Sheets.)`},
 {q: `=FILTER(A:A, B:B>100, "empty"). Nothing matches. Result?`, opts: ["#CALC!","\"empty\"","0","#N/A"], answer: 1,
  explain: `FILTER's 3rd argument = if_empty. Without it: #CALC!. Always fill it — like if_not_found in XLOOKUP.`},
-{q: `A spill formula in A1 spills 10 rows. You delete row 5 (mid-spill). What happens?`, opts: ["The formula breaks permanently","Spill adjusts — still 10 values, row 5 skipped","Permanent #SPILL! until the file reopens","Excel makes only 9 rows"], answer: 1,
- explain: `Spills are dynamic: delete a mid row, the spill rearranges — still 10 values. Unlike copied formulas that leave #REF! holes.`},
+{q: `A spill formula in A1 spills 10 rows (rows 1–10). You delete the WHOLE row 5 (right-click → Delete). What happens?`, opts: ["The formula breaks permanently","Spill recalculates — still 10 values, occupying rows 1–10 after the shift; no empty row is \"skipped\"","Permanent #SPILL! until the file reopens","Excel makes only 9 rows"], answer: 1,
+ explain: `Deleting a WHOLE row shifts the rows below up; the spill recalculates and still spills 10 values in rows 1–10. Different from clearing the contents of cell A5 only: the spill refills it. Different again from copied formulas that leave #REF! holes.`},
 {q: `=SEQUENCE(5, 3) produces?`, opts: ["5 rows × 3 columns of numbers 1–15","3 rows × 5 columns","Error — SEQUENCE is 1-D only","5 columns × 3 rows"], answer: 0,
  explain: `SEQUENCE(rows, columns): 5×3 = 15 sequential numbers. The foundation for date/scenario matrices.`},
 {q: `Why is =SUM(FILTER(Revenue, Category="Beverages")) better than SUMIFS here?`, opts: ["Always faster to compute","FILTER is reusable for the list too — one logic, two outputs","SUMIFS can't filter text","There is no difference"], answer: 1,

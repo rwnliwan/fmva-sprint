@@ -99,9 +99,9 @@ chk('EV peak', 360.5 / 0.08, 4506, 0.5)
 chk('EV 2-stage', 62.5 / 1.12 + 78.125 / 1.2544 + 97.65625 / 1.404928 + (97.65625 * 1.03 / 0.09) / 1.404928, 983.12, 0.1)
 chk('EV ESG 11%', 103 / 0.08, 1287.50, 0.01)
 chk('EV ESG 11.5%', 103 / 0.085, 1211.76, 0.05)
-# --- R4: H13 TV share — PV basis, bukan nominal (S7) ---
-chk('H13 PV TV share', 63.65 / 113.25, 0.562, 0.001)
-chk('H13 TV nominal trap', 112.17 / (112.17 + 49.60), 0.693, 0.001)
+# --- R4: H13 TV share — PV basis, bukan nominal (S7) — R8: rantai DCF baru (PV FCFF 51,00; EV 114,65) ---
+chk('H13 PV TV share', 63.65 / 114.65, 0.555, 0.002)
+chk('H13 TV nominal trap', 112.17 / (112.17 + 51.00), 0.687, 0.002)
 chk('H13 blind per-share', 75660000 / 2000000000, 0.03783, 0.00001)
 # --- H16 payout ---
 chk('div after tax', 0.9 + 9, 9.90, 0.01)
@@ -352,6 +352,94 @@ txt('R7 N-2 "pemilik" hilang (FCFF)', 'bisa diambil pemilik' not in _c2 and 'can
 txt('R7 N-2 "penyandang modal" hadir', 'seluruh penyandang modal' in _c2 and 'all capital providers' in _c2)
 txt('R7 N-3 "sembilan" ber-nomina', 'sembilan kombinasi EV' in _c2 and 'nine EV combinations' in _c2)
 txt('R7 SF-3 kualifikasi biaya implisit hadir', 'biaya implisit' in _c2 and 'implicit cost' in _c2)
+# --- Ronde 8 (Terra) fixes, 2026-11-09 ---
+# MF-1 hari-12: FCFF standar = NOPAT + D&A - capex - dWC = CFO + bunga*(1-t) - capex.
+# Angka lama 15,90 = CFO - capex = arus kas LEVERED (tanpa add-back bunga setelah pajak), BUKAN FCFF.
+# Konvensi tampil: angka downstream dihitung dari angka tampil hulu (bisa direproduksi learner dgn kalkulator).
+chk('R8 H12 FCFF NOPAT path', 21.50 * 0.78 + 6.50 - 5.60 - 0.21, 17.46, 0.01)
+chk('R8 H12 FCFF CFO path', 21.50 + 2.00 * 0.78 - 5.60, 17.46, 0.01)
+chk('R8 H12 after-tax interest', 2.00 * 0.78, 1.56, 0.01)
+chk('R8 H12 levered trap (old FCFF)', 21.50 - 5.60, 15.90, 0.01)
+chk('R8 H12 FCFE', 17.46 - 1.56 - 3.00, 12.90, 0.01)
+chk('R8 H12 FCFE x-check CFO', 21.50 - 5.60 - 3.00, 12.90, 0.01)
+# Blind Kios Rina (kelas yang sama — MF-1 juga hidup di latihan buta): EBIT 56, pajak 20%.
+# FCFF benar 37,8; angka lama 36,2 = CFO - capex = arus kas levered.
+chk('R8 blind FCFF NOPAT', 56 * 0.80 + 8 - 10 - 5, 37.8, 0.01)
+chk('R8 blind FCFF CFO', 46.2 + 2 * 0.80 - 10, 37.8, 0.01)
+chk('R8 blind levered trap', 46.2 - 10, 36.2, 0.01)
+# H13 DCF — seri 17.46/14.60/13.40/12.30/11.30 (2027-2030 asumsi normalisasi, tak berubah);
+# WACC 12%; g 1.75%; net debt 40.10; saham 8,78 miliar.
+_s13 = [17.46, 14.60, 13.40, 12.30, 11.30]
+def _dcf13(w):
+    pvf = sum(f / (1 + w) ** (i + 1) for i, f in enumerate(_s13))
+    tv = _s13[-1] * 1.0175 / (w - 0.0175)
+    pvt = tv / (1 + w) ** 5
+    return pvf, tv, pvt, pvf + pvt, pvf + pvt - 40.10
+_pvf, _tv, _pvt, _ev, _eq = _dcf13(0.12)
+chk('R8 H13 PV FCFF', _pvf, 51.00, 0.02)
+chk('R8 H13 TV', _tv, 112.17, 0.02)
+chk('R8 H13 PV TV', _pvt, 63.65, 0.02)
+chk('R8 H13 EV', _ev, 114.65, 0.02)
+chk('R8 H13 equity', _eq, 74.55, 0.02)
+chk('R8 H13 ps base (displayed eq)', 74.55 / 8.78 * 1000, 8491, 1.0)
+chk('R8 H13 TV share', _pvt / _ev, 0.555, 0.002)
+chk('R8 H13 gap vs RC3 anchor', _eq - 73.15, 1.40, 0.02)
+chk('R8 H13 gap = PV add-back', 1.56 / 1.12, 1.39, 0.02)
+_pvf11, _tv11, _pvt11, _ev11, _eq11 = _dcf13(0.11)
+_pvf13, _tv13, _pvt13, _ev13, _eq13 = _dcf13(0.13)
+chk('R8 H13 sens 11% eq', _eq11, 85.85, 0.02)
+chk('R8 H13 sens 13% eq', _eq13, 65.22, 0.02)
+chk('R8 H13 sens 11% ps', 85.85 / 8.78 * 1000, 9778, 1.0)
+chk('R8 H13 sens 13% ps', 65.22 / 8.78 * 1000, 7428, 1.0)
+chk('R8 H13 sens 11% pct', (_eq11 - _eq) / _eq, 0.1517, 0.002)
+chk('R8 H13 sens 13% pct', (_eq13 - _eq) / _eq, -0.1251, 0.002)
+chk('R8 H13 sens range', _eq11 - _eq13, 20.63, 0.02)
+chk('R8 H13 exit PV TV', 115.50 / 1.12 ** 5, 65.54, 0.02)
+chk('R8 H13 exit EV (displayed)', 51.00 + 65.54, 116.54, 0.02)
+chk('R8 H13 exit eq (displayed)', 51.00 + 65.54 - 40.10, 76.44, 0.02)
+chk('R8 H13 exit range gap', 76.44 - 74.55, 1.89, 0.02)
+# H11 football field — kaki DCF = hasil build Hari 12-13 (74,55), bukan jangkar repair (73,15).
+chk('R8 H11 DCF low', 74.55 * 0.85, 63.37, 0.02)
+chk('R8 H11 DCF high', 74.55 * 1.15, 85.73, 0.02)
+chk('R8 H11 DCF ps low', 63.37 / 8.78 * 1000, 7218, 1.0)
+chk('R8 H11 DCF ps high', 85.73 / 8.78 * 1000, 9764, 1.0)
+chk('R8 H11 gap vs comps', abs(74.55 - 78.18), 3.63, 0.02)
+chk('R8 H11 gap pct', abs(74.55 - 78.18) / 74.55, 0.0487, 0.002)
+# --- Ronde 8 txt guards (string spesifik; kelasnya dikunci qa_class_patterns.py) ---
+_c3 = open(_os.path.join(_os.path.dirname(__file__), '..', 'js', 'content3.js'), encoding='utf-8').read()
+# MF-1: angka baru hadir, angka lama (sebagai FCFF/DCF) hilang
+txt('R8 MF-1 FCFF baru hadir', 'FCFF 17,46T' in _c2 and 'FCFF 17.46T' in _c2)
+txt('R8 MF-1 target price baru hadir', 'Rp8.491' in _c2 and 'Rp8,491' in _c2)
+txt('R8 MF-1 target price lama hilang', 'Rp8.332' not in _c2 and 'Rp8,332' not in _c2)
+txt('R8 MF-1 EV lama hilang', '113,25' not in _c2 and '113.25' not in _c2)
+txt('R8 MF-1 PV FCFF lama hilang', '49,60' not in _c2 and '49.60' not in _c2)
+txt('R8 MF-1 ekuitas baru hadir', '74,55T' in _c2 and '74.55T' in _c2)
+txt('R8 MF-1 pangsa TV baru', '55,5%' in _c2 and '55.5%' in _c2 and '56,2%' not in _c2 and '56.2%' not in _c2)
+txt('R8 MF-1 blind FCFF baru', 'FCFF = 37,8' in _c2 and 'FCFF = 37.8' in _c2 and 'FCFF = 36,2' not in _c2 and 'FCFF = 36.2' not in _c2)
+txt('R8 MF-1 jangkar RC3 dipertahankan', 'jangkar RC3' in _c2 and 'RC3 anchor' in _c2)
+txt('R8 MF-1 jebakan levered dilabeli', 'arus kas levered' in _c2 and 'levered cash flow' in _c2 and 'Rp15,90T = CFO' in _c2 and 'Rp15.90T = CFO' in _c2)
+txt('R8 H11 DCF range baru', '63,37' in _c2 and '63.37' in _c2 and '85,73' in _c2 and '85.73' in _c2 and '62,18' not in _c2 and '62.18' not in _c2 and '84,12' not in _c2 and '84.12' not in _c2)
+txt('R8 H11 gap baru', '3,63T' in _c2 and '3.63T' in _c2 and '5,03T' not in _c2 and '5.03T' not in _c2)
+# SF-1 multiple bukan payback
+txt('R8 SF-1 kualifikasi payback hadir', 'multiple <b>bukan</b> jangka waktu payback' in _c2 and 'a multiple is <b>not</b> a payback period' in _c2)
+txt('R8 SF-1 multiple dinilai, bukan dibayar-tahun', '8× EBITDA LTM' in _c2 and '8× LTM EBITDA' in _c2)
+# SF-2 goodwill PPA dilabeli
+txt('R8 SF-2 goodwill PPA dilabeli', 'goodwill PPA 2.050' in _c2 and 'PPA goodwill 2,050' in _c2)
+# SF-3 klaim kegagalan bersumber + terdefinisi
+txt('R8 SF-3 sitasi KPMG 1999 hadir', 'KPMG 1999' in _c2)
+txt('R8 SF-3 definisi gagal bervariasi', 'definisi "gagal" bervariasi' in _c2 and 'definition of "fail" varies' in _c2)
+# SF-4 kunci spill benar
+txt('R8 SF-4 kunci spill baru', 'menempati baris 1–10 setelah pergeseran' in _c3 and 'occupying rows 1–10 after the shift' in _c3)
+txt('R8 SF-4 kunci spill lama hilang', 'baris 5 kosong dilewati' not in _c3 and 'row 5 skipped' not in _c3)
+# N-1 senioritas dilunakkan
+txt('R8 N-1 senioritas dilunakkan', 'Senioritas mengikuti hukum' in _c4 and 'Seniority follows applicable law' in _c4)
+# N-2 akronim diekspansi
+txt('R8 N-2 MRA diekspansi', 'MRA (Master Restructuring Agreement' in _c4)
+txt('R8 N-2 PKPU diekspansi', 'PKPU — Penundaan Kewajiban Pembayaran Utang' in _c4 and 'PKPU — Suspension of Debt Payment' in _c4)
+# N-3 kompatibilitas dikualifikasi
+txt('R8 N-3 versi modern dikualifikasi', 'Umumnya bekerja sama di versi modern' in _c3 and 'generally works the same on modern versions' in _c3)
+# N-4 dua metode TV dinamai
+txt('R8 N-4 dua metode TV dinamai', 'Dua metode TV = perpetuitas Gordon dan exit multiple' in _c2 and 'The two TV methods = Gordon perpetuity and exit multiple' in _c2)
 print()
 print('NUMBERS QA:', f'ALL PASS ({_total[0]} checks)' if not fails else f'{len(fails)} FAILURES: {fails}')
 raise SystemExit(0 if not fails else 1)

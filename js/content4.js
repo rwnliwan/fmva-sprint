@@ -384,7 +384,7 @@ audio: "assets/audio/real-05.mp3",
 checker: "real-05",
 sections: [
 {h: "Kenapa Telkom?", body: `
-<p><b>Telkom Indonesia (TLKM.JK)</b> — infrastruktur defensif: revenue flat ±Rp147–150T (2022–2025), tapi ada cerita di bawahnya: <b>capex turun Rp38,3T → Rp25,8T</b> sementara OCF stabil ±Rp64T. Hasilnya: <b>FCF mengembang Rp35,05T → Rp38,04T</b>. Inilah "capex harvest": panen dari investasi masa lalu.</p>
+<p><b>Telkom Indonesia (TLKM.JK)</b> — infrastruktur defensif: revenue flat ±Rp147–150T (2022–2025), tapi ada cerita di bawahnya: <b>capex turun Rp38,3T → Rp25,8T</b> sementara OCF (Operating Cash Flow — arus kas operasi) stabil ±Rp64T. Hasilnya: <b>FCF mengembang Rp35,05T → Rp38,04T</b>. Inilah "capex harvest": panen dari investasi masa lalu.</p>
 <div class="callout"><b>Kenapa ini pola wajib dikenal?</b> Setiap bisnis infrastruktur (telekomunikasi, tol, listrik) hidup dalam <b>siklus capex</b>: bangun (FCF tertekan) → panen (FCF mengembang) → bangun lagi (5G, data center). Analis yang hanya melihat laba bersih tidak pernah melihat siklusnya.</p></div>`},
 {h: "Kenapa FCF, bukan laba bersih?", body: `
 <div class="formula">FCF = OCF − Capex</div>
@@ -541,9 +541,9 @@ hell: [
  explain: "Kelebihan ROE adalah sewa ekonomi — kompetisi (bank digital, fintech) mengikisnya seiring waktu. 16% masih jauh di atas cost of equity 11,5%: model tidak bilang BBCA jadi bank medioker, hanya tidak abadi luar biasa."},
 {q: "Ke naik 11,5% → 13% (mis. premi risiko Indonesia naik). Justified P/BV 1-tahap menjadi?", opts: ["3,43x","2,81x","2,40x","1,98x"], answer: 2, diff: "Hard",
  explain: "(0,20−0,08)/(0,13−0,08) = 0,12/0,05 = 2,40x. Satu setengah persen di Ke menghapus ~30% justified multiple — inilah kenapa asumsi Ke wajib diuji, bukan diterima mentah."},
-{q: "Provisi BBCA naik 49% YoY di FY24, tapi CoC tetap 0,3% dan coverage NPL 209%. Tafsir analis yang tepat?", opts: ["Sinyal awal deteriorasi — jual","Normalisasi provisi pasca-Covid dengan buffer tebal; tetap pantau LAR 5,0%","Provisi tidak memengaruhi laba bank","CoC 0,3% berarti tidak ada kredit macet"], answer: 1, diff: "Medium",
+{q: "Provisi BBCA naik 49% YoY di FY24, tapi CoC tetap 0,3% dan coverage NPL 209%. Tafsir analis yang tepat?", opts: ["Sinyal awal deteriorasi — jual","Normalisasi provisi pasca-Covid dengan buffer tebal; tetap pantau LAR (Loan at Risk — kredit berisiko) 5,0%","Provisi tidak memengaruhi laba bank","CoC 0,3% berarti tidak ada kredit macet"], answer: 1, diff: "Medium",
  explain: "CoC 0,3% dari NPL 1,7% dengan coverage 209% = bank menaikkan cadangan dari posisi kuat (normalisasi pasca-Covid), bukan menambal lubang. Tapi LAR 5,0% (restru Covid) tetap wajib dipantau — di situlah risiko bersembunyi."},
-{q: "Dalam kondisi apa DDM dan residual income bisa memberi nilai yang BERBEDA?", opts: ["Tidak pernah — rumusnya identik","Ketika clean surplus jebol: buyback di atas/bawah book, OCI besar, atau dividen dari cadangan","Ketika payout di atas 100%","Ketika Ke lebih besar dari ROE"], answer: 1, diff: "Hard",
+{q: "Dalam kondisi apa DDM dan residual income bisa memberi nilai yang BERBEDA?", opts: ["Tidak pernah — rumusnya identik","Ketika clean surplus jebol: buyback di atas/bawah book, OCI (Other Comprehensive Income) besar, atau dividen dari cadangan","Ketika payout di atas 100%","Ketika Ke lebih besar dari ROE"], answer: 1, diff: "Hard",
  explain: "Kesetaraan DDM = RI bertumpu pada B_t = B_{t−1} + NI − Div. Buyback di atas book, revaluasi via OCI, atau setoran modal memutus rantai itu — analis bank wajib rekonsiliasi ekuitas, bukan mengasumsikan rumusnya selalu cocok."}
 ],
 tasks: [
@@ -558,7 +558,7 @@ blind: {h: "Uji Kilat — angka beda", body: `
 <details class="ans"><summary>Jawaban</summary><p>g = 9%; (0,18&minus;0,09)/(0,12&minus;0,09) = 3,0x.</p></details>`}
 },
 {id: "real-07", track: "Real Cases", title: "ADRO/Alamtri: Perusahaan yang Bukan Lagi Dirinya",
-sub: "Real Case 7 · ±5 jam · SOTP-NAV tambang",
+sub: "Real Case 7 · ±5 jam · SOTP-NAV (Net Asset Value) tambang",
 est: "5 jam",
 prerequisites: ["dcf", "model_3_statement"],
 driveFolder: "19_WRNJ84ntoN3NVr6sNumNUMA8CTv5Zc",
@@ -572,7 +572,7 @@ sections: [
 <p>Membandingkan $6.518jt vs $2.080jt sebagai 'pertumbuhan −68%' = membandingkan perusahaan <b>dengan</b> thermal coal vs <b>tanpa</b> thermal coal. Yang benar: pakai angka <b>FY23 RESTATED</b> (discontinued operations, SFAS 105 / PSAK) dari LK audited — di mana AAI sudah dikeluarkan dari kedua tahun. Rekonstruksi ilustratif dari porsi AAI: revenue continuing ≈ 11% × $6.518jt = <b>$717jt</b>; laba continuing ≈ (1 − 1,05) × $1.641jt = <b>−$82jt</b>. Ya — versi ilustratifnya, bisnis yang tersisa <b>merugi</b> di FY23. Itulah kenapa analis profesional tidak pernah memakai angka headline mentah.</p></div>
 <div class="callout"><b>Kenapa ini pelajaran associate?</b> Di semua case sebelumnya, datanya 'bersih'. Di dunia nyata, <b>perimeter perusahaan berubah</b> (spin-off, akuisisi, dekonsolidasi) dan agregator tidak selalu merestate. Skill-nya: buka catatan LK → cari 'discontinued operations' → pakai angka restated. (Real-07 § Kenapa spin-off bisa jadi jebakan nilai?)</p></div>`},
 {h: "Kenapa valuasinya SOTP, bukan satu multiple?", body: `
-<div class="formula">Equity = NAV tambang + Nilai SIS + NPV smelter + 15% AADI + Net cash − Holding discount</div>
+<div class="formula">Equity = NAV tambang + Nilai SIS (Saptaindra Sejati) + NPV smelter + 15% AADI + Net cash − Holding discount</div>
 <p>Alamtri pasca-spin adalah konglomerat <b>4 kaki</b>: (1) <b>Adaro Minerals (ADMR)</b> — batubara metalurgi; (2) <b>Saptaindra Sejati (SIS)</b> — jasa kontraktor tambang; (3) <b>energi & smelter aluminium KAI</b> fase 1 500rb ton/tahun (commissioning 2026); (4) <b>15% saham AADI</b> (tidak dikonsolidasi). Satu multiple P/E atau EV/EBITDA untuk keempatnya = menilai 4 bisnis beda risiko dengan satu harga — tidak bermakna.</p>
 <div class="example korporat"><div class="lbl">🏢 Hasil SOTP (angka kerja, $ juta)</div>
 <p>NAV ADMR <b>$1.976jt</b> + SIS <b>$750jt</b> (ilustratif) + smelter <b>$236jt</b> (ilustratif) + 15% AADI <b>$375jt</b> (ilustratif) = EV SOTP <b>$3.337jt</b>. Tambah net cash <b>$1.557jt</b> (akhir 1H24) → equity <b>$4.894jt</b>. Dengan holding discount ilustratif 20% → <b>$3.915jt</b>. Yang dinilai di sini <b>mekaniknya</b>: tiap kaki punya metode yang tepat untuk karakternya.</p>
@@ -585,7 +585,7 @@ sections: [
 <p>Revenue $1.154jt ÷ 5,62Mt = <b>$205/ton</b>. Margin EBITDA ternormalisasi ilustratif 35% → EBITDA $404jt → FCF tahunan <b>$208jt</b> (setelah pajak 25%, D&A & sustaining capex ilustratif). Faktor anuitas 10% selama 31,5 tahun = <b>9,503</b>. NAV = 208 × 9,503 = <b>$1.976jt</b> — kontributor terbesar SOTP (59% EV).</p></div>
 <div class="example jebakan"><div class="lbl">🚫 Reserves ≠ resources</div>
 <p>Resources metalurgi <b>983Mt</b> — lima setengah kali reserves. Pemula memakai 983Mt → mine life 175 tahun → NAV fantastis. Salah: <b>resources belum terbukti ekonomis</b> (belum studi kelayakan, belum izin, belum infrastruktur). NAV hanya memakai <b>reserves</b> (177Mt): yang bankable. Sensitivitasnya nyata — jika hanya 120Mt yang recoverable, mine life 21,4 tahun dan NAV jatuh ke <b>$1.808jt</b> (−$168jt). (Lihat Hell Mode.)</p></div>
-<p><b>Data operasi ADRO/ADMR (dipakai di Hell Mode):</b> volume penjualan <b>+26%</b>, ASP <b>−16%</b>, produksi <b>+30%</b>. Ingat: yang menjadi revenue adalah yang <b>terjual</b> (+26%), bukan yang diproduksi (+30%) &mdash; dan efek gabungan volume &times; harga = 1,26 &times; 0,84 &minus; 1 = +5,8% &asymp; +6% reported.</p>`},
+<p><b>Data operasi ADRO/ADMR (dipakai di Hell Mode):</b> volume penjualan <b>+26%</b>, ASP (Average Selling Price — harga jual rata-rata) <b>−16%</b>, produksi <b>+30%</b>. Ingat: yang menjadi revenue adalah yang <b>terjual</b> (+26%), bukan yang diproduksi (+30%) &mdash; dan efek gabungan volume &times; harga = 1,26 &times; 0,84 &minus; 1 = +5,8% &asymp; +6% reported.</p>`},
 {h: "Kenapa smelter dinilai sebagai real option?", body: `
 <p>Smelter aluminium KAI: capex <b>$300–325jt</b> (guidance ADMR 2025, sudah termasuk smelter), revenue <b>nol sampai commissioning 2026</b>. DCF standar melihat ini sebagai: keluar $300jt sekarang, dapat ketidakpastian nanti — dan menghukumnya habis-habisan.</p>
 <div class="callout"><b>Kenapa framing-nya opsi, bukan DCF biasa?</b> Smelter adalah <b>hak (bukan kewajiban) atas arus kas masa depan</b>: jika harga aluminium jatuh permanen, ekspansi fase 2 bisa dibatalkan — rugi terbatas pada capex fase 1. DCF standar mengasumsikan komitmen buta; <b>real option</b> menghargai fleksibilitas manajemen. NPV ilustratif: FCF stabil $60jt/thn dari 2027, WACC 12%, g 2% → PV $536jt − capex $300jt = <b>$236jt</b> ≥ 0. Kecil dibanding NAV tambang — tapi <b>opsinya</b> (fase 2, hilirisasi) yang berharga.</div>
@@ -753,7 +753,7 @@ quiz: [
 ],
 hellPass: 80,
 hell: [
-{q: "Adjusted EBITDA FY24 +Rp386m tapi rugi bersih −Rp4,5T. Kok bisa?", opts: ["Laporan keuangannya dipalsukan","Adjusted EBITDA mengeluarkan pos non-kas & one-off (SBC, depresiasi); rugi bersih akuntansi ≠ kas operasi","Rp386m itu sebenarnya Rp386T","Rugi bersih sudah termasuk laba 2025"], answer: 1, diff: "Medium",
+{q: "Adjusted EBITDA FY24 +Rp386m tapi rugi bersih −Rp4,5T. Kok bisa?", opts: ["Laporan keuangannya dipalsukan","Adjusted EBITDA mengeluarkan pos non-kas & one-off (SBC — Stock-Based Compensation, depresiasi); rugi bersih akuntansi ≠ kas operasi","Rp386m itu sebenarnya Rp386T","Rugi bersih sudah termasuk laba 2025"], answer: 1, diff: "Medium",
  explain: "Adjusted EBITDA = laba sebelum bunga, pajak, depresiasi, amortisasi, SBC, dan one-off. Ia mengukur daya kas operasi inti; rugi bersih akuntansi memuat semua beban non-kas. Keduanya benar — menjawab pertanyaan berbeda."},
 {q: "Kaki fintech memakai EBITDA FY26E (forward). Bahaya terbesarnya?", opts: ["Tidak ada — guidance selalu tepat","Risiko ganda: membayar hari ini untuk laba masa depan yang bisa meleset, dengan multiple yang juga tebakan","Kurs rupiah pasti menguat","EBITDA forward dilarang standar akuntansi"], answer: 1, diff: "Hard",
  explain: "Forward multiple = bertaruh dua kali: (1) EBITDA 2026 benar-benar $94–100jt (bisnis baru pertama laba 2026), (2) multiple 8× pantas. Meleset di salah satu → kaki fintech SOTP runtuh. Itulah kenapa ia dilabeli 'opsi', bukan 'nilai pasti'."},
@@ -794,12 +794,12 @@ sections: [
 <div class="formula">P/BV = harga ÷ book value per saham → penyebut NEGATIF</div>
 <p>Ekuitas −Rp3,34tn berarti <b>book value per saham negatif</b>. P/BV = harga ÷ (negatif) = angka negatif yang tidak bisa diinterpretasikan. P/E juga hancur: rugi −Rp4,48tn → E negatif → P/E negatif. Multiple ekuitas <b>tak terdefinisi secara ekonomi</b> — bukan "murah", bukan "mahal", melainkan <b>bukan alat ukur yang berlaku</b>.</p>
 <div class="example jebakan"><div class="lbl">🚫 Jebakan "murah"</div>
-<p>"Sahamnya cuma Rp202 — murah!" <b>SALAH.</b> Rp202 adalah harga <b>beku sejak suspensi Mei 2023</b> — 3,5 tahun tanpa price discovery. Harga itu tidak mencerminkan rugi −Rp4,48tn (FY25), ekuitas negatif, atau MRA. Saham suspensi ≠ saham murah; ia = <b>saham tanpa pasar</b>. Analis yang memakai Rp202 sebagai "harga" sedang memakai fosil sebagai data.</p></div>
+<p>"Sahamnya cuma Rp202 — murah!" <b>SALAH.</b> Rp202 adalah harga <b>beku sejak suspensi Mei 2023</b> — 3,5 tahun tanpa price discovery. Harga itu tidak mencerminkan rugi −Rp4,48tn (FY25), ekuitas negatif, atau MRA (Master Restructuring Agreement — perjanjian restrukturisasi utang Waskita). Saham suspensi ≠ saham murah; ia = <b>saham tanpa pasar</b>. Analis yang memakai Rp202 sebagai "harga" sedang memakai fosil sebagai data.</p></div>
 <div class="callout"><b>Kenapa analis berpikir sebagai kreditor?</b> Karena dalam distress, <b>urutan klaim</b> menentukan segalanya: kreditor dibayar dulu, pemegang saham dapat sisa — kalau ada. Menilai WSKT dari sudut pandang pemegang saham = menilai kursi paling belakang di kapal yang karam.</p></div>`},
 {h: "Kenapa waterfall, bukan DCF?", body: `
 <div class="formula">Recovery kelas = MIN(sisa dana, klaim kelas) → lanjut ke kelas berikutnya</div>
 <p>DCF butuh asumsi <b>going concern</b> (perusahaan hidup selamanya). Dengan defisit Rp20,8tn, gap likuiditas Rp12,48tn, dan rating idSD, asumsi itu <b>rusak</b>. <b>Waterfall likuidasi</b> menggantikannya: jual semua aset dengan haircut realistis → kurangi biaya likuidasi → bagikan ke kreditor <b>sesuai senioritas</b> → sisa (kalau ada) untuk ekuitas.</p>
-<div class="callout"><b>Kenapa urutan senioritas?</b> ① <b>Biaya likuidasi</b> (kurator, legal) — tanpa ini tidak ada yang bisa dijual. ② <b>Kreditor dijamin / bank</b> (MRA Tranche A Rp2,154tn + Tranche B Rp21,736tn = Rp23,89tn). ③ <b>Konkuren</b> (obligasi non-penjaminan — sudah direstrukturisasi — &amp; vendor). ④ <b>Ekuitas</b> — paling belakang, paling menderita. Senioritas bukan opini; ia <b>hukum</b>.</p></div>
+<div class="callout"><b>Kenapa urutan senioritas?</b> ① <b>Biaya likuidasi</b> (kurator, legal) — tanpa ini tidak ada yang bisa dijual. ② <b>Kreditor dijamin / bank</b> (MRA Tranche A Rp2,154tn + Tranche B Rp21,736tn = Rp23,89tn). ③ <b>Konkuren</b> (obligasi non-penjaminan — sudah direstrukturisasi — &amp; vendor). ④ <b>Ekuitas</b> — paling belakang, paling menderita. Senioritas mengikuti hukum dan dokumen klaim yang berlaku; urutan berikut adalah penyederhanaan model.</p></div>
 <div class="example korporat"><div class="lbl">🏢 Hasil waterfall (Rp triliun, asumsi ilustratif di workbook)</div>
 <p>Proceeds likuidasi = kas 1,50 + piutang 2,76 + tol 5,40 + aset tetap 4,00 = <b>Rp13,66tn</b>. Biaya likuidasi 5% = 0,68 → <b>net proceeds Rp12,98tn</b>. Klaim bank (Tranche A+B) = <b>Rp23,89tn</b> — hampir <b>dua kali lipat</b> dana yang tersedia. Kreditor bank menerima MIN(12,98; 23,89) = <b>Rp12,98tn</b> → recovery rate <b>54,3%</b>. Sisa untuk obligasi/vendor: <b>Rp0</b>. Sisa untuk ekuitas: <b>Rp0</b>. Bahkan kreditor senior tidak lunas — apalagi pemegang saham.</p></div>
 <div class="callout"><b>Kenapa "nol" ini penting?</b> Karena ia menjawab pertanyaan tersulit case ini — <i>apakah ada nilai ekuitas tersisa?</i> — tanpa perlu berdebat soal masa depan. Waterfall tidak meramal; ia <b>menghitung siapa dapat apa jika semuanya dijual hari ini</b>: bukti aritmetika, bukan opini.</p></div>
@@ -815,7 +815,7 @@ sections: [
 <div class="example korporat"><div class="lbl">🏢 Skenario C — Likuidasi (waterfall)</div>
 <p>Sudah dihitung di section sebelumnya: net proceeds Rp12,98tn vs klaim bank Rp23,89tn → ekuitas = <b>Rp0</b>. Ini skenario jika perusahaan dijual hari ini.</p></div>
 <div class="callout"><b>Kenapa tiga skenario?</b> Karena "haircut 30%" saja <b>tidak menjawab</b> siapa pemilik ekuitas baru. Haircut = peristiwa akuntansi (liabilitas turun). Kepemilikan = peristiwa hukum (saham diterbitkan kepada siapa, berapa, pada valuasi berapa). Mencampur keduanya = kesalahan konseptual paling umum dalam analisis distressed.</p></div>
-<div class="callout"><b>Konteks kebijakan:</b> Danantara pegang 74,6%, merger ke Hutama Karya <b>ditunda</b> (butuh bersih-bersih dulu), PMN Rp3tn <b>dibatalkan</b> (PP 20/2025) — negara tidak menyuntik, kreditor yang menanggung.</p></div>
+<div class="callout"><b>Konteks kebijakan:</b> Danantara pegang 74,6%, merger ke Hutama Karya <b>ditunda</b> (butuh bersih-bersih dulu), PMN (Penyertaan Modal Negara — suntikan modal negara) Rp3tn <b>dibatalkan</b> (PP 20/2025) — negara tidak menyuntik, kreditor yang menanggung.</p></div>
 <div class="example jebakan"><div class="lbl">🚫 Jebakan "turnaround"</div>
 <p>"Delapan inisiatif pemulihan, 63 proyek Rp31,7tn — pasti bangkit!" Mungkin. Tapi analis kredit bertanya duluan: <i>dengan beban keuangan Rp2,79tn per 9 bulan vs laba kotor FY25 Rp1,58tn setahun penuh — <b>bunga 9 bulan LEBIH BESAR dari laba kotor setahun</b> — dari mana kas untuk membayarnya?</i> Proyek baru tidak membayar bunga lama.</p></div>`},
 {h: "Tugas praktik", body: `
@@ -834,7 +834,7 @@ sections: [
 {h: "Peta proses restrukturisasi: out-of-court vs in-court", body: `
 <p>Real-09 sudah membangun waterfall likuidasi + 3 skenario restrukturisasi (haircut, debt-for-equity, likuidasi). Yang belum: <b>prosesnya</b> — dan proses menentukan berapa lama, berapa mahal, dan siapa yang memegang kendali:</p>
 <table class="brutal">
-<tr><th></th><th>Out-of-court (restrukturisasi sukarela)</th><th>In-court (PKPU / kepailitan, UU 37/2004)</th></tr>
+<tr><th></th><th>Out-of-court (restrukturisasi sukarela)</th><th>In-court (PKPU — Penundaan Kewajiban Pembayaran Utang / kepailitan, UU 37/2004)</th></tr>
 <tr><td><b>Siapa setuju</b></td><td>Semua kreditur kunci harus setuju (unanimous praktis)</td><td>Mayoritas kualifikasi mengikat minoritas (cram-down)</td></tr>
 <tr><td><b>Waktu</b></td><td>Bulan — cepat bila kreditur sedikit</td><td>PKPU s.d. 270 hari + proses pengadilan</td></tr>
 <tr><td><b>Kendali</b></td><td>Manajemen tetap memegang kendali</td><td>Pengurus/kurator mengawasi; manajemen dibatasi</td></tr>
@@ -859,7 +859,7 @@ quiz: [
  explain: "Bank menerima MIN(12,98; 23,89) = Rp12,98tn → 12,98 ÷ 23,89 = 54,3%. Senioritas menjamin urutan, bukan kelunasan. (Real-09 § Kenapa waterfall, bukan DCF?)"},
 {q: "Urutan pembayaran waterfall yang benar?", opts: ["Ekuitas → bank → vendor → biaya","Biaya likuidasi → kreditor dijamin → konkuren → ekuitas","Vendor → ekuitas → bank","Semua kreditor dibagi rata"], answer: 1, k: "seniority", diff: "Medium",
  hints: ["Siapa yang harus dibayar agar penjualan aset bisa jalan?", "Ekuitas di urutan keberapa? Paling depan atau paling belakang?"],
- explain: "Biaya likuidasi dulu (tanpa kurator tak ada penjualan), lalu kreditor dijamin, konkuren, terakhir ekuitas. Senioritas = hukum, bukan opini. (Real-09 § Kenapa waterfall, bukan DCF?)"},
+ explain: "Biaya likuidasi dulu (tanpa kurator tak ada penjualan), lalu kreditor dijamin, konkuren, terakhir ekuitas. Senioritas mengikuti hukum dan dokumen klaim yang berlaku. (Real-09 § Kenapa waterfall, bukan DCF?)"},
 {q: "Beban keuangan 9M26 Rp2,79tn vs laba kotor FY25 Rp1,58tn. Artinya?", opts: ["Bunga 9 bulan > laba kotor setahun — pendarahan struktural","Perusahaan hampir mencapai impas","Laba kotor menutupi beban bunga","Beban keuangan turun drastis"], answer: 0, k: "distressed", diff: "Medium",
  hints: ["Bandingkan 2,79 (9 bulan) vs 1,58 (12 bulan).", "Bisakah laba kotor membayar bunganya?"],
  explain: "Bunga 9 bulan (Rp2,79tn) melampaui laba kotor setahun penuh (Rp1,58tn) — operasi tidak bisa menutup biaya utang. Inilah 'pendarahan'. (Real-09 § Kenapa restrukturisasi bisa bikin ekuitas 'positif'?) "},
@@ -933,7 +933,7 @@ sections: [
 <p><b>Vonis:</b> DSCR 1,45× &gt; 1,25× (ambang tipikal lender untuk tol) → <b>bankable</b>, dengan bantalan. DSCR &lt; 1,0× = kas tidak cukup membayar cicilan tahun itu (dapat menjadi pelanggaran covenant atau default teknis, bergantung pada dokumen pembiayaan); 1,0–1,2× = zona renegosiasi; &gt; 1,3× = nyaman. Perhatikan: CFADS memakai EBITDA − pajak − capex perawatan — <i>bukan</i> laba bersih. Laba bisa positif sementara CFADS negatif (bila capex perawatan besar), dan bank hanya peduli CFADS.</p>`},
 {h: "Cashflow waterfall: siapa dibayar dulu?", body: `
 <p>Waterfall proyek ini (Rp miliar, tahun base case):</p>
-<div class="formula">Revenue 360 → Opex (100) → Pajak (22) → Capex perawatan (20) → Debt service (150) → DSRA top-up (10) → Distribusi ke ekuitas (58)</div>
+<div class="formula">Revenue 360 → Opex (100) → Pajak (22) → Capex perawatan (20) → Debt service (150) → DSRA (Debt Service Reserve Account — cadangan jasa utang) top-up (10) → Distribusi ke ekuitas (58)</div>
 <p>Cek: 360 − 100 − 22 − 20 − 150 − 10 = <b>58</b> ✓. Rantai ini wajib memotong capex perawatan 20 — CFADS = 260 − 22 − 20 = 218, jadi distribusi = 218 − 150 − 10 = 58. Menghitung 360 − 100 − 22 − 150 − 10 = 78 lupa capex dan melebihkan distribusi Rp20 miliar. <b>DSRA (debt service reserve account)</b> = rekening cadangan (biasanya 6 bulan debt service) yang diisi sebelum ekuitas mendapat apa pun — bantalan bila satu tahun lalu lintas jatuh. Urutan ini <i>kontraktual</i> (di facility agreement), bukan kebijakan manajemen: ekuitas tidak boleh mengambil dividen bila DSRA belum penuh atau DSCR di bawah ambang (cash trap / lock-up). Bandingkan dengan waterfall <i>likuidasi</i> real-09: yang itu membagi hasil penjualan aset saat perusahaan mati; yang ini membagi kas operasi saat proyek hidup.</p>`},
 {h: "Debt sculpting & skenario: tarif dan volume", body: `
 <p><b>Debt sculpting:</b> daripada pokok tetap Rp70 miliar/tahun, pahat pokok agar DSCR konstan. Target DSCR 1,30× → debt service target = CFADS ÷ 1,30 = 218 ÷ 1,30 = 167,69 → pokok tahun ini = 167,69 − bunga 80 = <b>Rp87,69 miliar</b>. Saat CFADS naik (lalu lintas tumbuh), pokok ikut naik; saat CFADS turun, pokok mengecil — utang mengikuti kas, bukan sebaliknya. Itulah kenapa tenor pinjaman (mis. 15 tahun) lebih pendek dari umur konsesi (30 tahun): lender ingin keluar sebelum risiko akhir konsesi.</p>
@@ -985,7 +985,7 @@ sections: [
 <tr><td>Premi bruto</td><td>4.000</td><td></td></tr>
 <tr><td>Premi diserahkan (ceded)</td><td>(1.200)</td><td></td></tr>
 <tr><td><b>Premi neto</b></td><td><b>2.800</b></td><td>4.000 \u2212 1.200</td></tr>
-<tr><td><b>Premi earned (pendapatan)</b></td><td><b>1.680</b></td><td>2.800 \u2212 1.120 (UPR)</td></tr>
+<tr><td><b>Premi earned (pendapatan)</b></td><td><b>1.680</b></td><td>2.800 \u2212 1.120 (UPR — Unearned Premium Reserve, premi belum menjadi hak)</td></tr>
 <tr><td>Klaim bruto terjadi</td><td>(2.100)</td><td></td></tr>
 <tr><td>Klaim dipulihkan dari reasuransi</td><td>500</td><td></td></tr>
 <tr><td><b>Klaim neto</b></td><td><b>(1.600)</b></td><td>2.100 \u2212 500</td></tr>
@@ -1036,7 +1036,7 @@ hellPass: 80
 },
 {
 id: "real-12", track: "Real Cases", title: "Salesforce: SaaS \u2014 LTV/CAC, Churn Cohort & NRR",
-sub: "Real Case 12 \u00b7 \u00b16 jam \u00b7 Unit economics, retensi & EV/ARR",
+sub: "Real Case 12 \u00b7 \u00b16 jam \u00b7 Unit economics, retensi & EV/ARR (Annual Recurring Revenue)",
 est: "6 jam",
 prerequisites: ["capstone"],
 driveFolder: "16SvK1N1e_Xk3w_rtxZqWa5dAnDumecgx",
@@ -1054,8 +1054,8 @@ sections: [
 <tr><td>6</td><td>83,30</td><td>83,30</td></tr>
 <tr><td>12</td><td><b>69,38</b></td><td><b>69,38</b></td></tr>
 </table>
-<p>Churn 3% sebulan terlihat kecil \u2014 tapi majemuk: 0,97<sup>12</sup> = 0,6938, jadi setelah setahun hanya <b>69%</b> cohort yang tersisa dan MRR cohort jatuh dari 100 jt ke <b>69,38 jt</b> (ARPA Rp1 jt/bulan). Turunkan churn ke 2%: 0,98<sup>12</sup> = 0,7847 \u2014 78 pelanggan tersisa. Satu poin churn = sembilan pelanggan per seratus per tahun. Itulah kenapa analis SaaS membaca cohort dulu, total pelanggan kemudian: total bisa naik karena akuisisi menutupi kebocoran \u2014 cohort tidak bisa berbohong.</p>`},
-{h: "LTV/CAC & payback: bolehkah bakar uang untuk tumbuh?", body: `
+<p>Churn 3% sebulan terlihat kecil \u2014 tapi majemuk: 0,97<sup>12</sup> = 0,6938, jadi setelah setahun hanya <b>69%</b> cohort yang tersisa dan MRR cohort jatuh dari 100 jt ke <b>69,38 jt</b> (ARPA — Average Revenue Per Account — Rp1 jt/bulan). Turunkan churn ke 2%: 0,98<sup>12</sup> = 0,7847 \u2014 78 pelanggan tersisa. Satu poin churn = sembilan pelanggan per seratus per tahun. Itulah kenapa analis SaaS membaca cohort dulu, total pelanggan kemudian: total bisa naik karena akuisisi menutupi kebocoran \u2014 cohort tidak bisa berbohong.</p>`},
+{h: "LTV (Lifetime Value)/CAC (Customer Acquisition Cost) & payback: bolehkah bakar uang untuk tumbuh?", body: `
 <p>ARPA Rp1 jt/bulan; gross margin 80%; churn 3%/bulan; CAC Rp8 jt per pelanggan baru:</p>
 <p><b>Lifetime</b> = 1 \u00f7 churn = 1 \u00f7 0,03 = <b>33,33 bulan</b>. <b>Laba kotor per pelanggan per bulan</b> = 1 \u00d7 80% = <b>Rp0,80 jt</b>. <b>LTV</b> = 0,80 \u00d7 33,33 = <b>Rp26,67 jt</b> \u2014 total laba kotor yang dihasilkan satu pelanggan selama hidupnya. <b>LTV/CAC</b> = 26,67 \u00f7 8 = <b>3,33\u00d7</b>. <b>Payback CAC (sederhana, tanpa churn)</b> = 8 \u00f7 0,80 = <b>10 bulan</b>. <b>Payback CAC churn-adjusted</b> memakai kontribusi ekspektasian kumulatif: 0,80 \u00d7 (1 \u2212 0,97<sup>n</sup>) \u00f7 0,03 \u2014 bulan ke-10 baru terkumpul <b>Rp7,00 jt</b> &lt; CAC 8; impas saat 0,97<sup>n</sup> = 0,70 \u2192 n = 11,71 \u2192 <b>bulan ke-12</b>.</p>
 <p><b>Vonis:</b> LTV/CAC 3,33\u00d7 (\u2265 3\u00d7) dan payback churn-adjusted 12 bulan \u2014 tepat di ambang 12 bulan, bukan nyaman di bawahnya. Mesin pertumbuhan <b>sehat dengan catatan</b>: tiap Rp8 jt yang dibakar untuk mengakuisisi menghasilkan Rp26,67 jt laba kotor. Ingat: ambang 3\u00d7 / 12 bulan adalah <b>heuristik praktis, bukan diagnosis</b> \u2014 LTV/CAC 2\u00d7 tetap berarti laba kotor seumur hidup (2 \u00d7 CAC) melebihi CAC, dan penilaian harus menimbang sektor, waktu, biaya lain, dan risiko pendanaan. Jebakan: LTV di atas memakai churn <i>rata-rata</i> \u2014 bila churn cohort baru lebih tinggi dari churn pelanggan lama, LTV riil lebih kecil dari hitungan ini.</p>`},
@@ -1444,7 +1444,7 @@ title: "TLKM: Capex Harvest",
 sub: "Real Case 5 · ±5 hrs · The capex → FCF bridge",
 sections: [
 {h: "Why Telkom?", body: `
-<p><b>Telkom Indonesia (TLKM.JK)</b> — defensive infrastructure: revenue flat ±Rp147–150T (2022–2025), but there's a story underneath: <b>capex fell Rp38.3T → Rp25.8T</b> while OCF held steady ±Rp64T. Result: <b>FCF expanded Rp35.05T → Rp38.04T</b>. That's "capex harvest": reaping past investment.</p>
+<p><b>Telkom Indonesia (TLKM.JK)</b> — defensive infrastructure: revenue flat ±Rp147–150T (2022–2025), but there's a story underneath: <b>capex fell Rp38.3T → Rp25.8T</b> while OCF (Operating Cash Flow) held steady ±Rp64T. Result: <b>FCF expanded Rp35.05T → Rp38.04T</b>. That's "capex harvest": reaping past investment.</p>
 <div class="callout"><b>Why is this pattern mandatory knowledge?</b> Every infrastructure business (telecom, toll roads, power) lives in a <b>capex cycle</b>: build (FCF squeezed) → harvest (FCF expands) → build again (5G, data centers). Analysts who only watch net income never see the cycle.</p></div>`},
 {h: "Why FCF, not net income?", body: `
 <div class="formula">FCF = OCF − Capex</div>
@@ -1590,9 +1590,9 @@ hell: [
  explain: `Excess ROE is economic rent — competition (digital banks, fintech) erodes it over time. 16% is still far above the 11.5% cost of equity: the model doesn't say BBCA becomes mediocre, just not extraordinarily so forever.`},
 {q: `Ke rises 11.5% → 13% (e.g. higher Indonesia risk premium). 1-stage justified P/BV becomes?`, opts: ["3.43x","2.81x","2.40x","1.98x"], answer: 2,
  explain: `(0.20−0.08)/(0.13−0.08) = 0.12/0.05 = 2.40x. One and a half percent on Ke wipes ~30% off the justified multiple — that's why the Ke assumption must be stress-tested, never taken raw.`},
-{q: `BBCA provisions rose 49% YoY in FY24, yet CoC stayed 0.3% with 209% NPL coverage. The right analyst read?`, opts: ["Early deterioration signal — sell","Post-Covid provision normalization from strength; still watch LAR at 5.0%","Provisions don't affect bank earnings","0.3% CoC means zero bad loans"], answer: 1,
+{q: `BBCA provisions rose 49% YoY in FY24, yet CoC stayed 0.3% with 209% NPL coverage. The right analyst read?`, opts: ["Early deterioration signal — sell","Post-Covid provision normalization from strength; still watch LAR (Loan at Risk) at 5.0%","Provisions don't affect bank earnings","0.3% CoC means zero bad loans"], answer: 1,
  explain: `0.3% CoC on 1.7% NPL with 209% coverage = the bank building reserves from strength (post-Covid normalization), not plugging holes. But 5.0% LAR (Covid restructurings) still needs watching — that's where risk hides.`},
-{q: `When could DDM and residual income give DIFFERENT values?`, opts: ["Never — the formulas are identical","When clean surplus breaks: above/below-book buybacks, large OCI, or reserve-funded dividends","When payout exceeds 100%","When Ke exceeds ROE"], answer: 1,
+{q: `When could DDM and residual income give DIFFERENT values?`, opts: ["Never — the formulas are identical","When clean surplus breaks: above/below-book buybacks, large OCI (Other Comprehensive Income), or reserve-funded dividends","When payout exceeds 100%","When Ke exceeds ROE"], answer: 1,
  explain: `DDM = RI equivalence rests on B_t = B_{t−1} + NI − Div. Above-book buybacks, OCI revaluations, or capital injections break that chain — bank analysts must reconcile equity, not assume the formulas always agree.`}
 ],
 tasks: [
@@ -1608,7 +1608,7 @@ blind: {h: "Speed Drill — different numbers", body: `
 };
 EN["real-07"] = {
 title: "ADRO/Alamtri: The Company That Is No Longer Itself",
-sub: "Real Case 7 · ±5 hrs · Mining SOTP-NAV",
+sub: "Real Case 7 · ±5 hrs · Mining SOTP-NAV (Net Asset Value)",
 sections: [
 {h: "Why FY24 vs FY23 can't be compared?", body: `
 <p>Look at the headlines: revenue <b>$6,518m (FY23) → $2,080m (FY24)</b>, down <b>68.1%</b>. Net income $1,641m → $1,380m. A junior analyst concludes 'performance collapsed'. An associate asks first: <b>is this even the same company?</b></p>
@@ -1617,7 +1617,7 @@ sections: [
 <p>Comparing $6,518m vs $2,080m as '−68% growth' = comparing a company <b>with</b> thermal coal vs <b>without</b> it. The correct input: <b>restated FY23</b> (discontinued operations, SFAS 105 / local PSAK) from the audited statements — where AAI is removed from both years. Illustrative reconstruction from AAI's share: continuing revenue ≈ 11% × $6,518m = <b>$717m</b>; continuing income ≈ (1 − 1.05) × $1,641m = <b>−$82m</b>. Yes — illustratively, the remaining business <b>lost money</b> in FY23. That is why professionals never use raw headline numbers.</p></div>
 <div class="callout"><b>Why is this an associate-level lesson?</b> In every earlier case, the data was 'clean'. In the real world, <b>the company perimeter changes</b> (spin-offs, acquisitions, deconsolidations) and aggregators don't always restate. The skill: open the notes to the accounts → find 'discontinued operations' → use the restated figures. (Real-07 § Why a spin-off can be a value trap)</p></div>`},
 {h: "Why SOTP instead of one multiple?", body: `
-<div class="formula">Equity = Mine NAV + SIS value + Smelter NPV + 15% of AADI + Net cash − Holding discount</div>
+<div class="formula">Equity = Mine NAV + SIS (Saptaindra Sejati) value + Smelter NPV + 15% of AADI + Net cash − Holding discount</div>
 <p>Post-spin Alamtri is a <b>4-leg</b> conglomerate: (1) <b>Adaro Minerals (ADMR)</b> — metallurgical coal; (2) <b>Saptaindra Sejati (SIS)</b> — mining contracting services; (3) <b>energy & the KAI aluminium smelter</b> phase 1, 500ktpa (commissioning 2026); (4) a <b>15% stake in AADI</b> (not consolidated). One P/E or EV/EBITDA multiple for all four = pricing 4 different-risk businesses at one price — meaningless.</p>
 <div class="example korporat"><div class="lbl">🏢 SOTP result (working figures, $m)</div>
 <p>ADMR NAV <b>$1,976m</b> + SIS <b>$750m</b> (illustrative) + smelter <b>$236m</b> (illustrative) + 15% AADI <b>$375m</b> (illustrative) = SOTP EV <b>$3,337m</b>. Add net cash <b>$1,557m</b> (end-1H24) → equity <b>$4,894m</b>. With an illustrative 20% holding discount → <b>$3,915m</b>. What is graded here is the <b>mechanic</b>: each leg gets the method that fits its character.</p></div>
@@ -1691,7 +1691,7 @@ quiz: [
 
 ],
 hell: [
-{q: `ADMR: sales +26%, ASP −16%. Implied revenue change?`, opts: ["+10% (26−16)","−16% (price decides)","1.26 × 0.84 − 1 = +5.8% ≈ +6% reported","+30% (follow production)"], answer: 2,
+{q: `ADMR: sales +26%, ASP (Average Selling Price) −16%. Implied revenue change?`, opts: ["+10% (26−16)","−16% (price decides)","1.26 × 0.84 − 1 = +5.8% ≈ +6% reported","+30% (follow production)"], answer: 2,
  explain: `Volume effect × price effect: 1.26 × 0.84 = 1.0584 → +5.8%, matching the reported +6%. Production +30% ≠ sales +26% — revenue comes from what's SOLD.`},
 {q: `Only 120Mt of reserves are recoverable (not 177Mt). New ADMR NAV?`, opts: ["Stays $1,976m — reserves aren't sensitive","$1,808m (21.4-yr life, 8.69 annuity)","120/177 × $1,976m = $1,339m","Rises — a more focused mine"], answer: 1,
  explain: `Life = 120/5.62 = 21.4 yrs; 10% annuity = 8.69; NAV = 207.9 × 8.69 = $1,808m (−$168m). Not linear because the annuity curves — that's why sensitivity is computed, not guessed.`},
@@ -1789,7 +1789,7 @@ quiz: [
  explain: `Negative EPS makes P/E negative/undefined — the multiple is meaningless. Loss-makers are valued via EV/Revenue or segment SOTP.`}
 ],
 hell: [
-{q: `FY24 adjusted EBITDA +Rp386B but net loss −Rp4.5T. How?`, opts: ["The financials were fabricated","Adjusted EBITDA strips out non-cash & one-offs (SBC, depreciation); accounting net loss ≠ operating cash","Rp386B is actually Rp386T","Net loss already includes 2025 profit"], answer: 1,
+{q: `FY24 adjusted EBITDA +Rp386B but net loss −Rp4.5T. How?`, opts: ["The financials were fabricated","Adjusted EBITDA strips out non-cash & one-offs (SBC — Stock-Based Compensation, depreciation); accounting net loss ≠ operating cash","Rp386B is actually Rp386T","Net loss already includes 2025 profit"], answer: 1,
  explain: `Adjusted EBITDA = earnings before interest, tax, depreciation, amortization, SBC, and one-offs. It measures core operating cash power; accounting net loss carries all non-cash charges. Both are true — they answer different questions.`},
 {q: `The fintech leg uses forward FY26E EBITDA. The biggest danger?`, opts: ["None — guidance is always right","Double risk: paying today for future earnings that may miss, with a multiple that's also a guess","The rupiah will surely strengthen","Forward EBITDA is banned by accounting standards"], answer: 1,
  explain: `A forward multiple = betting twice: (1) 2026 EBITDA truly hits $94–100M (a business profitable for the first time in 2026), (2) 8× is the right multiple. Miss either → the fintech SOTP leg collapses. That's why it's labeled an 'option', not a 'certain value'.`},
@@ -1825,12 +1825,12 @@ sections: [
 <div class="formula">P/BV = price ÷ book value per share → NEGATIVE denominator</div>
 <p>Equity of −Rp3.34tn means <b>negative book value per share</b>. P/BV = price ÷ (negative) = a number that can't be interpreted. P/E breaks too: a −Rp4.48tn loss → negative E → negative P/E. Equity multiples are <b>economically undefined</b> — not "cheap", not "expensive", but <b>not a valid measuring tool</b>.</p>
 <div class="example jebakan"><div class="lbl">🚫 The "cheap" trap</div>
-<p>"The shares are only Rp202 — cheap!" <b>WRONG.</b> Rp202 is a price <b>frozen since the May 2023 suspension</b> — 3.5 years with no price discovery. That price reflects neither the −Rp4.48tn loss (FY25), the negative equity, nor the MRA. A suspended share ≠ a cheap share; it's a <b>share with no market</b>. An analyst using Rp202 as "the price" is using a fossil as data.</p></div>
+<p>"The shares are only Rp202 — cheap!" <b>WRONG.</b> Rp202 is a price <b>frozen since the May 2023 suspension</b> — 3.5 years with no price discovery. That price reflects neither the −Rp4.48tn loss (FY25), the negative equity, nor the MRA (Master Restructuring Agreement — Waskita's debt restructuring agreement). A suspended share ≠ a cheap share; it's a <b>share with no market</b>. An analyst using Rp202 as "the price" is using a fossil as data.</p></div>
 <div class="callout"><b>Why does the analyst think like a creditor?</b> Because in distress, the <b>claim priority</b> decides everything: creditors get paid first, shareholders get the leftovers — if any. Valuing WSKT from a shareholder's seat = valuing the back row of a sinking ship.</p></div>`},
 {h: "Why a waterfall, not a DCF?", body: `
 <div class="formula">Class recovery = MIN(remaining funds, class claim) → move to next class</div>
 <p>A DCF needs a <b>going-concern</b> assumption (the company lives forever). With a Rp20.8tn deficit, a Rp12.48tn liquidity gap, and an idSD rating, that assumption is <b>broken</b>. A <b>liquidation waterfall</b> replaces it: sell every asset at realistic haircuts → subtract liquidation costs → distribute to creditors <b>by seniority</b> → leftovers (if any) to equity.</p>
-<div class="callout"><b>Why the seniority order?</b> ① <b>Liquidation costs</b> (curator, legal) — without them nothing can be sold. ② <b>Secured creditors / banks</b> (MRA Tranche A Rp2.154tn + Tranche B Rp21.736tn = Rp23.89tn). ③ <b>Unsecured</b> (non-guaranteed bonds — already restructured — &amp; vendors). ④ <b>Equity</b> — last in line, suffering most. Seniority isn't an opinion; it's <b>law</b>.</p></div>
+<div class="callout"><b>Why the seniority order?</b> ① <b>Liquidation costs</b> (curator, legal) — without them nothing can be sold. ② <b>Secured creditors / banks</b> (MRA Tranche A Rp2.154tn + Tranche B Rp21.736tn = Rp23.89tn). ③ <b>Unsecured</b> (non-guaranteed bonds — already restructured — &amp; vendors). ④ <b>Equity</b> — last in line, suffering most. Seniority follows applicable law and the claim documents; the order below is a model simplification.</p></div>
 <div class="example korporat"><div class="lbl">🏢 The waterfall result (Rp trillion, illustrative assumptions in the workbook)</div>
 <p>Liquidation proceeds = cash 1.50 + receivables 2.76 + toll 5.40 + fixed assets 4.00 = <b>Rp13.66tn</b>. Liquidation costs 5% = 0.68 → <b>net proceeds Rp12.98tn</b>. Bank claims (Tranches A+B) = <b>Rp23.89tn</b> — nearly <b>double</b> the available funds. Bank creditors receive MIN(12.98; 23.89) = <b>Rp12.98tn</b> → recovery rate <b>54.3%</b>. Left for bonds/vendors: <b>Rp0</b>. Left for equity: <b>Rp0</b>. Even senior creditors aren't made whole — let alone shareholders.</p></div>
 <div class="callout"><b>Why does this "zero" matter?</b> Because it answers the case's hardest question — <i>is there any equity value left?</i> — without arguing about the future. A waterfall doesn't forecast; it <b>computes who gets what if everything is sold today</b>: arithmetic proof, not opinion.</p></div>
@@ -1846,7 +1846,7 @@ sections: [
 <div class="example korporat"><div class="lbl">🏢 Scenario C — Liquidation (waterfall)</div>
 <p>Already computed above: net proceeds Rp12.98tn vs bank claims Rp23.89tn → equity = <b>Rp0</b>. This is the scenario if the company is sold today.</p></div>
 <div class="callout"><b>Why three scenarios?</b> Because "a 30% haircut" alone <b>does not answer</b> who owns the new equity. A haircut = an accounting event (liabilities fall). Ownership = a legal event (shares issued to whom, how many, at what valuation). Mixing the two = the most common conceptual error in distressed analysis.</p></div>
-<div class="callout"><b>Policy context:</b> Danantara holds 74.6%, the Hutama Karya merger is <b>delayed</b> (cleanup first), the Rp3tn PMN was <b>cancelled</b> (Gov. Reg. 20/2025) — the state isn't injecting; creditors bear it.</p></div>
+<div class="callout"><b>Policy context:</b> Danantara holds 74.6%, the Hutama Karya merger is <b>delayed</b> (cleanup first), the Rp3tn PMN (state capital injection) was <b>cancelled</b> (Gov. Reg. 20/2025) — the state isn't injecting; creditors bear it.</p></div>
 <div class="example jebakan"><div class="lbl">🚫 The "turnaround" trap</div>
 <p>"Eight recovery initiatives, 63 projects worth Rp31.7tn — it must rebound!" Maybe. But the credit analyst asks first: <i>with finance costs of Rp2.79tn per 9 months vs FY25 gross profit of Rp1.58tn for the full year — <b>9 months of interest EXCEEDS a full year of gross profit</b> — where does the cash to pay it come from?</i> New projects don't pay old interest.</p></div>`},
 {h: "Practice task", body: `
@@ -1865,7 +1865,7 @@ sections: [
 {h: "Restructuring process map: out-of-court vs in-court", body: `
 <p>Real-09 already built the liquidation waterfall + 3 restructuring scenarios (haircut, debt-for-equity, liquidation). What was missing: the <b>process</b> — and the process decides how long, how costly, and who stays in control:</p>
 <table class="brutal">
-<tr><th></th><th>Out-of-court (voluntary restructuring)</th><th>In-court (PKPU / bankruptcy, Law 37/2004)</th></tr>
+<tr><th></th><th>Out-of-court (voluntary restructuring)</th><th>In-court (PKPU — Suspension of Debt Payment Obligations / bankruptcy, Law 37/2004)</th></tr>
 <tr><td><b>Who must agree</b></td><td>All key creditors must agree (practically unanimous)</td><td>A qualified majority binds the minority (cram-down)</td></tr>
 <tr><td><b>Time</b></td><td>Months — fast when creditors are few</td><td>PKPU up to 270 days + court process</td></tr>
 <tr><td><b>Control</b></td><td>Management stays in control</td><td>Administrator/curator supervises; management constrained</td></tr>
@@ -1890,7 +1890,7 @@ quiz: [
  explain: `Banks receive MIN(12.98; 23.89) = Rp12.98tn → 12.98 ÷ 23.89 = 54.3%. Seniority guarantees order, not full payment.`},
 {q: `The correct waterfall payment order?`, opts: ["Equity → banks → vendors → costs","Liquidation costs → secured creditors → unsecured → equity","Vendors → equity → banks","All creditors split equally"], answer: 1, k: "seniority",
  hints: ["Who must be paid for the asset sale to happen at all?","Where does equity stand? First or last?"],
- explain: `Liquidation costs first (no curator, no sale), then secured creditors, unsecured, equity last. Seniority = law, not opinion.`},
+ explain: `Liquidation costs first (no curator, no sale), then secured creditors, unsecured, equity last. Seniority follows applicable law and the claim documents.`},
 {q: `9M26 finance costs Rp2.79tn vs FY25 gross profit Rp1.58tn. That means?`, opts: ["9 months of interest > a full year of gross profit — structural bleeding","The company is nearly breaking even","Gross profit covers the interest bill","Finance costs fell dramatically"], answer: 0, k: "distressed",
  hints: ["Compare 2.79 (9 months) vs 1.58 (12 months).","Can gross profit pay the interest?"],
  explain: `Nine months of interest (Rp2.79tn) exceeds a full year of gross profit (Rp1.58tn) — operations can't cover the debt cost. That's the 'bleeding'.`},
@@ -1960,7 +1960,7 @@ sections: [
 <p><b>Verdict:</b> DSCR 1.45× &gt; 1.25× (the typical lender threshold for toll roads) → <b>bankable</b>, with a cushion. DSCR &lt; 1.0× = cash cannot cover that year's instalment (can be a covenant breach or a technical default, depending on the financing documents); 1.0–1.2× = renegotiation zone; &gt; 1.3× = comfortable. Note: CFADS uses EBITDA − tax − maintenance capex — <i>not</i> net profit. Profit can be positive while CFADS is negative (when maintenance capex is large), and the bank only cares about CFADS.</p>`},
 {h: "Cashflow waterfall: who gets paid first?", body: `
 <p>This project's waterfall (Rp billion, base-case year):</p>
-<div class="formula">Revenue 360 → Opex (100) → Tax (22) → Maintenance capex (20) → Debt service (150) → DSRA top-up (10) → Distributions to equity (58)</div>
+<div class="formula">Revenue 360 → Opex (100) → Tax (22) → Maintenance capex (20) → Debt service (150) → DSRA (Debt Service Reserve Account) top-up (10) → Distributions to equity (58)</div>
 <p>Check: 360 − 100 − 22 − 20 − 150 − 10 = <b>58</b> ✓. This chain must deduct maintenance capex of 20 — CFADS = 260 − 22 − 20 = 218, so distributions = 218 − 150 − 10 = 58. Computing 360 − 100 − 22 − 150 − 10 = 78 forgets capex and overstates distributions by Rp20 billion. The <b>DSRA (debt service reserve account)</b> = a reserve account (usually 6 months of debt service) filled before equity receives anything — a cushion if one year's traffic falls. This order is <i>contractual</i> (in the facility agreement), not management policy: equity may not take dividends while the DSRA is unfilled or DSCR is below the threshold (cash trap / lock-up). Compare with the real-09 <i>liquidation</i> waterfall: that one shares sale proceeds when the company dies; this one shares operating cash while the project lives.</p>`},
 {h: "Debt sculpting & scenarios: tariff and volume", body: `
 <p><b>Debt sculpting:</b> instead of a fixed Rp70bn/year of principal, carve principal so DSCR stays constant. Target DSCR 1.30× → target debt service = CFADS ÷ 1.30 = 218 ÷ 1.30 = 167.69 → this year's principal = 167.69 − interest 80 = <b>Rp87.69 billion</b>. When CFADS rises (traffic grows), principal rises with it; when CFADS falls, principal shrinks — debt follows cash, not the other way round. That is why the loan tenor (e.g. 15 years) is shorter than the concession life (30 years): the lender wants out before end-of-concession risk.</p>
@@ -2008,7 +2008,7 @@ sections: [
 <tr><td>Gross premiums</td><td>4,000</td><td></td></tr>
 <tr><td>Ceded premiums</td><td>(1,200)</td><td></td></tr>
 <tr><td><b>Net premiums</b></td><td><b>2,800</b></td><td>4,000 \u2212 1,200</td></tr>
-<tr><td><b>Earned premiums (revenue)</b></td><td><b>1,680</b></td><td>2,800 \u2212 1,120 (UPR)</td></tr>
+<tr><td><b>Earned premiums (revenue)</b></td><td><b>1,680</b></td><td>2,800 \u2212 1,120 (UPR — Unearned Premium Reserve)</td></tr>
 <tr><td>Gross claims incurred</td><td>(2,100)</td><td></td></tr>
 <tr><td>Claims recovered from reinsurers</td><td>500</td><td></td></tr>
 <tr><td><b>Net claims</b></td><td><b>(1,600)</b></td><td>2,100 \u2212 500</td></tr>
@@ -2058,7 +2058,7 @@ quiz: [
 },
 EN["real-12"] = {
 title: "Salesforce: SaaS \u2014 LTV/CAC, Churn Cohorts & NRR",
-sub: "Real Case 12 \u00b7 \u00b16 hrs \u00b7 Unit economics, retention & EV/ARR",
+sub: "Real Case 12 \u00b7 \u00b16 hrs \u00b7 Unit economics, retention & EV/ARR (Annual Recurring Revenue)",
 sections: [
 {h: "Why SaaS is not ordinary DCF", body: `
 <p>SaaS sells <b>subscriptions</b>, not one-off products: customers pay every month/year to use the software. Three things make it different from corporate DCF (Days 09\u201313):</p>
@@ -2073,8 +2073,8 @@ sections: [
 <tr><td>6</td><td>83.30</td><td>83.30</td></tr>
 <tr><td>12</td><td><b>69.38</b></td><td><b>69.38</b></td></tr>
 </table>
-<p>3% monthly churn looks small \u2014 but it compounds: 0.97<sup>12</sup> = 0.6938, so after a year only <b>69%</b> of the cohort remains and cohort MRR falls from 100m to <b>69.38m</b> (ARPA Rp1m/month). Cut churn to 2%: 0.98<sup>12</sup> = 0.7847 \u2014 78 customers left. One point of churn = nine customers per hundred per year. That is why SaaS analysts read cohorts first and totals second: totals can rise because acquisition covers the leak \u2014 cohorts cannot lie.</p>`},
-{h: "LTV/CAC & payback: may you burn money to grow?", body: `
+<p>3% monthly churn looks small \u2014 but it compounds: 0.97<sup>12</sup> = 0.6938, so after a year only <b>69%</b> of the cohort remains and cohort MRR falls from 100m to <b>69.38m</b> (ARPA — Average Revenue Per Account — Rp1m/month). Cut churn to 2%: 0.98<sup>12</sup> = 0.7847 \u2014 78 customers left. One point of churn = nine customers per hundred per year. That is why SaaS analysts read cohorts first and totals second: totals can rise because acquisition covers the leak \u2014 cohorts cannot lie.</p>`},
+{h: "LTV (Lifetime Value)/CAC (Customer Acquisition Cost) & payback: may you burn money to grow?", body: `
 <p>ARPA Rp1m/month; gross margin 80%; churn 3%/month; CAC Rp8m per new customer:</p>
 <p><b>Lifetime</b> = 1 \u00f7 churn = 1 \u00f7 0.03 = <b>33.33 months</b>. <b>Gross profit per customer per month</b> = 1 \u00d7 80% = <b>Rp0.80m</b>. <b>LTV</b> = 0.80 \u00d7 33.33 = <b>Rp26.67m</b> \u2014 the total gross profit one customer produces in its life. <b>LTV/CAC</b> = 26.67 \u00f7 8 = <b>3.33\u00d7</b>. <b>Simple CAC payback (no churn)</b> = 8 \u00f7 0.80 = <b>10 months</b>. <b>Churn-adjusted CAC payback</b> uses cumulative expected contribution: 0.80 \u00d7 (1 \u2212 0.97<sup>n</sup>) \u00f7 0.03 \u2014 by month 10 only <b>Rp7.00m</b> has come back &lt; CAC 8; breakeven when 0.97<sup>n</sup> = 0.70 \u2192 n = 11.71 \u2192 <b>month 12</b>.</p>
 <p><b>Verdict:</b> LTV/CAC of 3.33\u00d7 (\u2265 3\u00d7) and a churn-adjusted payback of 12 months \u2014 right AT the 12-month threshold, not comfortably below it. A <b>healthy-with-a-caveat</b> growth engine: every Rp8m burned to acquire returns Rp26.67m of gross profit. Remember: the 3\u00d7 / 12-month thresholds are <b>practical heuristics, not a diagnosis</b> \u2014 an LTV/CAC of 2\u00d7 still means lifetime gross profit (2 \u00d7 CAC) exceeds CAC, and any judgement must weigh sector, timing, other costs, and funding risk. Trap: the LTV above uses <i>average</i> churn \u2014 if new cohorts churn faster than old customers, true LTV is smaller than this maths.</p>`},

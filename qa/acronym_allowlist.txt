@@ -1,0 +1,114 @@
+# Acronym allowlist — FMVA Sprint (qa_class_patterns.py C5).
+# Satu token per baris; "# ..." = alasan. DAFTAR INI TUMBUH: tiap akronim baru
+# yang lolos triase manusia masuk ke sini (dgn alasan), atau ke watchlist di
+# qa_class_patterns.py bila WAJIB diekspansi di pemakaian pertama.
+# Token TIDAK di sini + tanpa ekspansi "(...)" / "Nama (TOKEN)" / "kata/TOKEN"
+# di pemakaian pertama = FAIL (discovery scan).
+# Kategori:
+#  TICKER   = kode saham IDX (nama lengkap muncul sbg "PT ... (KODE)" di tempat lain)
+#  EXCEL    = nama fungsi Excel/Sheets
+#  STANDARD = nama standar / badan / bursa (kode referensi, mis. "PSAK 14", "IAS 2")
+#  ID-COMMON= istilah Indonesia umum (dikenal pembaca tanpa ekspansi)
+#  PROPER   = nama diri (kursus, indeks, entitas)
+#  IND-STD  = akronim industri standar (dipakai apa adanya di teks finansial)
+# TICKER
+AADI
+ADMR
+ADRO
+AMRT
+ASII
+BBCA
+BBNI
+BBRI
+BMRI
+EXCL
+GGRM
+GOTO
+HMSP
+ICBP
+ISAT
+JSMR
+KLBF
+MIKA
+MNC
+MYOR
+TLKM
+TUGU
+UNTR
+UNVR
+WSKT
+# EXCEL
+ABS
+AND
+AVERAGE
+CHOOSE
+COUNT
+COUNTA
+COUNTIF
+COUNTIFS
+DATE
+EOMONTH
+FILTER
+HLOOKUP
+IF
+IFERROR
+INDEX
+IRR
+ISNA
+LARGE
+MATCH
+MAX
+MIN
+NPV
+OR
+PMT
+RAND
+ROUND
+SEQUENCE
+SORT
+SUM
+SUMIF
+SUMIFS
+SUMPRODUCT
+UNIQUE
+VLOOKUP
+XIRR
+XLOOKUP
+XNPV
+YEARFRAC
+# STANDARD
+GAAP
+IAS
+IFRS
+PSAK
+SFAS
+OJK
+IDX
+BEI
+ISO
+# ID-COMMON
+HPP
+KTP
+PHK
+UMKM
+MSME
+NOL
+# PROPER
+FMVA
+IEEFA
+KPMG
+# IND-STD
+KPI
+SKU
+# DEFINED-VIA-SIBLING (bentuk lengkap ada di seksi yang sama, tanpa paren di pemakaian pertama)
+# PPOP = Pre-Provision Operating Profit — didefinisikan lewat P/PPP (price-to-pre-provision
+# operating profit) di seksi yang sama (hari-26); pemakaian pertama PPOP di kuis § yang sama.
+PPOP
+# ID-EMPHASIS (kata Indonesia berhuruf kapital = penekanan, bukan akronim)
+HARAM
+MENGUASAI
+RECAST
+# COMMON-TERM (istilah umum, bukan akronim finansial)
+# RAM = memori komputer (distraktor kuis Excel); GRG = metode Solver Excel (Generalized Reduced Gradient)
+RAM
+GRG
