@@ -231,7 +231,7 @@ sections: [
 <tr><th>Keluarga</th><th>Rasio kunci</th><th>Rumus</th><th>Yang ditanyakan</th></tr>
 <tr><td><b>Profitabilitas</b></td><td>Gross margin, net margin, ROE, ROIC</td><td>ROE = NI ÷ Ekuitas; ROIC = NOPAT ÷ Modal</td><td>Apakah bisnisnya menguntungkan &amp; efisien memakai modal?</td></tr>
 <tr><td><b>Likuiditas</b></td><td>Current ratio, quick ratio, cash ratio</td><td>Current = Aset lancar ÷ Liabilitas lancar</td><td>Bisakah membayar tagihan 12 bulan ke depan?</td></tr>
-<tr><td><b>Leverage</b></td><td>Debt-to-equity, debt-to-assets, interest coverage</td><td>D/E = Total utang ÷ Ekuitas; Coverage = EBIT ÷ Bunga</td><td>Apakah utangnya sudah kelewatan?</td></tr>
+<tr><td><b>Leverage</b></td><td>Debt-to-equity, debt-to-assets, interest coverage</td><td>D/E = Utang berbunga ÷ Ekuitas; Coverage = EBIT ÷ Bunga</td><td>Apakah utangnya sudah kelewatan?</td></tr>
 <tr><td><b>Efisiensi</b></td><td>Perputaran aset, DSO/DIO/DPO, CCC</td><td>Perputaran = Revenue ÷ Aset</td><td>Seberapa cepat aset berubah jadi kas?</td></tr>
 <tr><td><b>Pertumbuhan</b></td><td>g revenue, g laba, g EPS</td><td>(Tahun ini ÷ Tahun lalu) − 1</td><td>Apakah pertumbuhannya sehat atau dibeli dengan utang?</td></tr>
 </table>
@@ -244,10 +244,10 @@ sections: [
 <tr><th></th><th>UNVR (consumer, ilustratif)</th><th>ASII (konglomerat, ilustratif)</th></tr>
 <tr><td>Current ratio</td><td>8,0 ÷ 12,0 = <b>0,67×</b></td><td>180 ÷ 120 = <b>1,50×</b></td></tr>
 <tr><td>Quick ratio</td><td>(8,0 − 2,5) ÷ 12,0 = <b>0,46×</b></td><td>(180 − 60) ÷ 120 = <b>1,00×</b></td></tr>
-<tr><td>Debt-to-equity</td><td>10 ÷ 4 = <b>2,50×</b></td><td>150 ÷ 200 = <b>0,75×</b></td></tr>
+<tr><td>Debt-to-equity (utang berbunga)</td><td>10 ÷ 4 = <b>2,50×</b></td><td>150 ÷ 200 = <b>0,75×</b></td></tr>
 <tr><td>Interest coverage</td><td>6 ÷ 1 = <b>6,0×</b></td><td>40 ÷ 5 = <b>8,0×</b></td></tr>
 </table>
-<p><b>Bacaan analis:</b> UNVR current ratio &lt; 1 bukan otomatis gawat — perusahaan consumer dengan perputaran persediaan cepat dan pemasok yang memberi termin panjang <i>sengaja</i> beroperasi dengan modal kerja negatif: kas pelanggan masuk sebelum tagihan pemasok jatuh tempo. Yang wajib dicek: apakah coverage 6,0× cukup menahan guncangan, dan apakah D/E 2,50× diimbangi arus kas yang stabil. ASII sebaliknya: neraca tebal, likuiditas 1,50×, leverage rendah — bantalan besar, tapi perputaran asetnya lebih lambat. <b>Pelajaran:</b> rasio yang sama, vonis yang berbeda — tergantung model bisnisnya.</p>`},
+<p><b>Bacaan analis:</b> UNVR current ratio &lt; 1 bukan otomatis gawat — perusahaan consumer dengan perputaran persediaan cepat dan pemasok yang memberi termin panjang <i>sengaja</i> beroperasi dengan modal kerja negatif: kas pelanggan masuk sebelum tagihan pemasok jatuh tempo. Yang wajib dicek: apakah coverage 6,0× cukup menahan guncangan, dan apakah D/E 2,50× diimbangi arus kas yang stabil. (Angka 10 di sini = utang berbunga Rp10T, bukan total liabilitas — liabilitas lancar saja sudah 12, jadi total liabilitas tidak mungkin 10.) ASII sebaliknya: neraca tebal, likuiditas 1,50×, leverage rendah — bantalan besar, tapi perputaran asetnya lebih lambat. <b>Pelajaran:</b> rasio yang sama, vonis yang berbeda — tergantung model bisnisnya.</p>`},
 {h: "CVP: break-even & margin of safety", body: `
 <p>Sebelum memodelkan revenue, tanyakan: di titik mana perusahaan mulai untung? Analisis <b>cost-volume-profit (CVP)</b> menjawabnya dengan tiga angka:</p>
 <div class="formula">Kontribusi per unit = Harga − Biaya variabel · BEP (unit) = Biaya tetap ÷ Kontribusi per unit</div>
@@ -283,9 +283,9 @@ quiz: [
 {q: "Aset lancar Rp8.000jt, liabilitas lancar Rp12.000jt. Current ratio?", opts: ["0,67×","1,50×","0,46×","2,50×"], answer: 0, k: "current_ratio", diff: "Easy",
  hints: ["Current ratio = aset lancar ÷ liabilitas lancar.", "8.000 ÷ 12.000 = ?"],
  explain: "8.000 ÷ 12.000 = 0,67×. Di bawah 1 — tanyakan dulu model bisnisnya sebelum panik (H02 § UNVR vs ASII)."},
-{q: "Utang Rp10T, ekuitas Rp4T, EBIT Rp6T, bunga Rp1T. D/E dan interest coverage?", opts: ["D/E 2,50×; coverage 6,0×","D/E 0,40×; coverage 6,0×","D/E 2,50×; coverage 1,0×","D/E 0,40×; coverage 0,17×"], answer: 0, k: "leverage_ratio", diff: "Medium",
- hints: ["D/E = utang ÷ ekuitas; coverage = EBIT ÷ bunga.", "10 ÷ 4 = ?; 6 ÷ 1 = ?"],
- explain: "D/E = 10 ÷ 4 = 2,50×; coverage = 6 ÷ 1 = 6,0×. Leverage tinggi tapi bunga masih tertutup 6 kali."},
+{q: "Utang berbunga Rp10T, ekuitas Rp4T, EBIT Rp6T, bunga Rp1T. D/E dan interest coverage?", opts: ["D/E 2,50×; coverage 6,0×","D/E 0,40×; coverage 6,0×","D/E 2,50×; coverage 1,0×","D/E 0,40×; coverage 0,17×"], answer: 0, k: "leverage_ratio", diff: "Medium",
+ hints: ["D/E = utang berbunga ÷ ekuitas; coverage = EBIT ÷ bunga.", "10 ÷ 4 = ?; 6 ÷ 1 = ?"],
+ explain: "D/E (utang berbunga) = 10 ÷ 4 = 2,50×; coverage = 6 ÷ 1 = 6,0×. Leverage tinggi tapi bunga masih tertutup 6 kali."},
 {q: "Harga Rp20rb, biaya variabel Rp12rb, biaya tetap Rp800rb/bulan. BEP dan margin of safety pada 150 unit?", opts: ["100 unit; 33,3%","160 unit; 20%","66 unit; 50%","100 unit; 50%"], answer: 0, k: "cvp", diff: "Medium",
  hints: ["Kontribusi = 20 − 12 = 8; BEP = 800 ÷ 8.", "Margin of safety = (150 − BEP) ÷ 150."],
  explain: "Kontribusi Rp8rb; BEP = 800 ÷ 8 = 100 unit. Margin of safety = (150 − 100) ÷ 150 = 33,3%."}
@@ -1387,7 +1387,7 @@ sections: [
 <p><b>Pecking order theory:</b> perusahaan lebih suka dana internal dulu, lalu utang, terakhir ekuitas baru (karena ekuitas baru memberi sinyal negatif ke pasar). Ini menjelaskan kenapa perusahaan profitable sering <i>under-levered</i> — bukan karena takut utang, tapi karena tidak butuh.</p>
 <div class="formula">Titik impas EBIT–EPS: EBIT* saat EPS rencana utang = EPS rencana ekuitas</div>
 <div class="example korporat"><div class="lbl">🏢 Contoh — EBIT* = Rp800jt</div>
-<p>Butuh dana Rp4.000jt. Rencana A (ekuitas): 1.000 saham. Rencana B (utang): bunga 8% × 4.000 = Rp320jt, 600 saham. Pajak 22%. Samakan EPS: EBIT × 0,78 ÷ 1.000 = (EBIT − 320) × 0,78 ÷ 600 → EBIT* = <b>Rp800jt</b>. Cek: EPS = 800 × 0,78 ÷ 1.000 = Rp0,624; rencana B: (800 − 320) × 0,78 ÷ 600 = Rp0,624 ✓. Di atas EBIT Rp800jt, utang menang (leverage mengangkat EPS); di bawahnya, utang justru menekan EPS. EBIT–EPS bukan pengganti NPV — ini alat cepat sebelum kamu membangun model lengkapnya.</p></div>`}],
+<p>Butuh dana Rp4.000jt. Rencana A (ekuitas): 1.000 saham. Rencana B (utang): bunga 8% × 4.000 = Rp320jt, 600 saham. Pajak 22%. Samakan EPS: EBIT × 0,78 ÷ 1.000 = (EBIT − 320) × 0,78 ÷ 600 → EBIT* = <b>Rp800jt</b>. Cek: EPS = 800 × 0,78 ÷ 1.000 = Rp0,624jt; rencana B: (800 − 320) × 0,78 ÷ 600 = Rp0,624jt ✓. Di atas EBIT Rp800jt, utang menang (leverage mengangkat EPS); di bawahnya, utang justru menekan EPS. EBIT–EPS bukan pengganti NPV — ini alat cepat sebelum kamu membangun model lengkapnya.</p></div>`}],
 quiz: [
 {q: "CFO Rp2.450rb, capex Rp2.500rb. FCFF 2027?", opts: ["−Rp50rb","Rp4.950rb","Rp2.450rb","Rp50rb"], answer: 0, k: "fcff", diff: "Easy",
  hints: ["FCFF = CFO − capex.","2.450 − 2.500 = ?"],
@@ -1424,7 +1424,7 @@ quiz: [
  explain: "Ke = 4 + 6 + 2,5 = 12,5%. CRP 2,5% memangkas EV contoh di lesson sebesar 26%."},
 {q: "Rencana ekuitas 1.000 saham vs rencana utang (bunga Rp320jt) 600 saham, pajak 22%. EBIT impas?", opts: ["Rp800jt","Rp320jt","Rp624jt","Rp1.000jt"], answer: 0, k: "ebit_eps", diff: "Medium",
  hints: ["Samakan EPS: EBIT × 0,78 ÷ 1.000 = (EBIT − 320) × 0,78 ÷ 600.", "Di atas EBIT ini, utang menang."],
- explain: "EBIT* = Rp800jt (cek: EPS kedua rencana = Rp0,624). Di atas 800 utang mengangkat EPS; di bawahnya menekan EPS."}
+ explain: "EBIT* = Rp800jt (cek: EPS kedua rencana = Rp0,624jt). Di atas 800 utang mengangkat EPS; di bawahnya menekan EPS."}
 
 ],
 hell: [
@@ -1721,7 +1721,7 @@ sections: [
 <div class="formula">Nilai minoritas = Nilai kendali × (1 − diskon minoritas) · Nilai tak-likuid = Nilai minoritas × (1 − DLOM)</div>
 <div class="example korporat"><div class="lbl">🏢 Contoh — dua diskon berlapis</div>
 <p>Nilai perusahaan dengan kendali Rp1.000jt. Saham minoritas 10% tanpa kendali: diskon minoritas 20% → 1.000 × 0,80 = <b>Rp800jt</b>. Sahamnya juga tidak diperdagangkan di bursa (perusahaan tertutup): DLOM 25% → 800 × 0,75 = <b>Rp600jt</b>. Diskon gabungan = 1 − 0,80 × 0,75 = <b>40%</b>. Urutan penting: diskon minoritas dulu, DLOM kemudian — membaliknya memberi angka yang sama di sini, tapi urutan ini yang dipakai penilai karena alasannya berbeda (kontrol vs likuiditas).</p></div>
-<p><b>Kapan ini muncul di ujian &amp; praktik:</b> valuasi perusahaan tertutup, sengketa pemegang saham minoritas, dan PPA (H16) saat menilai NCI — NCI hampir selalu minoritas dan sering tak-likuid. <b>Convertibles &amp; opsi saham</b> juga mengubah hitungan: obligasi konversi Rp1.000jt yang bisa ditukar 100 saham — bila harga saham Rp12, nilai konversi = 100 × 12 = Rp1.200jt &gt; nilai obligasi → pemegang akan konversi; DCF-mu harus memakai saham terdilusi (treasury stock method, H20), bukan saham beredar saja.</p>
+<p><b>Kapan ini muncul di ujian &amp; praktik:</b> valuasi perusahaan tertutup, sengketa pemegang saham minoritas, dan PPA (H16) saat menilai NCI — NCI hampir selalu minoritas dan sering tak-likuid. <b>Convertibles &amp; opsi saham</b> juga mengubah hitungan: obligasi konversi Rp1.000jt yang bisa ditukar 100 saham — bila harga saham Rp12jt, nilai konversi = 100 × Rp12jt = Rp1.200jt &gt; nilai obligasi → pemegang akan konversi; DCF-mu harus memakai saham terdilusi (treasury stock method, H20), bukan saham beredar saja.</p>
 <div class="callout"><b>Perangkap:</b> menerapkan DLOM pada saham emiten BEI yang likuid. DLOM hanya untuk saham yang <i>tidak bisa dijual cepat</i> — saham publik likuid sudah mencerminkan marketability di harganya.</div>`}],
 quiz: [
 {q: "EV/EBITDA lima emiten: 7,76 / 7,86 / 8,18 / 8,57 / 9,99. Mediannya?", opts: ["8,18×","8,57×","8,38×","9,99×"], answer: 0, k: "med_ev", diff: "Easy",
@@ -1748,9 +1748,9 @@ quiz: [
 {q: "Nilai kendali Rp1.000jt; diskon minoritas 20%; DLOM 25%. Nilai saham minoritas tak-likuid?", opts: ["Rp600jt","Rp800jt","Rp550jt","Rp750jt"], answer: 0, k: "dlom", diff: "Medium",
  hints: ["1.000 × (1 − 20%) × (1 − 25%).", "Diskon gabungan = 1 − 0,80 × 0,75."],
  explain: "1.000 × 0,80 = 800; 800 × 0,75 = Rp600jt. Diskon gabungan 40%."},
-{q: "Obligasi konversi Rp1.000jt → 100 saham; harga saham Rp12. Apa yang dilakukan pemegang?", opts: ["Konversi (nilai konversi Rp1.200jt > obligasi)","Tetap pegang obligasi","Jual obligasi di bawah par","Tidak bisa ditentukan"], answer: 0, k: "convertible", diff: "Easy",
+{q: "Obligasi konversi Rp1.000jt → 100 saham; harga saham Rp12jt. Apa yang dilakukan pemegang?", opts: ["Konversi (nilai konversi Rp1.200jt > obligasi)","Tetap pegang obligasi","Jual obligasi di bawah par","Tidak bisa ditentukan"], answer: 0, k: "convertible", diff: "Easy",
  hints: ["Nilai konversi = 100 × 12.", "Bandingkan dengan Rp1.000jt."],
- explain: "Nilai konversi = 100 × Rp12 = Rp1.200jt > Rp1.000jt → konversi menguntungkan. DCF harus pakai saham terdilusi."}
+ explain: "Nilai konversi = 100 × Rp12jt = Rp1.200jt > Rp1.000jt → konversi menguntungkan. DCF harus pakai saham terdilusi."}
 
 ],
 hell: [
@@ -2367,12 +2367,12 @@ sections: [
 <tr><td><b>12%</b></td><td>1.020</td><td>1.144,44</td><td>1.300</td></tr>
 <tr><td><b>14%</b></td><td>850</td><td>936,36</td><td>1.040</td></tr>
 </table>
-<p><b>E[EV] = Rp1.183,23jt</b> (jumlah EV × probabilitas gabungan) — <i>lebih tinggi</i> dari EV base-case Rp1.144,44jt, karena EV cembung terhadap WACC (penurunan WACC menaikkan EV lebih besar daripada kenaikan WACC menurunkannya). <b>P(EV &lt; Rp1.000jt) = 18,75%</b> (sel WACC 14% × g 2–3%: 6,25% + 12,5%). Di Excel L5/L6 kamu membangun ini dengan Data Table + RAND — 9 sel ini adalah versi mininya.</p>
+<p><b>E[EV] = Rp1.183,23jt</b> (jumlah EV × probabilitas gabungan) — <i>lebih tinggi</i> dari EV base-case Rp1.144,44jt, karena EV cembung terhadap WACC dan g — EV = 100(1+g)/(WACC−g) cembung terhadap keduanya (penurunan WACC menaikkan EV lebih besar daripada kenaikan WACC menurunkannya, dan kenaikan g menaikkan EV lebih besar daripada penurunan g menurunkannya). <b>P(EV &lt; Rp1.000jt) = 18,75%</b> (sel WACC 14% × g 2–3%: 6,25% + 12,5%). Di Excel L5 kamu membangun ini dengan Data Table + RAND — 9 sel ini adalah versi mininya.</p>
 <div class="callout"><b>Yang tidak boleh dilakukan:</b> mengambil rata-rata WACC lalu menghitung satu EV dan menyebutnya "expected value". E[f(X)] ≠ f(E[X]) bila f tidak linear — dan EV terhadap WACC jelas tidak linear. Itulah seluruh alasan Monte Carlo ada.</div>`},
 {h: "Decision tree: keputusan bertahap punya nilai", body: `
 <p>Beberapa keputusan tidak diambil sekali — melainkan <b>bertahap</b>: investasi hari ini membeli <i>hak</i> untuk memutuskan lagi besok. <b>Decision tree</b> menilai hak itu dengan expected value di tiap cabang (pasangan alami real-07: smelter sebagai opsi bertahap).</p>
 <div class="example korporat"><div class="lbl">🏢 Contoh — tunggu setahun, atau bangun sekarang?</div>
-<p>Investasi sekarang: NPV <b>+Rp50jt</b> (pasti). Tunggu 1 tahun: 60% kondisi bagus → NPV +Rp120jt; 40% kondisi buruk → NPV −Rp20jt. EMV menunggu = 0,6 × 120 + 0,4 × (−20) = 72 − 8 = <b>+Rp64jt &gt; 50</b> → <b>tunggu</b>. Nilai fleksibilitas = 64 − 50 = Rp14jt. Aturan: bandingkan EMV cabang, bukan NPV satu skenario; dan potong cabang yang tidak akan pernah kamu ambil (di kondisi buruk, kamu tidak jadi bangun — itulah yang membuat EMV menunggu lebih tinggi).</p></div>
+<p>Investasi sekarang: NPV <b>+Rp50jt</b> (pasti). Tunggu 1 tahun — dua varian, jangan dicampur: <b>(A) bangun-selalu:</b> 60% kondisi bagus → NPV +Rp120jt; 40% kondisi buruk → NPV −Rp20jt (tetap bangun). EMV menunggu = 0,6 × 120 + 0,4 × (−20) = 72 − 8 = <b>+Rp64jt</b>, nilai fleksibilitas = 64 − 50 = Rp14jt. <b>(B) opsi-mundur:</b> di kondisi buruk kamu <i>tidak jadi bangun</i> — payoff-nya 0, bukan −20. EMV menunggu = 0,6 × 120 + 0,4 × 0 = <b>+Rp72jt</b>, nilai fleksibilitas = 72 − 50 = <b>Rp22jt</b>. Varian B-lah yang benar-benar memakai hak menunggu: cabang yang tidak akan pernah kamu ambil dipotong (payoff −20 tidak pernah terjadi bila kamu boleh mundur). Aturan: bandingkan EMV cabang, bukan NPV satu skenario; dan bila kamu memotong cabang, hitung EMV-nya dengan payoff 0, bukan −20.</p></div>
 <p><b>Jembatan ke Solver (Excel L3):</b> decision tree menjawab <i>kapan</i> memutuskan; Solver menjawab <i>berapa</i> yang optimal bila keputusanmu kontinu (alokasi capex) — dua alat optimasi yang saling melengkapi.</p>`}],
 quiz: [
 {q: "PT Maju Jaya: FCFF0 \u2212Rp2.000rb, FCFFn Rp3.600rb, WACC 12%, g 3%. EV base?", opts: ["Rp33.929rb","Rp40.000rb","Rp35.714rb","\u2212Rp1.786rb"], answer: 0, k: "ev_base", diff: "Easy",
@@ -2391,14 +2391,14 @@ quiz: [
  hints: ["Hitung penyebutnya: 0,12 \u2212 0,13.","Bisakah perusahaan tumbuh selamanya lebih cepat dari biaya modalnya?"],
  explain: "Penyebut \u22120,01 \u2192 TV negatif. g \u2265 WACC = model meminta dunia yang mustahil."},
 {q: "Grid Monte Carlo 3×3 (WACC 10/12/14%, g 2/3/4%, probabilitas 25/50/25%). E[EV]?", opts: ["Rp1.183,23jt","Rp1.144,44jt","Rp1.020,00jt","Rp1.275,00jt"], answer: 0, k: "monte_carlo", diff: "Medium",
- hints: ["E[EV] = jumlah EV × probabilitas gabungan.", "E[EV] > EV base-case karena EV cembung terhadap WACC."],
+ hints: ["E[EV] = jumlah EV × probabilitas gabungan.", "E[EV] > EV base-case karena EV cembung terhadap WACC dan g."],
  explain: "E[EV] = Rp1.183,23jt — di atas EV base-case Rp1.144,44jt. Rata-rata WACC lalu satu EV bukan expected value (E[f(X)] ≠ f(E[X]))."},
 {q: "Dari grid yang sama, P(EV < Rp1.000jt)?", opts: ["18,75%","6,25%","25%","12,5%"], answer: 0, k: "monte_carlo", diff: "Medium",
  hints: ["Sel EV < 1.000 hanya di baris WACC 14%.", "g 2%: 6,25%; g 3%: 12,5%."],
  explain: "Hanya sel (14%, 2%) = 850 dan (14%, 3%) = 936,36 di bawah 1.000: 6,25% + 12,5% = 18,75%."},
-{q: "Investasi sekarang NPV +50. Tunggu setahun: 60% NPV +120, 40% NPV −20. Keputusan?", opts: ["Tunggu (EMV 64 > 50)","Bangun sekarang","Tolak proyek","Tidak bisa ditentukan"], answer: 0, k: "decision_tree", diff: "Easy",
- hints: ["EMV tunggu = 0,6 × 120 + 0,4 × (−20).", "Nilai fleksibilitas = 64 − 50."],
- explain: "EMV menunggu = 72 − 8 = +64 > 50 → tunggu. Nilai fleksibilitas Rp14jt."}
+{q: "Investasi sekarang NPV +50. Tunggu setahun: 60% NPV +120, 40% kondisi buruk — kamu TIDAK jadi bangun (payoff 0). EMV menunggu dan keputusan?", opts: ["Tunggu (EMV 72 > 50)","Bangun sekarang","Tolak proyek","Tidak bisa ditentukan"], answer: 0, k: "decision_tree", diff: "Easy",
+ hints: ["EMV tunggu = 0,6 × 120 + 0,4 × 0 (opsi mundur: payoff buruk = 0, bukan −20).", "Nilai fleksibilitas = 72 − 50 = 22."],
+ explain: "EMV menunggu (opsi mundur) = 72 − 0 = +72 > 50 → tunggu. Nilai fleksibilitas Rp22jt. Varian bangun-selalu memberi EMV 64 dan fleksibilitas 14 — lihat prose."}
 
 ],
 hell: [
@@ -5182,7 +5182,7 @@ sections: [
 <tr><th>Family</th><th>Key ratios</th><th>Formula</th><th>The question it asks</th></tr>
 <tr><td><b>Profitability</b></td><td>Gross margin, net margin, ROE, ROIC</td><td>ROE = NI ÷ Equity; ROIC = NOPAT ÷ Capital</td><td>Is the business profitable and efficient with capital?</td></tr>
 <tr><td><b>Liquidity</b></td><td>Current ratio, quick ratio, cash ratio</td><td>Current = Current assets ÷ Current liabilities</td><td>Can it pay bills for the next 12 months?</td></tr>
-<tr><td><b>Leverage</b></td><td>Debt-to-equity, debt-to-assets, interest coverage</td><td>D/E = Total debt ÷ Equity; Coverage = EBIT ÷ Interest</td><td>Has debt gone too far?</td></tr>
+<tr><td><b>Leverage</b></td><td>Debt-to-equity, debt-to-assets, interest coverage</td><td>D/E = Interest-bearing debt ÷ Equity; Coverage = EBIT ÷ Interest</td><td>Has debt gone too far?</td></tr>
 <tr><td><b>Efficiency</b></td><td>Asset turnover, DSO/DIO/DPO, CCC</td><td>Turnover = Revenue ÷ Assets</td><td>How fast do assets turn into cash?</td></tr>
 <tr><td><b>Growth</b></td><td>Revenue growth, profit growth, EPS growth</td><td>(This year ÷ Last year) − 1</td><td>Is growth healthy or bought with debt?</td></tr>
 </table>
@@ -5195,10 +5195,10 @@ sections: [
 <tr><th></th><th>UNVR (consumer, illustrative)</th><th>ASII (conglomerate, illustrative)</th></tr>
 <tr><td>Current ratio</td><td>8.0 ÷ 12.0 = <b>0.67×</b></td><td>180 ÷ 120 = <b>1.50×</b></td></tr>
 <tr><td>Quick ratio</td><td>(8.0 − 2.5) ÷ 12.0 = <b>0.46×</b></td><td>(180 − 60) ÷ 120 = <b>1.00×</b></td></tr>
-<tr><td>Debt-to-equity</td><td>10 ÷ 4 = <b>2.50×</b></td><td>150 ÷ 200 = <b>0.75×</b></td></tr>
+<tr><td>Debt-to-equity (interest-bearing debt)</td><td>10 ÷ 4 = <b>2.50×</b></td><td>150 ÷ 200 = <b>0.75×</b></td></tr>
 <tr><td>Interest coverage</td><td>6 ÷ 1 = <b>6.0×</b></td><td>40 ÷ 5 = <b>8.0×</b></td></tr>
 </table>
-<p><b>Analyst read:</b> UNVR's current ratio below 1 is not automatically alarming — a consumer company with fast inventory turnover and long supplier terms <i>deliberately</i> runs on negative working capital: customer cash arrives before supplier invoices fall due. What must be checked: whether 6.0× coverage can absorb a shock, and whether 2.50× D/E is matched by stable cash flow. ASII is the opposite: a thick balance sheet, 1.50× liquidity, low leverage — a big cushion, but slower asset turnover. <b>Lesson:</b> the same ratio, a different verdict — it depends on the business model.</p>`},
+<p><b>Analyst read:</b> UNVR's current ratio below 1 is not automatically alarming — a consumer company with fast inventory turnover and long supplier terms <i>deliberately</i> runs on negative working capital: customer cash arrives before supplier invoices fall due. What must be checked: whether 6.0× coverage can absorb a shock, and whether 2.50× D/E is matched by stable cash flow. (The 10 here is interest-bearing debt of Rp10T — not total liabilities, which cannot be 10 when current liabilities alone are 12.) ASII is the opposite: a thick balance sheet, 1.50× liquidity, low leverage — a big cushion, but slower asset turnover. <b>Lesson:</b> the same ratio, a different verdict — it depends on the business model.</p>`},
 {h: "CVP: break-even & margin of safety", body: `
 <p>Before modelling revenue, ask: at what point does the company start making money? <b>Cost-volume-profit (CVP)</b> analysis answers with three numbers:</p>
 <div class="formula">Contribution per unit = Price − Variable cost · BEP (units) = Fixed cost ÷ Contribution per unit</div>
@@ -5234,9 +5234,9 @@ quiz: [
 {q: "Current assets Rp8,000m, current liabilities Rp12,000m. Current ratio?", opts: ["0.67×","1.50×","0.46×","2.50×"], answer: 0, k: "current_ratio", diff: "Easy",
  hints: ["Current ratio = current assets ÷ current liabilities.", "8,000 ÷ 12,000 = ?"],
  explain: "8,000 ÷ 12,000 = 0.67×. Below 1 — ask about the business model before panicking (Day 02 § UNVR vs ASII)."},
-{q: "Debt Rp10T, equity Rp4T, EBIT Rp6T, interest Rp1T. D/E and interest coverage?", opts: ["D/E 2.50×; coverage 6.0×","D/E 0.40×; coverage 6.0×","D/E 2.50×; coverage 1.0×","D/E 0.40×; coverage 0.17×"], answer: 0, k: "leverage_ratio", diff: "Medium",
- hints: ["D/E = debt ÷ equity; coverage = EBIT ÷ interest.", "10 ÷ 4 = ?; 6 ÷ 1 = ?"],
- explain: "D/E = 10 ÷ 4 = 2.50×; coverage = 6 ÷ 1 = 6.0×. High leverage, but interest is still covered 6 times."},
+{q: "Interest-bearing debt Rp10T, equity Rp4T, EBIT Rp6T, interest Rp1T. D/E and interest coverage?", opts: ["D/E 2.50×; coverage 6.0×","D/E 0.40×; coverage 6.0×","D/E 2.50×; coverage 1.0×","D/E 0.40×; coverage 0.17×"], answer: 0, k: "leverage_ratio", diff: "Medium",
+ hints: ["D/E = interest-bearing debt ÷ equity; coverage = EBIT ÷ interest.", "10 ÷ 4 = ?; 6 ÷ 1 = ?"],
+ explain: "D/E (interest-bearing debt) = 10 ÷ 4 = 2.50×; coverage = 6 ÷ 1 = 6.0×. High leverage, but interest is still covered 6 times."},
 {q: "Price Rp20k, variable cost Rp12k, fixed cost Rp800k/month. BEP and margin of safety at 150 units?", opts: ["100 units; 33.3%","160 units; 20%","66 units; 50%","100 units; 50%"], answer: 0, k: "cvp", diff: "Medium",
  hints: ["Contribution = 20 − 12 = 8; BEP = 800 ÷ 8.", "Margin of safety = (150 − BEP) ÷ 150."],
  explain: "Contribution Rp8k; BEP = 800 ÷ 8 = 100 units. Margin of safety = (150 − 100) ÷ 150 = 33.3%."}
@@ -6266,7 +6266,7 @@ sections: [
 <p><b>Pecking order theory:</b> companies prefer internal funds first, then debt, then new equity last (because new equity signals bad news to the market). This explains why profitable companies are often <i>under-levered</i> — not because they fear debt, but because they do not need it.</p>
 <div class="formula">EBIT–EPS break-even: the EBIT* where the debt plan's EPS = the equity plan's EPS</div>
 <div class="example korporat"><div class="lbl">🏢 Example — EBIT* = Rp800m</div>
-<p>Rp4,000m needed. Plan A (equity): 1,000 shares. Plan B (debt): interest 8% × 4,000 = Rp320m, 600 shares. Tax 22%. Equalise EPS: EBIT × 0.78 ÷ 1,000 = (EBIT − 320) × 0.78 ÷ 600 → EBIT* = <b>Rp800m</b>. Check: EPS = 800 × 0.78 ÷ 1,000 = Rp0.624; plan B: (800 − 320) × 0.78 ÷ 600 = Rp0.624 ✓. Above Rp800m EBIT, debt wins (leverage lifts EPS); below it, debt drags EPS down. EBIT–EPS is not an NPV replacement — it is a quick tool before you build the full model.</p></div>`}],
+<p>Rp4,000m needed. Plan A (equity): 1,000 shares. Plan B (debt): interest 8% × 4,000 = Rp320m, 600 shares. Tax 22%. Equalise EPS: EBIT × 0.78 ÷ 1,000 = (EBIT − 320) × 0.78 ÷ 600 → EBIT* = <b>Rp800m</b>. Check: EPS = 800 × 0.78 ÷ 1,000 = Rp0.624m; plan B: (800 − 320) × 0.78 ÷ 600 = Rp0.624m ✓. Above Rp800m EBIT, debt wins (leverage lifts EPS); below it, debt drags EPS down. EBIT–EPS is not an NPV replacement — it is a quick tool before you build the full model.</p></div>`}],
 quiz: [
 {q: "CFO Rp2,450k, capex Rp2,500k. 2027 FCFF?", opts: ["−Rp50k","Rp4,950k","Rp2,450k","Rp50k"], answer: 0,
  hints: ["FCFF = CFO − capex.","2,450 − 2,500 = ?"],
@@ -6303,7 +6303,7 @@ quiz: [
  explain: "Ke = 4 + 6 + 2.5 = 12.5%. The 2.5% CRP cuts the lesson's example EV by 26%."},
 {q: "Equity plan 1,000 shares vs debt plan (interest Rp320m) 600 shares, tax 22%. Break-even EBIT?", opts: ["Rp800m","Rp320m","Rp624m","Rp1,000m"], answer: 0, k: "ebit_eps", diff: "Medium",
  hints: ["Equalise EPS: EBIT × 0.78 ÷ 1,000 = (EBIT − 320) × 0.78 ÷ 600.", "Above this EBIT, debt wins."],
- explain: "EBIT* = Rp800m (check: EPS under both plans = Rp0.624). Above 800 debt lifts EPS; below it, debt drags EPS down."}
+ explain: "EBIT* = Rp800m (check: EPS under both plans = Rp0.624m). Above 800 debt lifts EPS; below it, debt drags EPS down."}
 
 ],
 hell: [
@@ -6589,7 +6589,7 @@ sections: [
 <div class="formula">Minority value = Control value × (1 − minority discount) · Illiquid value = Minority value × (1 − DLOM)</div>
 <div class="example korporat"><div class="lbl">🏢 Example — two stacked discounts</div>
 <p>Control value of the firm Rp1,000m. A 10% minority stake with no control: 20% minority discount → 1,000 × 0.80 = <b>Rp800m</b>. The shares are also unlisted (private company): 25% DLOM → 800 × 0.75 = <b>Rp600m</b>. Combined discount = 1 − 0.80 × 0.75 = <b>40%</b>. Order matters: minority discount first, DLOM second — the arithmetic is the same reversed here, but this is the valuer's order because the reasons differ (control vs liquidity).</p></div>
-<p><b>Where this shows up in exams &amp; practice:</b> private-company valuations, minority shareholder disputes, and PPA (Day 16) when valuing NCI — NCI is almost always minority and often illiquid. <b>Convertibles &amp; stock options</b> change the maths too: a Rp1,000m convertible bond exchangeable into 100 shares — if the share price is Rp12, conversion value = 100 × 12 = Rp1,200m &gt; bond value → the holder converts; your DCF must use diluted shares (treasury stock method, Day 20), not shares outstanding alone.</p>
+<p><b>Where this shows up in exams &amp; practice:</b> private-company valuations, minority shareholder disputes, and PPA (Day 16) when valuing NCI — NCI is almost always minority and often illiquid. <b>Convertibles &amp; stock options</b> change the maths too: a Rp1,000m convertible bond exchangeable into 100 shares — if the share price is Rp12m, conversion value = 100 × Rp12m = Rp1,200m &gt; bond value → the holder converts; your DCF must use diluted shares (treasury stock method, Day 20), not shares outstanding alone.</p>
 <div class="callout"><b>Trap:</b> applying DLOM to liquid listed shares. DLOM only applies to shares that <i>cannot be sold quickly</i> — a liquid public share price already reflects marketability.</div>`}],
 quiz: [
 {q: "Five tickers' EV/EBITDA: 7.76 / 7.86 / 8.18 / 8.57 / 9.99. The median?", opts: ["8.18×","8.57×","8.38×","9.99×"], answer: 0,
@@ -6616,9 +6616,9 @@ quiz: [
 {q: "Control value Rp1,000m; minority discount 20%; DLOM 25%. Value of the illiquid minority stake?", opts: ["Rp600m","Rp800m","Rp550m","Rp750m"], answer: 0, k: "dlom", diff: "Medium",
  hints: ["1,000 × (1 − 20%) × (1 − 25%).", "Combined discount = 1 − 0.80 × 0.75."],
  explain: "1,000 × 0.80 = 800; 800 × 0.75 = Rp600m. Combined discount 40%."},
-{q: "Convertible bond Rp1,000m → 100 shares; share price Rp12. What does the holder do?", opts: ["Convert (conversion value Rp1,200m > bond)","Keep holding the bond","Sell the bond below par","Cannot be determined"], answer: 0, k: "convertible", diff: "Easy",
+{q: "Convertible bond Rp1,000m → 100 shares; share price Rp12m. What does the holder do?", opts: ["Convert (conversion value Rp1,200m > bond)","Keep holding the bond","Sell the bond below par","Cannot be determined"], answer: 0, k: "convertible", diff: "Easy",
  hints: ["Conversion value = 100 × 12.", "Compare with Rp1,000m."],
- explain: "Conversion value = 100 × Rp12 = Rp1,200m > Rp1,000m → conversion pays. The DCF must use diluted shares."}
+ explain: "Conversion value = 100 × Rp12m = Rp1,200m > Rp1,000m → conversion pays. The DCF must use diluted shares."}
 
 ],
 hell: [
@@ -7172,12 +7172,12 @@ sections: [
 <tr><td><b>12%</b></td><td>1,020</td><td>1,144.44</td><td>1,300</td></tr>
 <tr><td><b>14%</b></td><td>850</td><td>936.36</td><td>1,040</td></tr>
 </table>
-<p><b>E[EV] = Rp1,183.23m</b> (EV × joint probability, summed) — <i>higher</i> than the base-case EV of Rp1,144.44m, because EV is convex in WACC (a WACC fall lifts EV more than a WACC rise cuts it). <b>P(EV &lt; Rp1,000m) = 18.75%</b> (WACC 14% × g 2–3% cells: 6.25% + 12.5%). In Excel L5/L6 you build this with Data Table + RAND — these 9 cells are the mini version.</p>
+<p><b>E[EV] = Rp1,183.23m</b> (EV × joint probability, summed) — <i>higher</i> than the base-case EV of Rp1,144.44m, because EV is convex in WACC and g — EV = 100(1+g)/(WACC−g) is convex in both (a WACC fall lifts EV more than a WACC rise cuts it, and a g rise lifts EV more than a g fall cuts it). <b>P(EV &lt; Rp1,000m) = 18.75%</b> (WACC 14% × g 2–3% cells: 6.25% + 12.5%). In Excel L5 you build this with Data Table + RAND — these 9 cells are the mini version.</p>
 <div class="callout"><b>Never do this:</b> average the WACC, compute one EV, and call it the "expected value". E[f(X)] ≠ f(E[X]) when f is not linear — and EV in WACC is clearly not linear. That is the entire reason Monte Carlo exists.</div>`},
 {h: "Decision trees: staged decisions have value", body: `
 <p>Some decisions are not taken once — they are <b>staged</b>: investing today buys the <i>right</i> to decide again tomorrow. A <b>decision tree</b> values that right with expected value at each branch (the natural pair to real-07: the smelter as a staged option).</p>
 <div class="example korporat"><div class="lbl">🏢 Example — wait a year, or build now?</div>
-<p>Invest now: NPV <b>+Rp50m</b> (certain). Wait 1 year: 60% good conditions → NPV +Rp120m; 40% bad → NPV −Rp20m. EMV of waiting = 0.6 × 120 + 0.4 × (−20) = 72 − 8 = <b>+Rp64m &gt; 50</b> → <b>wait</b>. Value of flexibility = 64 − 50 = Rp14m. Rule: compare branch EMVs, not single-scenario NPVs; and prune branches you would never take (in bad conditions you simply do not build — that is what makes waiting's EMV higher).</p></div>
+<p>Invest now: NPV <b>+Rp50m</b> (certain). Wait 1 year — two variants, do not mix them: <b>(A) build-always:</b> 60% good conditions → NPV +Rp120m; 40% bad → NPV −Rp20m (you build anyway). EMV of waiting = 0.6 × 120 + 0.4 × (−20) = 72 − 8 = <b>+Rp64m</b>, value of flexibility = 64 − 50 = Rp14m. <b>(B) walk-away option:</b> in bad conditions you simply <i>do not build</i> — the payoff is 0, not −20. EMV of waiting = 0.6 × 120 + 0.4 × 0 = <b>+Rp72m</b>, value of flexibility = 72 − 50 = <b>Rp22m</b>. Variant B is the one that truly uses the right to wait: a branch you would never take is pruned (the −20 payoff never happens if you may walk away). Rule: compare branch EMVs, not single-scenario NPVs; and when you prune a branch, compute its EMV with a payoff of 0, not −20.</p></div>
 <p><b>Bridge to Solver (Excel L3):</b> a decision tree answers <i>when</i> to decide; Solver answers <i>how much</i> is optimal when your decision is continuous (capex allocation) — two complementary optimisation tools.</p>`}],
 quiz: [
 {q: "PT Maju Jaya: FCFF0 \u2212Rp2,000k, FCFFn Rp3,600k, WACC 12%, g 3%. Base EV?", opts: ["Rp33,929k","Rp40,000k","Rp35,714k","\u2212Rp1,786k"], answer: 0, k: "ev_base", diff: "Easy",
@@ -7196,14 +7196,14 @@ quiz: [
  hints: ["Compute the denominator: 0.12 \u2212 0.13.","Can a company grow forever faster than its cost of capital?"],
  explain: "Denominator \u22120.01 \u2192 negative TV. g \u2265 WACC = the model demanding an impossible world."},
 {q: "Monte Carlo 3×3 grid (WACC 10/12/14%, g 2/3/4%, probabilities 25/50/25%). E[EV]?", opts: ["Rp1,183.23m","Rp1,144.44m","Rp1,020.00m","Rp1,275.00m"], answer: 0, k: "monte_carlo", diff: "Medium",
- hints: ["E[EV] = sum of EV × joint probability.", "E[EV] > base-case EV because EV is convex in WACC."],
+ hints: ["E[EV] = sum of EV × joint probability.", "E[EV] > base-case EV because EV is convex in WACC and g."],
  explain: "E[EV] = Rp1,183.23m — above the base-case EV of Rp1,144.44m. Averaging WACC then computing one EV is not an expected value (E[f(X)] ≠ f(E[X]))."},
 {q: "From the same grid, P(EV < Rp1,000m)?", opts: ["18.75%","6.25%","25%","12.5%"], answer: 0, k: "monte_carlo", diff: "Medium",
  hints: ["EV < 1,000 cells are only in the WACC 14% row.", "g 2%: 6.25%; g 3%: 12.5%."],
  explain: "Only cells (14%, 2%) = 850 and (14%, 3%) = 936.36 are below 1,000: 6.25% + 12.5% = 18.75%."},
-{q: "Invest now NPV +50. Wait a year: 60% NPV +120, 40% NPV −20. Decision?", opts: ["Wait (EMV 64 > 50)","Build now","Reject the project","Cannot be determined"], answer: 0, k: "decision_tree", diff: "Easy",
- hints: ["EMV of waiting = 0.6 × 120 + 0.4 × (−20).", "Value of flexibility = 64 − 50."],
- explain: "EMV of waiting = 72 − 8 = +64 > 50 → wait. Value of flexibility Rp14m."}
+{q: "Invest now NPV +50. Wait a year: 60% NPV +120, 40% bad conditions — you do NOT build (payoff 0). EMV of waiting and decision?", opts: ["Wait (EMV 72 > 50)","Build now","Reject the project","Cannot be determined"], answer: 0, k: "decision_tree", diff: "Easy",
+ hints: ["EMV of waiting = 0.6 × 120 + 0.4 × 0 (walk-away option: bad payoff = 0, not −20).", "Value of flexibility = 72 − 50 = 22."],
+ explain: "EMV of waiting (walk-away option) = 72 − 0 = +72 > 50 → wait. Value of flexibility Rp22m. The build-always variant gives EMV 64 and flexibility 14 — see the prose."}
 
 ],
 hell: [
