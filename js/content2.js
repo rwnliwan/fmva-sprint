@@ -150,6 +150,7 @@ sections: [
 <li><b>Alokasikan harga ke tiap kewajiban</b> — proporsional dengan harga jual mandiri masing-masing.</li>
 <li><b>Akui revenue saat (atau selama) kewajiban dipenuhi</b> — point-in-time atau over-time.</li>
 </ol>
+<p><b>Batas cakupan PSAK 115:</b> lima langkah ini berlaku untuk kontrak dengan pelanggan — BUKAN untuk sewa (PSAK 116), kontrak asuransi (PSAK 117), atau instrumen keuangan (PSAK 109). Masing-masing punya standar sendiri; jangan pakai logika lima langkah untuk menilai sewa atau polis asuransi.</p>
 <p><b>Point-in-time vs over-time.</b> Warung menjual barang: revenue diakui <b>saat barang diserahkan</b> (point-in-time) — kendali berpindah, selesai. Jasa yang dinikmati bertahap (langganan, pemeliharaan, konstruksi bertahap) diakui <b>over-time</b>, sebanding dengan progres.</p>
 <p><b>Contoh kerja (ilustrasi dinyatakan):</b> kontrak servis 12 bulan Rp12jt, dibayar di muka. Kewajibannya dua: barang Rp2jt (diserahkan saat tanda tangan) + servis Rp10jt selama 12 bulan.</p>
 <table class="brutal">
@@ -256,7 +257,7 @@ sections: [
 <p><b>Kenapa analis peduli:</b> BEP yang tinggi = <i>operating leverage</i> tinggi (H02 § opex): sedikit penurunan volume, laba jatuh dalam. Itulah alasan perusahaan berbiaya tetap besar (pabrik, tambang, maskapai) punya laba yang jauh lebih volatil daripada revenue-nya. Saat memodelkan skenario bear di H13/H15, cek dulu berapa jauh volume dari BEP.</p>
 <div class="callout"><b>Jembatan ke H18:</b> CVP adalah versi sederhana dari flex budget — begitu volume bergerak, biaya variabel ikut, biaya tetap tidak. Rumus yang sama, skala yang lebih besar.</div>
 <p><b>ABC costing: overhead tidak selalu ikut volume.</b> Alokasi tradisional membagi overhead Rp1.200rb menurut unit (1.500 unit \u2192 Rp0,8rb/unit): Kopi (1.000 unit) menanggung 800, Kue (500 unit) 400. <b>Activity-based costing (ABC)</b> menelusuri pemicu biaya: setup Rp400rb/40 setup = Rp10rb per setup; inspeksi Rp800rb/200 inspeksi = Rp4rb per inspeksi. Kopi (20 setup, 50 inspeksi) \u2192 20\u00d710 + 50\u00d74 = <b>Rp400rb (Rp0,4rb/unit)</b>; Kue (20 setup, 150 inspeksi) \u2192 200 + 600 = <b>Rp800rb (Rp1,6rb/unit)</b> \u2014 kebalikan dari alokasi volume! Kue yang \u201ckecil\u201d ternyata rakus inspeksi. Alokasi volume menghukum produk bervolume dan menyembunyikan produk yang rakus aktivitas.</p>
-<p><b>Transfer pricing: harga internal mengubah laba divisi, bukan laba grup.</b> Divisi Hulu menjual ke Hilir: biaya variabel Rp30rb/unit, harga pasar Rp60rb. Harga transfer Rp50rb \u2192 laba Hulu Rp20rb/unit. Bila kapasitas Hulu menganggur, harga transfer minimum = biaya variabel Rp30rb \u2014 di bawah itu Hulu rugi tiap unit yang ditransfer. Di atas harga pasar (Rp60rb), Hilir lebih baik beli dari luar. Aturan: transfer internal hanya masuk akal bila harga transfer berada di antara biaya variabel dan harga pasar \u2014 dan laba grup tidak berubah oleh pilihan harga transfernya, hanya pembagiannya antar divisi (yang memengaruhi bonus dan keputusan beli/jual internal).</p>`}],
+<p><b>Transfer pricing: harga internal mengubah laba divisi, bukan laba grup.</b> Divisi Hulu menjual ke Hilir: biaya variabel Rp30rb/unit, harga pasar Rp60rb. Harga transfer Rp50rb \u2192 laba Hulu Rp20rb/unit. Bila kapasitas Hulu menganggur, harga transfer minimum = biaya variabel Rp30rb — di bawah itu Hulu rugi tiap unit yang ditransfer. Bila kapasitas Hulu PENUH, minimumnya naik: biaya variabel + opportunity cost (laba yang hilang dari penjualan luar yang dikorbankan) — karena tiap unit yang ditransfer mengorbankan penjualan ke pasar. Di atas harga pasar (Rp60rb), Hilir lebih baik beli dari luar. Aturan: transfer internal hanya masuk akal bila harga transfer berada di antara biaya variabel (atau biaya variabel + opportunity cost saat kapasitas penuh) dan harga pasar — dan laba grup tidak berubah oleh pilihan harga transfernya untuk transaksi dan keputusan operasi yang sama, hanya pembagiannya antar divisi (yang memengaruhi bonus dan keputusan beli/jual internal).</p>`}],
 quiz: [
 {q: "Warung: 50 pelanggan/hari × Rp20rb × 26 hari buka. Proyeksi revenue sebulan?", opts: ["Rp20jt","Rp26jt","Rp13jt","Rp52jt"], answer: 1, k: "revenue_modeling", diff: "Easy",
  hints: ["Revenue = volume × harga × periode.", "50 × 20.000 × 26 = ?"],
@@ -270,9 +271,9 @@ quiz: [
 {q: "Biaya mana yang VARIABLE?", opts: ["Komisi penjualan 5% dari omzet","Sewa ruko yang dibayar tetap per bulan","Gaji tetap karyawan tiap bulan","Penyusutan garis lurus tiap tahun"], answer: 0, k: "opex", diff: "Medium",
  hints: ["Variable = ikut naik-turun dengan volume penjualan.", "Tanya: kalau toko tutup sebulan, biaya mana yang hilang?"],
  explain: "Komisi hanya ada kalau ada penjualan. Tiga lainnya tetap jalan walau volume nol. (Hari 02 § Opex: fixed vs variable)"},
-{q: "Dua warung, revenue sama-sama turun 10%. Warung A fixed cost Rp5jt, warung B fixed cost Rp1jt. Mana labanya jatuh lebih dalam?", opts: ["B, karena total biayanya lebih kecil dari A","Sama dalamnya, karena revenue turunnya sama","Tidak bisa ditentukan tanpa data lengkap","A, karena operating leverage-nya lebih tinggi"], answer: 3, k: "operating_leverage", diff: "Hard",
+{q: "Dua warung, revenue AWAL sama-sama Rp10jt dan struktur biaya variabel sama; revenue sama-sama turun 10%. Warung A fixed cost Rp5jt, warung B fixed cost Rp1jt. Mana labanya jatuh lebih dalam — dalam PERSEN?", opts: ["B, karena total biayanya lebih kecil dari A","Sama dalamnya, karena revenue turunnya sama","Tidak bisa ditentukan tanpa data lengkap","A, karena operating leverage-nya lebih tinggi"], answer: 3, k: "operating_leverage", diff: "Hard",
  hints: ["Fixed cost tidak ikut turun saat revenue turun.", "Ini definisi operating leverage."],
- explain: "Fixed cost A tetap Rp5jt walau revenue turun — labanya terpukul lebih keras. Itulah operating leverage. (Hari 02 § Opex: fixed vs variable)"},
+ explain: "Penurunan laba dalam RUPIAH sama — revenue turun Rp1jt di keduanya dan biaya variabel ikut turun sama. Tapi dalam PERSEN, A jatuh lebih dalam: laba awal A lebih kecil (fixed cost Rp5jt vs Rp1jt), jadi rupiah yang sama memakan porsi laba A yang lebih besar. Itulah operating leverage: fixed cost tidak ikut turun saat revenue turun. (Hari 02 § Opex: fixed vs variable)"},
 {q: "Revenue naik 20% tapi gross margin turun 55% → 48%. Diagnosis paling mungkin?", opts: ["Harga jual naik lebih cepat dari biaya","Beban gaji dan sewa yang ikut naik","Biaya per unit naik lebih cepat dari harga jual","Tidak ada masalah — yang penting revenue naik"], answer: 2, k: "margin", diff: "Hard",
  hints: ["Margin = (Revenue − COGS)/Revenue. Kalau margin turun padahal revenue naik…", "…maka COGS naik LEBIH CEPAT dari revenue."],
  explain: "Margin tertekan = biaya per unit naik lebih cepat dari harga jual (atau mix bergeser ke produk murah). Revenue naik menutupi masalahnya — jangan terkecoh. (Hari 02 § COGS & gross margin)"},
@@ -315,7 +316,7 @@ hell: [
 tasks: [
 {t: "Tugas A — Forecast IS warung 2026 (±3 jam)", d: "Download file latihan Hari 02 dari Drive. Bangun forecast Income Statement 2026 dari data 2025 + asumsi. Semua sel jawaban harus rumus — file jawaban untuk cross-check.", url: "https://drive.google.com/drive/folders/1PRqb3h9yNF6p0x0ZW5QhqMB9vnDLmI2b"},
 {t: "Tugas B — Common-size & analisis margin (±1 jam)", d: "Ubah IS 2025 dan forecast 2026 jadi common-size (% dari revenue). Tulis 3 kalimat: apa yang berubah dan kenapa."},
-{t: "Tugas C — Kuis di atas", d: "Target ≥6/8 benar. Salah? Baca hint, coba lagi."}
+{t: "Tugas C — Kuis di atas", d: "Target ≥10/13 benar. Salah? Baca hint, coba lagi."}
 ],
 blind: {h: "Uji Kilat — angka beda", body: `
 <p><b>1.</b> Warung: 80 pelanggan/hari × Rp15rb × 25 hari buka. Revenue sebulan?</p>
@@ -1258,6 +1259,7 @@ sections: [
 <p>Valuasi menjawab: "berapa kas yang bisa diambil pemilik <i>tanpa merusak</i> bisnis?" Laba bersih tidak menjawab itu — ia mengandung non-kas (susut) dan mengabaikan investasi (capex) serta modal kerja. <b>FCFF</b> menjawabnya:</p>
 <div class="formula">FCFF = CFO − Capex</div>
 <p>FCFF = kas operasi <b>setelah</b> menjaga mesin tetap jalan (capex). Inilah kas yang <i>bebas</i> — boleh dibagi, ditabung, atau dipakai bayar utang — tanpa mengorbankan masa depan.</p>
+<p>Rumus singkat ini berlaku karena warung ini <b>100% ekuitas tanpa utang</b>: tanpa bunga, CFO sudah bersih dari biaya utang. Rumus umumnya: FCFF = CFO + bunga×(1−t) − capex — bunga ditambahkan kembali karena FCFF diukur seolah tanpa utang.</p>
 <div class="callout"><b>Kenapa "bebas"?</b> Karena capex bukan pilihan bebas: mesin yang tidak diganti = kapasitas turun = revenue turun. FCFF mengukur kas <i>setelah kewajiban investasi</i> — sisa inilah yang benar-benar milik investor.</div>`},
 {h: "FCFF 2026 & 2027: membangun dari komponen", body: `
 <table class="brutal">
@@ -1278,7 +1280,7 @@ sections: [
 <table class="brutal">
 <tr><th>Asumsi CAPM</th><th>Nilai</th><th>Arti</th></tr>
 <tr><td>Rf (risk-free)</td><td>6,5%</td><td>Ilustrasi imbal tanpa risiko</td></tr>
-<tr><td>Beta (proxy)</td><td>1,1</td><td>Ilustrasi: 10% lebih fluktuatif dari pasar</td></tr>
+<tr><td>Beta (proxy)</td><td>1,1</td><td>Ilustrasi: sensitivitas sistematis 10% lebih tinggi dari pasar (bukan total volatilitas)</td></tr>
 <tr><td>MRP</td><td>6%</td><td>Premi risiko pasar (ilustrasi)</td></tr>
 </table>
 <div class="formula">Cost of equity = Rf + β × MRP</div>
@@ -1287,7 +1289,7 @@ sections: [
 <div class="formula">CoE = 6,5% + 1,1 × 6% = 6,5% + 6,6% = <b>13,1%</b></div>
 <p>Artinya: pemilik menuntut return <b>13,1% per tahun</b> untuk menanggung risiko warung ini. Setiap rupiah kas masa depan didiskonto sebesar itu.</p>
 <p><i>Catatan asumsi:</i> 13,1% ini memakai beta <b>1,1 yang dinyatakan</b> untuk skenario warung <b>100% ekuitas</b> (tanpa utang berbunga) — bukan beta dari data pasar. Di seksi Hamada di bawah, beta yang sama diestimasi dari peer dan CoE-nya menjadi <b>13,20%</b> — dua skenario, dua CoE, keduanya benar di asumsinya masing-masing.</p>
-<p>Uji sensitivitas cepat: beta 1,1 → 1,3 (bisnis ternyata lebih fluktuatif) ⇒ CoE = 6,5% + 7,8% = <b>14,3%</b>. Naik 1,2 poin — dan nanti kamu lihat betapa besar dampaknya ke valuasi (Hari 10).</p>
+<p>Uji sensitivitas cepat: beta 1,1 → 1,3 (sensitivitas sistematisnya ternyata lebih tinggi) ⇒ CoE = 6,5% + 7,8% = <b>14,3%</b>. Naik 1,2 poin — dan nanti kamu lihat betapa besar dampaknya ke valuasi (Hari 10).</p>
 <div class="callout"><b>Kenapa beta dikali MRP, bukan ditambah mentah?</b> Karena beta mengukur <i>seberapa banyak</i> risiko pasar yang menular ke perusahaan. Beta 1,1 = menanggung 110% premi pasar. Beta 0 = tidak menular sama sekali (CoE = Rf).</div>`},
 {h: "WACC = 13,1%: tanpa utang berbunga", body: `
 <div class="formula">WACC = (E/V × CoE) + (D/V × CoD × (1 − pajak))</div>
@@ -1327,7 +1329,7 @@ sections: [
 <tr><td>Kalau ada obligasi bunga 10%?</td><td>Biaya utang setelah pajak = 10% × (1 − 22%) = <b>7,8%</b></td></tr>
 <tr><td>Kenapa dikali (1 − pajak)?</td><td>Bunga <b>deductible</b> — mengurangi laba kena pajak</td></tr>
 </table>
-<div class="callout"><b>Kenapa pajak muncul di WACC tapi tidak di FCFF?</b> FCFF dihitung <i>seolah tanpa utang</i> (unlevered) — pajak atas operasi sudah tercermin di NI/CFO. Pajak di WACC hanya lewat <i>perisai bunga</i>. Mencampur keduanya = double counting.</div>`},
+<div class="callout"><b>Kenapa pajak muncul di WACC tapi tidak di FCFF?</b> FCFF dihitung <i>seolah tanpa utang</i> (unlevered) — pajak atas operasi sudah tercermin di NI/CFO. Pajak di WACC hanya lewat <i>perisai bunga</i>. Mencampur keduanya = double counting. Jembatan lengkapnya bila ada utang: FCFF = CFO + bunga×(1−t) − capex — bunga ditambahkan kembali karena CFO sudah dikurangi bunga.</div>`},
 {h: "YTM: harga obligasi menentukan biaya utang", body: `
 <p>Biaya utang setelah pajak 7,8% di seksi pajak tadi datang dari obligasi <b>di harga par</b> (kupon 10% = YTM 10%). Harga obligasi jarang tepat di par — dan saat harganya bergerak, biaya utangnya ikut bergerak. Itulah <b>yield to maturity (YTM)</b>: imbal hasil yang didapat investor bila membeli di harga pasar hari ini dan memegang sampai jatuh tempo.</p>
 <p><b>Harga obligasi = PV seluruh arus kasnya pada YTM:</b></p>
@@ -1375,8 +1377,8 @@ sections: [
 <div class="formula">APV = Nilai perusahaan tanpa utang (VU) + PV tax shield</div>
 <div class="example korporat"><div class="lbl">🏢 Contoh — utang diamortisasi 4 tahun</div>
 <p>FCFF Rp100jt tumbuh 3%, Ku (cost of capital tanpa utang) 11% → VU = 100 × 1,03 ÷ (0,11 − 0,03) = <b>Rp1.287,50jt</b>. Utang Rp400jt bunga 8%, diamortisasi Rp100jt/tahun, pajak 22%. Tax shield per tahun = bunga × 22%: tahun 1: 32 × 22% = 7,04; tahun 2: 24 × 22% = 5,28; tahun 3: 3,52; tahun 4: 1,76. Didiskon di Kd 8%: 6,52 + 4,53 + 2,79 + 1,29 = <b>PV tax shield Rp15,13jt</b>. APV = 1.287,50 + 15,13 = <b>Rp1.302,63jt</b>.</p></div>
-<p><b>Kapan APV &gt; WACC:</b> (1) leverage berubah drastis (LBO, restrukturisasi, project finance); (2) ada tax shield non-utang yang besar (NOL, H20); (3) utang bersubsidi. <b>Kapan WACC cukup:</b> struktur modal stabil seperti INDF di H13. Cross-check LBO di H17: nilai via APV harus mendekati nilai via IRR/MoIC — kalau jauh, salah satu asumsi utangmu bocor.</p>
-<div class="callout"><b>Perangkap:</b> mendiskon tax shield di Ku (bukan Kd) saat utang sudah pasti — itu mengecilkan PV tax shield tanpa alasan. Utang yang sudah dijadwalkan = risiko utang (Kd).</div>`},
+<p><b>Kapan APV &gt; WACC:</b> (1) leverage berubah drastis (LBO, restrukturisasi, project finance); (2) ada tax shield non-utang yang besar (NOL, H20); (3) utang bersubsidi. <b>Kapan WACC cukup:</b> struktur modal stabil seperti INDF di H13. Cross-check LBO di H17: APV memberi nilai perusahaan — kurangi utang bersih di exit untuk dapat equity value, lalu bagi dengan modal sponsor untuk MoIC (dan IRR dari jadwal arus kas sponsor). APV harus mendekati IRR/MoIC itu <i>dengan asumsi exit dan pendanaan yang sama</i> — kalau jauh, salah satu asumsi utangmu bocor.</p>
+<div class="callout"><b>Perangkap:</b> mendiskon tax shield di Ku (bukan Kd) saat utang sudah pasti — itu mengecilkan PV tax shield tanpa alasan. Mendiskon di Kd adalah praktik umum karena utang yang sudah dijadwalkan = risiko utang — tapi ini ASUMSI, bukan hukum: bila risiko utang mengikuti risiko operasi, sebagian analis memakai Ku.</div>`},
 {h: "Economic profit: cek silang DCF dalam 2 menit", body: `
 <p><b>Economic profit (EP)</b> = NOPAT − (WACC × Modal). Perusahaan menciptakan nilai hanya bila NOPAT melebihi biaya modalnya — dan nilai perusahaan = modal yang sudah ditanam + PV semua EP masa depan:</p>
 <div class="formula">Nilai = Modal₀ + EP₁ ÷ (WACC − g)</div>
@@ -1450,7 +1452,7 @@ hell: [
 tasks: [
 {t: "Task A — WACC & FCFF Warung Septian (±2 jam)", d: "Download file latihan Hari 09 dari Drive. Hitung CoE via CAPM, WACC, FCFF 2027, dan PV-nya. Semua sel jawaban rumus — ingat: ini ASUMSI pengajaran, bukan data pasar.", url: "https://drive.google.com/drive/folders/18aYqHpgZj-w-ZOw8WvadxDt-HoS_-Ix3"},
 {t: "Task B — Sensitivitas beta (±30 mnt)", d: "Di kertas: hitung CoE untuk beta 0,9 / 1,1 / 1,3 (Rf 6,5%, MRP 6%). Rasakan: beta ±0,2 = CoE ±1,2 poin."},
-{t: "Task C — Quiz di atas", d: "Target ≥6/8 benar. Salah? Baca hint, ulangi."}
+{t: "Task C — Quiz di atas", d: "Target ≥9/12 benar. Salah? Baca hint, ulangi."}
 ],
 blind: {h: "Latihan Buta — CAPM Kios Rina", body: `
 <p>"Kios Rina": Rf 7%, beta 1,2, MRP 5% (asumsi dinyatakan). FCFF tahun depan Rp1.000rb. <b>Hitung CoE dan PV-nya TANPA mengintip contoh</b>.</p>
@@ -1471,7 +1473,7 @@ checker: "hari-10",
 sections: [
 {h: "Kenapa forecast berhenti di 2027", body: `
 <p>Forecast detail 2 tahun (2026–2027) sudah cukup. Kenapa tidak lanjut 2028, 2029, ... selamanya? Karena <b>ketidakpastian meledak</b>: asumsi growth 2028 yang meleset 2% merusak seluruh tahun-tahun setelahnya. Solusi profesional: forecast detail <i>pendek</i> + <b>terminal value</b> untuk "sisanya selamanya".</p>
-<div class="callout"><b>Kenapa 2 tahun cukup?</b> Karena pola bisnis sudah terlihat (ekspansi 2027), dan nilai tahun-tahun jauh <i>didiskonto habis</i> oleh WACC. Tahun 2035 yang didiskonto 13,1% pangkat 9 ≈ tinggal 33% bobotnya. Presisi palsu di tahun jauh = usaha sia-sia.</div>`},
+<div class="callout"><b>Kenapa 2 tahun cukup?</b> Karena pola bisnis sudah terlihat (ekspansi 2027), dan nilai tahun-tahun jauh <i>didiskonto habis</i> oleh WACC. Tahun 2035 yang didiskonto 13,1% pangkat 9 ≈ tinggal 33% bobotnya. Presisi palsu di tahun jauh = usaha sia-sia. "Cukup" di sini karena 2028 sudah mencapai steady state (capex = susut, margin stabil) — aturannya: forecast detail sampai asumsi terminalmu bisa dipertahankan, bukan "2 tahun" sebagai hukum.</div>`},
 {h: "FCFF 2028: asumsi yang dinyatakan", body: `
 <p>Untuk metode perpetuity kita butuh <b>satu</b> FCFF "normal" (2028). Asumsinya dinyatakan — skenario <i>steady state</i> setelah ekspansi:</p>
 <table class="brutal">
@@ -1487,7 +1489,8 @@ sections: [
 <p>Asumsi: dari 2028, FCFF tumbuh <b>g = 3%</b> selamanya. Deret geometri tak hingga punya jumlah tertutup:</p>
 <div class="formula">TV = FCFF<sub>2028</sub> ÷ (WACC − g) = 2.281 ÷ (0,131 − 0,03) = 2.281 ÷ 0,101 = <b>Rp22.584rb</b></div>
 <p>TV ini adalah nilai <b>di akhir 2027</b> dari seluruh FCFF 2028 → ∞. Syarat mutlak: <b>g &lt; WACC</b> — kalau g ≥ WACC, penyebut ≤ 0 dan rumusnya runtuh (perusahaan tak bisa tumbuh melebihi biaya modalnya selamanya).</p>
-<div class="callout"><b>Kenapa dibagi (WACC − g)?</b> Karena pertumbuhan <i>mengurangi</i> diskonto efektif: kas yang tumbuh 3% sambil didiskonto 13,1% berperilaku seperti kas flat yang didiskonto 10,1%. Makin dekat g ke WACC, makin raksasa TV — dan makin berbahaya.</div>`},
+<div class="callout"><b>Kenapa dibagi (WACC − g)?</b> Karena pertumbuhan <i>mengurangi</i> diskonto efektif: kas yang tumbuh 3% sambil didiskonto 13,1% berperilaku seperti kas flat yang didiskonto 10,1%. Makin dekat g ke WACC, makin raksasa TV — dan makin berbahaya.</div>
+<p><b>Jembatan reinvestasi (M7):</b> g = ROIC inkremental × tingkat reinvestasi. Di sini capex = susut → investasi neto ≈ 0 → g yang konsisten ≈ 0%. Jadi g = 3% adalah penyederhanaan mekanis Gordon yang secara implisit mengasumsikan reinvestasi: misal pada ROIC inkremental 15%, tingkat reinvestasi = 3% ÷ 15% = 20% dari NOPAT. TV 22.584 tidak berubah — yang berubah adalah kejujuran asumsinya: g 3% berarti perusahaan menginvestasikan kembali 20% NOPAT-nya selamanya.</p>`},
 {h: "Metode B: exit multiple", body: `
 <p>Lensa kedua — tanpa asumsi "selamanya": perusahaan <i>dijual</i> di akhir 2027 dengan kelipatan EBITDA:</p>
 <div class="formula">TV = EBITDA<sub>2027</sub> × multiple = 2.625 × 8 = <b>Rp21.000rb</b></div>
@@ -1516,7 +1519,7 @@ sections: [
 </table>
 <p>EV naik <b>+6,3%</b> (21.189 vs 19.924) — mendiskonto setengah tahun lebih pendek. Itu bukan "bonus": kas yang diterima lebih awal memang lebih berharga.</p>
 <p><b>Kapan dipakai, kapan tidak:</b> pakai mid-year bila arus kas tersebar merata sepanjang tahun (revenue, opex). <b>Jangan</b> pakai untuk item yang memang jatuh di satu tanggal: dividen sekali setahun, pelunasan bullet, penjualan aset di tanggal yang diketahui — item itu didiskonto pada tanggal sebenarnya.</p>
-<div class="callout"><b>Kenapa tanpa mid-year = undervalue sistematis?</b> Karena setiap tahun kasmu "dipaksa" menunggu sampai 31 Desember — padahal separuhnya sudah di tangan di Juni. DCF tanpa mid-year selalu menilai sedikit terlalu rendah (± setengah tahun diskonto, di sini ≈ +6%). Analis yang tidak tahu ini akan selalu kalah tender dari analis yang tahu.</div>`},
+<div class="callout"><b>Kenapa tanpa mid-year = undervalue sistematis?</b> Karena setiap tahun kasmu "dipaksa" menunggu sampai 31 Desember — padahal separuhnya sudah di tangan di Juni. Untuk arus kas positif yang tersebar merata, DCF tanpa mid-year biasanya menilai sedikit terlalu rendah (± setengah tahun diskonto, di sini ≈ +6%) — kas yang diterima lebih awal memang lebih berharga. Tapi untuk arus kas NEGATIF, tanpa mid-year justru menilai terlalu TINGGI (kerugian yang "dipaksa menunggu" terdiskonto lebih dalam). Jadi bukan "selalu undervalue" — arah biasnya tergantung tanda arusnya.</div>`},
 {h: "Stub period: valuasi di tengah tahun (bukan 1 Januari)", body: `
 <p>DCF sejauh ini rapi: FCFF tahun penuh, didiskon per tahun penuh. Dunia nyata jarang rapi: valuasi dilakukan <b>di tengah tahun</b> — misal 31 Juli — sehingga "Tahun 1" tinggal 5–7 bulan. Periode parsial ini disebut <b>stub period</b>.</p>
 <p><b>Aturannya sederhana: potong arusnya, potong diskonnya.</b> Pakai FCFF 2027 dari pelajaran ini sendiri = <b>−50</b> (bukan angka lain) dan stub 7 bulan:</p>
@@ -1528,7 +1531,7 @@ sections: [
 </table>
 <p>Perhatikan eksponennya: <b>7/12 tahun</b> — fraksi tahun yang tersisa. Bukan 1 (itu tahun penuh), bukan 0,5 (itu mid-year — lihat bawah).</p>
 <p><b>Terminal value juga ikut stub:</b> TV 22.584 yang tadinya didiskon setahun penuh (PV 19.968) kini didiskon 7/12 tahun: 22.584 ÷ 1,0745 = <b>21.019,11</b> — lebih besar dari 19.968, karena kas dianggap tiba lebih cepat. Setiap arus kas setelah stub ikut bergeser maju dengan eksponen yang sama.</p>
-<p><b>Jangan tumpuk mid-year di atas stub.</b> Mid-year (Hari 10 § mid-year) mengasumsikan kas tiba di tengah tahun — stub <i>sudah</i> memotong tahun pertama ke fraksinya. Memakai keduanya sekaligus = mendiskon dua kali untuk ketidakpastian yang sama. Pilih satu: stub bila tanggal valuasi di tengah tahun; mid-year bila valuasi di awal tahun penuh.</p>
+<p><b>Stub dan mid-year bisa digabung — karena menjawab hal berbeda.</b> Stub menentukan <i>panjang</i> periode pertama yang tersisa (7/12 tahun); mid-year menentukan <i>timing</i> kas di dalam periode itu. Stub 7 bulan dengan arus merata ≈ kas tiba di tengah stub, yaitu 3,5/12 tahun dari tanggal valuasi — bukan 7/12. Yang tidak boleh: memakai mid-year tahun penuh (t − 0,5) di atas stub tanpa menyesuaikan — itu mendiskon dua kali untuk timing yang sama. Aturan ujung stub (kas dianggap tiba di akhir stub) adalah pilihan konvensi, bukan hukum: bila arus tersebar merata, pakai titik tengah stub.</p>
 <div class="callout"><b>Kenapa analis peduli stub?</b> Karena selisihnya tidak kecil: TV yang sama bernilai 21.019,11 vs 19.968 — selisih 1.051,11 (5,3%) hanya karena tanggal valuasi. Deal yang dinegosiasikan pada Juli vs Januari punya "harga wajar" yang berbeda — dan selisih itu harus bisa dijelaskan baris demi baris, bukan dibiarkan sebagai selisih model.</div>`},
 {h: "Tabel sensitivitas 2D: WACC × g", body: `
 <p>Satu angka EV = satu kombinasi asumsi. Tabel ini menunjukkan <b>sembilan</b> (Rp ribu):</p>
@@ -1872,7 +1875,7 @@ sections: [
 <div class="formula">CFO = 15,21 + 6,50 &minus; 0,21 (&Delta;WC) = <b>21,50</b> &nbsp;&nbsp; FCFF = 21,50 &minus; 5,60 (capex) = <b>15,90</b></div>
 <p>CFI = &minus;5,60. CFF = &minus;3,00 (bayar utang) &minus; 4,00 (dividen) = &minus;7,00. &Delta;kas = 21,50 &minus; 5,60 &minus; 7,00 = +8,90 &rarr; kas akhir <b>26,90</b> (= kas di neraca &#10003;).</p>
 <p><b>FCFF 15,90T = jangkar kanonis RC3.</b> Angka ini ditemukan lewat <i>repair</i> &mdash; bukan di-setting. Model build independenmu wajib tiba di angka yang sama.</p>
-<div class="callout"><b>Kenapa FCFF 15,90T adalah momen validasi?</b> Karena dua jalur independen (repair model lama &rarr; 15,90T; build dari blank &rarr; 15,90T) yang konvergen = bukti mekanikmu benar. Inilah &ldquo;uji kebenaran&rdquo; pertama capstone.</div>`},
+<div class="callout"><b>Kenapa FCFF 15,90T adalah momen validasi?</b> Karena dua jalur independen (repair model lama &rarr; 15,90T; build dari blank &rarr; 15,90T) yang konvergen = rekonsiliasi yang KUAT — bukan bukti mutlak. Kedua jalur memakai input yang sama, jadi kesalahan input yang sama bisa lolos di keduanya. Bukti penuh butuh pemeriksaan rumus + independensi input. Inilah &ldquo;uji kebenaran&rdquo; pertama capstone — kuat, tapi bukan final.</div>`},
 {h: "4 golden checks: tie-out penuh", body: `
 <p>Empat pemeriksaan yang harus lolos di <i>setiap</i> model 3-statement (Rp triliun):</p>
 <table class="brutal">
@@ -1970,7 +1973,7 @@ sections: [
 <tr><td><b>FCFF (Rp triliun)</b></td><td><b>15,90</b></td><td>14,60</td><td>13,40</td><td>12,30</td><td>11,30</td></tr>
 </table>
 <p>Narasinya: marjin menormalisasi pasca-siklus kuat + belanja modal disiplin. Ini <b>skenario yang dinyatakan dan bisa diperdebatkan</b> &mdash; bukan ramalan.</p>
-<div class="callout"><b>Kenapa menurun, bukan tumbuh?</b> Karena DCF tidak butuh optimisme &mdash; butuh asumsi yang dinyatakan dan bisa diserang. Skenario konservatif yang konvergen ke jangkar kanonis > skenario agresif yang runtuh saat ditanya. Thesis-mu boleh bull; modelnya harus jujur.</div>`},
+<div class="callout"><b>Kenapa menurun, bukan tumbuh?</b> Karena DCF tidak butuh optimisme &mdash; butuh asumsi yang dinyatakan dan bisa diserang. Skenario konservatif yang konvergen ke jangkar kanonis > skenario agresif yang runtuh saat ditanya — tapi ingat: konvergensi = rekonsiliasi kuat, bukan bukti (lihat § validasi). Thesis-mu boleh bull; modelnya harus jujur.</div>`},
 {h: "TV perpetuitas: Gordon di akhir 2030", body: `
 <p>Satu FCFF &ldquo;normal&rdquo; untuk selamanya: FCFF 2031 = 11,30 &times; 1,0175 = <b>11,49775T</b>.</p>
 <div class="formula">TV = 11,49775 &divide; (0,12 &minus; 0,0175) = 11,49775 &divide; 0,1025 = <b>Rp112,17T</b></div>
@@ -1980,7 +1983,7 @@ sections: [
 <p>Lensa kedua &mdash; tanpa asumsi &ldquo;selamanya&rdquo;: INDF <i>dijual</i> di akhir 2030.</p>
 <div class="formula">TV = EBITDA<sub>2030</sub> &times; multiple = 16,50 &times; 7 = <b>Rp115,50T</b></div>
 <p>EBITDA 2030 = <b>16,50T dinyatakan sebagai asumsi</b>; multiple <b>7&times; dinyatakan sebagai asumsi ilustrasi</b> (bukan data transaksi pasar).</p>
-<div class="callout"><b>Kenapa dua metode lagi?</b> Karena TV = 80&ndash;90% nilai DCF &mdash; satu lensa = satu titik kegagalan. Dua lensa independen yang seorde (112,17 vs 115,50) = keyakinan; yang bertolak belakang = sinyal ada yang salah.</div>`},
+<div class="callout"><b>Kenapa dua metode lagi?</b> Karena TV mendominasi nilai DCF &mdash; satu lensa = satu titik kegagalan. (Catatan: di model INDF ini, PV TV hanya 56,2% dari EV — angka 80&ndash;90% adalah gambaran umum DCF, bukan model ini. Lihat kuis hell § TV.) Dua lensa independen yang seorde (112,17 vs 115,50) = keyakinan; yang bertolak belakang = sinyal ada yang salah.</div>`},
 {h: "EV \u2192 ekuitas \u2192 per saham: jembatan valuasi", body: `
 <table class="brutal">
 <tr><th>Komponen (Rp triliun)</th><th>Nilai</th></tr>
@@ -2009,7 +2012,7 @@ sections: [
 <p>Jalur 1 (RC3): <i>repair</i> model yang sudah ada &rarr; ekuitas induk 73,15T, FCFF 15,90T.<br>
 Jalur 2 (Hari 12&ndash;13): <i>build</i> dari blank &rarr; FCFF 15,90T &rarr; DCF &rarr; ekuitas 73,15T.</p>
 <p>Dua metode, dua arah kerja, <b>satu angka</b> (selisih 0,00T &mdash; dalam toleransi &plusmn;1T).</p>
-<div class="callout"><b>Kenapa ini yang dipresentasikan ke komite?</b> Karena angka tunggal bisa direkayasa; <i>konvergensi dua jalur independen</i> tidak bisa. Inilah bukti mekanikmu benar &mdash; bukan klaim, tapi validasi. Thesis tanpa validasi = opini; dengan validasi = argumen.</div>`},
+<div class="callout"><b>Kenapa ini yang dipresentasikan ke komite?</b> Karena angka tunggal bisa direkayasa; <i>konvergensi dua jalur independen</i> sulit direkayasa. Inilah rekonsiliasi yang kuat &mdash; bukan klaim, tapi validasi. (Bukan bukti mutlak: kedua jalur berbagi input, jadi periksa rumus dan independensi input sebelum menyebutnya terbukti.) Thesis tanpa validasi = opini; dengan validasi = argumen.</div>`},
 {h: "Sensitivitas WACC: rentang, bukan titik", body: `
 <p>WACC &plusmn;1pp (g tetap 1,75%) &mdash; ekuitas mengayun:</p>
 <table class="brutal">
@@ -2092,11 +2095,11 @@ quiz: [
 ],
 hell: [
 {q: "Dua jalur (repair RC3 & build capstone) tiba di Rp73,15T. Maknanya?", opts: ["Kebetulan semata","RC3 pasti salah hitung","Konvergensi dua jalur independen = validasi mekanik","Capstone pasti salah hitung"], answer: 2, diff: "Medium",
- explain: "Angka tunggal bisa direkayasa; konvergensi dua jalur independen tidak bisa. Inilah bukti mekanikmu benar \u2014 validasi, bukan klaim."},
+ explain: "Angka tunggal bisa direkayasa; konvergensi dua jalur independen sulit direkayasa. Inilah rekonsiliasi yang kuat \u2014 validasi, bukan klaim — tapi bukan bukti mutlak: kedua jalur berbagi input."},
 {q: "WACC 12% \u2192 13%, ekuitas 73,15T \u2192 63,84T. Pelajarannya?", opts: ["WACC tuas paling berbahaya \u2014 \u00b11pp mengayun \u00b120T","WACC tidak penting untuk valuasi","Naikkan saja g untuk menutup","Ganti metode valuasi"], answer: 0, diff: "Medium",
  explain: "Penyebut (WACC\u2212g) kecil = tuas raksasa. WACC \u00b11pp = ekuitas \u221212,7%. Inilah kenapa sensitivitas WACC selalu diuji."},
-{q: "TV Rp112,17T vs PV FCFF Rp49,60T. Artinya?", opts: ["Forecast 5 tahun sia-sia","Abaikan saja komponen TV","TV terlalu kecil","\u223c70% nilai dari TV \u2014 asumsi g/multiple harus paling jujur"], answer: 3, diff: "Medium",
- explain: "Realitas DCF: terminal value mendominasi. Akurasi thesis ini praktis = akurasi asumsi g 1,75% & multiple 7\u00d7. Jujur soal ini = profesional."},
+{q: "PV TV Rp63,65T vs EV Rp113,25T. Berapa pangsa TV dari nilai?", opts: ["56,2%","\u223c70%","49,6%","112,17%"], answer: 0, diff: "Medium",
+ explain: "63,65 \u00f7 113,25 = 56,2%. Angka \u223c70% adalah jebakan basis: 112,17 \u00f7 (112,17 + 49,60) = 69,3% membagi TV NOMINAL dengan jumlah nominal — pangsa nilai harus dihitung dari PV. TV tetap dominan, tapi tidak 70%."},
 {q: "Exit multiple memberi ekuitas Rp75,04T vs perpetuitas Rp73,15T. Vonis?", opts: ["Ambil 75,04T (lebih tinggi)","Ambil 73,15T (lebih konservatif)","Rentang 73,15\u201375,04T \u2014 dua lensa, satu perusahaan","Rata-rata paksa jadi 74,10T"], answer: 2, diff: "Medium",
  explain: "Dua lensa independen yang seorde = keyakinan. Yang benar = rentang + pemahaman dari mana selisih Rp1,89T berasal."},
 {q: "Thesis-mu tidak muat 1 halaman. Artinya?", opts: ["Kamu belum cukup paham \u2014 sederhanakan sampai muat","Perpanjang jadi 2 halaman","Kecilkan fontnya","Hapus bagian risiko"], answer: 0, diff: "Easy",
@@ -2105,14 +2108,15 @@ hell: [
 tasks: [
 {t: "Task A \u2014 DCF INDF (\u00b13 jam)", d: "Download file latihan Hari 13 dari Drive. Selesaikan DCF: TV perpetuitas + PV TV + EV + net debt + ekuitas + per saham + 2 sel sensitivitas (semua rumus). Target: TV 112,17 \u00b7 EV 113,25 \u00b7 ekuitas 73,15 \u00b7 Rp8.332/saham \u00b7 sens 63,84 / 84,45.", url: "https://drive.google.com/drive/folders/1v-92ytXR9FTNjl-iBW7vUR3eyDQM5Dat"},
 {t: "Task B \u2014 Thesis 1 halaman (\u00b12 jam)", d: "Tulis thesis investasi INDF 1 halaman pakai template \u00a77: tesis 1 kalimat, bull/base/bear, katalis, risiko, valuasi vs harga, keputusan + batasan yang dinyatakan."},
-{t: "Task C \u2014 Quiz di atas", d: "Target \u22654/5 benar. Salah? Baca hint, ulangi."}
+{t: "Task C \u2014 Quiz di atas", d: "Target \u22656/7 benar. Salah? Baca hint, ulangi."}
 ],
 blind: {h: "Latihan Buta \u2014 DCF Kios Rina", body: `
 <p>"Kios Rina": FCFF 8, 8,5, 9 (Rp juta, 3 tahun); WACC 12%; g 2% (asumsi dinyatakan); net debt 10; saham 2 miliar. <b>Bangun DCF TANPA mengintip contoh</b>.</p>
 <details class="ans"><summary>Lihat jawaban (coba sendiri dulu!)</summary>
 <p><b>TV:</b> FCFF tahun-4 = 9 \u00d7 1,02 = 9,18; TV = 9,18 \u00f7 (0,12 \u2212 0,02) = <b>91,8</b>.</p>
 <p><b>PV:</b> PV TV = 91,8 \u00f7 1,12\u00b3 = <b>65,34</b>; PV FCFF = 8/1,12 + 8,5/1,12\u00b2 + 9/1,12\u00b3 = <b>20,32</b>.</p>
-<p><b>EV</b> = 65,34 + 20,32 = <b>85,66</b>; <b>ekuitas</b> = 85,66 \u2212 10 = <b>75,66</b>; <b>per saham</b> = 75,66 \u00f7 2 \u00d7 1.000 = <b>Rp37.832</b>.</p>
+<p><b>EV</b> = 65,34 + 20,32 = <b>85,66</b>; <b>ekuitas</b> = 85,66 \u2212 10 = <b>75,66</b>; <b>per saham</b> = 75,66 \u00f7 2.000 = <b>Rp0,03783</b>.</p>
+<p><i>Jebakan satuan:</i> ekuitas 75,66 dalam Rp JUTA (= Rp75.660.000) dan saham 2 miliar (= 2.000 juta saham) — Rp juta ÷ juta saham = Rp, jadi jawabannya Rp0,03783/saham. Mengalikan 1.000 hanya benar bila pembilang dalam triliun dan penyebut dalam miliar — seperti contoh INDF (73,15T ÷ 8,78 miliar saham = Rp8.332). Selalu samakan satuannya dulu sebelum membagi.</p>
 <p><i>Kenapa TV didiskonto 3 tahun?</i> Karena TV duduk di akhir tahun ke-3 \u2014 tahun yang sama dengan FCFF terakhir. Salah tahun = salah PV.</p>
 </details>`}
 },
@@ -2315,10 +2319,10 @@ sections: [
 <p>Bear bukan "WACC naik saja" \u2014 melainkan dunia memburuk: biaya modal naik <b>sambil</b> pertumbuhan melambat <b>sambil</b> arus kas melemah. Tiga driver bergerak bersama karena begitulah dunia bekerja.</p>
 <div class="callout"><b>Kenapa scenario \u2260 data table?</b> Data table menjawab "bagaimana kalau" yang mekanis; scenario menjawab "bagaimana kalau dunianya berubah" yang koheren. Skenario WACC naik + g naik + FCFFn naik itu <b>tidak koheren</b> \u2014 tidak ada dunia yang terlihat seperti itu. Koherensi adalah syarat scenario, bukan variasi acak.</div>`},
 {h: "Kenapa tornado dibaca ranking, bukan angka", body: `
-<p>\u00B110% itu <b>konvensi</b> \u2014 angka arbitrer yang disepakati. Ganti ke \u00B120%, semua \u0394EV kira-kira dobel. Yang tidak berubah: <b>urutannya</b>.</p>
+<p>\u00B110% itu <b>konvensi</b> \u2014 angka arbitrer yang disepakati. Ganti ke \u00B120%, semua \u0394EV kira-kira dobel. Yang tidak berubah: <b>urutannya</b> — untuk contoh (hampir linear) ini, setelah dihitung ulang ±20% rankingnya tetap.</p>
 <div class="formula">|\u0394EV|: WACC (5.921) &gt; FCFF normal (3.571) &gt; g (1.232) &gt; FCFF berjalan (179)</div>
 <p>Angka \u0394EV menjawab "seberapa besar"; ranking menjawab <b>"mana yang kupelajari duluan"</b>. Implikasi keputusan: habiskan jam riset untuk WACC (risiko refinancing, beta, biaya utang) \u2014 bukan untuk memoles FCFF berjalan sampai 3 desimal, yang ayunannya cuma 179.</p>
-<div class="callout"><b>Kenapa ranking, bukan angka?</b> Karena angka \u0394EV mati begitu konvensinya diganti, sedangkan ranking selamat. Insight yang tahan ganti konvensi = insight yang bisa dipakai mengambil keputusan; sisanya cuma dekorasi.</div>`},
+<div class="callout"><b>Kenapa ranking, bukan angka?</b> Karena angka \u0394EV mati begitu konvensinya diganti, sedangkan ranking selamat. Insight yang tahan ganti konvensi = insight yang bisa dipakai mengambil keputusan; sisanya cuma dekorasi. Catatan: ini berlaku untuk contoh ini; pada model nonlinear atau berbatas, mengganti swing BISA mengubah ranking — dan ayunan ±10% bukan ukuran risiko yang setara antar-driver (driver dengan volatilitas historis berbeda tidak sebanding hanya karena swing-nya sama). Ranking adalah hasil hitung ulang, bukan hukum.</div>`},
 {h: "Jebakan: g \u2265 WACC \u2014 model meminta dunia mustahil", body: `
 <p>Rumus Gordon punya syarat mutlak: <b>g &lt; WACC</b>. Kalau g \u2265 WACC, penyebut \u2264 0 \u2192 TV negatif atau tak hingga. Ekonominya: perusahaan yang tumbuh selamanya lebih cepat dari biaya modalnya <b>eventually lebih besar dari seluruh perekonomian</b> \u2014 mustahil.</p>
 <p>Yang lebih berbahaya dari error terang-terangan adalah <b>g yang sedikit terlalu tinggi</b>: tidak error, cuma diam-diam menggelembungkan TV. g 3% \u2192 5% pada WACC 12%: TV 40.000 \u2192 51.429 (+29%) \u2014 tanpa satu pun sel yang protes.</p>
@@ -2367,15 +2371,16 @@ sections: [
 {h: "Monte Carlo: dari 3 skenario ke 1.000 kemungkinan", body: `
 <p>Skenario H15 (bear/base/bull) hanya 3 titik. <b>Monte Carlo</b> mengganti asumsi titik dengan <b>distribusi</b> — lalu menjalankan model ribuan kali dan membaca distribusi hasilnya. Yang berubah bukan modelnya, melainkan cara kita memperlakukan ketidakpastian:</p>
 <p><b>Langkah:</b> (1) pilih 2–3 driver yang paling tidak pasti (WACC, g, revenue); (2) beri tiap driver distribusi — diskrit (3 nilai + probabilitas) sudah cukup untuk belajar; (3) hitung EV untuk tiap kombinasi; (4) baca <i>expected value</i>, sebaran, dan P(EV di bawah ambang).</p>
-<div class="example korporat"><div class="lbl">🏢 Contoh — 3×3 = 9 dunia, dihitung tangan</div>
-<p>FCFF₁ Rp100jt. WACC {10%, 12%, 14%} dgn probabilitas {25%, 50%, 25%}; g {2%, 3%, 4%} dgn probabilitas {25%, 50%, 25%}; independen. EV = 100 × (1+g) ÷ (WACC − g):</p>
+<p><b>Enumerasi eksak vs Monte Carlo:</b> contoh 3×3 di bawah mendaftar SEMUA kombinasi satu kali — itu enumerasi eksak, bukan simulasi. Monte Carlo yang sesungguhnya mengundi acak berulang kali (mis. RAND di Excel L5); rata-rata ribuan undian itu konvergen ke benchmark eksak E[EV] = 1.183,23 ini. Grid ini adalah jawabannya yang eksak — simulasi hanya cara mendekatinya saat kombinasinya terlalu banyak untuk didaftar.</p>
+<div class="example korporat"><div class="lbl">🏢 Contoh — 3×3 = 9 dunia, dihitung tangan (enumerasi eksak — BUKAN simulasi Monte Carlo)</div>
+<p>FCFF₀ Rp100jt. WACC {10%, 12%, 14%} dgn probabilitas {25%, 50%, 25%}; g {2%, 3%, 4%} dgn probabilitas {25%, 50%, 25%}; independen. EV = 100 × (1+g) ÷ (WACC − g):</p>
 <table class="brutal">
 <tr><th>WACC \ g</th><th>2%</th><th>3%</th><th>4%</th></tr>
 <tr><td><b>10%</b></td><td>1.275</td><td>1.471,43</td><td>1.733,33</td></tr>
 <tr><td><b>12%</b></td><td>1.020</td><td>1.144,44</td><td>1.300</td></tr>
 <tr><td><b>14%</b></td><td>850</td><td>936,36</td><td>1.040</td></tr>
 </table>
-<p><b>E[EV] = Rp1.183,23jt</b> (jumlah EV × probabilitas gabungan) — <i>lebih tinggi</i> dari EV base-case Rp1.144,44jt, karena EV cembung terhadap WACC dan g — EV = 100(1+g)/(WACC−g) cembung terhadap keduanya (penurunan WACC menaikkan EV lebih besar daripada kenaikan WACC menurunkannya, dan kenaikan g menaikkan EV lebih besar daripada penurunan g menurunkannya). <b>P(EV &lt; Rp1.000jt) = 18,75%</b> (sel WACC 14% × g 2–3%: 6,25% + 12,5%). Di Excel L5 kamu membangun ini dengan Data Table + RAND — 9 sel ini adalah versi mininya.</p>
+<p><b>E[EV] = Rp1.183,23jt</b> (jumlah EV × probabilitas gabungan) — <i>lebih tinggi</i> dari EV base-case Rp1.144,44jt, karena EV cembung terhadap WACC dan g — EV = 100(1+g)/(WACC−g) cembung terhadap keduanya (penurunan WACC menaikkan EV lebih besar daripada kenaikan WACC menurunkannya, dan kenaikan g menaikkan EV lebih besar daripada penurunan g menurunkannya). <b>P(EV &lt; Rp1.000jt) = 18,75%</b> (sel WACC 14% × g 2–3%: 6,25% + 12,5%). Di Excel L5 kamu membangun Monte Carlo yang sesungguhnya dengan Data Table + RAND — ribuan undian acak yang rata-ratanya konvergen ke benchmark eksak 1.183,23 ini; 9 sel di atas adalah versi enumerasi eksaknya.</p>
 <div class="callout"><b>Yang tidak boleh dilakukan:</b> mengambil rata-rata WACC lalu menghitung satu EV dan menyebutnya "expected value". E[f(X)] ≠ f(E[X]) bila f tidak linear — dan EV terhadap WACC jelas tidak linear. Itulah seluruh alasan Monte Carlo ada.</div>`},
 {h: "Decision tree: keputusan bertahap punya nilai", body: `
 <p>Beberapa keputusan tidak diambil sekali — melainkan <b>bertahap</b>: investasi hari ini membeli <i>hak</i> untuk memutuskan lagi besok. <b>Decision tree</b> menilai hak itu dengan expected value di tiap cabang (pasangan alami real-07: smelter sebagai opsi bertahap).</p>
@@ -2398,7 +2403,7 @@ quiz: [
 {q: "Analis memakai g = 13% dengan WACC 12%. Apa yang terjadi?", opts: ["Penyebut negatif \u2192 TV tak bermakna; syarat g < WACC dilanggar","TV naik 8%","TV menjadi nol","Tidak masalah"], answer: 0, k: "jebakan_g", diff: "Medium",
  hints: ["Hitung penyebutnya: 0,12 \u2212 0,13.","Bisakah perusahaan tumbuh selamanya lebih cepat dari biaya modalnya?"],
  explain: "Penyebut \u22120,01 \u2192 TV negatif. g \u2265 WACC = model meminta dunia yang mustahil."},
-{q: "Grid Monte Carlo 3×3 (WACC 10/12/14%, g 2/3/4%, probabilitas 25/50/25%). E[EV]?", opts: ["Rp1.183,23jt","Rp1.144,44jt","Rp1.020,00jt","Rp1.275,00jt"], answer: 0, k: "monte_carlo", diff: "Medium",
+{q: "Grid enumerasi eksak 3×3 (WACC 10/12/14%, g 2/3/4%, probabilitas 25/50/25%). E[EV]?", opts: ["Rp1.183,23jt","Rp1.144,44jt","Rp1.020,00jt","Rp1.275,00jt"], answer: 0, k: "monte_carlo", diff: "Medium",
  hints: ["E[EV] = jumlah EV × probabilitas gabungan.", "E[EV] > EV base-case karena EV cembung terhadap WACC dan g."],
  explain: "E[EV] = Rp1.183,23jt — di atas EV base-case Rp1.144,44jt. Rata-rata WACC lalu satu EV bukan expected value (E[f(X)] ≠ f(E[X]))."},
 {q: "Dari grid yang sama, P(EV < Rp1.000jt)?", opts: ["18,75%","6,25%","25%","12,5%"], answer: 0, k: "monte_carlo", diff: "Medium",
@@ -2421,12 +2426,12 @@ hell: [
  explain: "\u22121.801,80 + 38.918,92 = Rp37.117rb. Skenario = paket yang boleh di-tweak satu komponen \u2014 tetap koheren."},
 {q: "Konvensi tornado diganti \u00B110% \u2192 \u00B120%. Apa yang terjadi pada ranking driver?", opts: ["Angka \u0394EV membesar, ranking tetap","Ranking ikut berubah total","Tornado menjadi tak valid","WACC turun ke peringkat 3"], answer: 0, k: "tornado_ranking", diff: "Medium",
  hints: ["\u0394EV \u2248 kemiringan \u00D7 swing \u2014 swing 2\u00D7 lipat, \u0394EV ikut ~2\u00D7 lipat.","Apakah urutannya berubah kalau semua dikali ~2?"],
- explain: "Angka \u0394EV membesar (~2\u00D7), ranking TETAP \u2014 inilah kenapa tornado dibaca sebagai ranking, bukan angka."}
+ explain: "Angka \u0394EV membesar (~2\u00d7), ranking TETAP \u2014 inilah kenapa tornado dibaca sebagai ranking, bukan angka — untuk contoh (hampir linear) ini; pada model nonlinear/bounded, ranking bisa berubah bila swing diganti."}
 ],
 tasks: [
 {t: "Task A \u2014 Workbook sensitivitas PT Maju Jaya (\u00B14 jam)", d: "Download template Hari 15 dari Drive. Bangun: EV base dari input live \u2192 data table 3\u00D73 \u2192 scenario Bear/Base/Bull \u2192 tornado \u00B110% + ranking. Semua sel jawaban rumus yang me-link input \u2014 target checker \u226580.", url: "https://drive.google.com/drive/folders/1zQ-lG10LXiVRLrNRM-RqMkqvPlZmFReK"},
 {t: "Task B \u2014 Tiga percobaan wajib (\u00B130 mnt)", d: "Di file jawabanmu: (1) WACC 12%\u219210%, catat EV base; (2) g 3%\u21925%, catat EV; (3) FCFFn 3.600\u21920, catat EV. Kembalikan semua ke base. Tulis satu kalimat per percobaan: apa yang kamu pelajari."},
-{t: "Task C \u2014 Quiz di atas", d: "Target \u22654/5 benar. Hell mode (4 soal) untuk yang berani \u2014 di situlah pemahaman diuji."}
+{t: "Task C \u2014 Quiz di atas", d: "Target \u22657/8 benar. Hell mode (4 soal) untuk yang berani \u2014 di situlah pemahaman diuji."}
 ],
 blind: {h: "Uji Kilat \u2014 sensitivitas 30 menit (angka beda)", body: `
 <p>"PT Sinar Abadi" (Rp ribu). <b>Uji kilat sensitivitas tanpa mengintip contoh</b> \u2014 tulis di spreadsheet baru: FCFF0 1.500, FCFFn 5.000, WACC 10%, g 4%.</p>
@@ -2701,27 +2706,28 @@ sections: [
 <tr><td>Kas ke utang</td><td>4.944,4</td><td>5.888,3</td><td>6.937,6</td><td>8.102,5</td><td>9.393,8</td></tr>
 <tr><td><b>Utang akhir</b></td><td><b>21.055,6</b></td><td><b>15.167,3</b></td><td><b>8.229,7</b></td><td><b>127,2</b></td><td><b>0</b></td></tr>
 </table>
-<p>Utang <b>lunas di Y5</b> \u2014 dibayar dari kas PT Sinar Abadi sendiri; sponsor tidak nambah modal sepeser pun. Sekarang keajaibannya: <b>bahkan jika EV tidak tumbuh</b> (tetap 50.000), equity exit = 50.000 \u2212 0 = 50.000 \u2192 MoIC <b>2,0x dari pelunasan utang SAJA</b>. Pertumbuhan EBITDA 8% menambah sisanya \u2192 2,94x.</p>
+<p><b>Rekonsiliasi kas Y5 (jangan sampai hilang):</b> kas ke utang Y5 = 9.393,8, tapi sisa utang awal Y5 hanya 127,2 — hanya 127,2 yang dibayar untuk melunasi utang. Sisanya 9.393,8 − 127,2 = <b>9.266,6</b> tetap menjadi kas perusahaan (bisa dibagikan) dan WAJIB masuk total sponsor di exit. Model yang hanya menghitung EV − utang akan menghilangkan kas ini.</p>
+<p>Utang <b>lunas di Y5</b> \u2014 dibayar dari kas PT Sinar Abadi sendiri; sponsor tidak nambah modal sepeser pun. Sekarang keajaibannya: <b>bahkan jika EV tidak tumbuh</b> (tetap 50.000), equity exit = 50.000 + 9.266,6 \u2212 0 = 59.266,6 \u2192 MoIC <b>2,37x dari pelunasan utang + kas sisa SAJA</b>. Pertumbuhan EBITDA 8% menambah sisanya \u2192 3,31x.</p>
 <div class="callout"><b>Kenapa pelunasan utang = return?</b> Karena <b>equity = EV \u2212 utang</b>. Tiap Rp1 utang yang lunas = Rp1 equity yang tercipta \u2014 <i>tanpa EV harus naik</i>. Inilah <b>deleveraging return</b>: mesin return LBO yang tidak butuh pasar murah hati. Sponsor dibayar oleh disiplin kas target, bukan oleh spekulasi harga.</div>`},
-{h: "Exit math: 73.466 \u2212 0 = 73.466", body: `
+{h: "Exit math: 73.466 + 9.267 \u2212 0 = 82.733", body: `
 
 <p>Di Y5 sponsor "panen". Exit math tiga baris (Rp ribu):</p>
 <div class="formula">EV exit = EBITDA Y5 \u00d7 5,0x = 14.693,28 \u00d7 5 = <b>73.466,40</b></div>
-<div class="formula">Equity exit = EV \u2212 utang akhir = 73.466,40 \u2212 0 = <b>73.466,40</b></div>
-<div class="formula">MoIC = equity exit \u00f7 equity masuk = 73.466,40 \u00f7 25.000 = <b>2,94x</b></div>
-<p>Tiap Rp1 yang disetor sponsor kembali <b>Rp2,94</b> dalam 5 tahun.</p>
+<div class="formula">Equity exit = EV + kas sisa \u2212 utang akhir = 73.466,40 + 9.266,6 \u2212 0 = <b>82.733,0</b></div>
+<div class="formula">MoIC = equity exit \u00f7 equity masuk = 82.733,0 \u00f7 25.000 = <b>3,31x</b></div>
+<p>Tiap Rp1 yang disetor sponsor kembali <b>Rp3,31</b> dalam 5 tahun.</p>
 <div class="callout"><b>Kenapa multiple exit = multiple entry (5,0x)?</b> Asumsi <b>netral</b>: kita tidak mengklaim bisa menjual per unit EBITDA lebih mahal dari harga beli. Seluruh return datang dari dua mesin yang terbukti di schedule \u2014 <b>(a)</b> pertumbuhan EBITDA dan <b>(b)</b> pelunasan utang \u2014 bukan dari "beli murah, jual mahal multiple-nya". Analis yang menaikkan multiple exit tanpa alasan = mengarang return.</div>`},
 {h: "Kenapa MoIC vs IRR", body: `
 
 <p>Dua metrik, dua cerita:</p>
 <table class="brutal">
 <tr><th>Metrik</th><th>Nilai kasus</th><th>Menjawab</th></tr>
-<tr><td><b>MoIC</b></td><td><b>2,94x</b></td><td>Berapa kali lipat modal kembali? (besaran)</td></tr>
-<tr><td><b>IRR</b></td><td><b>\u224824%/thn</b></td><td>Seberapa cepat? (kecepatan)</td></tr>
+<tr><td><b>MoIC</b></td><td><b>3,31x</b></td><td>Berapa kali lipat modal kembali? (besaran)</td></tr>
+<tr><td><b>IRR</b></td><td><b>\u224827%/thn</b></td><td>Seberapa cepat? (kecepatan)</td></tr>
 </table>
-<p>IRR di sini \u224824% per tahun (dihitung manual: 2,94<sup>1/5</sup> \u2212 1 \u2014 karena seluruh return keluar di Y5). Bandingkan: 2,94x dalam <b>3</b> tahun \u2248 43%/thn; 2,94x dalam <b>7</b> tahun \u2248 17%/thn. <b>MoIC sama, IRR beda jauh</b> \u2014 waktu mengubah segalanya.</p>
+<p>IRR di sini \u224827% per tahun (dihitung manual: 3,31<sup>1/5</sup> \u2212 1 \u2014 karena seluruh return keluar di Y5). Bandingkan: 3,31x dalam <b>3</b> tahun \u2248 49%/thn; 3,31x dalam <b>7</b> tahun \u2248 19%/thn. <b>MoIC sama, IRR beda jauh</b> \u2014 waktu mengubah segalanya.</p>
 <p><b>Kenapa IRR tidak di-checker?</b> Fungsi IRR/XIRR beda implementasi antar Excel, Sheets, dan LibreOffice (konvensi tanggal arus kas, tebakan awal) \u2014 checker lintas-app tidak bisa adil. IRR diajarkan <b>konseptual</b> di sini; yang diuji mesin = MoIC.</p>
-<div class="callout"><b>Kenapa butuh dua metrik, bukan satu?</b> Karena MoIC <b>buta waktu</b> (2,94x dalam 5 vs 10 tahun = dunia berbeda) dan IRR bisa "terlihat cantik" dari timing arus kas interim. Profesional membaca keduanya: MoIC = jujur soal kelipatan, IRR = jujur soal kecepatan.</div>`},
+<div class="callout"><b>Kenapa butuh dua metrik, bukan satu?</b> Karena MoIC <b>buta waktu</b> (3,31x dalam 5 vs 10 tahun = dunia berbeda) dan IRR bisa "terlihat cantik" dari timing arus kas interim. Profesional membaca keduanya: MoIC = jujur soal kelipatan, IRR = jujur soal kecepatan.</div>`},
 {h: "Jebakan leverage: return membesar, risiko ikut membesar", body: `
 
 <p>Leverage entry = 26.000 \u00f7 10.000 = <b>2,6x EBITDA</b> \u2014 moderat. Cek pengamannya, <b>interest coverage</b>:</p>
@@ -2746,10 +2752,10 @@ sections: [
 <tr><td>Utang supplier non-bunga</td><td>Term loan berbunga 7%</td></tr>
 <tr><td>Cicil dari kas harian</td><td>Cash sweep: NI + D&amp;A \u2212 capex</td></tr>
 <tr><td>Tidak ada "exit"</td><td>Exit Y5: EV \u2212 utang = equity</td></tr>
-<tr><td>Untung = kas sisa</td><td>Return = MoIC 2,94x &amp; IRR \u224824%</td></tr>
+<tr><td>Untung = kas sisa</td><td>Return = MoIC 3,31x &amp; IRR \u224827%</td></tr>
 </table>
-<p>Rekap Hari 17: sources = uses <b>51.000</b> \u2713 \u2192 debt schedule 5 tahun \u2192 utang <b>lunas Y5</b> \u2192 exit <b>73.466</b> \u2192 MoIC <b>2,94x</b> \u2192 jebakan leverage (coverage 4,84x, waspada covenant).</p>
-<div class="callout"><b>Kenapa belajar LBO di FMVA?</b> Karena LBO adalah <b>ujian integrasi</b>: forecast (Hari 08) + bunga &amp; pajak + debt schedule + exit multiple (Hari 11) + MoIC/IRR \u2014 semua dalam satu model. Bukan topik baru; ini tempat semua keping menyatu. Kalau debt schedule-mu balance dan MoIC-mu 2,94x, mekanik dasarmu beres.</div>`}
+<p>Rekap Hari 17: sources = uses <b>51.000</b> \u2713 \u2192 debt schedule 5 tahun \u2192 utang <b>lunas Y5</b> \u2192 exit <b>82.733</b> \u2192 MoIC <b>3,31x</b> \u2192 jebakan leverage (coverage 4,84x, waspada covenant).</p>
+<div class="callout"><b>Kenapa belajar LBO di FMVA?</b> Karena LBO adalah <b>ujian integrasi</b>: forecast (Hari 08) + bunga &amp; pajak + debt schedule + exit multiple (Hari 11) + MoIC/IRR \u2014 semua dalam satu model. Bukan topik baru; ini tempat semua keping menyatu. Kalau debt schedule-mu balance dan MoIC-mu 3,31x, mekanik dasarmu beres.</div>`}
 ,
 {h: "Dokumen kredit LBO: covenant test, cash sweep, refi & div recap", body: `
 <p>Debt schedule H17 menghitung bunga &amp; pokok. <b>Credit agreement</b> menentukan <i>apakah perusahaan boleh tetap beroperasi</i> — lewat tiga mekanisme yang wajib kamu modelkan, bukan sekadar disebut:</p>
@@ -2770,9 +2776,9 @@ quiz: [
 {q: "Utang awal 26.000, kas ke utang 4.944,4. Utang akhir Y1?", opts: ["20.555,6", "21.555,6", "22.055,6", "21.055,6"], answer: 3, k: "debt_paydown", diff: "Medium",
  hints: ["Utang akhir = utang awal \u2212 kas ke utang.", "26.000 \u2212 4.944,4 = ?"],
  explain: "21.055,6 \u2014 tahun pertama dari pelunasan 5 tahun."},
-{q: "Equity exit 73.466,4; equity sponsor 25.000. MoIC?", opts: ["2,94x", "1,94x", "2,47x", "3,94x"], answer: 0, k: "moic", diff: "Medium",
- hints: ["MoIC = equity exit \u00f7 equity yang disetor.", "73.466,4 \u00f7 25.000 = ?"],
- explain: "2,94x \u2014 tiap Rp1 sponsor kembali Rp2,94."},
+{q: "Equity exit 82.733,0; equity sponsor 25.000. MoIC?", opts: ["3,31x", "2,94x", "2,47x", "3,94x"], answer: 0, k: "moic", diff: "Medium",
+ hints: ["MoIC = equity exit \u00f7 equity yang disetor.", "82.733,0 \u00f7 25.000 = ?"],
+ explain: "3,31x \u2014 tiap Rp1 sponsor kembali Rp3,31. Angka lama 2,94x menghilangkan kas sisa Y5 Rp9.266,6 (kas ke utang 9.393,8 \u2212 sisa utang 127,2) dari equity exit."},
 {q: "Mezzanine 5.000 @6% PIK. Saldo akhir Tahun 1?", opts: ["5.300","5.000","5.600","4.700"], answer: 0, k: "mezz_pik", diff: "Medium",
  hints: ["PIK = bunga yang ditambahkan ke pokok, bukan dibayar tunai.","5.000 + 5.000 × 6% = ? (5.600 itu bila SEMUA bunga 12% di-PIK; 4.700 itu bila kupon tunai ikut mengurangi pokok.)"],
  explain: "5.000 + 300 = 5.300. PIK menunda kas — pokoknya membesar (Tahun 2: 5.618)."},
@@ -2785,11 +2791,11 @@ quiz: [
 
 ],
 hell: [
-{q: "Exit multiple turun 5x \u2192 4x (jadwal utang tidak berubah). MoIC baru?", opts: ["2,94x", "2,65x", "2,35x", "1,95x"], answer: 2, diff: "Medium",
- explain: "EV exit = 14.693,28 \u00d7 4 = 58.773,12; equity = 58.773,12 (utang 0); MoIC = 58.773,12 \u00f7 25.000 = 2,35x. Multiple exit = pengungkit kedua setelah growth \u2014 makanya asumsi netral 5,0x itu konservatif."},
+{q: "Exit multiple turun 5x \u2192 4x (jadwal utang tidak berubah). MoIC baru?", opts: ["2,94x", "2,65x", "2,72x", "1,95x"], answer: 2, diff: "Medium",
+ explain: "EV exit = 14.693,28 \u00d7 4 = 58.773,12; equity = 58.773,12 + 9.266,6 (kas sisa Y5) \u2212 0 = 68.039,72; MoIC = 68.039,72 \u00f7 25.000 = 2,72x. Multiple exit = pengungkit kedua setelah growth \u2014 makanya asumsi netral 5,0x itu konservatif."},
 {q: "Tarif bunga naik 7% \u2192 10%. Utang akhir Y1?", opts: ["21.664", "21.056", "20.664", "22.164"], answer: 0, diff: "Medium",
  explain: "Bunga = 2.600 \u2192 EBT 6.200 \u2192 pajak 1.364 \u2192 NI 4.836 \u2192 kas ke utang 4.336 \u2192 utang akhir 21.664. Naik 608,4 vs kanonis \u2014 pelunasan melambat."},
-{q: "EBITDA Y1 jatuh 20% (8.640), sisanya kanonis. Risiko terbesar?", opts: ["Bunga ikut turun 20%", "Kas ke utang turun \u2192 pelunasan melambat; coverage 3,65x", "Pajak naik", "MoIC pasti tetap 2,94x"], answer: 1, diff: "Hard",
+{q: "EBITDA Y1 jatuh 20% (8.640), sisanya kanonis. Risiko terbesar?", opts: ["Bunga ikut turun 20%", "Kas ke utang turun \u2192 pelunasan melambat; coverage 3,65x", "Pajak naik", "MoIC pasti tetap 3,31x"], answer: 1, diff: "Hard",
  explain: "Bunga TETAP 1.820 (dari utang awal). EBIT = 6.640 \u2192 coverage 3,65x; NI & kas menyusut \u2192 utang akhir Y1 lebih besar dari 21.055,6. Leverage memperbesar kabar buruk sama seperti kabar baik."},
 {q: "Utang 26.000 lunas di Y5. Dari mana uang pelunasannya?", opts: ["Sponsor menambah modal", "Kas operasi PT Sinar Abadi sendiri (NI + D&A \u2212 capex)", "Kreditur menghapus utang", "Dikonversi jadi saham"], answer: 1, diff: "Easy",
  explain: "Inti LBO: target membayar utang akuisisinya sendiri dari kas operasinya. Sponsor tidak setor lagi sepeser pun setelah closing."}
@@ -2797,7 +2803,7 @@ hell: [
 tasks: [
 {t: "Task A \u2014 Workbook LBO PT Sinar Abadi (\u00b14 jam)", d: "Download file latihan Hari 17 dari Drive. Isi sel input + tulis rumus: sources & uses, debt schedule 5 tahun, exit math. Semua sel jawaban = rumus \u2014 target semua BENAR \u2713 + BALANCE \u2713.", url: "https://drive.google.com/drive/folders/1CodmXvgm7OcVAWPv6Lfh6M90YRGAEdey"},
 {t: "Task B \u2014 Eksperimen input live (\u00b145 mnt)", d: "Setelah 100/100: ubah growth 8%\u21920%, catat MoIC baru; ubah bunga 7%\u219210%, catat utang akhir Y1 baru. Kembalikan ke kanonis (8%/7%) sebelum upload.", url: "https://drive.google.com/drive/folders/1CodmXvgm7OcVAWPv6Lfh6M90YRGAEdey"},
-{t: "Task C \u2014 Quiz di atas", d: "Target \u22655/6 benar. Salah? Baca hint, ulangi.", url: "https://drive.google.com/drive/folders/1CodmXvgm7OcVAWPv6Lfh6M90YRGAEdey"}
+{t: "Task C \u2014 Quiz di atas", d: "Target \u22657/8 benar. Salah? Baca hint, ulangi.", url: "https://drive.google.com/drive/folders/1CodmXvgm7OcVAWPv6Lfh6M90YRGAEdey"}
 ],
 blind: {h: "Latihan Buta \u2014 LBO mini 'PT Maju Kecil'", body: `
 
@@ -2808,7 +2814,7 @@ blind: {h: "Latihan Buta \u2014 LBO mini 'PT Maju Kecil'", body: `
 <p><b>Y2:</b> EBITDA 4.840; EBIT 4.040; bunga 641,28; EBT 3.398,72; pajak 747,72; NI 2.651; kas 2.451; <b>utang akhir 5.565</b>.</p>
 <p><b>Y3:</b> EBITDA 5.324; EBIT 4.524; bunga 445,20; EBT 4.078,80; pajak 897,34; NI 3.181,46; kas 2.981,46; <b>utang akhir 2.583,53</b>.</p>
 <p><b>Exit:</b> EV = 5.324 \u00d7 5 = <b>26.620</b>; equity = 26.620 \u2212 2.583,53 = <b>24.036,47</b>; MoIC = 24.036,47 \u00f7 10.400 = <b>2,31x</b>.</p>
-<p><i>Kenapa MoIC lebih kecil dari kasus utama (2,94x)?</i> Horizon lebih pendek (3 vs 5 tahun) + leverage entry lebih kecil (2,5x vs 2,6x EBITDA). Mesinnya sama \u2014 hanya inputnya berubah.</p>
+<p><i>Kenapa MoIC lebih kecil dari kasus utama (3,31x)?</i> Horizon lebih pendek (3 vs 5 tahun) + leverage entry lebih kecil (2,5x vs 2,6x EBITDA). Mesinnya sama \u2014 hanya inputnya berubah.</p>
 </details>`}
 },
 {
@@ -4899,7 +4905,7 @@ const GLOSSARY = [
 ["Rekonsiliasi","Reconciliation","Menyesuaikan dua angka sampai cocok lewat koreksi yang jelas.","NI → CFO: tambah non-kas, kurang ΔWC."],
 ["Tie-out","Tie-out","Pemeriksaan bahwa dua angka yang harus sama benar-benar sama.","Kas neraca vs kas akhir arus kas = 0."],
 ["Roll-forward","Roll-forward","Saldo akhir = saldo awal + masuk − keluar.","RE, PPE neto, kas."],
-["Beta","Beta","Ukuran risiko sistematis saham vs pasar. Beta 1,1 = 10% lebih volatil dari pasar.","Beta 1,3 → cost of equity naik 1,2 poin."],
+["Beta","Beta","Ukuran risiko sistematis saham vs pasar. Beta 1,1 = sensitivitas sistematis 10% lebih tinggi dari pasar (bukan total volatilitas).","Beta 1,3 → cost of equity naik 1,2 poin."],
 ["Schedule","Schedule","Tabel roll-forward: saldo awal + masuk − keluar = saldo akhir.","Schedule PP&E: 3.600 + 2.500 − 550 = 5.550."],
 ["Exit multiple","Exit multiple","Metode nilai terminal: jual perusahaan di akhir forecast dengan kelipatan EBITDA.","EBITDA 2.625 × 8 = TV Rp21.000rb."],
 ["Forecast","Forecast","Proyeksi angka masa depan dari driver × asumsi — bukan tebakan.","Pendapatan 2027 = 16.800 × (1 + 10%)."],
@@ -5111,6 +5117,7 @@ sections: [
 <li><b>Allocate the price to each obligation</b> — in proportion to each one's standalone selling price.</li>
 <li><b>Recognize revenue when (or as) obligations are satisfied</b> — point-in-time or over-time.</li>
 </ol>
+<p><b>Scope limits of PSAK 115:</b> the five steps apply to contracts with customers — NOT to leases (PSAK 116), insurance contracts (PSAK 117), or financial instruments (PSAK 109). Each has its own standard; do not use five-step logic to judge a lease or an insurance policy.</p>
 <p><b>Point-in-time vs over-time.</b> The warung sells goods: revenue is recognized <b>when the goods are handed over</b> (point-in-time) — control transfers, done. Services enjoyed gradually (subscriptions, maintenance, phased construction) are recognized <b>over time</b>, in line with progress.</p>
 <p><b>Worked example (stated illustration):</b> a 12-month service contract for Rp12m, paid in advance. Two obligations: goods Rp2m (delivered at signing) + service Rp10m over 12 months.</p>
 <table class="brutal">
@@ -5217,7 +5224,7 @@ sections: [
 <p><b>Why analysts care:</b> a high BEP = high <i>operating leverage</i> (Day 02 § opex): a small volume drop, and profit falls hard. That is why fixed-cost-heavy businesses (factories, miners, airlines) have far more volatile profits than their revenue. When modelling a bear scenario in Day 13/15, check first how far volume sits from BEP.</p>
 <div class="callout"><b>Bridge to Day 18:</b> CVP is the simple version of a flex budget — when volume moves, variable cost moves with it, fixed cost does not. Same formula, bigger scale.</div>
 <p><b>ABC costing: overhead does not always follow volume.</b> Traditional allocation splits Rp1,200k of overhead by units (1,500 units \u2192 Rp0.8k/unit): Coffee (1,000 units) bears 800, Cake (500 units) 400. <b>Activity-based costing (ABC)</b> traces cost drivers: setups Rp400k/40 setups = Rp10k per setup; inspections Rp800k/200 inspections = Rp4k per inspection. Coffee (20 setups, 50 inspections) \u2192 20\u00d710 + 50\u00d74 = <b>Rp400k (Rp0.4k/unit)</b>; Cake (20 setups, 150 inspections) \u2192 200 + 600 = <b>Rp800k (Rp1.6k/unit)</b> \u2014 the reverse of volume allocation! The \u201csmall\u201d cake is inspection-hungry. Volume allocation punishes high-volume products and hides activity-hungry ones.</p>
-<p><b>Transfer pricing: an internal price moves profit between divisions, not group profit.</b> The Upstream division sells to Downstream: variable cost Rp30k/unit, market price Rp60k. A transfer price of Rp50k \u2192 Upstream profit Rp20k/unit. With idle Upstream capacity, the minimum transfer price = variable cost Rp30k \u2014 below that, Upstream loses on every unit transferred. Above the market price (Rp60k), Downstream should buy outside. Rule: an internal transfer only makes sense when the transfer price sits between variable cost and market price \u2014 and group profit does not change with the transfer price chosen, only its split between divisions (which drives bonuses and buy/sell decisions).</p>`}],
+<p><b>Transfer pricing: an internal price moves profit between divisions, not group profit.</b> The Upstream division sells to Downstream: variable cost Rp30k/unit, market price Rp60k. A transfer price of Rp50k \u2192 Upstream profit Rp20k/unit. With idle Upstream capacity, the minimum transfer price = variable cost Rp30k \u2014 below that, Upstream loses on every unit transferred. At FULL Upstream capacity the minimum rises: variable cost + opportunity cost (the profit forgone on the outside sale sacrificed) \u2014 because each unit transferred displaces a market sale. Above the market price (Rp60k), Downstream should buy outside. Rule: an internal transfer only makes sense when the transfer price sits between variable cost (or variable cost + opportunity cost at full capacity) and market price \u2014 and group profit does not change with the transfer price chosen for the same transaction and operating decisions, only its split between divisions (which drives bonuses and buy/sell decisions).</p>`}],
 quiz: [
 {q: `Shop: 50 customers/day × Rp20k × 26 open days. Projected monthly revenue?`, opts: ["Rp20m","Rp26m","Rp13m","Rp52m"], answer: 1, k: "revenue_modeling",
  hints: ["Revenue = volume × price × period.","50 × 20,000 × 26 = ?"],
@@ -5231,9 +5238,9 @@ quiz: [
 {q: `Which cost is VARIABLE?`, opts: ["5% of revenue sales commission","Fixed monthly shop rent","Fixed monthly staff salaries","Annual straight-line depreciation"], answer: 0, k: "opex",
  hints: ["Variable = rises/falls with sales volume.","Ask: if the shop closes for a month, which cost disappears?"],
  explain: `Commissions exist only if there are sales. The other three keep running at zero volume.`},
-{q: `Two shops, revenue both down 10%. Shop A fixed cost Rp5m, shop B fixed cost Rp1m. Whose profit falls harder?`, opts: ["B, because its total costs are smaller than A's","Both equally, since revenue fell equally","Cannot be determined without full data","A, because its operating leverage is higher"], answer: 3, k: "operating_leverage",
+{q: `Two shops, starting revenue BOTH Rp10m with the same variable-cost structure; revenue both down 10%. Shop A fixed cost Rp5m, shop B fixed cost Rp1m. Whose profit falls harder — in PERCENTAGE terms?`, opts: ["B, because its total costs are smaller than A's","Both equally, since revenue fell equally","Cannot be determined without full data","A, because its operating leverage is higher"], answer: 3, k: "operating_leverage",
  hints: ["Fixed costs don't fall when revenue falls.","That's the definition of operating leverage."],
- explain: `A's Rp5m fixed cost stays even as revenue falls — its profit gets hit harder. That's operating leverage.`},
+ explain: `The profit fall in RUPIAH is the same — revenue falls Rp1m at both, and variable costs fall with it. But in PERCENTAGE terms A falls harder: A's starting profit is smaller (Rp5m fixed vs Rp1m), so the same rupiah fall eats a bigger share of A's profit. That's operating leverage: fixed costs don't fall when revenue falls.`},
 {q: `Revenue up 20% but gross margin down 55% → 48%. Most likely diagnosis?`, opts: ["Selling prices rose faster than costs","Salaries and rent rose along","Unit costs rose faster than selling prices","No problem — what matters is revenue grew"], answer: 2, k: "margin",
  hints: ["Margin = (Revenue − COGS)/Revenue. If margin falls while revenue rises…","…then COGS rose FASTER than revenue."],
  explain: `Squeezed margin = unit costs rising faster than prices (or mix shifting to cheap products). Rising revenue hides the problem — don't be fooled.`},
@@ -5275,7 +5282,7 @@ hell: [
 tasks: [
 {t: "Task A — 2026 shop IS forecast (±3 hrs)", d: "Download the Day 02 practice file from Drive. Build the 2026 Income Statement forecast from 2025 data + assumptions. Every answer cell must be a formula — the answer file is for cross-checking.", url: "https://drive.google.com/drive/folders/1PRqb3h9yNF6p0x0ZW5QhqMB9vnDLmI2b"},
 {t: "Task B — Common-size & margin analysis (±1 hr)", d: "Convert the 2025 IS and the 2026 forecast to common-size (% of revenue). Write 3 sentences: what changed and why.", url: ""},
-{t: "Task C — The quiz above", d: "Target ≥6/8 correct. Missed some? Read the hints, try again.", url: ""}
+{t: "Task C — The quiz above", d: "Target ≥10/13 correct. Missed some? Read the hints, try again.", url: ""}
 ],
 blind: {h: "Speed Drill — different numbers", body: `
 <p><b>1.</b> Shop: 80 customers/day × Rp15k × 25 open days. Monthly revenue?</p>
@@ -6147,6 +6154,7 @@ sections: [
 <p>Valuation answers: "how much cash can owners take <i>without harming</i> the business?" Net income doesn't answer that — it holds non-cash (depreciation) and ignores investment (capex) and working capital. <b>FCFF</b> does:</p>
 <div class="formula">FCFF = CFO − Capex</div>
 <p>FCFF = operating cash <b>after</b> keeping the machines running (capex). This cash is <i>free</i> — distributable, savable, or usable to repay debt — without sacrificing the future.</p>
+<p>This short formula works because this shop is <b>100% equity with no debt</b>: with no interest, CFO is already clean of debt cost. The general form: FCFF = CFO + interest×(1−t) − capex — interest is added back because FCFF is measured as if unlevered.</p>
 <div class="callout"><b>Why "free"?</b> Because capex isn't optional: unreplaced machines = falling capacity = falling revenue. FCFF measures cash <i>after the investment obligation</i> — only the remainder truly belongs to investors.</div>`},
 {h: "2026 & 2027 FCFF: built from components", body: `
 <table class="brutal">
@@ -6167,7 +6175,7 @@ sections: [
 <table class="brutal">
 <tr><th>CAPM assumption</th><th>Value</th><th>Meaning</th></tr>
 <tr><td>Rf (risk-free)</td><td>6.5%</td><td>Illustrative risk-free return</td></tr>
-<tr><td>Beta (proxy)</td><td>1.1</td><td>Illustrative: 10% more volatile than the market</td></tr>
+<tr><td>Beta (proxy)</td><td>1.1</td><td>Illustrative: 10% higher systematic sensitivity than the market (not total volatility)</td></tr>
 <tr><td>MRP</td><td>6%</td><td>Market risk premium (illustrative)</td></tr>
 </table>
 <div class="formula">Cost of equity = Rf + β × MRP</div>
@@ -6176,7 +6184,7 @@ sections: [
 <div class="formula">CoE = 6.5% + 1.1 × 6% = 6.5% + 6.6% = <b>13.1%</b></div>
 <p>Meaning: owners demand a <b>13.1% annual</b> return for bearing this shop's risk. Every future rupiah of cash is discounted at that rate.</p>
 <p><i>Assumption note:</i> this 13.1% uses a <b>stated beta of 1.1</b> for the <b>100%-equity shop</b> scenario (no interest-bearing debt) — not a market-estimated beta. In the Hamada section below, the same beta estimated from peers gives a CoE of <b>13.20%</b> — two scenarios, two CoEs, each correct under its own assumptions.</p>
-<p>Quick sensitivity: beta 1.1 → 1.3 (business turns out more volatile) ⇒ CoE = 6.5% + 7.8% = <b>14.3%</b>. Up 1.2 points — and tomorrow you'll see how large that hits valuation (Day 10).</p>
+<p>Quick sensitivity: beta 1.1 → 1.3 (its systematic sensitivity turns out higher) ⇒ CoE = 6.5% + 7.8% = <b>14.3%</b>. Up 1.2 points — and tomorrow you'll see how large that hits valuation (Day 10).</p>
 <div class="callout"><b>Why is beta multiplied by MRP, not just added?</b> Because beta measures <i>how much</i> market risk infects the company. Beta 1.1 = bearing 110% of the market premium. Beta 0 = no infection at all (CoE = Rf).</div>`},
 {h: "WACC = 13.1%: no interest-bearing debt", body: `
 <div class="formula">WACC = (E/V × CoE) + (D/V × CoD × (1 − tax))</div>
@@ -6216,7 +6224,7 @@ sections: [
 <tr><td>With a 10% Rp10,000k bond?</td><td>After-tax cost of debt = 10% × (1 − 22%) = <b>7.8%</b></td></tr>
 <tr><td>Why multiply by (1 − tax)?</td><td>Interest is <b>deductible</b> — it reduces taxable profit</td></tr>
 </table>
-<div class="callout"><b>Why does tax appear in WACC but not in FCFF?</b> FCFF is computed <i>as if unlevered</i> — operating tax is already inside NI/CFO. Tax in WACC comes only via the <i>interest shield</i>. Mixing both = double counting.</div>`},
+<div class="callout"><b>Why does tax appear in WACC but not in FCFF?</b> FCFF is computed <i>as if unlevered</i> — operating tax is already inside NI/CFO. Tax in WACC comes only via the <i>interest shield</i>. Mixing both = double counting. The full bridge when debt exists: FCFF = CFO + interest×(1−t) − capex — interest is added back because CFO is already net of interest.</div>`},
 {h: "YTM: the bond price sets the cost of debt", body: `
 <p>The 7.8% after-tax cost of debt in the tax section came from a bond <b>at par</b> (coupon 10% = YTM 10%). Bond prices rarely sit exactly at par — and when the price moves, the cost of debt moves with it. That is the <b>yield to maturity (YTM)</b>: the return an investor earns buying at today's market price and holding to maturity.</p>
 <p><b>A bond's price = the PV of all its cash flows at the YTM:</b></p>
@@ -6264,8 +6272,8 @@ sections: [
 <div class="formula">APV = Unlevered firm value (VU) + PV of tax shield</div>
 <div class="example korporat"><div class="lbl">🏢 Example — debt amortised over 4 years</div>
 <p>FCFF Rp100m growing 3%, Ku (unlevered cost of capital) 11% → VU = 100 × 1.03 ÷ (0.11 − 0.03) = <b>Rp1,287.50m</b>. Debt Rp400m at 8%, amortised Rp100m/year, tax 22%. Tax shield per year = interest × 22%: year 1: 32 × 22% = 7.04; year 2: 24 × 22% = 5.28; year 3: 3.52; year 4: 1.76. Discounted at Kd 8%: 6.52 + 4.53 + 2.79 + 1.29 = <b>PV tax shield Rp15.13m</b>. APV = 1,287.50 + 15.13 = <b>Rp1,302.63m</b>.</p></div>
-<p><b>When APV beats WACC:</b> (1) leverage changes drastically (LBO, restructuring, project finance); (2) large non-debt tax shields (NOL, Day 20); (3) subsidised debt. <b>When WACC is enough:</b> a stable capital structure like INDF in Day 13. Cross-check your Day 17 LBO: APV value should sit near the IRR/MoIC value — if it is far off, one of your debt assumptions leaks.</p>
-<div class="callout"><b>Trap:</b> discounting the tax shield at Ku (not Kd) when the debt is already scheduled — that shrinks the PV of the tax shield for no reason. Scheduled debt = debt risk (Kd).</div>`},
+<p><b>When APV beats WACC:</b> (1) leverage changes drastically (LBO, restructuring, project finance); (2) large non-debt tax shields (NOL, Day 20); (3) subsidised debt. <b>When WACC is enough:</b> a stable capital structure like INDF in Day 13. Cross-check your Day 17 LBO: APV gives firm value — subtract net debt at exit to get equity value, then divide by sponsor capital for MoIC (and IRR from the sponsor's cash-flow schedule). APV should sit near that IRR/MoIC <i>under the same exit and funding assumptions</i> — if it is far off, one of your debt assumptions leaks.</p>
+<div class="callout"><b>Trap:</b> discounting the tax shield at Ku (not Kd) when the debt is already scheduled — that shrinks the PV of the tax shield for no reason. Discounting at Kd is common practice because scheduled debt = debt risk — but it is an ASSUMPTION, not a law: when debt risk tracks operating risk, some analysts use Ku.</div>`},
 {h: "Economic profit: a 2-minute DCF cross-check", body: `
 <p><b>Economic profit (EP)</b> = NOPAT − (WACC × Capital). A company creates value only when NOPAT exceeds its cost of capital — and firm value = capital already invested + PV of all future EP:</p>
 <div class="formula">Value = Capital₀ + EP₁ ÷ (WACC − g)</div>
@@ -6339,7 +6347,7 @@ hell: [
 tasks: [
 {t: "Task A — Warung Septian WACC & FCFF (±2 hrs)", d: "Download the Day 09 practice file from Drive. Compute CAPM CoE, WACC, 2027 FCFF and its PV. Every answer cell a formula — remember: these are TEACHING assumptions, not market data.", url: "https://drive.google.com/drive/folders/18aYqHpgZj-w-ZOw8WvadxDt-HoS_-Ix3"},
 {t: "Task B — Beta sensitivity (±30 min)", d: "On paper: compute CoE for beta 0.9 / 1.1 / 1.3 (Rf 6.5%, MRP 6%). Feel it: beta ±0.2 = CoE ±1.2 points."},
-{t: "Task C — Quiz above", d: "Target ≥6/8 correct. Missed? Read the hints, retake."}
+{t: "Task C — Quiz above", d: "Target ≥9/12 correct. Missed? Read the hints, retake."}
 ],
 blind: {h: "Blind Drill — Kios Rina CAPM", body: `
 <p>"Kios Rina": Rf 7%, beta 1.2, MRP 5% (stated assumptions). Next-year FCFF Rp1,000k. <b>Compute CoE and its PV WITHOUT peeking</b>.</p>
@@ -6355,7 +6363,7 @@ sub: "Day 10 · ±8 hrs · Warung Septian's first complete DCF",
 sections: [
 {h: "Why the forecast stops at 2027", body: `
 <p>A 2-year detailed forecast (2026–2027) is enough. Why not 2028, 2029, ... forever? Because <b>uncertainty explodes</b>: a 2028 growth assumption off by 2% corrupts every year after it. The professional fix: a <i>short</i> detailed forecast + <b>terminal value</b> for "everything after, forever".</p>
-<div class="callout"><b>Why are 2 years enough?</b> Because the business pattern is already visible (the 2027 expansion), and distant years get <i>discounted away</i> by WACC. Year 2035 discounted at 13.1% to the 9th power keeps ≈33% of its weight. False precision in far years = wasted effort.</div>`},
+<div class="callout"><b>Why are 2 years enough?</b> Because the business pattern is already visible (the 2027 expansion), and distant years get <i>discounted away</i> by WACC. Year 2035 discounted at 13.1% to the 9th power keeps ≈33% of its weight. False precision in far years = wasted effort. "Enough" here because 2028 already reaches steady state (capex = depreciation, stable margins) — the rule: forecast in detail until your terminal assumptions are defensible, not "2 years" as a law.</div>`},
 {h: "2028 FCFF: the stated assumptions", body: `
 <p>For perpetuity we need <b>one</b> "normal" FCFF (2028). Its assumptions are stated — a <i>steady-state</i> scenario after expansion:</p>
 <table class="brutal">
@@ -6371,7 +6379,8 @@ sections: [
 <p>Assume: from 2028, FCFF grows at <b>g = 3%</b> forever. An infinite geometric series has a closed-form sum:</p>
 <div class="formula">TV = FCFF<sub>2028</sub> ÷ (WACC − g) = 2,281 ÷ (0.131 − 0.03) = 2,281 ÷ 0.101 = <b>Rp22,584k</b></div>
 <p>This TV is the value <b>at end-2027</b> of all FCFF from 2028 → ∞. Absolute requirement: <b>g &lt; WACC</b> — if g ≥ WACC the denominator ≤ 0 and the formula collapses (a firm can't outgrow its cost of capital forever).</p>
-<div class="callout"><b>Why divide by (WACC − g)?</b> Because growth <i>reduces</i> the effective discount: cash growing 3% while discounted 13.1% behaves like flat cash discounted at 10.1%. The closer g gets to WACC, the more gigantic the TV — and the more dangerous.</div>`},
+<div class="callout"><b>Why divide by (WACC − g)?</b> Because growth <i>reduces</i> the effective discount: cash growing 3% while discounted 13.1% behaves like flat cash discounted at 10.1%. The closer g gets to WACC, the more gigantic the TV — and the more dangerous.</div>
+<p><b>The reinvestment bridge:</b> g = incremental ROIC × reinvestment rate. Here capex = depreciation → net investment ≈ 0 → the consistent g ≈ 0%. So g = 3% is a mechanical Gordon simplification that implicitly assumes reinvestment: at a 15% incremental ROIC, the reinvestment rate = 3% ÷ 15% = 20% of NOPAT. TV 22,584 is unchanged — what changes is the honesty of the assumption: g of 3% means the firm reinvests 20% of its NOPAT forever.</p>`},
 {h: "Method B: exit multiple", body: `
 <p>The second lens — no "forever" assumption: the firm is <i>sold</i> at end-2027 at an EBITDA multiple:</p>
 <div class="formula">TV = EBITDA<sub>2027</sub> × multiple = 2,625 × 8 = <b>Rp21,000k</b></div>
@@ -6400,7 +6409,7 @@ sections: [
 </table>
 <p>EV rises <b>+6.3%</b> (21,189 vs 19,924) — discounting half a year less. That's not a "bonus": earlier cash genuinely is worth more.</p>
 <p><b>When to use it, when not:</b> use mid-year when cash flows spread evenly through the year (revenue, opex). <b>Don't</b> use it for items that genuinely land on one date: a once-a-year dividend, a bullet repayment, an asset sale on a known date — those are discounted on their actual date.</p>
-<div class="callout"><b>Why does no mid-year = systematic undervaluation?</b> Because every year's cash is "forced" to wait until December 31 — while half of it was already in hand by June. A DCF without mid-year always values slightly too low (≈ half a year of discounting, here ≈ +6%). An analyst who doesn't know this will always lose the bid to one who does.</div>`},
+<div class="callout"><b>Why does no mid-year = systematic undervaluation?</b> Because every year's cash is "forced" to wait until December 31 — while half of it was already in hand by June. For positive, evenly spread cash flows, a DCF without mid-year usually values slightly too low (≈ half a year of discounting, here ≈ +6%) — earlier cash genuinely is worth more. But for NEGATIVE cash flows, no mid-year OVERvalues (a loss "forced to wait" is discounted deeper). So it is not "always undervalue" — the direction of the bias depends on the sign of the flow.</div>`},
 {h: "Stub period: valuing mid-year (not on 1 January)", body: `
 <p>The DCF so far has been tidy: full-year FCFF, discounted per full year. The real world is rarely tidy: a valuation happens <b>mid-year</b> — say 31 July — so "Year 1" has only 5–7 months left. This partial period is called a <b>stub period</b>.</p>
 <p><b>The rule is simple: cut the cash flow, cut the discount.</b> Using this lesson's own 2027 FCFF = <b>−50</b> (no other number) and a 7-month stub:</p>
@@ -6412,7 +6421,7 @@ sections: [
 </table>
 <p>Watch the exponent: <b>7/12 of a year</b> — the fraction of the year remaining. Not 1 (that's a full year), not 0.5 (that's mid-year — see below).</p>
 <p><b>Terminal value follows the stub too:</b> the TV of 22,584 that was discounted for a full year (PV 19,968) is now discounted for 7/12 of a year: 22,584 ÷ 1.0745 = <b>21,019.11</b> — bigger than 19,968, because the cash is treated as arriving sooner. Every cash flow after the stub shifts forward with the same exponent.</p>
-<p><b>Don't stack mid-year on top of a stub.</b> Mid-year (Day 10 § mid-year) assumes cash arrives mid-year — the stub <i>already</i> cuts the first year to its fraction. Using both at once = discounting twice for the same timing. Pick one: stub when the valuation date is mid-year; mid-year when valuing at the start of a full year.</p>
+<p><b>Stub and mid-year CAN combine — they answer different questions.</b> The stub sets the <i>length</i> of the first remaining period (7/12 of a year); mid-year sets the <i>timing</i> of cash inside that period. A 7-month stub with even flows ≈ cash arriving at the stub's midpoint, i.e. 3.5/12 of a year from the valuation date — not 7/12. What you must not do: stack a full-year mid-year (t − 0.5) on a stub without adjusting — that discounts twice for the same timing. Treating cash as arriving at the stub's end is a convention choice, not a rule: if flows spread evenly, use the stub's midpoint.</p>
 <div class="callout"><b>Why do analysts care about stubs?</b> Because the difference isn't small: the same TV is worth 21,019.11 vs 19,968 — a 1,051.11 gap (5.3%) from the valuation date alone. A deal negotiated in July vs January has a different "fair price" — and that gap must be explainable line by line, not left as a model difference.</div>`},
 {h: "2D sensitivity table: WACC × g", body: `
 <p>One EV number = one assumption combo. This table shows <b>nine</b> (Rp thousand):</p>
@@ -6745,7 +6754,7 @@ sections: [
 <div class="formula">CFO = 15.21 + 6.50 &minus; 0.21 (&Delta;WC) = <b>21.50</b> &nbsp;&nbsp; FCFF = 21.50 &minus; 5.60 (capex) = <b>15.90</b></div>
 <p>CFI = &minus;5.60. CFF = &minus;3.00 (debt repaid) &minus; 4.00 (dividends) = &minus;7.00. &Delta;cash = 21.50 &minus; 5.60 &minus; 7.00 = +8.90 &rarr; ending cash <b>26.90</b> (= balance-sheet cash &#10003;).</p>
 <p><b>FCFF 15.90T = the RC3 canonical anchor.</b> This number was <i>discovered</i> through repair \u2014 not set. Your independent build model must land on the same number.</p>
-<div class="callout"><b>Why is FCFF 15.90T a validation moment?</b> Because two independent paths (repairing the old model &rarr; 15.90T; building from blank &rarr; 15.90T) converging = proof your mechanics are right. The capstone's first &ldquo;truth test&rdquo;.</div>`},
+<div class="callout"><b>Why is FCFF 15.90T a validation moment?</b> Because two independent paths (repairing the old model &rarr; 15.90T; building from blank &rarr; 15.90T) converging = STRONG reconciliation — not absolute proof. Both paths share inputs, so the same input error can pass both. Full proof needs formula checks + input independence. The capstone's first &ldquo;truth test&rdquo; — strong, but not final.</div>`},
 {h: "4 golden checks: full tie-out", body: `
 <p>Four checks that must pass in <i>every</i> 3-statement model (Rp trillion):</p>
 <table class="brutal">
@@ -6822,7 +6831,7 @@ sections: [
 <tr><td><b>FCFF (Rp trillion)</b></td><td><b>15.90</b></td><td>14.60</td><td>13.40</td><td>12.30</td><td>11.30</td></tr>
 </table>
 <p>The narrative: margin normalization after a strong cycle + disciplined capex. A <b>stated, debatable scenario</b> \u2014 not a forecast from the sky.</p>
-<div class="callout"><b>Why declining, not growing?</b> Because DCF needs no optimism \u2014 it needs stated, attackable assumptions. A conservative scenario converging on the canonical anchor beats an aggressive one that collapses under questioning. Your thesis may be bull; your model must be honest.</div>`},
+<div class="callout"><b>Why declining, not growing?</b> Because DCF needs no optimism \u2014 it needs stated, attackable assumptions. A conservative scenario converging on the canonical anchor beats an aggressive one that collapses under questioning — but remember: convergence is strong reconciliation, not proof (see the validation section). Your thesis may be bull; your model must be honest.</div>`},
 {h: "Perpetuity TV: Gordon at end-2030", body: `
 <p>One &ldquo;normal&rdquo; FCFF for forever: 2031 FCFF = 11.30 &times; 1.0175 = <b>11.49775T</b>.</p>
 <div class="formula">TV = 11.49775 &divide; (0.12 &minus; 0.0175) = 11.49775 &divide; 0.1025 = <b>Rp112.17T</b></div>
@@ -6832,7 +6841,7 @@ sections: [
 <p>The second lens \u2014 no &ldquo;forever&rdquo; assumption: INDF is <i>sold</i> at end-2030.</p>
 <div class="formula">TV = EBITDA<sub>2030</sub> &times; multiple = 16.50 &times; 7 = <b>Rp115.50T</b></div>
 <p>2030 EBITDA = <b>16.50T stated as an assumption</b>; the <b>7&times; multiple stated as an illustrative assumption</b> (not market transaction data).</p>
-<div class="callout"><b>Why two methods again?</b> Because TV = 80&ndash;90% of DCF value \u2014 one lens = one single point of failure. Two independent lenses in the same order (112.17 vs 115.50) = confidence; contradicting ones = a signal something's wrong.</div>`},
+<div class="callout"><b>Why two methods again?</b> Because TV dominates DCF value \u2014 one lens = one single point of failure. (Note: in this INDF model, PV of TV is only 56.2% of EV — 80&ndash;90% is the general DCF picture, not this model. See the hell quiz on TV.) Two independent lenses in the same order (112.17 vs 115.50) = confidence; contradicting ones = a signal something's wrong.</div>`},
 {h: "EV \u2192 equity \u2192 per share: the valuation bridge", body: `
 <table class="brutal">
 <tr><th>Component (Rp trillion)</th><th>Value</th></tr>
@@ -6851,7 +6860,7 @@ sections: [
 <p>Path 1 (RC3): <i>repairing</i> an existing model &rarr; parent equity 73.15T, FCFF 15.90T.<br>
 Path 2 (Days 12&ndash;13): <i>building</i> from blank &rarr; FCFF 15.90T &rarr; DCF &rarr; equity 73.15T.</p>
 <p>Two methods, two directions of work, <b>one number</b> (gap 0.00T \u2014 within the &plusmn;1T tolerance).</p>
-<div class="callout"><b>Why is this what you present to the committee?</b> Because a single number can be engineered; <i>two independent paths converging</i> cannot. This is proof your mechanics are right \u2014 not a claim, but validation. A thesis without validation = an opinion; with validation = an argument.</div>`},
+<div class="callout"><b>Why is this what you present to the committee?</b> Because a single number can be engineered; <i>two independent paths converging</i> is hard to engineer. This is strong reconciliation \u2014 not a claim, but validation. (Not absolute proof: both paths share inputs, so check the formulas and input independence before calling it proven.) A thesis without validation = an opinion; with validation = an argument.</div>`},
 {h: "WACC sensitivity: a range, not a point", body: `
 <p>WACC &plusmn;1pp (g fixed at 1.75%) \u2014 equity swings:</p>
 <table class="brutal">
@@ -6933,11 +6942,11 @@ quiz: [
 ],
 hell: [
 {q: "Two paths (RC3 repair & capstone build) land on Rp73.15T. Meaning?", opts: ["Pure coincidence","RC3 must have miscalculated","Two independent paths converging = mechanics validated","The capstone must have miscalculated"], answer: 2, diff: "Medium",
- explain: "A single number can be engineered; two independent paths converging cannot. That's proof your mechanics are right \u2014 validation, not a claim."},
+ explain: "A single number can be engineered; two independent paths converging is hard to engineer. That's strong reconciliation \u2014 validation, not a claim — but not absolute proof: both paths share inputs."},
 {q: "WACC 12% \u2192 13%, equity 73.15T \u2192 63.84T. The lesson?", opts: ["WACC is the most dangerous lever \u2014 \u00b11pp swings \u00b1Rp20T","WACC doesn't matter for valuation","Just raise g to cover it","Switch valuation methods"], answer: 0, diff: "Medium",
  explain: "A small (WACC\u2212g) denominator = a giant lever. \u00b11pp of WACC = \u221212.7% equity. That's why WACC sensitivity is always tested."},
-{q: "TV Rp112.17T vs PV of FCFF Rp49.60T. Meaning?", opts: ["The 5-year forecast was pointless","Just ignore the TV component","The TV is too small","\u223c70% of value from TV \u2014 the g/multiple assumptions must be the most honest"], answer: 3, diff: "Medium",
- explain: "DCF reality: terminal value dominates. This thesis's accuracy \u2248 the accuracy of the 1.75% g & 7\u00d7 multiple assumptions. Saying so = professional."},
+{q: "PV of TV Rp63.65T vs EV Rp113.25T. What share of value is TV?", opts: ["56.2%","\u223c70%","49.6%","112.17%"], answer: 0, diff: "Medium",
+ explain: "63.65 \u00f7 113.25 = 56.2%. The \u223c70% is a basis trap: 112.17 \u00f7 (112.17 + 49.60) = 69.3% divides NOMINAL TV by a nominal sum — a value share must be computed from PV. TV still dominates, just not at 70%."},
 {q: "Exit multiple gives equity Rp75.04T vs perpetuity Rp73.15T. Verdict?", opts: ["Take 75.04T (higher)","Take 73.15T (more conservative)","The 73.15\u201375.04T range \u2014 two lenses, one company","Force-average to 74.10T"], answer: 2, diff: "Medium",
  explain: "Two independent lenses in the same order = confidence. What's right = the range + understanding where the Rp1.89T gap comes from."},
 {q: "Your thesis doesn't fit 1 page. Meaning?", opts: ["You don't understand it well enough yet \u2014 simplify until it fits","Extend to 2 pages","Shrink the font","Delete the risks section"], answer: 0, diff: "Easy",
@@ -6946,14 +6955,15 @@ hell: [
 tasks: [
 {t: "Task A \u2014 INDF DCF (\u00b13 hrs)", d: "Download the Day 13 practice file from Drive. Complete the DCF: perpetuity TV + PV of TV + EV + net debt + equity + per share + 2 sensitivity cells (all formulas). Target: TV 112.17 \u00b7 EV 113.25 \u00b7 equity 73.15 \u00b7 Rp8,332/share \u00b7 sensitivity 63.84 / 84.45.", url: "https://drive.google.com/drive/folders/1v-92ytXR9FTNjl-iBW7vUR3eyDQM5Dat"},
 {t: "Task B \u2014 1-page thesis (\u00b12 hrs)", d: "Write your 1-page INDF investment thesis using the \u00a77 template: 1-sentence thesis, bull/base/bear, catalysts, risks, valuation vs price, decision + stated limitations."},
-{t: "Task C \u2014 Quiz above", d: "Target \u22654/5 correct. Missed? Read the hints, retake."}
+{t: "Task C \u2014 Quiz above", d: "Target \u22656/7 correct. Missed? Read the hints, retake."}
 ],
 blind: {h: "Blind Drill \u2014 Kios Rina DCF", body: `
 <p>"Kios Rina": FCFF 8, 8.5, 9 (Rp million, 3 years); WACC 12%; g 2% (stated assumptions); net debt 10; 2 billion shares. <b>Build the DCF WITHOUT peeking</b>.</p>
 <details class="ans"><summary>See the answer (try it yourself first!)</summary>
 <p><b>TV:</b> year-4 FCFF = 9 \u00d7 1.02 = 9.18; TV = 9.18 \u00f7 (0.12 \u2212 0.02) = <b>91.8</b>.</p>
 <p><b>PV:</b> PV of TV = 91.8 \u00f7 1.12\u00b3 = <b>65.34</b>; PV of FCFF = 8/1.12 + 8.5/1.12\u00b2 + 9/1.12\u00b3 = <b>20.32</b>.</p>
-<p><b>EV</b> = 65.34 + 20.32 = <b>85.66</b>; <b>equity</b> = 85.66 \u2212 10 = <b>75.66</b>; <b>per share</b> = 75.66 \u00f7 2 \u00d7 1,000 = <b>Rp37,832</b>.</p>
+<p><b>EV</b> = 65.34 + 20.32 = <b>85.66</b>; <b>equity</b> = 85.66 \u2212 10 = <b>75.66</b>; <b>per share</b> = 75.66 \u00f7 2,000 = <b>Rp0.03783</b>.</p>
+<p><i>The unit trap:</i> equity of 75.66 is in Rp MILLION (= Rp75,660,000) and shares are 2 billion (= 2,000 million shares) — Rp million ÷ million shares = Rp, so the answer is Rp0.03783/share. Multiplying by 1,000 is only right when the numerator is in trillions and the denominator in billions — as in the INDF example (73.15T ÷ 8.78 billion shares = Rp8,332). Always align the units before dividing.</p>
 <p><i>Why is the TV discounted 3 years?</i> Because the TV sits at end of year 3 \u2014 the same year as the last FCFF. Wrong year = wrong PV.</p>
 </details>`}
 };
@@ -7131,10 +7141,10 @@ sections: [
 <p>Bear is not "WACC up alone" \u2014 it is the world turning bad: the cost of capital rises <b>while</b> growth slows <b>while</b> cash flows weaken. Three drivers move together because that is how the world works.</p>
 <div class="callout"><b>Why scenario \u2260 data table?</b> A data table answers the mechanical "what if"; a scenario answers the coherent "what if the world turns". A scenario with WACC up + g up + FCFFn up is <b>incoherent</b> \u2014 no world looks like that. Coherence is the requirement of a scenario, not random variation.</div>`},
 {h: "Why the tornado is read as a ranking, not numbers", body: `
-<p>\u00B110% is a <b>convention</b> \u2014 an agreed arbitrary number. Switch to \u00B120% and every \u0394EV roughly doubles. What does not change: <b>the order</b>.</p>
+<p>\u00B110% is a <b>convention</b> \u2014 an agreed arbitrary number. Switch to \u00B120% and every \u0394EV roughly doubles. What does not change: <b>the order</b> — for this (near-linear) example, recomputed at ±20% the ranking stays.</p>
 <div class="formula">|\u0394EV|: WACC (5,921) &gt; normalized FCFF (3,571) &gt; g (1,232) &gt; current-year FCFF (179)</div>
 <p>The \u0394EV numbers answer "how big"; the ranking answers <b>"what do I study first"</b>. Decision implication: spend research hours on WACC (refinancing risk, beta, cost of debt) \u2014 not on polishing current-year FCFF to three decimals when its swing is only 179.</p>
-<div class="callout"><b>Why ranking, not numbers?</b> Because the \u0394EV numbers die the moment the convention changes, while the ranking survives. An insight that survives a convention change = an insight you can decide on; the rest is decoration.</div>`},
+<div class="callout"><b>Why ranking, not numbers?</b> Because the \u0394EV numbers die the moment the convention changes, while the ranking survives. An insight that survives a convention change = an insight you can decide on; the rest is decoration. Note: this holds for this example; on nonlinear or bounded models, changing the swing CAN change the ranking — and ±10% swings are not automatically equivalent risk measures (drivers with different historical volatilities are not comparable just because the swing is the same). A ranking is a recomputed result, not a law.</div>`},
 {h: "Trap: g \u2265 WACC \u2014 the model demands an impossible world", body: `
 <p>The Gordon formula has a hard requirement: <b>g &lt; WACC</b>. If g \u2265 WACC, the denominator \u2264 0 \u2192 TV negative or infinite. The economics: a company growing forever faster than its cost of capital <b>eventually becomes larger than the whole economy</b> \u2014 impossible.</p>
 <p>More dangerous than a loud error is <b>a slightly-too-high g</b>: no error, just quietly inflating TV. g 3% \u2192 5% at WACC 12%: TV 40,000 \u2192 51,429 (+29%) \u2014 without a single cell complaining.</p>
@@ -7182,15 +7192,16 @@ sections: [
 {h: "Monte Carlo: from 3 scenarios to 1,000 possibilities", body: `
 <p>Day 15 scenarios (bear/base/bull) are just 3 points. <b>Monte Carlo</b> replaces point assumptions with <b>distributions</b> — then runs the model thousands of times and reads the distribution of results. The model does not change; how we treat uncertainty does:</p>
 <p><b>Steps:</b> (1) pick the 2–3 most uncertain drivers (WACC, g, revenue); (2) give each a distribution — discrete (3 values + probabilities) is enough to learn; (3) compute EV for every combination; (4) read the <i>expected value</i>, the spread, and P(EV below a threshold).</p>
-<div class="example korporat"><div class="lbl">🏢 Example — 3×3 = 9 worlds, computed by hand</div>
-<p>FCFF₁ Rp100m. WACC {10%, 12%, 14%} with probabilities {25%, 50%, 25%}; g {2%, 3%, 4%} with probabilities {25%, 50%, 25%}; independent. EV = 100 × (1+g) ÷ (WACC − g):</p>
+<p><b>Exact enumeration vs Monte Carlo:</b> the 3×3 example below lists EVERY combination once — that is exact enumeration, not simulation. Real Monte Carlo draws randomly over and over (e.g. RAND in Excel L5); the average of thousands of draws converges to this exact benchmark E[EV] = 1,183.23. This grid is the exact answer — simulation is just how you approach it when there are too many combinations to list.</p>
+<div class="example korporat"><div class="lbl">🏢 Example — 3×3 = 9 worlds, computed by hand (exact enumeration — NOT a Monte Carlo simulation)</div>
+<p>FCFF₀ Rp100m. WACC {10%, 12%, 14%} with probabilities {25%, 50%, 25%}; g {2%, 3%, 4%} with probabilities {25%, 50%, 25%}; independent. EV = 100 × (1+g) ÷ (WACC − g):</p>
 <table class="brutal">
 <tr><th>WACC \ g</th><th>2%</th><th>3%</th><th>4%</th></tr>
 <tr><td><b>10%</b></td><td>1,275</td><td>1,471.43</td><td>1,733.33</td></tr>
 <tr><td><b>12%</b></td><td>1,020</td><td>1,144.44</td><td>1,300</td></tr>
 <tr><td><b>14%</b></td><td>850</td><td>936.36</td><td>1,040</td></tr>
 </table>
-<p><b>E[EV] = Rp1,183.23m</b> (EV × joint probability, summed) — <i>higher</i> than the base-case EV of Rp1,144.44m, because EV is convex in WACC and g — EV = 100(1+g)/(WACC−g) is convex in both (a WACC fall lifts EV more than a WACC rise cuts it, and a g rise lifts EV more than a g fall cuts it). <b>P(EV &lt; Rp1,000m) = 18.75%</b> (WACC 14% × g 2–3% cells: 6.25% + 12.5%). In Excel L5 you build this with Data Table + RAND — these 9 cells are the mini version.</p>
+<p><b>E[EV] = Rp1,183.23m</b> (EV × joint probability, summed) — <i>higher</i> than the base-case EV of Rp1,144.44m, because EV is convex in WACC and g — EV = 100(1+g)/(WACC−g) is convex in both (a WACC fall lifts EV more than a WACC rise cuts it, and a g rise lifts EV more than a g fall cuts it). <b>P(EV &lt; Rp1,000m) = 18.75%</b> (WACC 14% × g 2–3% cells: 6.25% + 12.5%). In Excel L5 you build the real Monte Carlo with Data Table + RAND — thousands of random draws whose average converges to this exact 1,183.23 benchmark; the 9 cells above are its exact-enumeration version.</p>
 <div class="callout"><b>Never do this:</b> average the WACC, compute one EV, and call it the "expected value". E[f(X)] ≠ f(E[X]) when f is not linear — and EV in WACC is clearly not linear. That is the entire reason Monte Carlo exists.</div>`},
 {h: "Decision trees: staged decisions have value", body: `
 <p>Some decisions are not taken once — they are <b>staged</b>: investing today buys the <i>right</i> to decide again tomorrow. A <b>decision tree</b> values that right with expected value at each branch (the natural pair to real-07: the smelter as a staged option).</p>
@@ -7213,7 +7224,7 @@ quiz: [
 {q: "An analyst uses g = 13% with WACC 12%. What happens?", opts: ["Negative denominator \u2192 meaningless TV; the g < WACC requirement is violated","TV rises 8%","TV becomes zero","No problem"], answer: 0, k: "jebakan_g", diff: "Medium",
  hints: ["Compute the denominator: 0.12 \u2212 0.13.","Can a company grow forever faster than its cost of capital?"],
  explain: "Denominator \u22120.01 \u2192 negative TV. g \u2265 WACC = the model demanding an impossible world."},
-{q: "Monte Carlo 3×3 grid (WACC 10/12/14%, g 2/3/4%, probabilities 25/50/25%). E[EV]?", opts: ["Rp1,183.23m","Rp1,144.44m","Rp1,020.00m","Rp1,275.00m"], answer: 0, k: "monte_carlo", diff: "Medium",
+{q: "Exact-enumeration 3×3 grid (WACC 10/12/14%, g 2/3/4%, probabilities 25/50/25%). E[EV]?", opts: ["Rp1,183.23m","Rp1,144.44m","Rp1,020.00m","Rp1,275.00m"], answer: 0, k: "monte_carlo", diff: "Medium",
  hints: ["E[EV] = sum of EV × joint probability.", "E[EV] > base-case EV because EV is convex in WACC and g."],
  explain: "E[EV] = Rp1,183.23m — above the base-case EV of Rp1,144.44m. Averaging WACC then computing one EV is not an expected value (E[f(X)] ≠ f(E[X]))."},
 {q: "From the same grid, P(EV < Rp1,000m)?", opts: ["18.75%","6.25%","25%","12.5%"], answer: 0, k: "monte_carlo", diff: "Medium",
@@ -7236,12 +7247,12 @@ hell: [
  explain: "\u22121,801.80 + 38,918.92 = Rp37,117k. A scenario = a package you may tweak one component of \u2014 still coherent."},
 {q: "The tornado convention is changed \u00B110% \u2192 \u00B120%. What happens to the driver ranking?", opts: ["\u0394EV numbers grow, ranking stays","Ranking changes completely","The tornado becomes invalid","WACC drops to rank 3"], answer: 0, k: "tornado_ranking", diff: "Medium",
  hints: ["\u0394EV \u2248 slope \u00D7 swing \u2014 double the swing, ~double the \u0394EV.","Does the order change if everything is multiplied by ~2?"],
- explain: "\u0394EV numbers grow (~2\u00D7), the ranking STAYS \u2014 which is why a tornado is read as a ranking, not as numbers."}
+ explain: "\u0394EV numbers grow (~2\u00d7), the ranking STAYS \u2014 which is why a tornado is read as a ranking, not as numbers — for this (near-linear) example; on nonlinear/bounded models the ranking can change when the swing changes."}
 ],
 tasks: [
 {t: "Task A \u2014 PT Maju Jaya sensitivity workbook (\u00B14 hrs)", d: "Download the Day 15 template from Drive. Build: base EV from live inputs \u2192 3\u00D73 data table \u2192 Bear/Base/Bull scenarios \u2192 \u00B110% tornado + ranking. Every answer cell a formula linking inputs \u2014 checker target \u226580.", url: "https://drive.google.com/drive/folders/1zQ-lG10LXiVRLrNRM-RqMkqvPlZmFReK"},
 {t: "Task B \u2014 Three mandatory experiments (\u00B130 min)", d: "In your answer file: (1) WACC 12%\u219210%, record base EV; (2) g 3%\u21925%, record EV; (3) FCFFn 3,600\u21920, record EV. Restore all to base. Write one sentence per experiment: what you learned."},
-{t: "Task C \u2014 Quiz above", d: "Target \u22654/5 correct. Hell mode (4 questions) for the brave \u2014 that is where understanding is tested."}
+{t: "Task C \u2014 Quiz above", d: "Target \u22657/8 correct. Hell mode (4 questions) for the brave \u2014 that is where understanding is tested."}
 ],
 blind: {h: "Speed Drill \u2014 sensitivity in 30 minutes (different numbers)", body: `
 <p>"PT Sinar Abadi" (Rp thousand). <b>Speed-drill sensitivity without peeking at the example</b> \u2014 write in a new spreadsheet: FCFF0 1,500, FCFFn 5,000, WACC 10%, g 4%.</p>
@@ -7511,27 +7522,28 @@ sections: [
 <tr><td>Cash to debt</td><td>4,944.4</td><td>5,888.3</td><td>6,937.6</td><td>8,102.5</td><td>9,393.8</td></tr>
 <tr><td><b>Ending debt</b></td><td><b>21,055.6</b></td><td><b>15,167.3</b></td><td><b>8,229.7</b></td><td><b>127.2</b></td><td><b>0</b></td></tr>
 </table>
-<p>Debt is <b>fully repaid in Y5</b> \u2014 paid from PT Sinar Abadi's own cash; the sponsor injects not one more rupiah. Now the magic: <b>even if EV never grew</b> (stayed 50,000), exit equity = 50,000 \u2212 0 = 50,000 \u2192 MoIC <b>2.0x from paydown ALONE</b>. The 8% EBITDA growth adds the rest \u2192 2.94x.</p>
+<p><b>Reconciling Y5 cash (don't lose it):</b> cash to debt in Y5 = 9,393.8, but opening debt in Y5 is only 127.2 — only 127.2 is paid to clear the debt. The rest, 9,393.8 − 127.2 = <b>9,266.6</b>, stays as company cash (distributable) and MUST enter the sponsor's exit total. A model that only computes EV − debt drops this cash.</p>
+<p>Debt is <b>fully repaid in Y5</b> \u2014 paid from PT Sinar Abadi's own cash; the sponsor injects not one more rupiah. Now the magic: <b>even if EV never grew</b> (stayed 50,000), exit equity = 50,000 + 9,266.6 \u2212 0 = 59,266.6 \u2192 MoIC <b>2.37x from paydown + leftover cash ALONE</b>. The 8% EBITDA growth adds the rest \u2192 3.31x.</p>
 <div class="callout"><b>Why does paydown = return?</b> Because <b>equity = EV \u2212 debt</b>. Every Rp1 of debt repaid = Rp1 of equity created \u2014 <i>without EV having to rise</i>. This is the <b>deleveraging return</b>: the LBO return engine that needs no generous market. The sponsor is paid by the target's cash discipline, not by price speculation.</div>`},
-{h: "Exit math: 73,466 \u2212 0 = 73,466", body: `
+{h: "Exit math: 73,466 + 9,267 \u2212 0 = 82,733", body: `
 
 <p>In Y5 the sponsor "harvests". Exit math in three lines (Rp thousand):</p>
 <div class="formula">EV exit = Y5 EBITDA \u00d7 5.0x = 14,693.28 \u00d7 5 = <b>73,466.40</b></div>
-<div class="formula">Exit equity = EV \u2212 ending debt = 73,466.40 \u2212 0 = <b>73,466.40</b></div>
-<div class="formula">MoIC = exit equity \u00f7 equity in = 73,466.40 \u00f7 25,000 = <b>2.94x</b></div>
-<p>Every Rp1 the sponsor put in returns <b>Rp2.94</b> in 5 years.</p>
+<div class="formula">Exit equity = EV + leftover cash \u2212 ending debt = 73,466.40 + 9,266.6 \u2212 0 = <b>82,733.00</b></div>
+<div class="formula">MoIC = exit equity \u00f7 equity in = 82,733.00 \u00f7 25,000 = <b>3.31x</b></div>
+<p>Every Rp1 the sponsor put in returns <b>Rp3.31</b> in 5 years.</p>
 <div class="callout"><b>Why does exit multiple = entry multiple (5.0x)?</b> A <b>neutral</b> assumption: we claim no ability to sell each unit of EBITDA for more than we paid. All return comes from the two proven engines in the schedule \u2014 <b>(a)</b> EBITDA growth and <b>(b)</b> debt paydown \u2014 not from "buy low on the multiple, sell high". An analyst who raises the exit multiple without reason = inventing return.</div>`},
 {h: "Why MoIC vs IRR", body: `
 
 <p>Two metrics, two stories:</p>
 <table class="brutal">
 <tr><th>Metric</th><th>Case value</th><th>Answers</th></tr>
-<tr><td><b>MoIC</b></td><td><b>2.94x</b></td><td>How many times does capital return? (size)</td></tr>
-<tr><td><b>IRR</b></td><td><b>\u224824%/yr</b></td><td>How fast? (speed)</td></tr>
+<tr><td><b>MoIC</b></td><td><b>3.31x</b></td><td>How many times does capital return? (size)</td></tr>
+<tr><td><b>IRR</b></td><td><b>\u224827%/yr</b></td><td>How fast? (speed)</td></tr>
 </table>
-<p>IRR here is \u224824% per year (computed by hand: 2.94<sup>1/5</sup> \u2212 1 \u2014 because all return arrives in Y5). Compare: 2.94x in <b>3</b> years \u2248 43%/yr; 2.94x in <b>7</b> years \u2248 17%/yr. <b>Same MoIC, wildly different IRR</b> \u2014 time changes everything.</p>
+<p>IRR here is \u224827% per year (computed by hand: 3.31<sup>1/5</sup> \u2212 1 \u2014 because all return arrives in Y5). Compare: 3.31x in <b>3</b> years \u2248 49%/yr; 3.31x in <b>7</b> years \u2248 19%/yr. <b>Same MoIC, wildly different IRR</b> \u2014 time changes everything.</p>
 <p><b>Why is IRR not in the checker?</b> IRR/XIRR functions behave differently across Excel, Sheets, and LibreOffice (cash-flow dating conventions, initial guesses) \u2014 a cross-app checker cannot be fair. IRR is taught <b>conceptually</b> here; what the machine tests = MoIC.</p>
-<div class="callout"><b>Why two metrics instead of one?</b> Because MoIC is <b>blind to time</b> (2.94x in 5 vs 10 years = different worlds) and IRR can "look pretty" from interim cash-flow timing. Professionals read both: MoIC = honest about the multiple, IRR = honest about speed.</div>`},
+<div class="callout"><b>Why two metrics instead of one?</b> Because MoIC is <b>blind to time</b> (3.31x in 5 vs 10 years = different worlds) and IRR can "look pretty" from interim cash-flow timing. Professionals read both: MoIC = honest about the multiple, IRR = honest about speed.</div>`},
 {h: "The leverage trap: bigger returns, bigger risk", body: `
 
 <p>Entry leverage = 26,000 \u00f7 10,000 = <b>2.6x EBITDA</b> \u2014 moderate. Check the safety gauge, <b>interest coverage</b>:</p>
@@ -7556,10 +7568,10 @@ sections: [
 <tr><td>Non-interest supplier debt</td><td>Term loan at 7% interest</td></tr>
 <tr><td>Repay from daily cash</td><td>Cash sweep: NI + D&amp;A \u2212 capex</td></tr>
 <tr><td>No "exit"</td><td>Y5 exit: EV \u2212 debt = equity</td></tr>
-<tr><td>Profit = leftover cash</td><td>Return = MoIC 2.94x &amp; IRR \u224824%</td></tr>
+<tr><td>Profit = leftover cash</td><td>Return = MoIC 3.31x &amp; IRR \u224827%</td></tr>
 </table>
-<p>Day 17 recap: sources = uses <b>51,000</b> \u2713 \u2192 5-year debt schedule \u2192 debt <b>repaid by Y5</b> \u2192 exit <b>73,466</b> \u2192 MoIC <b>2.94x</b> \u2192 leverage trap (4.84x coverage, mind the covenants).</p>
-<div class="callout"><b>Why learn LBO in FMVA?</b> Because the LBO is an <b>integration exam</b>: forecasting (Day 08) + interest &amp; tax + debt schedule + exit multiple (Day 11) + MoIC/IRR \u2014 all in one model. Not a new topic; the place where every piece clicks together. If your debt schedule balances and your MoIC reads 2.94x, your core mechanics are sound.</div>`}
+<p>Day 17 recap: sources = uses <b>51,000</b> \u2713 \u2192 5-year debt schedule \u2192 debt <b>repaid by Y5</b> \u2192 exit <b>82,733</b> \u2192 MoIC <b>3.31x</b> \u2192 leverage trap (4.84x coverage, mind the covenants).</p>
+<div class="callout"><b>Why learn LBO in FMVA?</b> Because the LBO is an <b>integration exam</b>: forecasting (Day 08) + interest &amp; tax + debt schedule + exit multiple (Day 11) + MoIC/IRR \u2014 all in one model. Not a new topic; the place where every piece clicks together. If your debt schedule balances and your MoIC reads 3.31x, your core mechanics are sound.</div>`}
 ,
 {h: "LBO credit documents: covenant tests, cash sweep, refi & div recap", body: `
 <p>The Day 17 debt schedule computes interest &amp; principal. The <b>credit agreement</b> decides <i>whether the company may keep operating</i> — through three mechanisms you must model, not merely mention:</p>
@@ -7580,9 +7592,9 @@ quiz: [
 {q: "Beginning debt 26,000, cash to debt 4,944.4. Y1 ending debt?", opts: ["20,555.6", "21,555.6", "22,055.6", "21,055.6"], answer: 3, k: "debt_paydown", diff: "Medium",
  hints: ["Ending debt = beginning debt \u2212 cash to debt.", "26,000 \u2212 4,944.4 = ?"],
  explain: "21,055.6 \u2014 year one of a five-year paydown."},
-{q: "Exit equity 73,466.40; sponsor equity 25,000. MoIC?", opts: ["2.94x", "1.94x", "2.47x", "3.94x"], answer: 0, k: "moic", diff: "Medium",
- hints: ["MoIC = exit equity \u00f7 equity invested.", "73,466.40 \u00f7 25,000 = ?"],
- explain: "2.94x \u2014 every Rp1 returns Rp2.94."},
+{q: "Exit equity 82,733.00; sponsor equity 25,000. MoIC?", opts: ["3.31x", "2.94x", "2.47x", "3.94x"], answer: 0, k: "moic", diff: "Medium",
+ hints: ["MoIC = exit equity \u00f7 equity invested.", "82,733.00 \u00f7 25,000 = ?"],
+ explain: "3.31x \u2014 every Rp1 returns Rp3.31. The old 2.94x dropped the Y5 leftover cash of Rp9,266.6 (cash to debt 9,393.8 \u2212 remaining debt 127.2) from exit equity."},
 {q: "Mezzanine 5,000 @6% PIK. Balance at end of Year 1?", opts: ["5,300","5,000","5,600","4,700"], answer: 0, k: "mezz_pik", diff: "Medium",
  hints: ["PIK = interest added to principal, not paid in cash.","5,000 + 5,000 × 6% = ? (5,600 is if ALL 12% were PIK; 4,700 is if the cash coupon also reduced principal.)"],
  explain: "5,000 + 300 = 5,300. PIK defers cash — the principal grows (Year 2: 5,618)."},
@@ -7595,11 +7607,11 @@ quiz: [
 
 ],
 hell: [
-{q: "Exit multiple drops 5x \u2192 4x (debt schedule unchanged). New MoIC?", opts: ["2.94x", "2.65x", "2.35x", "1.95x"], answer: 2, diff: "Medium",
- explain: "EV exit = 14,693.28 \u00d7 4 = 58,773.12; equity = 58,773.12 (zero debt); MoIC = 58,773.12 \u00f7 25,000 = 2.35x. The exit multiple is the second lever after growth \u2014 which is why the neutral 5.0x is conservative."},
+{q: "Exit multiple drops 5x \u2192 4x (debt schedule unchanged). New MoIC?", opts: ["2.94x", "2.65x", "2.72x", "1.95x"], answer: 2, diff: "Medium",
+ explain: "EV exit = 14,693.28 \u00d7 4 = 58,773.12; equity = 58,773.12 + 9,266.6 (Y5 leftover cash) \u2212 0 = 68,039.72; MoIC = 68,039.72 \u00f7 25,000 = 2.72x. The exit multiple is the second lever after growth \u2014 which is why the neutral 5.0x is conservative."},
 {q: "Interest rate rises 7% \u2192 10%. Y1 ending debt?", opts: ["21,664", "21,056", "20,664", "22,164"], answer: 0, diff: "Medium",
  explain: "Interest = 2,600 \u2192 EBT 6,200 \u2192 tax 1,364 \u2192 NI 4,836 \u2192 cash to debt 4,336 \u2192 ending debt 21,664. Up 608.4 vs canonical \u2014 paydown slows."},
-{q: "Y1 EBITDA falls 20% (8,640), rest canonical. Biggest risk?", opts: ["Interest falls 20% too", "Cash to debt shrinks \u2192 paydown slows; coverage 3.65x", "Tax rises", "MoIC surely stays 2.94x"], answer: 1, diff: "Hard",
+{q: "Y1 EBITDA falls 20% (8,640), rest canonical. Biggest risk?", opts: ["Interest falls 20% too", "Cash to debt shrinks \u2192 paydown slows; coverage 3.65x", "Tax rises", "MoIC surely stays 3.31x"], answer: 1, diff: "Hard",
  explain: "Interest is FIXED at 1,820 (from beginning debt). EBIT = 6,640 \u2192 coverage 3.65x; NI & cash shrink \u2192 Y1 ending debt above 21,055.6. Leverage magnifies bad news just like good news."},
 {q: "The 26,000 debt is fully repaid by Y5. Where did the money come from?", opts: ["The sponsor injected more", "PT Sinar Abadi's own operating cash (NI + D&A \u2212 capex)", "Lenders forgave it", "Converted into shares"], answer: 1, diff: "Easy",
  explain: "The heart of an LBO: the target repays its own acquisition debt from operating cash. The sponsor puts in nothing more after closing."}
@@ -7607,7 +7619,7 @@ hell: [
 tasks: [
 {t: "Task A \u2014 PT Sinar Abadi LBO workbook (\u00b14 hrs)", d: "Download the Day 17 practice file from Drive. Fill the inputs + write formulas: sources & uses, 5-year debt schedule, exit math. Every answer cell = a formula \u2014 target all BENAR \u2713 + BALANCE \u2713.", url: "https://drive.google.com/drive/folders/1CodmXvgm7OcVAWPv6Lfh6M90YRGAEdey"},
 {t: "Task B \u2014 Live-input experiments (\u00b145 min)", d: "After 100/100: change growth 8%\u21920%, record the new MoIC; change rate 7%\u219210%, record the new Y1 ending debt. Restore canonical (8%/7%) before uploading.", url: "https://drive.google.com/drive/folders/1CodmXvgm7OcVAWPv6Lfh6M90YRGAEdey"},
-{t: "Task C \u2014 Quiz above", d: "Target \u22655/6 correct. Missed? Read the hints, retake.", url: "https://drive.google.com/drive/folders/1CodmXvgm7OcVAWPv6Lfh6M90YRGAEdey"}
+{t: "Task C \u2014 Quiz above", d: "Target \u22657/8 correct. Missed? Read the hints, retake.", url: "https://drive.google.com/drive/folders/1CodmXvgm7OcVAWPv6Lfh6M90YRGAEdey"}
 ],
 blind: {h: "Blind Drill \u2014 mini-LBO 'PT Maju Kecil'", body: `
 
@@ -7618,7 +7630,7 @@ blind: {h: "Blind Drill \u2014 mini-LBO 'PT Maju Kecil'", body: `
 <p><b>Y2:</b> EBITDA 4,840; EBIT 4,040; interest 641.28; EBT 3,398.72; tax 747.72; NI 2,651; cash to debt 2,451; <b>ending debt 5,565</b>.</p>
 <p><b>Y3:</b> EBITDA 5,324; EBIT 4,524; interest 445.20; EBT 4,078.80; tax 897.34; NI 3,181.46; cash 2,981.46; <b>ending debt 2,583.53</b>.</p>
 <p><b>Exit:</b> EV = 5,324 \u00d7 5 = <b>26,620</b>; equity = 26,620 \u2212 2,583.53 = <b>24,036.47</b>; MoIC = 24,036.47 \u00f7 10,400 = <b>2.31x</b>.</p>
-<p><i>Why is MoIC lower than the main case (2.94x)?</i> Shorter horizon (3 vs 5 years) + lower entry leverage (2.5x vs 2.6x EBITDA). Same engine \u2014 only the inputs changed.</p>
+<p><i>Why is MoIC lower than the main case (3.31x)?</i> Shorter horizon (3 vs 5 years) + lower entry leverage (2.5x vs 2.6x EBITDA). Same engine \u2014 only the inputs changed.</p>
 </details>`}
 };
 EN["hari-18"] = {
@@ -9664,7 +9676,7 @@ const GLOSSARY_EN = [
 ["Reconciliation","Rekonsiliasi","Adjusting two numbers until they match through clear corrections.","NI → CFO: add non-cash, subtract ΔWC."],
 ["Tie-out","Tie-out","Verifying that two numbers that must match actually match.","BS cash vs ending CFS cash = 0."],
 ["Roll-forward","Roll-forward","Ending = beginning + in − out.","RE, net PPE, cash."],
-["Beta","Beta","Systematic risk of a stock vs the market. Beta 1.1 = 10% more volatile than the market.","Beta 1.3 → cost of equity up 1.2 points."],
+["Beta","Beta","Systematic risk of a stock vs the market. Beta 1.1 = 10% higher systematic sensitivity than the market (not total volatility).","Beta 1.3 → cost of equity up 1.2 points."],
 ["Schedule","Schedule","A roll-forward table: beginning + in − out = ending balance.","PP&E schedule: 3,600 + 2,500 − 550 = 5,550."],
 ["Exit multiple","Exit multiple","Terminal value method: sell the company at forecast end at an EBITDA multiple.","EBITDA 2,625 × 8 = TV 21,000k."],
 ["Forecast","Forecast","Projected future numbers from driver × assumption — not guesses.","2027 revenue = 16,800 × (1 + 10%)."],

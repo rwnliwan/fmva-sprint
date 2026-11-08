@@ -935,7 +935,7 @@ sections: [
 <tr><th>Skenario</th><th>Revenue</th><th>CFADS</th><th>DSCR</th><th>Vonis</th></tr>
 <tr><td>Base</td><td>360</td><td>218,00</td><td><b>1,45×</b></td><td>Bankable</td></tr>
 <tr><td>Tarif −10%</td><td>324</td><td>189,92</td><td><b>1,27×</b></td><td>Masih di atas 1,20×, di bawah kenyamanan</td></tr>
-<tr><td>Volume −20%</td><td>288</td><td>161,84</td><td><b>1,08×</b></td><td>Zona bahaya — DSRA terpakai, lock-up dividen</td></tr>
+<tr><td>Volume −20%</td><td>288</td><td>161,84</td><td><b>1,08×</b></td><td>Zona waspada — risiko lock-up bila DSCR &lt; ambang covenant; DSRA tidak terpakai (CFADS 161,84 &gt; 150)</td></tr>
 </table>
 <p>Hitungan tarif −10%: EBITDA 224; EBIT 144; EBT 64; pajak 14,08; CFADS = 224 − 14,08 − 20 = 189,92; DSCR = 189,92 ÷ 150 = 1,27×. Volume −20%: EBITDA 188; EBIT 108; EBT 28; pajak 6,16; CFADS = 188 − 6,16 − 20 = 161,84; DSCR = 161,84 ÷ 150 = 1,08×. <b>Pelajaran:</b> volume adalah risiko terbesar tol (tarif diatur &amp; naik berkala; volume tergantung ekonomi &amp; jalan alternatif). Itulah kenapa lender meminta traffic study independen sebelum signing — dan kenapa skenario volume-mu harus lebih lebar dari skenario tarif.</p>`},
 {h: "Tugas: bangun model project finance mini", body: `
@@ -951,9 +951,9 @@ quiz: [
 {q: "Debt sculpting target DSCR 1,30×; CFADS 218; bunga 80. Pokok tahun ini?", opts: ["Rp87,69 miliar","Rp70,00 miliar","Rp137,69 miliar","Rp167,69 miliar"], answer: 0, k: "project_finance", diff: "Medium",
  hints: ["Debt service target = 218 ÷ 1,30.", "Pokok = debt service target − bunga."],
  explain: "Debt service target = 218 ÷ 1,30 = 167,69; pokok = 167,69 − 80 = Rp87,69 miliar. Utang mengikuti kas."},
-{q: "Skenario volume −20%: DSCR 1,08×. Apa yang terjadi?", opts: ["Zona bahaya — DSRA terpakai, dividen di-lock-up","Tetap bankable nyaman","Default teknis (DSCR < 1,0)","Tidak ada efek ke ekuitas"], answer: 0, k: "dscr", diff: "Medium",
+{q: "Skenario volume −20%: DSCR 1,08×. Apa yang terjadi?", opts: ["Zona waspada — DSRA tidak terpakai (CFADS 161,84 > debt service 150); lock-up hanya bila covenant memicu","Tetap bankable nyaman","Default teknis (DSCR < 1,0)","Tidak ada efek ke ekuitas"], answer: 0, k: "dscr", diff: "Medium",
  hints: ["1,08× berada di 1,0–1,2× = zona renegosiasi.", "Volume adalah risiko terbesar tol."],
- explain: "DSCR 1,08× = zona bahaya: DSRA terpakai dan dividen ekuitas di-lock-up. Volume −20% jauh lebih merusak daripada tarif −10% (1,27×)."},
+ explain: "DSCR 1,08× = zona waspada: CFADS 161,84 masih melebihi debt service 150 sebesar 11,84 — tidak ada kekurangan yang harus ditutup DSRA. Lock-up dividen bergantung ambang covenant (mis. < 1,20×) yang tidak dinyatakan di lesson ini. Volume −20% jauh lebih merusak daripada tarif −10% (1,27×)."},
 {q: "Kenapa tenor pinjaman tol (15 tahun) lebih pendek dari umur konsesi (30 tahun)?", opts: ["Lender ingin keluar sebelum risiko akhir konsesi","Karena bunga lebih murah","Karena ekuitas meminta begitu","Aturan BEI"], answer: 0, k: "project_finance", diff: "Easy",
  hints: ["Risiko akhir konsesi (perpanjangan? kondisi aset?) ditanggung siapa?", "Lender membatasi tenor pada periode kas paling pasti."],
  explain: "Lender ingin lunas sebelum ketidakpastian akhir konsesi (perpanjangan, kondisi aset serah-terima). Utang mengikuti kas yang paling pasti."}
@@ -978,50 +978,52 @@ sections: [
 <tr><td>Premi bruto</td><td>4.000</td><td></td></tr>
 <tr><td>Premi diserahkan (ceded)</td><td>(1.200)</td><td></td></tr>
 <tr><td><b>Premi neto</b></td><td><b>2.800</b></td><td>4.000 \u2212 1.200</td></tr>
+<tr><td><b>Premi earned (pendapatan)</b></td><td><b>1.680</b></td><td>2.800 \u2212 1.120 (UPR)</td></tr>
 <tr><td>Klaim bruto terjadi</td><td>(2.100)</td><td></td></tr>
 <tr><td>Klaim dipulihkan dari reasuransi</td><td>500</td><td></td></tr>
 <tr><td><b>Klaim neto</b></td><td><b>(1.600)</b></td><td>2.100 \u2212 500</td></tr>
-<tr><td><b>Loss ratio</b></td><td><b>57,14%</b></td><td>1.600 \u00f7 2.800</td></tr>
+<tr><td><b>Loss ratio</b></td><td><b>95,24%</b></td><td>1.600 \u00f7 1.680</td></tr>
 <tr><td>Komisi + biaya usaha</td><td>(700)</td><td>280 + 420</td></tr>
-<tr><td><b>Expense ratio</b></td><td><b>25,00%</b></td><td>700 \u00f7 2.800</td></tr>
-<tr><td><b>Combined ratio</b></td><td><b>82,14%</b></td><td>57,14% + 25,00%</td></tr>
-<tr><td><b>Underwriting profit</b></td><td><b>500</b></td><td>2.800 \u2212 1.600 \u2212 700</td></tr>
+<tr><td><b>Expense ratio</b></td><td><b>41,67%</b></td><td>700 \u00f7 1.680</td></tr>
+<tr><td><b>Combined ratio</b></td><td><b>136,90%</b></td><td>95,24% + 41,67%</td></tr>
+<tr><td><b>Underwriting profit</b></td><td><b>(620)</b></td><td>1.680 \u2212 1.600 \u2212 700</td></tr>
 <tr><td>Hasil investasi</td><td>300</td><td></td></tr>
-<tr><td><b>EBT</b></td><td><b>800</b></td><td>500 + 300</td></tr>
-<tr><td>Pajak 22%</td><td>(176)</td><td>800 \u00d7 22%</td></tr>
-<tr><td><b>Laba bersih</b></td><td><b>624</b></td><td>800 \u2212 176</td></tr>
+<tr><td><b>EBT</b></td><td><b>(320)</b></td><td>(620) + 300</td></tr>
+<tr><td>Pajak 22% (manfaat pajak atas rugi)</td><td>70,4</td><td>(320) \u00d7 22% = 70,4</td></tr>
+<tr><td><b>Laba bersih</b></td><td><b>(249,6)</b></td><td>(320) + 70,4</td></tr>
 </table>
-<p><b>Vonis:</b> combined ratio 82,14% &lt; 100% \u2192 underwriting <b>untung</b>. Cek silang: margin underwriting = (100% \u2212 82,14%) \u00d7 2.800 = <b>500</b> \u2713. Bila combined ratio &gt; 100%, underwriting rugi \u2014 dan laba hanya datang dari investasi. Itulah jebakan membaca asuransi dari laba bersih saja: perusahaan dengan combined ratio 105% dan hasil investasi besar terlihat untung, padahal mesin intinya bocor \u2014 dan hasil investasi tidak menutup lubang itu selamanya.</p>`},
+<p><b>Vonis:</b> combined ratio <b>136,90% &gt; 100%</b> \u2192 underwriting <b>rugi Rp620 miliar</b>. Cek silang: margin underwriting = (100% \u2212 136,90%) \u00d7 1.680 = <b>(620)</b> \u2713. Angka lama 82,14% adalah jebakan basis: ia membagi klaim dan biaya dengan premi TERTULIS 2.800, padahal pendapatan periode ini hanya premi EARNED 1.680 (UPR 1.120 belum menjadi pendapatan). Hasil investasi 300 tidak menutup lubang underwriting \u2014 EBT (320); laba bersih (249,6) setelah manfaat pajak 70,4 (asumsi rugi dapat dikompensasi; tanpa kompensasi, pajak 0 dan laba bersih (320)). Pelajarannya: perusahaan dengan combined ratio 105% dan hasil investasi besar terlihat untung, padahal mesin intinya bocor \u2014 dan hasil investasi tidak menutup lubang itu selamanya.</p>`},
 {h: "Reserving: cadangan adalah utang yang belum dibayar", body: `
 <p>Dua cadangan yang membentuk hampir seluruh liabilitas asuransi:</p>
 <p><b>1. Cadangan klaim (LIC \u2014 liability for incurred claims).</b> Walk tahun ini (Rp miliar): awal 9.000 + klaim neto terjadi 1.600 \u2212 klaim neto dibayar 1.400 = akhir <b>9.200</b>. Cadangan naik Rp200 miliar \u2014 klaim terjadi melebihi yang dibayar. Perhatikan: klaim <i>terjadi</i> 1.600 sudah membebani laba lewat combined ratio, walau kas yang keluar baru 1.400. Selisihnya (200) menumpuk di neraca sebagai utang.</p>
 <p><b>2. Cadangan premi (UPR / LRC \u2014 liability for remaining coverage).</b> Premi neto 2.800; 40% belum berjalan (polis masih berlaku) \u2192 UPR = 40% \u00d7 2.800 = <b>1.120</b>. Premi yang sudah menjadi pendapatan = 2.800 \u2212 1.120 = <b>1.680</b>. Total cadangan teknis = 9.200 + 1.120 = <b>10.320</b>.</p>
-<p><b>Kenapa cadangan menentukan laba:</b> cadangan yang <i>dilepas</i> (turun tanpa klaim dibayar) menaikkan laba tanpa satu rupiah kas baru \u2014 dan cadangan yang <i>ditambah</i> menekan laba tanpa kas keluar. Analis asuransi membaca perubahan cadangan <i>sebelum</i> percaya laba. Di bawah PSAK 117 (IFRS 17), kedua cadangan ini dilaporkan sebagai LIC dan LRC \u2014 nama baru, logika yang sama: janji yang belum dipenuhi adalah utang.</p>`},
+<p><b>Rekonsiliasi written \u2192 earned (jangan dicampur):</b> UPR awal 0 + premi neto tertulis 2.800 \u2212 premi earned 1.680 = UPR akhir <b>1.120</b> \u2713. Inilah jembatan antara combined ratio dan reserving: combined ratio memakai premi EARNED (1.680) sebagai penyebut, bukan premi tertulis (2.800). Bila UPR awal = UPR akhir, keduanya sama \u2014 di sini tidak.</p>
+<p><b>Kenapa cadangan menentukan laba:</b> cadangan yang <i>dilepas</i> (turun tanpa klaim dibayar) menaikkan laba tanpa satu rupiah kas baru \u2014 dan cadangan yang <i>ditambah</i> menekan laba tanpa kas keluar. Analis asuransi membaca perubahan cadangan <i>sebelum</i> percaya laba. Di bawah PSAK 117 (IFRS 17), kedua cadangan ini dilaporkan sebagai LIC dan LRC \u2014 tetapi LRC pada model umum (GMM) = fulfilment cash flows + CSM, TIDAK identik dengan UPR; hanya pada PAA (premium allocation approach) LRC mendekati premi belum berjalan. Model ini memakai penyederhanaan ala PAA: janji yang belum dipenuhi adalah utang.</p>`},
 {h: "RBC & embedded value: dua cara membaca modal", body: `
 <p><b>1. RBC (risk-based capital) \u2014 cukupkah modalmu?</b> Modal tersedia Rp3.000 miliar; MMBR (modal minimum berbasis risiko) Rp1.500 miliar \u2192 RBC = 3.000 \u00f7 1.500 = <b>200%</b>, di atas minimum OJK 120%. Buffer di atas 120% = 3.000 \u2212 (120% \u00d7 1.500) = <b>Rp1.200 miliar</b> \u2014 itulah ruang untuk tumbuh, membayar dividen, atau menyerap guncangan klaim. RBC &lt; 120% = regulator turun tangan; seperti CAR di bank (H26), modal dibaca pertama, laba kemudian.</p>
 <p><b>2. Embedded value (EV) \u2014 berapa nilai polis yang sudah berjalan?</b> Untuk buku life (ilustratif): ANW (adjusted net worth) 2.000 + PVFP (nilai kini laba masa depan dari polis in-force) 1.200 \u2212 CoC (cost of capital) 150 = EV <b>3.050</b>. VNB (value of new business) tahun ini = <b>180</b> \u2014 nilai bisnis baru di atas biaya akuisisinya. EV per saham = 3.050.000 jt \u00f7 3.556 jt = <b>Rp857,71</b>.</p>
-<div class="callout"><b>Batas jujur:</b> EV hanya diterbitkan perusahaan <b>jiwa</b> \u2014 TUGU (umum + reasuransi) tidak mempublikasikan EV, jadi bagian EV di sini memakai life book ilustratif, bukan angka TUGU. Jangan mencampur: RBC menilai kecukupan modal <i>seluruh</i> perusahaan; EV menilai nilai <i>polis in-force</i> saja.</div>`},
+<div class="callout"><b>Batas jujur:</b> EV hanya diterbitkan perusahaan <b>jiwa</b> \u2014 TUGU (umum + reasuransi) tidak mempublikasikan EV, jadi bagian EV di sini memakai life book ilustratif, bukan angka TUGU. Jangan mencampur: RBC menilai kecukupan modal <i>seluruh</i> perusahaan; EV menilai ANW + PVFP \u2212 CoC \u2014 hanya PVFP yang menilai <i>polis in-force</i>; ANW adalah kekayaan bersih yang disesuaikan, bukan nilai polis.</div>`},
 {h: "Valuasi: P/BV vs P/EV", body: `
-<p>Dengan ekuitas Rp6.000 miliar dan 3.556 juta saham beredar: BV per saham = 6.000.000 jt \u00f7 3.556 jt = <b>Rp1.687,29</b>. Harga saham ilustratif Rp1.200 \u2192 <b>P/BV = 1.200 \u00f7 1.687,29 = 0,71\u00d7</b>. Kapitalisasi pasar = 1.200 \u00d7 3.556 \u00f7 1.000 = <b>Rp4.267,20 miliar</b>. Sementara <b>P/EV = 1.200 \u00f7 857,71 = 1,40\u00d7</b>.</p>
-<p><b>Bacaan:</b> P/BV 0,71\u00d7 berkata pasar menilai ekuitas di bawah nilai buku (gabungan bisnis umum + reasuransi + investasi); P/EV 1,40\u00d7 berkata pasar membayar premi atas nilai embedded life book. Keduanya benar \u2014 karena cakupannya beda. Analis yang hanya melihat P/BV &lt; 1 dan berteriak \u201cmurah\u201d melewatkan pertanyaan yang lebih penting: apakah combined ratio-nya di bawah 100% secara persisten, apakah cadangannya cukup, dan apakah RBC-nya punya buffer? Tanpa ketiganya, \u201cmurah\u201d hanya berarti pasar tidak percaya angkanya.</p>
-<p><b>Tugas (di workbook Drive):</b> bangun model asuransi mini: (1) sheet asumsi (premi, ceded, klaim, biaya, pajak, cadangan, modal, EV); (2) underwriting \u2014 premi neto, loss ratio, expense ratio, combined ratio, UW profit, NI; (3) reserving walk LIC + UPR; (4) RBC + EV; (5) valuasi P/BV vs P/EV. Kriteria lolos: combined ratio 82,14%, LIC akhir 9.200, RBC 200%, EV 3.050, P/BV 0,71\u00d7.</p>`}
+<p>Dengan ekuitas Rp6.000 miliar dan 3.556 juta saham beredar: BV per saham = 6.000.000 jt \u00f7 3.556 jt = <b>Rp1.687,29</b>. Harga saham ilustratif Rp1.200 \u2192 <b>P/BV = 1.200 \u00f7 1.687,29 = 0,71\u00d7</b>. Kapitalisasi pasar = 1.200 \u00d7 3.556 \u00f7 1.000 = <b>Rp4.267,20 miliar</b>. P/EV <b>TIDAK dihitung</b> di sini: harga saham Rp1.200 adalah harga GRUP (umum + reasuransi + investasi), sedangkan EV 3.050 hanya life book ilustratif \u2014 membaginya mencampur dua cakupan dan menghasilkan angka tanpa makna valuasi.</p>
+<p><b>Bacaan:</b> P/BV 0,71\u00d7 berkata pasar menilai ekuitas di bawah nilai buku (gabungan bisnis umum + reasuransi + investasi). P/EV tidak dipakai \u2014 ia mencampur harga grup dengan EV life book yang cakupannya beda, jadi 1,40\u00d7 BUKAN bacaan valuasi yang bermakna. Analis yang hanya melihat P/BV &lt; 1 dan berteriak \u201cmurah\u201d melewatkan pertanyaan yang lebih penting: apakah combined ratio-nya di bawah 100% secara persisten, apakah cadangannya cukup, dan apakah RBC-nya punya buffer? Tanpa ketiganya, \u201cmurah\u201d hanya berarti pasar tidak percaya angkanya.</p>
+<p><b>Tugas (di workbook Drive):</b> bangun model asuransi mini: (1) sheet asumsi (premi, ceded, klaim, biaya, pajak, cadangan, modal, EV); (2) underwriting \u2014 premi neto, premi earned, loss ratio, expense ratio, combined ratio, UW profit, NI; (3) reserving walk LIC + UPR; (4) RBC + EV; (5) valuasi P/BV (P/EV TIDAK dipakai \u2014 cakupan beda). Kriteria lolos: combined ratio 136,90%, UW profit (620), laba bersih (249,6), LIC akhir 9.200, RBC 200%, EV 3.050, P/BV 0,71\u00d7.</p>`}
 ],
 quiz: [
-{q: "Premi neto 2.800; klaim neto 1.600; biaya 700. Combined ratio?", opts: ["82,14%","57,14%","25,00%","107,14%"], answer: 0, k: "combined_ratio", diff: "Easy",
- hints: ["Loss ratio = 1.600 ÷ 2.800 = ?; expense ratio = 700 ÷ 2.800 = ?", "Combined = loss + expense."],
- explain: "Loss ratio 57,14% + expense ratio 25,00% = combined ratio 82,14% (< 100% = underwriting untung)."},
-{q: "Underwriting profit model asuransi ini?", opts: ["Rp500 miliar","Rp624 miliar","Rp800 miliar","Rp300 miliar"], answer: 0, k: "uw_profit", diff: "Easy",
- hints: ["UW = premi neto − klaim neto − biaya.", "2.800 − 1.600 − 700 = ?"],
- explain: "UW profit = 2.800 − 1.600 − 700 = Rp500 miliar. (624 itu laba bersih setelah investasi + pajak; 800 itu EBT.)"},
+{q: "Premi neto tertulis 2.800; UPR akhir 1.120 (UPR awal 0); klaim neto 1.600; biaya 700. Combined ratio?", opts: ["136,90%","82,14%","95,24%","41,67%"], answer: 0, k: "combined_ratio", diff: "Easy",
+ hints: ["Premi earned = 2.800 − 1.120 = 1.680; loss ratio = 1.600 ÷ 1.680 = ?", "Expense ratio = 700 ÷ 1.680; combined = loss + expense."],
+ explain: "Loss ratio 95,24% + expense ratio 41,67% = combined ratio 136,90% (> 100% = underwriting rugi Rp620 miliar). 82,14% adalah jebakan lama: membagi dengan premi tertulis 2.800, bukan premi earned 1.680."},
+{q: "Underwriting profit model asuransi ini?", opts: ["−Rp620 miliar (rugi)","Rp500 miliar","−Rp249,6 miliar","Rp800 miliar"], answer: 0, k: "uw_profit", diff: "Easy",
+ hints: ["UW = premi EARNED − klaim neto − biaya.", "1.680 − 1.600 − 700 = ?"],
+ explain: "UW = 1.680 − 1.600 − 700 = −Rp620 miliar (rugi). (Rp500 miliar memakai premi tertulis 2.800 — salah basis. −Rp249,6 miliar itu laba bersih setelah investasi + manfaat pajak; Rp800 miliar itu EBT model lama yang salah basis.)"},
 {q: "LIC awal 9.000; klaim neto terjadi 1.600; klaim neto dibayar 1.400. LIC akhir?", opts: ["9.200","10.600","7.600","9.000"], answer: 0, k: "reserving", diff: "Easy",
  hints: ["Walk: awal + terjadi − dibayar.", "9.000 + 1.600 − 1.400 = ?"],
  explain: "LIC akhir = 9.000 + 1.600 − 1.400 = 9.200. Cadangan naik 200 = klaim terjadi melebihi yang dibayar."},
 {q: "Modal tersedia 3.000; MMBR 1.500. RBC ratio dan vonis?", opts: ["200% — di atas minimum OJK 120%","120% — tepat di minimum","50% — di bawah minimum","300% — tiga kali minimum"], answer: 0, k: "rbc", diff: "Easy",
  hints: ["RBC = modal ÷ MMBR.", "3.000 ÷ 1.500 = ?"],
  explain: "RBC = 3.000 ÷ 1.500 = 200%, buffer Rp1.200 miliar di atas 120%. Seperti CAR bank: modal dibaca pertama."},
-{q: "EV 3.050; saham beredar 3.556 juta lembar. EV/saham dan P/EV pada harga Rp1.200?", opts: ["Rp857,71; P/EV 1,40×","Rp1.687,29; P/EV 0,71×","Rp1.200; P/EV 1,00×","Rp3.050; P/EV 2,54×"], answer: 0, k: "ev_pbv", diff: "Medium",
- hints: ["EV/saham = 3.050.000 ÷ 3.556.", "P/EV = 1.200 ÷ EV/saham; 1.687,29 itu BV/saham, bukan EV/saham."],
- explain: "EV/saham = 3.050.000 ÷ 3.556 = Rp857,71; P/EV = 1.200 ÷ 857,71 = 1,40×. (P/BV 0,71× memakai BV/saham 1.687,29 — cakupan beda.)"}
+{q: "EV 3.050; saham beredar 3.556 juta lembar. EV/saham?", opts: ["Rp857,71","Rp1.687,29","Rp1.200","Rp3.050"], answer: 0, k: "ev_pbv", diff: "Medium",
+ hints: ["EV/saham = 3.050.000 ÷ 3.556.", "1.687,29 itu BV/saham, bukan EV/saham."],
+ explain: "EV/saham = 3.050.000 ÷ 3.556 = Rp857,71. P/EV TIDAK dihitung: harga grup Rp1.200 tidak sebanding dengan EV life book — cakupannya beda. (P/BV 0,71× memakai BV/saham 1.687,29 — cakupan grup yang sama.)"}
 ],
 hellPass: 80
 },
@@ -1048,17 +1050,17 @@ sections: [
 <p>Churn 3% sebulan terlihat kecil \u2014 tapi majemuk: 0,97<sup>12</sup> = 0,6938, jadi setelah setahun hanya <b>69%</b> cohort yang tersisa dan MRR cohort jatuh dari 100 jt ke <b>69,38 jt</b> (ARPA Rp1 jt/bulan). Turunkan churn ke 2%: 0,98<sup>12</sup> = 0,7847 \u2014 78 pelanggan tersisa. Satu poin churn = sembilan pelanggan per seratus per tahun. Itulah kenapa analis SaaS membaca cohort dulu, total pelanggan kemudian: total bisa naik karena akuisisi menutupi kebocoran \u2014 cohort tidak bisa berbohong.</p>`},
 {h: "LTV/CAC & payback: bolehkah bakar uang untuk tumbuh?", body: `
 <p>ARPA Rp1 jt/bulan; gross margin 80%; churn 3%/bulan; CAC Rp8 jt per pelanggan baru:</p>
-<p><b>Lifetime</b> = 1 \u00f7 churn = 1 \u00f7 0,03 = <b>33,33 bulan</b>. <b>Laba kotor per pelanggan per bulan</b> = 1 \u00d7 80% = <b>Rp0,80 jt</b>. <b>LTV</b> = 0,80 \u00d7 33,33 = <b>Rp26,67 jt</b> \u2014 total laba kotor yang dihasilkan satu pelanggan selama hidupnya. <b>LTV/CAC</b> = 26,67 \u00f7 8 = <b>3,33\u00d7</b>. <b>Payback CAC</b> = 8 \u00f7 0,80 = <b>10 bulan</b> \u2014 modal akuisisi kembali dalam 10 bulan.</p>
-<p><b>Vonis:</b> LTV/CAC 3,33\u00d7 (\u2265 3\u00d7) dan payback 10 bulan (&lt; 12 bulan) \u2192 mesin pertumbuhan <b>sehat</b>: tiap Rp8 jt yang dibakar untuk mengakuisisi menghasilkan Rp26,67 jt laba kotor. Di bawah 3\u00d7 atau payback &gt; 12 bulan, tiap pelanggan baru membakar kas lebih cepat daripada ia menghasilkannya \u2014 pertumbuhan seperti itu adalah perlombaan menuju kehabisan kas. Jebakan: LTV di atas memakai churn <i>rata-rata</i> \u2014 bila churn cohort baru lebih tinggi dari churn pelanggan lama, LTV riil lebih kecil dari hitungan ini.</p>`},
+<p><b>Lifetime</b> = 1 \u00f7 churn = 1 \u00f7 0,03 = <b>33,33 bulan</b>. <b>Laba kotor per pelanggan per bulan</b> = 1 \u00d7 80% = <b>Rp0,80 jt</b>. <b>LTV</b> = 0,80 \u00d7 33,33 = <b>Rp26,67 jt</b> \u2014 total laba kotor yang dihasilkan satu pelanggan selama hidupnya. <b>LTV/CAC</b> = 26,67 \u00f7 8 = <b>3,33\u00d7</b>. <b>Payback CAC (sederhana, tanpa churn)</b> = 8 \u00f7 0,80 = <b>10 bulan</b>. <b>Payback CAC churn-adjusted</b> memakai kontribusi ekspektasian kumulatif: 0,80 \u00d7 (1 \u2212 0,97<sup>n</sup>) \u00f7 0,03 \u2014 bulan ke-10 baru terkumpul <b>Rp7,00 jt</b> &lt; CAC 8; impas saat 0,97<sup>n</sup> = 0,70 \u2192 n = 11,71 \u2192 <b>bulan ke-12</b>.</p>
+<p><b>Vonis:</b> LTV/CAC 3,33\u00d7 (\u2265 3\u00d7) dan payback churn-adjusted 12 bulan \u2014 tepat di ambang 12 bulan, bukan nyaman di bawahnya. Mesin pertumbuhan <b>sehat dengan catatan</b>: tiap Rp8 jt yang dibakar untuk mengakuisisi menghasilkan Rp26,67 jt laba kotor. Ingat: ambang 3\u00d7 / 12 bulan adalah <b>heuristik praktis, bukan diagnosis</b> \u2014 LTV/CAC 2\u00d7 tetap berarti laba kotor seumur hidup (2 \u00d7 CAC) melebihi CAC, dan penilaian harus menimbang sektor, waktu, biaya lain, dan risiko pendanaan. Jebakan: LTV di atas memakai churn <i>rata-rata</i> \u2014 bila churn cohort baru lebih tinggi dari churn pelanggan lama, LTV riil lebih kecil dari hitungan ini.</p>`},
 {h: "NRR/GRR & Rule of 40: kesehatan vs pertumbuhan", body: `
 <p>ARR awal Rp12.000 jt; churn + kontraksi Rp1.800 jt; ekspansi (upsell/cross-sell) Rp2.400 jt:</p>
 <p><b>GRR</b> (gross revenue retention) = (12.000 \u2212 1.800) \u00f7 12.000 = <b>85%</b> \u2014 berapa revenue pelanggan lama yang bertahan tanpa ekspansi. <b>NRR</b> (net revenue retention) = (12.000 \u2212 1.800 + 2.400) \u00f7 12.000 = <b>105%</b> \u2014 pelanggan lama membayar LEBIH tiap tahun. ARR akhir = 12.000 \u00d7 105% = <b>12.600</b> \u2014 tumbuh tanpa satu pun pelanggan baru. NRR &gt; 100% adalah mesin SaaS: pertumbuhan yang tidak butuh akuisisi.</p>
-<p><b>Rule of 40:</b> pertumbuhan revenue 25% + FCF margin 15% = <b>40</b> \u2014 tepat di ambang sehat (\u2265 40). Di bawah 40, perusahaan harus memilih: tumbuh cepat dengan bakar kas, atau untung tapi stagnan.</p>
+<p><b>Rule of 40:</b> pertumbuhan revenue 25% + FCF margin 15% = <b>40</b> \u2014 tepat di patokan heuristik 40. Patokan ini bukan vonis: perusahaan dengan 35 (mis. tumbuh 20% + margin FCF 15%) bisa tetap sehat bila menghasilkan kas \u2014 yang penting kombinasi dan arahnya, bukan angka tunggal.</p>
 <p><b>Deferred revenue (kas vs pengakuan):</b> kontrak tahunan Rp12 jt dibayar di muka \u2014 kas masuk 12 jt hari ini, revenue diakui 1 jt/bulan. Akhir bulan 1: deferred revenue = 12 \u2212 1 = <b>Rp11 jt</b> (liabilitas jasa). SaaS yang tumbuh cepat terlihat \u2018kaya kas\u2019 padahal sebagian kas itu utang jasa yang belum diberikan.</p>`},
 {h: "Valuasi: EV/ARR", body: `
 <p>ARR awal = 1.000 pelanggan \u00d7 ARPA Rp12 jt/tahun = <b>Rp12.000 jt</b>. Dengan multiple EV/ARR 6\u00d7: EV = 12.000 \u00d7 6 = <b>Rp72.000 jt (Rp72 miliar)</b>. EV per pelanggan = 72.000 \u00f7 1.000 = <b>Rp72 jt</b>.</p>
 <p><b>Bacaan:</b> EV/pelanggan Rp72 jt vs LTV Rp26,67 jt \u2014 pasar membayar hampir tiga kali nilai laba kotor pelanggan hari ini. Itu bukan kesalahan hitung: multiple ARR menghargai <i>kontrak masa depan</i> (ekspansi, NRR 105%, pelanggan baru) \u2014 bukan laba hari ini. Bandingkan dengan jangkar Salesforce: RPO $63,4 miliar \u00f7 revenue $37,9 miliar = <b>1,67\u00d7</b> \u2014 kontrak masa depan 1,67\u00d7 revenue setahun; FCF margin 32,7%. Jebakan: ARR \u2260 revenue \u2014 ARR adalah run-rate kontrak berjalan; revenue adalah yang sudah diakui. Multiple atas ARR yang memakai ARR kadaluarsa (churn tinggi) menghargai pelanggan yang sudah pergi.</p>
-<p><b>Tugas (di workbook Drive):</b> bangun model SaaS mini: (1) sheet asumsi (pelanggan, ARPA, churn, margin, CAC, ARR, growth, FCF margin, multiple); (2) cohort \u2014 pelanggan tersisa + MRR bulan 0/3/6/12; (3) LTV/CAC + payback; (4) GRR/NRR + Rule of 40 + deferred revenue; (5) valuasi EV/ARR. Kriteria lolos: cohort bln 12 = 69,38; LTV/CAC 3,33\u00d7; payback 10 bln; NRR 105%; Rule of 40 = 40; EV 72.000.</p>`}
+<p><b>Tugas (di workbook Drive):</b> bangun model SaaS mini: (1) sheet asumsi (pelanggan, ARPA, churn, margin, CAC, ARR, growth, FCF margin, multiple); (2) cohort \u2014 pelanggan tersisa + MRR bulan 0/3/6/12; (3) LTV/CAC + payback; (4) GRR/NRR + Rule of 40 + deferred revenue; (5) valuasi EV/ARR. Kriteria lolos: cohort bln 12 = 69,38; LTV/CAC 3,33\u00d7; payback sederhana 10 bln; payback churn-adjusted 12 bln; NRR 105%; Rule of 40 = 40; EV 72.000.</p>`}
 ],
 quiz: [
 {q: "Cohort 100 pelanggan, churn 3%/bulan. Berapa yang tersisa di bulan 12?", opts: ["69,38 pelanggan","91,27 pelanggan","83,30 pelanggan","100 pelanggan"], answer: 0, k: "churn_cohort", diff: "Easy",
@@ -1067,9 +1069,9 @@ quiz: [
 {q: "ARPA Rp1 jt/bln, gross margin 80%, churn 3%/bln, CAC Rp8 jt. LTV/CAC?", opts: ["3,33×","2,67×","0,80×","10,00×"], answer: 0, k: "ltv_cac", diff: "Medium",
  hints: ["Lifetime = 1 ÷ 0,03 = 33,33 bln; LTV = 1 × 80% × 33,33.", "LTV/CAC = 26,67 ÷ 8."],
  explain: "LTV = 1 × 80% × 33,33 = Rp26,67 jt; LTV/CAC = 26,67 ÷ 8 = 3,33× (≥ 3× = sehat)."},
-{q: "CAC Rp8 jt; laba kotor per pelanggan Rp0,80 jt/bulan. Payback CAC?", opts: ["10 bulan","33 bulan","8 bulan","12 bulan"], answer: 0, k: "payback", diff: "Easy",
- hints: ["Payback = CAC ÷ laba kotor/bulan.", "8 ÷ 0,80 = ?"],
- explain: "Payback = 8 ÷ 0,80 = 10 bulan (< 12 bulan = sehat). 33 bulan itu lifetime, bukan payback."},
+{q: "CAC Rp8 jt; laba kotor per pelanggan Rp0,80 jt/bulan; churn 3%/bulan. Payback CAC churn-adjusted?", opts: ["12 bulan","10 bulan","33 bulan","8 bulan"], answer: 0, k: "payback", diff: "Easy",
+ hints: ["Kontribusi kumulatif bln 10 = 0,80 × (1 − 0,97^10) ÷ 0,03 = Rp7,00 jt < CAC 8.", "Impas saat 0,97^n = 0,70 → n = 11,71 → bulan ke-12."],
+ explain: "Payback churn-adjusted ≈ 12 bulan (kumulatif bln 10 baru Rp7,00 jt; bln 12 mencapai Rp8,16 jt). 10 bulan itu payback SEDERHANA tanpa churn; 33 bulan itu lifetime, bukan payback."},
 {q: "ARR awal 12.000; churn+kontraksi 1.800; ekspansi 2.400. NRR?", opts: ["105%","85%","100%","90%"], answer: 0, k: "nrr", diff: "Easy",
  hints: ["NRR = (12.000 − 1.800 + 2.400) ÷ 12.000.", "85% itu GRR (tanpa ekspansi)."],
  explain: "NRR = (12.000 − 1.800 + 2.400) ÷ 12.000 = 105% — pelanggan lama membayar lebih tiap tahun. GRR-nya 85%."},
@@ -1953,7 +1955,7 @@ sections: [
 <tr><th>Scenario</th><th>Revenue</th><th>CFADS</th><th>DSCR</th><th>Verdict</th></tr>
 <tr><td>Base</td><td>360</td><td>218.00</td><td><b>1.45×</b></td><td>Bankable</td></tr>
 <tr><td>Tariff −10%</td><td>324</td><td>189.92</td><td><b>1.27×</b></td><td>Still above 1.20×, below comfort</td></tr>
-<tr><td>Volume −20%</td><td>288</td><td>161.84</td><td><b>1.08×</b></td><td>Danger zone — DSRA drawn, dividend lock-up</td></tr>
+<tr><td>Volume −20%</td><td>288</td><td>161.84</td><td><b>1.08×</b></td><td>Watch zone — lock-up risk if DSCR &lt; the covenant threshold; DSRA NOT drawn (CFADS 161.84 &gt; 150)</td></tr>
 </table>
 <p>Tariff −10% maths: EBITDA 224; EBIT 144; EBT 64; tax 14.08; CFADS = 224 − 14.08 − 20 = 189.92; DSCR = 189.92 ÷ 150 = 1.27×. Volume −20%: EBITDA 188; EBIT 108; EBT 28; tax 6.16; CFADS = 188 − 6.16 − 20 = 161.84; DSCR = 161.84 ÷ 150 = 1.08×. <b>Lesson:</b> volume is a toll road's biggest risk (tariffs are regulated &amp; rise periodically; volume depends on the economy &amp; alternative roads). That is why lenders demand an independent traffic study before signing — and why your volume scenarios must be wider than your tariff scenarios.</p>`},
 {h: "Task: build a mini project-finance model", body: `
@@ -1969,9 +1971,9 @@ quiz: [
 {q: "Debt sculpting at target DSCR 1.30×; CFADS 218; interest 80. This year's principal?", opts: ["Rp87.69 billion","Rp70.00 billion","Rp137.69 billion","Rp167.69 billion"], answer: 0, k: "project_finance", diff: "Medium",
  hints: ["Target debt service = 218 ÷ 1.30.", "Principal = target debt service − interest."],
  explain: "Target debt service = 218 ÷ 1.30 = 167.69; principal = 167.69 − 80 = Rp87.69 billion. Debt follows cash."},
-{q: "Volume −20% scenario: DSCR 1.08×. What happens?", opts: ["Danger zone — DSRA drawn, dividends locked up","Still comfortably bankable","Technical default (DSCR < 1.0)","No effect on equity"], answer: 0, k: "dscr", diff: "Medium",
+{q: "Volume −20% scenario: DSCR 1.08×. What happens?", opts: ["Watch zone — DSRA not drawn (CFADS 161.84 > debt service 150); lock-up only if a covenant triggers","Still comfortably bankable","Technical default (DSCR < 1.0)","No effect on equity"], answer: 0, k: "dscr", diff: "Medium",
  hints: ["1.08× sits in the 1.0–1.2× renegotiation zone.", "Volume is a toll road's biggest risk."],
- explain: "DSCR 1.08× = danger zone: the DSRA is drawn and equity dividends are locked up. Volume −20% hurts far more than tariff −10% (1.27×)."},
+ explain: "DSCR 1.08× = watch zone: CFADS of 161.84 still exceeds debt service of 150 by 11.84 — no shortfall for the DSRA to cover. A dividend lock-up depends on the covenant threshold (e.g. < 1.20×), which this lesson does not state. Volume −20% hurts far more than tariff −10% (1.27×)."},
 {q: "Why is the toll-road loan tenor (15 years) shorter than the concession life (30 years)?", opts: ["The lender wants out before end-of-concession risk","Because interest is cheaper","Because equity asks for it","IDX rules"], answer: 0, k: "project_finance", diff: "Easy",
  hints: ["Who bears end-of-concession risk (extension? handover condition)?", "Lenders limit tenor to the most certain cash period."],
  explain: "The lender wants to be repaid before end-of-concession uncertainty (extension, handover condition). Debt follows the most certain cash."}
@@ -1992,50 +1994,52 @@ sections: [
 <tr><td>Gross premiums</td><td>4,000</td><td></td></tr>
 <tr><td>Ceded premiums</td><td>(1,200)</td><td></td></tr>
 <tr><td><b>Net premiums</b></td><td><b>2,800</b></td><td>4,000 \u2212 1,200</td></tr>
+<tr><td><b>Earned premiums (revenue)</b></td><td><b>1,680</b></td><td>2,800 \u2212 1,120 (UPR)</td></tr>
 <tr><td>Gross claims incurred</td><td>(2,100)</td><td></td></tr>
 <tr><td>Claims recovered from reinsurers</td><td>500</td><td></td></tr>
 <tr><td><b>Net claims</b></td><td><b>(1,600)</b></td><td>2,100 \u2212 500</td></tr>
-<tr><td><b>Loss ratio</b></td><td><b>57.14%</b></td><td>1,600 \u00f7 2,800</td></tr>
+<tr><td><b>Loss ratio</b></td><td><b>95.24%</b></td><td>1,600 \u00f7 1,680</td></tr>
 <tr><td>Commissions + operating expenses</td><td>(700)</td><td>280 + 420</td></tr>
-<tr><td><b>Expense ratio</b></td><td><b>25.00%</b></td><td>700 \u00f7 2,800</td></tr>
-<tr><td><b>Combined ratio</b></td><td><b>82.14%</b></td><td>57.14% + 25.00%</td></tr>
-<tr><td><b>Underwriting profit</b></td><td><b>500</b></td><td>2,800 \u2212 1,600 \u2212 700</td></tr>
+<tr><td><b>Expense ratio</b></td><td><b>41.67%</b></td><td>700 \u00f7 1,680</td></tr>
+<tr><td><b>Combined ratio</b></td><td><b>136.90%</b></td><td>95.24% + 41.67%</td></tr>
+<tr><td><b>Underwriting profit</b></td><td><b>(620)</b></td><td>1,680 \u2212 1,600 \u2212 700</td></tr>
 <tr><td>Investment income</td><td>300</td><td></td></tr>
-<tr><td><b>EBT</b></td><td><b>800</b></td><td>500 + 300</td></tr>
-<tr><td>Tax 22%</td><td>(176)</td><td>800 \u00d7 22%</td></tr>
-<tr><td><b>Net income</b></td><td><b>624</b></td><td>800 \u2212 176</td></tr>
+<tr><td><b>EBT</b></td><td><b>(320)</b></td><td>(620) + 300</td></tr>
+<tr><td>Tax 22% (tax benefit on the loss)</td><td>70.4</td><td>(320) \u00d7 22% = 70.4</td></tr>
+<tr><td><b>Net income</b></td><td><b>(249.6)</b></td><td>(320) + 70.4</td></tr>
 </table>
-<p><b>Verdict:</b> a combined ratio of 82.14% &lt; 100% \u2192 underwriting is <b>profitable</b>. Cross-check: underwriting margin = (100% \u2212 82.14%) \u00d7 2,800 = <b>500</b> \u2713. Above 100%, underwriting loses money \u2014 and profit comes only from investments. That is the trap in reading an insurer from net income alone: a company at 105% combined with big investment income looks profitable while its core engine leaks \u2014 and investment income does not plug that hole forever.</p>`},
+<p><b>Verdict:</b> a combined ratio of <b>136.90% &gt; 100%</b> \u2192 underwriting <b>loses Rp620 billion</b>. Cross-check: underwriting margin = (100% \u2212 136.90%) \u00d7 1,680 = <b>(620)</b> \u2713. The old 82.14% is a basis trap: it divides claims and expenses by WRITTEN premiums of 2,800, while this period's revenue is only EARNED premiums of 1,680 (UPR 1,120 is not yet revenue). Investment income of 300 does not plug the underwriting hole \u2014 EBT (320); net income (249.6) after a 70.4 tax benefit (assuming the loss can be offset; without offset, tax is 0 and net income is (320)). The lesson: a company at 105% combined with big investment income looks profitable while its core engine leaks \u2014 and investment income does not plug that hole forever.</p>`},
 {h: "Reserving: reserves are debt not yet paid", body: `
 <p>Two reserves make up almost all of an insurer's liabilities:</p>
 <p><b>1. Claims reserve (LIC \u2014 liability for incurred claims).</b> This year's walk (Rp billions): opening 9,000 + net claims incurred 1,600 \u2212 net claims paid 1,400 = closing <b>9,200</b>. Reserves rose Rp200 billion \u2014 claims incurred exceeded claims paid. Note: incurred claims of 1,600 already hit profit through the combined ratio, even though only 1,400 of cash went out. The difference (200) piles up on the balance sheet as debt.</p>
 <p><b>2. Premium reserve (UPR / LRC \u2014 liability for remaining coverage).</b> Net premiums 2,800; 40% not yet earned (policies still running) \u2192 UPR = 40% \u00d7 2,800 = <b>1,120</b>. Premiums already earned = 2,800 \u2212 1,120 = <b>1,680</b>. Total technical reserves = 9,200 + 1,120 = <b>10,320</b>.</p>
-<p><b>Why reserves decide profit:</b> a reserve <i>release</i> (falling without claims paid) lifts profit with not one rupiah of new cash \u2014 and a reserve <i>top-up</i> squeezes profit with no cash out. Insurance analysts read reserve movements <i>before</i> trusting profit. Under PSAK 117 (IFRS 17) these two reserves are reported as LIC and LRC \u2014 new names, same logic: an unfulfilled promise is debt.</p>`},
+<p><b>Reconciling written \u2192 earned (do not mix them):</b> opening UPR 0 + net written premiums 2,800 \u2212 earned premiums 1,680 = closing UPR <b>1,120</b> \u2713. This is the bridge between the combined ratio and reserving: the combined ratio divides by EARNED premiums (1,680), not written premiums (2,800). When opening UPR = closing UPR the two are equal \u2014 not here.</p>
+<p><b>Why reserves decide profit:</b> a reserve <i>release</i> (falling without claims paid) lifts profit with not one rupiah of new cash \u2014 and a reserve <i>top-up</i> squeezes profit with no cash out. Insurance analysts read reserve movements <i>before</i> trusting profit. Under PSAK 117 (IFRS 17) these two reserves are reported as LIC and LRC \u2014 but under the general measurement model (GMM), LRC = fulfilment cash flows + CSM, NOT identical to UPR; only under the PAA (premium allocation approach) does LRC approximate unearned premium. This model uses the PAA-style simplification: an unfulfilled promise is debt.</p>`},
 {h: "RBC & embedded value: two ways to read capital", body: `
 <p><b>1. RBC (risk-based capital) \u2014 is your capital enough?</b> Available capital Rp3,000 billion; MMBR (risk-based minimum capital) Rp1,500 billion \u2192 RBC = 3,000 \u00f7 1,500 = <b>200%</b>, above the OJK 120% minimum. Buffer above 120% = 3,000 \u2212 (120% \u00d7 1,500) = <b>Rp1,200 billion</b> \u2014 room to grow, pay dividends, or absorb a claims shock. RBC &lt; 120% = the regulator steps in; like CAR for banks (Day 26), capital is read first, profit second.</p>
 <p><b>2. Embedded value (EV) \u2014 what are the in-force policies worth?</b> For an illustrative life book: ANW (adjusted net worth) 2,000 + PVFP (present value of future profits from in-force policies) 1,200 \u2212 CoC (cost of capital) 150 = EV <b>3,050</b>. VNB (value of new business) this year = <b>180</b> \u2014 the value of new business above its acquisition cost. EV per share = 3,050,000m \u00f7 3,556m = <b>Rp857.71</b>.</p>
-<div class="callout"><b>Honest limit:</b> EV is only published by <b>life</b> insurers \u2014 TUGU (general + reinsurance) does not publish EV, so the EV part here uses an illustrative life book, not TUGU numbers. Do not mix them: RBC measures capital adequacy of the <i>whole</i> company; EV values <i>in-force policies</i> only.</div>`},
+<div class="callout"><b>Honest limit:</b> EV is only published by <b>life</b> insurers \u2014 TUGU (general + reinsurance) does not publish EV, so the EV part here uses an illustrative life book, not TUGU numbers. Do not mix them: RBC measures capital adequacy of the <i>whole</i> company; EV values ANW + PVFP \u2212 CoC \u2014 only the PVFP values <i>in-force policies</i>; ANW is adjusted net worth, not policy value.</div>`},
 {h: "Valuation: P/BV vs P/EV", body: `
-<p>With equity of Rp6,000 billion and 3,556 million shares: BV per share = 6,000,000m \u00f7 3,556m = <b>Rp1,687.29</b>. Illustrative share price Rp1,200 \u2192 <b>P/BV = 1,200 \u00f7 1,687.29 = 0.71\u00d7</b>. Market capitalisation = 1,200 \u00d7 3,556 \u00f7 1,000 = <b>Rp4,267.20 billion</b>. Meanwhile <b>P/EV = 1,200 \u00f7 857.71 = 1.40\u00d7</b>.</p>
-<p><b>Reading:</b> P/BV of 0.71\u00d7 says the market values equity below book (general + reinsurance + investments combined); P/EV of 1.40\u00d7 says the market pays a premium for the embedded life book. Both are right \u2014 because their scopes differ. An analyst who sees P/BV &lt; 1 and shouts \u201ccheap\u201d misses the more important questions: is the combined ratio persistently below 100%, are reserves adequate, and does RBC have a buffer? Without all three, \u201ccheap\u201d only means the market does not trust the numbers.</p>
-<p><b>Task (in the Drive workbook):</b> build a mini insurance model: (1) assumptions sheet (premiums, ceded, claims, expenses, tax, reserves, capital, EV); (2) underwriting \u2014 net premiums, loss ratio, expense ratio, combined ratio, UW profit, NI; (3) reserving walk LIC + UPR; (4) RBC + EV; (5) P/BV vs P/EV valuation. Pass criteria: combined ratio 82.14%, closing LIC 9,200, RBC 200%, EV 3,050, P/BV 0.71\u00d7.</p>`}
+<p>With equity of Rp6,000 billion and 3,556 million shares: BV per share = 6,000,000m \u00f7 3,556m = <b>Rp1,687.29</b>. Illustrative share price Rp1,200 \u2192 <b>P/BV = 1,200 \u00f7 1,687.29 = 0.71\u00d7</b>. Market capitalisation = 1,200 \u00d7 3,556 \u00f7 1,000 = <b>Rp4,267.20 billion</b>. P/EV is <b>NOT computed</b> here: the Rp1,200 share price belongs to the GROUP (general + reinsurance + investments), while EV 3,050 is only an illustrative life book \u2014 dividing them mixes two scopes and produces a meaningless multiple.</p>
+<p><b>Reading:</b> P/BV of 0.71\u00d7 says the market values equity below book (general + reinsurance + investments combined). P/EV is not used \u2014 it mixes the group price with a life-book EV of a different scope, so 1.40\u00d7 is NOT a meaningful valuation read. An analyst who sees P/BV &lt; 1 and shouts \u201ccheap\u201d misses the more important questions: is the combined ratio persistently below 100%, are reserves adequate, and does RBC have a buffer? Without all three, \u201ccheap\u201d only means the market does not trust the numbers.</p>
+<p><b>Task (in the Drive workbook):</b> build a mini insurance model: (1) assumptions sheet (premiums, ceded, claims, expenses, tax, reserves, capital, EV); (2) underwriting \u2014 net premiums, earned premiums, loss ratio, expense ratio, combined ratio, UW profit, NI; (3) reserving walk LIC + UPR; (4) RBC + EV; (5) P/BV valuation (P/EV NOT used \u2014 different scope). Pass criteria: combined ratio 136.90%, UW profit (620), net income (249.6), closing LIC 9,200, RBC 200%, EV 3,050, P/BV 0.71\u00d7.</p>`}
 ],
 quiz: [
-{q: "Net premiums 2,800; net claims 1,600; expenses 700. Combined ratio?", opts: ["82.14%","57.14%","25.00%","107.14%"], answer: 0, k: "combined_ratio", diff: "Easy",
- hints: ["Loss ratio = 1,600 ÷ 2,800 = ?; expense ratio = 700 ÷ 2,800 = ?", "Combined = loss + expense."],
- explain: "Loss ratio 57.14% + expense ratio 25.00% = combined ratio 82.14% (< 100% = profitable underwriting)."},
-{q: "Underwriting profit of this insurer?", opts: ["Rp500 billion","Rp624 billion","Rp800 billion","Rp300 billion"], answer: 0, k: "uw_profit", diff: "Easy",
- hints: ["UW = net premiums − net claims − expenses.", "2,800 − 1,600 − 700 = ?"],
- explain: "UW profit = 2,800 − 1,600 − 700 = Rp500 billion. (624 is net income after investments + tax; 800 is EBT.)"},
+{q: "Net written premiums 2,800; closing UPR 1,120 (opening UPR 0); net claims 1,600; expenses 700. Combined ratio?", opts: ["136.90%","82.14%","95.24%","41.67%"], answer: 0, k: "combined_ratio", diff: "Easy",
+ hints: ["Earned premiums = 2,800 − 1,120 = 1,680; loss ratio = 1,600 ÷ 1,680 = ?", "Expense ratio = 700 ÷ 1,680; combined = loss + expense."],
+ explain: "Loss ratio 95.24% + expense ratio 41.67% = combined ratio 136.90% (> 100% = underwriting loses Rp620 billion). 82.14% is the old trap: dividing by written premiums of 2,800, not earned premiums of 1,680."},
+{q: "Underwriting profit of this insurer?", opts: ["−Rp620 billion (a loss)","Rp500 billion","−Rp249.6 billion","Rp800 billion"], answer: 0, k: "uw_profit", diff: "Easy",
+ hints: ["UW = EARNED premiums − net claims − expenses.", "1,680 − 1,600 − 700 = ?"],
+ explain: "UW = 1,680 − 1,600 − 700 = −Rp620 billion (a loss). (Rp500 billion uses written premiums of 2,800 — the wrong basis. −Rp249.6 billion is net income after investments + the tax benefit; Rp800 billion is the old-basis EBT.)"},
 {q: "Opening LIC 9,000; net claims incurred 1,600; net claims paid 1,400. Closing LIC?", opts: ["9,200","10,600","7,600","9,000"], answer: 0, k: "reserving", diff: "Easy",
  hints: ["Walk: opening + incurred − paid.", "9,000 + 1,600 − 1,400 = ?"],
  explain: "Closing LIC = 9,000 + 1,600 − 1,400 = 9,200. Reserves rose 200 = claims incurred exceeded claims paid."},
 {q: "Available capital 3,000; MMBR 1,500. RBC ratio and verdict?", opts: ["200% — above the OJK 120% minimum","120% — exactly at the minimum","50% — below the minimum","300% — three times the minimum"], answer: 0, k: "rbc", diff: "Easy",
  hints: ["RBC = capital ÷ MMBR.", "3,000 ÷ 1,500 = ?"],
  explain: "RBC = 3,000 ÷ 1,500 = 200%, a Rp1,200 billion buffer above 120%. Like bank CAR: capital is read first."},
-{q: "EV 3,050; shares outstanding 3,556 million. EV/share and P/EV at a price of Rp1,200?", opts: ["Rp857.71; P/EV 1.40×","Rp1,687.29; P/EV 0.71×","Rp1,200; P/EV 1.00×","Rp3,050; P/EV 2.54×"], answer: 0, k: "ev_pbv", diff: "Medium",
- hints: ["EV/share = 3,050,000 ÷ 3,556.", "P/EV = 1,200 ÷ EV/share; 1,687.29 is BV/share, not EV/share."],
- explain: "EV/share = 3,050,000 ÷ 3,556 = Rp857.71; P/EV = 1,200 ÷ 857.71 = 1.40×. (P/BV 0.71× uses BV/share 1,687.29 — different scope.)"}
+{q: "EV 3,050; shares outstanding 3,556 million. EV/share?", opts: ["Rp857.71","Rp1,687.29","Rp1,200","Rp3,050"], answer: 0, k: "ev_pbv", diff: "Medium",
+ hints: ["EV/share = 3,050,000 ÷ 3,556.", "1,687.29 is BV/share, not EV/share."],
+ explain: "EV/share = 3,050,000 ÷ 3,556 = Rp857.71. P/EV is NOT computed: the group price of Rp1,200 is not comparable with a life-book EV — different scopes. (P/BV 0.71× uses BV/share 1,687.29 — the same group scope.)"}
 ]
 },
 EN["real-12"] = {
@@ -2058,17 +2062,17 @@ sections: [
 <p>3% monthly churn looks small \u2014 but it compounds: 0.97<sup>12</sup> = 0.6938, so after a year only <b>69%</b> of the cohort remains and cohort MRR falls from 100m to <b>69.38m</b> (ARPA Rp1m/month). Cut churn to 2%: 0.98<sup>12</sup> = 0.7847 \u2014 78 customers left. One point of churn = nine customers per hundred per year. That is why SaaS analysts read cohorts first and totals second: totals can rise because acquisition covers the leak \u2014 cohorts cannot lie.</p>`},
 {h: "LTV/CAC & payback: may you burn money to grow?", body: `
 <p>ARPA Rp1m/month; gross margin 80%; churn 3%/month; CAC Rp8m per new customer:</p>
-<p><b>Lifetime</b> = 1 \u00f7 churn = 1 \u00f7 0.03 = <b>33.33 months</b>. <b>Gross profit per customer per month</b> = 1 \u00d7 80% = <b>Rp0.80m</b>. <b>LTV</b> = 0.80 \u00d7 33.33 = <b>Rp26.67m</b> \u2014 the total gross profit one customer produces in its life. <b>LTV/CAC</b> = 26.67 \u00f7 8 = <b>3.33\u00d7</b>. <b>CAC payback</b> = 8 \u00f7 0.80 = <b>10 months</b> \u2014 the acquisition spend is back in 10 months.</p>
-<p><b>Verdict:</b> LTV/CAC of 3.33\u00d7 (\u2265 3\u00d7) and 10-month payback (&lt; 12 months) \u2192 a <b>healthy</b> growth engine: every Rp8m burned to acquire returns Rp26.67m of gross profit. Below 3\u00d7 or payback &gt; 12 months, each new customer burns cash faster than it produces it \u2014 growth like that is a race to run out of cash. Trap: the LTV above uses <i>average</i> churn \u2014 if new cohorts churn faster than old customers, true LTV is smaller than this maths.</p>`},
+<p><b>Lifetime</b> = 1 \u00f7 churn = 1 \u00f7 0.03 = <b>33.33 months</b>. <b>Gross profit per customer per month</b> = 1 \u00d7 80% = <b>Rp0.80m</b>. <b>LTV</b> = 0.80 \u00d7 33.33 = <b>Rp26.67m</b> \u2014 the total gross profit one customer produces in its life. <b>LTV/CAC</b> = 26.67 \u00f7 8 = <b>3.33\u00d7</b>. <b>Simple CAC payback (no churn)</b> = 8 \u00f7 0.80 = <b>10 months</b>. <b>Churn-adjusted CAC payback</b> uses cumulative expected contribution: 0.80 \u00d7 (1 \u2212 0.97<sup>n</sup>) \u00f7 0.03 \u2014 by month 10 only <b>Rp7.00m</b> has come back &lt; CAC 8; breakeven when 0.97<sup>n</sup> = 0.70 \u2192 n = 11.71 \u2192 <b>month 12</b>.</p>
+<p><b>Verdict:</b> LTV/CAC of 3.33\u00d7 (\u2265 3\u00d7) and a churn-adjusted payback of 12 months \u2014 right AT the 12-month threshold, not comfortably below it. A <b>healthy-with-a-caveat</b> growth engine: every Rp8m burned to acquire returns Rp26.67m of gross profit. Remember: the 3\u00d7 / 12-month thresholds are <b>practical heuristics, not a diagnosis</b> \u2014 an LTV/CAC of 2\u00d7 still means lifetime gross profit (2 \u00d7 CAC) exceeds CAC, and any judgement must weigh sector, timing, other costs, and funding risk. Trap: the LTV above uses <i>average</i> churn \u2014 if new cohorts churn faster than old customers, true LTV is smaller than this maths.</p>`},
 {h: "NRR/GRR & the Rule of 40: health vs growth", body: `
 <p>Starting ARR Rp12,000m; churn + contraction Rp1,800m; expansion (upsell/cross-sell) Rp2,400m:</p>
 <p><b>GRR</b> (gross revenue retention) = (12,000 \u2212 1,800) \u00f7 12,000 = <b>85%</b> \u2014 how much existing-customer revenue survives without expansion. <b>NRR</b> (net revenue retention) = (12,000 \u2212 1,800 + 2,400) \u00f7 12,000 = <b>105%</b> \u2014 existing customers pay MORE every year. Ending ARR = 12,000 \u00d7 105% = <b>12,600</b> \u2014 growth with not one new customer. NRR &gt; 100% is the SaaS engine: growth that needs no acquisition.</p>
-<p><b>Rule of 40:</b> revenue growth 25% + FCF margin 15% = <b>40</b> \u2014 exactly at the healthy threshold (\u2265 40). Below 40, a company must choose: grow fast while burning cash, or profit while stagnating.</p>
+<p><b>Rule of 40:</b> revenue growth 25% + FCF margin 15% = <b>40</b> \u2014 right at the heuristic benchmark of 40. The benchmark is not a verdict: a company at 35 (say, 20% growth + 15% FCF margin) can still be healthy while generating cash \u2014 what matters is the combination and its direction, not one number.</p>
 <p><b>Deferred revenue (cash vs recognition):</b> a Rp12m annual contract paid up front \u2014 cash in of 12m today, revenue recognised at 1m/month. End of month 1: deferred revenue = 12 \u2212 1 = <b>Rp11m</b> (a service liability). Fast-growing SaaS looks \u2018cash-rich\u2019 even though part of that cash is a debt of undelivered service.</p>`},
 {h: "Valuation: EV/ARR", body: `
 <p>Starting ARR = 1,000 customers \u00d7 ARPA Rp12m/year = <b>Rp12,000m</b>. At an EV/ARR multiple of 6\u00d7: EV = 12,000 \u00d7 6 = <b>Rp72,000m (Rp72 billion)</b>. EV per customer = 72,000 \u00f7 1,000 = <b>Rp72m</b>.</p>
 <p><b>Reading:</b> EV per customer of Rp72m vs LTV of Rp26.67m \u2014 the market pays almost three times the gross profit value of today's customers. That is not an arithmetic error: an ARR multiple prices <i>future contracts</i> (expansion, 105% NRR, new customers) \u2014 not today's profit. Compare with the Salesforce anchor: RPO $63.4 billion \u00f7 revenue $37.9 billion = <b>1.67\u00d7</b> \u2014 future contracts at 1.67\u00d7 one year's revenue; FCF margin 32.7%. Trap: ARR \u2260 revenue \u2014 ARR is the run-rate of live contracts; revenue is what has been recognised. A multiple on stale ARR (high churn) prices customers who have already left.</p>
-<p><b>Task (in the Drive workbook):</b> build a mini SaaS model: (1) assumptions sheet (customers, ARPA, churn, margin, CAC, ARR, growth, FCF margin, multiple); (2) cohort \u2014 customers left + MRR at months 0/3/6/12; (3) LTV/CAC + payback; (4) GRR/NRR + Rule of 40 + deferred revenue; (5) EV/ARR valuation. Pass criteria: month-12 cohort = 69.38; LTV/CAC 3.33\u00d7; payback 10 months; NRR 105%; Rule of 40 = 40; EV 72,000.</p>`}
+<p><b>Task (in the Drive workbook):</b> build a mini SaaS model: (1) assumptions sheet (customers, ARPA, churn, margin, CAC, ARR, growth, FCF margin, multiple); (2) cohort \u2014 customers left + MRR at months 0/3/6/12; (3) LTV/CAC + payback; (4) GRR/NRR + Rule of 40 + deferred revenue; (5) EV/ARR valuation. Pass criteria: month-12 cohort = 69.38; LTV/CAC 3.33\u00d7; simple payback 10 months; churn-adjusted payback 12 months; NRR 105%; Rule of 40 = 40; EV 72,000.</p>`}
 ],
 quiz: [
 {q: "Cohort of 100 customers, 3% monthly churn. How many are left at month 12?", opts: ["69.38 customers","91.27 customers","83.30 customers","100 customers"], answer: 0, k: "churn_cohort", diff: "Easy",
@@ -2077,9 +2081,9 @@ quiz: [
 {q: "ARPA Rp1m/month, gross margin 80%, churn 3%/month, CAC Rp8m. LTV/CAC?", opts: ["3.33×","2.67×","0.80×","10.00×"], answer: 0, k: "ltv_cac", diff: "Medium",
  hints: ["Lifetime = 1 ÷ 0.03 = 33.33 months; LTV = 1 × 80% × 33.33.", "LTV/CAC = 26.67 ÷ 8."],
  explain: "LTV = 1 × 80% × 33.33 = Rp26.67m; LTV/CAC = 26.67 ÷ 8 = 3.33× (≥ 3× = healthy)."},
-{q: "CAC Rp8m; gross profit per customer Rp0.80m/month. CAC payback?", opts: ["10 months","33 months","8 months","12 months"], answer: 0, k: "payback", diff: "Easy",
- hints: ["Payback = CAC ÷ gross profit/month.", "8 ÷ 0.80 = ?"],
- explain: "Payback = 8 ÷ 0.80 = 10 months (< 12 months = healthy). 33 months is the lifetime, not the payback."},
+{q: "CAC Rp8m; gross profit per customer Rp0.80m/month; churn 3%/month. Churn-adjusted CAC payback?", opts: ["12 months","10 months","33 months","8 months"], answer: 0, k: "payback", diff: "Easy",
+ hints: ["Cumulative contribution at month 10 = 0.80 × (1 − 0.97^10) ÷ 0.03 = Rp7.00m < CAC 8.", "Breakeven when 0.97^n = 0.70 → n = 11.71 → month 12."],
+ explain: "Churn-adjusted payback ≈ 12 months (cumulative at month 10 is only Rp7.00m; month 12 reaches Rp8.16m). 10 months is the SIMPLE payback without churn; 33 months is the lifetime, not the payback."},
 {q: "Starting ARR 12,000; churn+contraction 1,800; expansion 2,400. NRR?", opts: ["105%","85%","100%","90%"], answer: 0, k: "nrr", diff: "Easy",
  hints: ["NRR = (12,000 − 1,800 + 2,400) ÷ 12,000.", "85% is GRR (without expansion)."],
  explain: "NRR = (12,000 − 1,800 + 2,400) ÷ 12,000 = 105% — existing customers pay more each year. GRR is 85%."},
