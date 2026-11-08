@@ -664,7 +664,7 @@ sections: [
 <p>Cek: 12.100 = 600 + 10.000 + 1.500 ✓. Perhatikan: <b>kas pembuka 8.000 = kas awal di arus kas Hari 04</b> — angka yang sama muncul di dua laporan. Itu bukan kebetulan; itu linkage.</p>
 <div class="callout"><b>Kenapa titik awal harus dinyatakan, bukan ditebak?</b> Karena model yang baik selalu jujur soal asumsinya. "Neraca pembuka dinyatakan" = siapa pun bisa mengaudit dari mana angka 12.100 berasal. Model profesional selalu punya sheet "opening balances" yang eksplisit — tidak pernah angka yang "tiba-tiba ada".</div>`},
 {h: "Satu transaksi, minimal dua akun", body: `
-<p>Aturan main akuntansi yang membuat model <b>self-checking</b>: setiap transaksi menyentuh <b>minimal dua akun</b> — dan persamaan A = L + E tidak pernah boleh rusak. Enam aktivitas Warung Septian 2026:</p>
+<p>Aturan main akuntansi yang membuat model <b>self-checking</b>: setiap transaksi menyentuh <b>minimal dua akun</b> — dan persamaan A = L + E tidak pernah boleh rusak. Tujuh aktivitas Warung Septian 2026:</p>
 <table class="brutal">
 <tr><th>Transaksi 2026</th><th>Akun 1</th><th>Akun 2</th><th>A = L + E?</th></tr>
 <tr><td>Jualan (kredit) Rp16.800rb</td><td>Piutang +16.800</td><td>Laba ditahan +16.800 (via NI)</td><td>✓ dua sisi naik</td></tr>
@@ -672,10 +672,11 @@ sections: [
 <tr><td>Beli peralatan tunai Rp2.000rb</td><td>Kas −2.000</td><td>Aset tetap +2.000</td><td>✓ tukar aset</td></tr>
 <tr><td>Penyusutan Rp400rb</td><td>Aset tetap −400</td><td>Laba ditahan −400 (via NI)</td><td>✓ kas diam</td></tr>
 <tr><td>Dividen tunai Rp3.000rb</td><td>Kas −3.000</td><td>Laba ditahan −3.000</td><td>✓ langsung, tanpa IS</td></tr>
-<tr><td>Beli kredit & bayar supplier (neto) Rp100rb*</td><td>Utang +100</td><td>Persediaan +100</td><td>✓ aset & liabilitas naik</td></tr>
+<tr><td>Beli persediaan kredit Rp8.550rb</td><td>Utang +8.550</td><td>Persediaan +8.550</td><td>✓ aset & liabilitas naik</td></tr>
+<tr><td>Bayar supplier Rp8.450rb</td><td>Kas −8.450</td><td>Utang −8.450</td><td>✓ aset & liabilitas turun</td></tr>
 </table>
-<p><i>*Angka neto dari beberapa transaksi beli-bayar supplier sepanjang tahun; efek bersihnya utang naik 100.</i></p>
-<div class="callout"><b>Kenapa aturan "minimal dua akun" = setengah nilai model?</b> Karena ia membuat kesalahan <b>matematis mustahil disembunyikan</b>: lupa satu sisi, neraca langsung tidak balance. Tanpa aturan ini, analis harus memeriksa setiap angka satu per satu. Dengan aturan ini, satu cek (A = L + E) mengawasi semuanya sekaligus.</div>`},
+<p><i>*Beli kredit Rp8.550rb dan bayar supplier Rp8.450rb sepanjang tahun: utang naik bersih 100; persediaan +8.550 − HPP 8.400 = +150, sesuai walk. Pembayaran 8.450 sudah tercakup di CFO 1.850 (metode tidak langsung, Hari 04).</i></p>
+<div class="callout"><b>Kenapa aturan "minimal dua akun" = setengah nilai model?</b> Karena ia membuat kesalahan satu sisi <b>langsung ketahuan</b>: lupa satu sisi, neraca langsung tidak balance. Tanpa aturan ini, analis harus memeriksa setiap angka satu per satu. Dengan aturan ini, satu cek (A = L + E) mengawasi ketidakseimbangan — tapi ingat: kesalahan berpasangan, salah klasifikasi, atau input yang salah tapi konsisten tetap membuat neraca balance. Balance = syarat perlu, bukan syarat cukup.</div>`},
 {h: "Capex & susut: dua sisi aset tetap", body: `
 <p>Aset tetap punya dua gerakan berlawanan di 2026 — dan keduanya harus dilacak terpisah:</p>
 <div class="formula">PPE neto(akhir) = PPE neto(awal) + Capex − Penyusutan</div>
@@ -722,7 +723,7 @@ sections: [
 <p>Di Excel, analis tidak pernah mengecek ini dengan mata — ia menulis rumusnya:</p>
 <div class="formula">=IF(Total_Aset = Total_Liabilitas + Total_Ekuitas, "BALANCE ✓", "TIDAK BALANCE")</div>
 <p>Sel ini adalah <b>alarm</b> model: hijau = lanjutkan; merah = berhenti, ada rumus bocor. Di file latihan Hari 05, sel "Cek balance" menilai otomatis — targetmu: <b>BALANCE ✓</b> bersamaan dengan semua jawaban benar.</p>
-<div class="callout"><b>Kenapa satu sel ini begitu sakral?</b> Karena ia mengawasi <b>semua</b> rumus sekaligus. Salah link satu sel input, lupa satu tanda minus, salah ketik satu angka — alarm berbunyi. Model tanpa balance check seperti mobil tanpa rem tangan: berjalan, tapi tidak ada yang menangkap saat ia meluncur ke arah yang salah.</div>`},
+<div class="callout"><b>Kenapa satu sel ini begitu sakral?</b> Karena ia mengawasi <b>ketidakseimbangan</b> di semua rumus sekaligus: salah link satu sel input, lupa satu tanda minus, atau salah ketik satu angka di satu sisi — alarm berbunyi. Tapi alarm ini diam bila kesalahan terjadi berpasangan di kedua sisi, atau bila angka inputnya salah sejak awal: neraca tetap balance, ceritanya tetap salah. Balance check = syarat perlu, bukan syarat cukup. Model tanpa balance check seperti mobil tanpa rem tangan: berjalan, tapi tidak ada yang menangkap saat ia meluncur ke arah yang salah.</div>`},
 {h: "Jebakan umum", body: `
 <ul>
 <li><b>Aset turun ≠ rugi.</b> Total aset 12.100 → 10.900 (turun 1.200) sementara NI +1.700. Aset turun karena <b>distribusi</b> (dividen 3.000 > NI 1.700), bukan karena operasi berdarah.</li>
@@ -827,7 +828,7 @@ sections: [
 <p>Di Excel, analis menulisnya sebagai rumus, bukan dengan mata:</p>
 <div class="formula">=IF(Kas_BS = Kas_CFS, 0, "ERROR")</div>
 <p>Di file latihan Hari 06, sel "Tie-out kas" <b>harus NOL</b> — bukan "hampir nol", bukan "selisih 1". Nol.</p>
-<div class="callout"><b>Kenapa nol mutlak, bukan toleransi?</b> Karena kas adalah akun yang <b>tidak punya estimasi</b>: tidak ada depresiasi, tidak ada akrual, tidak ada asumsi. Kas = fakta. Selisih Rp1 di kas = ada rumus yang bocor, titik. Analis mentoleransi selisih di akun estimasi (piutang tak tertagih), tidak pernah di kas.</div>`},
+<div class="callout"><b>Kenapa nol mutlak, bukan toleransi?</b> Karena kas adalah akun yang <b>tidak punya estimasi</b>: tidak ada depresiasi, tidak ada akrual, tidak ada asumsi. Kas = fakta. Di model latihan ini — satu sumber angka, satu presisi — selisih Rp1 di kas = ada rumus yang bocor, titik. Analis mentoleransi selisih di akun estimasi (piutang tak tertagih), tidak pernah di kas. Catatan: pada laporan nyata, angka yang dibulatkan secara independen di tiap laporan bisa menampilkan selisih kecil walau perhitungan dasarnya cocok — rekonsiliasi pembulatan dan cakupan kas (kas vs setara kas) tetap harus diperiksa sebelum menyimpulkan ada rumus bocor.</div>`},
 {h: "Jembatan 3 & 4: CFO dan PPE roll-forward", body: `
 <p>Dua jembatan yang kamu sudah kuasai — hari ini dijalankan sebagai <b>verifikasi silang</b>:</p>
 <table class="brutal">
@@ -857,7 +858,7 @@ sections: [
 <tr><td>3</td><td>RE roll-forward</td><td>=RE_awal + NI − dividen</td><td>200 ✓</td></tr>
 <tr><td>4</td><td>ΔWC cocok dua arah</td><td>=WC_tutup − WC_buka</td><td>+250 ✓</td></tr>
 </table>
-<p>Di file latihan Hari 06, keempatnya adalah <b>sel jawaban yang dinilai checker</b>. Lolos keempatnya = modelmu setara standar kerja analis: bukan karena angkanya "kelihatan benar", tapi karena <b>setiap koneksi terbukti benar</b>.</p>
+<p>Di file latihan Hari 06, keempatnya adalah <b>sel jawaban yang dinilai checker</b>. Lolos keempatnya = modelmu setara standar kerja analis: bukan karena angkanya "kelihatan benar", tapi karena <b>setiap koneksi yang diuji keempat cek ini terbukti benar</b> — untuk kelas kesalahan yang lolos dari keempat cek ini, lihat § Audit konsistensi di bawah.</p>
 <div class="callout"><b>Kenapa ritual, bukan sekadar cek?</b> Karena ritual dilakukan <b>tanpa berpikir dua kali</b> — seperti pilot dengan checklist sebelum lepas landas. Analis yang "yakin modelnya benar" tapi melewatkan ritual adalah analis yang menunggu dipermalukan angka. Empat cek, setiap model, setiap tahun. Tanpa kecuali.</div>`},
 {h: "Audit konsistensi: 5 cek di luar golden checks", body: `
 <p>Empat golden checks membuktikan <b>mekanik linkage</b>-mu benar. Tapi ada kelas kesalahan yang <b>lolos semua golden checks</b> &mdash; dan justru itu yang paling berbahaya:</p>
@@ -878,7 +879,7 @@ sections: [
 {h: "Jebakan umum 3-statement", body: `
 <ul>
 <li><b>"Kebetulan cocok" ≠ benar.</b> RE akhir bisa 200 lewat jalur yang salah (dividen sebagai beban). Cek jalurnya, bukan cuma angkanya.</li>
-<li><b>Tie-out kas bertoleransi = alarm dimatikan.</b> Selisih Rp1 di kas = rumus bocor. Nol atau ERROR — tidak ada "hampir".</li>
+<li><b>Tie-out kas bertoleransi = alarm dimatikan.</b> Di model latihan ini, selisih Rp1 di kas = rumus bocor. Nol atau ERROR — tidak ada "hampir". (Pada data laporan nyata, selisih pembulatan direkonsiliasi dulu — lihat § Jembatan 2.)</li>
 <li><b>Lupa update satu sisi linkage.</b> Ubah asumsi dividen di IS (tidak ada efek — benar), tapi lupa update CFF & RE → dua jembatan jebol sekaligus.</li>
 <li><b>ΔWC dua arah beda = jangan pilih yang "enak".</b> Schedule bilang +250, selisih neraca bilang +300? Cari yang salah — jangan pakai yang cocok dengan maumu.</li>
 </ul>
@@ -903,7 +904,7 @@ quiz: [
  explain: "1.500 + 1.700 − 3.000 = Rp200rb. Golden check #3. (Hari 06 § Jembatan 1)"},
 {q: "PPE neto awal 2.000, capex 2.000, susut 400. PPE neto akhir?", opts: ["Rp3.600rb","Rp4.000rb","Rp2.000rb","Rp4.400rb"], answer: 0, k: "ppe_roll", diff: "Easy",
  hints: ["PPE(akhir) = awal + capex − susut.", "2.000 + 2.000 − 400 = ?"],
- explain: "2.000 + 2.000 − 400 = Rp3.600rb. Golden check #4 (jembatan 4). (Hari 06 § Jembatan 3 & 4)"},
+ explain: "2.000 + 2.000 − 400 = Rp3.600rb. Jembatan 4 (roll-forward PPE). (Hari 06 § Jembatan 3 & 4)"},
 {q: "WC awal = piutang 1.200 + persediaan 900 − utang 600?", opts: ["Rp1.500rb","Rp1.750rb","Rp2.100rb","Rp900rb"], answer: 0, k: "wc", diff: "Easy",
  hints: ["WC = aset lancar operasi − liabilitas operasi.", "1.200 + 900 − 600 = ?"],
  explain: "Rp1.500rb. WC tutup 1.750 → ΔWC +250 (golden check #4). Jebakan: 1.750 = WC TUTUP. (Hari 06 § Jembatan 3 & 4)"},
@@ -917,7 +918,7 @@ quiz: [
 hell: [
 {q: "RE awal 2.000, NI 1.200, dividen 1.500. RE akhir?", opts: ["Rp1.700rb","Rp4.700rb","Rp3.200rb","Rp500rb"], answer: 0, diff: "Easy",
  explain: "2.000 + 1.200 − 1.500 = Rp1.700rb. Dividen boleh melebihi NI selama RE awal menutupinya."},
-{q: "PPE bruto awal 2.400, capex 2.000, susut 400. Bruto akhir, akum. susut, neto?", opts: ["Bruto 4.400, akum 800, neto 3.600","Bruto 4.000, akum 400, neto 3.600","Bruto 2.400, akum 800, neto 1.600","Bruto 4.400, akum 400, neto 4.000"], answer: 0, diff: "Medium",
+{q: "PPE bruto awal 2.400 (akum. susut awal 400, dari neraca pembuka Hari 05), capex 2.000, susut 400. Bruto akhir, akum. susut, neto?", opts: ["Bruto 4.400, akum 800, neto 3.600","Bruto 4.000, akum 400, neto 3.600","Bruto 2.400, akum 800, neto 1.600","Bruto 4.400, akum 400, neto 4.000"], answer: 0, diff: "Medium",
  explain: "Bruto = 2.400 + 2.000 = 4.400; akum. susut = 400 + 400 = 800; neto = 4.400 − 800 = 3.600. Capex menambah bruto, susut menambah akumulasi."},
 {q: "Model: TOTAL ASET 10.900, TOTAL L+E 10.500. Diagnosis?", opts: ["Selisih 400 — ada link bocor / rumus salah","Normal — toleransi Rp400rb","RE kurang 400 → tambah manual","Kurang capex 400"], answer: 0, diff: "Hard",
  explain: "Selisih 400 = Rp400.000 nyata — bukan toleransi. Jangan 'tambah manual': cari sel yang salah link. Itulah gunanya alarm balance."},
@@ -932,7 +933,7 @@ tasks: [
 {t: "Task C — Quiz di atas", d: "Target ≥4/5 benar. Salah? Baca hint, ulangi."}
 ],
 blind: {h: "Latihan Buta — 3 statement penuh, angka beda", body: `
-<p>"Warung Budi" 2026 (Rp ribu). <b>Bangun 3 laporan + 4 golden checks dari NOL tanpa mengintip contoh</b>:</p>
+<p>"Warung Budi" 2026 (Rp ribu). <b>Bangun arus kas + neraca tutup + 4 golden checks dari NOL tanpa mengintip contoh</b>:</p>
 <ul>
 <li>Neraca pembuka 1 Jan: kas 6.000; piutang 800; persediaan 700; PPE neto 1.500 (bruto 1.800 − akum 300); utang 500; modal 7.000; laba ditahan 1.500</li>
 <li>2026: NI 1.200; susut 300; capex 800; dividen 500</li>
@@ -941,7 +942,7 @@ blind: {h: "Latihan Buta — 3 statement penuh, angka beda", body: `
 <details class="ans"><summary>Lihat jawaban (coba sendiri dulu!)</summary>
 <p><b>Arus kas:</b> ΔWC = (900 + 800 − 600) − (800 + 700 − 500) = 1.100 − 1.000 = <b>+100</b>. CFO = 1.200 + 300 − 100 = <b>1.400</b>. CFI = <b>−800</b>. CFF = <b>−500</b>. Δkas = 1.400 − 800 − 500 = <b>+100</b>. Kas akhir = 6.000 + 100 = <b>6.100</b>.</p>
 <p><b>Neraca tutup:</b> Kas <b>6.100</b>; Piutang <b>900</b>; Persediaan <b>800</b>; PPE neto = 1.500 + 800 − 300 = <b>2.000</b>. Total aset = <b>9.800</b>. Utang <b>600</b>; Modal <b>7.000</b>; RE = 1.500 + 1.200 − 500 = <b>2.200</b>. Total L+E = <b>9.800</b>.</p>
-<p><b>4 golden checks:</b> (1) 9.800 = 9.800 ✓; (2) tie-out kas 6.100 − 6.100 = <b>0</b> ✓; (3) RE roll 2.200 ✓; (4) ΔWC +100 dua arah ✓. FCFF = 1.400 − 800 = <b>600</b> — positif: operasi Budi membiayai investasinya sendiri.</p>
+<p><b>4 golden checks:</b> (1) 9.800 = 9.800 ✓; (2) tie-out kas 6.100 − 6.100 = <b>0</b> ✓; (3) RE roll 2.200 ✓; (4) ΔWC +100 dua arah ✓. CFO setelah capex = 1.400 − 800 = <b>600</b> — positif: operasi Budi membiayai investasinya sendiri. (Label "FCFF" hanya tepat bila tanpa bunga — di sini tidak ada data bunga/pajak, jadi sebutan tepatnya "CFO setelah capex"; IS lengkap tidak bisa dibangun dari NI saja tanpa rincian pendapatan/beban.)</p>
 <p><i>Kenapa angka beda?</i> Mekaniknya identik dengan Warung Septian — hanya inputnya berubah. Metodenya benar, angka berapa pun bisa.</p>
 </details>`}
 },
@@ -5613,7 +5614,7 @@ sections: [
 <p>Check: 12,100 = 600 + 10,000 + 1,500 ✓. Note: <b>opening cash 8,000 = beginning cash in the Day 04 cash flow</b> — the same number appears in two statements. That's not coincidence; that's linkage.</p>
 <div class="callout"><b>Why must the starting point be stated, not guessed?</b> Because a good model is always honest about its assumptions. "Stated opening balance sheet" = anyone can audit where 12,100 came from. Professional models always have an explicit "opening balances" sheet — never a number that "just appears".</div>`},
 {h: "One transaction, at least two accounts", body: `
-<p>The bookkeeping rule that makes a model <b>self-checking</b>: every transaction touches <b>at least two accounts</b> — and A = L + E must never break. Six Warung Septian 2026 activities:</p>
+<p>The bookkeeping rule that makes a model <b>self-checking</b>: every transaction touches <b>at least two accounts</b> — and A = L + E must never break. Seven Warung Septian 2026 activities:</p>
 <table class="brutal">
 <tr><th>2026 transaction</th><th>Account 1</th><th>Account 2</th><th>A = L + E?</th></tr>
 <tr><td>Credit sales Rp16,800k</td><td>Receivables +16,800</td><td>Retained earnings +16,800 (via NI)</td><td>✓ both sides up</td></tr>
@@ -5621,10 +5622,11 @@ sections: [
 <tr><td>Buy equipment cash Rp2,000k</td><td>Cash −2,000</td><td>Fixed assets +2,000</td><td>✓ asset swap</td></tr>
 <tr><td>Depreciation Rp400k</td><td>Fixed assets −400</td><td>Retained earnings −400 (via NI)</td><td>✓ cash untouched</td></tr>
 <tr><td>Cash dividends Rp3,000k</td><td>Cash −3,000</td><td>Retained earnings −3,000</td><td>✓ direct, no IS</td></tr>
-<tr><td>Credit buys & supplier payments (net) Rp100k*</td><td>Payables +100</td><td>Inventory +100</td><td>✓ assets & liabilities up</td></tr>
+<tr><td>Credit inventory buys Rp8,550k</td><td>Payables +8,550</td><td>Inventory +8,550</td><td>✓ assets & liabilities up</td></tr>
+<tr><td>Supplier payments Rp8,450k</td><td>Cash −8,450</td><td>Payables −8,450</td><td>✓ assets & liabilities down</td></tr>
 </table>
-<p><i>*Net of several buy-pay supplier transactions through the year; the net effect is payables up 100.</i></p>
-<div class="callout"><b>Why is "at least two accounts" half the model's value?</b> Because it makes errors <b>mathematically impossible to hide</b>: miss one side, the balance sheet unbalances instantly. Without this rule, analysts would have to verify every number one by one. With it, one check (A = L + E) watches everything at once.</div>`},
+<p><i>*Credit buys Rp8,550k minus supplier payments Rp8,450k through the year: payables up a net 100; inventory +8,550 − COGS 8,400 = +150, matching the walk. The 8,450 payment is already inside CFO 1,850 (indirect method, Day 04).</i></p>
+<div class="callout"><b>Why is "at least two accounts" half the model's value?</b> Because it makes one-sided errors <b>impossible to miss</b>: miss one side, the balance sheet unbalances instantly. Without this rule, analysts would have to verify every number one by one. With it, one check (A = L + E) watches for imbalance — but remember: paired errors, misclassifications, or wrong-but-consistent inputs still balance. Balance is a necessary condition, not a sufficient one.</div>`},
 {h: "Capex & depreciation: two sides of fixed assets", body: `
 <p>Fixed assets have two opposite movements in 2026 — and both must be tracked separately:</p>
 <div class="formula">PPE net(end) = PPE net(start) + Capex − Depreciation</div>
@@ -5671,7 +5673,7 @@ sections: [
 <p>In Excel, analysts never check this by eye — they write the formula:</p>
 <div class="formula">=IF(Total_Assets = Total_Liabilities + Total_Equity, "BALANCED ✓", "NOT BALANCED")</div>
 <p>This cell is the model's <b>alarm</b>: green = continue; red = stop, a formula is leaking. In the Day 05 practice file, the "Cek balance" cell scores automatically — your target: <b>BALANCED ✓</b> together with all-correct answers.</p>
-<div class="callout"><b>Why is this one cell so sacred?</b> Because it watches <b>every</b> formula at once. One mislinked input cell, one forgotten minus sign, one mistyped number — the alarm sounds. A model without a balance check is like a car without a handbrake: it runs, but nothing catches it when it rolls the wrong way.</div>`},
+<div class="callout"><b>Why is this one cell so sacred?</b> Because it watches <b>imbalance</b> across every formula at once: one mislinked input cell, one forgotten minus sign, one mistyped number on one side — the alarm sounds. But the alarm stays silent when an error hits both sides equally, or when the input itself was wrong from the start: the balance sheet still balances while the story is wrong. A balance check is a necessary condition, not a sufficient one. A model without a balance check is like a car without a handbrake: it runs, but nothing catches it when it rolls the wrong way.</div>`},
 {h: "Common traps", body: `
 <ul>
 <li><b>Falling assets ≠ losses.</b> Total assets 12,100 → 10,900 (down 1,200) while NI is +1,700. Assets fell because of <b>distribution</b> (dividends 3,000 > NI 1,700), not bleeding operations.</li>
@@ -5771,7 +5773,7 @@ sections: [
 <p>In Excel, analysts write it as a formula, not by eye:</p>
 <div class="formula">=IF(BS_Cash = CFS_Cash, 0, "ERROR")</div>
 <p>In the Day 06 practice file, the "Tie-out kas" cell must be <b>ZERO</b> — not "almost zero", not "off by 1". Zero.</p>
-<div class="callout"><b>Why absolute zero, not a tolerance?</b> Because cash is an account with <b>no estimates</b>: no depreciation, no accruals, no assumptions. Cash = fact. A Rp1 gap in cash = a leaking formula, period. Analysts tolerate gaps in estimated accounts (bad-debt provisions), never in cash.</div>`},
+<div class="callout"><b>Why absolute zero, not a tolerance?</b> Because cash is an account with <b>no estimates</b>: no depreciation, no accruals, no assumptions. Cash = fact. In this practice model — one source of numbers, one precision — a Rp1 gap in cash = a leaking formula, period. Analysts tolerate gaps in estimated accounts (bad-debt provisions), never in cash. Note: in real reported data, figures rounded independently in each statement can show a small gap even when the underlying math agrees — reconcile rounding and cash scope (cash vs cash equivalents) before concluding a formula leaks.</div>`},
 {h: "Bridges 3 & 4: CFO and PPE roll-forward", body: `
 <p>Two bridges you already own — today run as <b>cross-verification</b>:</p>
 <table class="brutal">
@@ -5801,12 +5803,12 @@ sections: [
 <tr><td>3</td><td>RE roll-forward</td><td>=RE_start + NI − dividends</td><td>200 ✓</td></tr>
 <tr><td>4</td><td>ΔWC matches both ways</td><td>=WC_end − WC_start</td><td>+250 ✓</td></tr>
 </table>
-<p>In the Day 06 practice file, all four are <b>answer cells scored by the checker</b>. Passing all four = your model meets working-analyst standard: not because the numbers "look right", but because <b>every connection is proven right</b>.</p>
+<p>In the Day 06 practice file, all four are <b>answer cells scored by the checker</b>. Passing all four = your model meets working-analyst standard: not because the numbers "look right", but because <b>every connection these four checks test is proven right</b> — for the class of errors that slip past all four checks, see § Consistency audit below.</p>
 <div class="callout"><b>Why a ritual, not just checks?</b> Because a ritual is done <b>without thinking twice</b> — like a pilot's pre-takeoff checklist. An analyst "sure the model is right" who skips the ritual is an analyst waiting to be embarrassed by a number. Four checks, every model, every year. No exceptions.</div>`},
 {h: "Common 3-statement traps", body: `
 <ul>
 <li><b>"Coincidentally matching" ≠ correct.</b> Ending RE can be 200 via the wrong path (dividends as expense). Check the path, not just the number.</li>
-<li><b>A tolerated cash tie-out = a disconnected alarm.</b> A Rp1 cash gap = a leaking formula. Zero or ERROR — no "almost".</li>
+<li><b>A tolerated cash tie-out = a disconnected alarm.</b> In this practice model, a Rp1 cash gap = a leaking formula. Zero or ERROR — no "almost". (On real reported data, rounding gaps are reconciled first — see § Bridge 2.)</li>
 <li><b>Forgetting one side of linkage.</b> Change the dividend assumption in the IS (no effect — correct), but forget to update CFF & RE → two bridges break at once.</li>
 <li><b>Two-way ΔWC differs = don't pick the "nice" one.</b> Schedule says +250, balance-sheet difference says +300? Find the wrong one — don't use the one that suits you.</li>
 </ul>
@@ -5831,7 +5833,7 @@ quiz: [
  explain: `1,500 + 1,700 − 3,000 = Rp200k. Golden check #3. (Day 06 § Bridge 1)`},
 {q: `Beginning net PPE 2,000, capex 2,000, depreciation 400. Ending net PPE?`, opts: ["Rp3,600k","Rp4,000k","Rp2,000k","Rp4,400k"], answer: 0, k: "ppe_roll",
  hints: ["PPE(end) = start + capex − depreciation.","2,000 + 2,000 − 400 = ?"],
- explain: `2,000 + 2,000 − 400 = Rp3,600k. Golden check #4 (bridge 4). (Day 06 § Bridges 3 & 4)`},
+ explain: `2,000 + 2,000 − 400 = Rp3,600k. Bridge 4 (PPE roll-forward). (Day 06 § Bridges 3 & 4)`},
 {q: `Beginning WC = receivables 1,200 + inventory 900 − payables 600?`, opts: ["Rp1,500k","Rp1,750k","Rp2,100k","Rp900k"], answer: 0, k: "wc",
  hints: ["WC = operating current assets − operating liabilities.","1,200 + 900 − 600 = ?"],
  explain: `Rp1,500k. Ending WC 1,750 → ΔWC +250 (golden check #4). Trap: 1,750 = ENDING WC. (Day 06 § Bridges 3 & 4)`},
@@ -5845,7 +5847,7 @@ quiz: [
 hell: [
 {q: `Beginning RE 2,000, NI 1,200, dividends 1,500. Ending RE?`, opts: ["Rp1,700k","Rp4,700k","Rp3,200k","Rp500k"], answer: 0, diff: "Easy",
  explain: `2,000 + 1,200 − 1,500 = Rp1,700k. Dividends may exceed NI as long as beginning RE covers them.`},
-{q: `Beginning gross PPE 2,400, capex 2,000, depreciation 400. Ending gross, accum. depr., net?`, opts: ["Gross 4,400, accum 800, net 3,600","Gross 4,000, accum 400, net 3,600","Gross 2,400, accum 800, net 1,600","Gross 4,400, accum 400, net 4,000"], answer: 0, diff: "Medium",
+{q: `Beginning gross PPE 2,400 (opening accum. depr. 400, from the Day 05 opening balance sheet), capex 2,000, depreciation 400. Ending gross, accum. depr., net?`, opts: ["Gross 4,400, accum 800, net 3,600","Gross 4,000, accum 400, net 3,600","Gross 2,400, accum 800, net 1,600","Gross 4,400, accum 400, net 4,000"], answer: 0, diff: "Medium",
  explain: `Gross = 2,400 + 2,000 = 4,400; accum. depreciation = 400 + 400 = 800; net = 4,400 − 800 = 3,600. Capex grows gross, depreciation grows the accumulated contra-account.`},
 {q: `Model: TOTAL ASSETS 10,900, TOTAL L+E 10,500. Diagnosis?`, opts: ["A 400 gap — a leaking link / wrong formula","Normal — Rp400k tolerance","RE is 400 short → add it manually","Missing 400 of capex"], answer: 0, diff: "Hard",
  explain: `A 400 gap = Rp400,000 of real money — not a tolerance. Never "add manually": find the mislinked cell. That's what the balance alarm is for.`},
@@ -5860,7 +5862,7 @@ tasks: [
 {t: "Task C — The quiz above", d: "Target ≥4/5 correct. Wrong? Read the hints, retry."}
 ],
 blind: {h: "Blind Drill — full 3 statements, different numbers", body: `
-<p>"Warung Budi" 2026 (Rp thousand). <b>Build the 3 statements + 4 golden checks from ZERO without peeking at the example</b>:</p>
+<p>"Warung Budi" 2026 (Rp thousand). <b>Build the cash flow + closing balance sheet + 4 golden checks from ZERO without peeking at the example</b>:</p>
 <ul>
 <li>Opening balance sheet Jan 1: cash 6,000; receivables 800; inventory 700; net PPE 1,500 (gross 1,800 − accum 300); payables 500; capital 7,000; retained earnings 1,500</li>
 <li>2026: NI 1,200; depreciation 300; capex 800; dividends 500</li>
@@ -5869,7 +5871,7 @@ blind: {h: "Blind Drill — full 3 statements, different numbers", body: `
 <details class="ans"><summary>See the answer (try it yourself first!)</summary>
 <p><b>Cash flow:</b> ΔWC = (900 + 800 − 600) − (800 + 700 − 500) = 1,100 − 1,000 = <b>+100</b>. CFO = 1,200 + 300 − 100 = <b>1,400</b>. CFI = <b>−800</b>. CFF = <b>−500</b>. Net cash = 1,400 − 800 − 500 = <b>+100</b>. Ending cash = 6,000 + 100 = <b>6,100</b>.</p>
 <p><b>Closing balance sheet:</b> Cash <b>6,100</b>; Receivables <b>900</b>; Inventory <b>800</b>; Net PPE = 1,500 + 800 − 300 = <b>2,000</b>. Total assets = <b>9,800</b>. Payables <b>600</b>; Capital <b>7,000</b>; RE = 1,500 + 1,200 − 500 = <b>2,200</b>. Total L+E = <b>9,800</b>.</p>
-<p><b>4 golden checks:</b> (1) 9,800 = 9,800 ✓; (2) cash tie-out 6,100 − 6,100 = <b>0</b> ✓; (3) RE roll 2,200 ✓; (4) ΔWC +100 both ways ✓. FCFF = 1,400 − 800 = <b>600</b> — positive: Budi's operations fund their own investment.</p>
+<p><b>4 golden checks:</b> (1) 9,800 = 9,800 ✓; (2) cash tie-out 6,100 − 6,100 = <b>0</b> ✓; (3) RE roll 2,200 ✓; (4) ΔWC +100 both ways ✓. CFO after capex = 1,400 − 800 = <b>600</b> — positive: Budi's operations fund their own investment. (The "FCFF" label only fits when there is no interest — there is no interest/tax data here, so the precise term is "CFO after capex"; a full IS cannot be built from NI alone without revenue/expense detail.)</p>
 <p><i>Why different numbers?</i> The mechanics are identical to Warung Septian — only the inputs changed. Get the method right and any numbers work.</p>
 </details>`}
 }

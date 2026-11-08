@@ -60,21 +60,21 @@ quiz: [
  hints: ["VLOOKUP(\"x\", tabel, 3, FALSE) — angka 3 itu apa?", "Sisipkan satu kolom di tengah tabel, lalu lihat apa yang terjadi pada angka 3."],
  explain: "VLOOKUP memegang 'kolom ke-3' — sisipkan kolom, referensinya basi. XLOOKUP memegang range langsung. (Excel L1 § XLOOKUP)"},
 {q: "Aturan bonus: omzet ≥1000 → 10%, omzet ≥500 → 5%, sisanya 0%. Struktur rumus terbaik?", opts: ["=IF(A1>=500,5%,IF(A1>=1000,10%,0))","=IFS(A1>=1000,10%,A1>=500,5%,1,0)","=IF(A1>=1000,10%,0)+IF(A1>=500,5%,0)","=SWITCH(TRUE,A1>=1000,10%,5%)"], answer: 1, k: "if_logic", diff: "Hard",
- hints: ["Opsi pertama salah urutan: 600 pun ≥500 duluan.", "IFS mengecek kondisi berurutan — tulis dari yang paling ketat."],
+ hints: ["Opsi pertama salah urutan: 1.200 kena cabang 5% duluan.", "IFS mengecek kondisi berurutan — tulis dari yang paling ketat."],
  explain: "=IFS(A1>=1000, 10%, A1>=500, 5%, TRUE, 0). IFS lebih terbaca dari IF bertingkat; urutan dari ambang tertinggi. Opsi pertama bug: 1200 kena cabang 5% duluan. (Excel L1 § IF)"}
 ],
 hellPass: 80,
 hell: [
-{q: "Mana yang PALING cepat dihitung Excel untuk 100 ribu baris: SUMPRODUCT(A:A,B:B) vs kolom bantu C=A*B lalu SUM(C:C)?", opts: ["Kolom bantu — SUMPRODUCT dua kali lebih lambat","Sama saja, Excel mengoptimasi keduanya","SUMPRODUCT — satu rumus selalu menang","Kolom bantu lebih lambat karena makan memori"], answer: 0, diff: "Medium",
- explain: "Kolom bantu + SUM biasanya sedikit lebih cepat dan JAUH lebih mudah diaudit. SUMPRODUCT elegan untuk kasus kecil; untuk 100rb baris, transparansi + kecepatan = kolom bantu."},
-{q: "Rumus =SUM($B6:B$12) di-copy ke kanan jadi kolom C. Range apa yang dijumlahkan?", opts: ["=SUM($B6:B$12) — tidak berubah sama sekali","=SUM($C6:C$12) — kolom ikut bergeser","=SUM($B7:B$13) — baris ikut bergeser","Error karena $ tercampur"], answer: 1, diff: "Medium",
- explain: "$B terkunci (tetap B), B$12 terkunci barisnya tapi kolomnya bebas → jadi $C6:C$12. Inilah referensi campuran: kunci yang perlu, bebaskan yang harus jalan."},
+{q: "Mana yang PALING cepat dihitung Excel untuk 100 ribu baris: SUMPRODUCT(A:A,B:B) vs kolom bantu C=A*B lalu SUM(C:C)?", opts: ["Kolom bantu — biasanya sedikit lebih cepat & jauh lebih mudah diaudit","Sama saja, Excel mengoptimasi keduanya","SUMPRODUCT — satu rumus selalu menang","Kolom bantu lebih lambat karena makan memori"], answer: 0, diff: "Medium",
+ explain: "Kolom bantu + SUM biasanya sedikit lebih cepat dan JAUH lebih mudah diaudit — tapi seberapa cepat bergantung pada ukuran data dan versi Excel, jadi uji di workbook-mu sendiri sebelum menggeneralisasi. SUMPRODUCT elegan untuk kasus kecil; untuk 100rb baris, transparansi + kecepatan = kolom bantu."},
+{q: "Rumus =SUM($B6:B$12) di-copy ke kanan jadi kolom C. Range apa yang dijumlahkan?", opts: ["=SUM($B6:B$12) — tidak berubah sama sekali","=SUM($B6:C$12) — ujung awal tetap di B, ujung akhir bergeser ke C","=SUM($B7:B$13) — baris ikut bergeser","Error karena $ tercampur"], answer: 1, diff: "Medium",
+ explain: "$B terkunci (tetap B), B$12 terkunci barisnya tapi kolomnya bebas → jadi $B6:C$12. Inilah referensi campuran: kunci yang perlu, bebaskan yang harus jalan."},
 {q: "=XLOOKUP(\"Kopi\", B6:B13, D6:D13, \"tidak ada\"). Produk tidak ketemu. Hasil?", opts: ["#N/A","0","\"tidak ada\"","#VALUE!"], answer: 2, diff: "Medium",
  explain: "Argumen ke-4 XLOOKUP = if_not_found. Tanpa itu, hasilnya #N/A. Selalu isi argumen ini di model — #N/A yang tidak tertangani merambat ke seluruh laporan."},
 {q: "=COUNTIF(C6:C13, >15) — tanpa tanda kutip. Apa yang terjadi?", opts: ["Berjalan normal, hasilnya 3","Error — kriteria operator harus dalam kutip","Dihitung sebagai >150","Hasilnya 0 diam-diam"], answer: 1, diff: "Hard",
  explain: "Operator perbandingan dalam kriteria WAJIB dalam tanda kutip: \">15\". Tanpa kutip = syntax error. Pengecualian: kriteria angka polos (=15) boleh tanpa kutip."},
-{q: "=IF(AND(A1>0, B1<>\"\"), A1/B1, 0). Kapan hasilnya 0?", opts: ["Hanya saat A1 = 0","Saat A1 ≤ 0 ATAU B1 kosong","Hanya saat B1 kosong","Tidak pernah — selalu A1/B1"], answer: 1, diff: "Hard",
- explain: "AND butuh keduanya TRUE: A1>0 DAN B1 tidak kosong. Salah satu gagal → 0. Pola ini = pengaman ganda sebelum pembagian."}
+{q: "=IF(AND(A1>0, B1<>0), A1/B1, 0). Kapan hasilnya 0?", opts: ["Hanya saat A1 = 0","Saat A1 ≤ 0 ATAU B1 = 0","Hanya saat B1 = 0","Tidak pernah — selalu A1/B1"], answer: 1, diff: "Hard",
+ explain: "AND butuh keduanya TRUE: A1>0 DAN B1≠0. Salah satu gagal → 0. Hati-hati: B1<>\"\" hanya mengecek kosong — B1 berisi 0 tetap lolos dan A1/0 = #DIV/0!. Pengaman pembagian yang benar mengecek penyebut nol (B1<>0)."}
 ],
 tasks: [
 {t: "Tugas A — Rekap penjualan mingguan (±2 jam)", d: "Download file latihan Excel L1 dari Drive. Kerjakan 7 rumus: SUM, SUMPRODUCT, AVERAGE, COUNTIF, diskon ($!), IF, XLOOKUP. Semua sel jawaban harus rumus — file jawaban untuk cross-check.", url: "https://drive.google.com/drive/folders/1ZemMXTh95PAjLRZc_kSY2MDJOuywblrt"},
@@ -158,8 +158,8 @@ quiz: [
 ],
 hellPass: 80,
 hell: [
-{q: "=MATCH(\"Bandung\", A:A, 0) menghasilkan 7, tapi =INDEX(D:D, 7) salah. Kemungkinan penyebab?", opts: ["MATCH salah — seharusnya pakai 1 bukan 0","Kolom A dan D jumlah barisnya beda (range tidak sejajar)","INDEX tidak bisa dipakai dengan MATCH","Harus pakai VLOOKUP sebagai gantinya"], answer: 1, diff: "Medium",
- explain: "INDEX+MATCH menuntut range yang sejajar: baris ke-7 di A harus = baris ke-7 di D. A:A vs D:D utuh sih sejajar — masalahnya muncul saat range dipotong tidak sama, mis. A2:A100 vs D1:D100."},
+{q: "=MATCH(\"Bandung\", A2:A100, 0) menghasilkan 7, tapi =INDEX(D1:D100, 7) salah. Kemungkinan penyebab?", opts: ["MATCH salah — seharusnya pakai 1 bukan 0","Range tidak sejajar: A mulai baris 2, D mulai baris 1","INDEX tidak bisa dipakai dengan MATCH","Harus pakai VLOOKUP sebagai gantinya"], answer: 1, diff: "Medium",
+ explain: "MATCH mengembalikan posisi ke-7 di dalam A2:A100 (= baris 8 lembar), sedangkan INDEX(D1:D100, 7) mengambil baris ke-7 dari D1:D100 (= baris 7 lembar) — selisih satu baris. INDEX+MATCH menuntut range yang sejajar: awal dan panjang range harus sama (mis. A2:A100 dengan D2:D100)."},
 {q: "=COUNTIFS(A:A, \">100\", B:B, \"Jan\", C:C, \"<>Mie\"). Baris (150, Jan, Kopi) dihitung?", opts: ["Ya — memenuhi ketiga kriteria","Tidak — \"<>Mie\" membatalkan semuanya","Tidak — COUNTIFS maksimal 2 kriteria","Ya — tapi dihitung dua kali"], answer: 0, diff: "Medium",
  explain: "150>100 ✓, Jan ✓, Kopi<>Mie ✓ → dihitung sekali. \"<>\" = tidak sama dengan. COUNTIFS mendukung puluhan kriteria."},
 {q: "Mau jumlahkan omzet hanya untuk baris di mana qty > rata-rata qty. Rumus satu sel?", opts: ["=SUMIF(Qty, \">\"&AVERAGE(Qty), Omzet)","=SUM(Omzet) - AVERAGE(Qty)","Tidak bisa dalam satu rumus","=SUMIFS(Omzet, Qty, AVERAGE(Qty))"], answer: 0, diff: "Hard",
@@ -177,7 +177,7 @@ tasks: [
 blind: {h: "Uji Kilat — angka beda", body: `
 <p><b>1.</b> Data: (A, Jan, 10), (A, Feb, 30), (B, Jan, 20). Tulis SUMIFS untuk total A, dan COUNTIFS untuk baris dengan nilai >15.</p>
 <details class="ans"><summary>Jawaban</summary>
-<p>=SUMIFS(nilai, kode, "A") → 40. =COUNTIFS(nilai, ">15", ...) → 2 (30 dan 20). Perhatikan: kriteria teks selalu dalam kutip.</p>
+<p>=SUMIFS(nilai, kode, "A") → 40. =COUNTIFS(nilai, ">15") → 2 (30 dan 20). Perhatikan: kriteria teks selalu dalam kutip.</p>
 </details>
 <p><b>2.</b> Kolom Nama di C, kolom Gaji di E. Tulis rumus ambil gaji "Budi" tanpa VLOOKUP.</p>
 <details class="ans"><summary>Jawaban</summary>
@@ -682,20 +682,20 @@ quiz: [
  hints: ["VLOOKUP(\"x\", table, 3, FALSE) — what is that 3?","Insert one column mid-table, then watch what happens to the 3."],
  explain: `VLOOKUP holds 'column 3' — insert a column and the reference goes stale. XLOOKUP holds ranges directly.`},
 {q: `Bonus rule: revenue ≥1000 → 10%, revenue ≥500 → 5%, else 0%. Best formula structure?`, opts: ["=IF(A1>=500,5%,IF(A1>=1000,10%,0))","=IFS(A1>=1000,10%,A1>=500,5%,1,0)","=IF(A1>=1000,10%,0)+IF(A1>=500,5%,0)","=SWITCH(TRUE,A1>=1000,10%,5%)"], answer: 1, k: "if_logic",
- hints: ["The first option is misordered: 600 hits ≥500 first.","IFS checks conditions in order — write from the strictest."],
+ hints: ["The first option is misordered: 1,200 hits the 5% branch first.","IFS checks conditions in order — write from the strictest."],
  explain: `=IFS(A1>=1000, 10%, A1>=500, 5%, TRUE, 0). IFS reads better than nested IFs; order from the highest threshold. The first option is buggy: 1200 hits the 5% branch first.`}
 ],
 hell: [
-{q: `Which is FASTEST for Excel on 100k rows: SUMPRODUCT(A:A,B:B) vs a helper column C=A*B then SUM(C:C)?`, opts: ["Helper column — SUMPRODUCT is twice as slow","Same result; Excel optimizes both the same","SUMPRODUCT — one formula always wins","Helper column is slower because it eats memory"], answer: 0,
- explain: `Helper column + SUM is usually slightly faster and FAR easier to audit. SUMPRODUCT is elegant for small cases; for 100k rows, transparency + speed = helper column.`},
-{q: `=SUM($B6:B$12) copied rightward into column C. What range gets summed?`, opts: ["=SUM($B6:B$12) — completely unchanged","=SUM($C6:C$12) — the column shifts along","=SUM($B7:B$13) — the rows shift along","Error because the $ is mixed"], answer: 1,
- explain: `$B is locked (stays B), B$12 locks the row but the column is free → becomes $C6:C$12. That's a mixed reference: lock what must stay, free what must walk.`},
+{q: `Which is FASTEST for Excel on 100k rows: SUMPRODUCT(A:A,B:B) vs a helper column C=A*B then SUM(C:C)?`, opts: ["Helper column — usually slightly faster & far easier to audit","Same result; Excel optimizes both the same","SUMPRODUCT — one formula always wins","Helper column is slower because it eats memory"], answer: 0,
+ explain: `Helper column + SUM is usually slightly faster and FAR easier to audit — but by how much depends on data size and Excel version, so test it in your own workbook before generalizing. SUMPRODUCT is elegant for small cases; for 100k rows, transparency + speed = helper column.`},
+{q: `=SUM($B6:B$12) copied rightward into column C. What range gets summed?`, opts: ["=SUM($B6:B$12) — completely unchanged","=SUM($B6:C$12) — the start stays in B, the end shifts to C","=SUM($B7:B$13) — the rows shift along","Error because the $ is mixed"], answer: 1,
+ explain: `$B is locked (stays B), B$12 locks the row but the column is free → becomes $B6:C$12. That's a mixed reference: lock what must stay, free what must walk.`},
 {q: `=XLOOKUP("Kopi", B6:B13, D6:D13, "tidak ada"). Product not found. Result?`, opts: ["#N/A","0","\"tidak ada\"","#VALUE!"], answer: 2,
  explain: `XLOOKUP's 4th argument = if_not_found. Without it, the result is #N/A. Always fill this argument in models — unhandled #N/A propagates through the whole report.`},
 {q: `=COUNTIF(C6:C13, >15) — no quotes. What happens?`, opts: ["Runs fine and the result is 3","Error — operator criteria must be quoted","It gets computed as greater than 150","The result is silently computed as 0"], answer: 1,
  explain: `Comparison operators in criteria MUST be quoted: "&gt;15". Without quotes = syntax error. Exception: a plain number criterion (=15) may skip quotes.`},
-{q: `=IF(AND(A1>0, B1<>""), A1/B1, 0). When is the result 0?`, opts: ["Only when A1 = 0","When A1 ≤ 0 OR B1 is empty","Only when B1 is empty","Never — always A1/B1"], answer: 1,
- explain: `AND needs both TRUE: A1>0 AND B1 non-empty. Either fails → 0. This pattern = double protection before dividing.`}
+{q: `=IF(AND(A1>0, B1<>0), A1/B1, 0). When is the result 0?`, opts: ["Only when A1 = 0","When A1 ≤ 0 OR B1 = 0","Only when B1 = 0","Never — always A1/B1"], answer: 1,
+ explain: `AND needs both TRUE: A1>0 AND B1≠0. Either fails → 0. Watch out: B1<>"" only checks for empty — B1 holding 0 still passes and A1/0 = #DIV/0!. A real division guard checks for a zero denominator (B1<>0).`}
 ],
 tasks: [
 {t: "Task A — Weekly sales recap (±2 hrs)", d: "Download the Excel L1 practice file from Drive. Work the 7 formulas: SUM, SUMPRODUCT, AVERAGE, COUNTIF, discount ($!), IF, XLOOKUP. Every answer cell must be a formula — the answer file is for cross-checking.", url: "https://drive.google.com/drive/folders/1ZemMXTh95PAjLRZc_kSY2MDJOuywblrt"},
@@ -773,8 +773,8 @@ quiz: [
  explain: `*IFS formulas are live and auditable; PivotTables need Refresh and hide their trail behind clicks. For maintained models, formulas win.`}
 ],
 hell: [
-{q: `=MATCH("Bandung", A:A, 0) returns 7, but =INDEX(D:D, 7) is wrong. Likely cause?`, opts: ["The MATCH is wrong — it should use 1, not 0","Columns A and D have different row counts","INDEX cannot be paired with MATCH here","VLOOKUP must be used instead of this"], answer: 1,
- explain: `INDEX+MATCH demands aligned ranges: row 7 in A must = row 7 in D. Full A:A vs D:D are aligned — trouble starts when ranges are cut unevenly, e.g. A2:A100 vs D1:D100.`},
+{q: `=MATCH("Bandung", A2:A100, 0) returns 7, but =INDEX(D1:D100, 7) is wrong. Likely cause?`, opts: ["The MATCH is wrong — it should use 1, not 0","Misaligned ranges: A starts at row 2, D starts at row 1","INDEX cannot be paired with MATCH here","VLOOKUP must be used instead of this"], answer: 1,
+ explain: `MATCH returns position 7 inside A2:A100 (= row 8 of the sheet), while INDEX(D1:D100, 7) takes row 7 of D1:D100 (= row 7 of the sheet) — off by one row. INDEX+MATCH demands aligned ranges: same start and same length (e.g. A2:A100 with D2:D100).`},
 {q: `=COUNTIFS(A:A, ">100", B:B, "Jan", C:C, "<>Mie"). Is the row (150, Jan, Kopi) counted?`, opts: ["Yes — it meets all three criteria","No — \"<>Mie\" cancels everything","No — COUNTIFS allows max 2 criteria","Yes — but it's counted twice"], answer: 0,
  explain: `150>100 ✓, Jan ✓, Kopi<>Mie ✓ → counted once. "<>" = not equal to. COUNTIFS supports dozens of criteria.`},
 {q: `Sum revenue only for rows where qty > average qty. One-cell formula?`, opts: ["=SUMIF(Qty, \">\"&AVERAGE(Qty), Revenue)","=SUM(Revenue) - AVERAGE(Qty)","Impossible in one formula","=SUMIFS(Revenue, Qty, AVERAGE(Qty))"], answer: 0,
@@ -792,7 +792,7 @@ tasks: [
 blind: {h: "Speed Drill — different numbers", body: `
 <p><b>1.</b> Data: (A, Jan, 10), (A, Feb, 30), (B, Jan, 20). Write a SUMIFS for the A total, and a COUNTIFS for rows with value &gt;15.</p>
 <details class="ans"><summary>Answer</summary>
-<p>=SUMIFS(value, code, "A") → 40. =COUNTIFS(value, "&gt;15", ...) → 2 (30 and 20). Note: text criteria always in quotes.</p>
+<p>=SUMIFS(value, code, "A") → 40. =COUNTIFS(value, "&gt;15") → 2 (30 and 20). Note: text criteria always in quotes.</p>
 </details>
 <p><b>2.</b> Names in column C, salaries in column E. Write a formula to fetch "Budi"'s salary without VLOOKUP.</p>
 <details class="ans"><summary>Answer</summary>

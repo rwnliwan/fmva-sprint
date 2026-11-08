@@ -18,7 +18,7 @@ sections: [
 <div class="formula">FCFF = NOPAT × (1 − tingkat reinvestasi)</div>
 <p><b>NOPAT</b> = EBIT × (1 − pajak): laba operasi seolah tanpa utang. Dari sini, kurangi <b>reinvestasi</b> (capex + modal kerja yang menyerap kas) → dapat <b>FCFF</b>: kas yang benar-benar bisa diambil semua pemodal.</p>
 <div class="example jebakan"><div class="lbl">🚫 Jebakan laba bersih</div>
-<p>UNVR 2025: net income Rp7,64T <b>lebih tinggi</b> dari 2022 (Rp5,36T) padahal revenue turun 22%! Laba bersih dipengaruhi pos non-operasi & non-kas. DCF yang memakai NI mentah sedang menilai <b>akuntansi</b>, bukan <b>kas</b>.</p></div>
+<p>UNVR 2025: net income Rp7,64T <b>lebih tinggi</b> dari 2022 (Rp5,36T) padahal revenue 2025 masih 22,5% di bawah 2022 (Rp31,94T vs Rp41,22T)! Laba bersih dipengaruhi pos non-operasi & non-kas. DCF yang memakai NI mentah sedang menilai <b>akuntansi</b>, bukan <b>kas</b>.</p></div>
 <div class="callout"><b>⚠️ One-off di dalam Rp7,64T itu:</b> angka headline <b>mencakup keuntungan penjualan bisnis es krim</b> (discontinued operations). Laba dari <b>operasi berlanjut (continuing operations) hanya Rp3,5T</b> (press release Unilever, 12 Feb 2026). Pelajaran untuk pemula: angka headline bisa membuat bisnis terlihat <i>lebih</i> menguntungkan dari operasi yang sebenarnya berjalan — selalu tanya <b>"laba dari apa?"</b> sebelum memakai NI untuk valuasi.</div>
 <div class="callout"><b>Kenapa reinvestasi 25% dari NOPAT?</b> Perusahaan tidak bisa membagikan seluruh NOPAT — sebagian harus kembali jadi capex dan modal kerja agar mesin tetap jalan. 25% adalah asumsi ilustratif (bukan angka audit): yang penting ia <b>ada dan eksplisit</b>, bukan disembunyikan.</p></div>`},
 {h: "Kenapa terminal value mendominasi?", body: `
@@ -335,7 +335,7 @@ quiz: [
  explain: "Jurang $78→$400 = ekspektasi ekstrem ATAU nilai opsi (robotaxi/AI) yang tidak ada di DCF inti. (Real-04 § Kenapa pertanyaannya 'berapa g'?) "},
 {q: "g implied ≈ 38,7%/tahun 10 tahun. Kesimpulan yang jujur?", opts: ["Tesla kemahalan; segera jual","38,7% mustahil; modelnya salah","Ekspektasi ekstrem; opsi dinilai terpisah","Beli saja karena growth tinggi"], answer: 2, k: "reverse_dcf", diff: "Medium",
  hints: ["38,7% CAGR 10 tahun = revenue 26× lipat.", "Bisnis inti vs opsi — pisahkan."],
- explain: "38,7% untuk bisnis inti tidak masuk akal → pasar membayar opsi (robotaxi/AI). Tugas analis: menilai apakah opsi itu worth $1,2T. (Real-04 § Kenapa jawabannya 38,7%?) "},
+ explain: "38,7% adalah ekspektasi yang sangat ekstrem di bawah asumsi model ini → selisih harga dapat mencerminkan opsi (robotaxi/AI) atau asumsi model yang berbeda. Tugas analis: menilai apakah opsi itu worth $1,2T. (Real-04 § Kenapa jawabannya 38,7%?) "},
 {q: "Kenapa margin 12% disebut 'ternormalisasi'?", opts: ["12% adalah rata-rata global","Sebab 21% dikurangi 9% saja","Margin tidak penting dalam DCF","Margin 2025 runtuh; 12% ilustratif"], answer: 3, k: "dcf", diff: "Medium",
  hints: ["Net income 15,0B → 3,8B. Apa yang terjadi?", "Proyeksikan margin tertekan selamanya = asumsi perang harga abadi."],
  explain: "Memakai margin runtuh untuk 10 tahun = mengasumsikan perang harga selamanya. 12% eksplisit & bisa diperdebatkan. (Real-04 § Kenapa margin 'ternormalisasi'?) "},
@@ -1099,7 +1099,7 @@ sections: [
 <div class="formula">FCFF = NOPAT × (1 − reinvestment rate)</div>
 <p><b>NOPAT</b> = EBIT × (1 − tax): operating profit as if debt-free. Subtract <b>reinvestment</b> (capex + working capital absorbing cash) → you get <b>FCFF</b>: cash truly available to all capital providers.</p>
 <div class="example jebakan"><div class="lbl">🚫 The net-income trap</div>
-<p>UNVR 2025: net income Rp7.64T <b>higher</b> than 2022 (Rp5.36T) even though revenue fell 22%! Net income is polluted by non-operating &amp; non-cash items. A DCF using raw NI is valuing <b>accounting</b>, not <b>cash</b>.</p></div>
+<p>UNVR 2025: net income Rp7.64T <b>higher</b> than 2022 (Rp5.36T) even though 2025 revenue was still 22.5% below 2022 (Rp31.94T vs Rp41.22T)! Net income is polluted by non-operating &amp; non-cash items. A DCF using raw NI is valuing <b>accounting</b>, not <b>cash</b>.</p></div>
 <div class="callout"><b>⚠️ One-off inside that Rp7.64T:</b> the headline number <b>includes the gain on the ice-cream business disposal</b> (discontinued operations). Profit from <b>continuing operations was only Rp3.5T</b> (Unilever press release, 12 Feb 2026). The beginner's lesson: a headline figure can make the business look <i>more</i> profitable than its actual ongoing operations — always ask <b>"profit from what?"</b> before using NI in a valuation.</div>
 <div class="callout"><b>Why 25% reinvestment of NOPAT?</b> A company can't distribute all of NOPAT — some must go back into capex and working capital to keep the machine running. 25% is an illustrative assumption (not an audited number): what matters is that it's <b>there and explicit</b>, not hidden.</p></div>`},
 {h: "Why does terminal value dominate?", body: `
@@ -1394,7 +1394,7 @@ quiz: [
  explain: `The $78→$400 gap = extreme expectations OR option value (robotaxi/AI) absent from the core DCF.`},
 {q: `Implied g ≈ 38.7%/year for 10 years. The honest conclusion?`, opts: ["Tesla is overpriced; sell now","38.7% is impossible; the model is wrong","Extreme expectations; options valued separately","Just buy because growth is high"], answer: 2, k: "reverse_dcf",
  hints: ["38.7% CAGR for 10 years = 26× revenue.","Core business vs options — separate them."],
- explain: `38.7% for the core business makes no sense → the market is paying for options (robotaxi/AI). The analyst's job: judge whether that option is worth $1.2T.`},
+ explain: `38.7% is an extremely demanding expectation under this model's assumptions → the price gap may reflect options (robotaxi/AI) or different model assumptions. The analyst's job: judge whether that option is worth $1.2T.`},
 {q: `Why is the 12% margin called 'normalized'?`, opts: ["Because 12% is the global average","Because it's simply 21% minus 9%","Margins simply don't matter in a DCF","The 2025 margin collapsed; 12% is illustrative"], answer: 3, k: "dcf",
  hints: ["Net income 15.0B → 3.8B. What happened?","Projecting a depressed margin forever = assuming an eternal price war."],
  explain: `Using the collapsed margin for 10 years = assuming the price war forever. 12% is explicit &amp; debatable.`},
