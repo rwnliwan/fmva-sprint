@@ -1136,7 +1136,7 @@ sections: [
 <tr><td>Utang akhir</td><td><b>770</b></td><td>COGS × DPO/360 = 9.240 × 30/360</td></tr>
 <tr><td>Δ utang</td><td>+70</td><td>kas "dipinjam" dari supplier</td></tr>
 </table>
-<p>Utang usaha = <b>non-bunga</b>: supplier tidak menagih bunga 30 hari. Ini penting untuk WACC nanti (Hari 09): utang jenis ini <b>tidak masuk</b> struktur modal berbunga.</p>
+<p>Dalam model ini, utang usaha diperlakukan sebagai <b>non-bunga</b> eksplisit: supplier tidak menagih bunga 30 hari. Ini penting untuk WACC nanti (Hari 09): utang jenis ini <b>tidak masuk</b> struktur modal berbunga. Secara ekonomi, kredit pemasok tetap dapat memiliki biaya implisit (mis. hilangnya diskon pembayaran cepat) — "tidak menagih bunga" bukan berarti gratis.</p>
 <div class="callout"><b>Kenapa utang usaha dipisah dari "utang" untuk WACC?</b> Karena WACC menilai biaya modal <i>berbunga</i> (bank, obligasi). Utang dagang adalah konsekuensi operasi, bukan keputusan pendanaan — mencampurnya mengotori biaya modal.</div>`},
 {h: "Working capital 2027: DSO/DIO/DPO", body: `
 <p>Tiga hari menentukan kas yang "parkir" (Rp ribu):</p>
@@ -1257,7 +1257,7 @@ audio: "assets/audio/hari-09.mp3",
 checker: "hari-09",
 sections: [
 {h: "Kenapa FCFF, bukan laba bersih", body: `
-<p>Valuasi menjawab: "berapa kas yang bisa diambil pemilik <i>tanpa merusak</i> bisnis?" Laba bersih tidak menjawab itu — ia mengandung non-kas (susut) dan mengabaikan investasi (capex) serta modal kerja. <b>FCFF</b> menjawabnya:</p>
+<p>Valuasi menjawab: "berapa kas yang tersedia bagi seluruh penyandang modal <i>tanpa merusak</i> bisnis?" Laba bersih tidak menjawab itu — ia mengandung non-kas (susut) dan mengabaikan investasi (capex) serta modal kerja. <b>FCFF</b> menjawabnya:</p>
 <div class="formula">FCFF = CFO − Capex</div>
 <p>FCFF = kas operasi <b>setelah</b> menjaga mesin tetap jalan (capex). Inilah kas yang <i>bebas</i> — boleh dibagi, ditabung, atau dipakai bayar utang — tanpa mengorbankan masa depan.</p>
 <p>Rumus singkat ini berlaku karena warung ini <b>100% ekuitas tanpa utang</b>: tanpa bunga, CFO sudah bersih dari biaya utang. Rumus umumnya: FCFF = CFO + bunga×(1−t) − capex — bunga ditambahkan kembali karena FCFF diukur seolah tanpa utang.</p>
@@ -1535,7 +1535,7 @@ sections: [
 <p><b>Stub dan mid-year bisa digabung — karena menjawab hal berbeda.</b> Stub menentukan <i>panjang</i> periode pertama yang tersisa (7/12 tahun); mid-year menentukan <i>timing</i> kas di dalam periode itu. Stub 7 bulan dengan arus merata ≈ kas tiba di tengah stub, yaitu 3,5/12 tahun dari tanggal valuasi — bukan 7/12. Yang tidak boleh: memakai mid-year tahun penuh (t − 0,5) di atas stub tanpa menyesuaikan — itu mendiskon dua kali untuk timing yang sama. Aturan ujung stub (kas dianggap tiba di akhir stub) adalah pilihan konvensi, bukan hukum: bila arus tersebar merata, pakai titik tengah stub.</p>
 <div class="callout"><b>Kenapa analis peduli stub?</b> Karena selisihnya tidak kecil: TV yang sama bernilai 21.019,11 vs 19.968 — selisih 1.051,11 (5,3%) hanya karena tanggal valuasi. Deal yang dinegosiasikan pada Juli vs Januari punya "harga wajar" yang berbeda — dan selisih itu harus bisa dijelaskan baris demi baris, bukan dibiarkan sebagai selisih model.</div>`},
 {h: "Tabel sensitivitas 2D: WACC × g", body: `
-<p>Satu angka EV = satu kombinasi asumsi. Tabel ini menunjukkan <b>sembilan</b> (Rp ribu):</p>
+<p>Satu angka EV = satu kombinasi asumsi. Tabel ini menunjukkan <b>sembilan kombinasi EV</b> (Rp ribu):</p>
 <table class="brutal">
 <tr><th>EV \ g</th><th>2%</th><th>3%</th><th>4%</th></tr>
 <tr><td><b>WACC 11,1%</b></td><td>22.517</td><td>25.302</td><td>28.872</td></tr>
@@ -2249,7 +2249,7 @@ hell: [
  explain: "45.000 > 41.071 (batas atas rentang). Disiplin = tolak, atau tawar masuk ke dalam rentang. Membeli di atas rentang = membayar untuk asumsi orang lain, bukan valuasimu."},
 {q: "Founder mengklaim 'DCF kami Rp100.000rb' dengan g 11,5% dan WACC 12%. Reaksi pertamamu?", opts: ["Percaya \u2014 modelnya pasti detail","Minta tabel sensitivitas: penyebut 0,5% membuat TV meledak 200\u00d7 FCFF \u2014 klaim bertumpu pada setengah poin","Minta ganti ke exit multiple","Setuju karena WACC-nya wajar"], answer: 1,
  explain: "TV = FCFF \u00f7 (0,12 \u2212 0,115) = FCFF \u00f7 0,005 = 200\u00d7 FCFF. Setengah poin di penyebut = bom. Klaim Rp100.000rb hidup/mati di 0,5 poin yang tak bisa dipertahankan."},
-{q: "CFO Rp2.000rb positif tetapi FCFF \u2212Rp2.000rb. Investor bertanya: 'kok kas operasi positif tapi valuasi kecil?' Jawabanmu?", opts: ["CFO-nya pasti salah hitung","Yang relevan untuk valuasi = FCFF: kas operasi setelah menjaga mesin (capex) \u2014 CFO belum tentu bisa diambil pemilik","Abaikan FCFF, pakai CFO","Naikkan WACC"], answer: 1,
+{q: "CFO Rp2.000rb positif tetapi FCFF \u2212Rp2.000rb. Investor bertanya: 'kok kas operasi positif tapi valuasi kecil?' Jawabanmu?", opts: ["CFO-nya pasti salah hitung","Yang relevan untuk valuasi = FCFF: kas operasi setelah menjaga mesin (capex) \u2014 CFO belum tentu tersedia bagi seluruh penyandang modal","Abaikan FCFF, pakai CFO","Naikkan WACC"], answer: 1,
  explain: "CFO 2.000 belum dikurangi capex 4.000. Pemilik hanya bisa mengambil kas setelah mesin dijaga \u2014 itulah FCFF. CFO positif + FCFF negatif = perusahaan tumbuh yang menelan kas."},
 {q: "Dua analis menilai perusahaan yang sama: A \u2192 EV Rp33.929rb (g 3%), B \u2192 EV Rp60.000rb (g 8%, WACC 12%). Mana yang lebih 'benar'?", opts: ["B \u2014 lebih optimis","Tidak ada yang benar/salah absolut \u2014 beda asumsi g; tanya asumsi mana yang bisa dipertahankan ke data","A \u2014 konservatif selalu benar","Rata-ratakan keduanya"], answer: 1,
  explain: "Selisihnya murni asumsi g (3% vs 8%). Pertanyaan yang benar bukan 'siapa benar' tapi 'g mana yang bisa dipertahankan ke data dan logika bisnis'."},
@@ -6055,7 +6055,7 @@ sections: [
 <tr><td>Ending payables</td><td><b>770</b></td><td>COGS × DPO/360 = 9,240 × 30/360</td></tr>
 <tr><td>Δ payables</td><td>+70</td><td>cash "borrowed" from suppliers</td></tr>
 </table>
-<p>Trade payables = <b>non-interest</b>: suppliers don't charge interest for 30 days. This matters for WACC later (Day 09): this kind of debt <b>doesn't enter</b> the interest-bearing capital structure.</p>
+<p>In this model, trade payables are treated as explicitly <b>non-interest</b>: suppliers don't charge interest for 30 days. This matters for WACC later (Day 09): this kind of debt <b>doesn't enter</b> the interest-bearing capital structure. Economically, supplier credit can still carry an implicit cost (e.g. forgone early-payment discounts) — "no interest charged" does not mean free.</p>
 <div class="callout"><b>Why separate trade payables from "debt" for WACC?</b> Because WACC prices <i>interest-bearing</i> capital (banks, bonds). Trade payables are an operating consequence, not a financing decision — mixing them pollutes the cost of capital.</div>`},
 {h: "2027 working capital: DSO/DIO/DPO", body: `
 <p>Three days decide the parked cash (Rp thousand):</p>
@@ -6153,7 +6153,7 @@ title: "DCF I: FCFF & WACC via CAPM",
 sub: "Day 09 · ±8 hrs · Free cash flow + cost of capital",
 sections: [
 {h: "Why FCFF, not net income", body: `
-<p>Valuation answers: "how much cash can owners take <i>without harming</i> the business?" Net income doesn't answer that — it holds non-cash (depreciation) and ignores investment (capex) and working capital. <b>FCFF</b> does:</p>
+<p>Valuation answers: "how much cash is available to all capital providers <i>without harming</i> the business?" Net income doesn't answer that — it holds non-cash (depreciation) and ignores investment (capex) and working capital. <b>FCFF</b> does:</p>
 <div class="formula">FCFF = CFO − Capex</div>
 <p>FCFF = operating cash <b>after</b> keeping the machines running (capex). This cash is <i>free</i> — distributable, savable, or usable to repay debt — without sacrificing the future.</p>
 <p>This short formula works because this shop is <b>100% equity with no debt</b>: with no interest, CFO is already clean of debt cost. The general form: FCFF = CFO + interest×(1−t) − capex — interest is added back because FCFF is measured as if unlevered.</p>
@@ -6426,7 +6426,7 @@ sections: [
 <p><b>Stub and mid-year CAN combine — they answer different questions.</b> The stub sets the <i>length</i> of the first remaining period (7/12 of a year); mid-year sets the <i>timing</i> of cash inside that period. A 7-month stub with even flows ≈ cash arriving at the stub's midpoint, i.e. 3.5/12 of a year from the valuation date — not 7/12. What you must not do: stack a full-year mid-year (t − 0.5) on a stub without adjusting — that discounts twice for the same timing. Treating cash as arriving at the stub's end is a convention choice, not a rule: if flows spread evenly, use the stub's midpoint.</p>
 <div class="callout"><b>Why do analysts care about stubs?</b> Because the difference isn't small: the same TV is worth 21,019.11 vs 19,968 — a 1,051.11 gap (5.3%) from the valuation date alone. A deal negotiated in July vs January has a different "fair price" — and that gap must be explainable line by line, not left as a model difference.</div>`},
 {h: "2D sensitivity table: WACC × g", body: `
-<p>One EV number = one assumption combo. This table shows <b>nine</b> (Rp thousand):</p>
+<p>One EV number = one assumption combo. This table shows <b>nine EV combinations</b> (Rp thousand):</p>
 <table class="brutal">
 <tr><th>EV \ g</th><th>2%</th><th>3%</th><th>4%</th></tr>
 <tr><td><b>WACC 11.1%</b></td><td>22,517</td><td>25,302</td><td>28,872</td></tr>

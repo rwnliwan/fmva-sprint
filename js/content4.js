@@ -388,7 +388,7 @@ sections: [
 <div class="callout"><b>Kenapa ini pola wajib dikenal?</b> Setiap bisnis infrastruktur (telekomunikasi, tol, listrik) hidup dalam <b>siklus capex</b>: bangun (FCF tertekan) → panen (FCF mengembang) → bangun lagi (5G, data center). Analis yang hanya melihat laba bersih tidak pernah melihat siklusnya.</p></div>`},
 {h: "Kenapa FCF, bukan laba bersih?", body: `
 <div class="formula">FCF = OCF − Capex</div>
-<p>Net income TLKM 2025 Rp17,49T — tapi <b>FCF Rp38,04T</b>, lebih dari 2× lipat! Selisihnya = D&A raksasa (aset jaringan disusutkan, tapi kas tidak keluar) dikurangi capex. Untuk perusahaan infrastruktur, <b>FCF adalah angka kebenaran</b>; laba bersih adalah angka akuntansi.</p>
+<p>Net income TLKM 2025 Rp17,49T — tapi <b>FCF Rp38,04T</b>, lebih dari 2× lipat! Selisihnya = D&A raksasa (aset jaringan disusutkan, tapi kas tidak keluar) dikurangi capex. Untuk perusahaan infrastruktur, <b>FCF adalah angka yang paling jujur untuk menilai kapasitas kas</b>; laba bersih adalah angka akuntansi.</p>
 <div class="callout"><b>📋 Status data:</b> net income Rp17,49T & saham 98,58 miliar = <b>input ilustratif pengajaran</b>. Terverifikasi (31 Okt 2026): laba attributable FY2025 <b>Rp17,81T</b> (Telkom Annual Report); saham beredar <b>±99,05 miliar</b> per 31 Des 2025 (di luar treasury). Selisih &lt;2% — tidak mengubah pelajaran jembatan capex→FCF.</div>
 <div class="example korporat"><div class="lbl">🏢 Jembatan 2022 → 2025</div>
 <p>OCF 2022 Rp73,35T > OCF 2025 Rp63,84T — operasi "melemah". Tapi capex 2022 Rp38,3T vs 2025 Rp25,8T → <b>FCF justru naik</b> Rp35,05T → Rp38,04T. Narasi "kinerja turun" dari OCF terbantahkan oleh FCF.</p></div>`},
@@ -405,7 +405,7 @@ sections: [
 {h: "🔥 Bekal Hell Mode", body: `
 <ul>
 <li><b>Capex harvest</b> = fase panen setelah siklus investasi mereda.</li>
-<li><b>FCF = OCF − capex</b> — angka kebenaran infrastruktur.</li>
+<li><b>FCF = OCF − capex</b> — ukuran kapasitas kas infrastruktur yang paling jujur.</li>
 <li><b>FCF yield</b> = FCF ÷ market cap.</li>
 <li><b>Siklus capex</b> = bangun → panen → bangun lagi.</li>
 <li><b>Gap model vs pasar</b> = pertanyaan, bukan vonis.</li>
@@ -485,7 +485,7 @@ Sudah lulus ujian? Lanjutkan — ini artefak kedua dari "one issuer, three artif
 <div class="formula">P/BV = 1 + (ROE &minus; Ke)/(Ke &minus; g) = (ROE &minus; g)/(Ke &minus; g)</div>
 <p>Tiga tuas, tidak lebih: <b>ROE</b> (seberapa profitable), <b>g</b> (seberapa lama tumbuh), <b>Ke</b> (seberapa berisiko). Growth datang dari dalam: <b>g = ROE &times; retensi = 20% &times; 40% = 8%</b> (payout 60% = asumsi, konsisten dengan historis BBCA).</p>
 <div class="example korporat"><div class="lbl">🏢 Hitungannya</div>
-<p>(0,20 &minus; 0,08) / (0,115 &minus; 0,08) = <b>3,43x</b>. Cross-check via DDM: dividen 2025 = 52,54 &times; 60% = Rp31,53tn; nilai = 31,53 / (0,115 &minus; 0,08) = <b>Rp900,72tn</b> &mdash; persis = B0 &times; 3,43. Dua metode, satu kerangka: <b>identitas clean surplus terbukti</b>. Kalau DDM dan RI-mu beda jauh, ada rumus yang salah &mdash; bukan "dua pendapat".</p></div>
+<p>(0,20 &minus; 0,08) / (0,115 &minus; 0,08) = <b>3,43x</b>. Cross-check via DDM: dividen 2025 = 52,54 &times; 60% = Rp31,53tn; nilai = 31,53 / (0,115 &minus; 0,08) &asymp; <b>Rp900,72tn</b> &mdash; sangat dekat dengan B0 &times; 3,43 setelah pembulatan (angka tak dibulatkan: 262,71 &times; (0,12/0,035) = Rp900,72tn). Dua metode, satu kerangka: <b>identitas clean surplus terbukti</b>. Kalau DDM dan RI-mu beda jauh, ada rumus yang salah &mdash; bukan "dua pendapat".</p></div>
 <div class="callout"><b>Kenapa Ke 11,5%?</b> Asumsi kerja (kisaran riset 11&ndash;12%). Ke bukan angka langit: ia harga yang diminta investor untuk risiko ekuitas bank Indonesia. Di tugas sensitivitas kamu akan merasakan betapa brutalnya 1% perubahan Ke terhadap justified P/BV.</p></div>`},
 {h: "Kenapa pasar berani bayar 3,9x? (debat franchise vs fade)", body: `
 <p>Sekarang benturkan tiga angka: model <b>2-tahap</b> (ROE memudar ke 16% setelah 2029) memberi <b>1,98x &rarr; Rp4.215/saham</b>. Rumus <b>1-tahap</b> (ROE 20% abadi) memberi <b>3,43x</b>. Pasar (MNC, Okt 2025) membayar <b>3,9x &rarr; Rp8.311/saham</b>. Ketiganya "benar" di bawah asumsinya masing-masing.</p>
@@ -595,7 +595,7 @@ sections: [
 <p>Pertanyaan paling associate dari case ini: <b>apakah spin-off menciptakan nilai, atau hanya memindahkannya?</b> Uji yang benar: bandingkan nilai <b>pre-spin</b> (grup utuh) vs <b>post-spin</b> (SOTP Alamtri + 85% AADI yang dibagikan ke pemegang saham ADRO). Spin-off tidak mencetak nilai dari udara — ia hanya memisahkan.</p>
 <div class="example jebakan"><div class="lbl">🚫 Dua jebakan spin-off</div>
 <p><b>1. Ilusi 'menciptakan nilai'.</b> Jika jumlah post-spin > pre-spin, tanyakan: dari mana selisihnya? Kandidat jujur: holding discount yang hilang (pasar menghargai fokus), atau multiple re-rating tiap bagian. Kandidat tidak jujur: kamu membandingkan angka yang tidak sebanding (headline vs restated — kembali ke §1).<br/><b>2. Sudut ESG.</b> IEEFA/BankTrack menilai spin-off ini sebagai <b>manuver pembiayaan</b>: bank dengan kebijakan coal-exit bisa kembali membiayai entitas 'bersih'. Ini bahan thesis defense — pasar ESG-sensitive bisa memberi diskon justru karena strukturnya.</p></div>
-<div class="callout"><b>Kenapa 15% AADI tidak dikonsolidasi?</b> Di bawah 20% (PSAK 15 / IAS 28) = tidak ada pengendalian/signifikansi untuk konsolidasi penuh — dicatat sebagai investasi (nilai pasar/wajar), bukan digabung line-by-line. Praktisnya: revenue AADI <b>tidak</b> menambah revenue Alamtri; yang masuk SOTP hanya <b>15% × nilai pasar AADI</b> ($375jt ilustratif). Salah kaprah umum: menjumlahkan revenue AADI ke revenue grup.</p></div>`},
+<div class="callout"><b>Kenapa 15% AADI tidak dikonsolidasi?</b> Kepemilikan 15% jelas bukan pengendalian — konsolidasi penuh diatur PSAK 65/IFRS 10, bukan PSAK 15. Di bawah 20%, PSAK 15/IAS 28 hanya menimbulkan <i>praduga</i> tidak ada pengaruh signifikan, dan praduga itu dapat dibantah (mis. kursi di dewan, partisipasi dalam kebijakan, atau transaksi material). Bila tidak ada pengaruh signifikan, saham dicatat sebagai investasi (nilai pasar/wajar), bukan digabung line-by-line; bila ada pengaruh signifikan, dipakai metode ekuitas. Praktisnya: revenue AADI <b>tidak</b> menambah revenue Alamtri; yang masuk SOTP hanya <b>15% × nilai pasar AADI</b> ($375jt ilustratif). Salah kaprah umum: menjumlahkan revenue AADI ke revenue grup.</p></div>`},
 {h: "🔥 Bekal Hell Mode", body: `
 <ul>
 <li><b>Discontinued operations</b> (SFAS 105/PSAK): aset yang dilepas dikeluarkan dari angka restated — headline vs restated bisa beda 68%.</li>
@@ -633,9 +633,9 @@ quiz: [
 {q: "Smelter KAI dinilai sebagai real option karena?", opts: ["Opsi selalu lebih akurat dari DCF","Capex besar sekarang, revenue nol s/d 2026 — DCF buta menghukum fleksibilitas","Smelter tidak butuh capex","Aluminium bukan komoditas siklikal"], answer: 1, k: "real_option", diff: "Medium",
  hints: ["Bayar $300jt hari ini, dapat ketidakpastian 2026.", "Fase 2 bisa dibatalkan — rugi terbatas. Itu bentuk apa?"],
  explain: "Smelter = hak atas arus kas masa depan dengan rugi terbatas (bisa stop di fase 1). DCF standar mengasumsikan komitmen buta; real option menghargai fleksibilitas. (Real-07 § Kenapa smelter dinilai sebagai real option?)"},
-{q: "Alamtri pegang 15% AADI — kenapa tidak dikonsolidasi penuh?", opts: ["Karena AADI perusahaan terpisah di IDX","Di bawah 20% (PSAK 15/IAS 28) — dicatat sebagai investasi","Karena spin-off belum selesai","Karena AADI merugi"], answer: 1, k: "akuntansi", diff: "Hard",
+{q: "Alamtri pegang 15% AADI — kenapa tidak dikonsolidasi penuh?", opts: ["Karena AADI perusahaan terpisah di IDX","15% bukan pengendalian (PSAK 65/IFRS 10) dan umumnya tanpa pengaruh signifikan (PSAK 15/IAS 28) — dicatat sebagai investasi","Karena spin-off belum selesai","Karena AADI merugi"], answer: 1, k: "akuntansi", diff: "Hard",
  hints: ["Ambang batas signifikansi pengendalian?", "Konsolidasi penuh butuh pengendalian, bukan sekadar punya saham."],
- explain: "Di bawah 20% = tidak ada pengendalian/signifikansi untuk konsolidasi line-by-line (PSAK 15/IAS 28). Masuk SOTP sebagai 15% × nilai pasar, bukan penjumlahan revenue. (Real-07 § Kenapa spin-off bisa jadi jebakan nilai?)"},
+ explain: "15% jelas bukan pengendalian — konsolidasi penuh diatur PSAK 65/IFRS 10. Di bawah 20% hanya praduga tidak ada pengaruh signifikan (PSAK 15/IAS 28), dan praduga itu dapat dibantah; tanpa pengaruh signifikan, masuk SOTP sebagai 15% × nilai pasar, bukan penjumlahan revenue. (Real-07 § Kenapa spin-off bisa jadi jebakan nilai?)"},
 {q: "Net cash $1.557jt dalam SOTP diperlakukan bagaimana?", opts: ["Dikurangkan seperti utang","Diabaikan — kas bukan aset operasi","Ditambahkan ke EV SOTP → equity","Dibagi ke tiap kaki SOTP"], answer: 2, k: "net_cash", diff: "Medium",
  hints: ["EV = milik semua pemodal. Kas milik siapa?", "Kebalikan dari net debt di Real-02."],
  explain: "Kas bersih milik pemegang saham → EV SOTP + net cash = equity $4.894jt. Cerminan dari 'EV − net debt' di Real-02. (Real-07 § Kenapa valuasinya SOTP?)"},
@@ -707,7 +707,7 @@ sections: [
 ② <b>Fintech:</b> EBITDA FY26E $94–100jt → titik tengah $97jt ≈ Rp1,75T × <b>8× EV/EBITDA</b> (ilustratif) = <b>Rp13,98T</b>.<br>
 ③ <b>Tokopedia 24,99%:</b> $1,5B ÷ 75,01% × 24,99% = $0,50B ≈ <b>Rp9,0T</b> (kurs Rp18.014, BI 16 Okt 2026) — <i>anchor</i> dari harga transaksi riil.<br>
 ④ <b>Kas bersih</b> $858jt ≈ <b>Rp15,46T</b> (venturesg, Okt 2026).<br>
-<b>Total SOTP ≈ Rp51,79T → Rp45/saham</b> (1,15 triliun saham, pasca-pembatalan treasury 14 Okt 2026). Harga pasar: kapitalisasi Rp25,6T → <b>Rp22/saham</b> (StockAnalysis, 30 Okt 2026). <b>Diskon ≈ 50,6%.</b></p>
+<b>Total SOTP ≈ Rp51,79T → Rp45/saham</b> (1,15 triliun saham, pasca-pembatalan treasury 14 Okt 2026). Harga pasar: kapitalisasi Rp25,6T → <b>Rp22/saham</b> (StockAnalysis, 30 Okt 2026). <b>Diskon ≈ 50,6%</b> berdasarkan market cap (berdasarkan angka per saham yang dibulatkan, ≈51,1%).</p>
 <div class="example jebakan"><div class="lbl">🚫 Diskon = pertanyaan, bukan jawaban</div>
 <p>Kandidat penjelasan pasar: beban korporat tunai Rp772m/tahun (FY24), <i>loan book</i> konsumer $611jt (+58% YoY, <i>unsecured</i> — 2Q26), saham dual-class (insider pegang ~58% suara), politik merger Grab, dan royalti yang bergantung pada TikTok. Mungkin pasar terlalu pesimis — mungkin pasar tahu sesuatu yang modelmu abaikan. Tugas analis: <b>menjelaskan gap</b>, bukan mengasumsikan pasar bodoh.</p></div>
 <div class="callout"><b>⚠️ Kaki fintech = opsi, bukan kepastian:</b> ia memakai EBITDA <i>forward</i> FY26E untuk bisnis yang baru pertama kali laba di 2026 — membayar hari ini untuk laba masa depan dengan multiple ganda (risiko proyeksi × risiko multiple). Di Tugas B kamu akan mengujinya: turunkan multiple 8×→5×, berapa nilai/saham yang tersisa?</p></div>`},
@@ -1448,7 +1448,7 @@ sections: [
 <div class="callout"><b>Why is this pattern mandatory knowledge?</b> Every infrastructure business (telecom, toll roads, power) lives in a <b>capex cycle</b>: build (FCF squeezed) → harvest (FCF expands) → build again (5G, data centers). Analysts who only watch net income never see the cycle.</p></div>`},
 {h: "Why FCF, not net income?", body: `
 <div class="formula">FCF = OCF − Capex</div>
-<p>TLKM 2025 net income Rp17.49T — but <b>FCF Rp38.04T</b>, more than 2×! The gap = giant D&amp;A (network assets depreciated, but no cash leaves) minus capex. For infrastructure companies, <b>FCF is the truth number</b>; net income is the accounting number.</p>
+<p>TLKM 2025 net income Rp17.49T — but <b>FCF Rp38.04T</b>, more than 2×! The gap = giant D&amp;A (network assets depreciated, but no cash leaves) minus capex. For infrastructure companies, <b>FCF is the most honest measure of cash capacity</b>; net income is the accounting number.</p>
 <div class="callout"><b>📋 Data status:</b> net income Rp17.49T &amp; 98.58 billion shares = <b>illustrative teaching inputs</b>. Verified (31 Oct 2026): FY2025 attributable profit <b>Rp17.81T</b> (Telkom Annual Report); shares outstanding <b>±99.05 billion</b> as of 31 Dec 2025 (ex-treasury). Difference &lt;2% — doesn't change the capex→FCF bridge lesson.</div>
 <div class="example korporat"><div class="lbl">🏢 The 2022 → 2025 bridge</div>
 <p>OCF 2022 Rp73.35T > OCF 2025 Rp63.84T — operations "weakened". But capex 2022 Rp38.3T vs 2025 Rp25.8T → <b>FCF actually rose</b> Rp35.05T → Rp38.04T. The "declining performance" narrative from OCF is rebutted by FCF.</p></div>`},
@@ -1465,7 +1465,7 @@ sections: [
 {h: "🔥 Hell Mode briefing", body: `
 <ul>
 <li><b>Capex harvest</b> = the harvest phase after the investment cycle eases.</li>
-<li><b>FCF = OCF − capex</b> — infrastructure's truth number.</li>
+<li><b>FCF = OCF − capex</b> — infrastructure's most honest cash-capacity measure.</li>
 <li><b>FCF yield</b> = FCF ÷ market cap.</li>
 <li><b>Capex cycle</b> = build → harvest → build again.</li>
 <li><b>Model vs market gap</b> = a question, not a verdict.</li>
@@ -1535,7 +1535,7 @@ sections: [
 <div class="formula">P/BV = 1 + (ROE &minus; Ke)/(Ke &minus; g) = (ROE &minus; g)/(Ke &minus; g)</div>
 <p>Three levers, no more: <b>ROE</b> (how profitable), <b>g</b> (how long it grows), <b>Ke</b> (how risky). Growth comes from within: <b>g = ROE &times; retention = 20% &times; 40% = 8%</b> (60% payout = assumption, consistent with BBCA history).</p>
 <div class="example korporat"><div class="lbl">🏢 The math</div>
-<p>(0.20 &minus; 0.08) / (0.115 &minus; 0.08) = <b>3.43x</b>. DDM cross-check: 2025 dividend = 52.54 &times; 60% = Rp31.53tn; value = 31.53 / (0.115 &minus; 0.08) = <b>Rp900.72tn</b> &mdash; exactly = B0 &times; 3.43. Two methods, one framework: <b>the clean-surplus identity holds</b>. If your DDM and RI disagree wildly, a formula is wrong &mdash; it's not "two opinions".</p></div>
+<p>(0.20 &minus; 0.08) / (0.115 &minus; 0.08) = <b>3.43x</b>. DDM cross-check: 2025 dividend = 52.54 &times; 60% = Rp31.53tn; value = 31.53 / (0.115 &minus; 0.08) &asymp; <b>Rp900.72tn</b> &mdash; very close to B0 &times; 3.43 after rounding (unrounded: 262.71 &times; (0.12/0.035) = Rp900.72tn). Two methods, one framework: <b>the clean-surplus identity holds</b>. If your DDM and RI disagree wildly, a formula is wrong &mdash; it's not "two opinions".</p></div>
 <div class="callout"><b>Why 11.5% Ke?</b> A working assumption (research range 11&ndash;12%). Ke is not a sky-number: it's the price investors demand for Indonesian bank equity risk. In the sensitivity task you'll feel how brutal a 1% Ke change is on justified P/BV.</p></div>`},
 {h: "Why does the market dare pay 3.9x? (franchise vs fade debate)", body: `
 <p>Now clash three numbers: the <b>2-stage</b> model (ROE fading to 16% after 2029) gives <b>1.98x &rarr; Rp4,215/share</b>. The <b>1-stage</b> formula (20% ROE forever) gives <b>3.43x</b>. The market (MNC, Oct 2025) pays <b>3.9x &rarr; Rp8,311/share</b>. All three are "right" under their own assumptions.</p>
@@ -1638,7 +1638,7 @@ sections: [
 <p>The most associate-level question in this case: <b>did the spin-off create value, or just move it around?</b> The correct test: compare <b>pre-spin</b> value (the whole group) vs <b>post-spin</b> value (Alamtri SOTP + the 85% of AADI distributed to ADRO shareholders). A spin-off doesn't print value from thin air — it only separates.</p>
 <div class="example jebakan"><div class="lbl">🚫 Two spin-off traps</div>
 <p><b>1. The 'value creation' illusion.</b> If post-spin > pre-spin, ask: where did the difference come from? Honest candidates: the vanished holding discount (the market rewards focus), or a re-rating of each part. Dishonest ones: you're comparing incomparable numbers (headline vs restated — back to §1).<br/><b>2. The ESG angle.</b> IEEFA/BankTrack read this spin-off as a <b>financing maneuver</b>: banks with coal-exit policies can lend again to the 'clean' entity. That's thesis-defense material — an ESG-sensitive market may discount the stock precisely because of the structure.</p></div>
-<div class="callout"><b>Why isn't the 15% AADI stake consolidated?</b> Below 20% (PSAK 15 / IAS 28) = no control/significance for full consolidation — it's carried as an investment (market/fair value), not merged line-by-line. Practically: AADI's revenue does <b>not</b> add to Alamtri's revenue; the SOTP only takes <b>15% × AADI's market value</b> ($375m illustrative). Common error: adding AADI's revenue into group revenue.</p></div>`},
+<div class="callout"><b>Why isn't the 15% AADI stake consolidated?</b> A 15% stake is clearly not control — full consolidation is governed by PSAK 65/IFRS 10, not PSAK 15. Below 20%, PSAK 15/IAS 28 only creates a <i>presumption</i> of no significant influence, and that presumption is rebuttable (e.g. a board seat, participation in policy-making, or material transactions). With no significant influence, the stake is carried as an investment (market/fair value), not merged line-by-line; with significant influence, the equity method applies. Practically: AADI's revenue does <b>not</b> add to Alamtri's revenue; the SOTP only takes <b>15% × AADI's market value</b> ($375m illustrative). Common error: adding AADI's revenue into group revenue.</p></div>`},
 {h: "🔥 Hell Mode briefing", body: `
 <ul>
 <li><b>Discontinued operations</b> (SFAS 105 / PSAK): divested assets are removed from restated figures — headline vs restated can differ by 68%.</li>
@@ -1676,9 +1676,9 @@ quiz: [
 {q: `The KAI smelter is valued as a real option because?`, opts: ["Options are always more accurate than DCF","Big capex now, zero revenue until 2026 — a blind DCF punishes flexibility","Smelters need no capex","Aluminium isn't cyclical"], answer: 1, k: "real_option",
  hints: ["Pay $300m today, get 2026 uncertainty.", "Phase 2 can be cancelled — the loss is capped. What shape is that?"],
  explain: `The smelter = a right to future cash flows with capped downside (can stop at phase 1). A standard DCF assumes blind commitment; a real option prices flexibility.`},
-{q: `Alamtri holds 15% of AADI — why isn't it fully consolidated?`, opts: ["Because AADI is separately listed on the IDX","Below 20% (PSAK 15/IAS 28) — carried as an investment","Because the spin-off isn't complete","Because AADI is loss-making"], answer: 1, k: "akuntansi",
+{q: `Alamtri holds 15% of AADI — why isn't it fully consolidated?`, opts: ["Because AADI is separately listed on the IDX","15% is not control (PSAK 65/IFRS 10) and generally no significant influence (PSAK 15/IAS 28) — carried as an investment","Because the spin-off isn't complete","Because AADI is loss-making"], answer: 1, k: "akuntansi",
  hints: ["What's the threshold for significant control?", "Full consolidation needs control, not just shareholding."],
- explain: `Below 20% = no control/significance for line-by-line consolidation (PSAK 15/IAS 28). It enters the SOTP as 15% × market value, not as added revenue.`},
+ explain: `15% is clearly not control — full consolidation is governed by PSAK 65/IFRS 10. Below 20% is only a presumption of no significant influence (PSAK 15/IAS 28), and it is rebuttable; with no significant influence, it enters the SOTP as 15% × market value, not as added revenue.`},
 {q: `How is the $1,557m net cash treated in the SOTP?`, opts: ["Subtracted like debt","Ignored — cash isn't an operating asset","Added to SOTP EV → equity","Split across each SOTP leg"], answer: 2, k: "net_cash",
  hints: ["EV = for all capital providers. Who owns cash?", "The mirror image of net debt in Real-02."],
  explain: `Net cash belongs to shareholders → SOTP EV + net cash = equity of $4,894m. The mirror of 'EV − net debt' in Real-02.`},
@@ -1744,7 +1744,7 @@ sections: [
 ② <b>Fintech:</b> FY26E EBITDA $94–100M → midpoint $97M ≈ Rp1.75T × <b>8× EV/EBITDA</b> (illustrative) = <b>Rp13.98T</b>.<br>
 ③ <b>Tokopedia 24.99%:</b> $1.5B ÷ 75.01% × 24.99% = $0.50B ≈ <b>Rp9.0T</b> (Rp18,014 FX, BI 16 Oct 2026) — an <i>anchor</i> from a real transaction price.<br>
 ④ <b>Net cash</b> $858M ≈ <b>Rp15.46T</b> (venturesg, Oct 2026).<br>
-<b>Total SOTP ≈ Rp51.79T → Rp45/share</b> (1.15 trillion shares, post treasury cancellation 14 Oct 2026). Market price: Rp25.6T market cap → <b>Rp22/share</b> (StockAnalysis, 30 Oct 2026). <b>Discount ≈ 50.6%.</b></p>
+<b>Total SOTP ≈ Rp51.79T → Rp45/share</b> (1.15 trillion shares, post treasury cancellation 14 Oct 2026). Market price: Rp25.6T market cap → <b>Rp22/share</b> (StockAnalysis, 30 Oct 2026). <b>Discount ≈ 50.6%</b> on a market-cap basis (on the rounded per-share figures, ≈51.1%).</p>
 <div class="example jebakan"><div class="lbl">🚫 A discount is a question, not an answer</div>
 <p>Candidate explanations from the market: Rp772B/year cash corporate costs (FY24), a $611M consumer <i>loan book</i> (+58% YoY, <i>unsecured</i> — 2Q26), dual-class shares (insiders hold ~58% of votes), Grab-merger politics, and a royalty depending on TikTok. Maybe the market is too pessimistic — maybe it knows something your model ignores. The analyst's job: <b>explain the gap</b>, not assume the market is dumb.</p></div>
 <div class="callout"><b>⚠️ The fintech leg = an option, not a certainty:</b> it uses <i>forward</i> FY26E EBITDA for a business that first turned profitable in 2026 — paying today for future earnings with a double risk (projection risk × multiple risk). In Task B you'll stress-test it: cut the multiple 8×→5× and see what per-share value survives.</p></div>`},

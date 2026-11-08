@@ -24,7 +24,7 @@ scope_now: ["🗺️ <b>Cakupan saat ini:</b> 3 Fondasi (A/B/C) + Hari 01–31 (
   "🗺️ <b>Current scope:</b> 3 Foundation lessons (A/B/C) + Days 01–31 (30 + Bonus IPO) + 6 Excel levels + 12 Real Cases available."],
 tools_card_h: ["Glossary & Fungsi Excel", "Glossary & Excel Functions"],
 tools_card_p: ["Kamus istilah + referensi fungsi. Buka dari menu bawah.", "Term glossary + function reference. Open from the bottom menu."],
-footer: ["FMVA Sprint · oleh <a href=\"https://www.linkedin.com/in/septian-panjaya\" target=\"_blank\" rel=\"noopener\">Septian Panjaya</a> · v1.65", "FMVA Sprint · by <a href=\"https://www.linkedin.com/in/septian-panjaya\" target=\"_blank\" rel=\"noopener\">Septian Panjaya</a> · v1.65"],
+footer: ["FMVA Sprint · oleh <a href=\"https://www.linkedin.com/in/septian-panjaya\" target=\"_blank\" rel=\"noopener\">Septian Panjaya</a> · v1.66", "FMVA Sprint · by <a href=\"https://www.linkedin.com/in/septian-panjaya\" target=\"_blank\" rel=\"noopener\">Septian Panjaya</a> · v1.66"],
 /* lesson cards */
 card_repeat: ["Ulangi", "Review"],
 card_continue: ["Lanjutkan", "Continue"],

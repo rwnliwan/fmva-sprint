@@ -311,6 +311,47 @@ from datetime import date as _date, timedelta as _td
 chk('G-3 DATEVALUE serial', (_date(2026, 1, 15) - _date(1899, 12, 30)).days, 46037, 0.01)
 chk('G-3 DATEVALUE 01/02 US', (_date(2026, 1, 2) - _date(1899, 12, 30)).days, 46024, 0.01)
 chk('G-3 DATEVALUE 01/02 ID', (_date(2026, 2, 1) - _date(1899, 12, 30)).days, 46054, 0.01)
+# --- Ronde 7 (Terra) fixes, 2026-11-08 ---
+# MF-1 real-07: kendali (PSAK 65/IFRS 10) vs pengaruh signifikan (PSAK 15/IAS 28).
+# <20% HANYA praduga-terbantahkan tidak ada pengaruh signifikan (IAS 28 para 5);
+# konsolidasi penuh butuh PENGENDALIAN (IFRS 10), bukan ambang 20%. Bila pengaruh
+# signifikan ADA, metodenya = metode ekuitas, bukan otomatis nilai wajar.
+# Guard teks: frasa absolut lama WAJIB hilang, kualifikasi baru WAJIB hadir (ID+EN).
+import os as _os
+def txt(name, cond):
+    _total[0] += 1
+    ok = bool(cond)
+    print(('PASS ' if ok else 'FAIL ') + name)
+    if not ok: fails.append(name)
+_c4 = open(_os.path.join(_os.path.dirname(__file__), '..', 'js', 'content4.js'), encoding='utf-8').read()
+_c2 = open(_os.path.join(_os.path.dirname(__file__), '..', 'js', 'content2.js'), encoding='utf-8').read()
+# MF-1: standar benar dikutip di callout + kuis (ID+EN)
+txt('R7 MF-1 PSAK 65/IFRS 10 dikutip', _c4.count('PSAK 65/IFRS 10') >= 3)
+txt('R7 MF-1 praduga dapat dibantah (ID)', 'praduga' in _c4 and 'dapat dibantah' in _c4)
+txt('R7 MF-1 presumption rebuttable (EN)', 'presumption' in _c4 and 'rebuttable' in _c4)
+txt('R7 MF-1 metode ekuitas disebut', 'metode ekuitas' in _c4 and 'equity method' in _c4)
+# MF-1: frasa absolut lama WAJIB 0
+txt('R7 MF-1 frasa lama ID hilang', 'Di bawah 20% (PSAK 15 / IAS 28) = tidak ada pengendalian' not in _c4)
+txt('R7 MF-1 frasa lama EN hilang', 'Below 20% (PSAK 15 / IAS 28) = no control' not in _c4)
+txt('R7 MF-1 explain lama hilang', 'Di bawah 20% = tidak ada pengendalian/signifikansi' not in _c4)
+# MF-1: 15% berada di zona praduga (<20%), bukan zona kendali
+txt('R7 MF-1 15% < 20% (zona praduga)', 15 < 20)
+# SF-1 real-06: 900,72 = B0 x multiple TAK dibulatkan; dari angka tampil = 900,86 -> kata "persis" salah
+chk('R7 SF-1 DDM unrounded = B0 x 0.12/0.035', 262.71 * 0.12 / 0.035, 900.72, 0.01)
+chk('R7 SF-1 DDM dari angka tampil', 31.53 / 0.035, 900.86, 0.01)
+chk('R7 SF-1 B0 x multiple tampil', 262.71 * 3.43, 901.10, 0.01)
+txt('R7 SF-1 "persis" hilang', 'persis = B0' not in _c4 and 'exactly = B0' not in _c4)
+txt('R7 SF-1 "sangat dekat setelah pembulatan" hadir', 'sangat dekat dengan B0' in _c4 and 'very close to B0' in _c4)
+# SF-2 real-08: diskon 50,6% benar pada basis market cap; 51,1% pada angka per saham tampil
+chk('R7 SF-2 diskon basis market cap', (1 - 25.6 / 51.79) * 100, 50.6, 0.05)
+chk('R7 SF-2 diskon basis per-saham tampil', (1 - 22 / 45) * 100, 51.1, 0.05)
+txt('R7 SF-2 basis diskon dinyatakan', 'berdasarkan market cap' in _c4 and 'market-cap basis' in _c4)
+# N-1 real-05 / N-2 hari-09 / N-3 hari-10 / SF-3 hari-08: frasa absolut lama hilang, kualifikasi hadir
+txt('R7 N-1 "angka kebenaran" hilang', 'angka kebenaran' not in _c4 and 'truth number' not in _c4)
+txt('R7 N-2 "pemilik" hilang (FCFF)', 'bisa diambil pemilik' not in _c2 and 'can owners take' not in _c2)
+txt('R7 N-2 "penyandang modal" hadir', 'seluruh penyandang modal' in _c2 and 'all capital providers' in _c2)
+txt('R7 N-3 "sembilan" ber-nomina', 'sembilan kombinasi EV' in _c2 and 'nine EV combinations' in _c2)
+txt('R7 SF-3 kualifikasi biaya implisit hadir', 'biaya implisit' in _c2 and 'implicit cost' in _c2)
 print()
 print('NUMBERS QA:', f'ALL PASS ({_total[0]} checks)' if not fails else f'{len(fails)} FAILURES: {fails}')
 raise SystemExit(0 if not fails else 1)
