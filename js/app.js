@@ -95,6 +95,7 @@ function route() {
   else if (page === "glossary") { renderGlossary(); navOn("glossary"); }
   else if (page === "funcs") { renderFuncs(); navOn("funcs"); }
   else if (page === "progress") { renderProgress(); navOn("progress"); }
+  else if (page === "simulator") { renderSimulator(); navOn("home"); }
   else if (page === "cheatsheet") { renderCheatsheet(); navOn("belajar"); }
   else { renderHome(); navOn("home"); }
   window.scrollTo(0, 0);
@@ -148,6 +149,8 @@ function renderHome() {
   <div class="grid two" style="margin-top:16px">
     <div class="card"><span class="tag t-tool">Tools</span><h3>${T("tools_card_h")}</h3><p>${T("tools_card_p")}</p>
     <div class="btnrow"><a class="btn small ghost" href="#/cheatsheet">Cheatsheet</a></div></div>
+    <div class="card"><span class="tag t-tool">${T("sim2_card_tag")}</span><h3>${T("sim2_card_h")}</h3><p>${T("sim2_card_p")}</p>
+    <div class="btnrow"><a class="btn small blue" href="#/simulator">${T("sim2_card_btn")}</a></div></div>
   </div>
   <footer class="note">${T("footer")}</footer>`);
 }
@@ -523,6 +526,62 @@ function dkTX(){ return (typeof lang === "function" && lang() === "en" && typeof
 function simApply(s, tx){ const n = Object.assign({}, s); for (const k in tx.fx) n[k] = (n[k] || 0) + tx.fx[k]; return n; }
 function simAssets(s){ return s.kas + s.persediaan + s.peralatan + s.piutang; }
 function simLE(s){ return s.utang + s.modal + s.lr; }
+/* Standalone simulator — randomized run generator (pure: no DOM, no lang).
+   Same 6 concepts in the same order as SIM_TX, so the precondition chain
+   (inventory for COGS, cash for the cash purchase, payables/receivables
+   created before they are settled) holds by construction. All amounts are
+   multiples of 100 (Rp ribu). rng: () => [0,1). */
+function simR100(rng, lo, hi){ return lo + Math.floor(rng() * ((hi - lo) / 100 + 1)) * 100; }
+function simGenRun(rng){
+  rng = rng || Math.random;
+  const start = { kas: simR100(rng, 6000, 10000), persediaan: simR100(rng, 1200, 2500),
+    peralatan: simR100(rng, 1200, 2400), piutang: 0, utang: 0, modal: 0, lr: simR100(rng, 800, 1500) };
+  start.modal = start.kas + start.persediaan + start.peralatan - start.lr;
+  const s = Object.assign({}, start);
+  const txs = [];
+  // 1. credit sale: profit = sale - cogs > 0, so assets rise
+  const cogs = simR100(rng, 600, Math.min(1500, s.persediaan - 100));
+  const sale = simR100(rng, cogs + 500, cogs + 2500);
+  txs.push({ key: "sale", amt: { sale: sale, cogs: cogs },
+    pred: { laba: "naik", kas: "tetap", aset: "naik" },
+    fx: { piutang: sale, persediaan: -cogs, lr: sale - cogs },
+    pre: { need: "persediaan", min: cogs } });
+  s.piutang += sale; s.persediaan -= cogs; s.lr += sale - cogs;
+  // 2. cash inventory purchase: keep >= Rp1.500 cash in hand afterwards
+  const buy = simR100(rng, 1000, Math.min(2500, s.kas - 1500));
+  txs.push({ key: "buycash", amt: { amt: buy },
+    pred: { laba: "tetap", kas: "turun", aset: "tetap" },
+    fx: { kas: -buy, persediaan: buy },
+    pre: { need: "kas", min: buy } });
+  s.kas -= buy; s.persediaan += buy;
+  // 3. credit inventory purchase
+  const cred = simR100(rng, 800, 2000);
+  txs.push({ key: "buycredit", amt: { amt: cred },
+    pred: { laba: "tetap", kas: "tetap", aset: "naik" },
+    fx: { persediaan: cred, utang: cred } });
+  s.persediaan += cred; s.utang += cred;
+  // 4. depreciation: never more than the equipment balance
+  const dep = simR100(rng, 100, Math.min(400, s.peralatan - 100));
+  txs.push({ key: "depr", amt: { amt: dep },
+    pred: { laba: "turun", kas: "tetap", aset: "turun" },
+    fx: { peralatan: -dep, lr: -dep } });
+  s.peralatan -= dep; s.lr -= dep;
+  // 5. pay payables: within both the payable balance and the cash left
+  const pay = simR100(rng, 500, Math.min(s.utang, s.kas - 500));
+  txs.push({ key: "paydebt", amt: { amt: pay },
+    pred: { laba: "tetap", kas: "turun", aset: "turun" },
+    fx: { kas: -pay, utang: -pay },
+    pre: { need: "utang", min: pay } });
+  s.kas -= pay; s.utang -= pay;
+  // 6. collect receivables: within the receivable balance
+  const coll = simR100(rng, 500, s.piutang);
+  txs.push({ key: "collect", amt: { amt: coll },
+    pred: { laba: "tetap", kas: "naik", aset: "tetap" },
+    fx: { kas: coll, piutang: -coll },
+    pre: { need: "piutang", min: coll } });
+  s.kas += coll; s.piutang -= coll;
+  return { start: start, txs: txs };
+}
 /* SIM-PURE-END */
 
 function simPreOK(i){
@@ -550,8 +609,8 @@ function simDelta(d){
   if (!d) return `<span style="opacity:.4">—</span>`;
   return `<span class="delta ${d > 0 ? "dup" : "ddown"}">${d > 0 ? "+" : ""}${simFmt(d)}</span>`;
 }
-function simBalHTML(){
-  const s = SIMS.s, p = SIMS.prev;
+function simBalHTML(s, p){
+  s = s || SIMS.s; p = p || SIMS.prev;
   const A = simAssets(s), Ap = simAssets(p), L = simLE(s), Lp = simLE(p);
   const row = (lbl, v, d) => `<tr><td>${lbl}</td><td style="text-align:right"><b>${simFmt(v)}</b></td><td style="text-align:right">${simDelta(d)}</td></tr>`;
   return `<div class="tblwrap"><table class="brutal">
@@ -629,6 +688,174 @@ function simResetUI(){
   simResetState();
   const w = $("#simwrap");
   if (w) w.innerHTML = simSectionHTML();
+}
+
+/* ---------- standalone simulator (#/simulator): fresh numbers each run ---------- */
+/* State lives only in memory (SIM2); only the finished-run score is persisted
+   in p.simulator = {runs, best, last} — never in p.lesson. */
+let SIM2 = null;
+function sim2ResetState(){
+  const g = simGenRun(Math.random);
+  SIM2 = { start: g.start, txs: g.txs, s: Object.assign({}, g.start), prev: Object.assign({}, g.start),
+    sel: g.txs.map(() => ({ laba: null, kas: null, aset: null })),
+    done: g.txs.map(() => false), benar: 0, total: 0, finished: false };
+}
+function sim2Score(){
+  const p = getP();
+  return (p.simulator && typeof p.simulator === "object") ? p.simulator : { runs: 0, best: null, last: null };
+}
+function sim2TxText(tx){
+  const a = tx.amt;
+  const acc = { kas: T("sim_acc_kas"), pers: T("sim_acc_pers"), piut: T("sim_acc_piut"), utang: T("sim_acc_utang") };
+  switch (tx.key){
+    case "sale": return { t: simTX()[0].t,
+      d: T("sim2_d_sale").replace("{sale}", simFmt(a.sale)).replace("{cogs}", simFmt(a.cogs)),
+      why: T("sim2_why_sale").replace("{profit}", simFmt(a.sale - a.cogs)).replace("{cogs}", simFmt(a.cogs)),
+      jur: [["D", acc.piut, a.sale], ["K", T("sim2_acc_pendapatan"), a.sale], ["D", T("sim2_acc_hpp"), a.cogs], ["K", acc.pers, a.cogs]],
+      preHint: T("sim2_pre_sale").replace("{amt}", simFmt(a.cogs)) };
+    case "buycash": return { t: simTX()[1].t,
+      d: T("sim2_d_buycash").replace("{amt}", simFmt(a.amt)),
+      why: T("sim2_why_buycash").replace("{amt}", simFmt(a.amt)),
+      jur: [["D", acc.pers, a.amt], ["K", acc.kas, a.amt]],
+      preHint: T("sim2_pre_buycash").replace("{amt}", simFmt(a.amt)) };
+    case "buycredit": return { t: simTX()[2].t,
+      d: T("sim2_d_buycredit").replace("{amt}", simFmt(a.amt)),
+      why: T("sim2_why_buycredit"),
+      jur: [["D", acc.pers, a.amt], ["K", acc.utang, a.amt]],
+      preHint: "" };
+    case "depr": return { t: simTX()[3].t,
+      d: T("sim2_d_depr").replace("{amt}", simFmt(a.amt)),
+      why: T("sim2_why_depr").replace("{amt}", simFmt(a.amt)),
+      jur: [["D", T("sim2_acc_beban_dep"), a.amt], ["K", T("sim2_acc_akum_dep"), a.amt]],
+      preHint: "" };
+    case "paydebt": return { t: simTX()[4].t,
+      d: T("sim2_d_paydebt").replace("{amt}", simFmt(a.amt)),
+      why: T("sim2_why_paydebt").replace("{amt}", simFmt(a.amt)),
+      jur: [["D", acc.utang, a.amt], ["K", acc.kas, a.amt]],
+      preHint: T("sim2_pre_paydebt").replace("{amt}", simFmt(a.amt)) };
+    default: return { t: simTX()[5].t,
+      d: T("sim2_d_collect").replace("{amt}", simFmt(a.amt)),
+      why: T("sim2_why_collect"),
+      jur: [["D", acc.kas, a.amt], ["K", acc.piut, a.amt]],
+      preHint: T("sim2_pre_collect").replace("{amt}", simFmt(a.amt)) };
+  }
+}
+function sim2PreOK(i){
+  const tx = SIM2.txs[i];
+  if (!tx.pre) return { ok: true, hint: "" };
+  const cur = SIM2.s[tx.pre.need] || 0;
+  return cur >= tx.pre.min ? { ok: true, hint: "" } : { ok: false, hint: sim2TxText(tx).preHint };
+}
+function sim2BalLine(){
+  const A = simAssets(SIM2.s), L = simLE(SIM2.s), diff = A - L;
+  return diff === 0
+    ? T("sim2_bal_ok") + " (A = L = " + simFmt(A) + ")"
+    : T("sim2_bal_bad").replace("{diff}", simFmt(diff));
+}
+function sim2CardHTML(i){
+  const tx = SIM2.txs[i], txt = sim2TxText(tx), sel = SIM2.sel[i], done = SIM2.done[i];
+  const pre = done ? { ok: true, hint: "" } : sim2PreOK(i);
+  const locked = done || !pre.ok;
+  const DL = simDimLbl(), OL = simOptLbl();
+  const dims = ["laba", "kas", "aset"].map(k => `
+    <div class="predrow"><span class="dim">${DL[k]}:</span>
+    ${SIM_OPT.map(o => `<button class="predbtn${sel[k] === o ? " on" : ""}"${locked ? " disabled" : ""} onclick="sim2Pick(${i},'${k}','${o}')">${OL[o]}</button>`).join("")}
+    </div>`).join("");
+  const ready = sel.laba && sel.kas && sel.aset;
+  return `<div class="simcard">
+    <h4>${i + 1}. ${esc(txt.t)}</h4>
+    <p>${esc(txt.d)}</p>
+    ${dims}
+    ${pre.ok ? "" : `<p class="simhint">⛔ ${esc(pre.hint)}</p>`}
+    <div class="btnrow"><button class="btn small blue"${(done || !ready || !pre.ok) ? " disabled" : ""} onclick="sim2Reveal(${i})">${T("sim_reveal")}</button></div>
+    <div id="sim2revbox${i}">${done ? sim2RevealHTML(i) : ""}</div>
+  </div>`;
+}
+function sim2RevealHTML(i){
+  const tx = SIM2.txs[i], txt = sim2TxText(tx), sel = SIM2.sel[i];
+  const DL = simDimLbl(), OL = simOptLbl();
+  const rows = ["laba", "kas", "aset"].map(k => {
+    const ok = sel[k] === tx.pred[k];
+    return `<div>${ok ? "✅" : "❌"} <b>${DL[k]}</b>: ${T("sim_guess_yours")} <b>${OL[sel[k]]}</b> — ${T("sim_answer")} <b>${OL[tx.pred[k]]}</b></div>`;
+  }).join("");
+  const jur = txt.jur.map(([dk, ak, n]) => `<tr><td>${dk}</td><td>${esc(ak)}</td><td style="text-align:right">${simFmt(n)}</td></tr>`).join("");
+  return `<div class="simrev-in">${rows}
+    <p style="margin:8px 0 4px"><b>${T("sim_journal")}</b></p>
+    <div class="tblwrap"><table class="brutal"><tr><th>D/K</th><th>${T("sim_acc").split(" (")[0]}</th><th style="text-align:right">${T("sim_ribu")}</th></tr>${jur}</table></div>
+    <div class="callout">${esc(txt.why)}</div>
+  </div>`;
+}
+function sim2StatsHTML(){
+  const sc = sim2Score();
+  if (!sc.runs) return `<p>${T("sim2_none")}</p>`;
+  return `<p>${T("sim2_best")} <b>${sc.best}%</b> · ${T("sim2_runs")} <b>${sc.runs}</b> · ${T("sim2_last")} <b>${sc.last}%</b></p>`;
+}
+function sim2DoneHTML(){
+  const pct = Math.round(SIM2.benar / SIM2.total * 100);
+  const sc = sim2Score();
+  return `<div class="callout" style="background:var(--green)"><b>${T("sim2_done_h")}</b><br>${T("sim2_done_p").replace("{pct}", String(pct)).replace("{benar}", String(SIM2.benar)).replace("{total}", String(SIM2.total)).replace("{best}", String(sc.best == null ? pct : sc.best))}</div>`;
+}
+function sim2SectionHTML(){
+  return `<div class="sec"><h3>${T("sim_h")}</h3>
+  ${sim2StatsHTML()}
+  <div class="callout" id="sim2Score">${T("sim_score")} <b>${SIM2.benar}</b> ${T("sim_of")} <b>${SIM2.total}</b> ${T("sim_correct")}</div>
+  <div id="sim2Bal">${simBalHTML(SIM2.s, SIM2.prev)}</div>
+  <p id="sim2bal" style="font-size:.9rem;font-weight:700">${sim2BalLine()}</p>
+  <div id="sim2Cards">${SIM2.txs.map((tx, i) => sim2CardHTML(i)).join("")}</div>
+  <div id="sim2done">${SIM2.finished ? sim2DoneHTML() : ""}</div>
+  <div class="btnrow"><button class="btn blue" onclick="sim2NewRun()">${T("sim2_new")}</button>
+  <a class="btn ghost" href="#/home">${T("back_home")}</a></div></div>`;
+}
+function sim2Pick(i, k, o){
+  if (SIM2.done[i] || !sim2PreOK(i).ok) return;
+  SIM2.sel[i][k] = o;
+  $("#sim2Cards").innerHTML = SIM2.txs.map((tx, j) => sim2CardHTML(j)).join("");
+}
+function sim2Reveal(i){
+  const tx = SIM2.txs[i], sel = SIM2.sel[i];
+  if (SIM2.done[i] || !sim2PreOK(i).ok || !(sel.laba && sel.kas && sel.aset)) return;
+  SIM2.prev = Object.assign({}, SIM2.s);
+  let benar = 0;
+  ["laba", "kas", "aset"].forEach(k => { if (sel[k] === tx.pred[k]) benar++; });
+  SIM2.benar += benar; SIM2.total += 3;
+  SIM2.s = simApply(SIM2.s, tx);
+  SIM2.done[i] = true;
+  $("#sim2Score").innerHTML = `${T("sim_score")} <b>${SIM2.benar}</b> ${T("sim_of")} <b>${SIM2.total}</b> ${T("sim_correct")}`;
+  $("#sim2Bal").innerHTML = simBalHTML(SIM2.s, SIM2.prev);
+  const bl = $("#sim2bal"); if (bl) bl.innerHTML = sim2BalLine();
+  $("#sim2Cards").innerHTML = SIM2.txs.map((t, j) => sim2CardHTML(j)).join("");
+  if (SIM2.done.every(Boolean)) sim2FinishRun();
+  const box = $("#sim2revbox" + i);
+  if (box) box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+function sim2FinishRun(){
+  SIM2.finished = true;
+  const pct = Math.round(SIM2.benar / SIM2.total * 100);
+  const p = getP();
+  p.simulator = p.simulator || { runs: 0, best: null, last: null };
+  p.simulator.runs = (p.simulator.runs || 0) + 1;
+  p.simulator.last = pct;
+  p.simulator.best = (p.simulator.best == null) ? pct : Math.max(p.simulator.best, pct);
+  saveP(p);
+  const d = $("#sim2done"); if (d) d.innerHTML = sim2DoneHTML();
+}
+function sim2NewRun(){
+  sim2ResetState();
+  const w = $("#sim2wrap");
+  if (w) { w.innerHTML = sim2SectionHTML(); w.scrollIntoView({ behavior: "smooth", block: "start" }); }
+}
+function renderSimulator(){
+  if (!SIM2) sim2ResetState();
+  show(`
+  <div class="lesson-head" style="background:var(--yellow)"><h2>${T("sim2_h")}</h2>
+  <div class="sub">${T("sim2_p")}</div></div>
+  <div id="sim2wrap">${sim2SectionHTML()}</div>`);
+}
+function sim2ProgressHTML(){
+  const sc = sim2Score();
+  return `<div class="sec"><h3>${T("sim2_prog_h")}</h3>
+    ${sc.runs ? `<p>${T("sim2_prog_p").replace("{best}", String(sc.best)).replace("{runs}", String(sc.runs)).replace("{last}", String(sc.last))}</p>` : `<p>${T("sim2_prog_none")}</p>`}
+    <div class="btnrow"><a class="btn small blue" href="#/simulator">${T("sim2_prog_btn")}</a></div></div>`;
 }
 
 /* ---------- workbook checker (client-side, SheetJS via CDN) ---------- */
@@ -2194,48 +2421,233 @@ function renderProgress() {
       <tr><th>${T("prog_th_lesson")}</th><th>📖</th><th>🎯 ${T("st_quiz")}</th><th>${T("prog_th_sheet")}</th><th>${T("prog_th_status")}</th></tr>
       ${rows}
     </table></div></div>
+  ${sim2ProgressHTML()}
   ${mistakeReviewHTML()}
   <div class="sec"><h3>${T("prog_backup_h")}</h3>
     <p>${T("prog_backup_p")}</p>
     <div class="btnrow"><button class="btn blue" onclick="exportProgress()">${T("prog_backup_btn")}</button>
     <input type="file" id="restorefile" accept=".json" style="max-width:100%">
-    <button class="btn ghost" onclick="importProgress()">${T("prog_restore_btn")}</button></div>
+    <button class="btn ghost" onclick="importProgress()">${T("prog_restore_btn")}</button>
+    <button class="btn ghost" onclick="importProgress('merge')">${T("prog_merge_btn")}</button></div>
     <div id="restoreout" style="margin-top:8px"></div></div>
   <div class="sec"><h3>${T("prog_reset_h")}</h3>
     <div id="resetwrap"><button class="btn small ghost" onclick="showResetCard()">${T("prog_reset_btn")}</button></div></div>`);
 }
 
+/* ---------- export / import progress v2 (hardening) ---------- */
+/* EXPORT-IMPORT-PURE-START */
+/* Fungsi murni di blok ini TIDAK memakai DOM (kecuali localStorage di
+   backupProgressNow, best-effort + try/catch) sehingga bisa di-load &
+   diuji di node: qa/export_import_test.js mengekstrak blok ini dari file. */
+const PROGRESS_FORMAT = "fmva-progress";
+const PROGRESS_EXPORT_VERSION = 2;
+const PROGRESS_APP_VERSION = "1.69";
+const PROGRESS_BACKUP_PREFIX = "fmva_progress_backup_";
+const PROGRESS_BACKUP_KEEP = 3;
+/* Key objek di progress (nilai harus objek bila ada). */
+const PROGRESS_OBJECT_KEYS = ["lesson", "quiz", "hellQuiz", "mistakes", "checker", "mission", "simulator", "done"];
+/* Validasi data progress mentah. Lempar Error bila bukan objek / tipe key
+   dikenal salah. Key top-level yang TIDAK dikenal diabaikan (forward compat)
+   dan dikembalikan sebagai daftar agar UI bisa mencatatnya di pesan. */
+function validateProgressData(obj){
+  if (!obj || typeof obj !== "object" || Array.isArray(obj)) throw new Error("not-object");
+  const ignored = [];
+  Object.keys(obj).forEach(k => {
+    if (PROGRESS_OBJECT_KEYS.indexOf(k) !== -1){
+      if (obj[k] === null || typeof obj[k] !== "object" || Array.isArray(obj[k])) throw new Error("bad-type:" + k);
+    } else if (k === "streak"){
+      if (typeof obj[k] !== "number") throw new Error("bad-type:streak");
+    } else if (k === "_pg2"){
+      if (typeof obj[k] !== "boolean") throw new Error("bad-type:_pg2");
+    } else {
+      ignored.push(k);
+    }
+  });
+  return ignored;
+}
+/* Bungkus progress mentah ke format export v2. */
+function wrapExport(data, now){
+  const d = (now instanceof Date) ? now : new Date();
+  return { format: PROGRESS_FORMAT, version: PROGRESS_EXPORT_VERSION, app: PROGRESS_APP_VERSION,
+    exportedAt: d.toISOString(), data: data || {} };
+}
+/* Urai hasil JSON.parse: terima v2 (wrapped) dan legacy (objek mentah).
+   Kembalikan {data, format, ignored}. Lempar Error bila tidak dikenal. */
+function unwrapImport(parsed){
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) throw new Error("not-object");
+  if (parsed.format === PROGRESS_FORMAT){
+    const data = parsed.data;
+    if (!data || typeof data !== "object" || Array.isArray(data)) throw new Error("bad-data");
+    return { data: data, format: "v2", ignored: validateProgressData(data) };
+  }
+  if (parsed.format !== undefined) throw new Error("bad-format");
+  return { data: parsed, format: "legacy", ignored: validateProgressData(parsed) };
+}
+/* Parse isi file backup (teks) -> {data, format, ignored}. */
+function parseProgressFile(text){
+  let parsed;
+  try { parsed = JSON.parse(text); } catch(e){ throw new Error("bad-json"); }
+  return unwrapImport(parsed);
+}
+/* Nilai quiz terbaik: angka mengalahkan true; angka tertinggi menang. */
+function mergeQuizVal(a, b){
+  const an = (typeof a === "number") ? a : null;
+  const bn = (typeof b === "number") ? b : null;
+  if (an != null && bn != null) return Math.max(an, bn);
+  if (an != null) return an;
+  if (bn != null) return bn;
+  if (a === true || b === true) return true;
+  return undefined;
+}
+function numOr(v, dflt){ return (typeof v === "number") ? v : dflt; }
+/* Gabung dua progress, pertahankan skor terbaik. Fungsi murni. */
+function mergeProgress(cur, imp){
+  cur = (cur && typeof cur === "object" && !Array.isArray(cur)) ? cur : {};
+  imp = (imp && typeof imp === "object" && !Array.isArray(imp)) ? imp : {};
+  const out = {};
+  /* lesson: read/sheet true bila salah satu true; quiz = nilai terbaik. */
+  const lessonIds = new Set([].concat(Object.keys(cur.lesson || {}), Object.keys(imp.lesson || {})));
+  const lesson = {};
+  lessonIds.forEach(id => {
+    const c = (cur.lesson || {})[id] || {};
+    const i = (imp.lesson || {})[id] || {};
+    const e = {};
+    Object.keys(c).forEach(k => { if (k !== "read" && k !== "sheet" && k !== "quiz") e[k] = c[k]; });
+    Object.keys(i).forEach(k => { if (k !== "read" && k !== "sheet" && k !== "quiz") e[k] = i[k]; });
+    if (c.read || i.read) e.read = true;
+    if (c.sheet || i.sheet) e.sheet = true;
+    const q = mergeQuizVal(c.quiz, i.quiz);
+    if (q !== undefined) e.quiz = q;
+    lesson[id] = e;
+  });
+  if (Object.keys(lesson).length) out.lesson = lesson;
+  /* quiz / hellQuiz: nilai tertinggi per lesson. */
+  ["quiz", "hellQuiz"].forEach(k => {
+    const ids = new Set([].concat(Object.keys(cur[k] || {}), Object.keys(imp[k] || {})));
+    const m = {};
+    ids.forEach(id => {
+      const v = mergeQuizVal((cur[k] || {})[id], (imp[k] || {})[id]);
+      if (v !== undefined) m[id] = v;
+    });
+    if (Object.keys(m).length) out[k] = m;
+  });
+  /* mistakes: gabung per key; recovered bila salah satu recovered; n = max. */
+  const mk = new Set([].concat(Object.keys(cur.mistakes || {}), Object.keys(imp.mistakes || {})));
+  const mistakes = {};
+  mk.forEach(key => {
+    const c = (cur.mistakes || {})[key] || {};
+    const i = (imp.mistakes || {})[key] || {};
+    const e = Object.assign({}, c, i);
+    e.n = Math.max(numOr(c.n, 0), numOr(i.n, 0));
+    if (c.recovered || i.recovered) e.recovered = true;
+    if (c.k || i.k) e.k = c.k || i.k;
+    mistakes[key] = e;
+  });
+  if (Object.keys(mistakes).length) out.mistakes = mistakes;
+  /* checker: entri dengan skor tertinggi menang per lesson. */
+  const ck = new Set([].concat(Object.keys(cur.checker || {}), Object.keys(imp.checker || {})));
+  const checker = {};
+  ck.forEach(id => {
+    const c = (cur.checker || {})[id];
+    const i = (imp.checker || {})[id];
+    checker[id] = (c && i)
+      ? (numOr(i.score, -1) > numOr(c.score, -1) ? i : c)
+      : (i || c);
+  });
+  if (Object.keys(checker).length) out.checker = checker;
+  /* streak: max. */
+  if (typeof cur.streak === "number" || typeof imp.streak === "number")
+    out.streak = Math.max(numOr(cur.streak, 0), numOr(imp.streak, 0));
+  /* simulator: best/runs = max, last = imp bila ada. */
+  if (cur.simulator || imp.simulator){
+    const c = cur.simulator || {};
+    const i = imp.simulator || {};
+    const s = Object.assign({}, c, i);
+    if (typeof c.best === "number" || typeof i.best === "number")
+      s.best = Math.max(numOr(c.best, -1), numOr(i.best, -1));
+    if (typeof c.runs === "number" || typeof i.runs === "number")
+      s.runs = Math.max(numOr(c.runs, 0), numOr(i.runs, 0));
+    s.last = (i.last != null) ? i.last : c.last;
+    out.simulator = s;
+  }
+  /* Key lain: dari imp bila ada, kalau tidak dari cur (forward compat). */
+  ["mission", "_pg2", "done"].forEach(k => {
+    if (imp[k] !== undefined) out[k] = imp[k];
+    else if (cur[k] !== undefined) out[k] = cur[k];
+  });
+  Object.keys(imp).forEach(k => {
+    if (out[k] === undefined && PROGRESS_OBJECT_KEYS.indexOf(k) === -1 && k !== "streak") out[k] = imp[k];
+  });
+  Object.keys(cur).forEach(k => {
+    if (out[k] === undefined) out[k] = cur[k];
+  });
+  return out;
+}
+/* Stempel backup "yyyymmdd-hhmm". */
+function progressBackupStamp(d){
+  const pad = n => String(n).padStart(2, "0");
+  return d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + "-" + pad(d.getHours()) + pad(d.getMinutes());
+}
+/* Backup progress SAAT INI ke localStorage sebelum import menimpa.
+   Simpan maks 3 backup terbaru, hapus yang lebih lama. Best-effort:
+   kembalikan key backup, atau null bila tidak ada progress / gagal. */
+function backupProgressNow(){
+  try {
+    if (typeof localStorage === "undefined") return null;
+    const raw = localStorage.getItem("fmva_progress");
+    if (!raw || raw === "{}") return null;
+    const key = PROGRESS_BACKUP_PREFIX + progressBackupStamp(new Date());
+    localStorage.setItem(key, raw);
+    pruneProgressBackups();
+    return key;
+  } catch(e){ return null; }
+}
+function pruneProgressBackups(){
+  try {
+    const keys = [];
+    for (let i = 0; i < localStorage.length; i++){
+      const k = localStorage.key(i);
+      if (k && k.indexOf(PROGRESS_BACKUP_PREFIX) === 0) keys.push(k);
+    }
+    keys.sort(); /* stempel kronologis = urutan leksikografis */
+    while (keys.length > PROGRESS_BACKUP_KEEP) localStorage.removeItem(keys.shift());
+  } catch(e){ /* best effort */ }
+}
+/* EXPORT-IMPORT-PURE-END */
+
 function exportProgress(){
-  const raw = localStorage.getItem("fmva_progress") || "{}";
+  const payload = wrapExport(getP());
   const d = new Date();
   const pad = n => String(n).padStart(2, "0");
   const fname = "fmva-progress-" + d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + ".json";
-  const blob = new Blob([raw], {type: "application/json"});
+  const blob = new Blob([JSON.stringify(payload, null, 2)], {type: "application/json"});
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob); a.download = fname;
   document.body.appendChild(a); a.click();
   setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
 }
-function importProgress(){
+function importProgress(mode){
+  mode = (mode === "merge") ? "merge" : "replace";
   const inp = document.getElementById("restorefile");
   const out = document.getElementById("restoreout");
   if (!inp || !inp.files || !inp.files[0]) { out.innerHTML = `<div class="callout">${T("prog_need_file")}</div>`; return; }
   const rd = new FileReader();
   rd.onload = e => {
     try {
-      const obj = JSON.parse(e.target.result);
-      if (!obj || typeof obj !== "object" || Array.isArray(obj)) throw new Error("bukan objek");
-      ["lesson", "quiz", "hellQuiz", "mistakes", "checker", "mission"].forEach(k => {
-        if (obj[k] !== undefined && (typeof obj[k] !== "object" || obj[k] === null)) throw new Error(k);
-      });
-      localStorage.setItem("fmva_progress", JSON.stringify(obj));
-      out.innerHTML = `<div class="callout">${T("prog_restored")}</div>`;
+      const res = parseProgressFile(e.target.result);
+      backupProgressNow();
+      const next = (mode === "merge") ? mergeProgress(getP(), res.data) : res.data;
+      localStorage.setItem("fmva_progress", JSON.stringify(next));
+      let msg = (mode === "merge") ? T("prog_merged") : T("prog_restored");
+      if (res.ignored && res.ignored.length)
+        msg += "<br>" + T("prog_ignored_keys").replace("{keys}", res.ignored.join(", "));
+      out.innerHTML = `<div class="callout">${msg}</div>`;
       setTimeout(route, 600);
     } catch(err) {
       out.innerHTML = `<div class="callout">${T("prog_badfile")}</div>`;
     }
   };
-  rd.onerror = () => { out.innerHTML = `<div class="callout">❌ Gagal membaca file dari perangkat.</div>`; };
+  rd.onerror = () => { out.innerHTML = `<div class="callout">${T("prog_readfail")}</div>`; };
   rd.readAsText(inp.files[0]);
 }
 function showResetCard(){
@@ -2244,7 +2656,7 @@ function showResetCard(){
   w.innerHTML = `<div class="callout warn"><b>${T("reset_warn")}</b>
     <ul style="margin:8px 0 0 18px"><li>${T("reset_li1")}</li>
     <li>${T("reset_li2")}</li><li>${T("reset_li3")}</li>
-    <li>${T("reset_li4")}</li><li>${T("reset_li5")}</li></ul>
+    <li>${T("reset_li4")}</li><li>${T("reset_li5")}</li><li>${T("reset_li6")}</li></ul>
     ${T("reset_no_undo")}</div>
     <div class="btnrow"><button class="btn blue" onclick="exportProgress()">${T("reset_backup_first")}</button>
     <button class="btn ghost" onclick="hideResetCard()">${T("reset_cancel")}</button>

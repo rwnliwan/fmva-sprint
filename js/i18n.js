@@ -24,7 +24,7 @@ scope_now: ["🗺️ <b>Cakupan saat ini:</b> 3 Fondasi (A/B/C) + Hari 01–31 (
   "🗺️ <b>Current scope:</b> 3 Foundation lessons (A/B/C) + Days 01–31 (30 + Bonus IPO) + 6 Excel levels + 12 Real Cases available."],
 tools_card_h: ["Glossary & Fungsi Excel", "Glossary & Excel Functions"],
 tools_card_p: ["Kamus istilah + referensi fungsi. Buka dari menu bawah.", "Term glossary + function reference. Open from the bottom menu."],
-footer: ["FMVA Sprint · oleh <a href=\"https://www.linkedin.com/in/septian-panjaya\" target=\"_blank\" rel=\"noopener\">Septian Panjaya</a> · v1.68", "FMVA Sprint · by <a href=\"https://www.linkedin.com/in/septian-panjaya\" target=\"_blank\" rel=\"noopener\">Septian Panjaya</a> · v1.68"],
+footer: ["FMVA Sprint · oleh <a href=\"https://www.linkedin.com/in/septian-panjaya\" target=\"_blank\" rel=\"noopener\">Septian Panjaya</a> · v1.69", "FMVA Sprint · by <a href=\"https://www.linkedin.com/in/septian-panjaya\" target=\"_blank\" rel=\"noopener\">Septian Panjaya</a> · v1.69"],
 /* lesson cards */
 card_repeat: ["Ulangi", "Review"],
 card_continue: ["Lanjutkan", "Continue"],
@@ -124,6 +124,57 @@ sim_dim_aset: ["Total aset", "Total assets"],
 sim_opt_naik: ["Naik ↑", "Up ↑"],
 sim_opt_turun: ["Turun ↓", "Down ↓"],
 sim_opt_tetap: ["Tetap →", "Flat →"],
+/* standalone simulator (#/simulator): fresh numbers every run */
+sim2_h: ["🔮 Simulator Transaksi — Angka Baru", "🔮 Transaction Simulator — Fresh Numbers"],
+sim2_p: ["Skenario baru di tiap run: 6 transaksi yang sama konsepnya dengan Hari 01, tapi semua angkanya diacak. Prediksi dulu dampaknya ke <b>laba</b>, <b>kas</b>, dan <b>total aset</b> — baru klik Reveal. Saldo <b>berantai</b> dan persamaan <b>A = L + E dicek tiap transaksi</b>.",
+  "A fresh scenario on every run: the same 6 transaction concepts as Day 01, but every amount is randomized. Predict first the impact on <b>profit</b>, <b>cash</b>, and <b>total assets</b> — then click Reveal. Balances are <b>chained</b> and <b>A = L + E is checked after every transaction</b>."],
+sim2_new: ["🎲 Run baru (angka baru)", "🎲 New run (fresh numbers)"],
+sim2_best: ["Skor terbaik:", "Best score:"],
+sim2_runs: ["Run selesai:", "Runs completed:"],
+sim2_last: ["Terakhir:", "Last run:"],
+sim2_none: ["Belum ada run selesai — selesaikan 6 transaksi untuk menyimpan skor.", "No completed run yet — finish all 6 transactions to save a score."],
+sim2_done_h: ["🎉 Run selesai!", "🎉 Run complete!"],
+sim2_done_p: ["Skor run ini: <b>{pct}%</b> ({benar}/{total} prediksi benar). Skor terbaikmu: <b>{best}%</b>.",
+  "This run's score: <b>{pct}%</b> ({benar}/{total} predictions correct). Your best score: <b>{best}%</b>."],
+sim2_card_tag: ["🔮 Simulator", "🔮 Simulator"],
+sim2_card_h: ["Simulator Transaksi", "Transaction Simulator"],
+sim2_card_p: ["6 transaksi, angka baru tiap run. Latih insting A = L + E tanpa membuka lesson.", "6 transactions, fresh numbers every run. Train your A = L + E instinct without opening a lesson."],
+sim2_card_btn: ["Buka simulator →", "Open simulator →"],
+sim2_prog_h: ["🔮 Simulator Transaksi", "🔮 Transaction Simulator"],
+sim2_prog_p: ["Skor terbaik <b>{best}%</b> · {runs} run selesai · terakhir {last}%.", "Best score <b>{best}%</b> · {runs} runs completed · last {last}%."],
+sim2_prog_none: ["Belum pernah menyelesaikan satu run simulator.", "You haven't completed a simulator run yet."],
+sim2_prog_btn: ["Buka simulator →", "Open simulator →"],
+sim2_bal_ok: ["✅ Balance: A = L + E", "✅ Balanced: A = L + E"],
+sim2_bal_bad: ["❌ TIDAK BALANCE — selisih {diff}. Laporkan sebagai bug!", "❌ OUT OF BALANCE — difference {diff}. Please report this as a bug!"],
+sim2_acc_pendapatan: ["Pendapatan", "Revenue"],
+sim2_acc_hpp: ["HPP", "COGS"],
+sim2_acc_beban_dep: ["Beban depresiasi", "Depreciation expense"],
+sim2_acc_akum_dep: ["Akum. penyusutan", "Acc. depreciation"],
+sim2_d_sale: ["Jual dagangan Rp{sale} secara kredit. HPP barang yang terjual Rp{cogs}.", "Sell merchandise for Rp{sale} on credit. COGS of the goods sold: Rp{cogs}."],
+sim2_why_sale: ["Pendapatan diakui saat transaksi terjadi (akrual), bukan saat kas masuk — laba naik Rp{profit} tapi kas tidak bergerak. HPP menggerus persediaan Rp{cogs}.",
+  "Revenue is recognized when the transaction happens (accrual), not when cash arrives — profit rises Rp{profit} but cash doesn't move. COGS eats Rp{cogs} of inventory."],
+sim2_d_buycash: ["Beli persediaan Rp{amt} dibayar tunai.", "Buy inventory for Rp{amt}, paid in cash."],
+sim2_why_buycash: ["Ini pertukaran aset (kas menjadi persediaan), bukan beban — laba tidak tersentuh. Kas turun Rp{amt}, total aset tetap.",
+  "This is an asset swap (cash becomes inventory), not an expense — profit untouched. Cash falls Rp{amt}, total assets unchanged."],
+sim2_d_buycredit: ["Beli persediaan Rp{amt} dari supplier, bayar tempo (utang dagang).", "Buy Rp{amt} of inventory from a supplier, on terms (accounts payable)."],
+sim2_why_buycredit: ["Aset dan liabilitas naik berpasangan — persamaan A = L + E tetap balance. Belum ada beban, belum ada kas keluar.",
+  "Assets and liabilities rise together — the A = L + E equation stays balanced. No expense yet, no cash out."],
+sim2_d_depr: ["Catat beban penyusutan peralatan Rp{amt} bulan ini.", "Record this month's equipment depreciation of Rp{amt}."],
+sim2_why_depr: ["Depresiasi adalah beban non-kas: laba turun Rp{amt} tapi kas tidak keluar sepeser pun. Peralatan neto ikut menyusut.",
+  "Depreciation is a non-cash expense: profit falls Rp{amt} but not a cent of cash leaves. Net equipment shrinks too."],
+sim2_d_paydebt: ["Bayar utang ke supplier Rp{amt} tunai.", "Pay the supplier Rp{amt} in cash."],
+sim2_why_paydebt: ["Jebakan klasik: bayar utang mengurangi kas DAN liabilitas — total aset ikut turun Rp{amt}. Laba tidak tersentuh karena ini bukan beban.",
+  "The classic trap: paying debt cuts cash AND liabilities — total assets fall Rp{amt} too. Profit untouched, because this isn't an expense."],
+sim2_d_collect: ["Pelanggan melunasi piutang Rp{amt} secara tunai.", "A customer settles Rp{amt} of receivables in cash."],
+sim2_why_collect: ["Pendapatan sudah diakui saat penjualan kredit — ini hanya pertukaran aset (piutang menjadi kas). Laba tidak naik dua kali!",
+  "Revenue was already recognized at the credit sale — this is just an asset swap (receivables become cash). Profit must not rise twice!"],
+sim2_pre_sale: ["Persediaan tidak cukup menutup HPP Rp{amt} — saldo terlalu kecil untuk menjual barang ini.",
+  "Not enough inventory to cover Rp{amt} COGS — the balance is too small to sell these goods."],
+sim2_pre_buycash: ["Kas tidak cukup untuk beli persediaan Rp{amt} — saldo kas terlalu kecil.", "Not enough cash to buy Rp{amt} of inventory — the cash balance is too small."],
+sim2_pre_paydebt: ["Belum ada utang dagang sebesar Rp{amt}. Lakukan pembelian kredit dulu biar ada utang.",
+  "No accounts payable of Rp{amt} yet. Do a credit purchase first so there's a payable."],
+sim2_pre_collect: ["Belum ada piutang sebesar Rp{amt}. Lakukan penjualan kredit dulu biar ada piutang.",
+  "No receivables of Rp{amt} yet. Do a credit sale first so there are receivables."],
 /* simulator debit/kredit */
 dk_h: ["🔮 Simulator Debit/Kredit", "🔮 Debit/Credit Simulator"],
 dk_p: ["6 transaksi warung. Untuk tiap transaksi, <b>tebak sisi Debit/Kredit</b> dari 2 akun yang terlibat — baru klik Reveal. Aturannya cuma satu: <b>kiri bertambah = debit, kanan bertambah = kredit</b> (dari A = L + E).",
@@ -196,10 +247,16 @@ prog_backup_p: ["Progress tersimpan <b>hanya di browser ini</b>. Hapus data situ
   "Progress is stored <b>only in this browser</b>. Clearing site data or switching devices = lost. Back up regularly."],
 prog_backup_btn: ["⬇️ Backup progress", "⬇️ Back up progress"],
 prog_restore_btn: ["⬆️ Restore dari file", "⬆️ Restore from file"],
+prog_merge_btn: ["🔀 Gabung (pertahankan skor terbaik)", "🔀 Merge (keep best scores)"],
 prog_reset_h: ["🗑️ Reset progress", "🗑️ Reset progress"],
 prog_reset_btn: ["Reset progress", "Reset progress"],
 prog_need_file: ["Pilih dulu file backup (.json).", "Select a backup file (.json) first."],
-prog_restored: ["✅ Progress berhasil di-restore. Memuat ulang…", "✅ Progress restored. Reloading…"],
+prog_restored: ["✅ Progress berhasil di-restore. Backup otomatis progress lama dibuat. Memuat ulang…",
+  "✅ Progress restored. An automatic backup of your old progress was made. Reloading…"],
+prog_merged: ["✅ Progress digabung — skor terbaik dipertahankan. Backup otomatis progress lama dibuat. Memuat ulang…",
+  "✅ Progress merged — best scores kept. An automatic backup of your old progress was made. Reloading…"],
+prog_ignored_keys: ["Catatan: key yang tidak dikenal diabaikan: {keys}.",
+  "Note: unknown keys ignored: {keys}."],
 prog_badfile: ["❌ File tidak valid — bukan backup progress FMVA Sprint. Tidak ada yang diubah.",
   "❌ Invalid file — not an FMVA Sprint progress backup. Nothing was changed."],
 prog_readfail: ["❌ Gagal membaca file dari perangkat.", "❌ Couldn't read the file from your device."],
@@ -209,6 +266,7 @@ reset_li2: ["Streak harian", "Daily streak"],
 reset_li3: ["Riwayat mistake review (termasuk status \"pulih\")", "Mistake review history (including \"recovered\" status)"],
 reset_li4: ["Hasil checker workbook", "Workbook checker results"],
 reset_li5: ["Centang spreadsheet self-check", "Spreadsheet self-check ticks"],
+reset_li6: ["Skor simulator transaksi", "Transaction simulator scores"],
 reset_no_undo: ["Tidak bisa dibatalkan.", "This cannot be undone."],
 reset_backup_first: ["⬇️ Backup dulu", "⬇️ Back up first"],
 reset_cancel: ["Batal", "Cancel"],
@@ -274,7 +332,19 @@ function cName(c){ return (lang() === "en" && c.name_en) ? c.name_en : c.name; }
 function prettyKey(k){ return String(k == null ? "" : k).replace(/_/g, " "); }
 function cDef(c){ return (lang() === "en" && c.def_en) ? c.def_en : c.def; }
 function cDiag(c){ return (lang() === "en" && c.diag_en) ? c.diag_en : c.diag; }
-function variantEntry(key){ return (lang() === "en" && typeof VARIANT_FNS_EN !== "undefined" && VARIANT_FNS_EN[key]) ? VARIANT_FNS_EN[key] : VARIANT_FNS[key]; }
+function variantEntry(key){
+  if (lang() === "en") {
+    if (typeof VARIANT_FNS_EN !== "undefined" && VARIANT_FNS_EN[key]) return VARIANT_FNS_EN[key];
+    if (typeof VARIANT_FNS_EN_B1 !== "undefined" && VARIANT_FNS_EN_B1[key]) return VARIANT_FNS_EN_B1[key];
+    if (typeof VARIANT_FNS_EN_B2 !== "undefined" && VARIANT_FNS_EN_B2[key]) return VARIANT_FNS_EN_B2[key];
+    if (typeof VARIANT_FNS_EN_B3 !== "undefined" && VARIANT_FNS_EN_B3[key]) return VARIANT_FNS_EN_B3[key];
+    return undefined;
+  }
+  if (typeof VARIANT_FNS !== "undefined" && VARIANT_FNS[key]) return VARIANT_FNS[key];
+  if (typeof VARIANT_FNS_B1 !== "undefined" && VARIANT_FNS_B1[key]) return VARIANT_FNS_B1[key];
+  if (typeof VARIANT_FNS_B2 !== "undefined" && VARIANT_FNS_B2[key]) return VARIANT_FNS_B2[key];
+  if (typeof VARIANT_FNS_B3 !== "undefined" && VARIANT_FNS_B3[key]) return VARIANT_FNS_B3[key];
+  return undefined; }
 /* header/nav paint */
 function paintLang(){
   const b = document.getElementById("langbtn");

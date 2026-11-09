@@ -4,6 +4,7 @@
 |---|---|
 | `qa_numbers.py` | Hitung ulang independen setiap angka kunci di konten course (toleransi 0,01–0,02) + pin string spesifik pasca-fix (txt). Tambah check baru untuk setiap angka yang dikoreksi. |
 | `qa_class_patterns.py` | Pola umum kelas kesalahan di SELURUH konten (bukan satu string/angka). Lihat "Kelas yang dikunci" di bawah. |
+| `qa_variant_coverage.py` | Cakupan varian fresh mistake-review: tiap kunci "lesson:qi" wajib ada di ID dan EN, tanpa duplikat antar registry (lama/B1/B2/B3), total = 534 soal kuis (100%). |
 | `acronym_allowlist.txt` | Daftar akronim yang BOLEH tanpa ekspansi di pemakaian pertama (ticker, fungsi Excel, standar, istilah umum, nama diri) — dipakai C5. Satu token per baris + alasan di komentar. |
 
 Jalankan dari root repo ini:
@@ -11,6 +12,7 @@ Jalankan dari root repo ini:
 ```sh
 python3 qa/qa_numbers.py
 python3 qa/qa_class_patterns.py
+python3 qa/variant_coverage.py
 ```
 
 Exit 0 = ALL PASS. Keduanya WAJIB ALL PASS sebelum commit/deploy.
