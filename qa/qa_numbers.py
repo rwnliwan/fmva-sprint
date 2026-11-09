@@ -438,8 +438,62 @@ txt('R8 N-2 MRA diekspansi', 'MRA (Master Restructuring Agreement' in _c4)
 txt('R8 N-2 PKPU diekspansi', 'PKPU — Penundaan Kewajiban Pembayaran Utang' in _c4 and 'PKPU — Suspension of Debt Payment' in _c4)
 # N-3 kompatibilitas dikualifikasi
 txt('R8 N-3 versi modern dikualifikasi', 'Umumnya bekerja sama di versi modern' in _c3 and 'generally works the same on modern versions' in _c3)
-# N-4 dua metode TV dinamai
-txt('R8 N-4 dua metode TV dinamai', 'Dua metode TV = perpetuitas Gordon dan exit multiple' in _c2 and 'The two TV methods = Gordon perpetuity and exit multiple' in _c2)
+# --- Ronde 9 (DeepSeek + Terra), 2026-11-09 ---
+# T-5 TSM: opsi bruto = penyebut TERLALU BESAR -> UNDERVALUE (bukan overvalue).
+# Laba Rp4.959,59rb: TSM neto 11.000 lbr -> EPS 0,451; bruto 12.000 lbr -> 0,413.
+chk('R9 TSM EPS net 11.000', 4959.59 / 11000, 0.451, 0.001)
+chk('R9 TSM EPS gross 12.000', 4959.59 / 12000, 0.413, 0.001)
+chk('R9 TSM Terra 100/12', 100 / 12, 8.33, 0.01)
+chk('R9 TSM Terra 100/11', 100 / 11, 9.09, 0.01)
+# T-6 CFO: 3.169,55 < 3.500 (BUKAN melebihi); gap NI->CFO = +540,41.
+# Add-back non-kas murni = 3.169,55 - bunga lease 383,30 = 2.786,25.
+chk('R9 CFO gap NI->CFO', 3169.55 - 3500 + 870.86, 540.41, 0.01)
+chk('R9 CFO = NI + gap', 4959.59 + 540.41, 5500, 0.01)
+chk('R9 CFO non-cash murni', 800 + 958.25 + 500 + 528, 2786.25, 0.01)
+chk('R9 CFO 3500 - 3169.55', 3500 - 3169.55, 330.45, 0.01)
+# T-2 variance opex: actual - budget = 6.200 - 6.000 = +200 (U, biaya);
+# dampak ke EBIT = -200; flex var = price -4.500 + (-200) = -4.700.
+chk('R9 opex spending var', 6200 - 6000, 200, 0.01)
+chk('R9 flex var = price + EBIT impact', -4500 + -200, -4700, 0.01)
+chk('R9 opex 6 bln', 200 * 6, 1200, 0.01)
+# T-8 MAE: presisi penuh (error ke-2 6,333...) -> 10,666... -> 10,67;
+# dari angka tampil 6,33 -> 10,665 -> tetap 10,67. Konvensi tampil: angka
+# downstream dari angka tampil hulu; di sini keduanya membulat ke 10,67.
+chk('R9 MAE full precision', (15 + 19 / 3) / 2, 10.67, 0.01)
+chk('R9 MAE displayed', (15 + 6.33) / 2, 10.67, 0.01)
+# --- Ronde 9 txt guards (string spesifik; kelasnya dikunci qa_class_patterns.py C4/C6) ---
+# T-1 lease: klaim dibatasi kriteria pengakuan + pengecualian disebut (ID+EN)
+txt('R9 T-1 lease kriteria pengakuan', 'memenuhi kriteria pengakuan PSAK 116' in _c2 and 'meets PSAK 116 recognition criteria' in _c2)
+txt('R9 T-1 lease pengecualian disebut', 'Pengecualiannya sempit' in _c2 and 'The exemptions are narrow' in _c2)
+txt('R9 T-1 lease jangka pendek + nilai rendah', 'lease jangka pendek' in _c2 and 'short-term leases' in _c2 and 'aset bernilai rendah' in _c2 and 'low-value assets' in _c2)
+# T-2 variance: spending variance +200 dilabeli, dampak EBIT -200 dipisah (ID+EN)
+txt('R9 T-2 variance opex +200 dilabeli', 'dampak opex ke EBIT' in _c2 and 'opex impact on EBIT' in _c2)
+txt('R9 T-2 variance spending +200 hadir', '6.200 \\u2212 6.000 = <b>+200 (unfavorable)</b>' in _c2 and '6,200 \\u2212 6,000 = <b>+200 (unfavorable)</b>' in _c2)
+# T-3 NPV: syarat aturan disebut (ID+EN); formula tetap, kualifikasi menyertai
+txt('R9 T-3 NPV syarat disebut', 'Syarat aturan ini:' in _c2 and 'This rule has conditions:' in _c2)
+txt('R9 T-3 NPV mutually exclusive', 'saling meniadakan' in _c2 and 'mutually exclusive' in _c2)
+# T-4 no-hardcode: pengecualian konstanta struktural 0/1 (ID+EN, content3)
+txt('R9 T-4 hardcode pengecualian 0/1', 'Tidak ada angka ketik \\u2014 kecuali konstanta struktural 0 dan 1' in _c3 and 'No typed numbers \\u2014 except structural constants 0 and 1' in _c3)
+txt('R9 T-4 hardcode 1 = pokok 100%', 'pokok 100%' in _c3 and '100% of the base' in _c3)
+# T-5 TSM: undervalue dilabeli + EPS bruto 0,413 (ID+EN)
+txt('R9 T-5 TSM undervalue dilabeli', 'opsi bruto = <b>undervalue</b>' in _c2 and 'gross options = <b>undervaluation</b>' in _c2)
+txt('R9 T-5 TSM EPS bruto 0,413', 'Rp0,413rb' in _c2 and 'Rp0.413k' in _c2)
+# T-6 CFO: gap +540,41 + non-kas murni 2.786,25 (ID+EN)
+txt('R9 T-6 CFO gap +540,41', '+540,41' in _c2 and '+540.41' in _c2)
+txt('R9 T-6 CFO non-kas murni 2.786,25', '2.786,25' in _c2 and '2,786.25' in _c2)
+# T-7 leverage: syarat hasil aset > biaya utang (ID+EN)
+txt('R9 T-7 leverage syarat hasil > biaya', 'bila hasil aset di atas biaya utang' in _c2 and 'when the asset return beats the cost of debt' in _c2)
+# T-8 MAE: presisi penuh disebut (ID+EN)
+txt('R9 T-8 MAE presisi penuh', 'presisi penuh' in _c2 and 'full precision' in _c2)
+# C-2 TSM nit: satuan Rp500/lembar pada baris Buyback + hint kuis (ID+EN)
+txt('R9 C-2 TSM satuan Buyback', _c2.count('500rb ÷ Rp500/lembar') >= 2 and _c2.count('500k ÷ Rp500/share') >= 2)
+# C-3 neraca nit: desimal seragam 2 angka (ID+EN)
+txt('R9 C-3 neraca A = 25.333,00', 'A = 25.333,00' in _c2 and 'A = 25,333.00' in _c2)
+txt('R9 C-3 neraca cek 25.333,00', '25.333,00 = 6.433,41 + 18.899,59' in _c2 and '25,333.00 = 6,433.41 + 18,899.59' in _c2)
+# C-4 NOL nit: ambang probable >50% eksplisit di callout H20 (ID+EN)
+txt('R9 C-4 NOL ambang probable >50%', '(probable \\u2014 lebih mungkin daripada tidak, >50%)' in _c2 and '(probable \\u2014 more likely than not, >50%)' in _c2)
+# C-1 minus ASCII (GG-17): bentuk Unicode baru hadir (kelasnya dikunci C6)
+txt('R9 C-1 minus Unicode hadir', '\\u22124.500' in _c2 and '\\u22124,500' in _c2)
 print()
 print('NUMBERS QA:', f'ALL PASS ({_total[0]} checks)' if not fails else f'{len(fails)} FAILURES: {fails}')
 raise SystemExit(0 if not fails else 1)

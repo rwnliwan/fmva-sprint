@@ -19,6 +19,12 @@ Kelas yang dikunci:
   C5  Akronim tanpa ekspansi di pemakaian pertama (N-2 R8): watchlist fail-closed +
       discovery scan + allowlist berversi (qa/acronym_allowlist.txt).
       Akronim yang SAMA tokennya dgn kata umum (NOL, ARR) = batasan diketahui.
+  C6  Minus ASCII di awal nilai tampilan (GG-17, R9): '-' U+002D menempel di depan
+      digit / 'Rp' sebagai awal nilai tampilan WAJIB 0 di seluruh konten — ganti
+      ke minus Unicode U+2212. Operator antar-digit ('17 - 20') dan metadata
+      ('hari-18', 'ke-1', tanggal, URL) BUKAN pelanggaran. Pengecualian
+      beralasan: sintaks Excel (rumus '=...', <tt>) dan contoh literal ketik
+      Hari 01 ('HPP = -7500' / 'COGS = -7500', vonis 3-suara 3-0) — lihat kode.
 """
 import os
 import re
@@ -133,6 +139,20 @@ DENY = [
     'seharga 7 tahun EBITDA', 'for 7 years of EBITDA',
     # R8 SF-4: kunci spill yang salah (bentuk lama)
     'baris 5 kosong dilewati', 'row 5 skipped',
+    # R9 T-1: klaim lease absolut (tanpa pengecualian pengakuan PSAK 116)
+    'kalau kamu wajib bayar, itu utang', "if you must pay, it's debt",
+    # R9 T-5: share count basi + opsi bruto dicampur sebagai satu arah (overvalue)
+    'Analis yang memakai share count basi atau opsi bruto = overvalue',
+    'An analyst using a stale share count or gross options = overvaluation',
+    # R9 T-6: klaim CFO salah arah (3.169,55 < 3.500, bukan melebihi)
+    'add-back non-kas Rp3.169,55 melebihi', 'non-cash add-backs of Rp3,169.55 exceed',
+    # R9 T-7: leverage absolut (tanpa syarat hasil aset > biaya utang)
+    'Karena utang <b>memperbesar return atas modal sendiri</b>',
+    'Because debt <b>magnifies the return on your own capital</b>',
+    # R9 T-2: variance opex dibalik tandanya (bentuk lama)
+    '(6.000 - 6.200 = -200)', '(6,000 - 6,200 = -200)',
+    # R9 T-4: aturan no-hardcode absolut (tanpa pengecualian konstanta struktural)
+    'Tidak ada angka ketik sama sekali', 'No typed numbers at all',
 ]
 _c4_bad = [(d, ALL.count(d)) for d in DENY if d in ALL]
 chk('C4 frasa absolut/kadaluarsa (daftar terlarang) = 0', not _c4_bad,
@@ -194,6 +214,69 @@ for _tok, (_fn, _pos) in sorted(_first.items()):
         _c5_unknown.append((_tok, _fn))
 chk('C5 discovery: akronim tak dikenal di luar allowlist = 0', not _c5_unknown,
     'triase manual: ' + ', '.join('%s(%s)' % u for u in _c5_unknown[:12]))
+
+# ---------------------------------------------------------------- C6: GG-17 minus ASCII di awal nilai (R9)
+# Pola yang dicari: '-' U+002D menempel di depan digit atau 'Rp' sebagai AWAL
+# nilai tampilan. Didahului pemisah (>, ", (, [, =, +, :, ;, ,, {, ≈, →) atau
+# spasi sesudah pemisah / tanda baca / huruf ('Dari mana -4.000?', 'Cocokkan:
+# -4.500', '≈ -4,1', 'price variance -Rp4.500rb'). BUKAN pelanggaran:
+# operator antar-digit ('17 - 20' — angka sebelum spasi), metadata
+# ('hari-18', 'ke-1', 't-1', tanggal 2026-10-31, URL — huruf/angka menempel
+# sebelum '-'), dan kode JS ('real-01', 'excel-l4').
+# PENGECUALIAN (disengaja, beralasan — BUKAN lubang):
+#  E1 Sintaks Excel: match di dalam <tt>...</tt> ('-1' argumen SORT), atau di
+#     dalam string/segmen rumus Excel yang diawali '=' ('=IRR({-100...',
+#     '=PMT(6%/12, 60, -500jt)', '=-500 + 200/...'). Tanda hubung ASCII
+#     adalah sintaks Excel; U+2212 di sana = formula rusak / #VALUE!.
+#     Hasil rumus SETELAH panah ('=XNPV(...) → ≈ -4,1') TETAP ditandai —
+#     itu nilai tampilan, bukan sintaks.
+#  E2 Contoh literal ketik Hari 01: 'HPP = -7500' (ID) / 'COGS = -7500' (EN).
+#     Kalimatnya menjelaskan cara MENGETIK di Excel; U+2212 yang diketik
+#     tersimpan sebagai teks. Vonis 3-suara R9 (DeepSeek + Terra + induk):
+#     3-0 PERTAHANKAN ASCII. Pengecualian exact-string, bukan pola global.
+_C6_STARTS = set('>"\'([{=+:;,')
+_C6_SPACE_BEFORE = set('>"\'([{=+:;,?.,') | {'≈', '→'}
+
+
+def _c6_in_excel_formula(text, i):
+    for _q in ['"', '`']:
+        _j = text.rfind(_q, 0, i)
+        if _j >= 0:
+            _k = text.find(_q, _j + 1)
+            if _k > i and text[_j + 1:_j + 2] == '=':
+                return True
+    _d = text.rfind('<div class="formula">', 0, i)
+    if _d >= 0:
+        _seg = text[_d + len('<div class="formula">'):i]
+        if '</div>' not in _seg and _seg.startswith('=') and '→' not in _seg:
+            return True
+    return False
+
+
+_c6_bad = []
+for _fn, _t in TEXTS.items():
+    _tt_spans = [(m.start(), m.end()) for m in re.finditer(r'<tt>.*?</tt>', _t, re.S)]
+    for _m in re.finditer(r'-(?=\d|Rp)', _t):
+        _i = _m.start()
+        _prev = _t[_i - 1] if _i > 0 else '^'
+        if _prev in _C6_STARTS:
+            _flag = True
+        elif _prev == ' ' and _i >= 2:
+            _p2 = _t[_i - 2]
+            _flag = (_p2 in _C6_SPACE_BEFORE) or _p2.isalpha()
+        else:
+            _flag = False
+        if not _flag:
+            continue
+        if _t[max(0, _i - 8):_i].endswith('HPP = ') or _t[max(0, _i - 8):_i].endswith('COGS = '):
+            continue  # E2: contoh literal ketik Hari 01 (3-suara 3-0)
+        if any(_a <= _i < _b for _a, _b in _tt_spans):
+            continue  # E1: <tt> sintaks Excel
+        if _c6_in_excel_formula(_t, _i):
+            continue  # E1: rumus Excel '=...'
+        _c6_bad.append((_fn, _t[:_i].count('\n') + 1, _t[max(0, _i - 30):_i + 12].replace('\n', ' ')))
+chk('C6 GG-17 minus ASCII di awal nilai tampilan = 0', not _c6_bad,
+    'pelanggaran: ' + '; '.join('%s:%d ...%s...' % b for b in _c6_bad[:8]))
 
 print()
 print('CLASS QA:', f'ALL PASS ({_total[0]} checks)' if not fails else f'{len(fails)} FAILURES: {fails}')

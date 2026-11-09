@@ -317,11 +317,12 @@ sections: [
 <table class="brutal">
 <tr><th>Zona</th><th>Isi</th><th>Ciri</th></tr>
 <tr><td><b>INPUT</b></td><td>Asumsi: growth, tarif, driver</td><td>Sel biru — satu-satunya tempat angka ketik</td></tr>
-<tr><td><b>KALKULASI</b></td><td>Rumus yang me-link</td><td>Tidak ada angka ketik sama sekali</td></tr>
+<tr><td><b>KALKULASI</b></td><td>Rumus yang me-link</td><td>Tidak ada angka ketik \u2014 kecuali konstanta struktural 0 dan 1</td></tr>
 <tr><td><b>OUTPUT</b></td><td>Hasil: laporan, chart, ringkasan</td><td>Hanya referensi ke kalkulasi</td></tr>
 </table>
 <div class="formula">=B5*(1+B6) ✓ &nbsp;&nbsp;vs&nbsp;&nbsp; =16800*1,1 ✗</div>
 <p>Keduanya memberi 18.480 hari ini. Bedanya: 3 bulan lagi growth berubah jadi 15% — yang kiri ikut berubah otomatis, yang kanan diam-diam basi.</p>
+<p><b>Pengecualian:</b> konstanta struktural <b>0 dan 1</b> boleh \u2014 angka <b>1</b> di <tt>=B5*(1+B6)</tt> artinya "pokok 100%", bukan asumsi bisnis. Yang dilarang adalah <b>asumsi bisnis yang diketik</b> di dalam rumus: tarif 10%, growth 12%, harga Rp250. Asumsi begitu wajib tinggal di sel INPUT (biru) dan dirujuk, bukan diketik ulang.</p>
 <div class="callout"><b>Kenapa pemisahan ini mempercepat audit?</b> Karena mempersempit pencarian: angka salah? Cek 3 zona berurutan — input dulu (asumsinya benar?), kalkulasi (link-nya benar?), output (referensinya benar?). Tanpa zona, kamu mencari jarum di tumpukan 500 rumus.</div>`},
 {h: "IFERROR: pengaman, bukan penutup bug", body: `
 <div class="formula">=IFERROR(pembagian, 0) — jika error, tampil 0</div>
@@ -427,11 +428,11 @@ sections: [
 <p>Tiga argumen, urutan <b>tetap</b>: tingkat diskonto dulu, lalu arus kas, lalu tanggal. Contoh investasi (Rp juta):</p>
 <table class="brutal">
 <tr><th>Tanggal (A)</th><th>Arus kas (B)</th><th>Keterangan</th></tr>
-<tr><td>1 Jan 2025</td><td>-500</td><td>Investasi awal</td></tr>
+<tr><td>1 Jan 2025</td><td>\u2212500</td><td>Investasi awal</td></tr>
 <tr><td>1 Jul 2025</td><td>200</td><td>Distribusi pertama</td></tr>
 <tr><td>1 Mar 2026</td><td>350</td><td>Distribusi kedua</td></tr>
 </table>
-<div class="formula">=XNPV(12%, B2:B4, A2:A4) &nbsp;→&nbsp; ≈ -4,1 (proyek marginal!)</div>
+<div class="formula">=XNPV(12%, B2:B4, A2:A4) &nbsp;→&nbsp; ≈ \u22124,1 (proyek marginal!)</div>
 <p><b>Verifikasi manual</b> (wajib bisa — ini cara auditnya):</p>
 <div class="formula">=-500 + 200/(1,12)<sup>((A3-A2)/365)</sup> + 350/(1,12)<sup>((A4-A2)/365)</sup></div>
 <p>Tanggal pertama = t<sub>0</sub>. Setiap arus kas didiskon proporsional dengan <b>jarak hari sebenarnya</b> dibagi 365.</p>
@@ -442,11 +443,11 @@ sections: [
 <div class="formula">=XIRR(values, dates, [guess])</div>
 <p>XIRR mencari tingkat diskonto yang membuat XNPV = 0. Dua syarat mati: <b>minimal satu arus kas positif dan satu negatif</b> — kalau tidak, jawabannya #NUM! (tidak ada tingkat yang bisa menyeimbangkan).</p>
 <div class="example warung"><div class="lbl">🏪 Contoh</div>
-<p>Investasi -Rp1.000jt (1 Jan 2023), kembali Rp1.100jt (1 Jan 2024): =XIRR(B2:B3, A2:A3) → <b>10%</b>. Tepat 365 hari → sama dengan IRR biasa. Bedanya terlihat saat tanggalnya tidak bulat.</p></div>
+<p>Investasi \u2212Rp1.000jt (1 Jan 2023), kembali Rp1.100jt (1 Jan 2024): =XIRR(B2:B3, A2:A3) → <b>10%</b>. Tepat 365 hari → sama dengan IRR biasa. Bedanya terlihat saat tanggalnya tidak bulat.</p></div>
 <div class="example jebakan"><div class="lbl">🚫 Jebakan #2: multiple IRR</div>
-<p>Arus kas: <b>-100, +250, -150</b>. Tanda berubah <b>dua kali</b> (− → + → −). Secara matematis bisa ada <b>dua IRR</b> yang sama-sama membuat NPV = 0! XIRR hanya mengembalikan satu (tergantung tebakan awal) — dan kamu tidak tahu yang mana.</p>
+<p>Arus kas: <b>\u2212100, +250, \u2212150</b>. Tanda berubah <b>dua kali</b> (− → + → −). Secara matematis bisa ada <b>dua IRR</b> yang sama-sama membuat NPV = 0! XIRR hanya mengembalikan satu (tergantung tebakan awal) — dan kamu tidak tahu yang mana.</p>
 <p>Aturan praktis: <b>hitung berapa kali tanda berubah</b>. Sekali = satu IRR, aman. Dua kali atau lebih = laporkan sebagai "IRR tidak tunggal", jangan sajikan satu angka seolah pasti. Ini yang membedakan analis 70% vs 90%.</p></div>
-<div class="callout"><b>Kenapa [guess] jarang dipakai?</b> Default 10% cukup untuk 99% kasus. Guess baru dibutuhkan saat XIRR #NUM! padahal data benar — biasanya karena IRR-nya jauh dari 10% (mis. -40% atau +200%). Coba =XIRR(values, dates, 0.5) atau -0.2 sebagai pancingan.</div>`},
+<div class="callout"><b>Kenapa [guess] jarang dipakai?</b> Default 10% cukup untuk 99% kasus. Guess baru dibutuhkan saat XIRR #NUM! padahal data benar — biasanya karena IRR-nya jauh dari 10% (mis. \u221240% atau +200%). Coba =XIRR(values, dates, 0.5) atau \u22120.2 sebagai pancingan.</div>`},
 {h: "CHOOSE: satu sel mengendalikan tiga skenario", body: `
 <div class="formula">=CHOOSE(index, value1, value2, value3)</div>
 <p><b>CHOOSE</b> memilih nilai ke-<i>index</i> dari daftar. Pola skenario standar: satu sel kontrol (mis. B1) berisi 1/2/3, seluruh model membaca skenario dari sel itu.</p>
@@ -471,8 +472,8 @@ sections: [
 {h: "Tugas praktik", body: `
 <p>Bangun <b>lembar valuasi tanggal-nyata</b> di Google Sheets (mulai dari sheet kosong — tanpa file latihan, ini uji kemandirian):</p>
 <ol>
-<li><b>Tabel XNPV:</b> investasi -Rp500jt (1 Jan 2025), +Rp200jt (1 Jul 2025), +Rp350jt (1 Mar 2026). Hitung =XNPV(12%, …) lalu <b>verifikasi manual</b> dengan rumus pangkat per baris. Keduanya harus ≈ -4,1.</li>
-<li><b>XIRR</b> untuk tabel yang sama. Lalu uji jebakan: ganti baris terakhir jadi -150 (tanda berubah 2×) — catat apa yang terjadi dan tulis kesimpulanmu satu kalimat.</li>
+<li><b>Tabel XNPV:</b> investasi \u2212Rp500jt (1 Jan 2025), +Rp200jt (1 Jul 2025), +Rp350jt (1 Mar 2026). Hitung =XNPV(12%, …) lalu <b>verifikasi manual</b> dengan rumus pangkat per baris. Keduanya harus ≈ \u22124,1.</li>
+<li><b>XIRR</b> untuk tabel yang sama. Lalu uji jebakan: ganti baris terakhir jadi \u2212150 (tanda berubah 2×) — catat apa yang terjadi dan tulis kesimpulanmu satu kalimat.</li>
 <li><b>Scenario switch:</b> sel B1 dropdown Bear/Base/Bull → growth =CHOOSE(…). Hubungkan ke satu baris proyeksi pendapatan.</li>
 <li><b>Grid sensitivitas 3×3</b> Gordon seperti di atas. Pastikan copy-paste grid tidak merusak satu sel pun (cek sudut-sudutnya).</li>
 </ol>
@@ -507,7 +508,7 @@ quiz: [
 {q: "Kolom tanggal terlihat '1/7/2025' tapi XNPV #VALUE!. Diagnosis?", opts: ["Rate terlalu besar", "Values harus diurutkan dulu", "Tanggal tersimpan sebagai teks, bukan date", "Kurang argumen guess"], answer: 2, k: "xnpv", diff: "Medium",
  hints: ["#VALUE! = tipe data salah.", "Tanggal teks rata kiri; tanggal asli rata kanan."],
  explain: "Tanggal teks → Format → Number → Date. XNPV butuh date serial, bukan string yang mirip tanggal. (Excel L5 §2)"},
-{q: "Arus kas: -100, +250, -150. Apa bahayanya memakai XIRR tunggal?", opts: ["Tanda berubah 2× → bisa ada 2 IRR berbeda", "XIRR pasti menghasilkan 0", "Tidak bisa dihitung sama sekali", "Hasilnya selalu negatif"], answer: 0, k: "xirr_trap", diff: "Hard",
+{q: "Arus kas: \u2212100, +250, \u2212150. Apa bahayanya memakai XIRR tunggal?", opts: ["Tanda berubah 2× → bisa ada 2 IRR berbeda", "XIRR pasti menghasilkan 0", "Tidak bisa dihitung sama sekali", "Hasilnya selalu negatif"], answer: 0, k: "xirr_trap", diff: "Hard",
  hints: ["Hitung berapa kali tanda berubah: − → + → −.", "Satu persamaan NPV=0 bisa punya >1 solusi."],
  explain: "Dua kali ganti tanda = hingga dua IRR valid. XIRR mengembalikan satu (tergantung tebakan) — sajikan satu angka tanpa catatan = menyesatkan. (Excel L5 §3)"},
 {q: "=CHOOSE(B1, \"bear\", \"base\", \"bull\"), B1 berisi 2. Hasil?", opts: ["\"bear\"", "\"bull\"", "#VALUE!", "\"base\""], answer: 3, k: "choose", diff: "Medium",
@@ -541,13 +542,13 @@ hell: [
  explain: "25 × XNPV(20 arus kas) = 500 kalkulasi iteratif. Struktur ulang: satu baris 'mesin' menghitung XNPV per skenario, grid hanya menampilkan. Prinsip L4: calculation sekali, output hanya reference."}
 ],
 tasks: [
-{t: "Tugas A — Lembar XNPV/XIRR dari nol (±2 jam)", d: "Di Google Sheets kosong: bangun tabel -500/+200/+350 (tanggal 1 Jan 2025, 1 Jul 2025, 1 Mar 2026). Hitung =XNPV(12%,…) lalu verifikasi manual per baris dengan pangkat (tanggal-tanggal)/365. Keduanya ≈ -4,1. Lalu =XIRR(…) untuk tabel yang sama.", url: "https://drive.google.com/drive/folders/1ZemMXTh95PAjLRZc_kSY2MDJOuywblrt"},
+{t: "Tugas A — Lembar XNPV/XIRR dari nol (±2 jam)", d: "Di Google Sheets kosong: bangun tabel \u2212500/+200/+350 (tanggal 1 Jan 2025, 1 Jul 2025, 1 Mar 2026). Hitung =XNPV(12%,…) lalu verifikasi manual per baris dengan pangkat (tanggal-tanggal)/365. Keduanya ≈ \u22124,1. Lalu =XIRR(…) untuk tabel yang sama.", url: "https://drive.google.com/drive/folders/1ZemMXTh95PAjLRZc_kSY2MDJOuywblrt"},
 {t: "Tugas B — Scenario switch (±1 jam)", d: "Sel B1 dropdown Bear/Base/Bull → growth =CHOOSE(MATCH(…), 5%, 10%, 15%). Hubungkan ke satu baris proyeksi pendapatan 3 tahun. Ganti dropdown, pastikan seluruh baris ikut berubah.", url: ""},
 {t: "Tugas C — Grid sensitivitas 3×3 (±1 jam)", d: "Bangun grid Gordon seperti di lesson (WACC 10/12/14% × g 2/3/4%, FCF=100). Cek keempat sudutnya manual: 1275 / 850 / 1733 / 1040. Satu sel salah = pola $-mu bocor.", url: ""},
 {t: "Tugas D — Kuis di atas", d: "Target ≥8/9 benar (standar 90%). Salah? Baca hint, coba lagi.", url: ""}
 ],
 blind: {h: "Uji Kilat — angka beda", body: `
-<p><b>1.</b> Arus kas: -200 (1 Feb 2025), +260 (1 Agu 2025). Tulis rumus XNPV (rate 10%) dan XIRR-nya. Tanpa menghitung — cukup rumusnya benar.</p>
+<p><b>1.</b> Arus kas: \u2212200 (1 Feb 2025), +260 (1 Agu 2025). Tulis rumus XNPV (rate 10%) dan XIRR-nya. Tanpa menghitung — cukup rumusnya benar.</p>
 <details class="ans"><summary>Jawaban</summary>
 <p>=XNPV(10%, B2:B3, A2:A3) dan =XIRR(B2:B3, A2:A3). Urutan: rate, values, dates untuk XNPV; values, dates untuk XIRR.</p>
 </details>
@@ -925,11 +926,12 @@ sections: [
 <table class="brutal">
 <tr><th>Zone</th><th>Contents</th><th>Trait</th></tr>
 <tr><td><b>INPUT</b></td><td>Assumptions: growth, rates, drivers</td><td>Blue cells — the only place typed numbers live</td></tr>
-<tr><td><b>CALCULATION</b></td><td>Linking formulas</td><td>No typed numbers at all</td></tr>
+<tr><td><b>CALCULATION</b></td><td>Linking formulas</td><td>No typed numbers \u2014 except structural constants 0 and 1</td></tr>
 <tr><td><b>OUTPUT</b></td><td>Results: reports, charts, summary</td><td>Only references to calculation</td></tr>
 </table>
 <div class="formula">=B5*(1+B6) ✓ &nbsp;&nbsp;vs&nbsp;&nbsp; =16800*1.1 ✗</div>
 <p>Both give 18,480 today. The difference: 3 months from now growth changes to 15% — the left one follows automatically, the right one silently goes stale.</p>
+<p><b>Exception:</b> structural constants <b>0 and 1</b> are fine \u2014 the <b>1</b> in <tt>=B5*(1+B6)</tt> means "100% of the base", not a business assumption. What is banned is a <b>typed business assumption</b> inside a formula: a 10% rate, 12% growth, a Rp250 price. Assumptions like that must live in a blue INPUT cell and be referenced, never re-typed.</p>
 <div class="callout"><b>Why does separation speed up audits?</b> Because it narrows the search: wrong number? Check the 3 zones in order — input first (is the assumption right?), calculation (are the links right?), output (are the references right?). Without zones, you're hunting a needle in a 500-formula haystack.</div>`},
 {h: "IFERROR: guard, not bug cover", body: `
 <div class="formula">=IFERROR(division, 0) — if error, show 0</div>
@@ -1031,11 +1033,11 @@ sections: [
 <p>Three arguments, <b>fixed</b> order: discount rate first, then cash flows, then dates. Investment example (Rp million):</p>
 <table class="brutal">
 <tr><th>Date (A)</th><th>Cash flow (B)</th><th>Note</th></tr>
-<tr><td>Jan 1, 2025</td><td>-500</td><td>Initial investment</td></tr>
+<tr><td>Jan 1, 2025</td><td>\u2212500</td><td>Initial investment</td></tr>
 <tr><td>Jul 1, 2025</td><td>200</td><td>First distribution</td></tr>
 <tr><td>Mar 1, 2026</td><td>350</td><td>Second distribution</td></tr>
 </table>
-<div class="formula">=XNPV(12%, B2:B4, A2:A4) &nbsp;→&nbsp; ≈ -4.1 (marginal project!)</div>
+<div class="formula">=XNPV(12%, B2:B4, A2:A4) &nbsp;→&nbsp; ≈ \u22124.1 (marginal project!)</div>
 <p><b>Manual verification</b> (mandatory skill — this is how you audit it):</p>
 <div class="formula">=-500 + 200/(1.12)<sup>((A3-A2)/365)</sup> + 350/(1.12)<sup>((A4-A2)/365)</sup></div>
 <p>The first date = t<sub>0</sub>. Each cash flow is discounted proportionally to its <b>actual day distance</b> divided by 365.</p>
@@ -1046,11 +1048,11 @@ sections: [
 <div class="formula">=XIRR(values, dates, [guess])</div>
 <p>XIRR finds the discount rate that makes XNPV = 0. Two hard requirements: <b>at least one positive and one negative cash flow</b> — otherwise you get #NUM! (no rate can balance it).</p>
 <div class="example warung"><div class="lbl">🏪 Example</div>
-<p>Invest -Rp1,000m (Jan 1, 2023), receive Rp1,100m (Jan 1, 2024): =XIRR(B2:B3, A2:A3) → <b>10%</b>. Exactly 365 days → same as plain IRR. The difference shows when dates aren't round.</p></div>
+<p>Invest \u2212Rp1,000m (Jan 1, 2023), receive Rp1,100m (Jan 1, 2024): =XIRR(B2:B3, A2:A3) → <b>10%</b>. Exactly 365 days → same as plain IRR. The difference shows when dates aren't round.</p></div>
 <div class="example jebakan"><div class="lbl">🚫 Trap #2: multiple IRRs</div>
-<p>Cash flows: <b>-100, +250, -150</b>. The sign changes <b>twice</b> (− → + → −). Mathematically there can be <b>two IRRs</b> that both make NPV = 0! XIRR returns only one (depending on the starting guess) — and you don't know which.</p>
+<p>Cash flows: <b>\u2212100, +250, \u2212150</b>. The sign changes <b>twice</b> (− → + → −). Mathematically there can be <b>two IRRs</b> that both make NPV = 0! XIRR returns only one (depending on the starting guess) — and you don't know which.</p>
 <p>Rule of thumb: <b>count the sign changes</b>. Once = one IRR, safe. Twice or more = report "non-unique IRR", don't present one number as certain. This is what separates 70% analysts from 90% ones.</p></div>
-<div class="callout"><b>Why is [guess] rarely used?</b> The 10% default covers 99% of cases. You only need guess when XIRR returns #NUM! despite correct data — usually because the IRR is far from 10% (e.g. -40% or +200%). Try =XIRR(values, dates, 0.5) or -0.2 as bait.</div>`},
+<div class="callout"><b>Why is [guess] rarely used?</b> The 10% default covers 99% of cases. You only need guess when XIRR returns #NUM! despite correct data — usually because the IRR is far from 10% (e.g. \u221240% or +200%). Try =XIRR(values, dates, 0.5) or \u22120.2 as bait.</div>`},
 {h: "CHOOSE: one cell controls three scenarios", body: `
 <div class="formula">=CHOOSE(index, value1, value2, value3)</div>
 <p><b>CHOOSE</b> picks the <i>index</i>-th value from a list. The standard scenario pattern: one control cell (e.g. B1) holding 1/2/3, the whole model reading its scenario from that cell.</p>
@@ -1075,8 +1077,8 @@ sections: [
 {h: "Practice task", body: `
 <p>Build a <b>real-date valuation sheet</b> in Google Sheets (start from a blank sheet — no practice file, this tests independence):</p>
 <ol>
-<li><b>XNPV table:</b> invest -Rp500m (Jan 1, 2025), +Rp200m (Jul 1, 2025), +Rp350m (Mar 1, 2026). Compute =XNPV(12%,…) then <b>verify manually</b> with per-row power formulas. Both should ≈ -4.1.</li>
-<li><b>XIRR</b> for the same table. Then test the trap: change the last row to -150 (sign changes 2×) — note what happens and write your conclusion in one sentence.</li>
+<li><b>XNPV table:</b> invest \u2212Rp500m (Jan 1, 2025), +Rp200m (Jul 1, 2025), +Rp350m (Mar 1, 2026). Compute =XNPV(12%,…) then <b>verify manually</b> with per-row power formulas. Both should ≈ \u22124.1.</li>
+<li><b>XIRR</b> for the same table. Then test the trap: change the last row to \u2212150 (sign changes 2×) — note what happens and write your conclusion in one sentence.</li>
 <li><b>Scenario switch:</b> cell B1 dropdown Bear/Base/Bull → growth =CHOOSE(…). Link it to one 3-year revenue projection row.</li>
 <li><b>3×3 sensitivity grid</b> Gordon as above. Verify all four corners manually: 1275 / 850 / 1733 / 1040. One wrong cell = your $ pattern leaks.</li>
 </ol>
@@ -1111,7 +1113,7 @@ quiz: [
 {q: `The date column shows '1/7/2025' but XNPV gives #VALUE!. Diagnosis?`, opts: ["Rate too large", "Values must be sorted first", "Dates stored as text, not dates", "Missing guess argument"], answer: 2, k: "xnpv",
  hints: ["#VALUE! = wrong data type.", "Text dates align left; real dates align right."],
  explain: `Text dates → Format → Number → Date. XNPV needs date serials, not date-looking strings. (Excel L5 §2)`},
-{q: `Cash flows: -100, +250, -150. The danger of using a single XIRR?`, opts: ["Sign changes 2× → two different IRRs may exist", "XIRR always returns 0", "It can't be computed at all", "The result is always negative"], answer: 0, k: "xirr_trap",
+{q: `Cash flows: \u2212100, +250, \u2212150. The danger of using a single XIRR?`, opts: ["Sign changes 2× → two different IRRs may exist", "XIRR always returns 0", "It can't be computed at all", "The result is always negative"], answer: 0, k: "xirr_trap",
  hints: ["Count the sign changes: − → + → −.", "One NPV=0 equation can have >1 solution."],
  explain: `Two sign changes = up to two valid IRRs. XIRR returns one (guess-dependent) — presenting one number without a note misleads. (Excel L5 §3)`},
 {q: `=CHOOSE(B1, "bear", "base", "bull"), B1 holds 2. Result?`, opts: [`"bear"`, `"bull"`, "#VALUE!", `"base"`], answer: 3, k: "choose",
@@ -1144,13 +1146,13 @@ hell: [
  explain: `25 × XNPV(20 flows) = 500 iterative calcs. Restructure: one 'engine' row computes XNPV per scenario, the grid merely displays. L4 principle: calculate once, output only references.`}
 ],
 tasks: [
-{t: "Task A — XNPV/XIRR sheet from scratch (±2 hrs)", d: "In a blank Google Sheet: build the -500/+200/+350 table (dates Jan 1 2025, Jul 1 2025, Mar 1 2026). Compute =XNPV(12%,…) then verify manually per row with (date-date)/365 powers. Both ≈ -4.1. Then =XIRR(…) for the same table.", url: "https://drive.google.com/drive/folders/1ZemMXTh95PAjLRZc_kSY2MDJOuywblrt"},
+{t: "Task A — XNPV/XIRR sheet from scratch (±2 hrs)", d: "In a blank Google Sheet: build the \u2212500/+200/+350 table (dates Jan 1 2025, Jul 1 2025, Mar 1 2026). Compute =XNPV(12%,…) then verify manually per row with (date-date)/365 powers. Both ≈ \u22124.1. Then =XIRR(…) for the same table.", url: "https://drive.google.com/drive/folders/1ZemMXTh95PAjLRZc_kSY2MDJOuywblrt"},
 {t: "Task B — Scenario switch (±1 hr)", d: "Cell B1 dropdown Bear/Base/Bull → growth =CHOOSE(MATCH(…), 5%, 10%, 15%). Link it to one 3-year revenue projection row. Flip the dropdown; the whole row must follow.", url: ""},
 {t: "Task C — 3×3 sensitivity grid (±1 hr)", d: "Build the Gordon grid from the lesson (WACC 10/12/14% × g 2/3/4%, FCF=100). Manually check all four corners: 1275 / 850 / 1733 / 1040. One wrong cell = your $ pattern leaks.", url: ""},
 {t: "Task D — The quiz above", d: "Target ≥8/9 correct (the 90% standard). Missed some? Read the hints, try again.", url: ""}
 ],
 blind: {h: "Speed Drill — different numbers", body: `
-<p><b>1.</b> Cash flows: -200 (Feb 1, 2025), +260 (Aug 1, 2025). Write the XNPV formula (10% rate) and the XIRR formula. No computing — just correct formulas.</p>
+<p><b>1.</b> Cash flows: \u2212200 (Feb 1, 2025), +260 (Aug 1, 2025). Write the XNPV formula (10% rate) and the XIRR formula. No computing — just correct formulas.</p>
 <details class="ans"><summary>Answer</summary>
 <p>=XNPV(10%, B2:B3, A2:A3) and =XIRR(B2:B3, A2:A3). Order: rate, values, dates for XNPV; values, dates for XIRR.</p>
 </details>

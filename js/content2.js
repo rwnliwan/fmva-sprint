@@ -2660,7 +2660,7 @@ sections: [
 <tr><td>Equity sponsor</td><td>25.000</td></tr>
 <tr><td><b>TOTAL SOURCES</b></td><td><b>51.000</b></td></tr>
 </table>
-<div class="callout"><b>Kenapa beli pakai utang, bukan full equity?</b> Karena utang <b>memperbesar return atas modal sendiri</b> \u2014 Rp25.000 mengendalikan aset Rp51.000. Dan cicilannya dibayar dari kas target, bukan kantong sponsor. Tapi ingat: cicilan tetap jalan walau warung sepi \u2014 itu harganya (Seksi 7).</div>`},
+<div class="callout"><b>Kenapa beli pakai utang, bukan full equity?</b> Karena utang <b>memperbesar return atas modal sendiri \u2014 bila hasil aset di atas biaya utang</b> \u2014 Rp25.000 mengendalikan aset Rp51.000. Kalau hasil aset di bawah biaya utang, utang justru memperkecil return (dan memperbesar rugi): utang memperbesar <i>sensitivitas</i> return, bukan menjamin return lebih besar. Dan cicilannya dibayar dari kas target, bukan kantong sponsor. Tapi ingat: cicilan tetap jalan walau warung sepi \u2014 itu harganya (Seksi 7).</div>`},
 {h: "Sources & Uses: 51.000 = 51.000", body: `
 
 <p>Setiap LBO dibuka dengan <b>sources & uses</b> \u2014 "uang keluar untuk apa, uang masuk dari mana". Dua sisi yang <b>wajib balance</b>:</p>
@@ -2860,30 +2860,30 @@ sections: [
 <tr><td>Revenue / EBIT</td><td>unfavorable (kurang dari budget)</td><td>favorable</td></tr>
 <tr><td>Biaya (COGS, opex)</td><td>favorable (lebih hemat)</td><td>unfavorable (jebol)</td></tr>
 </table>
-<p>Jan\u2013Jun 2026: actual revenue 116.500 vs budget 117.600 \u2192 variance <b>-1.100 (unfavorable)</b>. Actual EBIT 18.800 vs budget 22.800 \u2192 <b>-4.000 (unfavorable)</b>. Dari mana -4.000? Revenue -1.100, COGS +1.700 (biaya actual LEBIH besar \u2192 unfavorable), opex +1.200.</p>
-<div class="callout"><b>Kenapa urutannya actual - budget, bukan sebaliknya?</b> Karena pertanyaan variance selalu: "dibanding janji, kenyataannya bagaimana?" Actual dulu = kenyataan sebagai subjek. Konsistensi ini yang membuat -1.100 langsung terbaca "kurang", tanpa perlu mengingat-ingat rumus.</div>`},
+<p>Jan\u2013Jun 2026: actual revenue 116.500 vs budget 117.600 \u2192 variance <b>\u22121.100 (unfavorable)</b>. Actual EBIT 18.800 vs budget 22.800 \u2192 <b>\u22124.000 (unfavorable)</b>. Dari mana \u22124.000? Revenue \u22121.100, COGS +1.700 (biaya actual LEBIH besar \u2192 unfavorable), opex +1.200.</p>
+<div class="callout"><b>Kenapa urutannya actual - budget, bukan sebaliknya?</b> Karena pertanyaan variance selalu: "dibanding janji, kenyataannya bagaimana?" Actual dulu = kenyataan sebagai subjek. Konsistensi ini yang membuat \u22121.100 langsung terbaca "kurang", tanpa perlu mengingat-ingat rumus.</div>`},
 {h: "Kenapa variance diurai: price vs volume (Juni)", body: `
 <p>Juni: revenue variance <b>+1.500 (favorable)</b>. Sekilas bagus. Tapi bedahnya:</p>
-<div class="formula">Price variance = (P_act - P_bud) \u00D7 Q_act = (17 - 20) \u00D7 1.500 = <b>-4.500</b></div>
+<div class="formula">Price variance = (P_act - P_bud) \u00D7 Q_act = (17 - 20) \u00D7 1.500 = <b>\u22124.500</b></div>
 <div class="formula">Volume variance = (Q_act - Q_bud) \u00D7 P_bud = (1.500 - 1.200) \u00D7 20 = <b>+6.000</b></div>
-<p>-4.500 + 6.000 = +1.500 \u2713. Ceritanya: harga dipotong Rp3rb/unit (mungkin promo), volume naik 300 unit. Kenaikan revenue <i>dibeli</i> dengan margin.</p>
+<p>\u22124.500 + 6.000 = +1.500 \u2713. Ceritanya: harga dipotong Rp3rb/unit (mungkin promo), volume naik 300 unit. Kenaikan revenue <i>dibeli</i> dengan margin.</p>
 <div class="callout"><b>Kenapa diurai?</b> Karena angka total menipu: +1.500 membuat manajer terlihat hebat, padahal ia "membeli" volume dengan potongan harga. Tanpa uraian, kamu memberi bonus untuk keputusan yang menggerus margin. Price vs volume = memisahkan <i>keputusan harga</i> dari <i>hasil volume</i>.</div>`},
 {h: "Kenapa flex budget lebih adil dari static budget", body: `
 <p>Static budget Jun disusun untuk 1.200 unit. Actual: 1.500 unit. Membandingkan EBIT actual (4.300) langsung ke static (6.000) itu <b>tidak adil</b> \u2014 volumenya beda 25%.</p>
 <p><b>Flex budget</b> = budget yang disusun ulang pada volume actual (harga & biaya tetap pakai budget):</p>
 <div class="formula">Flex EBIT Jun = 30.000 - 15.000 - 6.000 = <b>9.000</b></div>
 <p>Flex revenue = 1.500 \u00D7 20 = 30.000. Flex COGS = 1.500 \u00D7 10 = 15.000 (biaya ikut <i>volume</i>, bukan ikut revenue \u2014 karena harga actual turun tapi biaya per unit tetap). Opex tetap 6.000.</p>
-<p>Sekarang bandingkan yang sepadan: actual 4.300 vs flex 9.000 \u2192 <b>-4.700</b>. Itu kinerja <i>murni</i> setelah efek volume disingkirkan.</p>
+<p>Sekarang bandingkan yang sepadan: actual 4.300 vs flex 9.000 \u2192 <b>\u22124.700</b>. Itu kinerja <i>murni</i> setelah efek volume disingkirkan.</p>
 <div class="callout"><b>Kenapa flex lebih adil?</b> Karena static mencampur dua hal: "kita jual lebih banyak" (keputusan/keberuntungan volume) dan "kita eksekusi dengan baik" (efisiensi & harga). Flex memisahkan keduanya \u2014 manajer dinilai dari yang ia kendalikan, bukan dari ramainya pasar.</div>`},
 {h: "Dua variance, dua pesan", body: `
 <table class="brutal">
 <tr><th>Variance Jun</th><th>Nilai</th><th>Pesan</th></tr>
 <tr><td>Sales volume variance</td><td>+3.000 (F)</td><td>Flex 9.000 - static 6.000: strategi volume BERHASIL</td></tr>
-<tr><td>Flexible budget variance</td><td>-4.700 (U)</td><td>Actual 4.300 - flex 9.000: eksekusi BOCOR</td></tr>
-<tr><td><b>Total (static variance)</b></td><td><b>-1.700</b></td><td>+3.000 + (-4.700) \u2713</td></tr>
+<tr><td>Flexible budget variance</td><td>\u22124.700 (U)</td><td>Actual 4.300 - flex 9.000: eksekusi BOCOR</td></tr>
+<tr><td><b>Total (static variance)</b></td><td><b>\u22121.700</b></td><td>+3.000 + (\u22124.700) \u2713</td></tr>
 </table>
-<p>Bocornya dari mana? -4.700 = price variance (-4.500) + opex spending variance (6.000 - 6.200 = -200). Jadi: volume menang, harga kalah, opex sedikit jebol.</p>
-<div class="callout"><b>Kenapa dua-duanya dilaporkan?</b> Karena obatnya beda. Sales volume variance favorable \u2192 pertahankan strategi penjualannya. Flexible budget variance unfavorable \u2192 audit kebijakan diskonnya. Satu angka -1.700 tidak memberi tahu mana yang harus diulang dan mana yang harus dihentikan.</div>`},
+<p>Bocornya dari mana? \u22124.700 = price variance (\u22124.500) + dampak opex ke EBIT (\u2212200). Opex spending variance-nya sendiri = 6.200 \u2212 6.000 = <b>+200 (unfavorable)</b> \u2014 biaya actual LEBIH besar, jadi variance biaya positif = unfavorable (lihat tabel di atas). Dampaknya ke EBIT adalah kebalikannya: \u2212200. Jadi: volume menang, harga kalah, opex sedikit jebol.</p>
+<div class="callout"><b>Kenapa dua-duanya dilaporkan?</b> Karena obatnya beda. Sales volume variance favorable \u2192 pertahankan strategi penjualannya. Flexible budget variance unfavorable \u2192 audit kebijakan diskonnya. Satu angka \u22121.700 tidak memberi tahu mana yang harus diulang dan mana yang harus dihentikan.</div>`},
 {h: "Zero-based vs incremental: dua cara menyusun budget", body: `
 <p>Ada dua filosofi menyusun budget:</p>
 <table class="brutal">
@@ -2899,6 +2899,7 @@ sections: [
 <p>Budget bicara 1 tahun. Corporate finance bicara: <i>proyek multi-tahun mana yang layak diambil?</i> Aturannya satu:</p>
 <div class="formula">Terima proyek jika dan hanya jika NPV > 0</div>
 <p>NPV = nilai kini seluruh kas masuk - investasi awal (didiskon pada biaya modal). NPV > 0 artinya proyek menciptakan nilai <i>di atas</i> harga modalnya.</p>
+<p><b>Syarat aturan ini:</b> proyek independen (bukan saling meniadakan), tidak ada kendala modal (tidak ada penjatahan modal), dan arus kas + risiko sudah dimodelkan dengan benar. Kalau dua proyek saling meniadakan, keduanya NPV > 0 tidak berarti keduanya diambil \u2014 pilih NPV terbesar (lihat "Konflik ranking" di bawah). Kalau modal dijatah, NPV saja tidak cukup \u2014 ranking antar-proyek butuh kriteria tambahan (lihat tabel capital budgeting di bawah).</p>
 <p>Contoh: Warung Nusantara mau buka cabang \u2014 investasi 50.000, kas bersih 3 tahun: 20.000, 22.000, 25.000, biaya modal 12%. PV = 20.000/1,12 + 22.000/1,12\u00B2 + 25.000/1,12\u00B3 = 17.857 + 17.537 + 17.795 = 53.189. NPV = 53.189 - 50.000 = <b>+3.189 > 0 \u2192 terima</b>.</p>
 <div class="callout"><b>Kenapa NPV > 0, bukan "payback cepat" atau "IRR tertinggi"?</b> Karena hanya NPV yang mengukur <i>tambah nilai dalam rupiah</i> secara konsisten. Payback mengabaikan waktu & arus setelah balik modal; IRR bisa memberi jawaban ganda/menyesatkan saat arus kas tidak konvensional. Satu aturan, satu makna: tambah nilai atau tidak.</div>`},
 {h: "Cost of capital: kenapa modal sendiri ada 'harganya'", body: `
@@ -2937,7 +2938,7 @@ sections: [
 {h: "Forecasting statistik: moving average, exponential smoothing, MAE (Mean Absolute Error)/MAPE (Mean Absolute Percentage Error)", body: `
 <p>Forecast driver-based (H08) menjawab <i>kenapa</i> angka bergerak. <b>Forecasting statistik</b> menjawab <i>seberapa akurat</i> tebakanmu — dan tanpanya, forecast hanyalah opini yang rapi:</p>
 <div class="example warung"><div class="lbl">🏪 Contoh — penjualan kopi (ribu gelas)</div>
-<p>Aktual: 100, 110, 105, 120, 118. <b>Moving average 3 periode:</b> forecast periode 4 = (100+110+105) ÷ 3 = 105 → error 15; forecast periode 5 = (110+105+120) ÷ 3 = 111,67 → error 6,33. <b>MAE</b> = (15 + 6,33) ÷ 2 = <b>10,67</b>. <b>MAPE</b> = (15÷120 + 6,33÷118) ÷ 2 = (12,5% + 5,37%) ÷ 2 = <b>8,93%</b>.</p>
+<p>Aktual: 100, 110, 105, 120, 118. <b>Moving average 3 periode:</b> forecast periode 4 = (100+110+105) ÷ 3 = 105 → error 15; forecast periode 5 = (110+105+120) ÷ 3 = 111,67 → error 6,33. <b>MAE</b> = (15 + 6,33) ÷ 2 = <b>10,67</b> (dihitung dari presisi penuh: error kedua 6,333... \u2014 (15 + 6,333...) ÷ 2 = 10,666... \u2192 10,67; dari angka tampil 6,33 hasilnya 10,665 \u2192 tetap 10,67). <b>MAPE</b> = (15÷120 + 6,33÷118) ÷ 2 = (12,5% + 5,37%) ÷ 2 = <b>8,93%</b>.</p>
 <p><b>Exponential smoothing</b> (α = 0,3; F₁ = 100): F₂ = 100; F₃ = 100 + 0,3 × 10 = 103; F₄ = 103 + 0,3 × 2 = 103,6. Error: 10; 2; 16,4 → MAE = <b>9,47</b>, MAPE = (9,09% + 1,90% + 13,67%) ÷ 3 = <b>8,22%</b> — sedikit lebih akurat dari MA-3 di data ini. α besar = responsif tapi berisik; α kecil = halus tapi lambat. Pilih α dengan meminimalkan MAPE di data histori, bukan dengan firasat.</p></div>
 <p><b>Aturan:</b> MAPE &lt; 10% = bagus untuk forecast penjualan stabil; MAPE &gt; 20% = modelmu belum menangkap pola (musiman? tren?). Jangan pernah melaporkan forecast tanpa MAE/MAPE-nya — angka tanpa ukuran error = klaim tanpa bukti.</p>`},
 {h: "LAB: rolling forecast kuartalan (bangun, bukan kuis)", body: `
@@ -2954,15 +2955,15 @@ quiz: [
 {q: "Budget revenue tahunan Rp240.000rb, faktor musiman Jun 0,10. Budget revenue Jun?", opts: ["Rp24.000rb","Rp20.000rb","Rp21.600rb","Rp16.800rb"], answer: 0, k: "budget_phasing", diff: "Easy",
  hints: ["Budget bulan = tahunan \u00D7 faktor.","240.000 \u00D7 0,10 = ?"],
  explain: "240.000 \u00D7 0,10 = Rp24.000rb. Bukan 240.000/12 = 20.000 \u2014 musiman, bukan rata-rata."},
-{q: "Actual revenue 6 bulan Rp116.500rb, budget Rp117.600rb. Total variance revenue?", opts: ["-1.100 (unfavorable)","+1.100 (favorable)","-4.000 (unfavorable)","Rp0 (tepat budget)"], answer: 0, k: "variance_sign", diff: "Easy",
+{q: "Actual revenue 6 bulan Rp116.500rb, budget Rp117.600rb. Total variance revenue?", opts: ["\u22121.100 (unfavorable)","+1.100 (favorable)","\u22124.000 (unfavorable)","Rp0 (tepat budget)"], answer: 0, k: "variance_sign", diff: "Easy",
  hints: ["Variance = actual - budget.","116.500 - 117.600 = ?"],
- explain: "116.500 - 117.600 = -Rp1.100rb. Negatif pada revenue = unfavorable."},
-{q: "Jun: harga budget Rp20rb, harga actual Rp17rb, qty actual 1.500. Price variance?", opts: ["-Rp4.500rb","+Rp6.000rb","-Rp3.600rb","+Rp1.500rb"], answer: 0, k: "price_volume", diff: "Medium",
+ explain: "116.500 - 117.600 = \u2212Rp1.100rb. Negatif pada revenue = unfavorable."},
+{q: "Jun: harga budget Rp20rb, harga actual Rp17rb, qty actual 1.500. Price variance?", opts: ["\u2212Rp4.500rb","+Rp6.000rb","\u2212Rp3.600rb","+Rp1.500rb"], answer: 0, k: "price_volume", diff: "Medium",
  hints: ["Price var = (P_act - P_bud) \u00D7 Q_act.","(17 - 20) \u00D7 1.500 = ?"],
- explain: "(17-20) \u00D7 1.500 = -Rp4.500rb (unfavorable): diskon Rp3rb/unit."},
-{q: "Jun: flex EBIT Rp9.000rb, static budget EBIT Rp6.000rb, actual EBIT Rp4.300rb. Flexible budget variance?", opts: ["-Rp4.700rb","+Rp3.000rb","-Rp1.700rb","+Rp2.700rb"], answer: 0, k: "flex_budget", diff: "Medium",
+ explain: "(17-20) \u00D7 1.500 = \u2212Rp4.500rb (unfavorable): diskon Rp3rb/unit."},
+{q: "Jun: flex EBIT Rp9.000rb, static budget EBIT Rp6.000rb, actual EBIT Rp4.300rb. Flexible budget variance?", opts: ["\u2212Rp4.700rb","+Rp3.000rb","\u2212Rp1.700rb","+Rp2.700rb"], answer: 0, k: "flex_budget", diff: "Medium",
  hints: ["Flex var = actual - flex.","4.300 - 9.000 = ?"],
- explain: "4.300 - 9.000 = -Rp4.700rb (unfavorable): eksekusi bocor setelah volume disamakan."},
+ explain: "4.300 - 9.000 = \u2212Rp4.700rb (unfavorable): eksekusi bocor setelah volume disamakan."},
 {q: "Proyek dengan NPV > 0 sebaiknya?", opts: ["Diterima \u2014 menciptakan nilai di atas biaya modal","Ditolak \u2014 NPV positif artinya kemahalan","Ditunda sampai NPV = 0","Diterima hanya jika IRR < WACC"], answer: 0, k: "npv_rule", diff: "Easy",
  hints: ["NPV = nilai tambah setelah didiskon biaya modal.","NPV > 0 artinya tambah nilai \u2192 ?"],
  explain: "NPV > 0 = proyek menambah nilai perusahaan. Terima."},
@@ -2980,16 +2981,16 @@ quiz: [
  explain: "NPV(0%) = −100 + 250 − 150 = 0; NPV(50%) = −100 + 166,67 − 66,67 = 0. Dua IRR — buang IRR, pakai NPV."},
 {q: "Forecast MA-3: error 15 (aktual 120) dan 6,33 (aktual 118). MAE dan MAPE?", opts: ["MAE 10,67; MAPE 8,93%","MAE 10,67; MAPE 12,5%","MAE 21,33; MAPE 8,93%","MAE 9,47; MAPE 8,22%"], answer: 0, k: "mape", diff: "Medium",
  hints: ["MAE = (15 + 6,33) ÷ 2.", "MAPE = (12,5% + 5,37%) ÷ 2."],
- explain: "MAE = 10,67; MAPE = 8,93%. (9,47/8,22% adalah hasil exponential smoothing α = 0,3 di lesson.)"},
+ explain: "MAE = 10,67; MAPE = 8,93%. (9,47/8,22% adalah hasil exponential smoothing α = 0,3 di lesson.) MAE memakai presisi penuh (error kedua 6,333...), bukan angka tampil 6,33 \u2014 hasilnya sama, 10,67."},
 {q: "Mix variance contoh warung (A +1.333,33; B −2.666,67) dan quantity variance?", opts: ["Mix −1.333,33; quantity +1.333,33 (total volume 0)","Mix +1.333,33; quantity −1.333,33","Mix −2.666,67; quantity 0","Mix 0; quantity −1.333,33"], answer: 0, k: "mix_variance", diff: "Hard",
  hints: ["Total mix = 1.333,33 − 2.666,67.", "Quantity = (1.600 − 1.500) × 13,33."],
  explain: "Mix total −1.333,33; quantity +1.333,33; jumlahnya 0 = volume variance. Volume naik tapi ke produk murah — itulah cerita mix."}
 
 ],
 hell: [
-{q: "Revenue variance Jun +Rp1.500rb (favorable) tapi price variance -Rp4.500rb. Kesimpulan?", opts: ["Kinerja Jun bagus, tak perlu ditindaklanjuti","Volume menutupi potongan harga \u2014 selidiki apakah diskon sepadan dengan margin yang hilang","Naikkan harga segera","Model salah hitung"], answer: 1, diff: "Medium",
- explain: "Angka total menipu: +1.500 = -4.500 (harga) + 6.000 (volume). Diskon Rp3rb/unit membeli 300 unit ekstra \u2014 bagus hanya jika margin per unit masih sehat."},
-{q: "Opex actual Rp6.200rb/bln vs budget Rp6.000rb selama 6 bulan. Total opex variance?", opts: ["-Rp1.200rb (favorable)","+Rp1.200rb (unfavorable)","Rp0","+Rp200rb (unfavorable)"], answer: 1, diff: "Easy",
+{q: "Revenue variance Jun +Rp1.500rb (favorable) tapi price variance \u2212Rp4.500rb. Kesimpulan?", opts: ["Kinerja Jun bagus, tak perlu ditindaklanjuti","Volume menutupi potongan harga \u2014 selidiki apakah diskon sepadan dengan margin yang hilang","Naikkan harga segera","Model salah hitung"], answer: 1, diff: "Medium",
+ explain: "Angka total menipu: +1.500 = \u22124.500 (harga) + 6.000 (volume). Diskon Rp3rb/unit membeli 300 unit ekstra \u2014 bagus hanya jika margin per unit masih sehat."},
+{q: "Opex actual Rp6.200rb/bln vs budget Rp6.000rb selama 6 bulan. Total opex variance?", opts: ["\u2212Rp1.200rb (favorable)","+Rp1.200rb (unfavorable)","Rp0","+Rp200rb (unfavorable)"], answer: 1, diff: "Easy",
  explain: "200 \u00D7 6 = +Rp1.200rb. Positif pada biaya = unfavorable. Ini spending variance: dalam kendali manajer, kecil tapi konsisten."},
 {q: "Faktor musiman Jun diubah 0,10 \u2192 0,12 (faktor lain tetap). Apa yang terjadi?", opts: ["Hanya label Jun berubah","Budget revenue Jun, budget EBIT Jun, dan total tahunan ikut berubah otomatis","File rusak","Tidak ada efek sampai disimpan ulang"], answer: 1, diff: "Medium",
  explain: "Model ter-link: 240.000 \u00D7 0,12 = 28.800 \u2192 COGS, EBIT, variance ikut. Tapi total faktor jadi 1,02 \u2014 baris cek faktor berbunyi 'belum = 1,00'."},
@@ -2998,14 +2999,14 @@ hell: [
 ],
 tasks: [
 {t: "Task A \u2014 Budget & variance Warung Nusantara (\u00B13\u20134 jam)", d: "Download file latihan Hari 18 dari Drive. Bangun budget bulanan 12 bulan dari faktor musiman, hitung variance Jan\u2013Jun, susun flex budget Juni, urai price vs volume. Semua sel jawaban rumus \u2014 target 100 + cek faktor OK \u2713.", url: "https://drive.google.com/drive/folders/1SeRbR8K-44F2a8X1EvucEzLmXVose_6I"},
-{t: "Task B \u2014 Bedah Juni di kertas (\u00B130 mnt)", d: "Tanpa melihat lesson: tulis dari memori \u2014 price variance, volume variance, flex EBIT, sales volume variance, flexible budget variance Jun beserta angkanya. Cocokkan: -4.500, +6.000, 9.000, +3.000, -4.700."},
+{t: "Task B \u2014 Bedah Juni di kertas (\u00B130 mnt)", d: "Tanpa melihat lesson: tulis dari memori \u2014 price variance, volume variance, flex EBIT, sales volume variance, flexible budget variance Jun beserta angkanya. Cocokkan: \u22124.500, +6.000, 9.000, +3.000, \u22124.700."},
 {t: "Task C \u2014 Quiz di atas", d: "Target \u22655 benar dari 9 soal (quiz + hell). Salah? Baca hint, ulangi."}
 ],
 blind: {h: "Latihan Buta \u2014 Warung Kopi Kita (kuartalan)", body: `
 <p>"Warung Kopi Kita" (Rp ribu, dinyatakan): budget revenue tahunan 120.000; faktor kuartalan Q1 0,20 / Q2 0,25 / Q3 0,30 / Q4 0,25; COGS 40% revenue; opex 3.000/bln. <b>Bedah Q3 TANPA mengintip contoh</b> \u2014 budget: harga Rp15rb, qty 2.400; actual: harga Rp14rb, qty 2.700; biaya per unit Rp6rb.</p>
 <details class="ans"><summary>Lihat jawaban (coba sendiri dulu!)</summary>
 <p><b>Budget Q3:</b> revenue = 120.000 \u00D7 0,30 = <b>36.000</b>; COGS = <b>14.400</b>; opex = 3 \u00D7 3.000 = <b>9.000</b>; EBIT = <b>12.600</b>.</p>
-<p><b>Price vs volume:</b> actual revenue = 14 \u00D7 2.700 = <b>37.800</b>; price var = (14\u221215) \u00D7 2.700 = <b>-2.700</b>; volume var = (2.700\u22122.400) \u00D7 15 = <b>+4.500</b>; total = <b>+1.800</b> \u2713.</p>
+<p><b>Price vs volume:</b> actual revenue = 14 \u00D7 2.700 = <b>37.800</b>; price var = (14\u221215) \u00D7 2.700 = <b>\u22122.700</b>; volume var = (2.700\u22122.400) \u00D7 15 = <b>+4.500</b>; total = <b>+1.800</b> \u2713.</p>
 <p><b>Flex Q3:</b> revenue = 2.700 \u00D7 15 = <b>40.500</b>; COGS = 2.700 \u00D7 6 = <b>16.200</b>; EBIT = 40.500 \u2212 16.200 \u2212 9.000 = <b>15.300</b>. Sales volume var = 15.300 \u2212 12.600 = <b>+2.700 (F)</b>.</p>
 <p><i>Kenapa angka beda?</i> Driver-nya sama (phasing, price/volume, flex) \u2014 hanya periodenya kuartalan. Kuasai mekaniknya, periode berapa pun bisa.</p>
 </details>`}
@@ -3179,7 +3180,7 @@ sections: [
 </table>
 <p>Bunga Y1 = 4.791,25 \u00d7 8% = <b>383,30</b>; pokok = 1.200 \u2212 383,30 = <b>816,70</b>; liabilitas akhir = 4.791,25 \u2212 816,70 = <b>3.974,55</b>. Depresiasi ROU = 4.791,25 \u00f7 5 = <b>958,25</b>/tahun.</p>
 <div class="callout"><b>Kenapa beban tahun-1 (1.341,55) LEBIH BESAR dari sewa (1.200)?</b> Karena bunga dihitung dari saldo utang penuh di awal \u2014 pola <i>front-loaded</i>. Total 5 tahun tetap Rp6.000rb, tapi bebannya condong ke awal. Analis yang membandingkan "beban sewa antar perusahaan" tanpa tahu ini akan salah menyimpulkan efisiensi.</div>
-<div class="callout"><b>Kenapa ini "utang tersamar"?</b> Sebelum PSAK 73 (kini PSAK 116), operating lease memang tidak muncul di neraca \u2014 perusahaan bisa terlihat ringan utang padahal terikat kontrak miliaran. Kasus klasik: ritel & penerbangan. Sekarang aturannya: <b>kalau kamu wajib bayar, itu utang</b> \u2014 tidak peduli disebut "sewa".</div>`},
+<div class="callout"><b>Kenapa ini "utang tersamar"?</b> Sebelum PSAK 73 (kini PSAK 116), operating lease memang tidak muncul di neraca \u2014 perusahaan bisa terlihat ringan utang padahal terikat kontrak miliaran. Kasus klasik: ritel & penerbangan. Sekarang aturannya: <b>kewajiban bayar dari lease yang memenuhi kriteria pengakuan PSAK 116 = utang</b> \u2014 tidak peduli disebut "sewa". Pengecualiannya sempit: lease jangka pendek (maks 12 bulan, tanpa opsi beli) dan lease aset bernilai rendah boleh tidak diakui sebagai liabilitas \u2014 pembayarannya dicatat sebagai beban garis lurus, bukan sebagai utang.</div>`},
 {h: "Kenapa DTL bukan kas \u2014 tapi tetap utang", body: `
 <p>Penyusutan buku Rp800rb, penyusutan pajak Rp1.200rb. Fiskus mengizinkan susut <b>lebih cepat</b> \u2014 tahun ini bayar pajak lebih kecil. Apakah selisihnya "penghematan"? <b>Bukan.</b> Total susut 5 tahun tetap sama; yang bergeser hanya <i>waktunya</i>:</p>
 <div class="formula">Beda temporer = 1.200 \u2212 800 = 400 \u2192 DTL = 400 \u00d7 22% = <b>Rp88rb</b></div>
@@ -3203,7 +3204,7 @@ sections: [
 <table class="brutal">
 <tr><th>Langkah TSM</th><th>Hitungan</th><th>Hasil</th></tr>
 <tr><td>Proceeds (hasil exercise)</td><td>2.000 × 250</td><td>Rp500rb</td></tr>
-<tr><td>Buyback (saham dibeli kembali)</td><td>500rb ÷ 500</td><td><b>1.000 lembar</b></td></tr>
+<tr><td>Buyback (saham dibeli kembali)</td><td>500rb ÷ Rp500/lembar</td><td><b>1.000 lembar</b></td></tr>
 <tr><td>Saham tambahan bersih</td><td>2.000 − 1.000</td><td><b>1.000 lembar</b></td></tr>
 <tr><td>Saham dilusian</td><td>10.000 + 1.000</td><td><b>11.000</b> ✓</td></tr>
 </table>
@@ -3214,7 +3215,7 @@ sections: [
 <li><b>Pakai harga pasar RATA-RATA</b> selama periode, bukan harga akhir tahun. Harga akhir tahun bisa melonjak sehari sebelum tutup buku — rata-rata menghilangkan noise itu.</li>
 <li><b>RSU (restricted stock unit) menambah 1-untuk-1</b> — tanpa proceeds, tanpa buyback. Satu RSU yang vest = satu lembar baru penuh.</li>
 </ul>
-<div class="callout"><b>Kenapa TSM, bukan "tambah semua opsi"?</b> Karena menambah 2.000 mentah-mentah mengabaikan bahwa perusahaan <i>menerima kas</i> dari exercise — kas itu membeli kembali separuh sahamnya. TSM mengukur <i>dilusi ekonomi yang sebenarnya</i>: bukan berapa opsi yang ada, tapi berapa lembar <i>neto</i> yang bertambah setelah buyback. Analis yang memakai share count basi atau opsi bruto = overvalue.</div>`},
+<div class="callout"><b>Kenapa TSM, bukan "tambah semua opsi"?</b> Karena menambah 2.000 mentah-mentah mengabaikan bahwa perusahaan <i>menerima kas</i> dari exercise — kas itu membeli kembali separuh sahamnya. TSM mengukur <i>dilusi ekonomi yang sebenarnya</i>: bukan berapa opsi yang ada, tapi berapa lembar <i>neto</i> yang bertambah setelah buyback. Analis yang memakai share count basi = overvalue (penyebut terlalu kecil \u2014 saham yang sudah diterbitkan tidak dihitung). Analis yang memakai opsi bruto = <b>undervalue</b>: 2.000 opsi mentah-mentah \u2192 penyebut 12.000, bukan 11.000 \u2014 EPS jadi Rp4.959,59rb \u00f7 12.000 = Rp0,413rb, lebih rendah dari Rp0,451rb yang benar. Dua kesalahan, dua arah berlawanan \u2014 jangan dicampur.</div>`},
 {h: "Kenapa NOL = aset pajak (voucher Rp440rb)", body: `
 <p>Tahun lalu PT Maju Jaya rugi fiskal Rp2.000rb. Fiskus mengizinkan rugi itu <b>dikompensasikan</b> ke laba tahun ini. Rugi tahun lalu = voucher potongan pajak:</p>
 <div class="formula">DTA = 2.000 \u00d7 22% = Rp440rb \u2192 dipakai penuh tahun ini</div>
@@ -3227,7 +3228,7 @@ sections: [
 </table>
 <p>Jurnal NOL-nya: DTA awal 440 \u2192 dipakai 440 \u2192 DTA akhir <b>0</b>. Sisi bebannya muncul sebagai <b>pajak tangguhan Rp440rb</b> (non-kas), sehingga:</p>
 <div class="formula">Beban pajak total = 870,86 (kini) + 528 (tangguhan: 88 DTL + 440 reversal DTA) = <b>Rp1.398,86rb</b></div>
-<div class="callout"><b>Kenapa NOL disebut "aset"?</b> Karena memenuhi definisi aset: <i>manfaat ekonomi masa depan</i> (penghematan kas pajak Rp440rb) yang dikuasai perusahaan dari peristiwa masa lalu (rugi tahun lalu). Analis junior melihat "rugi = buruk"; analis senior melihat "rugi fiskal = voucher Rp440rb". Syaratnya: perusahaan harus yakin akan laba di masa depan \u2014 kalau tidak, DTA-nya harus dicadangkan (valuation allowance).</div>`},
+<div class="callout"><b>Kenapa NOL disebut "aset"?</b> Karena memenuhi definisi aset: <i>manfaat ekonomi masa depan</i> (penghematan kas pajak Rp440rb) yang dikuasai perusahaan dari peristiwa masa lalu (rugi tahun lalu). Analis junior melihat "rugi = buruk"; analis senior melihat "rugi fiskal = voucher Rp440rb". Syaratnya: perusahaan harus yakin akan laba di masa depan (probable \u2014 lebih mungkin daripada tidak, >50%) \u2014 kalau tidak, DTA-nya harus dicadangkan (valuation allowance).</div>`},
 {h: "Merakit: 4 penyesuaian \u2192 3 statement", body: `
 <p>Semua penyesuaian dirakit menjadi 3 statement ringkas (Rp ribu). Perhatikan <b>dari mana tiap angka datang</b> \u2014 tidak ada yang muncul tiba-tiba:</p>
 <table class="brutal">
@@ -3252,13 +3253,13 @@ sections: [
 </table>
 <table class="brutal">
 <tr><th>Neraca 31 Des</th><th>Nilai</th></tr>
-<tr><td>Kas 13.300 + piutang 3.000 + persediaan 2.000 + ROU neto 3.833 + PPE 3.200 + DTA 0</td><td><b>A = 25.333</b></td></tr>
+<tr><td>Kas 13.300 + piutang 3.000 + persediaan 2.000 + ROU neto 3.833 + PPE 3.200 + DTA 0</td><td><b>A = 25.333,00</b></td></tr>
 <tr><td>Liabilitas lease 3.974,55 + utang usaha 1.500 + utang pajak 870,86 + DTL 88</td><td><b>L = 6.433,41</b></td></tr>
 <tr><td>Modal 20.000 + APIC 500 + laba ditahan \u22121.600,41</td><td><b>E = 18.899,59</b></td></tr>
-<tr><td>Cek</td><td>25.333 = 6.433,41 + 18.899,59 \u2713</td></tr>
+<tr><td>Cek</td><td>25.333,00 = 6.433,41 + 18.899,59 \u2713</td></tr>
 </table>
 <div class="callout"><b>Kenapa bunga lease di-add-back di CFO?</b> Karena kas bunganya dicatat di <b>CFF</b> (bagian dari pembayaran lease Rp1.200rb). Kalau tidak di-add-back, bunga terhitung dua kali: sekali menggerus NI, sekali keluar di CFF. Aturan praktis: <b>bunga di-add-back di CFO tepat sebesar porsi kasnya yang dipindah ke CFF</b>.</div>
-<div class="callout"><b>Kenapa CFO (5.500) > laba bersih (4.959,59)?</b> Karena add-back non-kas Rp3.169,55 melebihi kas yang tertahan di modal kerja (Rp3.500) \u2014 setelah dikoreksi utang pajak +870,86. Selisih NI vs CFO selalu bisa dijelaskan baris per baris; kalau tidak bisa, ada yang bocor.</div>`},
+<div class="callout"><b>Kenapa CFO (5.500) > laba bersih (4.959,59)?</b> Karena 3.169,55 \u2212 3.500 + 870,86 = <b>+540,41</b> \u2014 CFO = 4.959,59 + 540,41 = <b>5.500</b>. Catatan: 3.169,55 itu <b>lebih kecil</b> dari 3.500, bukan melebihi; dan di dalamnya ada bunga lease 383,30 yang bukan add-back non-kas murni melainkan reklasifikasi (kasnya keluar lewat CFF) \u2014 add-back non-kas murninya 2.786,25 (800 + 958,25 + 500 + 528). Selisih NI vs CFO selalu bisa dijelaskan baris per baris; kalau tidak bisa, ada yang bocor.</div>`},
 {h: "Detektif Akuntansi: 4 jebakan di file misi", body: `
 <p>File misi = model PT Maju Jaya buatan "analis junior" \u2014 <b>rusak di 4 titik</b>, persis 4 topik hari ini. Petunjuk pertamamu: neracanya pun <b>TIDAK BALANCE</b> (selisih \u22121.700). Empat jebolannya:</p>
 <div class="example jebakan"><div class="lbl">\uD83D\uDEA8 Error #1 \u2014 Lease = beban sewa biasa</div>
@@ -3303,7 +3304,7 @@ quiz: [
  hints: ["Manfaat = NOL \u00d7 tarif.","2.000 \u00d7 22% = ?"],
  explain: "2.000 \u00d7 22% = Rp440rb \u2014 pajak kini turun dari 1.310,86 menjadi 870,86."},
 {q: "2.000 opsi, strike Rp250, harga pasar rata-rata Rp500. Saham tambahan bersih (TSM)?", opts: ["2.000 lembar","1.000 lembar","500 lembar","0 lembar"], answer: 1, k: "tsm", diff: "Medium",
- hints: ["Proceeds = 2.000 × 250 = 500rb; buyback = 500rb ÷ 500.","2.000 − 1.000 = ?"],
+ hints: ["Proceeds = 2.000 × 250 = 500rb; buyback = 500rb ÷ Rp500/lembar.","2.000 − 1.000 = ?"],
  explain: "Proceeds Rp500rb membeli kembali 1.000 lembar → tambahan bersih 2.000 − 1.000 = 1.000. Inilah asal 11.000 lembar dilusian di lesson ini."}
 ],
 hell: [
@@ -7478,7 +7479,7 @@ sections: [
 <tr><td>Sponsor equity</td><td>25,000</td></tr>
 <tr><td><b>TOTAL SOURCES</b></td><td><b>51,000</b></td></tr>
 </table>
-<div class="callout"><b>Why buy with debt instead of all equity?</b> Because debt <b>magnifies the return on your own capital</b> \u2014 Rp25,000 controls Rp51,000 of assets. And the installments are paid from the target's cash, not the sponsor's pocket. But remember: installments keep running even when the warung is quiet \u2014 that is the price (Section 7).</div>`},
+<div class="callout"><b>Why buy with debt instead of all equity?</b> Because debt <b>magnifies the return on your own capital \u2014 when the asset return beats the cost of debt</b> \u2014 Rp25,000 controls Rp51,000 of assets. When the asset return is below the cost of debt, debt shrinks the return instead (and magnifies the loss): debt magnifies the <i>sensitivity</i> of returns, it does not guarantee a bigger return. And the installments are paid from the target's cash, not the sponsor's pocket. But remember: installments keep running even when the warung is quiet \u2014 that is the price (Section 7).</div>`},
 {h: "Sources & Uses: 51,000 = 51,000", body: `
 
 <p>Every LBO opens with <b>sources & uses</b> \u2014 "what the money is for, where the money comes from". Two sides that <b>must balance</b>:</p>
@@ -7673,30 +7674,30 @@ sections: [
 <tr><td>Revenue / EBIT</td><td>unfavorable (below budget)</td><td>favorable</td></tr>
 <tr><td>Costs (COGS, opex)</td><td>favorable (spent less)</td><td>unfavorable (over)</td></tr>
 </table>
-<p>Jan\u2013Jun 2026: actual revenue 116,500 vs budget 117,600 \u2192 variance <b>-1,100 (unfavorable)</b>. Actual EBIT 18,800 vs budget 22,800 \u2192 <b>-4,000 (unfavorable)</b>. Where does -4,000 come from? Revenue -1,100, COGS +1,700 (actual costs HIGHER \u2192 unfavorable), opex +1,200.</p>
-<div class="callout"><b>Why actual - budget, not the reverse?</b> Because the variance question is always: "versus the promise, how did reality do?" Actual first = reality as the subject. This consistency lets -1,100 read instantly as "short", with no formula to recall.</div>`},
+<p>Jan\u2013Jun 2026: actual revenue 116,500 vs budget 117,600 \u2192 variance <b>\u22121,100 (unfavorable)</b>. Actual EBIT 18,800 vs budget 22,800 \u2192 <b>\u22124,000 (unfavorable)</b>. Where does \u22124,000 come from? Revenue \u22121,100, COGS +1,700 (actual costs HIGHER \u2192 unfavorable), opex +1,200.</p>
+<div class="callout"><b>Why actual - budget, not the reverse?</b> Because the variance question is always: "versus the promise, how did reality do?" Actual first = reality as the subject. This consistency lets \u22121,100 read instantly as "short", with no formula to recall.</div>`},
 {h: "Why variances get decomposed: price vs volume (June)", body: `
 <p>June: revenue variance <b>+1,500 (favorable)</b>. Looks good at a glance. But the breakdown:</p>
-<div class="formula">Price variance = (P_act - P_bud) \u00D7 Q_act = (17 - 20) \u00D7 1,500 = <b>-4,500</b></div>
+<div class="formula">Price variance = (P_act - P_bud) \u00D7 Q_act = (17 - 20) \u00D7 1,500 = <b>\u22124,500</b></div>
 <div class="formula">Volume variance = (Q_act - Q_bud) \u00D7 P_bud = (1,500 - 1,200) \u00D7 20 = <b>+6,000</b></div>
-<p>-4,500 + 6,000 = +1,500 \u2713. The story: price cut Rp3k/unit (probably a promo), volume up 300 units. The revenue gain was <i>bought</i> with margin.</p>
+<p>\u22124,500 + 6,000 = +1,500 \u2713. The story: price cut Rp3k/unit (probably a promo), volume up 300 units. The revenue gain was <i>bought</i> with margin.</p>
 <div class="callout"><b>Why decompose?</b> Because the total lies: +1,500 makes the manager look brilliant, while they "bought" volume with a price cut. Without the split, you bonus a decision that erodes margin. Price vs volume = separating the <i>pricing decision</i> from the <i>volume outcome</i>.</div>`},
 {h: "Why a flex budget is fairer than a static budget", body: `
 <p>June's static budget was built for 1,200 units. Actual: 1,500 units. Comparing actual EBIT (4,300) straight to static (6,000) is <b>unfair</b> \u2014 volume differs by 25%.</p>
 <p>A <b>flex budget</b> = the budget restated at actual volume (prices & costs stay at budget):</p>
 <div class="formula">Flex EBIT Jun = 30,000 - 15,000 - 6,000 = <b>9,000</b></div>
 <p>Flex revenue = 1,500 \u00D7 20 = 30,000. Flex COGS = 1,500 \u00D7 10 = 15,000 (costs follow <i>volume</i>, not revenue \u2014 because actual price fell while unit cost held). Opex fixed at 6,000.</p>
-<p>Now compare like with like: actual 4,300 vs flex 9,000 \u2192 <b>-4,700</b>. That is <i>pure</i> performance with the volume effect removed.</p>
+<p>Now compare like with like: actual 4,300 vs flex 9,000 \u2192 <b>\u22124,700</b>. That is <i>pure</i> performance with the volume effect removed.</p>
 <div class="callout"><b>Why is flex fairer?</b> Because static mixes two things: "we sold more" (a volume decision/luck) and "we executed well" (efficiency & pricing). Flex separates them \u2014 managers are judged on what they control, not on how busy the market was.</div>`},
 {h: "Two variances, two messages", body: `
 <table class="brutal">
 <tr><th>June variance</th><th>Value</th><th>Message</th></tr>
 <tr><td>Sales volume variance</td><td>+3,000 (F)</td><td>Flex 9,000 - static 6,000: the volume strategy WORKED</td></tr>
-<tr><td>Flexible budget variance</td><td>-4,700 (U)</td><td>Actual 4,300 - flex 9,000: execution LEAKED</td></tr>
-<tr><td><b>Total (static variance)</b></td><td><b>-1,700</b></td><td>+3,000 + (-4,700) \u2713</td></tr>
+<tr><td>Flexible budget variance</td><td>\u22124,700 (U)</td><td>Actual 4,300 - flex 9,000: execution LEAKED</td></tr>
+<tr><td><b>Total (static variance)</b></td><td><b>\u22121,700</b></td><td>+3,000 + (\u22124,700) \u2713</td></tr>
 </table>
-<p>Where did it leak? -4,700 = price variance (-4,500) + opex spending variance (6,000 - 6,200 = -200). So: volume won, price lost, opex slightly over.</p>
-<div class="callout"><b>Why report both?</b> Because the remedies differ. Favorable sales volume variance \u2192 keep the sales strategy. Unfavorable flexible budget variance \u2192 audit the discount policy. A single -1,700 never tells you what to repeat and what to stop.</div>`},
+<p>Where did it leak? \u22124,700 = price variance (\u22124,500) + the opex impact on EBIT (\u2212200). The opex spending variance itself = 6,200 \u2212 6,000 = <b>+200 (unfavorable)</b> \u2014 actual cost HIGHER, so a positive cost variance = unfavorable (see the table above). Its impact on EBIT is the mirror image: \u2212200. So: volume won, price lost, opex slightly over.</p>
+<div class="callout"><b>Why report both?</b> Because the remedies differ. Favorable sales volume variance \u2192 keep the sales strategy. Unfavorable flexible budget variance \u2192 audit the discount policy. A single \u22121,700 never tells you what to repeat and what to stop.</div>`},
 {h: "Zero-based vs incremental: two ways to build a budget", body: `
 <p>Two budgeting philosophies:</p>
 <table class="brutal">
@@ -7712,6 +7713,7 @@ sections: [
 <p>Budgets talk 1 year. Corporate finance asks: <i>which multi-year projects are worth taking?</i> One rule:</p>
 <div class="formula">Accept a project if and only if NPV > 0</div>
 <p>NPV = present value of all cash inflows \u2212 initial investment (discounted at the cost of capital). NPV > 0 means the project creates value <i>above</i> the price of its capital.</p>
+<p><b>This rule has conditions:</b> independent projects (not mutually exclusive), no capital constraint (no capital rationing), and cash flows + risk modelled correctly. If two projects are mutually exclusive, both having NPV > 0 does not mean taking both \u2014 pick the largest NPV (see "Ranking conflict" below). If capital is rationed, NPV alone is not enough \u2014 projects need ranking (see the capital budgeting table below).</p>
 <p>Example: Warung Nusantara considers a new branch \u2014 investment 50,000, 3-year net cash: 20,000, 22,000, 25,000, cost of capital 12%. PV = 20,000/1.12 + 22,000/1.12\u00B2 + 25,000/1.12\u00B3 = 17,857 + 17,537 + 17,795 = 53,189. NPV = 53,189 - 50,000 = <b>+3,189 > 0 \u2192 accept</b>.</p>
 <div class="callout"><b>Why NPV > 0, not "fast payback" or "highest IRR"?</b> Because only NPV measures <i>value added in rupiah</i> consistently. Payback ignores timing & post-payback flows; IRR can give multiple/misleading answers with unconventional cash flows. One rule, one meaning: does it add value or not.</div>`},
 {h: "Cost of capital: why your own money has a 'price'", body: `
@@ -7750,7 +7752,7 @@ sections: [
 {h: "Statistical forecasting: moving averages, exponential smoothing, MAE (Mean Absolute Error)/MAPE (Mean Absolute Percentage Error)", body: `
 <p>Driver-based forecasting (Day 08) answers <i>why</i> numbers move. <b>Statistical forecasting</b> answers <i>how accurate</i> your guess is — and without it, a forecast is just a tidy opinion:</p>
 <div class="example warung"><div class="lbl">🏪 Example — coffee sales (thousand cups)</div>
-<p>Actual: 100, 110, 105, 120, 118. <b>3-period moving average:</b> period-4 forecast = (100+110+105) ÷ 3 = 105 → error 15; period-5 forecast = (110+105+120) ÷ 3 = 111.67 → error 6.33. <b>MAE</b> = (15 + 6.33) ÷ 2 = <b>10.67</b>. <b>MAPE</b> = (15÷120 + 6.33÷118) ÷ 2 = (12.5% + 5.37%) ÷ 2 = <b>8.93%</b>.</p>
+<p>Actual: 100, 110, 105, 120, 118. <b>3-period moving average:</b> period-4 forecast = (100+110+105) ÷ 3 = 105 → error 15; period-5 forecast = (110+105+120) ÷ 3 = 111.67 → error 6.33. <b>MAE</b> = (15 + 6.33) ÷ 2 = <b>10.67</b> (computed at full precision: the second error is 6.333... \u2014 (15 + 6.333...) ÷ 2 = 10.666... \u2192 10.67; from the displayed 6.33 it is 10.665 \u2192 still 10.67). <b>MAPE</b> = (15÷120 + 6.33÷118) ÷ 2 = (12.5% + 5.37%) ÷ 2 = <b>8.93%</b>.</p>
 <p><b>Exponential smoothing</b> (α = 0.3; F₁ = 100): F₂ = 100; F₃ = 100 + 0.3 × 10 = 103; F₄ = 103 + 0.3 × 2 = 103.6. Errors: 10; 2; 16.4 → MAE = <b>9.47</b>, MAPE = (9.09% + 1.90% + 13.67%) ÷ 3 = <b>8.22%</b> — slightly more accurate than MA-3 on this data. Large α = responsive but noisy; small α = smooth but slow. Pick α by minimising MAPE on history, not by gut feel.</p></div>
 <p><b>Rule:</b> MAPE &lt; 10% = good for stable sales forecasts; MAPE &gt; 20% = your model has not caught the pattern (seasonality? trend?). Never report a forecast without its MAE/MAPE — a number without an error measure = a claim without evidence.</p>`},
 {h: "LAB: quarterly rolling forecast (build it, not a quiz)", body: `
@@ -7767,15 +7769,15 @@ quiz: [
 {q: "Annual budget revenue Rp240,000k, June seasonal factor 0.10. June budget revenue?", opts: ["Rp24,000k","Rp20,000k","Rp21,600k","Rp16,800k"], answer: 0, k: "budget_phasing", diff: "Easy",
  hints: ["Monthly budget = annual \u00D7 factor.","240,000 \u00D7 0.10 = ?"],
  explain: "240,000 \u00D7 0.10 = Rp24,000k. Not 240,000/12 = 20,000 \u2014 seasonal, not average."},
-{q: "6-month actual revenue Rp116,500k, budget Rp117,600k. Total revenue variance?", opts: ["-1,100 (unfavorable)","+1,100 (favorable)","-4,000 (unfavorable)","Rp0 (on budget)"], answer: 0, k: "variance_sign", diff: "Easy",
+{q: "6-month actual revenue Rp116,500k, budget Rp117,600k. Total revenue variance?", opts: ["\u22121,100 (unfavorable)","+1,100 (favorable)","\u22124,000 (unfavorable)","Rp0 (on budget)"], answer: 0, k: "variance_sign", diff: "Easy",
  hints: ["Variance = actual - budget.","116,500 - 117,600 = ?"],
- explain: "116,500 - 117,600 = -Rp1,100k. Negative on revenue = unfavorable."},
-{q: "June: budget price Rp20k, actual price Rp17k, actual qty 1,500. Price variance?", opts: ["-Rp4,500k","+Rp6,000k","-Rp3,600k","+Rp1,500k"], answer: 0, k: "price_volume", diff: "Medium",
+ explain: "116,500 - 117,600 = \u2212Rp1,100k. Negative on revenue = unfavorable."},
+{q: "June: budget price Rp20k, actual price Rp17k, actual qty 1,500. Price variance?", opts: ["\u2212Rp4,500k","+Rp6,000k","\u2212Rp3,600k","+Rp1,500k"], answer: 0, k: "price_volume", diff: "Medium",
  hints: ["Price var = (P_act - P_bud) \u00D7 Q_act.","(17 - 20) \u00D7 1,500 = ?"],
- explain: "(17-20) \u00D7 1,500 = -Rp4,500k (unfavorable): a Rp3k/unit discount."},
-{q: "June: flex EBIT Rp9,000k, static budget EBIT Rp6,000k, actual EBIT Rp4,300k. Flexible budget variance?", opts: ["-Rp4,700k","+Rp3,000k","-Rp1,700k","+Rp2,700k"], answer: 0, k: "flex_budget", diff: "Medium",
+ explain: "(17-20) \u00D7 1,500 = \u2212Rp4,500k (unfavorable): a Rp3k/unit discount."},
+{q: "June: flex EBIT Rp9,000k, static budget EBIT Rp6,000k, actual EBIT Rp4,300k. Flexible budget variance?", opts: ["\u2212Rp4,700k","+Rp3,000k","\u2212Rp1,700k","+Rp2,700k"], answer: 0, k: "flex_budget", diff: "Medium",
  hints: ["Flex var = actual - flex.","4,300 - 9,000 = ?"],
- explain: "4,300 - 9,000 = -Rp4,700k (unfavorable): execution leaked once volume is equalized."},
+ explain: "4,300 - 9,000 = \u2212Rp4,700k (unfavorable): execution leaked once volume is equalized."},
 {q: "A project with NPV > 0 should be?", opts: ["Accepted \u2014 it creates value above the cost of capital","Rejected \u2014 positive NPV means overpriced","Delayed until NPV = 0","Accepted only if IRR < WACC"], answer: 0, k: "npv_rule", diff: "Easy",
  hints: ["NPV = value added after discounting at the cost of capital.","NPV > 0 means value added \u2192 ?"],
  explain: "NPV > 0 = the project adds firm value. Accept."},
@@ -7793,16 +7795,16 @@ quiz: [
  explain: "NPV(0%) = −100 + 250 − 150 = 0; NPV(50%) = −100 + 166.67 − 66.67 = 0. Two IRRs — discard IRR, use NPV."},
 {q: "MA-3 forecast: errors 15 (actual 120) and 6.33 (actual 118). MAE and MAPE?", opts: ["MAE 10.67; MAPE 8.93%","MAE 10.67; MAPE 12.5%","MAE 21.33; MAPE 8.93%","MAE 9.47; MAPE 8.22%"], answer: 0, k: "mape", diff: "Medium",
  hints: ["MAE = (15 + 6.33) ÷ 2.", "MAPE = (12.5% + 5.37%) ÷ 2."],
- explain: "MAE = 10.67; MAPE = 8.93%. (9.47/8.22% is the exponential-smoothing α = 0.3 result in the lesson.)"},
+ explain: "MAE = 10.67; MAPE = 8.93%. (9.47/8.22% is the exponential-smoothing α = 0.3 result in the lesson.) MAE uses full precision (second error 6.333...), not the displayed 6.33 \u2014 same result, 10.67."},
 {q: "Warung example mix variance (A +1,333.33; B −2,666.67) and quantity variance?", opts: ["Mix −1,333.33; quantity +1,333.33 (volume total 0)","Mix +1,333.33; quantity −1,333.33","Mix −2,666.67; quantity 0","Mix 0; quantity −1,333.33"], answer: 0, k: "mix_variance", diff: "Hard",
  hints: ["Total mix = 1,333.33 − 2,666.67.", "Quantity = (1,600 − 1,500) × 13.33."],
  explain: "Total mix −1,333.33; quantity +1,333.33; they sum to 0 = volume variance. Volume rose but toward the cheap product — that is the mix story."}
 
 ],
 hell: [
-{q: "June revenue variance +Rp1,500k (favorable) but price variance -Rp4,500k. Conclusion?", opts: ["June performed well, no follow-up needed","Volume masked the price cut \u2014 check whether the discount was worth the lost margin","Raise prices immediately","The model miscalculated"], answer: 1, diff: "Medium",
- explain: "The total deceives: +1,500 = -4,500 (price) + 6,000 (volume). A Rp3k/unit discount bought 300 extra units \u2014 good only if per-unit margin stayed healthy."},
-{q: "Actual opex Rp6,200k/mo vs budget Rp6,000k for 6 months. Total opex variance?", opts: ["-Rp1,200k (favorable)","+Rp1,200k (unfavorable)","Rp0","+Rp200k (unfavorable)"], answer: 1, diff: "Easy",
+{q: "June revenue variance +Rp1,500k (favorable) but price variance \u2212Rp4,500k. Conclusion?", opts: ["June performed well, no follow-up needed","Volume masked the price cut \u2014 check whether the discount was worth the lost margin","Raise prices immediately","The model miscalculated"], answer: 1, diff: "Medium",
+ explain: "The total deceives: +1,500 = \u22124,500 (price) + 6,000 (volume). A Rp3k/unit discount bought 300 extra units \u2014 good only if per-unit margin stayed healthy."},
+{q: "Actual opex Rp6,200k/mo vs budget Rp6,000k for 6 months. Total opex variance?", opts: ["\u2212Rp1,200k (favorable)","+Rp1,200k (unfavorable)","Rp0","+Rp200k (unfavorable)"], answer: 1, diff: "Easy",
  explain: "200 \u00D7 6 = +Rp1,200k. Positive on a cost = unfavorable. A spending variance: manager-controllable, small but persistent."},
 {q: "June seasonal factor changed 0.10 \u2192 0.12 (others fixed). What happens?", opts: ["Only June's label changes","June budget revenue, June budget EBIT, and annual totals all follow automatically","The file breaks","Nothing until re-saved"], answer: 1, diff: "Medium",
  explain: "Linked model: 240,000 \u00D7 0.12 = 28,800 \u2192 COGS, EBIT, variances follow. But factors now sum to 1.02 \u2014 the factor check row flags 'not = 1.00'."},
@@ -7811,14 +7813,14 @@ hell: [
 ],
 tasks: [
 {t: "Task A \u2014 Warung Nusantara budget & variance (\u00B13\u20134 hrs)", d: "Download the Day 18 exercise file from Drive. Build the 12-month budget from seasonal factors, compute Jan\u2013Jun variances, build the June flex budget, decompose price vs volume. Every answer cell a formula \u2014 target 100 + factor check OK \u2713.", url: "https://drive.google.com/drive/folders/1SeRbR8K-44F2a8X1EvucEzLmXVose_6I"},
-{t: "Task B \u2014 June teardown on paper (\u00B130 min)", d: "From memory, no peeking: write June's price variance, volume variance, flex EBIT, sales volume variance, and flexible budget variance with numbers. Check: -4,500, +6,000, 9,000, +3,000, -4,700."},
+{t: "Task B \u2014 June teardown on paper (\u00B130 min)", d: "From memory, no peeking: write June's price variance, volume variance, flex EBIT, sales volume variance, and flexible budget variance with numbers. Check: \u22124,500, +6,000, 9,000, +3,000, \u22124,700."},
 {t: "Task C \u2014 Quiz above", d: "Target \u22655 of 9 correct (quiz + hell). Missed one? Read the hint, retry."}
 ],
 blind: {h: "Blind Drill \u2014 Warung Kopi Kita (quarterly)", body: `
 <p>"Warung Kopi Kita" (Rp thousand, given): annual budget revenue 120,000; quarterly factors Q1 0.20 / Q2 0.25 / Q3 0.30 / Q4 0.25; COGS 40% of revenue; opex 3,000/mo. <b>Dissect Q3 WITHOUT peeking</b> \u2014 budget: price Rp15k, qty 2,400; actual: price Rp14k, qty 2,700; unit cost Rp6k.</p>
 <details class="ans"><summary>See answer (try it yourself first!)</summary>
 <p><b>Q3 budget:</b> revenue = 120,000 \u00D7 0.30 = <b>36,000</b>; COGS = <b>14,400</b>; opex = 3 \u00D7 3,000 = <b>9,000</b>; EBIT = <b>12,600</b>.</p>
-<p><b>Price vs volume:</b> actual revenue = 14 \u00D7 2,700 = <b>37,800</b>; price var = (14\u221215) \u00D7 2,700 = <b>-2,700</b>; volume var = (2,700\u22122,400) \u00D7 15 = <b>+4,500</b>; total = <b>+1,800</b> \u2713.</p>
+<p><b>Price vs volume:</b> actual revenue = 14 \u00D7 2,700 = <b>37,800</b>; price var = (14\u221215) \u00D7 2,700 = <b>\u22122,700</b>; volume var = (2,700\u22122,400) \u00D7 15 = <b>+4,500</b>; total = <b>+1,800</b> \u2713.</p>
 <p><b>Q3 flex:</b> revenue = 2,700 \u00D7 15 = <b>40,500</b>; COGS = 2,700 \u00D7 6 = <b>16,200</b>; EBIT = 40,500 \u2212 16,200 \u2212 9,000 = <b>15,300</b>. Sales volume var = 15,300 \u2212 12,600 = <b>+2,700 (F)</b>.</p>
 <p><i>Why different numbers?</i> Same drivers (phasing, price/volume, flex) \u2014 only the period is quarterly. Master the mechanics, any period works.</p>
 </details>`}
@@ -7987,7 +7989,7 @@ sections: [
 </table>
 <p>Y1 interest = 4,791.25 \u00d7 8% = <b>383.30</b>; principal = 1,200 \u2212 383.30 = <b>816.70</b>; ending liability = 4,791.25 \u2212 816.70 = <b>3,974.55</b>. ROU depreciation = 4,791.25 \u00f7 5 = <b>958.25</b>/year.</p>
 <div class="callout"><b>Why is Y1 expense (1,341.55) BIGGER than rent (1,200)?</b> Because interest is charged on the full opening debt balance \u2014 a <i>front-loaded</i> pattern. Five-year total is still Rp6,000k, but expense skews early. An analyst comparing "rent expense across firms" without knowing this misjudges efficiency.</div>
-<div class="callout"><b>Why "disguised debt"?</b> Before PSAK 73 (now PSAK 116), operating leases stayed off-balance-sheet \u2014 firms could look lightly indebted while bound to billions in contracts. Classic cases: retail & airlines. The rule now: <b>if you must pay, it's debt</b> \u2014 no matter what it's called.</div>`},
+<div class="callout"><b>Why "disguised debt"?</b> Before PSAK 73 (now PSAK 116), operating leases stayed off-balance-sheet \u2014 firms could look lightly indebted while bound to billions in contracts. Classic cases: retail & airlines. The rule now: <b>a payment obligation from a lease that meets PSAK 116 recognition criteria = debt</b> \u2014 no matter what it's called. The exemptions are narrow: short-term leases (12 months max, no purchase option) and leases of low-value assets may elect not to recognise a lease liability \u2014 their payments are expensed on a straight-line basis instead.</div>`},
 {h: "Why DTL isn't cash \u2014 but is still debt", body: `
 <p>Book depreciation Rp800k, tax depreciation Rp1,200k. The tax office lets you depreciate <b>faster</b> \u2014 you pay less tax this year. Is the gap "savings"? <b>No.</b> Five-year total depreciation is identical; only the <i>timing</i> shifts:</p>
 <div class="formula">Temporary difference = 1,200 \u2212 800 = 400 \u2192 DTL = 400 \u00d7 22% = <b>Rp88k</b></div>
@@ -8011,7 +8013,7 @@ sections: [
 <table class="brutal">
 <tr><th>TSM step</th><th>Math</th><th>Result</th></tr>
 <tr><td>Proceeds (from exercise)</td><td>2,000 × 250</td><td>Rp500k</td></tr>
-<tr><td>Buyback (shares repurchased)</td><td>500k ÷ 500</td><td><b>1,000 shares</b></td></tr>
+<tr><td>Buyback (shares repurchased)</td><td>500k ÷ Rp500/share</td><td><b>1,000 shares</b></td></tr>
 <tr><td>Net additional shares</td><td>2,000 − 1,000</td><td><b>1,000 shares</b></td></tr>
 <tr><td>Diluted shares</td><td>10,000 + 1,000</td><td><b>11,000</b> ✓</td></tr>
 </table>
@@ -8022,7 +8024,7 @@ sections: [
 <li><b>Use the AVERAGE market price</b> over the period, not the year-end price. The year-end price can spike the day before closing — the average removes that noise.</li>
 <li><b>RSUs (restricted stock units) add 1-for-1</b> — no proceeds, no buyback. One vesting RSU = one full new share.</li>
 </ul>
-<div class="callout"><b>Why TSM, not "add all the options"?</b> Because adding 2,000 raw ignores that the company <i>receives cash</i> from exercise — cash that buys back half the shares. TSM measures the <i>true economic dilution</i>: not how many options exist, but how many shares <i>net</i> appear after the buyback. An analyst using a stale share count or gross options = overvaluation.</div>`},
+<div class="callout"><b>Why TSM, not "add all the options"?</b> Because adding 2,000 raw ignores that the company <i>receives cash</i> from exercise — cash that buys back half the shares. TSM measures the <i>true economic dilution</i>: not how many options exist, but how many shares <i>net</i> appear after the buyback. An analyst using a stale share count = overvaluation (the denominator is too small \u2014 shares already issued are left out). An analyst using gross options = <b>undervaluation</b>: 2,000 options raw \u2192 a denominator of 12,000, not 11,000 \u2014 EPS becomes Rp4,959.59k \u00f7 12,000 = Rp0.413k, lower than the correct Rp0.451k. Two mistakes, opposite directions \u2014 don't mix them.</div>`},
 {h: "Why NOL = a tax asset (Rp440k voucher)", body: `
 <p>Last year PT Maju Jaya had a Rp2,000k fiscal loss. The tax office lets that loss <b>offset</b> this year's profit. Last year's loss = a tax discount voucher:</p>
 <div class="formula">DTA = 2,000 \u00d7 22% = Rp440k \u2192 fully used this year</div>
@@ -8035,7 +8037,7 @@ sections: [
 </table>
 <p>The NOL journal: opening DTA 440 \u2192 used 440 \u2192 closing DTA <b>0</b>. The expense side shows up as <b>Rp440k deferred tax</b> (non-cash), so:</p>
 <div class="formula">Total tax expense = 870.86 (current) + 528 (deferred: 88 DTL + 440 DTA reversal) = <b>Rp1,398.86k</b></div>
-<div class="callout"><b>Why is NOL called an "asset"?</b> Because it meets the definition: <i>future economic benefit</i> (Rp440k of tax cash saved) controlled from a past event (last year's loss). The junior analyst sees "loss = bad"; the senior sees "fiscal loss = Rp440k voucher". Condition: the firm must expect future profits \u2014 otherwise the DTA needs a valuation allowance.</div>`},
+<div class="callout"><b>Why is NOL called an "asset"?</b> Because it meets the definition: <i>future economic benefit</i> (Rp440k of tax cash saved) controlled from a past event (last year's loss). The junior analyst sees "loss = bad"; the senior sees "fiscal loss = Rp440k voucher". Condition: the firm must expect future profits (probable \u2014 more likely than not, >50%) \u2014 otherwise the DTA needs a valuation allowance.</div>`},
 {h: "Assembling: 4 adjustments \u2192 3 statements", body: `
 <p>All adjustments assembled into 3 summary statements (Rp thousand). Watch <b>where each number comes from</b> \u2014 none appear from nowhere:</p>
 <table class="brutal">
@@ -8060,13 +8062,13 @@ sections: [
 </table>
 <table class="brutal">
 <tr><th>Dec 31 balance sheet</th><th>Value</th></tr>
-<tr><td>Cash 13,300 + receivables 3,000 + inventory 2,000 + net ROU 3,833 + PPE 3,200 + DTA 0</td><td><b>A = 25,333</b></td></tr>
+<tr><td>Cash 13,300 + receivables 3,000 + inventory 2,000 + net ROU 3,833 + PPE 3,200 + DTA 0</td><td><b>A = 25,333.00</b></td></tr>
 <tr><td>Lease liability 3,974.55 + payables 1,500 + tax payable 870.86 + DTL 88</td><td><b>L = 6,433.41</b></td></tr>
 <tr><td>Paid-in capital 20,000 + APIC 500 + retained earnings \u22121,600.41</td><td><b>E = 18,899.59</b></td></tr>
-<tr><td>Check</td><td>25,333 = 6,433.41 + 18,899.59 \u2713</td></tr>
+<tr><td>Check</td><td>25,333.00 = 6,433.41 + 18,899.59 \u2713</td></tr>
 </table>
 <div class="callout"><b>Why is lease interest added back in CFO?</b> Because its cash sits in <b>CFF</b> (inside the Rp1,200k lease payment). Without the add-back, interest counts twice: once eroding NI, once leaving via CFF. Rule of thumb: <b>add back in CFO exactly the interest whose cash moved to CFF</b>.</div>
-<div class="callout"><b>Why is CFO (5,500) > net income (4,959.59)?</b> Because non-cash add-backs of Rp3,169.55 exceed cash trapped in working capital (Rp3,500) \u2014 after the +870.86 tax payable correction. Every NI-vs-CFO gap must be explainable line by line; if it can't be, something leaks.</div>`},
+<div class="callout"><b>Why is CFO (5,500) > net income (4,959.59)?</b> Because 3,169.55 \u2212 3,500 + 870.86 = <b>+540.41</b> \u2014 CFO = 4,959.59 + 540.41 = <b>5,500</b>. Note: 3,169.55 is <b>smaller</b> than 3,500, not larger; and it includes lease interest of 383.30, which is not a pure non-cash add-back but a reclassification (its cash leaves via CFF) \u2014 the pure non-cash add-back is 2,786.25 (800 + 958.25 + 500 + 528). Every NI-vs-CFO gap must be explainable line by line; if it can't be, something leaks.</div>`},
 {h: "Accounting Detective: 4 traps in the mission file", body: `
 <p>The mission file = a PT Maju Jaya model by a "junior analyst" \u2014 <b>broken in 4 places</b>, exactly today's 4 topics. Your first clue: the balance sheet doesn't even <b>BALANCE</b> (gap of \u22121,700). The four breaches:</p>
 <div class="example jebakan"><div class="lbl">\uD83D\uDEA8 Error #1 \u2014 Lease as plain rent</div>
@@ -8111,7 +8113,7 @@ quiz: [
  hints: ["Benefit = NOL \u00d7 rate.","2,000 \u00d7 22% = ?"],
  explain: "2,000 \u00d7 22% = Rp440k \u2014 current tax falls from 1,310.86 to 870.86."},
 {q: "2,000 options, strike Rp250, average market price Rp500. Net additional shares (TSM)?", opts: ["2,000 shares","1,000 shares","500 shares","0 shares"], answer: 1, k: "tsm", diff: "Medium",
- hints: ["Proceeds = 2,000 × 250 = 500k; buyback = 500k ÷ 500.","2,000 − 1,000 = ?"],
+ hints: ["Proceeds = 2,000 × 250 = 500k; buyback = 500k ÷ Rp500/share.","2,000 − 1,000 = ?"],
  explain: "Rp500k proceeds buy back 1,000 shares → net addition 2,000 − 1,000 = 1,000. That's the origin of this lesson's 11,000 diluted shares."}
 ],
 hell: [
