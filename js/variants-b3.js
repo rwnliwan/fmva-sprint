@@ -1215,7 +1215,14 @@ function b3h268(rng, ref, L){
   const C = b3pick(rng, [8, 9, 10, 11, 12]);
   const ratio = C / A * 100, req = tgt / 100 * A, cap = C - req;
   if (cap <= 0) return b3h268(rng, ref, L);
-  const vals = [`Rp${b3n(cap, L)}T`, `Rp${b3n(C, L)}T`, `Rp${b3n(cap + 1, L)}T`, `Rp${b3n(req, L)}T`];
+  /* Duplikat by construction: cap bisa sama dengan req (C = 2×req),
+     cap+1 bisa sama dengan req (C = 2×req−1), atau C bisa sama dengan
+     req — ketiganya membuat dua opsi tampil identik. Distractor yang
+     bertabrakan digeser +1 sampai berbeda dari jawaban & sesamanya
+     (wrapper b3retry tetap dipertahankan sebagai pengaman lapis kedua). */
+  const valsN = [cap, C, cap + 1, req];
+  for (let i = 1; i < valsN.length; i++) while (valsN.indexOf(valsN[i]) !== i) valsN[i] += 1;
+  const vals = valsN.map(v => `Rp${b3n(v, L)}T`);
   const q = en
     ? `CET1 Rp${C}T, risk-weighted assets Rp${A}T, CET1 target ${tgt}%. Dividend ceiling from excess capital?`
     : `CET1 Rp${C}T, ATMR Rp${A}T, target CET1 ${tgt}%. Plafon dividen dari kelebihan modal?`;

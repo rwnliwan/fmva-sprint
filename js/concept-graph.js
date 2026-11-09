@@ -509,6 +509,10 @@ function vCCC(rng){
   const dpo = 15 + 5 * Math.floor(rng() * 5);   // 15..35
   const ccc = dso + dio - dpo;                  // selalu > 0: dso+dio >= 50 > dpo
   const vals = [ccc, dso + dio + dpo, dso + dio, Math.abs(dso - dpo)];
+  /* Dedupe by construction: |dso−dpo| bisa sama dengan CCC (saat
+     dpo = dso + dio/2, mis. 20/30/35 → 15 = 15). Distractor yang
+     bertabrakan digeser +5 hari sampai berbeda — tetap di grid kelipatan 5. */
+  for (let i = 1; i < vals.length; i++) while (vals.indexOf(vals[i]) !== i) vals[i] += 5;
   const order = vShuffle([0, 1, 2, 3], rng);
   return {
     q: `DSO ${dso} hari, DIO ${dio} hari, DPO ${dpo} hari. Cash conversion cycle?`,
@@ -849,6 +853,8 @@ function vCCCEN(rng){
   const dpo = 15 + 5 * Math.floor(rng() * 5);
   const ccc = dso + dio - dpo;
   const vals = [ccc, dso + dio + dpo, dso + dio, Math.abs(dso - dpo)];
+  /* Dedupe by construction — lihat vCCC: |dso−dpo| bisa sama dengan CCC. */
+  for (let i = 1; i < vals.length; i++) while (vals.indexOf(vals[i]) !== i) vals[i] += 5;
   const order = vShuffle([0, 1, 2, 3], rng);
   return {
     q: `DSO ${dso} days, DIO ${dio} days, DPO ${dpo} days. Cash conversion cycle?`,

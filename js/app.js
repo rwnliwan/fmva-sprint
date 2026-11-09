@@ -531,7 +531,7 @@ function simLE(s){ return s.utang + s.modal + s.lr; }
    (inventory for COGS, cash for the cash purchase, payables/receivables
    created before they are settled) holds by construction. All amounts are
    multiples of 100 (Rp ribu). rng: () => [0,1). */
-function simR100(rng, lo, hi){ return lo + Math.floor(rng() * ((hi - lo) / 100 + 1)) * 100; }
+function simR100(rng, lo, hi){ if (hi < lo) return lo; return lo + Math.floor(rng() * ((hi - lo) / 100 + 1)) * 100; }
 function simGenRun(rng){
   rng = rng || Math.random;
   const start = { kas: simR100(rng, 6000, 10000), persediaan: simR100(rng, 1200, 2500),
@@ -2455,6 +2455,12 @@ function validateProgressData(obj){
   Object.keys(obj).forEach(k => {
     if (PROGRESS_OBJECT_KEYS.indexOf(k) !== -1){
       if (obj[k] === null || typeof obj[k] !== "object" || Array.isArray(obj[k])) throw new Error("bad-type:" + k);
+      if (k === "simulator"){
+        ["best", "runs", "last"].forEach(f => {
+          const v = obj[k][f];
+          if (v !== undefined && v !== null && typeof v !== "number") throw new Error("bad-type:simulator." + f);
+        });
+      }
     } else if (k === "streak"){
       if (typeof obj[k] !== "number") throw new Error("bad-type:streak");
     } else if (k === "_pg2"){
@@ -2472,16 +2478,28 @@ function wrapExport(data, now){
     exportedAt: d.toISOString(), data: data || {} };
 }
 /* Urai hasil JSON.parse: terima v2 (wrapped) dan legacy (objek mentah).
-   Kembalikan {data, format, ignored}. Lempar Error bila tidak dikenal. */
+   Kembalikan {data, format, ignored}. Lempar Error bila tidak dikenal.
+   Key top-level tak dikenal DIBUANG dari data (setelah dicatat di ignored)
+   agar perilaku sesuai pesan UI "key diabaikan" — berlaku untuk mode
+   replace maupun merge. Key tak dikenal dari progress saat ini (cur) tidak
+   disentuh di sini; mergeProgress mempertahankannya. */
 function unwrapImport(parsed){
   if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) throw new Error("not-object");
   if (parsed.format === PROGRESS_FORMAT){
+    /* S2 (R10): version wajib number dan <= PROGRESS_EXPORT_VERSION.
+       File dari masa depan (version lebih besar) ditolak, bukan dibaca
+       sebagian — field baru yang tak dikenal bisa mengubah arti data. */
+    if (typeof parsed.version !== "number" || parsed.version > PROGRESS_EXPORT_VERSION) throw new Error("bad-version");
     const data = parsed.data;
     if (!data || typeof data !== "object" || Array.isArray(data)) throw new Error("bad-data");
-    return { data: data, format: "v2", ignored: validateProgressData(data) };
+    const ignored = validateProgressData(data);
+    ignored.forEach(k => { delete data[k]; });
+    return { data: data, format: "v2", ignored: ignored };
   }
   if (parsed.format !== undefined) throw new Error("bad-format");
-  return { data: parsed, format: "legacy", ignored: validateProgressData(parsed) };
+  const ignored = validateProgressData(parsed);
+  ignored.forEach(k => { delete parsed[k]; });
+  return { data: parsed, format: "legacy", ignored: ignored };
 }
 /* Parse isi file backup (teks) -> {data, format, ignored}. */
 function parseProgressFile(text){
@@ -2544,21 +2562,33 @@ function mergeProgress(cur, imp){
     mistakes[key] = e;
   });
   if (Object.keys(mistakes).length) out.mistakes = mistakes;
-  /* checker: entri dengan skor tertinggi menang per lesson. */
+  /* checker: entri dengan skor tertinggi menang per lesson; bila skor
+     SERI, entri dengan date terbaru menang (bila hanya satu yang punya
+     date, yang itu; bila keduanya tanpa date, cur dipertahankan). */
   const ck = new Set([].concat(Object.keys(cur.checker || {}), Object.keys(imp.checker || {})));
   const checker = {};
   ck.forEach(id => {
     const c = (cur.checker || {})[id];
     const i = (imp.checker || {})[id];
-    checker[id] = (c && i)
-      ? (numOr(i.score, -1) > numOr(c.score, -1) ? i : c)
-      : (i || c);
+    if (c && i){
+      const sc = numOr(c.score, -1), si = numOr(i.score, -1);
+      if (si > sc) checker[id] = i;
+      else if (sc > si) checker[id] = c;
+      else {
+        const dc = (typeof c.date === "number") ? c.date : null;
+        const di = (typeof i.date === "number") ? i.date : null;
+        checker[id] = (di !== null && (dc === null || di > dc)) ? i : c;
+      }
+    } else checker[id] = (i || c);
   });
   if (Object.keys(checker).length) out.checker = checker;
   /* streak: max. */
   if (typeof cur.streak === "number" || typeof imp.streak === "number")
     out.streak = Math.max(numOr(cur.streak, 0), numOr(imp.streak, 0));
-  /* simulator: best/runs = max, last = imp bila ada. */
+  /* simulator: best/runs = max, last = imp bila ada.
+     runs memakai MAX (bukan jumlah): file import dan progress saat ini
+     bisa tumpang tindih (run yang sama tercatat di keduanya), sehingga
+     penjumlahan akan double-count. Perilaku max dikunci test 4r. */
   if (cur.simulator || imp.simulator){
     const c = cur.simulator || {};
     const i = imp.simulator || {};
@@ -2570,11 +2600,45 @@ function mergeProgress(cur, imp){
     s.last = (i.last != null) ? i.last : c.last;
     out.simulator = s;
   }
-  /* Key lain: dari imp bila ada, kalau tidak dari cur (forward compat). */
-  ["mission", "_pg2", "done"].forEach(k => {
-    if (imp[k] !== undefined) out[k] = imp[k];
-    else if (cur[k] !== undefined) out[k] = cur[k];
+  /* mission: UNION per key (bukan timpa utuh) — entri berbentuk
+     {best, latest, bal, date}. Per key yang sama: best = max, latest =
+     nilai dari entri dengan date terbaru (seri/tanpa date -> imp),
+     bal = OR, date = max. Field lain dipertahankan (imp menimpa cur). */
+  const mKeys = new Set([].concat(Object.keys(cur.mission || {}), Object.keys(imp.mission || {})));
+  const mission = {};
+  mKeys.forEach(key => {
+    const c = (cur.mission || {})[key] || {};
+    const i = (imp.mission || {})[key] || {};
+    const e = Object.assign({}, c, i);
+    if (typeof c.best === "number" || typeof i.best === "number")
+      e.best = Math.max(numOr(c.best, -1), numOr(i.best, -1));
+    const dc = (typeof c.date === "number") ? c.date : null;
+    const di = (typeof i.date === "number") ? i.date : null;
+    if (dc !== null || di !== null){
+      e.date = Math.max(dc !== null ? dc : -Infinity, di !== null ? di : -Infinity);
+      /* latest dari entri dengan date terbaru; bila entri itu tanpa
+         latest, pakai latest entri satunya (jangan hilangkan data). */
+      const iNewer = di !== null && (dc === null || di >= dc);
+      e.latest = iNewer
+        ? (i.latest !== undefined ? i.latest : c.latest)
+        : (c.latest !== undefined ? c.latest : i.latest);
+      if (e.latest === undefined) delete e.latest;
+    }
+    if (c.bal || i.bal) e.bal = true;
+    mission[key] = e;
   });
+  if (Object.keys(mission).length) out.mission = mission;
+  /* done: UNION per key — true menang (OR). */
+  const dKeys = new Set([].concat(Object.keys(cur.done || {}), Object.keys(imp.done || {})));
+  const done = {};
+  dKeys.forEach(key => {
+    const c = (cur.done || {})[key], i = (imp.done || {})[key];
+    done[key] = (c === true || i === true) ? true : (c !== undefined ? c : i);
+  });
+  if (Object.keys(done).length) out.done = done;
+  /* _pg2: boolean, tetap ditimpa (imp bila ada, kalau tidak cur). */
+  if (imp._pg2 !== undefined) out._pg2 = imp._pg2;
+  else if (cur._pg2 !== undefined) out._pg2 = cur._pg2;
   Object.keys(imp).forEach(k => {
     if (out[k] === undefined && PROGRESS_OBJECT_KEYS.indexOf(k) === -1 && k !== "streak") out[k] = imp[k];
   });
@@ -2583,24 +2647,42 @@ function mergeProgress(cur, imp){
   });
   return out;
 }
-/* Stempel backup "yyyymmdd-hhmm". */
+/* Stempel backup "yyyymmdd-hhmmss" (resolusi detik: dua import dalam menit
+   yang sama tidak boleh menimpa backup yang sama). Lebar tetap sehingga
+   urutan leksikografis = kronologis (dipakai pruneProgressBackups). */
 function progressBackupStamp(d){
   const pad = n => String(n).padStart(2, "0");
-  return d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + "-" + pad(d.getHours()) + pad(d.getMinutes());
+  return d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + "-" + pad(d.getHours()) + pad(d.getMinutes()) + pad(d.getSeconds());
 }
 /* Backup progress SAAT INI ke localStorage sebelum import menimpa.
    Simpan maks 3 backup terbaru, hapus yang lebih lama. Best-effort:
-   kembalikan key backup, atau null bila tidak ada progress / gagal. */
-function backupProgressNow(){
+   kembalikan key backup, atau null bila tidak ada progress / gagal.
+   Parameter now (Date, opsional) hanya untuk test deterministik —
+   pola yang sama dengan wrapExport(data, now). */
+function backupProgressNow(now){
   try {
     if (typeof localStorage === "undefined") return null;
     const raw = localStorage.getItem("fmva_progress");
     if (!raw || raw === "{}") return null;
-    const key = PROGRESS_BACKUP_PREFIX + progressBackupStamp(new Date());
+    const d = (now instanceof Date) ? now : new Date();
+    const key = PROGRESS_BACKUP_PREFIX + progressBackupStamp(d);
     localStorage.setItem(key, raw);
     pruneProgressBackups();
     return key;
   } catch(e){ return null; }
+}
+/* S1 (R10): putuskan apakah import boleh lanjut setelah backup dicoba.
+   Bila progress saat ini TIDAK kosong dan backup gagal (null: localStorage
+   tidak ada / setItem gagal / kuota habis) -> true = BATALKAN import,
+   agar import tidak menimpa progress yang belum sempat dibackup.
+   Bila progress saat ini kosong, tidak ada yang hilang -> lanjut. */
+function importBackupGuard(cur, backupKey){
+  /* "Kosong" = tanpa key, atau hanya _pg2 (penanda migrasi — bukan
+     progress pengguna; hilang pun dibuat ulang saat load berikutnya). */
+  const empty = !cur || typeof cur !== "object" || Array.isArray(cur) ||
+    Object.keys(cur).filter(k => k !== "_pg2").length === 0;
+  if (empty) return false;
+  return backupKey === null;
 }
 function pruneProgressBackups(){
   try {
@@ -2635,8 +2717,15 @@ function importProgress(mode){
   rd.onload = e => {
     try {
       const res = parseProgressFile(e.target.result);
-      backupProgressNow();
-      const next = (mode === "merge") ? mergeProgress(getP(), res.data) : res.data;
+      /* S1 (R10): backup dulu; bila progress saat ini tidak kosong dan
+         backup GAGAL, batalkan import + beri peringatan — jangan timpa
+         progress yang belum sempat dibackup. */
+      const curP = getP();
+      if (importBackupGuard(curP, backupProgressNow())) {
+        out.innerHTML = `<div class="callout">${T("prog_backup_fail")}</div>`;
+        return;
+      }
+      const next = (mode === "merge") ? mergeProgress(curP, res.data) : res.data;
       localStorage.setItem("fmva_progress", JSON.stringify(next));
       let msg = (mode === "merge") ? T("prog_merged") : T("prog_restored");
       if (res.ignored && res.ignored.length)
@@ -2666,6 +2755,8 @@ function hideResetCard(){
   const w = document.getElementById("resetwrap");
   if (w) w.innerHTML = `<button class="btn small ghost" onclick="showResetCard()">${T("prog_reset_btn")}</button>`;
 }
-function doResetProgress(){ localStorage.removeItem("fmva_progress"); route(); }
+/* Reset: backup dulu (best-effort) SEBELUM menghapus — reset tidak boleh
+   menghapus progress tanpa backup. Perilaku reset selebihnya sama. */
+function doResetProgress(){ backupProgressNow(); localStorage.removeItem("fmva_progress"); route(); }
 
 route();

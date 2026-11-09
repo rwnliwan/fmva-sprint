@@ -613,6 +613,10 @@ function vB2CCC(rng, ref, L){
   const dso = b2step(rng, 25, 50, 5), dio = b2step(rng, 40, 65, 5), dpo = b2step(rng, 35, 60, 5);
   const ccc = dso + dio - dpo;
   const vals = [ccc, dso + dio + dpo, dso + dio, Math.abs(dso - dpo)];
+  /* Dedupe by construction: |dso−dpo| bisa sama dengan CCC (saat
+     dpo = dso + dio/2, mis. 25/40/45 → 20 = 20). Distractor yang
+     bertabrakan digeser +5 hari sampai berbeda — tetap di grid kelipatan 5. */
+  for (let i = 1; i < vals.length; i++) while (vals.indexOf(vals[i]) !== i) vals[i] += 5;
   const order = b2Shuffle([0, 1, 2, 3], rng);
   if (L === "en") return {
     q: `DIO ${dio} days, DSO ${dso} days, DPO ${dpo} days. Cash conversion cycle?`,
@@ -2536,7 +2540,11 @@ function vB2GoodwillTreat(rng, ref, L){
 function vB2EPS(rng, ref, L){
   const ni = b2step(rng, 6000, 9000, 600), sh = b2step(rng, 12000, 20000, 2000);
   const eps = Math.round(ni / sh * 10000) / 10000;
-  const vals = [eps, Math.round(ni / (sh + 2000) * 10000) / 10000, Math.round(ni / (sh - 2000) * 10000) / 10000, Math.round((ni + 1000) / sh * 10000) / 10000];
+  /* Distractor ke-4 memakai (ni+2000), BUKAN (ni+1000): saat sh = 2×ni+2000
+     (mis. ni=9000, sh=20000) berlaku ni/(sh−2000) = (ni+1000)/sh = 0,5000
+     — dua opsi identik. Dengan +2000, kesamaan itu butuh sh = ni+2000,
+     mustahil di rentang ini (sh ≥ 12000 > ni+2000 ≤ 11000). */
+  const vals = [eps, Math.round(ni / (sh + 2000) * 10000) / 10000, Math.round(ni / (sh - 2000) * 10000) / 10000, Math.round((ni + 2000) / sh * 10000) / 10000];
   const order = b2Shuffle([0, 1, 2, 3], rng);
   const f = v => L === "en" ? b2e4(v) : b2i4(v);
   if (L === "en") return {
@@ -2592,7 +2600,13 @@ function vB2Goodwill(rng, ref, L){
 function vB2GoodwillPPA(rng, ref, L){
   const price = b2step(rng, 8000, 12000, 1000), fv = price - b2step(rng, 1500, 3000, 250);
   const gw = price - fv;
-  const vals = [gw, price - b2step(rng, 4000, 5000, 500), gw + 500, gw - 250];
+  /* Distractor ke-2 (price − 4000..5000) bisa sama dengan gw (saat
+     price−X = gw, mis. 8000−5000 = 3000) atau dengan gw+500 (saat
+     price−X = gw+500, mis. 8000−4500 = 3500 = 3000+500). Yang bertabrakan
+     digeser +500 sampai berbeda — by construction, bukan re-roll. */
+  let d2 = price - b2step(rng, 4000, 5000, 500);
+  while (d2 === gw || d2 === gw + 500 || d2 === gw - 250) d2 += 500;
+  const vals = [gw, d2, gw + 500, gw - 250];
   const order = b2Shuffle([0, 1, 2, 3], rng);
   const f = v => L === "en" ? "Rp" + b2e(v) + "k" : "Rp" + b2i(v) + "rb";
   if (L === "en") return {
@@ -3545,9 +3559,9 @@ function vB2TSM(rng, ref, L){
     q: `${b2e(n)} options, strike Rp${b2e(k)}, average market price Rp${b2e(m)}. Net additional shares (TSM)?`,
     opts: order.map(i => f(vals[i])),
     answer: order.indexOf(0),
-    explain: `Proceeds Rp${b2e(proceeds)}k buy back ${b2e(buyback)} shares → net addition ${b2e(n)} − ${b2e(buyback)} = ${b2e(net)}. That is where diluted shares come from. (${ref})`,
+    explain: `Proceeds Rp${b2e(proceeds / 1000)}k buy back ${b2e(buyback)} shares → net addition ${b2e(n)} − ${b2e(buyback)} = ${b2e(net)}. That is where diluted shares come from. (${ref})`,
     steps: ["Analysis: TSM — options exercised, proceeds buy shares back.",
-      `Solve 1: proceeds = ${b2e(n)} × ${b2e(k)} = Rp${b2e(proceeds)}k.`,
+      `Solve 1: proceeds = ${b2e(n)} × ${b2e(k)} = Rp${b2e(proceeds / 1000)}k.`,
       `Solve 2: buyback = proceeds ÷ market price = ${b2e(proceeds)} ÷ ${b2e(m)} = ${b2e(buyback)}.`,
       `Solve 3: net new shares = ${b2e(n)} − ${b2e(buyback)} = ${b2e(net)}.`]
   };
@@ -3555,9 +3569,9 @@ function vB2TSM(rng, ref, L){
     q: `${b2i(n)} opsi, strike Rp${b2i(k)}, harga pasar rata-rata Rp${b2i(m)}. Saham tambahan bersih (TSM)?`,
     opts: order.map(i => f(vals[i])),
     answer: order.indexOf(0),
-    explain: `Proceeds Rp${b2i(proceeds)}rb membeli kembali ${b2i(buyback)} lembar → tambahan bersih ${b2i(n)} − ${b2i(buyback)} = ${b2i(net)}. Inilah asal saham dilusian. (${ref})`,
+    explain: `Proceeds Rp${b2i(proceeds / 1000)}rb membeli kembali ${b2i(buyback)} lembar → tambahan bersih ${b2i(n)} − ${b2i(buyback)} = ${b2i(net)}. Inilah asal saham dilusian. (${ref})`,
     steps: ["Analysis: TSM — opsi dieksekusi, proceeds membeli kembali saham.",
-      `Solve 1: proceeds = ${b2i(n)} × ${b2i(k)} = Rp${b2i(proceeds)}rb.`,
+      `Solve 1: proceeds = ${b2i(n)} × ${b2i(k)} = Rp${b2i(proceeds / 1000)}rb.`,
       `Solve 2: buyback = proceeds ÷ harga pasar = ${b2i(proceeds)} ÷ ${b2i(m)} = ${b2i(buyback)}.`,
       `Solve 3: saham baru bersih = ${b2i(n)} − ${b2i(buyback)} = ${b2i(net)}.`]
   };
@@ -6981,6 +6995,11 @@ function vB2Sculpt(rng, ref, L){
   const cfads = b2step(rng, 400, 600, 50), target = b2pick([1.25, 1.3, 1.4], rng), intr = b2step(rng, 100, 150, 25);
   const princ = Math.round((cfads / target - intr) / 5) * 5;
   const vals = [princ, Math.round((cfads - intr) / 5) * 5, Math.round((cfads / target) / 5) * 5, Math.round((cfads / target + intr) / 5) * 5];
+  /* Dedupe by construction: (cfads−intr) bisa sama dengan cfads/target
+     setelah dibulatkan ke kelipatan 5 — saat CFADS×(1−1/target) ≈ intr
+     (mis. 500/1,25/100 → 400 = 400; 550/1,3/125 → 425 = 425). Distractor
+     yang bertabrakan digeser +5 sampai berbeda — tetap di grid kelipatan 5. */
+  for (let i = 1; i < vals.length; i++) while (vals.indexOf(vals[i]) !== i) vals[i] += 5;
   const order = b2Shuffle([0, 1, 2, 3], rng);
   const f = v => "Rp" + b2i(v) + " miliar";
   const fe = v => "Rp" + b2e(v) + " billion";

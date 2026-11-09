@@ -259,6 +259,8 @@ prog_ignored_keys: ["Catatan: key yang tidak dikenal diabaikan: {keys}.",
   "Note: unknown keys ignored: {keys}."],
 prog_badfile: ["❌ File tidak valid — bukan backup progress FMVA Sprint. Tidak ada yang diubah.",
   "❌ Invalid file — not an FMVA Sprint progress backup. Nothing was changed."],
+prog_backup_fail: ["❌ Backup otomatis progress gagal (penyimpanan browser penuh/tidak tersedia) — import dibatalkan agar progress saat ini tidak hilang.",
+  "❌ Automatic backup of your current progress failed (browser storage full/unavailable) — import cancelled so your current progress is not lost."],
 prog_readfail: ["❌ Gagal membaca file dari perangkat.", "❌ Couldn't read the file from your device."],
 reset_warn: ["⚠️ Ini akan menghapus SEMUA ini dari browser:", "⚠️ This will delete ALL of the following from the browser:"],
 reset_li1: ["Progress baca &amp; skor quiz semua lesson", "Reading progress &amp; quiz scores for all lessons"],
@@ -338,7 +340,9 @@ function variantEntry(key){
     if (typeof VARIANT_FNS_EN_B1 !== "undefined" && VARIANT_FNS_EN_B1[key]) return VARIANT_FNS_EN_B1[key];
     if (typeof VARIANT_FNS_EN_B2 !== "undefined" && VARIANT_FNS_EN_B2[key]) return VARIANT_FNS_EN_B2[key];
     if (typeof VARIANT_FNS_EN_B3 !== "undefined" && VARIANT_FNS_EN_B3[key]) return VARIANT_FNS_EN_B3[key];
-    return undefined;
+    /* N2 (R10): key belum ada di registry EN -> fallback ke registry ID
+       di dalam fungsi ini (bukan di pemanggil), supaya soal tetap tampil
+       daripada undefined. */
   }
   if (typeof VARIANT_FNS !== "undefined" && VARIANT_FNS[key]) return VARIANT_FNS[key];
   if (typeof VARIANT_FNS_B1 !== "undefined" && VARIANT_FNS_B1[key]) return VARIANT_FNS_B1[key];

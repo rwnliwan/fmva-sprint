@@ -5,11 +5,17 @@
 | `qa_numbers.py` | Hitung ulang independen setiap angka kunci di konten course (toleransi 0,01–0,02) + pin string spesifik pasca-fix (txt). Tambah check baru untuk setiap angka yang dikoreksi. |
 | `qa_class_patterns.py` | Pola umum kelas kesalahan di SELURUH konten (bukan satu string/angka). Lihat "Kelas yang dikunci" di bawah. |
 | `qa_variant_coverage.py` | Cakupan varian fresh mistake-review: tiap kunci "lesson:qi" wajib ada di ID dan EN, tanpa duplikat antar registry (lama/B1/B2/B3), total = 534 soal kuis (100%). |
+| `export_import_test.js` | Hardening export/import progress v2 (node, tanpa DOM): round-trip v2 + legacy, file rusak ditolak (termasuk `bad-version`), merge union (mission/done/checker/simulator), backup + pruning maks 3, guard batal-import bila backup gagal, tanggal backup deterministik. |
+| `variant_property_test.js` | Property test SEMUA varian live (534 kunci × ID+EN, gen() 100× per kunci = 106.800 run): tiap run 4 opts berbeda + answer 0–3 valid + q/explain/steps non-kosong; + kunci N2 (variantEntry fallback EN→ID). |
+| `variant_regression_test.js` | Regression test fix review Terra R10 (vB2TSM proceeds rb/k, b1_h104 FCFF di Q). |
 | `acronym_allowlist.txt` | Daftar akronim yang BOLEH tanpa ekspansi di pemakaian pertama (ticker, fungsi Excel, standar, istilah umum, nama diri) — dipakai C5. Satu token per baris + alasan di komentar. |
 
 Jalankan dari root repo ini:
 
 ```sh
+node qa/export_import_test.js
+node qa/variant_regression_test.js
+node qa/variant_property_test.js
 python3 qa/qa_numbers.py
 python3 qa/qa_class_patterns.py
 python3 qa/variant_coverage.py
@@ -50,6 +56,7 @@ Jangan pura-pura terkunci.
 | N-4 dua metode TV dinamai | Kalimat penamaan hadir | Penamaan metode spesifik per lesson; kelasnya ("konsep dipakai sebelum didefinisikan") tidak tertangkap guard string. Mitigasi: daftar konsep-diperkenalkan-di-kuis ke prompt review. |
 | MF-1 angka DCF (17,46T, 74,55T, Rp8.491, dst.) | Fixture chk + txt hadir/hilang | Angka spesifik; KELAS-nya (C1) dikunci terpisah di atas. |
 | R9 T-1..T-8, C-2..C-4 | Fixture chk (TSM EPS bruto 0,413 vs neto 0,451; CFO +540,41; opex +200; MAE presisi penuh) + txt hadir (kualifikasi lease/NPV/leverage, undervalue TSM, satuan Buyback, desimal neraca, ambang NOL >50%) | Angka/kalimat spesifik per lesson; KELAS-nya dikunci C4 (frasa absolut — daftar terlarang) + C6 (minus ASCII — pola umum). Yang TIDAK terkunci penuh: varian kalimat absolut baru dengan kata berbeda (C4 = daftar string) dan klaim "aturan lesson dilanggar" yang butuh pemahaman semantik (variance/NPV/no-hardcode) — mitigasi: daftar tumbuh + prompt review. |
+| R10 DeepSeek (M2/S1/S2/S3/S5/M1/S4/N1/N2/N4, Gap a/b/c) | `export_import_test.js` (node): merge mission union per key (best=max, latest dari date terbaru, bal=OR, date=max; test 4l/4p–4t) + done union OR; checker skor seri → date terbaru (4v–4z); simulator runs = max bukan jumlah (4u + komentar alasan di `mergeProgress`); unwrapImport `bad-version` (version wajib number ≤ 2; 99/3/tanpa-version/string ditolak, 2/1 diterima — 3u/3v); `importBackupGuard` (progress isi + backup null → batal; kosong/hanya-_pg2 → lanjut; backup gagal disimulasikan stub localStorage throw — 5h–5m); `backupProgressNow(now)` tanggal tetap (5b2, pruning 5e/5f deterministik); `doResetProgress` backup dulu sebelum removeItem (cek statis di file test). `variant_property_test.js` (node): SEMUA 534 kunci × ID+EN × 100 run — 4 opts berbeda + answer valid + q/explain/steps non-kosong; N2 fallback EN→ID diuji key sintetis. `qa_numbers.py` pin txt R10 (17 pin: prog_backup_fail ID+EN, bad-version, mission/done union, checker tie-break, backup tanggal, runs max, reset backup dulu, simR100 guard, variantEntry fallback, dedupe b3h268/b1_h091/vCCC/vB2CCC/vB2Sculpt/vB2EPS/vB2GoodwillPPA). | Kelas "duplikat opsi varian" dikunci DUA lapis: (1) property test registry live — generator yang duplikat di draw apa pun dalam 100 run deterministik FAIL; (2) fix by construction di generator mentah (dedupe numerik / eliminasi parameter pemicu), BUKAN re-roll — wrapper retry (b1retry/b3retry) tetap sebagai pengaman lapis kedua, bukan satu-satunya. Verifikasi mentah terpisah (bukan bagian test rutin): b1_h091 + b3h268 masing-masing 0/2.000 draw mentah (juga 0/20.000). Batasan jujur: property test memakai 100 seed deterministik per kunci — tabrakan yang hanya muncul di luar seed itu lolos sampai ada yang menambah seed/draw; mitigasi: sweep 500 draw/kunci (baseline pra-fix: 14 kombinasi gagal, semua dari 7 generator yang sudah difix — vCCC/vCCCEN, vB2CCC, vB2EPS, vB2GoodwillPPA, vB2Sculpt — pasca-fix sweep ulang 100 draw = 0 gagal). |
 
 ## Batasan yang diketahui (jujur dicatat)
 

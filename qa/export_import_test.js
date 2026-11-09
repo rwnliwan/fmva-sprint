@@ -12,6 +12,20 @@ const END = "/* EXPORT-IMPORT-PURE-END */";
 const i0 = appSrc.indexOf(START);
 const i1 = appSrc.indexOf(END);
 if (i0 === -1 || i1 === -1 || i1 <= i0) { console.error("FAIL marker EXPORT-IMPORT-PURE tidak ditemukan di js/app.js"); process.exit(1); }
+/* Gap (c) R10: doResetProgress WAJIB backup dulu sebelum removeItem (cek
+   statis — doResetProgress sendiri di luar blok pure karena memanggil route()). */
+if (!/function doResetProgress\(\)\s*\{\s*backupProgressNow\(\);\s*localStorage\.removeItem\("fmva_progress"\)/.test(appSrc)) {
+  console.error("FAIL doResetProgress tidak memanggil backupProgressNow() sebelum removeItem");
+  process.exit(1);
+}
+console.log("PASS doResetProgress: backupProgressNow() sebelum removeItem");
+/* S1 R10: importProgress WAJIB membatalkan import (prog_backup_fail) bila
+   backup gagal — guard pure-nya sendiri diuji di dalam blok (5h–5m). */
+if (appSrc.indexOf("importBackupGuard(curP, backupProgressNow())") === -1 || appSrc.indexOf('T("prog_backup_fail")') === -1) {
+  console.error("FAIL importProgress tidak memakai importBackupGuard / prog_backup_fail");
+  process.exit(1);
+}
+console.log("PASS importProgress: importBackupGuard + prog_backup_fail terpasang");
 const pureSrc = appSrc.slice(i0 + START.length, i1);
 
 /* Stub localStorage (Map-backed, lengkap dengan length + key()). */
@@ -93,16 +107,46 @@ const tests = `
   rejects("mistakes null", JSON.stringify({ mistakes: null }));
   rejects("streak bukan number", JSON.stringify({ streak: "7" }));
   rejects("_pg2 bukan boolean", JSON.stringify({ _pg2: 1 }));
+  rejects("simulator.best bukan number", JSON.stringify({ simulator: { best: "100" } }));
+  rejects("simulator.runs bukan number", JSON.stringify({ simulator: { runs: "3" } }));
+  rejects("simulator.last bukan number", JSON.stringify({ simulator: { last: "kemarin" } }));
+  rejects("simulator array", JSON.stringify({ simulator: [] }));
   rejects("checker bukan objek", JSON.stringify({ checker: "x" }));
   rejects("format asing", JSON.stringify({ format: "lain", data: {} }));
   rejects("v2 tanpa data", JSON.stringify({ format: "fmva-progress", version: 2 }));
   rejects("v2 data array", JSON.stringify({ format: "fmva-progress", version: 2, data: [] }));
+  rejects("v2 version 99 ditolak", JSON.stringify({ format: "fmva-progress", version: 99, data: {} }));
+  rejects("v2 version 3 ditolak", JSON.stringify({ format: "fmva-progress", version: 3, data: {} }));
+  rejects("v2 tanpa version ditolak", JSON.stringify({ format: "fmva-progress", data: {} }));
+  rejects("v2 version string ditolak", JSON.stringify({ format: "fmva-progress", version: "2", data: {} }));
   rejects("string polos", '"hello"');
   rejects("null", "null");
+
+  /* S2: version 2 (dan lebih lama) diterima */
+  const v2ok = parseProgressFile(JSON.stringify({ format: "fmva-progress", version: 2, data: { lesson: {} } }));
+  check("3u v2 version 2 diterima", v2ok.format === "v2", v2ok.format);
+  const v1ok = parseProgressFile(JSON.stringify({ format: "fmva-progress", version: 1, data: { lesson: {} } }));
+  check("3v v2 version 1 (lebih lama) diterima", v1ok.format === "v2", v1ok.format);
+
+  /* simulator number / null lolos */
+  const simOk = parseProgressFile(JSON.stringify({ simulator: { best: 100, runs: 3, last: 1762650000000 } }));
+  check("3s simulator number lolos", simOk.format === "legacy" && simOk.data.simulator.best === 100 && simOk.data.simulator.runs === 3);
+  const simNull = parseProgressFile(JSON.stringify({ simulator: { best: null, runs: 0 } }));
+  check("3t simulator best null lolos", simNull.data.simulator.best === null && simNull.data.simulator.runs === 0);
 
   /* key tidak dikenal diabaikan, bukan ditolak */
   const unk = parseProgressFile(JSON.stringify({ lesson: {}, futureKey: { a: 1 }, streak: 2 }));
   check("3m unknown key diabaikan + dicatat", unk.ignored.length === 1 && unk.ignored[0] === "futureKey", unk.ignored.join(","));
+  check("3n unknown key DIBUANG dari data import", unk.data.futureKey === undefined, JSON.stringify(unk.data));
+  /* mode replace: data hasil parse sudah bersih (v2 wrapped) */
+  const unkV2 = parseProgressFile(JSON.stringify({ format: "fmva-progress", version: 2, data: { lesson: {}, futureKey: 1 } }));
+  check("3o unknown key v2 DIBUANG + dicatat", unkV2.ignored[0] === "futureKey" && unkV2.data.futureKey === undefined, JSON.stringify(unkV2.data));
+  /* mode merge: unknown key dari imp dibuang, dari cur dipertahankan */
+  const curUnk = { lesson: {}, oldKey: { z: 9 } };
+  const impUnk = parseProgressFile(JSON.stringify({ lesson: {}, futureKey: { a: 1 } }));
+  const mUnk = mergeProgress(curUnk, impUnk.data);
+  check("3p merge: unknown key imp dibuang", mUnk.futureKey === undefined, JSON.stringify(mUnk));
+  check("3q merge: unknown key cur dipertahankan", mUnk.oldKey && mUnk.oldKey.z === 9, JSON.stringify(mUnk));
 
   /* (4) merge mempertahankan skor terbaik + gabung mistakes/checker */
   const m = mergeProgress(cur, imp);
@@ -117,26 +161,73 @@ const tests = `
   check("4i checker f1: skor tertinggi 85", m.checker["f1"].score === 85, JSON.stringify(m.checker["f1"]));
   check("4j checker f2: dari imp", m.checker["f2"] && m.checker["f2"].score === 60);
   check("4k streak: max(5,3)=5", m.streak === 5, String(m.streak));
-  check("4l mission: dari imp bila ada", m.mission && m.mission["y"] && !m.mission["x"], JSON.stringify(m.mission));
+  check("4l mission: union — x cur + y imp keduanya bertahan", m.mission && m.mission["x"] && m.mission["x"].done === true && m.mission["y"] && m.mission["y"].done === false, JSON.stringify(m.mission));
   check("4m merge tidak mutasi input", cur.quiz["f1"] === 90 && imp.quiz["f1"] === 70);
   check("4n merge dgn cur kosong = imp", eq(mergeProgress({}, imp).quiz, imp.quiz));
   check("4o merge dgn imp kosong = cur", eq(mergeProgress(cur, {}).quiz, cur.quiz));
+
+  /* (4p) M2: mission key sama — best=max, latest dari date terbaru, bal=OR, date=max */
+  const mM = mergeProgress(
+    { mission: { k: { best: 80, latest: 7, bal: false, date: 1000 } }, done: { a: true } },
+    { mission: { k: { best: 60, latest: 9, bal: true, date: 2000 } }, done: { b: true } });
+  check("4p mission key sama: best = max(80,60)", mM.mission["k"].best === 80, JSON.stringify(mM.mission["k"]));
+  check("4q mission key sama: latest+date dari imp (date terbaru)", mM.mission["k"].latest === 9 && mM.mission["k"].date === 2000, JSON.stringify(mM.mission["k"]));
+  check("4r mission key sama: bal = OR", mM.mission["k"].bal === true, JSON.stringify(mM.mission["k"]));
+  const mM2 = mergeProgress(
+    { mission: { k: { best: 50, latest: 5, bal: true, date: 3000 } } },
+    { mission: { k: { best: 90, latest: 8, bal: false, date: 2000 } } });
+  check("4s mission key sama: latest dari cur (date cur terbaru) + best max", mM2.mission["k"].best === 90 && mM2.mission["k"].latest === 5 && mM2.mission["k"].date === 3000 && mM2.mission["k"].bal === true, JSON.stringify(mM2.mission["k"]));
+  check("4t done: union — a cur + b imp keduanya true", mM.done && mM.done["a"] === true && mM.done["b"] === true, JSON.stringify(mM.done));
+
+  /* N4: simulator.runs = max, BUKAN jumlah (file tumpang tindih -> jumlah double-count) */
+  const mS = mergeProgress({ simulator: { best: 80, runs: 3, last: 100 } }, { simulator: { best: 70, runs: 5, last: 200 } });
+  check("4u simulator runs = max(3,5)=5, bukan 8", mS.simulator.runs === 5 && mS.simulator.best === 80 && mS.simulator.last === 200, JSON.stringify(mS.simulator));
+
+  /* S3: checker skor seri -> date terbaru menang */
+  const mC1 = mergeProgress({ checker: { f1: { score: 80, date: 1000 } } }, { checker: { f1: { score: 80, date: 2000 } } });
+  check("4v checker seri: date imp terbaru menang", mC1.checker["f1"].date === 2000, JSON.stringify(mC1.checker["f1"]));
+  const mC2 = mergeProgress({ checker: { f1: { score: 80, date: 3000 } } }, { checker: { f1: { score: 80, date: 2000 } } });
+  check("4w checker seri: date cur terbaru menang", mC2.checker["f1"].date === 3000, JSON.stringify(mC2.checker["f1"]));
+  const mC3 = mergeProgress({ checker: { f1: { score: 80 } } }, { checker: { f1: { score: 80, date: 2000 } } });
+  check("4x checker seri: hanya imp punya date -> imp", mC3.checker["f1"].date === 2000, JSON.stringify(mC3.checker["f1"]));
+  const mC4 = mergeProgress({ checker: { f1: { score: 80, date: 1000 } } }, { checker: { f1: { score: 80 } } });
+  check("4y checker seri: hanya cur punya date -> cur", mC4.checker["f1"].date === 1000, JSON.stringify(mC4.checker["f1"]));
+  const mC5 = mergeProgress({ checker: { f1: { score: 80 } } }, { checker: { f1: { score: 80 } } });
+  check("4z checker seri: keduanya tanpa date -> cur", mC5.checker["f1"] && !("date" in mC5.checker["f1"]), JSON.stringify(mC5.checker["f1"]));
 
   /* (5) backup dibuat sebelum overwrite + maks 3 */
   localStorage.clear();
   check("5a tanpa progress: backup null", backupProgressNow() === null);
   localStorage.setItem("fmva_progress", JSON.stringify(cur));
-  const bkey = backupProgressNow();
+  /* S5: tanggal tetap (bukan jam dinding) — backup deterministik. */
+  const bkey = backupProgressNow(new Date(2026, 10, 9, 10, 0, 0));
   check("5b backup dibuat", typeof bkey === "string" && bkey.indexOf("fmva_progress_backup_") === 0, String(bkey));
+  check("5b2 backup key stempel tanggal tetap", bkey === "fmva_progress_backup_20261109-100000", String(bkey));
   check("5c backup berisi progress lama", eq(JSON.parse(localStorage.getItem(bkey)), cur));
-  check("5d stempel pola yyyymmdd-hhmm", /^fmva_progress_backup_\\d{8}-\\d{4}$/.test(bkey), bkey);
+  check("5d stempel pola yyyymmdd-hhmmss", /^fmva_progress_backup_\\d{8}-\\d{6}$/.test(bkey), bkey);
+  check("5g stempel beda detik dalam menit sama", progressBackupStamp(new Date(2026, 10, 9, 10, 0, 1)) !== progressBackupStamp(new Date(2026, 10, 9, 10, 0, 59)));
+  /* S1: import dibatalkan bila backup gagal & progress saat ini tidak kosong */
+  check("5h guard: progress isi + backup null -> batal", importBackupGuard(cur, null) === true);
+  check("5i guard: progress isi + backup ok -> lanjut", importBackupGuard(cur, "fmva_progress_backup_20261109-100000") === false);
+  check("5j guard: progress kosong + backup null -> lanjut", importBackupGuard({}, null) === false);
+  check("5k guard: hanya _pg2 + backup null -> lanjut", importBackupGuard({ _pg2: true }, null) === false);
+  /* backup gagal disimulasikan: localStorage yang throw di setItem (kuota). */
+  localStorage.clear();
+  localStorage.setItem("fmva_progress", JSON.stringify(cur));
+  const realLS = localStorage;
+  localStorage = { getItem: k => realLS.getItem(k), setItem: () => { throw new Error("quota"); },
+    removeItem: k => realLS.removeItem(k), key: i => realLS.key(i), clear: () => realLS.clear(),
+    get length(){ return realLS.length; } };
+  check("5l backup gagal (setItem throw) -> null", backupProgressNow() === null);
+  check("5m guard + backup gagal -> batal", importBackupGuard(cur, backupProgressNow()) === true);
+  localStorage = realLS;
   /* pruning: 4 backup lama + 1 baru -> sisa 3 terbaru */
   localStorage.clear();
-  ["20260101-0000", "20260102-0000", "20260103-0000", "20260104-0000"].forEach(s => {
+  ["20260101-000000", "20260102-000000", "20260103-000000", "20260104-000000"].forEach(s => {
     localStorage.setItem("fmva_progress_backup_" + s, "{}");
   });
   localStorage.setItem("fmva_progress", JSON.stringify(cur));
-  backupProgressNow();
+  backupProgressNow(new Date(2026, 0, 5, 0, 0, 0));
   const kept = [];
   for (let i = 0; i < localStorage.length; i++){
     const k = localStorage.key(i);
@@ -144,7 +235,7 @@ const tests = `
   }
   kept.sort();
   check("5e pruning: maks 3 backup", kept.length === 3, kept.join(","));
-  check("5f pruning: yang tertua terhapus", kept.indexOf("fmva_progress_backup_20260101-0000") === -1 && kept.indexOf("fmva_progress_backup_20260102-0000") === -1, kept.join(","));
+  check("5f pruning: yang tertua terhapus", kept.indexOf("fmva_progress_backup_20260101-000000") === -1 && kept.indexOf("fmva_progress_backup_20260102-000000") === -1, kept.join(","));
 
   /* konstanta format */
   check("6a PROGRESS_EXPORT_VERSION=2", PROGRESS_EXPORT_VERSION === 2);

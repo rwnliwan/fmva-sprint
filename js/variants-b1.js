@@ -1322,7 +1322,10 @@ function b1EN_h090(rng){
 /* 09:1 — CAPM: CoE = Rf + beta × MRP */
 function b1_h091(rng){
   const r1 = v => Math.round(v * 10) / 10;
-  const rf = b1ri(rng, 50, 80, 5) / 10, beta = b1ri(rng, 8, 15, 1) / 10, mrp = b1ri(rng, 50, 70, 5) / 10;
+  /* beta TIDAK BOLEH 1,0: beta=1 membuat CoE = Rf+MRP (opsi 2 = jawaban)
+     dan Rf+beta×(MRP+2) = CoE+2 (opsi 3 = opsi 4) — dua duplikat sekaligus.
+     Daftar eksplisit tanpa 1,0: by construction, bukan re-roll. */
+  const rf = b1ri(rng, 50, 80, 5) / 10, beta = b1pick(rng, [0.8, 0.9, 1.1, 1.2, 1.3, 1.4, 1.5]), mrp = b1ri(rng, 50, 70, 5) / 10;
   const coe = r1(rf + beta * mrp);
   return b1mk(rng,
     `CAPM: Rf ${b1f(rf, 1)}%, beta ${b1f(beta, 1)}, MRP ${b1f(mrp, 1)}%. Cost of equity?`,
@@ -1335,7 +1338,8 @@ function b1_h091(rng){
 }
 function b1EN_h091(rng){
   const r1 = v => Math.round(v * 10) / 10;
-  const rf = b1ri(rng, 50, 80, 5) / 10, beta = b1ri(rng, 8, 15, 1) / 10, mrp = b1ri(rng, 50, 70, 5) / 10;
+  /* beta TIDAK BOLEH 1,0 — lihat b1_h091: beta=1 membuat dua duplikat. */
+  const rf = b1ri(rng, 50, 80, 5) / 10, beta = b1pick(rng, [0.8, 0.9, 1.1, 1.2, 1.3, 1.4, 1.5]), mrp = b1ri(rng, 50, 70, 5) / 10;
   const coe = r1(rf + beta * mrp);
   return b1mk(rng,
     `CAPM: Rf ${b1fe(rf, 1)}%, beta ${b1fe(beta, 1)}, MRP ${b1fe(mrp, 1)}%. Cost of equity?`,
@@ -1741,7 +1745,7 @@ function b1_h104(rng){
   const f = b1ri(rng, 2000, 3000, 100), w0 = b1ri(rng, 12, 14, 1), g = b1ri(rng, 2, 4, 1);
   const tv0 = Math.round(f / ((w0 - g) / 100)), tv1 = Math.round(f / ((w0 + 2 - g) / 100));
   return b1txt(rng,
-    `WACC naik ${b1f(w0)}% → ${b1f(w0 + 2)}% (g tetap ${b1f(g)}%). Dampak ke TV perpetuity?`,
+    `FCFF Rp${b1f(f)}rb, WACC naik ${b1f(w0)}% → ${b1f(w0 + 2)}% (g tetap ${b1f(g)}%). Dampak ke TV perpetuity?`,
     ["Naik",
      `Turun — penyebut (WACC−g) membesar (TV Rp${b1f(tv0)}rb → Rp${b1f(tv1)}rb)`,
      "Tetap",
@@ -1756,7 +1760,7 @@ function b1EN_h104(rng){
   const f = b1ri(rng, 2000, 3000, 100), w0 = b1ri(rng, 12, 14, 1), g = b1ri(rng, 2, 4, 1);
   const tv0 = Math.round(f / ((w0 - g) / 100)), tv1 = Math.round(f / ((w0 + 2 - g) / 100));
   return b1txt(rng,
-    `WACC rises from ${b1fe(w0)}% to ${b1fe(w0 + 2)}% (g unchanged at ${b1fe(g)}%). What happens to the perpetuity TV?`,
+    `FCFF Rp${b1fe(f)}k, WACC rises from ${b1fe(w0)}% to ${b1fe(w0 + 2)}% (g unchanged at ${b1fe(g)}%). What happens to the perpetuity TV?`,
     ["It rises",
      `It falls — the (WACC−g) denominator grows (TV Rp${b1fe(tv0)}k → Rp${b1fe(tv1)}k)`,
      "It stays the same",
